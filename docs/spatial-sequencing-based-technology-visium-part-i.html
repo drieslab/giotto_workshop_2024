@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Spatial sequencing based technology, Visium Part I | Workshop: Spatial multi-omics data analysis with Giotto Suite</title>
+  <meta name="description" content="5 Spatial sequencing based technology, Visium Part I | Workshop: Spatial multi-omics data analysis with Giotto Suite" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Spatial sequencing based technology, Visium Part I | Workshop: Spatial multi-omics data analysis with Giotto Suite" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="drieslab/giotto_workshop_2024" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Spatial sequencing based technology, Visium Part I | Workshop: Spatial multi-omics data analysis with Giotto Suite" />
+  
+  
+  
+
+<meta name="author" content="Ruben Dries, Jiaji George Chen, Joselyn Cristina Chávez-Fuentes, Junxiang Xu , Edward Ruiz, Jeff Sheridan, Wen Wang" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data-formatting-and-pre-processing.html"/>
+<link rel="next" href="spatial-sequencing-based-technology-visium.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Welcome!</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#instructors"><i class="fa fa-check"></i><b>1.1</b> Instructors</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#topics-and-schedule"><i class="fa fa-check"></i><b>1.2</b> Topics and Schedule:</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.3</b> License</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html"><i class="fa fa-check"></i><b>2</b> Spatial omics technologies</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#slides"><i class="fa fa-check"></i><b>2.1</b> Slides</a></li>
+<li class="chapter" data-level="2.2" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#spatial-sequencing"><i class="fa fa-check"></i><b>2.2</b> Spatial sequencing</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html"><i class="fa fa-check"></i><b>3</b> Introduction to the Giotto package</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#slides-1"><i class="fa fa-check"></i><b>3.1</b> Slides</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html"><i class="fa fa-check"></i><b>4</b> Data formatting and Pre-processing</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#creating-a-giotto-object"><i class="fa fa-check"></i><b>4.1</b> Creating a Giotto object</a></li>
+<li class="chapter" data-level="4.2" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#spatial-plots"><i class="fa fa-check"></i><b>4.2</b> Spatial plots</a></li>
+<li class="chapter" data-level="4.3" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#subsetting"><i class="fa fa-check"></i><b>4.3</b> Subsetting</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="spatial-sequencing-based-technology-visium-part-i.html"><a href="spatial-sequencing-based-technology-visium-part-i.html"><i class="fa fa-check"></i><b>5</b> Spatial sequencing based technology, Visium Part I</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="spatial-sequencing-based-technology-visium-part-i.html"><a href="spatial-sequencing-based-technology-visium-part-i.html#introduction-to-spatial-dataset"><i class="fa fa-check"></i><b>5.1</b> Introduction to spatial dataset</a></li>
+<li class="chapter" data-level="5.2" data-path="spatial-sequencing-based-technology-visium-part-i.html"><a href="spatial-sequencing-based-technology-visium-part-i.html#create-the-giotto-object"><i class="fa fa-check"></i><b>5.2</b> Create the Giotto object</a></li>
+<li class="chapter" data-level="5.3" data-path="spatial-sequencing-based-technology-visium-part-i.html"><a href="spatial-sequencing-based-technology-visium-part-i.html#subset-on-spots-that-were-covered-by-tissue"><i class="fa fa-check"></i><b>5.3</b> Subset on spots that were covered by tissue</a></li>
+<li class="chapter" data-level="5.4" data-path="spatial-sequencing-based-technology-visium-part-i.html"><a href="spatial-sequencing-based-technology-visium-part-i.html#quality-control"><i class="fa fa-check"></i><b>5.4</b> Quality control</a></li>
+<li class="chapter" data-level="5.5" data-path="spatial-sequencing-based-technology-visium-part-i.html"><a href="spatial-sequencing-based-technology-visium-part-i.html#filtering"><i class="fa fa-check"></i><b>5.5</b> Filtering</a></li>
+<li class="chapter" data-level="5.6" data-path="spatial-sequencing-based-technology-visium-part-i.html"><a href="spatial-sequencing-based-technology-visium-part-i.html#normalization"><i class="fa fa-check"></i><b>5.6</b> Normalization</a></li>
+<li class="chapter" data-level="5.7" data-path="spatial-sequencing-based-technology-visium-part-i.html"><a href="spatial-sequencing-based-technology-visium-part-i.html#feature-selection"><i class="fa fa-check"></i><b>5.7</b> Feature selection</a>
+<ul>
+<li class="chapter" data-level="5.7.1" data-path="spatial-sequencing-based-technology-visium-part-i.html"><a href="spatial-sequencing-based-technology-visium-part-i.html#highly-variable-features"><i class="fa fa-check"></i><b>5.7.1</b> Highly Variable Features:</a></li>
+<li class="chapter" data-level="5.7.2" data-path="spatial-sequencing-based-technology-visium-part-i.html"><a href="spatial-sequencing-based-technology-visium-part-i.html#spatial-variable-genes"><i class="fa fa-check"></i><b>5.7.2</b> Spatial variable genes</a></li>
+</ul></li>
+<li class="chapter" data-level="5.8" data-path="spatial-sequencing-based-technology-visium-part-i.html"><a href="spatial-sequencing-based-technology-visium-part-i.html#dimension-reduction"><i class="fa fa-check"></i><b>5.8</b> Dimension Reduction</a></li>
+<li class="chapter" data-level="5.9" data-path="spatial-sequencing-based-technology-visium-part-i.html"><a href="spatial-sequencing-based-technology-visium-part-i.html#clustering"><i class="fa fa-check"></i><b>5.9</b> Clustering</a>
+<ul>
+<li class="chapter" data-level="5.9.1" data-path="spatial-sequencing-based-technology-visium-part-i.html"><a href="spatial-sequencing-based-technology-visium-part-i.html#non-spatial"><i class="fa fa-check"></i><b>5.9.1</b> Non-spatial</a></li>
+<li class="chapter" data-level="5.9.2" data-path="spatial-sequencing-based-technology-visium-part-i.html"><a href="spatial-sequencing-based-technology-visium-part-i.html#spatial"><i class="fa fa-check"></i><b>5.9.2</b> Spatial</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="spatial-sequencing-based-technology-visium.html"><a href="spatial-sequencing-based-technology-visium.html"><i class="fa fa-check"></i><b>6</b> Spatial sequencing based technology, Visium</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="spatial-sequencing-based-technology-visium.html"><a href="spatial-sequencing-based-technology-visium.html#differential-expression"><i class="fa fa-check"></i><b>6.1</b> Differential expression</a></li>
+<li class="chapter" data-level="6.2" data-path="spatial-sequencing-based-technology-visium.html"><a href="spatial-sequencing-based-technology-visium.html#enrichment-deconvolution"><i class="fa fa-check"></i><b>6.2</b> Enrichment &amp; Deconvolution</a></li>
+<li class="chapter" data-level="6.3" data-path="spatial-sequencing-based-technology-visium.html"><a href="spatial-sequencing-based-technology-visium.html#interactive-tools"><i class="fa fa-check"></i><b>6.3</b> Interactive tools</a></li>
+<li class="chapter" data-level="6.4" data-path="spatial-sequencing-based-technology-visium.html"><a href="spatial-sequencing-based-technology-visium.html#spatial-expression-patterns"><i class="fa fa-check"></i><b>6.4</b> Spatial expression patterns</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Workshop: Spatial multi-omics data analysis with Giotto Suite</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="spatial-sequencing-based-technology-visium-part-i" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">5</span> Spatial sequencing based technology, Visium Part I<a href="spatial-sequencing-based-technology-visium-part-i.html#spatial-sequencing-based-technology-visium-part-i" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Joselyn Cristina Chávez Fuentes</p>
+<p>August 5th 2024</p>
+<div id="introduction-to-spatial-dataset" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Introduction to spatial dataset<a href="spatial-sequencing-based-technology-visium-part-i.html#introduction-to-spatial-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>10X genomics recently launched a new platform to obtain spatial expression data using a Visium Spatial Gene Expression slide.</p>
+<p>The Visium brain data to run this tutorial can be found <a href="https://support.10xgenomics.com/spatial-gene-expression/datasets/1.1.0/V1_Adult_Mouse_Brain">here</a></p>
+</div>
+<div id="create-the-giotto-object" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Create the Giotto object<a href="spatial-sequencing-based-technology-visium-part-i.html#create-the-giotto-object" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
+<span id="cb1-2"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-2" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-3" tabindex="-1"></a><span class="do">## Set instructions</span></span>
+<span id="cb1-4"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-4" tabindex="-1"></a>results_folder <span class="ot">&lt;-</span> <span class="st">&quot;results/&quot;</span></span>
+<span id="cb1-5"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-5" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-6" tabindex="-1"></a>my_python_path <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb1-7"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-7" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-8" tabindex="-1"></a>instrs <span class="ot">&lt;-</span> <span class="fu">createGiottoInstructions</span>(</span>
+<span id="cb1-9"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-9" tabindex="-1"></a>    <span class="at">save_dir =</span> results_folder,</span>
+<span id="cb1-10"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-10" tabindex="-1"></a>    <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb1-11"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-11" tabindex="-1"></a>    <span class="at">show_plot =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-12"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-12" tabindex="-1"></a>    <span class="at">python_path =</span> my_python_path</span>
+<span id="cb1-13"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-13" tabindex="-1"></a>)</span>
+<span id="cb1-14"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-14" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-15" tabindex="-1"></a><span class="do">## Provide path to visium folder</span></span>
+<span id="cb1-16"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-16" tabindex="-1"></a>data_path <span class="ot">&lt;-</span> <span class="st">&quot;data/&quot;</span></span>
+<span id="cb1-17"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-17" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-18" tabindex="-1"></a><span class="do">## Create object directly from visium folder</span></span>
+<span id="cb1-19"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-19" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">createGiottoVisiumObject</span>(</span>
+<span id="cb1-20"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-20" tabindex="-1"></a>    <span class="at">visium_dir =</span> data_path,</span>
+<span id="cb1-21"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-21" tabindex="-1"></a>    <span class="at">expr_data =</span> <span class="st">&quot;raw&quot;</span>,</span>
+<span id="cb1-22"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-22" tabindex="-1"></a>    <span class="at">png_name =</span> <span class="st">&quot;tissue_lowres_image.png&quot;</span>,</span>
+<span id="cb1-23"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-23" tabindex="-1"></a>    <span class="at">gene_column_index =</span> <span class="dv">2</span>,</span>
+<span id="cb1-24"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-24" tabindex="-1"></a>    <span class="at">instructions =</span> instrs</span>
+<span id="cb1-25"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-25" tabindex="-1"></a>)</span>
+<span id="cb1-26"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-26" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-27" tabindex="-1"></a><span class="do">## show plot</span></span>
+<span id="cb1-28"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-28" tabindex="-1"></a><span class="fu">spatPlot2D</span>(</span>
+<span id="cb1-29"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-29" tabindex="-1"></a>    <span class="at">gobject =</span> visium_brain,</span>
+<span id="cb1-30"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-30" tabindex="-1"></a>    <span class="at">cell_color =</span> <span class="st">&quot;in_tissue&quot;</span>,</span>
+<span id="cb1-31"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-31" tabindex="-1"></a>    <span class="at">point_size =</span> <span class="dv">2</span>,</span>
+<span id="cb1-32"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-32" tabindex="-1"></a>    <span class="at">cell_color_code =</span> <span class="fu">c</span>(<span class="st">&quot;0&quot;</span> <span class="ot">=</span> <span class="st">&quot;lightgrey&quot;</span>, <span class="st">&quot;1&quot;</span> <span class="ot">=</span> <span class="st">&quot;blue&quot;</span>),</span>
+<span id="cb1-33"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-33" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb1-34"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-34" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;image&quot;</span></span>
+<span id="cb1-35"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb1-35" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="subset-on-spots-that-were-covered-by-tissue" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Subset on spots that were covered by tissue<a href="spatial-sequencing-based-technology-visium-part-i.html#subset-on-spots-that-were-covered-by-tissue" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb2-1" tabindex="-1"></a>metadata <span class="ot">&lt;-</span> <span class="fu">pDataDT</span>(visium_brain)</span>
+<span id="cb2-2"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb2-2" tabindex="-1"></a>in_tissue_barcodes <span class="ot">&lt;-</span> metadata[in_tissue <span class="sc">==</span> <span class="dv">1</span>]<span class="sc">$</span>cell_ID</span>
+<span id="cb2-3"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb2-3" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">subsetGiotto</span>(visium_brain,</span>
+<span id="cb2-4"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb2-4" tabindex="-1"></a>    <span class="at">cell_ids =</span> in_tissue_barcodes</span>
+<span id="cb2-5"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb2-5" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="quality-control" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Quality control<a href="spatial-sequencing-based-technology-visium-part-i.html#quality-control" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Statistics</li>
+</ul>
+</div>
+<div id="filtering" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Filtering<a href="spatial-sequencing-based-technology-visium-part-i.html#filtering" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb3-1" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">filterGiotto</span>(</span>
+<span id="cb3-2"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb3-2" tabindex="-1"></a>    <span class="at">gobject =</span> visium_brain,</span>
+<span id="cb3-3"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb3-3" tabindex="-1"></a>    <span class="at">expression_threshold =</span> <span class="dv">1</span>,</span>
+<span id="cb3-4"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb3-4" tabindex="-1"></a>    <span class="at">feat_det_in_min_cells =</span> <span class="dv">50</span>,</span>
+<span id="cb3-5"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb3-5" tabindex="-1"></a>    <span class="at">min_det_feats_per_cell =</span> <span class="dv">1000</span>,</span>
+<span id="cb3-6"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb3-6" tabindex="-1"></a>    <span class="at">expression_values =</span> <span class="fu">c</span>(<span class="st">&quot;raw&quot;</span>),</span>
+<span id="cb3-7"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb3-7" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="cn">TRUE</span></span>
+<span id="cb3-8"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb3-8" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="normalization" class="section level2 hasAnchor" number="5.6">
+<h2><span class="header-section-number">5.6</span> Normalization<a href="spatial-sequencing-based-technology-visium-part-i.html#normalization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb4-1" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">normalizeGiotto</span>(</span>
+<span id="cb4-2"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb4-2" tabindex="-1"></a>    <span class="at">gobject =</span> visium_brain,</span>
+<span id="cb4-3"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb4-3" tabindex="-1"></a>    <span class="at">scalefactor =</span> <span class="dv">6000</span>,</span>
+<span id="cb4-4"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb4-4" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="cn">TRUE</span></span>
+<span id="cb4-5"><a href="spatial-sequencing-based-technology-visium-part-i.html#cb4-5" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="feature-selection" class="section level2 hasAnchor" number="5.7">
+<h2><span class="header-section-number">5.7</span> Feature selection<a href="spatial-sequencing-based-technology-visium-part-i.html#feature-selection" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>text</p>
+<div id="highly-variable-features" class="section level3 hasAnchor" number="5.7.1">
+<h3><span class="header-section-number">5.7.1</span> Highly Variable Features:<a href="spatial-sequencing-based-technology-visium-part-i.html#highly-variable-features" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>loess regression</li>
+<li>binned</li>
+<li>pearson residuals</li>
+</ul>
+</div>
+<div id="spatial-variable-genes" class="section level3 hasAnchor" number="5.7.2">
+<h3><span class="header-section-number">5.7.2</span> Spatial variable genes<a href="spatial-sequencing-based-technology-visium-part-i.html#spatial-variable-genes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>text</p>
+</div>
+</div>
+<div id="dimension-reduction" class="section level2 hasAnchor" number="5.8">
+<h2><span class="header-section-number">5.8</span> Dimension Reduction<a href="spatial-sequencing-based-technology-visium-part-i.html#dimension-reduction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>PCA</li>
+<li>UMAP/t-SNE</li>
+<li>Visualizations</li>
+</ul>
+</div>
+<div id="clustering" class="section level2 hasAnchor" number="5.9">
+<h2><span class="header-section-number">5.9</span> Clustering<a href="spatial-sequencing-based-technology-visium-part-i.html#clustering" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>text</p>
+<div id="non-spatial" class="section level3 hasAnchor" number="5.9.1">
+<h3><span class="header-section-number">5.9.1</span> Non-spatial<a href="spatial-sequencing-based-technology-visium-part-i.html#non-spatial" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>k-means</li>
+<li>Hierarchical clustering</li>
+<li>Leiden/Louvain</li>
+</ul>
+</div>
+<div id="spatial" class="section level3 hasAnchor" number="5.9.2">
+<h3><span class="header-section-number">5.9.2</span> Spatial<a href="spatial-sequencing-based-technology-visium-part-i.html#spatial" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Spatial variable genes</li>
+<li>Spatial co-expression modules</li>
+</ul>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-formatting-and-pre-processing.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="spatial-sequencing-based-technology-visium.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+# Spatial sequencing based technology, Visium
+
+Joselyn Cristina Chávez Fuentes
+
+August 6th 2024
+
+## Differential expression
+
+
+- text
+
+## Enrichment & Deconvolution
+
+- PAGE/Rank
+- SpatialDWLS
+- Visualizations
+
+
+
+## Interactive tools
+
+text
+
+## Spatial expression patterns
+
+- Spatial variable genes
+- Spatial co-expression modules
+- Spatial HMRF
+

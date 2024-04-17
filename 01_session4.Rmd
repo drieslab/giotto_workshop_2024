@@ -1,0 +1,132 @@
+# Spatial sequencing based technology, Visium Part I
+
+Joselyn Cristina Chávez Fuentes
+
+August 5th 2024
+
+## Introduction to spatial dataset
+
+10X genomics recently launched a new platform to obtain spatial expression data using a Visium Spatial Gene Expression slide.
+
+The Visium brain data to run this tutorial can be found [here](https://support.10xgenomics.com/spatial-gene-expression/datasets/1.1.0/V1_Adult_Mouse_Brain)
+
+## Create the Giotto object
+
+```{r, eval=FALSE}
+library(Giotto)
+
+## Set instructions
+results_folder <- "results/"
+
+my_python_path <- NULL
+
+instrs <- createGiottoInstructions(
+    save_dir = results_folder,
+    save_plot = TRUE,
+    show_plot = FALSE,
+    python_path = my_python_path
+)
+
+## Provide path to visium folder
+data_path <- "data/"
+
+## Create object directly from visium folder
+visium_brain <- createGiottoVisiumObject(
+    visium_dir = data_path,
+    expr_data = "raw",
+    png_name = "tissue_lowres_image.png",
+    gene_column_index = 2,
+    instructions = instrs
+)
+
+## show plot
+spatPlot2D(
+    gobject = visium_brain,
+    cell_color = "in_tissue",
+    point_size = 2,
+    cell_color_code = c("0" = "lightgrey", "1" = "blue"),
+    show_image = TRUE,
+    image_name = "image"
+)
+```
+
+
+## Subset on spots that were covered by tissue
+
+```{r, eval=FALSE}
+metadata <- pDataDT(visium_brain)
+in_tissue_barcodes <- metadata[in_tissue == 1]$cell_ID
+visium_brain <- subsetGiotto(visium_brain,
+    cell_ids = in_tissue_barcodes
+)
+```
+
+
+## Quality control
+
+- Statistics
+
+## Filtering
+
+```{r, eval=FALSE}
+visium_brain <- filterGiotto(
+    gobject = visium_brain,
+    expression_threshold = 1,
+    feat_det_in_min_cells = 50,
+    min_det_feats_per_cell = 1000,
+    expression_values = c("raw"),
+    verbose = TRUE
+)
+```
+
+
+## Normalization
+
+
+```{r, eval=FALSE}
+visium_brain <- normalizeGiotto(
+    gobject = visium_brain,
+    scalefactor = 6000,
+    verbose = TRUE
+)
+```
+
+
+## Feature selection
+
+text 
+ 
+ 
+### Highly Variable Features:
+
+- loess regression
+- binned
+- pearson residuals
+
+### Spatial variable genes
+
+text 
+
+## Dimension Reduction
+
+- PCA
+- UMAP/t-SNE
+- Visualizations
+
+## Clustering
+
+text 
+
+### Non-spatial
+
+- k-means
+- Hierarchical clustering
+- Leiden/Louvain
+
+### Spatial
+
+- Spatial variable genes
+- Spatial co-expression modules
+
+
+

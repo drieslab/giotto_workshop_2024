@@ -1,0 +1,20 @@
+# Introduction to the Giotto package
+
+Ruben Dries
+
+August 5th 2024
+
+## Slides
+
+[
+```{r,echo=FALSE}
+knitr::include_url("https://comunidadbioinfo.github.io/cdsb2023/dia1_sesion1_slides.html", height = "380px")
+```
+](https://comunidadbioinfo.github.io/cdsb2023/dia1_sesion1_slides.html)
+
+
+- Ecosystem
+- Installation + python environment
+- Giotto instructions
+
+

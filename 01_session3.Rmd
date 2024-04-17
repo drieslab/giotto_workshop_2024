@@ -1,0 +1,21 @@
+# Data formatting and Pre-processing
+
+Jiaji George Chen
+
+August 5th 2024
+
+## Creating a Giotto object
+
+- From matrix + locations
+- From subcellular raw data (transcripts or images) + polygons
+- Using convenience functions for popular technologies (Vizgen, Xenium, CosMx, …)
+
+## Spatial plots
+
+some text
+
+## Subsetting
+
+- Based on IDs
+- Based on locations
+- Visualizations
