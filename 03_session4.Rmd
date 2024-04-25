@@ -1,0 +1,21 @@
+# Interoperability with other frameworks
+
+Iqra
+
+August 7th 2024
+
+
+## AnnData/SpatialData
+
+text
+
+## SpatialExperiment
+
+text
+
+## Seurat
+
+text
+
+
+

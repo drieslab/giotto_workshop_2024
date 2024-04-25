@@ -13,8 +13,10 @@ knitr::include_url("https://comunidadbioinfo.github.io/cdsb2023/dia1_sesion1_sli
 ](https://comunidadbioinfo.github.io/cdsb2023/dia1_sesion1_slides.html)
 
 
-- Ecosystem
-- Installation + python environment
-- Giotto instructions
+## Ecosystem
+
+## Installation + python environment
+
+## Giotto instructions
 
 

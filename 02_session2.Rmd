@@ -1,0 +1,21 @@
+# Visium HD
+
+Edward Ruiz
+
+August 6th 2024
+
+## Tiling and aggregation
+
+text
+
+## Scalability and projection functions
+
+- duckdb
+
+## Spatial expression patterns
+
+text
+
+## Spatial co-expression modules
+
+text

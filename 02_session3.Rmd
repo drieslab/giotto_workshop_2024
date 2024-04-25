@@ -1,0 +1,33 @@
+# Xenium
+
+Jiaji George Chen
+
+August 6th 2024
+
+## Read in raw data
+
+- Transcript coordinates
+- Polygon coordinates
+- Visualizations
+
+
+## Overlap txs & polygons
+
+- Typical aggregated workflow
+- Feature/molecule specific analysis
+- Visualizations
+
+
+## Transcript enrichment GSEA
+
+
+text
+
+## Spatial location analysis
+
+- Spatial cell type co-localization analysis
+- Spatial niche analysis
+- Spatial niche trajectory analysis
+
+## Visualizations
+

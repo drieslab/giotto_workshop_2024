@@ -4,18 +4,10 @@ Jiaji George Chen
 
 August 5th 2024
 
-## Creating a Giotto object
-
-- From matrix + locations
-- From subcellular raw data (transcripts or images) + polygons
-- Using convenience functions for popular technologies (Vizgen, Xenium, CosMx, …)
-
-## Spatial plots
+## Data formats
 
 some text
 
-## Subsetting
+## Pre-processing
 
-- Based on IDs
-- Based on locations
-- Visualizations
+some text

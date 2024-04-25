@@ -1,0 +1,13 @@
+# Working with multiple samples
+
+Jeff Sheridan
+
+August 7th 2024
+
+## Create individual giotto objects
+
+## Join Giotto Objects
+
+## Perform Harmony and default workflows
+
+## Visualizations

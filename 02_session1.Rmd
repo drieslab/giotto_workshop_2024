@@ -1,4 +1,4 @@
-# Spatial sequencing based technology, Visium
+# Visium Part II
 
 Joselyn Cristina Chávez Fuentes
 
@@ -15,15 +15,208 @@ August 6th 2024
 - SpatialDWLS
 - Visualizations
 
+## Spatial expression patterns
+
+- Spatial variable genes
+
+Rank binarization
+
+```{r, eval=FALSE}
+ranktest = binSpect(visium_brain, 
+                    bin_method = 'rank',
+                    calc_hub = TRUE, 
+                    hub_min_int = 5,
+                    spatial_network_name = 'spatial_network')
+```
+
+Visualize
+
+```{r, eval=FALSE}
+spatFeatPlot2D(visium_brain, 
+               expression_values = 'scaled',
+               feats = ranktest$feats[1:6], 
+               cow_n_col = 2, 
+               point_size = 1.5)
+```
+
+- Spatial co-expression modules
+
+Cluster the top 500 spatial genes into 20 clusters
+
+```{r, eval=FALSE}
+ext_spatial_genes = ranktest[1:1500,]$feats
+```
+
+Use existing detectSpatialCorGenes function to calculate pairwise distances between genes (but set network_smoothing=0 to use default clustering)
+
+```{r, eval=FALSE}
+spat_cor_netw_DT = detectSpatialCorFeats(visium_brain,
+                                         method = 'network',
+                                         spatial_network_name = 'spatial_network',
+                                         subset_feats = ext_spatial_genes)
+```
+
+Identify most similar spatially correlated genes for one gene
+
+```{r, eval=FALSE}
+top10_genes = showSpatialCorFeats(spat_cor_netw_DT, 
+                                  feats = 'Ptprn', 
+                                  show_top_feats = 10)
+```
+
+Visualize
+
+```{r, eval=FALSE}
+spatFeatPlot2D(visium_brain, 
+               expression_values = 'scaled',
+               feats = top10_genes$variable[1:4], 
+               point_size = 3)
+```
+
+
+Cluster spatial genes
+
+```{r, eval=FALSE}
+spat_cor_netw_DT = clusterSpatialCorFeats(spat_cor_netw_DT, 
+                                          name = 'spat_netw_clus', 
+                                          k = 20)
+```
+
+Visualize clusters
+
+```{r, eval=FALSE}
+heatmSpatialCorFeats(visium_brain,
+                     spatCorObject = spat_cor_netw_DT,
+                     use_clus_name = 'spat_netw_clus',
+                     heatmap_legend_param = list(title = NULL),
+                     save_param = list(base_height = 6, base_width = 8, units = 'cm'))
+```
+
+Rank spatial correlated clusters and show genes for selected clusters
+
+```{r, eval=FALSE}
+netw_ranks = rankSpatialCorGroups(visium_brain,
+                                  spatCorObject = spat_cor_netw_DT, 
+                                  use_clus_name = 'spat_netw_clus',
+                                  save_param = list(base_height = 3, base_width = 5))
+
+top_netw_spat_cluster = showSpatialCorFeats(spat_cor_netw_DT, 
+                                            use_clus_name = 'spat_netw_clus',
+                                            selected_clusters = 6, 
+                                            show_top_feats = 1)
+```
+
+Create metagene enrichment score for clusters
+
+```{r, eval=FALSE}
+cluster_genes_DT = showSpatialCorFeats(spat_cor_netw_DT, 
+                                       use_clus_name = 'spat_netw_clus', 
+                                       show_top_feats = 1)
+
+cluster_genes = cluster_genes_DT$clus 
+names(cluster_genes) = cluster_genes_DT$feat_ID
+
+visium_brain <- createMetafeats(visium_brain, 
+                                feat_clusters = cluster_genes, 
+                                name = 'cluster_metagene')
+
+spatCellPlot(visium_brain,
+             spat_enr_names = 'cluster_metagene',
+             cell_annotation_values = netw_ranks$clusters,
+             point_size = 1, 
+             cow_n_col = 5, 
+             save_param = list(base_width = 15))
+```
+
+- Spatially informed clusters
+
+Get the top 30 genes per spatial co-expression cluster
+
+```{r, eval=FALSE}
+table(spat_cor_netw_DT$cor_clusters$spat_netw_clus)
+
+coexpr_dt = data.table::data.table(genes = names(spat_cor_netw_DT$cor_clusters$spat_netw_clus),
+                                   cluster = spat_cor_netw_DT$cor_clusters$spat_netw_clus)
+
+data.table::setorder(coexpr_dt, cluster)
+top30_coexpr_dt = coexpr_dt[, head(.SD, 30) , by = cluster]
+my_spatial_genes = top30_coexpr_dt$genes
+```
+
+Re-calculate the clustering
+
+```{r, eval=FALSE}
+visium_brain <- runPCA(gobject = visium_brain,
+                       feats_to_use = my_spatial_genes,
+                       name = 'custom_pca')
+
+visium_brain <- runUMAP(visium_brain, 
+                        dim_reduction_name = 'custom_pca', 
+                        dimensions_to_use = 1:20,
+                        name = 'custom_umap')
+
+visium_brain <- createNearestNetwork(gobject = visium_brain,
+                                     dim_reduction_name = 'custom_pca',
+                                     dimensions_to_use = 1:20, 
+                                     k = 5,
+                                     name = 'custom_NN')
+
+visium_brain <- doLeidenCluster(gobject = visium_brain, 
+                                network_name = 'custom_NN',
+                                resolution = 0.15, 
+                                n_iterations = 1000,
+                                name = 'custom_leiden')
+
+cell_meta = pDataDT(visium_brain)
+cell_clusters = unique(cell_meta$custom_leiden)
+
+selected_colors = getDistinctColors(length(cell_clusters))
+names(selected_colors) = cell_clusters
+```
+
+Visualize
+
+```{r, eval=FALSE}
+spatPlot2D(visium_brain, 
+           cell_color = 'custom_leiden', 
+           cell_color_code = selected_colors, 
+           coord_fix_ratio = 1)
+```
+
+```{r, eval=FALSE}
+plotUMAP(gobject = visium_brain, 
+         cell_color = 'custom_leiden', 
+         cell_color_code = selected_colors, 
+         point_size = 1.5)
+```
+
+- Spatial domains HMRF
+
+Do HMRF with different betas on top 30 genes per spatial co-expression module
+
+```{r, eval=FALSE}
+hmrf_folder = paste0(results_folder,'/','11_HMRF/')
+if(!file.exists(hmrf_folder)) dir.create(hmrf_folder, recursive = T)
+
+HMRF_spatial_genes = doHMRF(gobject = visium_brain,
+                            expression_values = 'scaled',
+                            spatial_genes = my_spatial_genes, 
+                            k = 20,
+                            spatial_network_name="spatial_network",
+                            betas = c(0, 10, 5),
+                            output_folder = paste0(hmrf_folder, '/', 'Spatial_genes/SG_topgenes_k20_scaled'))
+
+visium_brain <- addHMRF(gobject = visium_brain, 
+                        HMRFoutput = HMRF_spatial_genes,
+                        k = 20, 
+                        betas_to_add = c(0, 10, 20, 30, 40),
+                        hmrf_name = 'HMRF')
+
+spatPlot2D(gobject = visium_brain, 
+           cell_color = 'HMRF_k20_b.40')
+```
 
 
 ## Interactive tools
 
 text
-
-## Spatial expression patterns
-
-- Spatial variable genes
-- Spatial co-expression modules
-- Spatial HMRF
-

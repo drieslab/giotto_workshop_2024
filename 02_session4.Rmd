@@ -1,0 +1,19 @@
+# Spatial proteomics: multiplex IF
+
+Junxiang Xu
+
+August 6th 2024
+
+## Read in raw data
+
+- Intensity data (IF or any other image)
+- Polygon coordinates
+- Visualizations
+
+
+## Overlap intensity & workflows
+
+- Typical aggregated workflow
+- Visualizations
+
+
