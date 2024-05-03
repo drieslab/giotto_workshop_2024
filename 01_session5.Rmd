@@ -10,6 +10,16 @@ August 5th 2024
 
 The Visium brain data to run this tutorial can be found [here](https://support.10xgenomics.com/spatial-gene-expression/datasets/1.1.0/V1_Adult_Mouse_Brain)
 
+You need to download the expression matrix and spatial information by running these commands in the bash terminal:
+
+```{bash, eval = FALSE}
+wget https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz
+
+wget https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_spatial.tar.gz
+```
+
+After downloading, unzip the gz files. You should get 'raw_feature_bc_matrix' and 'spatial' folders. Place both of them inside a 'data' folder.
+
 ## Create the Giotto object
 
 ```{r, eval=FALSE}
@@ -51,14 +61,21 @@ spatPlot2D(
     point_size = 2,
     cell_color_code = c("0" = "lightgrey", "1" = "blue"),
     show_image = TRUE,
-    image_name = "image"
+    largeImage_name = "image"
 )
+```
 
-metadata <- pDataDT(visium_brain)
+```{r, echo=FALSE, out.width="80%", fig.align='center'}
+knitr::include_graphics("img/visium/0-spatPlot2D.png")
+```
+
+
+```{r, eval=FALSE}
+metadata <- pDataDT(gobject = visium_brain)
 in_tissue_barcodes <- metadata[in_tissue == 1]$cell_ID
-visium_brain <- subsetGiotto(visium_brain,
-    cell_ids = in_tissue_barcodes
-)
+
+visium_brain <- subsetGiotto(gobject = visium_brain,
+                             cell_ids = in_tissue_barcodes)
 ```
 
 
@@ -67,16 +84,50 @@ visium_brain <- subsetGiotto(visium_brain,
 - Statistics
 
 ```{r, eval=FALSE}
-visium_brain_statistics <- addStatistics(gobject = visium_brain)
+visium_brain_statistics <- addStatistics(gobject = visium_brain,
+                                         expression_values = "raw")
 
 ## visualize
 spatPlot2D(gobject = visium_brain_statistics, 
-           show_image = TRUE, 
-           point_alpha = 0.7,
-           cell_color = 'nr_feats', 
+           cell_color = "nr_feats", 
            color_as_factor = FALSE)
 ```
 
+```{r, echo=FALSE, out.width="80%", fig.align='center'}
+knitr::include_graphics("img/visium/1-spatPlot2D.png")
+```
+
+```{r, eval=FALSE}
+filterDistributions(gobject = visium_brain_statistics, 
+                    detection = "cells")
+```
+
+```{r, echo=FALSE, out.width="50%", fig.align='center'}
+knitr::include_graphics("img/visium/2-filterDistributions.png")
+```
+
+```{r, eval=FALSE}
+filterDistributions(gobject = visium_brain_statistics, 
+                    detection = "feats")
+```
+
+```{r, echo=FALSE, out.width="50%", fig.align='center'}
+knitr::include_graphics("img/visium/3-filterDistributions.png")
+```
+
+filterCombinations may be used to test how different filtering parameters will affect the number of cells and features in the filtered data:
+
+
+```{r, eval=FALSE}
+filterCombinations(gobject = visium_brain_statistics,
+                   expression_thresholds = c(1, 2, 3),
+                   feat_det_in_min_cells = c(50, 100, 200),
+                   min_det_feats_per_cell = c(500, 1000, 1500))
+```
+
+```{r, echo=FALSE, out.width="50%", fig.align='center'}
+knitr::include_graphics("img/visium/4-filterCombinations.png")
+```
 
 ## Filtering
 
@@ -86,14 +137,18 @@ visium_brain <- filterGiotto(
     expression_threshold = 1,
     feat_det_in_min_cells = 50,
     min_det_feats_per_cell = 1000,
-    expression_values = c("raw"),
+    expression_values = "raw",
     verbose = TRUE
 )
 ```
 
+```{r, eval=FALSE}
+Feature type:  rna 
+Number of cells removed:  4  out of  2702 
+Number of feats removed:  7311  out of  22125 
+```
 
 ## Normalization
-
 
 ```{r, eval=FALSE}
 visium_brain <- normalizeGiotto(
@@ -108,14 +163,15 @@ visium_brain <- addStatistics(gobject = visium_brain)
 
 ## visualize
 spatPlot2D(gobject = visium_brain, 
-           show_image = TRUE, 
-           point_alpha = 0.7,
-           cell_color = 'nr_feats', 
+           cell_color = "nr_feats", 
            color_as_factor = FALSE)
 ```
 
+```{r, echo=FALSE, out.width="80%", fig.align='center'}
+knitr::include_graphics("img/visium/5-spatPlot2D.png")
+```
+
 ## Feature selection
- 
  
 ### Highly Variable Features:
 
@@ -124,19 +180,11 @@ spatPlot2D(gobject = visium_brain,
 ```{r, eval=FALSE}
 visium_brain <- calculateHVF(gobject = visium_brain, 
                              method = "cov_loess",
-                             save_plot = TRUE,
-                             return_plot = TRUE,
                              default_save_name = "HVFplot_loess")
 ```
 
-- binned
-
-```{r, eval=FALSE}
-visium_brain <- calculateHVF(gobject = visium_brain, 
-                             method = "cov_groups",
-                             save_plot = TRUE,
-                             return_plot = TRUE,
-                             default_save_name = "HVFplot_binned")
+```{r, echo=FALSE, out.width="80%", fig.align='center'}
+knitr::include_graphics("img/visium/6-HVFplot_loess.png")
 ```
 
 - pearson residuals
@@ -144,9 +192,23 @@ visium_brain <- calculateHVF(gobject = visium_brain,
 ```{r, eval=FALSE}
 visium_brain <- calculateHVF(gobject = visium_brain, 
                              method = "var_p_resid",
-                             save_plot = TRUE,
-                             return_plot = TRUE,
                              default_save_name = "HVFplot_pearson")
+```
+
+```{r, echo=FALSE, out.width="80%", fig.align='center'}
+knitr::include_graphics("img/visium/7-HVFplot_pearson.png")
+```
+
+- binned
+
+```{r, eval=FALSE}
+visium_brain <- calculateHVF(gobject = visium_brain, 
+                             method = "cov_groups",
+                             default_save_name = "HVFplot_binned")
+```
+
+```{r, echo=FALSE, out.width="80%", fig.align='center'}
+knitr::include_graphics("img/visium/8-HVFplot_binned.png")
 ```
 
 ### Spatial variable genes
@@ -158,54 +220,76 @@ my_spatial_genes <- c("gene1", "gene2", "gene3")
 
 ## Dimension Reduction
 
-- PCA
+### PCA
 
-Default
+- Default
 
 ```{r, eval=FALSE}
 visium_brain <- runPCA(gobject = visium_brain)
 ```
 
-Using specific genes
+- Using specific genes
 
 ```{r, eval=FALSE}
 visium_brain <- runPCA(gobject = visium_brain,
                        feats_to_use = my_spatial_genes)
 ```
 
+- Visualization
+
 Screeplot 
 
 ```{r, eval=FALSE}
-screePlot(visium_brain, ncp = 30)
+screePlot(gobject = visium_brain, ncp = 30)
 ```
 
-Visualization
+```{r, echo=FALSE, out.width="80%", fig.align='center'}
+knitr::include_graphics("img/visium/9-screePlot.png")
+```
+
+PCA 
 
 ```{r, eval=FALSE}
-plotPCA(visium_brain)
+plotPCA(gobject = visium_brain)
 ```
 
+```{r, echo=FALSE, out.width="80%", fig.align='center'}
+knitr::include_graphics("img/visium/10-PCA.png")
+```
 
-- UMAP
+### UMAP
 
 ```{r, eval=FALSE}
 visium_brain <- runUMAP(visium_brain, 
                         dimensions_to_use = 1:10)
 ```
 
+- Visualization
+
 ```{r, eval=FALSE}
 plotUMAP(gobject = visium_brain)
 ```
 
-- t-SNE
+```{r, echo=FALSE, out.width="80%", fig.align='center'}
+knitr::include_graphics("img/visium/11-UMAP.png")
+```
+
+
+### t-SNE
 
 ```{r, eval=FALSE}
-visium_brain <- runtSNE(visium_brain, 
+visium_brain <- runtSNE(gobject = visium_brain, 
                         dimensions_to_use = 1:10)
 ```
 
+- Visualization
+
 ```{r, eval=FALSE}
 plotTSNE(gobject = visium_brain)
+```
+
+```{r, echo=FALSE, out.width="80%", fig.align='center'}
+knitr::include_graphics("img/visium/12-tSNE.png")
 ```
 
 ## Clustering
@@ -230,8 +314,6 @@ visium_brain <- createNearestNetwork(gobject = visium_brain,
                                      type = "kNN")
 ```
 
-- Hierarchical clustering
-
 - Calculate Leiden clustering
 
 ```{r, eval=FALSE}
@@ -247,6 +329,10 @@ plotPCA(gobject = visium_brain,
         cell_color = 'leiden_clus')
 ```
 
+```{r, echo=FALSE, out.width="80%", fig.align='center'}
+knitr::include_graphics("img/visium/13-PCA.png")
+```
+
 ```{r, eval=FALSE}
 plotUMAP(gobject = visium_brain,
          cell_color = 'leiden_clus', 
@@ -254,16 +340,40 @@ plotUMAP(gobject = visium_brain,
          point_size = 2.5)
 ```
  
+```{r, echo=FALSE, out.width="80%", fig.align='center'}
+knitr::include_graphics("img/visium/14-UMAP.png")
+```
+
 ```{r, eval=FALSE}
 plotUMAP(gobject = visium_brain,
          cell_color = 'leiden_clus', 
          show_NN_network = TRUE, 
          point_size = 2.5)
 ```
- 
+
+```{r, echo=FALSE, out.width="80%", fig.align='center'}
+knitr::include_graphics("img/visium/15-UMAP.png")
+```
+
 ```{r, eval=FALSE}
 plotTSNE(gobject = visium_brain,
-         cell_color = 'leiden_clus')
+         cell_color = 'leiden_clus',
+         point_size = 2.5)
+```
+
+```{r, echo=FALSE, out.width="80%", fig.align='center'}
+knitr::include_graphics("img/visium/16-tSNE.png")
+```
+
+```{r, eval=FALSE}
+plotTSNE(gobject = visium_brain,
+         cell_color = 'leiden_clus',
+         point_size = 2.5,
+         show_NN_network = TRUE)
+```
+
+```{r, echo=FALSE, out.width="80%", fig.align='center'}
+knitr::include_graphics("img/visium/17-tSNE.png")
 ```
 
 Dimension plots grouped by cluster
@@ -271,6 +381,10 @@ Dimension plots grouped by cluster
 ```{r, eval=FALSE}
 spatPlot2D(visium_brain, 
            cell_color = 'leiden_clus')
+```
+
+```{r, echo=FALSE, out.width="80%", fig.align='center'}
+knitr::include_graphics("img/visium/18-spatPlot2D.png")
 ```
 
 ### Spatial

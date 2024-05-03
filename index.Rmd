@@ -124,7 +124,7 @@ Workshop: Spatial multi-omics data analysis with Giotto Suite
 - Day 3:  Advanced Tutorials
     - Multiple samples 
         - Create individual giotto objects
-        - JoinGiottoObjects
+        - Join Giotto Objects
         - Perform Harmony and default workflows
         - Visualizations
     - Spatial multi-modal

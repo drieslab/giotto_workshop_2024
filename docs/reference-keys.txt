@@ -30,6 +30,9 @@ feature-selection
 highly-variable-features
 spatial-variable-genes
 dimension-reduction
+pca
+umap
+t-sne
 clustering
 non-spatial
 spatial
