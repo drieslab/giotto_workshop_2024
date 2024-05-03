@@ -1,86 +1,131 @@
-![](img/logo.png)
 
-# Workshop CDSB 2023: Creando paquetes de R/Bioconductor para análisis transcriptómicos de célula única.
+# Workshop: Spatial multi-omics data analysis with Giotto Suite
 
-## 07-11 de agosto de 2023
+## August 5-7, 2024
 
-Bienvenidos al Workshop Creando paquetes de R/Bioconductor para análisis transcriptómicos de célula única! 
+## Instructors
 
-<p align="justify">
-Estamos encantadxs de anunciar que la CDSB, junto con la Red Mexicana de Bioinformática (RMB) y el Nodo Nacional de Bioinformática en la UNAM (NNB-CCG), está organizando el taller Creando paquetes de R/Bioconductor para análisis transcriptómicos de célula única como parte del Encuentro Nacional de Bioinformática México 2023.
+- [Ruben Dries](https://www.drieslab.com/): Assistant Professor of Medicine at Boston University
 
-Todas las sesiones serán teóricas y prácticas. Nos enfocaremos en dos temas principales: 
-</p>
+- [Joselyn Cristina Chávez Fuentes](https://comunidadbioinfo.github.io/es/authors/josschavezf/): Postdoctoral fellow at Icahn School of Medicine at Mount Sinai
 
-- Flujo de análisis de datos transcriptómicos de célula única 
-- Creación de paquetes de R/Bioconductor
+- [Jiaji George Chen]()
 
-[**¡Registrate aquí!**](https://www.nnb.unam.mx/EBM2023/registro/)
+- [Junxiang Xu]()
+
+- [Edward Ruiz]() 
+
+- [Jeff Sheridan]()
+
+- [Wen Wang]()
 
 
-## Instructores
+## Topics and Schedule:
 
-- [Dra. Joselyn Cristina Chávez Fuentes](https://comunidadbioinfo.github.io/es/authors/josschavezf/)
-- [Dra. Laura Gómez Romero](https://comunidadbioinfo.github.io/es/authors/lgomez/)
-- [Dra. Yalbi Balderas Martínez](https://comunidadbioinfo.github.io/es/authors/yalbibalderas/)
-- [Dra. Evelia Lorena Coss Navarrete](https://comunidadbioinfo.github.io/es/authors/eveliacoss/)
-- [M.C. José Antonio Ovando Ricárdez](https://comunidadbioinfo.github.io/es/authors/joseovando/)
-- [M.C. Erick Cuevas Fernández](https://comunidadbioinfo.github.io/es/authors/erickcufe/)
-- [Dra. Alejandra Medina Rivera](https://comunidadbioinfo.github.io/es/authors/amedina/)
-- [Dra. Mirna Vázquez Rosas Landa](https://comunidadbioinfo.github.io/es/authors/mirnavrl/)
-- [Andrés Arredondo Cruz](https://comunidadbioinfo.github.io/es/authors/andresarredondo/)
-- [Dr. Leonardo Collado-Torres](https://comunidadbioinfo.github.io/authors/lcollado/)
 
-## Ayudantes
+- Day 1: Introduction
+    - Spatial omics technologies
+        - Spatial sequencing
+        - Spatial in situ 
+        - Spatial proteomics
+        - spatial other: ATAC-seq, lipidomics, etc
+    - Introduction to the Giotto package
+        - Ecosystem
+        - Installation + python environment
+        - Giotto instructions
+    - Data formatting and Pre-processing
+    - Creating a Giotto object
+        - From matrix + locations
+        - From subcellular raw data (transcripts or images) + polygons
+        - Using convenience functions for popular technologies (Vizgen, Xenium, CosMx, …)
+    - Spatial plots
+    - Subsetting:
+        - Based on IDs
+        - Based on locations
+        - Visualizations
+    - Introduction to spatial multi-modal dataset (10X Genomics breast cancer) and goal for the next days
+    - Quality control
+        - Statistics
+    - Normalization
+    - Feature selection:
+        - Highly Variable Features:
+            - loess regression
+            - binned
+            - pearson residuals
+        - Spatial variable genes
+    - Dimension Reduction
+        - PCA
+        - UMAP/t-SNE
+        - Visualizations
+    - Clustering
+        - Non-spatial
+            - k-means
+            - Hierarchical clustering
+            - Leiden/Louvain
+        - Spatial
+            - Spatial variable genes
+            - Spatial co-expression modules
 
-- Dra. Evelia Lorena Coss Navarrete
-- Andrés Arredondo Cruz
-- M.C. Diego Ramírez
-- M.C. Luis Alberto Meza
-
-## Temario 
-
-Consulta el calendario de este curso en: <http://bit.ly/calendarcdsb2023>
-
-- Día 1: Flujo de análisis de datos transcriptómicos de célula única Parte I
-    - Presentación de la CDSB.
-    - Estructura e importe de datos.
-    - Control de calidad.
-    - Normalización.
     
-- Día 2: Flujo de análisis de datos transcriptómicos de célula única Parte II
-    - Selección de genes altamente variables.
-    - Reducción de dimensiones.
-    - Clustering.
-    - Genes marcadores.
-    - Anotación de tipos celulares.
+- Day 2: Spatial Data Analysis
+    - Spatial sequencing based technology: Visium
+        - Differential expression
+        - Enrichment & Deconvolution
+            - PAGE/Rank
+            - SpatialDWLS
+            - Visualizations
+        - Interactive tools
+        - Spatial expression patterns
+            - Spatial variable genes
+            - Spatial co-expression modules
+            - Spatial HMRF
+    - Spatial sequencing based technology: Visium HD
+        - Tiling and aggregation
+        - Scalability (duckdb) and projection functions
+        - Spatial expression patterns
+            - Spatial co-expression module
+    - Spatial in situ technology: Xenium
+        - Read in raw data
+            - Transcript coordinates
+            - Polygon coordinates
+            - Visualizations
+        - Overlap txs & polygons
+            - Typical aggregated workflow
+            - Feature/molecule specific analysis
+            - Visualizations
+        - Transcript enrichment GSEA
+        - Spatial location analysis
+            - Spatial cell type co-localization analysis
+            - Spatial niche analysis
+            - Spatial niche trajectory analysis
+            - Visualizations
+    - Spatial proteomics: multiplex IF
+        - Read in raw data
+            - Intensity data (IF or any other image)
+            - Polygon coordinates
+            - Visualizations
+        - Overlap intensity & workflows
+            - Typical aggregated workflow
+            - Visualizations
 
-- Día 3: Creación de paquetes de R/Bioconductor Parte I
-    - Nuevas funcionalidades de RStudio, Quarto.
-    - Control de versiones con GitHub y RStudio.
-    - Solución de problemas con las versiones de paquetes de Rstudio.
-    - Infraestructura de un paquete de R/Bioconductor.
-    - Plática: Convirtiendo tu flujo de análisis en un paquete de R/Bioconductor.
-    - Documentación de funciones.
-    - Sesión social: Conociendo a la comunidad.
 
-- Día 4: Creación de paquetes de R/Bioconductor Parte II
-    - Diseño de pruebas.
-    - Creación de viñetas.
-    - Compilación e instalación de paquetes.
-    - Proyectos colaborativos Parte I.
-
-- Día 5: Proyectos colaborativos
-    - Proyectos colaborativos Parte II.
-    - Presentación de proyectos.
-    - Clausura.
-
-
-# Patrocinadores
-
-Agradecemos el apoyo de:
-
-![](img/rmb.png)
-
-<a href="https://www.nnb.unam.mx/"><img src="https://www.nnb.unam.mx/wp-content/uploads/2021/04/logo-principal.png" width="400px" align="center"/></a>
-
+- Day 3:  Advanced Tutorials
+    - Multiple samples 
+        - Create individual giotto objects
+        - Join Giotto Objects
+        - Perform Harmony and default workflows
+        - Visualizations
+    - Spatial multi-modal
+        - Co-registration of datasets
+        - Examples in giotto suite manuscript
+    - Multi-omics integration
+        - Example in giotto suite manuscript
+    - Interoperability w/ other frameworks
+        - AnnData/SpatialData
+        - SpatialExperiment
+        - Seurat
+    - Interoperability w/ isolated tools
+        - Spatial niche trajectory analysis
+    - Interactivity with the R/Spatial ecosystem 
+        - Kriging
+    - Contributing to Giotto
