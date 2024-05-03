@@ -3,6 +3,10 @@
 
 ## August 5-7, 2024
 
+## Book
+
+Find the book at: https://drieslab.github.io/giotto_workshop_2024/
+
 ## Instructors
 
 - [Ruben Dries](https://www.drieslab.com/): Assistant Professor of Medicine at Boston University
