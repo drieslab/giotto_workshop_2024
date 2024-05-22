@@ -1,21 +1,46 @@
 # Visium HD
 
-Edward Ruiz
+Edward C. Ruiz
 
 August 6th 2024
+
+## Data Ingestion
+
+### Read in raw data
+```{r, eval=FALSE}
+# get10Xmatrix()
+```
+
+### Use convenience function
+```{r, eval=FALSE}
+# createGiottoVisiumHDObject()
+```
 
 ## Tiling and aggregation
 
 text
+```{r, eval=FALSE}
+# tessellate()
+```
 
 ## Scalability and projection functions
 
-- duckdb
+- filter and normalization workflow
+- PCA projection
+
+```{r, eval=FALSE}
+```
 
 ## Spatial expression patterns
 
-text
+- plotting
+
+```{r, eval=FALSE}
+```
 
 ## Spatial co-expression modules
 
-text
+- binspect?
+
+```{r, eval=FALSE}
+```

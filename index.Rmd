@@ -25,7 +25,7 @@ Workshop: Spatial multi-omics data analysis with Giotto Suite
 
 - [Junxiang Xu]()
 
-- [Edward Ruiz]() 
+- [Edward Ruiz](https://x.com/ed2uiz): Ph.D. Student at Boston University 
 
 - [Jeff Sheridan]()
 
