@@ -17,7 +17,7 @@ Find the book at: https://drieslab.github.io/giotto_workshop_2024/
 
 - [Junxiang Xu]()
 
-- [Edward Ruiz]() 
+- [Edward C. Ruiz](https://x.com/ed2uiz): Ph.D. Student at Boston University  
 
 - [Jeff Sheridan]()
 
