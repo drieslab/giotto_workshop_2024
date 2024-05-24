@@ -7,5 +7,46 @@ August 7th 2024
 
 ## Spatial niche trajectory analysis
 
-text
+### Prepare
+
+#### Dataset download
+```{bash}
+# raw data
+# giotto
+# ONTraC input
+# NT score
+```
+
+
+#### Installation ONTraC
+```{bash}
+source ~/.bash_profile
+conda create -y -n ONTraC python=3.11
+conda activate ONTraC
+pip install ONTraC[analysis]
+```
+
+### Running
+#### Processing with Giotto
+use the given cell type directly
+
+handling multiple sample (Jeff should present this topic on the 2nd day)
+
+
+#### Running ONTraC
+```{bash}
+source ~/.bash_profile
+conda activate ONTraC
+
+ONTraC -d data/MERFISH_mouseMC/subset_dataset.csv --preprocessing-dir data/merfish_subset_preprocessing --GNN-dir output/merfish_subset_GNN --NTScore-dir output/merfish_subset_NTScore --device cuda     --epochs 100 -s 42 --patience 100 --min-delta 0.001 --min-epochs 50 --lr 0.03     --hidden-feats 4 -k 6 --modularity-loss-weight 0.3 --regularization-loss-weight 0.1     --purity-loss-weight 300 --beta 0.03 2>&1 | tee merfish_subset.log
+
+ONTraC_analysis -o analysis_output/merfish_subset -l merfish_subset.log -d data/MERFISH_mouseMC/subset_dataset.csv --preprocessing-dir data/merfish_subset_preprocessing --GNN-dir output/merfish_subset_GNN --NTScore-dir output/merfish_subset_NTScore -r -s
+```
+
+### visualization
+
+- niche cluster
+- NT score
+- downstream trajectory analysis (Georage should present this topic on the morning session)
+
 
