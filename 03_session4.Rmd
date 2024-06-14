@@ -4,18 +4,178 @@ Iqra
 
 August 7th 2024
 
+Giotto facilitates seamless interoperability with various tools, including Seurat, annData, and SpatialExperiment. Below is a brief introductory tutorial on how Giotto interoperates with these other tools.
 
-## AnnData/SpatialData
+## Load Giotto object
+To begin the interoperability of a Giotto object with other objects, we first load the required libraries and a Giotto mini object. We then continue with the conversion process:
 
-text
+```{r, eval = FALSE}
+library(Giotto)
+library(GiottoData)
+```
+Here we load Giotto mini Visium object to continue with the interoperability.
+
+```{r, eval = FALSE}
+gobject <- GiottoData::loadGiottoMini("visium")
+```
 
 ## SpatialExperiment
+The Giotto package is interoperable with SpatialExperiment, extending its functionality to include spatial coordinates, images, and image metadata.
 
-text
+To start the conversion of a Giotto mini Visium object to a SpatialExperiment object, we first load the required libraries.
+
+```{r eval=FALSE}
+library(SpatialExperiment)
+library(ggspavis)
+library(pheatmap)
+library(scater)
+library(scran)
+library(nnSVG)
+```
+
+### Convert Giotto Object to SpatialExperiment Object
+To convert the Giotto object to a SpatialExperiment object, we use the giottoToSpatialExperiment() function.
+
+```{r eval=FALSE}
+gspe <- giottoToSpatialExperiment(gobject)
+```
+
+The converter function returns a separate SpatialExperiment object for each spatial unit. The output is a list of objects (one for each unit), and we select the first object for downstream use.
+
+```{r eval=FALSE}
+spe <- gspe[[1]]
+```
+
+#### Identify top spatially variable genes with nnSVG
+We employ the nnSVG package to identify the top spatially variable genes in our SpatialExperiment object.Covariates can be added to our model; in this example, we use Leiden clustering labels as a covariate. These clustering results were initially computed using the Giotto suite and then transferred to the converted SpatialExperiment object.
+
+```{r eval=FALSE}
+# One of the assays should be "logcounts"
+# We rename the normalized assay to "logcounts"
+assayNames(spe)[[2]] <- "logcounts"
+
+# Create model matrix for leiden clustering labels
+X <- model.matrix(~ colData(spe)$leiden_clus)
+dim(X)
+
+# Run nnSVG
+spe <- nnSVG(spe, X = X)
+
+# Show top 10 features
+rowData(spe)[order(rowData(spe)$rank)[1:10], ]$feat_ID
+```
+
+### Conversion of SpatialExperiment object back to Giotto
+We then convert the processed SpatialExperiment object back into a Giotto object for further downstream analysis using the Giotto suite. This is done using the `spatialExperimentToGiotto` function, where we explicitly specify the spatial network from the SpatialExperiment object.
+
+```{r, eval=FALSE}
+giottoFromSPE <- spatialExperimentToGiotto(spe = spe, python_path = "/share/pkg.7/python3/3.8.3/install/bin/python", sp_network = "Delaunay_network")
+print(giottoFromSPE)
+```
+
+#### Plotting top genes from nnSVG in Giotto 
+Now, we visualize the genes previously identified in the SpatialExperiment object using the nnSVG package within the Giotto toolkit, leveraging the converted Giotto object.
+
+```{r, eval=FALSE}
+ext_spatial_genes <- getFeatureMetadata(giottoFromSPE, output = "data.table")
+ext_spatial_genes <- ext_spatial_genes[order(ext_spatial_genes$rank)[1:10], ]$feat_ID
+
+spatFeatPlot2D(giottoFromSPE, expression_values = 'scaled_rna_cell',
+               feats = ext_spatial_genes[1:4], point_size = 2)
+```
 
 ## Seurat
 
-text
+The process of conversion between Giotto and Seurat relies on four main functions. `giottoToSeuratV4` and `seuratToGiottoV4` are designed for Seurat version 4, whereas `giottoToSeuratV5` and `seuratToGiottoV5` are specifically for Seurat version 5. In this demonstration, we will only cover the conversion between Seurat version 5 and Giotto. 
 
+### Conversion of Giotto Object to Seurat Object
+
+To convert Giotto object to Seurat V5 object, we first load required libraries and use the function `giottoToSeuratV5()` function 
+```{r eval=FALSE}
+library(Seurat)
+```
+
+```{r eval=FALSE}
+gToS <- giottoToSeuratV5(gobject = gobject, spat_unit = "cell")
+```
+
+#### Identify Top Spatially Variable Genes 
+We find spatially variable features from the Seurat object created from Giotto object using the `FindSpatiallyVariableFeatures()` function.
+
+```{r eval=FALSE}
+gToS <- SCTransform(gToS, assay = "rna", verbose = FALSE)
+gToS <- FindSpatiallyVariableFeatures(gToS, 
+                                      assay = "SCT", 
+                                      slot = "scale.data", 
+                                      selection.method = "moransi")
+#Show top 10 genes
+top.features <- head(SpatiallyVariableFeatures(gToS, selection.method = "moransi"), 6)
+SpatialFeaturePlot(gToS, features = top.features, ncol = 3, alpha = c(0.1, 1))
+```
+
+### Conversion of Seurat object Back to Giotto Object
+
+```{r eval=FALSE}
+giottoFromSeurat <- seuratToGiottoV5(sobject = gToS, spatial_assay = "rna")
+print(giottoFromSeurat)
+```
+
+#### Plotting Genes
+Now, we visualize the genes previously identified in the Seurat object using the `FindSpatiallyVariableFeatures()` function within the Giotto toolkit, leveraging the converted Giotto object.
+
+```{r, eval=FALSE}
+spatial_genes <- getFeatureMetadata(giottoFromSPE, output = "data.table")
+spatial_genes <- spatial_genes[order(spatial_genes$rank)[1:10], ]$feat_ID
+
+spatFeatPlot2D(giottoFromSPE, expression_values = 'scaled_rna_cell',
+               feats = spatial_genes[1:4], point_size = 2)
+```
+## AnnData/SpatialData
+
+Due to Giotto's hierarchical structure, converting it to AnnData will generate multiple .h5ad files. Each file will represent a combination of Giotto's spatial unit and feature type. Additionally, every expression slot in Giotto will be converted into a layer in the corresponding AnnData object.
+
+Squidpy’s AnnData objects use different defaults for certain operations compared to Giotto. For example, Squidpy typically uses a k-nearest neighbor (kNN) network by default, whereas Giotto uses a shared nearest neighbor (sNN) network. To demonstrate how these are managed, we will create a kNN in addition to the existing sNN within this object.
+```{r eval=FALSE}
+gobject = createNearestNetwork(gobject = gobject,
+                                    spat_unit = "aggregate",
+                                    feat_type = "rna",
+                                    type = "kNN",
+                                    dim_reduction_to_use = "umap",
+                                    dim_reduction_name = "umap",
+                                    k = 15,
+                                    name = "kNN.umap")
+
+```
+The above cell creates a nearest neighbor network using mostly default parameters. We will modify some parameters and create a new network to demonstrate how the converter manages these changes.
+
+```{r eval=FALSE}
+gobject = createNearestNetwork(gobject = gobject,
+                                    spat_unit = "aggregate",
+                                    feat_type = "rna",
+                                    type = "kNN",
+                                    dim_reduction_to_use = "umap",
+                                    dim_reduction_name = "umap",
+                                    k = 6,
+                                    name = "new_network")
+```
+
+To convert the giotto object to AnnData, we use the Giotto's function "giottoToAnnData()"
+
+```{r, eval=FALSE}
+gToAnnData <- giottoToAnnData(gobject = gobject)
+```
+alreadt nn in giotto
+for giotto
+generate nn network in giotto and use it in anndata for visulaization
+ use scanpy to generate umap from nn
+ 
+ use scanpy to visiukalze scanpy
+ clustering with umap visuals 
+ 
+ Optional:
+ similary ann data and preprocessing on anndata
+  QC, NOrmalization, feature selection, pca
+  now convert giotto 
+  use giotto function to visulaize umap etc
 
 
