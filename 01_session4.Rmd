@@ -5,17 +5,38 @@ Jiaji George Chen
 August 5th 2024
 
 
+```{r}
+save_dir <- "~/Documents/GitHub/giotto_workshop_2024/img/01_session4"
+```
+
 ## From matrix + locations
 
-some text
+```
+createGiottoObject()
+```
 
 ## From subcellular raw data (transcripts or images) + polygons
 
-some text
+```
+createGiottoObjectSubcellular()
+```
+
+
+## From piece-wise
+
+```
+g <- giotto()
+g <- setGiotto(g, ??)
+```
 
 ## Using convenience functions for popular technologies (Vizgen, Xenium, CosMx, …)
 
-some text
+```
+createGiottoVisiumObject()
+createGiottoXeniumObject()
+createGiottoCosMxObject()
+createGiottoMerscopeObject()
+```
 
 ## Spatial plots
 
@@ -23,6 +44,19 @@ some text
 
 ## Subsetting
 
-- Based on IDs
-- Based on locations
-- Visualizations
+-   Based on IDs
+-   Based on locations
+-   Visualizations
+
+
+
+## Mini objects & GiottoData
+
+Giotto makes available several mini objects to allow devs and users to work
+with easily loadable Giotto objects. These are small subsets of a larger
+dataset that often contain some worked through analyses and are fully functional.
+```{r}
+pak::pak("drieslab/GiottoData")
+```
+
+
