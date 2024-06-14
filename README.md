@@ -13,11 +13,11 @@ Find the book at: https://drieslab.github.io/giotto_workshop_2024/
 
 - [Joselyn Cristina Chávez Fuentes](https://comunidadbioinfo.github.io/es/authors/josschavezf/): Postdoctoral fellow at Icahn School of Medicine at Mount Sinai
 
-- [Jiaji George Chen]()
+- [Jiaji George Chen](https://x/jiaji_g_chen): Ph.D. Student at Boston University
 
 - [Junxiang Xu]()
 
-- [Edward Ruiz]() 
+- [Edward C. Ruiz](https://x.com/ed2uiz): Ph.D. Student at Boston University  
 
 - [Jeff Sheridan]()
 

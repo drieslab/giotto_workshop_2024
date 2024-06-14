@@ -4,10 +4,30 @@ Jiaji George Chen
 
 August 5th 2024
 
+```{r}
+save_dir <- "~/Documents/GitHub/giotto_workshop_2024/img/01_session3"
+```
+
+
+
 ## Data formats
 
-some text
+
+
+.h5
+
+.mtx
+  - get10xmatrix
+.parquet
+.csv/.tsv
+  - fread
+.json
+  -jsonlite
+.geojson
+.tiff/.ome.tif
+
+
 
 ## Pre-processing
 
-some text
+necessary additional packages?
