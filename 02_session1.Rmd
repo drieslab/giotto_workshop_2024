@@ -227,6 +227,36 @@ knitr::include_graphics("img/02_session1/7-spatCellPlot2D.png")
 
 ### SpatialDWLS
 
+- Create the signature matrix
+
+```{r, eval=FALSE}
+sign_matrix <- makeSignMatrixDWLSfromMatrix(matrix = getExpression(giotto_SC,
+                                                                  values = "normalized",
+                                                                  output = "matrix"),
+                                           cell_type = pDataDT(giotto_SC)$Class,
+                                           sign_gene = top_markers$feats)
+```
+
+- Run the DWLS Deconvolution
+
+```{r, eval=FALSE}
+visium_brain <- runDWLSDeconv(gobject = visium_brain, 
+                              sign_matrix = sign_matrix)
+```
+
+- Visualize
+
+```{r, eval=FALSE}
+# Plot DWLS deconvolution result with Pie plots
+spatDeconvPlot(visium_brain, 
+               show_image = FALSE,
+               radius = 50,
+               save_param = list(save_name = "08_spat_DWLS_pie_plot"))
+```
+
+```{r, echo=FALSE, out.width="80%", fig.align="center"}
+knitr::include_graphics("img/02_session1/7-spatCellPlot2D.png")
+```
 
 ## Spatial expression patterns
 
