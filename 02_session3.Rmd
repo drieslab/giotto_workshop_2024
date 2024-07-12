@@ -28,7 +28,7 @@ The data to run this tutorial can be found
 The files can be downloaded by running the following in the bash
 terminal:
 
-```{bash}
+```{bash, eval=FALSE}
 # Input Files
 
 wget https://cf.10xgenomics.com/samples/xenium/2.0.0/Xenium_V1_humanLung_Cancer_FFPE/Xenium_V1_humanLung_Cancer_FFPE_gene_panel.json
@@ -53,7 +53,7 @@ wget https://cf.10xgenomics.com/samples/xenium/2.0.0/Xenium_V1_humanLung_Cancer_
 
 
 
-```{r}
+```{r, eval=FALSE}
 save_dir <- "~/Documents/GitHub/giotto_workshop_2024/img/02_session3"
 ```
 

@@ -5,7 +5,7 @@ Jiaji George Chen
 August 5th 2024
 
 
-```{r}
+```{r, eval=FALSE}
 save_dir <- "~/Documents/GitHub/giotto_workshop_2024/img/01_session4"
 ```
 
@@ -55,7 +55,7 @@ some text
 Giotto makes available several mini objects to allow devs and users to work
 with easily loadable Giotto objects. These are small subsets of a larger
 dataset that often contain some worked through analyses and are fully functional.
-```{r}
+```{r, eval=FALSE}
 pak::pak("drieslab/GiottoData")
 ```
 
