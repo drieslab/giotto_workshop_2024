@@ -417,4 +417,9 @@ spatPlot2D(visium_brain,
 knitr::include_graphics("img/01_session5/20-spatPlot2D.png")
 ```
 
+## Save the object
+
+```{r, eval=FALSE}
+saveGiotto(visium_brain, "visium_brain_object")
+```
 
