@@ -4,11 +4,11 @@ Joselyn Cristina Chávez Fuentes
 
 August 5th 2024
 
-## Introduction to spatial dataset
-
-10X genomics recently launched a new platform to obtain spatial expression data using a Visium Spatial Gene Expression slide.
+## Introduction to the spatial dataset
 
 The Visium brain data to run this tutorial can be found [here](https://support.10xgenomics.com/spatial-gene-expression/datasets/1.1.0/V1_Adult_Mouse_Brain)
+
+## Download dataset
 
 You need to download the expression matrix and spatial information by running these commands:
 
@@ -38,13 +38,14 @@ instructions <- createGiottoInstructions(
     save_dir = results_folder,
     save_plot = TRUE,
     show_plot = FALSE,
+    return_plot = FALSE,
     python_path = python_path
 )
 
 ## Provide the path to the visium folder
 data_path <- "data"
 
-## Create object directly from visium folder
+## Create object directly from the visium folder
 visium_brain <- createGiottoVisiumObject(
     visium_dir = data_path,
     expr_data = "raw",
@@ -58,7 +59,6 @@ visium_brain <- createGiottoVisiumObject(
 ## Subset on spots that were covered by tissue
 
 ```{r, eval=FALSE}
-## show plot
 spatPlot2D(
     gobject = visium_brain,
     cell_color = "in_tissue",
@@ -75,7 +75,9 @@ knitr::include_graphics("img/01_session5/0-spatPlot2D.png")
 
 
 ```{r, eval=FALSE}
-metadata <- pDataDT(gobject = visium_brain)
+metadata <- getCellMetadata(gobject = visium_brain,
+                            output = "data.table")
+
 in_tissue_barcodes <- metadata[in_tissue == 1]$cell_ID
 
 visium_brain <- subsetGiotto(gobject = visium_brain,
@@ -391,7 +393,7 @@ plotTSNE(gobject = visium_brain,
 knitr::include_graphics("img/01_session5/18-tSNE.png")
 ```
 
-Dimension plots grouped by cluster
+- Dimension plots grouped by cluster
 
 ```{r, eval=FALSE}
 spatPlot2D(visium_brain, 
@@ -421,5 +423,15 @@ knitr::include_graphics("img/01_session5/20-spatPlot2D.png")
 
 ```{r, eval=FALSE}
 saveGiotto(visium_brain, "visium_brain_object")
+```
+
+## Session info
+
+```{r, eval=FALSE}
+sessionInfo()
+```
+
+```{r, eval=FALSE}
+
 ```
 
