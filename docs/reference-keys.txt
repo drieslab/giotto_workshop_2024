@@ -1,3 +1,6 @@
+fig:unnamed-chunk-145
+fig:unnamed-chunk-146
+fig:unnamed-chunk-147
 giotto-workshop-2024
 instructors
 topics-and-schedule
@@ -5,6 +8,9 @@ license
 spatial-omics-technologies
 slides
 spatial-sequencing
+spatial-in-situ
+spatial-proteomics
+other-spatial-omics-atac-seq-cutrun-lipidomics-etc
 introduction-to-the-giotto-package
 slides-1
 ecosystem
@@ -56,9 +62,14 @@ spatial-domains-hmrf
 interactive-tools
 session-info-1
 visium-hd
+objective
+background
+visium-hd-technology
+colorectal-cancer-sample
 data-ingestion
+visium-hd-output-data-format
 read-in-raw-data
-use-convenience-function
+giotto-visium-hd-convenience-function
 tiling-and-aggregation
 scalability-and-projection-functions
 spatial-expression-patterns-1
@@ -118,7 +129,3 @@ interactivity-with-the-rspatial-ecosystem
 kriging
 contributing-to-giotto
 contribution-guideline
-spatial-in-situ
-spatial-proteomics
-spatial-other-atac-seq-lipidomics-etc
-other-spatial-omics-atac-seq-cutrun-lipidomics-etc
