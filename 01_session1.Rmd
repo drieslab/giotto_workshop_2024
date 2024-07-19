@@ -13,11 +13,17 @@ knitr::include_url("https://comunidadbioinfo.github.io/cdsb2023/dia1_sesion1_sli
 ](https://comunidadbioinfo.github.io/cdsb2023/dia1_sesion1_slides.html)
 
 
-## Spatial sequencing
+## Spatial sequencing  
 
-- Spatial in situ 
-- Spatial proteomics
-- spatial other: ATAC-seq, lipidomics, etc
+
+## Spatial in situ 
+
+
+## Spatial proteomics  
+
+
+## spatial other: ATAC-seq, lipidomics, etc  
+
 
 
 
