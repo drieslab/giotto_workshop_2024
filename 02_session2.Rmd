@@ -15,20 +15,20 @@ This tutorial demonstrates how to process Visium HD data at the highest 2 micron
 knitr::include_graphics("img/02_session2/1.png")
 ```
 
-Visium HD is a spatial transcriptomics technology recently developed by 10X Genomics. Details about this platform are discussed in more detail on the official [10X Genomics Visium HD website](https://www.10xgenomics.com/products/visium-hd-spatial-gene-expression) and the preprint by [Oliveira *et al.* 2024](https://doi.org/10.1101/2024.06.04.597233) on *bioRxiv*. 
+Visium HD is a spatial transcriptomics technology recently developed by 10X Genomics. Details about this platform are discussed on the official [10X Genomics Visium HD website](https://www.10xgenomics.com/products/visium-hd-spatial-gene-expression) and the preprint by [Oliveira *et al.* 2024](https://doi.org/10.1101/2024.06.04.597233) on *bioRxiv*. 
 
 At the highest resolution, Visium HD data contains a 2 micron bin size. At the lowest resolution, Visium HD data is binned at a 16 micron bin size after running the spaceranger pipeline.
 
 
 ### Colorectal Cancer Sample
 
-```{r, echo=FALSE, out.width="80%", fig.align="center", fig.cap="Colorectal Cancer Overview.Source: *10X Genomics*"}
+```{r, echo=FALSE, out.width="80%", fig.align="center", fig.cap="Colorectal Cancer Overview. Source: *10X Genomics*"}
 knitr::include_graphics("img/02_session2/2.png")
 ```
 
 For this tutorial we will be using the publicly available Colorectal Cancer Visium HD dataset. 
 
-Details about this dataset and a link to download the raw data can be found at the [10X Genomics website]((https://www.10xgenomics.com/datasets/visium-hd-cytassist-gene-expression-libraries-of-human-crc)).
+Details about this dataset and a link to download the raw data can be found at the [10X Genomics website](https://www.10xgenomics.com/datasets/visium-hd-cytassist-gene-expression-libraries-of-human-crc).
 
 ## Data Ingestion
 
@@ -51,7 +51,7 @@ Visium HD data processed with the spaceranger pipeline is organized in this form
 
 We have also developed a convenience function to read in Visium HD data directly into Giotto. This function will read in the data and create a Giotto Object.
 
-```{r, eval=FALSE}
+```{r, eval = FALSE}
 # importVisiumHD()
 ```
 
