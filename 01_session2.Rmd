@@ -1,6 +1,6 @@
 # Introduction to the Giotto package
 
-Ruben Dries
+Ruben Dries & Jiaji George Chen
 
 August 5th 2024
 
