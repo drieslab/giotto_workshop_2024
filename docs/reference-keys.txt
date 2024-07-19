@@ -118,3 +118,7 @@ interactivity-with-the-rspatial-ecosystem
 kriging
 contributing-to-giotto
 contribution-guideline
+spatial-in-situ
+spatial-proteomics
+spatial-other-atac-seq-lipidomics-etc
+other-spatial-omics-atac-seq-cutrun-lipidomics-etc
