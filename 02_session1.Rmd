@@ -122,6 +122,12 @@ dimFeatPlot2D(visium_brain,
 knitr::include_graphics("img/02_session1/5-dimFeatPlot2D.png")
 ```
 
+The Gini method is preferred when identifying genes that exhibit significant expression differences across clusters, highlighting genes with distinct expression patters between different clusters. 
+
+The Scran method is preferred for robust differential expression analysis, especially when addressing technical variability or differences in sequencing depth across spatial locations.
+
+In practice, it is often beneficial to apply both methods and compare results for a more complete understanding of differential gene expression across clusters. 
+
 ## Enrichment & Deconvolution
 
 Visium spatial transcriptomics does not provide single-cell resolution, making cell type annotation a harder problem. Giotto provides several ways to calculate enrichment of specific cell-type signature gene lists.
@@ -159,6 +165,8 @@ giotto_SC <- normalizeGiotto(giotto_SC)
 ```
 
 ### PAGE/Rank
+
+Parametric Analysis of Gene Set Enrichment (PAGE) and Rank enrichment both aim to determine whether a predefined set of genes show statistically significant differences in expression compared to other genes in the dataset. 
 
 - Calculate the cell type markers
 
@@ -226,6 +234,8 @@ knitr::include_graphics("img/02_session1/7-spatCellPlot2D.png")
 ```
 
 ### SpatialDWLS
+
+Spatial Diffusion Weighted Least Squares (DWLS) estimates the proportions of different cell types or spatial gradients of gene expression across spots in a tissue. 
 
 - Create the signature matrix
 
@@ -474,6 +484,8 @@ knitr::include_graphics("img/02_session1/16-UMAP.png")
 
 ## Spatial domains HMRF
 
+Hidden Markov Random Field (HMRF) models capture spatial dependencies and segment tissue regions based on shared gene expression patterns. 
+
 - Do HMRF with different betas on top 30 genes per spatial co-expression module
 
 ```{r, eval=FALSE}
@@ -545,7 +557,7 @@ giotto_polygons <- createGiottoPolygonsFromDfr(polygon_coordinates,
                                                calc_centroids = TRUE)
 ```
 
-- Add the polygons to the Giotto object
+- Add the polygons (or spatial units) to the Giotto object
 
 ```{r, eval=FALSE}
 visium_brain <- addGiottoPolygons(gobject = visium_brain,
