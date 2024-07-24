@@ -4,21 +4,60 @@ Edward C. Ruiz
 
 August 6th 2024
 
-## Data Ingestion
+## Objective
 
-### Read in raw data
-```{r, eval=FALSE}
-# get10Xmatrix()
+This tutorial demonstrates how to process Visium HD data at the highest 2 micron bin resolution using [Giotto Suite](https://drieslab.github.io/Giotto_website/) and methods from the [dbverse] (link).
+
+## Background
+
+### Visium HD Technology
+```{r, echo=FALSE, out.width="80%", fig.align="center", fig.cap="Overview of Visium HD. Source: *10X Genomics*"}
+knitr::include_graphics("img/02_session2/1.png")
 ```
 
-### Use convenience function
-```{r, eval=FALSE}
-# createGiottoVisiumHDObject()
+Visium HD is a spatial transcriptomics technology recently developed by 10X Genomics. Details about this platform are discussed on the official [10X Genomics Visium HD website](https://www.10xgenomics.com/products/visium-hd-spatial-gene-expression) and the preprint by [Oliveira *et al.* 2024](https://doi.org/10.1101/2024.06.04.597233) on *bioRxiv*. 
+
+At the highest resolution, Visium HD data contains a 2 micron bin size. At the lowest resolution, Visium HD data is binned at a 16 micron bin size after running the spaceranger pipeline.
+
+
+### Colorectal Cancer Sample
+
+```{r, echo=FALSE, out.width="80%", fig.align="center", fig.cap="Colorectal Cancer Overview. Source: *10X Genomics*"}
+knitr::include_graphics("img/02_session2/2.png")
+```
+
+For this tutorial we will be using the publicly available Colorectal Cancer Visium HD dataset. 
+
+Details about this dataset and a link to download the raw data can be found at the [10X Genomics website](https://www.10xgenomics.com/datasets/visium-hd-cytassist-gene-expression-libraries-of-human-crc).
+
+## Data Ingestion
+
+### Visium HD output data format
+
+```{r, echo=FALSE, out.width="80%", fig.align="center", fig.cap="File structure of Visium HD data processed with spaceranger pipeline."}
+knitr::include_graphics("img/02_session2/3.png")
+```
+
+Visium HD data processed with the spaceranger pipeline is organized in this format containing various files associated with the sample. The files highlighted in yellow are what we will be using to read in these datasets.
+
+### Read in raw data
+```{r, eval = FALSE}
+# get10Xmatrix()
+# GiottoData::
+```
+
+
+### Giotto Visium HD convenience function
+
+We have also developed a convenience function to read in Visium HD data directly into Giotto. This function will read in the data and create a Giotto Object.
+
+```{r, eval = FALSE}
+# importVisiumHD()
 ```
 
 ## Tiling and aggregation
+The Visium HD data is organized in a grid format. We can aggregate the data into larger bins to reduce the dimensionality of the data. Giotto Suite provides options to bin data not only with squares, but also through hexagons and triangles. Here we use a hexagon tesselation to aggregate the data into arbitrary cells.
 
-text
 ```{r, eval=FALSE}
 # tessellate()
 ```

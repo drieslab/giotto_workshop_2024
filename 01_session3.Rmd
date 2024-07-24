@@ -4,7 +4,7 @@ Jiaji George Chen
 
 August 5th 2024
 
-```{r}
+```{r, eval=FALSE}
 save_dir <- "~/Documents/GitHub/giotto_workshop_2024/img/01_session3"
 ```
 

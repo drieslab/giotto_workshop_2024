@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>15 Interoperability with isolated tools | Workshop: Spatial multi-omics data analysis with Giotto Suite</title>
   <meta name="description" content="15 Interoperability with isolated tools | Workshop: Spatial multi-omics data analysis with Giotto Suite" />
-  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
   <meta property="og:title" content="15 Interoperability with isolated tools | Workshop: Spatial multi-omics data analysis with Giotto Suite" />
   <meta property="og:type" content="book" />
@@ -20,7 +20,7 @@
   
   
 
-<meta name="author" content="Ruben Dries, Jiaji George Chen, Joselyn Cristina Chávez-Fuentes, Junxiang Xu , Edward Ruiz, Jeff Sheridan, Wen Wang" />
+<meta name="author" content="Ruben Dries, Jiaji George Chen, Joselyn Cristina Chávez-Fuentes, Junxiang Xu ,Edward Ruiz, Jeff Sheridan, Iqra Amin, Wen Wang" />
 
 
 
@@ -55,7 +55,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -145,6 +145,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="2.1" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#slides"><i class="fa fa-check"></i><b>2.1</b> Slides</a></li>
 <li class="chapter" data-level="2.2" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#spatial-sequencing"><i class="fa fa-check"></i><b>2.2</b> Spatial sequencing</a></li>
+<li class="chapter" data-level="2.3" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#spatial-in-situ"><i class="fa fa-check"></i><b>2.3</b> Spatial in situ</a></li>
+<li class="chapter" data-level="2.4" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#spatial-proteomics"><i class="fa fa-check"></i><b>2.4</b> Spatial proteomics</a></li>
+<li class="chapter" data-level="2.5" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#other-spatial-omics-atac-seq-cutrun-lipidomics-etc"><i class="fa fa-check"></i><b>2.5</b> Other Spatial omics: ATAC-seq, CUT&amp;RUN, lipidomics, etc</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html"><i class="fa fa-check"></i><b>3</b> Introduction to the Giotto package</a>
 <ul>
@@ -162,60 +165,111 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="5.1" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#from-matrix-locations"><i class="fa fa-check"></i><b>5.1</b> From matrix + locations</a></li>
 <li class="chapter" data-level="5.2" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#from-subcellular-raw-data-transcripts-or-images-polygons"><i class="fa fa-check"></i><b>5.2</b> From subcellular raw data (transcripts or images) + polygons</a></li>
-<li class="chapter" data-level="5.3" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#using-convenience-functions-for-popular-technologies-vizgen-xenium-cosmx"><i class="fa fa-check"></i><b>5.3</b> Using convenience functions for popular technologies (Vizgen, Xenium, CosMx, …)</a></li>
-<li class="chapter" data-level="5.4" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#spatial-plots"><i class="fa fa-check"></i><b>5.4</b> Spatial plots</a></li>
-<li class="chapter" data-level="5.5" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#subsetting"><i class="fa fa-check"></i><b>5.5</b> Subsetting</a></li>
+<li class="chapter" data-level="5.3" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#from-piece-wise"><i class="fa fa-check"></i><b>5.3</b> From piece-wise</a></li>
+<li class="chapter" data-level="5.4" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#using-convenience-functions-for-popular-technologies-vizgen-xenium-cosmx"><i class="fa fa-check"></i><b>5.4</b> Using convenience functions for popular technologies (Vizgen, Xenium, CosMx, …)</a></li>
+<li class="chapter" data-level="5.5" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#spatial-plots"><i class="fa fa-check"></i><b>5.5</b> Spatial plots</a></li>
+<li class="chapter" data-level="5.6" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#subsetting"><i class="fa fa-check"></i><b>5.6</b> Subsetting</a></li>
+<li class="chapter" data-level="5.7" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#mini-objects-giottodata"><i class="fa fa-check"></i><b>5.7</b> Mini objects &amp; GiottoData</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="visium-part-i.html"><a href="visium-part-i.html"><i class="fa fa-check"></i><b>6</b> Visium Part I</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="visium-part-i.html"><a href="visium-part-i.html#introduction-to-spatial-dataset"><i class="fa fa-check"></i><b>6.1</b> Introduction to spatial dataset</a></li>
-<li class="chapter" data-level="6.2" data-path="visium-part-i.html"><a href="visium-part-i.html#create-the-giotto-object"><i class="fa fa-check"></i><b>6.2</b> Create the Giotto object</a></li>
-<li class="chapter" data-level="6.3" data-path="visium-part-i.html"><a href="visium-part-i.html#subset-on-spots-that-were-covered-by-tissue"><i class="fa fa-check"></i><b>6.3</b> Subset on spots that were covered by tissue</a></li>
-<li class="chapter" data-level="6.4" data-path="visium-part-i.html"><a href="visium-part-i.html#quality-control"><i class="fa fa-check"></i><b>6.4</b> Quality control</a></li>
-<li class="chapter" data-level="6.5" data-path="visium-part-i.html"><a href="visium-part-i.html#filtering"><i class="fa fa-check"></i><b>6.5</b> Filtering</a></li>
-<li class="chapter" data-level="6.6" data-path="visium-part-i.html"><a href="visium-part-i.html#normalization"><i class="fa fa-check"></i><b>6.6</b> Normalization</a></li>
-<li class="chapter" data-level="6.7" data-path="visium-part-i.html"><a href="visium-part-i.html#feature-selection"><i class="fa fa-check"></i><b>6.7</b> Feature selection</a>
+<li class="chapter" data-level="6.1" data-path="visium-part-i.html"><a href="visium-part-i.html#introduction-to-the-spatial-dataset"><i class="fa fa-check"></i><b>6.1</b> Introduction to the spatial dataset</a></li>
+<li class="chapter" data-level="6.2" data-path="visium-part-i.html"><a href="visium-part-i.html#download-dataset"><i class="fa fa-check"></i><b>6.2</b> Download dataset</a></li>
+<li class="chapter" data-level="6.3" data-path="visium-part-i.html"><a href="visium-part-i.html#create-the-giotto-object"><i class="fa fa-check"></i><b>6.3</b> Create the Giotto object</a></li>
+<li class="chapter" data-level="6.4" data-path="visium-part-i.html"><a href="visium-part-i.html#subset-on-spots-that-were-covered-by-tissue"><i class="fa fa-check"></i><b>6.4</b> Subset on spots that were covered by tissue</a></li>
+<li class="chapter" data-level="6.5" data-path="visium-part-i.html"><a href="visium-part-i.html#quality-control"><i class="fa fa-check"></i><b>6.5</b> Quality control</a></li>
+<li class="chapter" data-level="6.6" data-path="visium-part-i.html"><a href="visium-part-i.html#filtering"><i class="fa fa-check"></i><b>6.6</b> Filtering</a></li>
+<li class="chapter" data-level="6.7" data-path="visium-part-i.html"><a href="visium-part-i.html#normalization"><i class="fa fa-check"></i><b>6.7</b> Normalization</a></li>
+<li class="chapter" data-level="6.8" data-path="visium-part-i.html"><a href="visium-part-i.html#feature-selection"><i class="fa fa-check"></i><b>6.8</b> Feature selection</a>
 <ul>
-<li class="chapter" data-level="6.7.1" data-path="visium-part-i.html"><a href="visium-part-i.html#highly-variable-features"><i class="fa fa-check"></i><b>6.7.1</b> Highly Variable Features:</a></li>
-<li class="chapter" data-level="6.7.2" data-path="visium-part-i.html"><a href="visium-part-i.html#spatial-variable-genes"><i class="fa fa-check"></i><b>6.7.2</b> Spatial variable genes</a></li>
+<li class="chapter" data-level="6.8.1" data-path="visium-part-i.html"><a href="visium-part-i.html#highly-variable-features"><i class="fa fa-check"></i><b>6.8.1</b> Highly Variable Features:</a></li>
 </ul></li>
-<li class="chapter" data-level="6.8" data-path="visium-part-i.html"><a href="visium-part-i.html#dimension-reduction"><i class="fa fa-check"></i><b>6.8</b> Dimension Reduction</a>
+<li class="chapter" data-level="6.9" data-path="visium-part-i.html"><a href="visium-part-i.html#dimension-reduction"><i class="fa fa-check"></i><b>6.9</b> Dimension Reduction</a>
 <ul>
-<li class="chapter" data-level="6.8.1" data-path="visium-part-i.html"><a href="visium-part-i.html#pca"><i class="fa fa-check"></i><b>6.8.1</b> PCA</a></li>
-<li class="chapter" data-level="6.8.2" data-path="visium-part-i.html"><a href="visium-part-i.html#umap"><i class="fa fa-check"></i><b>6.8.2</b> UMAP</a></li>
-<li class="chapter" data-level="6.8.3" data-path="visium-part-i.html"><a href="visium-part-i.html#t-sne"><i class="fa fa-check"></i><b>6.8.3</b> t-SNE</a></li>
+<li class="chapter" data-level="6.9.1" data-path="visium-part-i.html"><a href="visium-part-i.html#pca"><i class="fa fa-check"></i><b>6.9.1</b> PCA</a></li>
+<li class="chapter" data-level="6.9.2" data-path="visium-part-i.html"><a href="visium-part-i.html#umap"><i class="fa fa-check"></i><b>6.9.2</b> UMAP</a></li>
+<li class="chapter" data-level="6.9.3" data-path="visium-part-i.html"><a href="visium-part-i.html#t-sne"><i class="fa fa-check"></i><b>6.9.3</b> t-SNE</a></li>
 </ul></li>
-<li class="chapter" data-level="6.9" data-path="visium-part-i.html"><a href="visium-part-i.html#clustering"><i class="fa fa-check"></i><b>6.9</b> Clustering</a>
+<li class="chapter" data-level="6.10" data-path="visium-part-i.html"><a href="visium-part-i.html#clustering"><i class="fa fa-check"></i><b>6.10</b> Clustering</a>
 <ul>
-<li class="chapter" data-level="6.9.1" data-path="visium-part-i.html"><a href="visium-part-i.html#non-spatial"><i class="fa fa-check"></i><b>6.9.1</b> Non-spatial</a></li>
-<li class="chapter" data-level="6.9.2" data-path="visium-part-i.html"><a href="visium-part-i.html#spatial"><i class="fa fa-check"></i><b>6.9.2</b> Spatial</a></li>
+<li class="chapter" data-level="6.10.1" data-path="visium-part-i.html"><a href="visium-part-i.html#calculate-leiden-clustering"><i class="fa fa-check"></i><b>6.10.1</b> Calculate Leiden clustering</a></li>
+<li class="chapter" data-level="6.10.2" data-path="visium-part-i.html"><a href="visium-part-i.html#calculate-louvain-clustering"><i class="fa fa-check"></i><b>6.10.2</b> Calculate Louvain clustering</a></li>
 </ul></li>
+<li class="chapter" data-level="6.11" data-path="visium-part-i.html"><a href="visium-part-i.html#save-the-object"><i class="fa fa-check"></i><b>6.11</b> Save the object</a></li>
+<li class="chapter" data-level="6.12" data-path="visium-part-i.html"><a href="visium-part-i.html#session-info"><i class="fa fa-check"></i><b>6.12</b> Session info</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="visium-part-ii.html"><a href="visium-part-ii.html"><i class="fa fa-check"></i><b>7</b> Visium Part II</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="visium-part-ii.html"><a href="visium-part-ii.html#differential-expression"><i class="fa fa-check"></i><b>7.1</b> Differential expression</a></li>
-<li class="chapter" data-level="7.2" data-path="visium-part-ii.html"><a href="visium-part-ii.html#enrichment-deconvolution"><i class="fa fa-check"></i><b>7.2</b> Enrichment &amp; Deconvolution</a></li>
-<li class="chapter" data-level="7.3" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatial-expression-patterns"><i class="fa fa-check"></i><b>7.3</b> Spatial expression patterns</a></li>
-<li class="chapter" data-level="7.4" data-path="visium-part-ii.html"><a href="visium-part-ii.html#interactive-tools"><i class="fa fa-check"></i><b>7.4</b> Interactive tools</a></li>
+<li class="chapter" data-level="7.1" data-path="visium-part-ii.html"><a href="visium-part-ii.html#load-the-object"><i class="fa fa-check"></i><b>7.1</b> Load the object</a></li>
+<li class="chapter" data-level="7.2" data-path="visium-part-ii.html"><a href="visium-part-ii.html#differential-expression"><i class="fa fa-check"></i><b>7.2</b> Differential expression</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="visium-part-ii.html"><a href="visium-part-ii.html#gini-markers"><i class="fa fa-check"></i><b>7.2.1</b> Gini markers</a></li>
+<li class="chapter" data-level="7.2.2" data-path="visium-part-ii.html"><a href="visium-part-ii.html#scran-markers"><i class="fa fa-check"></i><b>7.2.2</b> Scran markers</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="visium-part-ii.html"><a href="visium-part-ii.html#enrichment-deconvolution"><i class="fa fa-check"></i><b>7.3</b> Enrichment &amp; Deconvolution</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="visium-part-ii.html"><a href="visium-part-ii.html#pagerank"><i class="fa fa-check"></i><b>7.3.1</b> PAGE/Rank</a></li>
+<li class="chapter" data-level="7.3.2" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatialdwls"><i class="fa fa-check"></i><b>7.3.2</b> SpatialDWLS</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatial-expression-patterns"><i class="fa fa-check"></i><b>7.4</b> Spatial expression patterns</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatial-variable-genes"><i class="fa fa-check"></i><b>7.4.1</b> Spatial variable genes</a></li>
+<li class="chapter" data-level="7.4.2" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatial-co-expression-modules"><i class="fa fa-check"></i><b>7.4.2</b> Spatial co-expression modules</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatially-informed-clusters"><i class="fa fa-check"></i><b>7.5</b> Spatially informed clusters</a></li>
+<li class="chapter" data-level="7.6" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatial-domains-hmrf"><i class="fa fa-check"></i><b>7.6</b> Spatial domains HMRF</a></li>
+<li class="chapter" data-level="7.7" data-path="visium-part-ii.html"><a href="visium-part-ii.html#interactive-tools"><i class="fa fa-check"></i><b>7.7</b> Interactive tools</a></li>
+<li class="chapter" data-level="7.8" data-path="visium-part-ii.html"><a href="visium-part-ii.html#session-info-1"><i class="fa fa-check"></i><b>7.8</b> Session info</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="visium-hd.html"><a href="visium-hd.html"><i class="fa fa-check"></i><b>8</b> Visium HD</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="visium-hd.html"><a href="visium-hd.html#tiling-and-aggregation"><i class="fa fa-check"></i><b>8.1</b> Tiling and aggregation</a></li>
-<li class="chapter" data-level="8.2" data-path="visium-hd.html"><a href="visium-hd.html#scalability-and-projection-functions"><i class="fa fa-check"></i><b>8.2</b> Scalability and projection functions</a></li>
-<li class="chapter" data-level="8.3" data-path="visium-hd.html"><a href="visium-hd.html#spatial-expression-patterns-1"><i class="fa fa-check"></i><b>8.3</b> Spatial expression patterns</a></li>
-<li class="chapter" data-level="8.4" data-path="visium-hd.html"><a href="visium-hd.html#spatial-co-expression-modules"><i class="fa fa-check"></i><b>8.4</b> Spatial co-expression modules</a></li>
+<li class="chapter" data-level="8.1" data-path="visium-hd.html"><a href="visium-hd.html#objective"><i class="fa fa-check"></i><b>8.1</b> Objective</a></li>
+<li class="chapter" data-level="8.2" data-path="visium-hd.html"><a href="visium-hd.html#background"><i class="fa fa-check"></i><b>8.2</b> Background</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="visium-hd.html"><a href="visium-hd.html#visium-hd-technology"><i class="fa fa-check"></i><b>8.2.1</b> Visium HD Technology</a></li>
+<li class="chapter" data-level="8.2.2" data-path="visium-hd.html"><a href="visium-hd.html#colorectal-cancer-sample"><i class="fa fa-check"></i><b>8.2.2</b> Colorectal Cancer Sample</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="visium-hd.html"><a href="visium-hd.html#data-ingestion"><i class="fa fa-check"></i><b>8.3</b> Data Ingestion</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="visium-hd.html"><a href="visium-hd.html#visium-hd-output-data-format"><i class="fa fa-check"></i><b>8.3.1</b> Visium HD output data format</a></li>
+<li class="chapter" data-level="8.3.2" data-path="visium-hd.html"><a href="visium-hd.html#read-in-raw-data"><i class="fa fa-check"></i><b>8.3.2</b> Read in raw data</a></li>
+<li class="chapter" data-level="8.3.3" data-path="visium-hd.html"><a href="visium-hd.html#giotto-visium-hd-convenience-function"><i class="fa fa-check"></i><b>8.3.3</b> Giotto Visium HD convenience function</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="visium-hd.html"><a href="visium-hd.html#tiling-and-aggregation"><i class="fa fa-check"></i><b>8.4</b> Tiling and aggregation</a></li>
+<li class="chapter" data-level="8.5" data-path="visium-hd.html"><a href="visium-hd.html#scalability-and-projection-functions"><i class="fa fa-check"></i><b>8.5</b> Scalability and projection functions</a></li>
+<li class="chapter" data-level="8.6" data-path="visium-hd.html"><a href="visium-hd.html#spatial-expression-patterns-1"><i class="fa fa-check"></i><b>8.6</b> Spatial expression patterns</a></li>
+<li class="chapter" data-level="8.7" data-path="visium-hd.html"><a href="visium-hd.html#spatial-co-expression-modules-1"><i class="fa fa-check"></i><b>8.7</b> Spatial co-expression modules</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="xenium.html"><a href="xenium.html"><i class="fa fa-check"></i><b>9</b> Xenium</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="xenium.html"><a href="xenium.html#read-in-raw-data"><i class="fa fa-check"></i><b>9.1</b> Read in raw data</a></li>
-<li class="chapter" data-level="9.2" data-path="xenium.html"><a href="xenium.html#overlap-txs-polygons"><i class="fa fa-check"></i><b>9.2</b> Overlap txs &amp; polygons</a></li>
-<li class="chapter" data-level="9.3" data-path="xenium.html"><a href="xenium.html#transcript-enrichment-gsea"><i class="fa fa-check"></i><b>9.3</b> Transcript enrichment GSEA</a></li>
-<li class="chapter" data-level="9.4" data-path="xenium.html"><a href="xenium.html#spatial-location-analysis"><i class="fa fa-check"></i><b>9.4</b> Spatial location analysis</a></li>
-<li class="chapter" data-level="9.5" data-path="xenium.html"><a href="xenium.html#visualizations"><i class="fa fa-check"></i><b>9.5</b> Visualizations</a></li>
+<li class="chapter" data-level="9.1" data-path="xenium.html"><a href="xenium.html#introduction-to-spatial-dataset"><i class="fa fa-check"></i><b>9.1</b> Introduction to spatial dataset</a></li>
+<li class="chapter" data-level="9.2" data-path="xenium.html"><a href="xenium.html#additional-install-requirements"><i class="fa fa-check"></i><b>9.2</b> Additional install requirements</a></li>
+<li class="chapter" data-level="9.3" data-path="xenium.html"><a href="xenium.html#read-in-raw-data-1"><i class="fa fa-check"></i><b>9.3</b> Read in raw data</a></li>
+<li class="chapter" data-level="9.4" data-path="xenium.html"><a href="xenium.html#overlap-txs-polygons"><i class="fa fa-check"></i><b>9.4</b> Overlap txs &amp; polygons</a></li>
+<li class="chapter" data-level="9.5" data-path="xenium.html"><a href="xenium.html#transcript-enrichment-gsea"><i class="fa fa-check"></i><b>9.5</b> Transcript enrichment GSEA</a></li>
+<li class="chapter" data-level="9.6" data-path="xenium.html"><a href="xenium.html#spatial-location-analysis"><i class="fa fa-check"></i><b>9.6</b> Spatial location analysis</a></li>
+<li class="chapter" data-level="9.7" data-path="xenium.html"><a href="xenium.html#visualizations"><i class="fa fa-check"></i><b>9.7</b> Visualizations</a></li>
+<li class="chapter" data-level="9.8" data-path="xenium.html"><a href="xenium.html#exploration"><i class="fa fa-check"></i><b>9.8</b> —– exploration</a></li>
+<li class="chapter" data-level="9.9" data-path="xenium.html"><a href="xenium.html#image"><i class="fa fa-check"></i><b>9.9</b> IMAGE</a></li>
+<li class="chapter" data-level="9.10" data-path="xenium.html"><a href="xenium.html#ometif_2_tifimage_path-output_file-out_tif-chunk_rows-chunk_rows-overwrite-true"><i class="fa fa-check"></i><b>9.10</b> ometif_2_tif(image_path, output_file = out_tif, chunk_rows = chunk_rows, overwrite = TRUE)</a></li>
+<li class="chapter" data-level="9.11" data-path="xenium.html"><a href="xenium.html#example-usage"><i class="fa fa-check"></i><b>9.11</b> Example usage</a></li>
+<li class="chapter" data-level="9.12" data-path="xenium.html"><a href="xenium.html#transcripts"><i class="fa fa-check"></i><b>9.12</b> TRANSCRIPTS</a></li>
+<li class="chapter" data-level="9.13" data-path="xenium.html"><a href="xenium.html#where-are-the-issue-tx-at"><i class="fa fa-check"></i><b>9.13</b> where are the issue TX at?</a></li>
+<li class="chapter" data-level="9.14" data-path="xenium.html"><a href="xenium.html#polys"><i class="fa fa-check"></i><b>9.14</b> POLYS</a></li>
+<li class="chapter" data-level="9.15" data-path="xenium.html"><a href="xenium.html#giotto"><i class="fa fa-check"></i><b>9.15</b> giotto</a></li>
+<li class="chapter" data-level="9.16" data-path="xenium.html"><a href="xenium.html#no-hvf-calc-since-there-are-not-that-many-different-gene-species"><i class="fa fa-check"></i><b>9.16</b> no HVF calc since there are not that many different gene species</a></li>
+<li class="chapter" data-level="9.17" data-path="xenium.html"><a href="xenium.html#set-seed-for-reproducibility"><i class="fa fa-check"></i><b>9.17</b> set seed for reproducibility</a></li>
+<li class="chapter" data-level="9.18" data-path="xenium.html"><a href="xenium.html#seems-like-a-good-res"><i class="fa fa-check"></i><b>9.18</b> 1.4 seems like a good res</a></li>
+<li class="chapter" data-level="9.19" data-path="xenium.html"><a href="xenium.html#niches"><i class="fa fa-check"></i><b>9.19</b> niches</a></li>
+<li class="chapter" data-level="9.20" data-path="xenium.html"><a href="xenium.html#visualize-niche-level-enrichment-for-leiden-cluster-3-in-spat_unit-cell"><i class="fa fa-check"></i><b>9.20</b> visualize niche-level enrichment for leiden cluster 3 in spat_unit “cell”</a></li>
+<li class="chapter" data-level="9.21" data-path="xenium.html"><a href="xenium.html#add-kmeans-clustering-of-niches-to-cell-metadata"><i class="fa fa-check"></i><b>9.21</b> add kmeans clustering of niches to cell metadata</a></li>
+<li class="chapter" data-level="9.22" data-path="xenium.html"><a href="xenium.html#spatially-visualize-the-niches"><i class="fa fa-check"></i><b>9.22</b> Spatially visualize the niches</a></li>
+<li class="chapter" data-level="9.23" data-path="xenium.html"><a href="xenium.html#gene-enrichment"><i class="fa fa-check"></i><b>9.23</b> Gene enrichment</a></li>
+<li class="chapter" data-level="9.24" data-path="xenium.html"><a href="xenium.html#violinplot"><i class="fa fa-check"></i><b>9.24</b> violinplot</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="spatial-proteomics-multiplex-if.html"><a href="spatial-proteomics-multiplex-if.html"><i class="fa fa-check"></i><b>10</b> Spatial proteomics: multiplex IF</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="spatial-proteomics-multiplex-if.html"><a href="spatial-proteomics-multiplex-if.html#read-in-raw-data-1"><i class="fa fa-check"></i><b>10.1</b> Read in raw data</a></li>
+<li class="chapter" data-level="10.1" data-path="spatial-proteomics-multiplex-if.html"><a href="spatial-proteomics-multiplex-if.html#read-in-raw-data-2"><i class="fa fa-check"></i><b>10.1</b> Read in raw data</a></li>
 <li class="chapter" data-level="10.2" data-path="spatial-proteomics-multiplex-if.html"><a href="spatial-proteomics-multiplex-if.html#overlap-intensity-workflows"><i class="fa fa-check"></i><b>10.2</b> Overlap intensity &amp; workflows</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html"><i class="fa fa-check"></i><b>11</b> Working with multiple samples</a>
@@ -232,7 +286,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="13" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html"><i class="fa fa-check"></i><b>13</b> Multi-omics integration</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#example-in-giotto-suite-manuscript"><i class="fa fa-check"></i><b>13.1</b> Example in giotto suite manuscript</a></li>
+<li class="chapter" data-level="13.1" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#introduction-to-the-spatial-dataset-1"><i class="fa fa-check"></i><b>13.1</b> Introduction to the spatial dataset</a></li>
+<li class="chapter" data-level="13.2" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#download-dataset-1"><i class="fa fa-check"></i><b>13.2</b> Download dataset</a></li>
+<li class="chapter" data-level="13.3" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#create-the-giotto-object-1"><i class="fa fa-check"></i><b>13.3</b> Create the Giotto object</a></li>
+<li class="chapter" data-level="13.4" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#subset-on-spots-that-were-covered-by-tissue-1"><i class="fa fa-check"></i><b>13.4</b> Subset on spots that were covered by tissue</a></li>
+<li class="chapter" data-level="13.5" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#rna-processing"><i class="fa fa-check"></i><b>13.5</b> RNA processing</a></li>
+<li class="chapter" data-level="13.6" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#protein-processing"><i class="fa fa-check"></i><b>13.6</b> Protein processing</a></li>
+<li class="chapter" data-level="13.7" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#multi-omics-integration-1"><i class="fa fa-check"></i><b>13.7</b> Multi-omics integration</a></li>
+<li class="chapter" data-level="13.8" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#session-info-2"><i class="fa fa-check"></i><b>13.8</b> Session info</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html"><i class="fa fa-check"></i><b>14</b> Interoperability with other frameworks</a>
 <ul>
@@ -339,6 +400,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
