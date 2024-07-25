@@ -4,6 +4,149 @@ Junxiang Xu
 
 August 7th 2024
 
+## Spatial transforms
+
+Spatial transformations of data will become more and more important in the near future due to the fact that performing spatial analyses across any two sections of tissue from the same block will require that data to be spatially aligned into a common coordinate space. Minute differences during the sectioning process from the cutting motion to how long an FFPE section was floated can result in even neighboring sections being distorted when compared side-by-side.
+
+These differences make it difficult to assemble multislice and/or cross platform multimodal datasets into a cohesive 3D volume. The solution for this is to perform registration across either the dataset images or expression information. Based on the registration results, both the raster images and vector feature and polygon information can be aligned into a continuous whole.
+
+Ideally this registration will be a free deformation based on sets of control points or a deformation matrix, however affine transforms already provide a good approximation. In either case, *the transform or deformation applied must work in the same way across both raster and vector information.*
+
+Giotto provides spatial classes and methods for easy manipulation of data with 2D affine transformations. These functionalities are all available from *GiottoClass*.
+
+### Spatial transforms:
+
+We support simple transformations and more complex affine transformations which can be used to combine and encode more than one simple transform.
+
+-   `spatShift()` - translations
+-   `spin()` - rotations (degrees)
+-   `rescale()` - scaling
+-   `flip()` - flip vertical or horizontal across arbitrary lines
+-   `t()` - transpose
+-   `shear()` - shear transform
+-   `affine()` - affine transform
+
+### Spatial utilities:
+
+Helpful functions for use alongside these spatial transforms are `ext()` for finding the spatial bounding box of where your data object is, `crop()` for cutting out a spatial region of the data, and `plot()` for *terra*/*base* plots of the data.
+
+-   `ext()` - spatial extent or bounding box
+-   `crop()` - cut out a spatial region of the data
+-   `plot()` - plot a spatial object
+
+### Spatial classes:
+
+Giotto's spatial subobjects respond to the above functions. The Giotto object itself can also be affine transformed.
+
+-   `spatLocsObj` - xy centroids
+-   `spatialNetworkObj` - spatial networks between centroids
+-   `giottoPoints` - xy feature point detections
+-   `giottoPolygon` - spatial polygons
+-   `giottoImage` (mostly deprecated) - *magick*-based images
+-   `giottoLargeImage`/`giottoAffineImage` - *terra*-based images
+-   `affine2d` - affine matrix container
+-   `giotto` - giotto analysis object
+
+```{r, eval=FALSE}
+# load in data
+library(Giotto)
+g <- GiottoData::loadGiottoMini("vizgen")
+activeSpatUnit(g) <- "aggregate"
+gpoly <- getPolygonInfo(g, return_giottoPolygon = TRUE)
+gimg <- getGiottoImage(g)
+```
+
+```{r, eval=FALSE, fig.height=7}
+# examples of the simple transforms using giottoPolygon
+p <- par(no.readonly = TRUE)
+par(mfrow=c(2,4))
+plot(gpoly)
+gpoly |> spatShift(dx = 1000) |> plot(main = "spatShift()")
+gpoly |> spin(45) |> plot(main = "spin()")
+gpoly |> rescale(10) |> plot(main = "rescale()")
+gpoly |> flip(direction = "vertical") |> plot(main = "flip()")
+gpoly |> t() |> plot(main = "t()")
+gpoly |> shear(fx = 0.5) |> plot(main = "shear()")
+par(p)
+```
+
+```{r,echo=FALSE}
+knitr::include_graphics("img/03_session2/transforms.png")
+```
+
+
+Giotto also provides a utility `affine2d` class that can be created from any affine matrix.
+The `affine2d` can then be used to accumulate simple transforms that can be applied to spatial objects in a single step using `affine()`
+```{r, eval=FALSE}
+# create affine2d
+aff <- affine(diag(c(1,1)))
+aff <- aff |> 
+    spatShift(dx = 1000) |>
+    spin(45) |>
+    rescale(10) |>
+    flip(direction = "vertical") |>
+    t() |>
+    shear(fx = 0.5)
+force(aff)
+```
+
+```
+<affine2d>
+anchor    : -180, 180, -90, 90  (xmin, xmax, ymin, ymax)
+rotate    : -0.785398163397448  (rad)
+shear     : 0.5, 0  (x, y)
+scale     : 10, 10  (x, y)
+translate : 3.43401245619535e-13, 1000  (x, y)
+```
+
+```{r, eval=FALSE}
+gpoly |> affine(aff) |> plot(main = "affine()")
+```
+
+```{r, echo=FALSE}
+knitr::include_graphics("img/03_session2/affine.png")
+```
+
+# Image transforms
+Giotto uses `giottoLargeImages` as the core image class which is based on _terra_ `SpatRaster`. Images are not loaded into memory when the object is generated and instead an amount of regular sampling appropriate to the zoom level requested is performed at time of plotting.
+
+`spatShift()` and `rescale()` operations are supported by _terra_ `SpatRaster`, and we inherit those functionalities. `spin()`, `flip()`, `t()`, `shear()`, `affine()` operations will coerce `giottoLargeImage` to `giottoAffineImage`, which is much the same, except it contains an `affine2d` object that tracks spatial manipulations performed, so that they can be applied through `magick::image_distort()` processing after sampled values are pulled into memory. `giottoAffineImage` also has alternative `ext()` and `crop()` methods so that those operations respect both the expected post-affine space and untransformed source image.
+```{r, eval=FALSE}
+# affine transform of image info matches with polygon info
+gimg |> affine(aff) |> plot()
+gpoly |> affine(aff) |> 
+    plot(add = TRUE, 
+         border = "cyan",
+         lwd = 0.3)
+```
+
+```{r, echo=FALSE}
+knitr::include_graphics("img/03_session2/polys_and_image.png")
+```
+
+```{r, eval=FALSE}
+# affine of the giotto object
+g |> affine(aff) |> 
+    spatInSituPlotPoints(
+        show_image = TRUE, 
+        feats = list(rna = c("Adgrl1", "Gfap", "Ntrk3", "Slc17a7")),
+        feats_color_code = rainbow(4),
+        polygon_color = "cyan",
+        polygon_line_size = 0.1,
+        point_size = 0.1,
+        use_overlap = FALSE
+    )
+```
+
+```{r, echo=FALSE}
+knitr::include_graphics("img/03_session2/gobj_affine.png")
+```
+
+
+
+Currently _giotto_ image objects are not fully compatible with .ome.tif files. _terra_ which relies on _gdal_ drivers for image loading will find that the Gtiff driver opens some .ome.tif images, but fails when certain compressions (notably JP2000 as used by 10x for their single-channel stains) are used.
+
+
 ## Co-registration of datasets
 
 text
@@ -11,3 +154,7 @@ text
 ## Examples in giotto suite manuscript
 
 text
+
+```{r, eval=FALSE}
+sessionInfo()
+```
