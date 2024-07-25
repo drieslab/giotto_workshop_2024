@@ -7,5 +7,87 @@ August 7th 2024
 
 ## Spatial niche trajectory analysis
 
-text
+### Prepare
+
+#### Dataset download
+```{bash}
+# raw data
+# giotto
+# ONTraC input
+# NT score
+```
+
+
+#### Installation ONTraC
+```{bash}
+source ~/.bash_profile
+conda create -y -n ONTraC python=3.11
+conda activate ONTraC
+pip install ONTraC[analysis]
+```
+
+### Running
+#### Processing with Giotto
+use the given cell type directly
+
+handling multiple sample (Jeff should present this topic on the 2nd day)
+```{r}
+library(Giotto)
+
+# Load dataset
+giotto_1 = createGiottoObject(expression = 'subset_mouse1_slice221_exp.txt',
+                                spatial_locs = 'subset_mouse1_slice221_pos.csv')
+data1_meta <- read.csv(file = 'subset_mouse1_slice221_dataset.csv')
+data1_meta <- data1_meta[c("Cell_Type")]  # we use the given cell type annotation here, you can make your own annotation in process steps
+rownames(data1_meta) <- giotto_1@cell_metadata$cell$rna$cell_ID
+giotto_1 <- addCellMetadata(giotto_1, new_metadata = data1_meta)
+
+
+giotto_2 = createGiottoObject(expression = 'subset_mouse2_slice201_exp.txt',
+                              spatial_locs = 'subset_mouse2_slice201_pos.csv')
+data2_meta <- read.csv(file = 'subset_mouse2_slice201_dataset.csv')
+data2_meta <- data2_meta[c("Cell_Type")]  # we use the given cell type annotation here, you can make your own annotation in process ste
+rownames(data2_meta) <- giotto_2@cell_metadata$cell$rna$cell_ID
+giotto_2 <- addCellMetadata(giotto_2, new_metadata = data2_meta)
+
+# Join giotto_objs
+giotto_obj = joinGiottoObjects(gobject_list = list(giotto_1, giotto_2),
+                              gobject_names = c('mouse1_slice221', 'mouse2_slice201'),  # name for each samples
+                              join_method = 'z_stack')
+
+# Processing the data set using Giotto
+# skipped here
+
+# Generate ONTraC input file
+pos_df = giotto_obj@spatial_locs$cell[[1]]@coordinates
+meta_df = giotto_obj@cell_metadata$cell$rna@metaDT
+
+output_df = merge(x = pos_df, y = meta_df, by = 'cell_ID')[c('cell_ID', 'sdimx', 'sdimy', 'Cell_Type', 'list_ID')]  # change the Cell_Type to your own cell type annotation
+colnames(output_df) = c('Cell_ID', 'x', 'y', 'Cell_Type', 'Sample')
+write.csv(output_df, file='ONTraC_input.csv', quote=FALSE, row.names=FALSE)
+```
+
+
+
+#### Running ONTraC
+```{bash}
+source ~/.bash_profile
+conda activate ONTraC
+ONTraC -d ONTraC_input.csv --preprocessing-dir preprocessing_dir --GNN-dir GNN_dir --NTScore-dir NTScore_dir --device cuda     --epochs 1000 -s 42 --patience 100 --min-delta 0.001 --min-epochs 50 --lr 0.03     --hidden-feats 4 -k 6 --modularity-loss-weight 0.3 --regularization-loss-weight 0.1     --purity-loss-weight 300 --beta 0.03 2>&1 | tee merfish_subset.log
+
+ONTraC_analysis -o analysis_output/merfish_subset -l merfish_subset.log -d ONTraC_input.csv --preprocessing-dir preprocessing_dir --GNN-dir GNN_dir --NTScore-dir NTScore_dir -r -s
+```
+
+### visualization
+
+- niche cluster
+- NT score
+- downstream trajectory analysis (Georage should present this topic on the morning session)
+
+###
+```{r}
+NTScore = read.csv('NTScore_dir/merfish_subset_NTScore/NTScore.csv.gz')[c('Cell_NTScore')]
+rownames(NTScore) = giotto_obj@cell_metadata$cell$rna$cell_ID
+giotto_obj <- addCellMetadata(giotto_obj, new_metadata = NTScore)
+```
 
