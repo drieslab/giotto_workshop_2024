@@ -133,3 +133,8 @@ Find the book at: https://drieslab.github.io/giotto_workshop_2024/
     - Interactivity with the R/Spatial ecosystem 
         - Kriging
     - Contributing to Giotto
+
+
+## Flyer:
+<img src="./img/misc/giotto_flyer.png" alt="image" width="500" height="auto">
+
