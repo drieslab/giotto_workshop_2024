@@ -78,16 +78,20 @@ print(giottoFromSPE)
 ### Plotting top genes from nnSVG in Giotto 
 Now, we visualize the genes previously identified in the SpatialExperiment object using the nnSVG package within the Giotto toolkit, leveraging the converted Giotto object.
 
-```{r, warning=FALSE, out.width="100%"}
+```{r, warning=FALSE}
 ext_spatial_genes <- getFeatureMetadata(giottoFromSPE, output = "data.table")
 ext_spatial_genes <- ext_spatial_genes[order(ext_spatial_genes$rank)[1:10], ]$feat_ID
+```
 
+```{r, eval=FALSE}
 spatFeatPlot2D(giottoFromSPE, 
                expression_values = 'scaled_rna_cell',
                feats = ext_spatial_genes[1:4], 
-               point_size = 2,
-               return_plot = FALSE,
-               show_plot = TRUE)
+               point_size = 2)
+```
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("img/03_session4/ext_spatial_genes.png")
 ```
 
 ## Seurat
