@@ -16,41 +16,24 @@ nanometers, providing an extremely highly resolved subcellular spatial
 dataset. This particular dataset also showcases their newly released
 multimodal cell segmentation outputs.
 
-Previous Xenium datasets provided nuclear segmentations based on DAPI
-then generated cell
-
 The Xenium Human Multi-Tissue and Cancer Panel (377) genes was used. The
 exported data is from their Xenium Onboard Analysis v2.0.0 pipeline.
 
-The data to run this tutorial can be found
+The full data for this example can be found here:
 [here](https://www.10xgenomics.com/datasets/preview-data-ffpe-human-lung-cancer-with-xenium-multimodal-cell-segmentation-1-standard)
-
-The files can be downloaded by running the following in the bash
-terminal:
-
-```{bash, eval=FALSE}
-# Input Files
-
-wget https://cf.10xgenomics.com/samples/xenium/2.0.0/Xenium_V1_humanLung_Cancer_FFPE/Xenium_V1_humanLung_Cancer_FFPE_gene_panel.json
-wget https://cf.10xgenomics.com/samples/xenium/2.0.0/Xenium_V1_humanLung_Cancer_FFPE/Xenium_V1_humanLung_Cancer_FFPE_he_image.ome.tif
-wget https://cf.10xgenomics.com/samples/xenium/2.0.0/Xenium_V1_humanLung_Cancer_FFPE/Xenium_V1_humanLung_Cancer_FFPE_he_imagealignment.csv
-
-# Output Files
-wget https://cf.10xgenomics.com/samples/xenium/2.0.0/Xenium_V1_humanLung_Cancer_FFPE/Xenium_V1_humanLung_Cancer_FFPE_outs.zip
-wget https://cf.10xgenomics.com/samples/xenium/2.0.0/Xenium_V1_humanLung_Cancer_FFPE/Xenium_V1_humanLung_Cancer_FFPE_xe_outs.zip
-
-```
 
 -   *Input Files* are additional files that are not part of the output
     bundles, usually some raw files the pipeline uses or extra info.
 -   *Output Files* are the directories that are exported by the Xenium
     pipeline that can be expected from every run.
 
-## Additional install requirements
-
+## Additional package requirements
+When working with this data, some additional packages must be downloaded.
 -   arrow is needed
 -   requires ZTSD codec to open these parquets.
 
+
+## Introduce mini object
 
 
 ```{r, eval=FALSE}
@@ -118,10 +101,9 @@ aff_path <- manifest$Xenium_V1_humanLung_Cancer_FFPE_he_imagealignment.csv
 
 cell <- manifest$cells.csv.gz
 
-## ----- exploration
+# ----- exploration
 
-## IMAGE 
-
+# IMAGE #
 aff <- data.table::fread(aff_path)
 
 reticulate::source_python(file = "/projectnb/rd-spat/HOME/george/scripts/tifffile_convert.py")
@@ -131,7 +113,7 @@ GiottoUtils::package_check("tifffile", repository = "pip:tifffile")
 
 out_tif <- "/projectnb/rd-spat/HOME/george/tmp/tifffile_testing/test.tif"
 
-## ometif_2_tif(image_path, output_file = out_tif, chunk_rows = chunk_rows, overwrite = TRUE)
+# ometif_2_tif(image_path, output_file = out_tif, chunk_rows = chunk_rows, overwrite = TRUE)
 
 ometif_2_tif(image_path, output_file = out_tif, overwrite = TRUE)
 test <- createGiottoLargeImage(out_tif)
@@ -156,17 +138,16 @@ img_if_list <- lapply(
 
 
 
-## Example usage
+# # Example usage
+# input_file = "path/to/input/file.ome.tif"
+# output_file = "path/to/output/file.tif"
+# chunk_size = (1000, 1000)  # Adjust the chunk size as needed
+# num_processes = 4  # Adjust the number of processes based on available CPU cores
+# 
+# ometif_2_tif(input_file, output_file, chunk_size, num_processes)
 
-input_file = "path/to/input/file.ome.tif"
-output_file = "path/to/output/file.tif"
-chunk_size = (1000, 1000)  # Adjust the chunk size as needed
-num_processes = 4  # Adjust the number of processes based on available CPU cores
- 
-ometif_2_tif(input_file, output_file, chunk_size, num_processes)
 
-
-## TRANSCRIPTS 
+# TRANSCRIPTS #
 
 tx <- data.table::fread(tx_path, colClasses = c(transcript_id = "character"))
 poly_cell_dt <- data.table::fread(poly_cell_path)
@@ -184,8 +165,7 @@ gpoints_list <- GiottoClass::createGiottoPoints(
 
 gp_filter <- gpoints_list$rna[gpoints_list$rna$qv >= 20]
 
-##  where are the issue TX at?
-
+# where are the issue TX at?
 plot(gp_filter@spatVector, values = gp_filter$qv, type = "continuous", cex = 0.1, col = GiottoVisuals::getColors("magma"))
 
 library(ggplot2)
@@ -201,7 +181,7 @@ ggplot(data = type_qv, aes(x = type, y = qv, fill = type)) +
   geom_violin()
 
 
-## POLYS 
+# POLYS #
 
 gpoly_cell <- createGiottoPolygon(poly_cell_dt, name = "cell")
 gpoly_nuc <- createGiottoPolygon(poly_nuc_dt, name = "nucleus")
@@ -214,7 +194,7 @@ plot(gpoly_nuc, add = T, col = "cyan", ext = mini_ext)
 plot(gp_filter, add = T, col = "yellow", alpha = 0.3, ext = mini_ext, raster = F)
 
 
-## giotto 
+# giotto #
 
 g <- giotto()
 g <- setGiotto(g, gp_filter)
@@ -271,7 +251,7 @@ g <- filterGiotto(
 
 g <- normalizeGiotto(g)
 
-## no HVF calc since there are not that many different gene species
+# no HVF calc since there are not that many different gene species
 
 
 
@@ -326,8 +306,7 @@ dimPlot2D(
 
 g <- createNearestNetwork(g)
 
-## set seed for reproducibility
-
+# set seed for reproducibility
 set.seed(123)
 g_mini <- subsetGiotto(g, cell_ids = sample(spatIDs(g), size = 10000))
 
@@ -335,17 +314,17 @@ g_mini <- createNearestNetwork(g_mini)
 
 g_mini <- doLeidenCluster(g_mini, resolution = 1.4)
 
- dimPlot2D(
-   g_mini,
-   spat_unit = "cell",
-   feat_type = "rna",
-   cell_color = "leiden_clus",
-   dim_reduction_name = "umap.projection",
-   dim_reduction_to_use = "umap",
-   save_param = list(
-     save_name = "mini_umap_1.2"
-   )
- )
+# dimPlot2D(
+#   g_mini,
+#   spat_unit = "cell",
+#   feat_type = "rna",
+#   cell_color = "leiden_clus", 
+#   dim_reduction_name = "umap.projection", 
+#   dim_reduction_to_use = "umap",
+#   save_param = list(
+#     save_name = "mini_umap_1.2"
+#   )
+# )
 
 clus_color <- getColors("Vivid", n = 17)[]
 clus_color[9] <- "lightgrey"
@@ -375,9 +354,8 @@ dimPlot2D(
   )
 )
 
-## 1.4 seems like a good res
-
-project values back via kNN classifier (FNN::knn)
+# 1.4 seems like a good res
+# project values back via kNN classifier (FNN::knn)
 
 
 g <- doClusterProjection(
@@ -412,16 +390,16 @@ spatPlot2D(g, cell_color = "leiden_clus",
              save_name = "spat_leiden"
            ))
 
- spatPlot2D(g, cell_color = "major_clus",
-            point_size = 0.1,
-            point_shape = "no_border",
-            cell_color_code = clus_color[c(1, 10:17, 2:9)][c(1:3,5:9, 14, 17, 11)],
-            background = "black",
-            save_param = list(
-              base_width = 15,
-              base_height = 6,
-              save_name = "spat_major"
-            ))
+# spatPlot2D(g, cell_color = "major_clus",
+#            point_size = 0.1,
+#            point_shape = "no_border",
+#            cell_color_code = clus_color[c(1, 10:17, 2:9)][c(1:3,5:9, 14, 17, 11)],
+#            background = "black",
+#            save_param = list(
+#              base_width = 15,
+#              base_height = 6,
+#              save_name = "spat_major"
+#            ))
 
 spatFeatPlot2D(g, feats = c("MKI67", "CD3E", "CD4", "CD8A", "CD19", "CD79A"),
                point_size = 0.1,
@@ -446,7 +424,7 @@ spatFeatPlot2D(g, feats = c("CD68", "CD27", "SFTA2", "KRT7", "SERPINB3", "SOX2",
                ))
 
 
-## niches
+# niches
 g = createSpatialNetwork(
   gobject = g,
   spat_unit = 'cell',
@@ -463,8 +441,7 @@ g = calculateSpatCellMetadataProportions(
 )
 
 
-## visualize niche-level enrichment for leiden cluster 3 in spat_unit "cell"
-
+# visualize niche-level enrichment for leiden cluster 3 in spat_unit "cell"
 spatPlot2D(
   gobject = g,
   spat_unit = 'cell',
@@ -485,19 +462,16 @@ spatPlot2D(
 prop_table = getSpatialEnrichment(
   g, spat_unit = 'cell', name = 'proportion', output = 'data.table'
 )
-
-convert the data.table to a sparse Matrix with row and colnames 
-here we use a utility function to perform the operation
-
+# convert the data.table to a sparse Matrix with row and colnames
+# here we use a utility function to perform the operation
 prop_matrix = GiottoUtils::dt_to_matrix(prop_table)
 
 
 
- These enrichments are essentially a measure of how many cells of each
- leiden cluster exist in the local region
- 
- Using kmeans, we can classify each cell by its niche leiden cluster proportions
-
+# These enrichments are essentially a measure of how many cells of each
+# leiden cluster exist in the local region
+# 
+# Using kmeans, we can classify each cell by its niche leiden cluster proportions
 set.seed(12345) # set seed for kmeans
 prop_kmeans = kmeans(x = prop_matrix, centers = 6, iter.max = 100, nstart = 3)
 prop_kmeansDT = data.table::data.table(
@@ -505,8 +479,7 @@ prop_kmeansDT = data.table::data.table(
   niche = prop_kmeans$cluster
 )
 
-## add kmeans clustering of niches to cell metadata
-
+# add kmeans clustering of niches to cell metadata
 g = addCellMetadata(
   g, spat_unit = 'cell' , 
   new_metadata = prop_kmeansDT, 
@@ -514,8 +487,7 @@ g = addCellMetadata(
   column_cell_ID = 'cell_ID'
 )
 
-## Spatially visualize the niches
-
+# Spatially visualize the niches
 spatPlot(gobject = g, 
          show_network = TRUE,
          network_color = 'lightgray', 
@@ -542,8 +514,7 @@ spatPlot(gobject = g,
 
 
 
-## Gene enrichment
-
+# Gene enrichment
 scran_markers <- findScranMarkers_one_vs_all(
   g,
   cluster_column = "leiden_clus",
@@ -552,8 +523,7 @@ scran_markers <- findScranMarkers_one_vs_all(
 
 topgenes_scran = scran_markers[, head(.SD, 2), by = 'cluster']$feats
 
-## violinplot
-
+# violinplot
 violinPlot(g,
            feats = unique(topgenes_scran), 
            cluster_column = 'leiden_clus',
