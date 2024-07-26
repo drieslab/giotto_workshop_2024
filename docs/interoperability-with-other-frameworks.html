@@ -438,8 +438,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb140-3"><a href="interoperability-with-other-frameworks.html#cb140-3" tabindex="-1"></a></span>
 <span id="cb140-4"><a href="interoperability-with-other-frameworks.html#cb140-4" tabindex="-1"></a><span class="co"># Show top 10 features</span></span>
 <span id="cb140-5"><a href="interoperability-with-other-frameworks.html#cb140-5" tabindex="-1"></a><span class="fu">rowData</span>(spe)[<span class="fu">order</span>(<span class="fu">rowData</span>(spe)<span class="sc">$</span>rank)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>], ]<span class="sc">$</span>feat_ID</span></code></pre></div>
-<pre><code>##  [1] &quot;Ttr&quot;     &quot;Zic1&quot;    &quot;Tcf7l2&quot;  &quot;Prkcd&quot;   &quot;Tnnt1&quot;   &quot;Ddn&quot;     &quot;Hpca&quot;    &quot;Shox2&quot;   &quot;Cplx2&quot;  
-## [10] &quot;Slc17a6&quot;</code></pre>
+<pre><code>##  [1] &quot;Ttr&quot;    &quot;Tcf7l2&quot; &quot;Zic1&quot;   &quot;Prkcd&quot;  &quot;Tnnt1&quot;  &quot;Ddn&quot;    &quot;Shox2&quot;  &quot;Hpca&quot;   &quot;Cplx2&quot;  &quot;Spink8&quot;</code></pre>
 <div id="conversion-of-spatialexperiment-object-back-to-giotto" class="section level3 hasAnchor" number="64.3.1">
 <h3><span class="header-section-number">64.3.1</span> Conversion of SpatialExperiment object back to Giotto<a href="interoperability-with-other-frameworks.html#conversion-of-spatialexperiment-object-back-to-giotto" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We then convert the processed SpatialExperiment object back into a Giotto object for further downstream analysis using the Giotto suite. This is done using the <code>spatialExperimentToGiotto</code> function, where we explicitly specify the spatial network from the SpatialExperiment object.</p>
