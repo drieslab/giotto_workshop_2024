@@ -15,7 +15,7 @@ library(GiottoData)
 ```
 Here we load Giotto mini Visium object to continue with the interoperability.
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 gobject <- GiottoData::loadGiottoMini("visium")
 ```
 
@@ -68,7 +68,7 @@ rowData(spe)[order(rowData(spe)$rank)[1:10], ]$feat_ID
 ### Conversion of SpatialExperiment object back to Giotto
 We then convert the processed SpatialExperiment object back into a Giotto object for further downstream analysis using the Giotto suite. This is done using the `spatialExperimentToGiotto` function, where we explicitly specify the spatial network from the SpatialExperiment object.
 
-```{r, warning=FALSE}
+```{r, warning=FALSE, message=FALSE}
 giottoFromSPE <- spatialExperimentToGiotto(spe = spe, 
                                            python_path = NULL, 
                                            sp_network = "Delaunay_network")
@@ -78,12 +78,16 @@ print(giottoFromSPE)
 ### Plotting top genes from nnSVG in Giotto 
 Now, we visualize the genes previously identified in the SpatialExperiment object using the nnSVG package within the Giotto toolkit, leveraging the converted Giotto object.
 
-```{r, warning=FALSE}
+```{r, warning=FALSE, out.width="100%"}
 ext_spatial_genes <- getFeatureMetadata(giottoFromSPE, output = "data.table")
 ext_spatial_genes <- ext_spatial_genes[order(ext_spatial_genes$rank)[1:10], ]$feat_ID
 
-spatFeatPlot2D(giottoFromSPE, expression_values = 'scaled_rna_cell',
-               feats = ext_spatial_genes[1:4], point_size = 2)
+spatFeatPlot2D(giottoFromSPE, 
+               expression_values = 'scaled_rna_cell',
+               feats = ext_spatial_genes[1:4], 
+               point_size = 2,
+               return_plot = FALSE,
+               show_plot = TRUE)
 ```
 
 ## Seurat
@@ -97,7 +101,7 @@ To convert Giotto object to Seurat V5 object, we first load required libraries a
 library(Seurat)
 ```
 
-```{r}
+```{r, warning=FALSE, message=FALSE}
 gToS <- giottoToSeuratV5(gobject = gobject, spat_unit = "cell")
 ```
 
