@@ -24,7 +24,7 @@ The Giotto package is interoperable with SpatialExperiment, extending its functi
 
 To start the conversion of a Giotto mini Visium object to a SpatialExperiment object, we first load the required libraries.
 
-```{r, eval=FALSE}
+```{r, message=FALSE, warning=FALSE}
 library(SpatialExperiment)
 library(ggspavis)
 library(pheatmap)
@@ -36,7 +36,7 @@ library(nnSVG)
 ### Convert Giotto Object to SpatialExperiment Object
 To convert the Giotto object to a SpatialExperiment object, we use the giottoToSpatialExperiment() function.
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 gspe <- giottoToSpatialExperiment(gobject)
 ```
 
@@ -69,7 +69,9 @@ rowData(spe)[order(rowData(spe)$rank)[1:10], ]$feat_ID
 We then convert the processed SpatialExperiment object back into a Giotto object for further downstream analysis using the Giotto suite. This is done using the `spatialExperimentToGiotto` function, where we explicitly specify the spatial network from the SpatialExperiment object.
 
 ```{r, warning=FALSE}
-giottoFromSPE <- spatialExperimentToGiotto(spe = spe, python_path = "/share/pkg.7/python3/3.8.3/install/bin/python", sp_network = "Delaunay_network")
+giottoFromSPE <- spatialExperimentToGiotto(spe = spe, 
+                                           python_path = NULL, 
+                                           sp_network = "Delaunay_network")
 print(giottoFromSPE)
 ```
 
@@ -91,7 +93,7 @@ The process of conversion between Giotto and Seurat relies on four main function
 ### Giotto to Seurat
 
 To convert Giotto object to Seurat V5 object, we first load required libraries and use the function `giottoToSeuratV5()` function 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 library(Seurat)
 ```
 
@@ -103,21 +105,21 @@ gToS <- giottoToSeuratV5(gobject = gobject, spat_unit = "cell")
 
 To convert the giotto object to annData, we use the Giotto's function "giottoToAnnData()"
 
-```{r}
-gToAnnData <- giottoToAnnData(g)
+```{r, warning=FALSE, message=FALSE}
+gToAnnData <- giottoToAnnData(gobject)
 ```
-alreadt nn in giotto
+already nn in giotto
 for giotto
-generate nn network in giotto and use it in anndata for visulaization
+generate nn network in giotto and use it in anndata for visualization
  use scanpy to generate umap from nn
  
- use scanpy to visiukalze scanpy
+ use scanpy to visualize scanpy
  clustering with umap visuals 
  
  Optional:
- similary ann data and preprocessing on anndata
-  QC, NOrmalization, feature selection, pca
+ similary anndata and preprocessing on anndata
+  QC, Normalization, feature selection, pca
   now convert giotto 
-  use giotto function to visulaize umap etc
+  use giotto function to visualize umap etc
 
 
