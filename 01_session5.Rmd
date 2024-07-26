@@ -288,7 +288,7 @@ plotPCA(gobject = visium_brain,
 knitr::include_graphics("img/01_session5/11-PCA.png")
 ```
 
-Unlike PCA, Unifold Manifold Approximation and Projection (UMAP) and t-Stochastic Neighbor Embedding (t-SNE) do not assume linearity. After running PCA, UMAP or t-SNE follows to further reduce PCs.   
+Unlike PCA, Uniform Manifold Approximation and Projection (UMAP) and t-Stochastic Neighbor Embedding (t-SNE) do not assume linearity. After running PCA, UMAP or t-SNE follows to further reduce PCs.   
 
 ### UMAP
 
@@ -437,7 +437,7 @@ spatPlot2D(visium_brain,
 knitr::include_graphics("img/01_session5/20-spatPlot2D.png")
 ```
 
-Leiden clustering is generally preferred for larger and more complex datasets, where as Louvain clustering may be suitable for more smaller datasets or scenarios where computational efficiency is a priority. 
+Leiden clustering is generally preferred for larger and more complex datasets, where as Louvain clustering may be suitable for smaller datasets or scenarios where computational efficiency is a priority. 
 
 ## Save the object
 
