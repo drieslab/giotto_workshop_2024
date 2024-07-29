@@ -4,26 +4,43 @@ Ruben Dries
 
 August 5th 2024
 
-## Slides
+## Introduction
 
-[
-```{r,echo=FALSE}
-knitr::include_url("https://comunidadbioinfo.github.io/cdsb2023/dia1_sesion1_slides.html", height = "500px")
-```
-](https://comunidadbioinfo.github.io/cdsb2023/dia1_sesion1_slides.html)
+### Why do we need spatial omics technologies?
+
+xxxx 
+
+![](img/01_session1/0-spatial_vs_singlecell.png)
+
+### What is spatial omics?
+
+xxxx
+
+![](img/01_session1/1-spatial_combo.png)
+
+<br>    
+
+## What are the main spatial omics technologies?
+
+![](img/01_session1/2-spatial_technologies_web.png)
+
+### Spatial sequencing
+
+### Spatial in situ
+
+### Spatial proteomics
+
+### Other Spatial omics: ATAC-seq, CUT&RUN, lipidomics, etc
 
 
-## Spatial sequencing  
+<br>  
 
+## What can we learn from spatial omics technologies?
 
-## Spatial in situ 
-
-
-## Spatial proteomics  
-
-
-## Other Spatial omics: ATAC-seq, CUT&RUN, lipidomics, etc  
+### Input data types and formats
 
 
 
+### Spatial downstream analysis
 
+![](img/01_session1/3-spatial_downstream_analyses.png)
