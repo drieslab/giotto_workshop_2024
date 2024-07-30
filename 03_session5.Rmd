@@ -1,18 +1,13 @@
----
-output:
-  html_document: default
-  pdf_document: default
----
 # Interoperability with isolated tools
 
 Wen Wang
 
 August 7th 2024
 
-
 ## Spatial niche trajectory analysis
 
 ### Dataset download
+
 The MERFISH mouse motor cortex data to run this tutorial can be found
 [here](https://doi.brainimagelibrary.org/doi/10.35077/g.21)
 
@@ -20,6 +15,7 @@ You need to download the processed expression, metadata, and cell segmentation
 information by running these commands:
 
 Notes: there are 61 slices here, we run on two of them to save the time.
+
 ```{r, eval = FALSE}
 data_path <- "data"
 dir.create(data_path)
@@ -34,6 +30,7 @@ download.file(url = "https://download.brainimagelibrary.org/cf/1c/cf1c1a431ef8d0
 ```
 
 ### Create the Giotto object
+
 ```{r, eval=FALSE}
 library(Giotto)
 library(reticulate)
@@ -134,9 +131,11 @@ head(ONTraC_input)
 # mouse2_slice229-100209662400867003194056898065587980841   mouse2_slice229	-5468.113	-1286.2465	Oligo	
 # mouse2_slice229-100218038012295593766653119076639444055   mouse2_slice229	-6399.986	 -959.7440	L2/3 IT	
 # mouse2_slice229-100252992997994275968450436343196667192   mouse2_slice229	-6637.847	-1659.6237	Astro	
+
 ```
 
 Spatial cell type distributions
+
 ```{r, eval=FALSE}
 spatPlot2D(giotto_obj,
            group_by = "slice_id",
@@ -385,10 +384,12 @@ pip install git+https://github.com/gyuanlab/ONTraC.git@V2
 #   Stored in directory: /private/var/folders/4z/75w3m8r57jj3bkbbyx6shx7c0000gn/T/ pip-ephem-wheel-cache-7kgwlhji/wheels/88/64/83/ e8e4dfd8000c8e81e9724db9f092231791d3bcb083502fe37a
 # Successfully built ONTraC
 # Installing collected packages: texttable, pytz, mpmath, urllib3, tzdata,  typing-extensions, tqdm, threadpoolctl, sympy, stdlib-list, six, pyyaml, pyparsing,  psutil, numpy, networkx, multidict, MarkupSafe, llvmlite, joblib, igraph, idna,  fsspec, frozenlist, filelock, charset-normalizer, certifi, attrs, yarl,  session-info, scipy, requests, python-dateutil, numba, leidenalg, jinja2, aiosignal,  torch, scikit-learn, pandas, aiohttp, torch-geometric, pynndescent, harmonypy,  umap-learn, ONTraC
-# Successfully installed MarkupSafe-2.1.5 ONTraC-2.0a9.dev7 aiohttp-3.9.5 aiosignal-1.3.1 attrs-23.2.0 certifi-2024.7.4 charset-normalizer-3.3.2 filelock-3.15.4 frozenlist-1.4.1 fsspec-2024.6.1 harmonypy-0.0.10 idna-3.7 igraph-0.11.6 jinja2-3.1.4 joblib-1.4.2 leidenalg-0.10.2 llvmlite-0.43.0 mpmath-1.3.0 multidict-6.0.5 networkx-3.3 numba-0.60.0 numpy-1.26.4 pandas-2.2.1 psutil-6.0.0 pynndescent-0.5.13 pyparsing-3.1.2 python-dateutil-2.9.0.post0 pytz-2024.1 pyyaml-6.0.1 requests-2.32.3 scikit-learn-1.5.1 scipy-1.14.0 session-info-1.0.0 six-1.16.0 stdlib-list-0.10.0 sympy-1.13.1 texttable-1.7.0 threadpoolctl-3.5.0 torch-2.2.1 torch-geometric-2.5.0 tqdm-4.66.4 typing-extensions-4.12.2 tzdata-2024.1 umap-learn-0.5.6 urllib3-2.2.2 yarl-1.9.4	
+# Successfully installed MarkupSafe-2.1.5 ONTraC-2.0a9.dev7 aiohttp-3.9.5 aiosignal-1.3.1 attrs-23.2.0 certifi-2024.7.4 charset-normalizer-3.3.2 filelock-3.15.4 frozenlist-1.4.1 fsspec-2024.6.1 harmonypy-0.0.10 idna-3.7 igraph-0.11.6 jinja2-3.1.4 joblib-1.4.2 leidenalg-0.10.2 llvmlite-0.43.0 mpmath-1.3.0 multidict-6.0.5 networkx-3.3 numba-0.60.0 numpy-1.26.4 pandas-2.2.1 psutil-6.0.0 pynndescent-0.5.13 pyparsing-3.1.2 python-dateutil-2.9.0.post0 pytz-2024.1 pyyaml-6.0.1 requests-2.32.3 scikit-learn-1.5.1 scipy-1.14.0 session-info-1.0.0 six-1.16.0 stdlib-list-0.10.0 sympy-1.13.1 texttable-1.7.0 threadpoolctl-3.5.0 torch-2.2.1 torch-geometric-2.5.0 tqdm-4.66.4 typing-extensions-4.12.2 tzdata-2024.1 umap-learn-0.5.6 urllib3-2.2.2 yarl-1.9.4
+
 ```
 
 #### Running ONTraC
+
 ```{bash, eval = FALSE}
 
 source ~/.bash_profile
@@ -1485,18 +1486,22 @@ ONTraC -d data/ONTraC_dataset_input.csv --preprocessing-dir data/preprocessing_d
 # 11:38:39 --- INFO: --------------- Niche trajectory end ---------------- 
 
 ```
+
 ### visualization
 
 #### load ONTraC results
+
 ```{r, eval = FALSE}
 giotto_obj <- loadOntraCResults(gobject = giotto_obj,
                                 ontrac_results_dir = data_path)
 ```
 
 The NTScore and binarized niche cluster info were stored in cell metadata
+
 ```{r, eval = FALSE}
 head(pDataDT(giotto_obj, spat_unit = "cell", feat_type = "niche cluster"))
 ```
+
 ```{r, eval = FALSE}
 #                                                    cell_ID      sample_id        slice_id   class_label subclass    label         list_ID NicheCluster   NTScore
 #                                                     <char>         <char>          <char>        <char>   <char>   <char>          <char>        <int>     <num>
@@ -1510,6 +1515,7 @@ head(pDataDT(giotto_obj, spat_unit = "cell", feat_type = "niche cluster"))
 
 The probability matrix of each cell assigned to each niche cluster and
 connectivity between niche cluster were stored here.
+
 ```{r, eval=FALSE}
 GiottoClass::list_expression(giotto_obj)
 ```
@@ -1523,6 +1529,7 @@ GiottoClass::list_expression(giotto_obj)
 ```
 
 #### niche cluster prob
+
 ```{r, eval = FALSE}
 spatFeatPlot2D(gobject = giotto_obj, 
            spat_unit = 'cell',
@@ -1539,6 +1546,7 @@ knitr::include_graphics("img/03_session5/2-spatialNicheClusterProb.png")
 ```
 
 #### binarized niche cluster
+
 ```{r, eval = FALSE}
 spatPlot2D(giotto_obj,
            spat_unit = "cell",
@@ -1549,11 +1557,13 @@ spatPlot2D(giotto_obj,
            point_border_stroke = NA,
            title="Niche cluster")
 ```
+
 ```{r, echo=FALSE, out.width="80%", fig.align="center"}
 knitr::include_graphics("img/03_session5/3-spatialBinNicheCluster.png")
 ```
 
 #### niche cluster spatial connectivity
+
 ```{r, eval=FALSE}
 set.seed(100)  # fix the node positions
 plotNicheClusterConnectivity(gobject = giotto_obj)
@@ -1564,6 +1574,7 @@ knitr::include_graphics("img/03_session5/4-nicheClusterConnectivity.png")
 ```
 
 #### NT score
+
 ```{r, eval=FALSE}
 spatPlot2D(gobject = giotto_obj, 
            spat_unit = 'cell',
@@ -1591,6 +1602,7 @@ knitr::include_graphics("img/03_session5/6-violinCellTypeOverNTScore.png")
 ```
 
 #### Cell type composition within niche cluster
+
 ```{r, eval=FALSE}
 plotCTCompositionInNicheCluster(gobject = giotto_obj,
                                 cell_type = "subclass")
