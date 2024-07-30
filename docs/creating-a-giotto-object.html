@@ -143,15 +143,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html"><i class="fa fa-check"></i><b>2</b> Spatial omics technologies</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#slides"><i class="fa fa-check"></i><b>2.1</b> Slides</a></li>
-<li class="chapter" data-level="2.2" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#spatial-sequencing"><i class="fa fa-check"></i><b>2.2</b> Spatial sequencing</a></li>
-<li class="chapter" data-level="2.3" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#spatial-in-situ"><i class="fa fa-check"></i><b>2.3</b> Spatial in situ</a></li>
-<li class="chapter" data-level="2.4" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#spatial-proteomics"><i class="fa fa-check"></i><b>2.4</b> Spatial proteomics</a></li>
-<li class="chapter" data-level="2.5" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#other-spatial-omics-atac-seq-cutrun-lipidomics-etc"><i class="fa fa-check"></i><b>2.5</b> Other Spatial omics: ATAC-seq, CUT&amp;RUN, lipidomics, etc</a></li>
+<li class="chapter" data-level="2.1" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#presentation"><i class="fa fa-check"></i><b>2.1</b> Presentation</a></li>
+<li class="chapter" data-level="2.2" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#short-summary"><i class="fa fa-check"></i><b>2.2</b> Short summary</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#why-do-we-need-spatial-omics-technologies"><i class="fa fa-check"></i><b>2.2.1</b> Why do we need spatial omics technologies?</a></li>
+<li class="chapter" data-level="2.2.2" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#what-is-spatial-omics"><i class="fa fa-check"></i><b>2.2.2</b> What is spatial omics?</a></li>
+<li class="chapter" data-level="2.2.3" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#what-are-the-main-spatial-omics-technologies"><i class="fa fa-check"></i><b>2.2.3</b> What are the main spatial omics technologies?</a></li>
+<li class="chapter" data-level="2.2.4" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#other-spatial-omics-atac-seq-cutrun-lipidomics-etc"><i class="fa fa-check"></i><b>2.2.4</b> Other Spatial omics: ATAC-seq, CUT&amp;RUN, lipidomics, etc</a></li>
+<li class="chapter" data-level="2.2.5" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#what-are-the-different-types-of-spatial-downstream-analyses"><i class="fa fa-check"></i><b>2.2.5</b> What are the different types of spatial downstream analyses?</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html"><i class="fa fa-check"></i><b>3</b> Introduction to the Giotto package</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#slides-1"><i class="fa fa-check"></i><b>3.1</b> Slides</a></li>
+<li class="chapter" data-level="3.1" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#slides"><i class="fa fa-check"></i><b>3.1</b> Slides</a></li>
 <li class="chapter" data-level="3.2" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#ecosystem"><i class="fa fa-check"></i><b>3.2</b> Ecosystem</a></li>
 <li class="chapter" data-level="3.3" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#installation-python-environment"><i class="fa fa-check"></i><b>3.3</b> Installation + python environment</a></li>
 <li class="chapter" data-level="3.4" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#giotto-instructions"><i class="fa fa-check"></i><b>3.4</b> Giotto instructions</a></li>
@@ -442,7 +446,6 @@ to see what they look like, particularly the ones containing spatial info.</p>
 <span id="cb7-4"><a href="creating-a-giotto-object.html#cb7-4" tabindex="-1"></a>spatnet <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadSubObjectMini</span>(<span class="st">&quot;spatialNetworkObj&quot;</span>)</span>
 <span id="cb7-5"><a href="creating-a-giotto-object.html#cb7-5" tabindex="-1"></a>pca <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadSubObjectMini</span>(<span class="st">&quot;dimObj&quot;</span>)</span>
 <span id="cb7-6"><a href="creating-a-giotto-object.html#cb7-6" tabindex="-1"></a><span class="fu">plot</span>(pca, <span class="at">dims =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
 <div id="subsetting" class="section level2 hasAnchor" number="5.7">
 <h2><span class="header-section-number">5.7</span> Subsetting<a href="creating-a-giotto-object.html#subsetting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
