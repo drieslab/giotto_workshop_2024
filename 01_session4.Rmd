@@ -60,7 +60,7 @@ Giotto has several spatial plotting functions.
 At the lowest level, you directly call `plot()` on several subobjects in order
 to see what they look like, particularly the ones containing spatial info.
 
-```{r}
+```{r, eval=FALSE}
 gpoints <- GiottoData::loadSubObjectMini("giottoPoints")
 gpoly <- GiottoData::loadSubObjectMini("giottoPolygon")
 spatlocs <- GiottoData::loadSubObjectMini("spatLocsObj")
