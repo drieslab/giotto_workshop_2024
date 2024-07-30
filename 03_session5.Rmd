@@ -145,6 +145,7 @@ spatPlot2D(giotto_obj,
            point_border_stroke = NA,
            legend_text = 6)
 ```
+
 ```{r, echo=FALSE, out.width="100%", fig.align="center"}
 knitr::include_graphics("img/03_session5/1-spatialCellTypeDis.png")
 ```
@@ -161,6 +162,7 @@ conda create -y -n ONTraC python=3.11
 conda activate ONTraC
 pip install git+https://github.com/gyuanlab/ONTraC.git@V2
 ```
+
 ```{r, eval = FALSE}
 # Retrieving notices: ...working... done
 # Channels:
@@ -393,6 +395,7 @@ source ~/.bash_profile
 conda activate ONTraC_v2_py311
 ONTraC -d data/ONTraC_dataset_input.csv --preprocessing-dir data/preprocessing_dir --GNN-dir data/GNN_dir --NTScore-dir data/NTScore_dir --device cuda     --epochs 1000 -s 42 --patience 100 --min-delta 0.001 --min-epochs 50 --lr 0.03     --hidden-feats 4 -k 6 --modularity-loss-weight 1 --regularization-loss-weight 0.1     --purity-loss-weight 100 --beta 0.3 --equal-space 2>&1 | tee data/merfish_subset.log
 ```
+
 ```{r, eval=FALSE}
 # ##################################################################################
 # 
@@ -1530,6 +1533,7 @@ spatFeatPlot2D(gobject = giotto_obj,
            point_border_col = 'gray'
            )
 ```
+
 ```{r, echo=FALSE, out.width="60%", fig.align="center"}
 knitr::include_graphics("img/03_session5/2-spatialNicheClusterProb.png")
 ```
@@ -1554,6 +1558,7 @@ knitr::include_graphics("img/03_session5/3-spatialBinNicheCluster.png")
 set.seed(100)  # fix the node positions
 plotNicheClusterConnectivity(gobject = giotto_obj)
 ```
+
 ```{r, echo=FALSE, out.width="60%", fig.align="center"}
 knitr::include_graphics("img/03_session5/4-nicheClusterConnectivity.png")
 ```
@@ -1585,6 +1590,7 @@ plotCellTypeNTScore(gobject = giotto_obj,
 knitr::include_graphics("img/03_session5/6-violinCellTypeOverNTScore.png")
 ```
 
+#### Cell type composition within niche cluster
 ```{r, eval=FALSE}
 plotCTCompositionInNicheCluster(gobject = giotto_obj,
                                 cell_type = "subclass")
