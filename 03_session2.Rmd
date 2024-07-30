@@ -4,7 +4,7 @@ Junxiang Xu
 
 August 7th 2024
 
-## Spatial transforms
+## Overview
 
 Spatial transformations of data will become more and more important in the near future due to the fact that performing spatial analyses across any two sections of tissue from the same block will require that data to be spatially aligned into a common coordinate space. Minute differences during the sectioning process from the cutting motion to how long an FFPE section was floated can result in even neighboring sections being distorted when compared side-by-side.
 
@@ -14,7 +14,7 @@ Ideally this registration will be a free deformation based on sets of control po
 
 Giotto provides spatial classes and methods for easy manipulation of data with 2D affine transformations. These functionalities are all available from *GiottoClass*.
 
-### Spatial transforms:
+### Spatial transforms functions:
 
 We support simple transformations and more complex affine transformations which can be used to combine and encode more than one simple transform.
 
@@ -24,7 +24,7 @@ We support simple transformations and more complex affine transformations which 
 -   `flip()` - flip vertical or horizontal across arbitrary lines
 -   `t()` - transpose
 -   `shear()` - shear transform
--   `affine()` - affine transform
+-   `affine()` - affine matrix transform
 
 ### Spatial utilities:
 
@@ -56,7 +56,7 @@ gpoly <- getPolygonInfo(g, return_giottoPolygon = TRUE)
 gimg <- getGiottoImage(g)
 ```
 
-```{r, eval=FALSE, fig.height=7}
+```{r, eval=FALSE, fig.height=10, fig.width=10}
 # examples of the simple transforms using giottoPolygon
 p <- par(no.readonly = TRUE)
 par(mfrow=c(2,4))
