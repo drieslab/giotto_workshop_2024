@@ -4,43 +4,53 @@ Ruben Dries
 
 August 5th 2024
 
-## Introduction
+## Presentation
+
+```{r out.height = "460px", out.width='800px', echo=F}
+knitr::include_graphics("img/01_session1/spatial_omics_technologies_GS_workshop.pdf")
+```
+
+
+<br>   
+
+
+## Short summary
 
 ### Why do we need spatial omics technologies?
 
-xxxx 
+Spatial omics allows us to examine the role of one or more cells within its normal context. 
+This spatial context is typically organized at multiple length scales, and considers
+both adjacent neighboring cells and larger levels of tissue organization.
 
 ![](img/01_session1/0-spatial_vs_singlecell.png)
 
 ### What is spatial omics?
 
-xxxx
+Spatial omics is typically a combination of spatial sequencing and/or imaging 
+together with understanding the obtained results through spatial data science.
 
 ![](img/01_session1/1-spatial_combo.png)
 
 <br>    
 
-## What are the main spatial omics technologies?
+### What are the main spatial omics technologies?
+
+The large majority - and most popular or accessible - spatial technologies are
+- spatial antibody-multiplex proteomics  
+- spatial multiplex **in situ hybridization** (ISH)-based transcriptomics  
+- spatial sequencing-based transcriptomics
 
 ![](img/01_session1/2-spatial_technologies_web.png)
 
-### Spatial sequencing
-
-### Spatial in situ
-
-### Spatial proteomics
 
 ### Other Spatial omics: ATAC-seq, CUT&RUN, lipidomics, etc
 
 
 <br>  
 
-## What can we learn from spatial omics technologies?
+### What are the different types of spatial downstream analyses?
 
-### Input data types and formats
-
-
-
-### Spatial downstream analysis
+There exist a large and diverse amount of different downstream spatial data analyses
+that use different available data types and formats as input.
 
 ![](img/01_session1/3-spatial_downstream_analyses.png)

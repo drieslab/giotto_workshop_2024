@@ -189,3 +189,6 @@ what-are-the-main-spatial-omics-technologies
 what-can-we-learn-from-spatial-omics-technologies
 input-data-types-and-formats
 spatial-downstream-analysis
+presentation
+short-summary
+what-are-the-different-types-of-spatial-downstream-analyses
