@@ -1494,12 +1494,31 @@ The NTScore and binarized niche cluster info were stored in cell metadata
 ```{r, eval = FALSE}
 head(pDataDT(giotto_obj, spat_unit = "cell", feat_type = "niche cluster"))
 ```
+```{r, eval = FALSE}
+#                                                    cell_ID      sample_id        slice_id   class_label subclass    label         list_ID NicheCluster   NTScore
+#                                                     <char>         <char>          <char>        <char>   <char>   <char>          <char>        <int>     <num>
+# 1: mouse2_slice229-100101435705986292663283283043431511315 mouse2_sample6 mouse2_slice229 Glutamatergic    L6 CT  L6_CT_5 mouse2_slice229            2 0.7998957
+# 2: mouse2_slice229-100104370212612969023746137269354247741 mouse2_sample6 mouse2_slice229         Other      OPC      OPC mouse2_slice229            0 0.2003027
+# 3: mouse2_slice229-100128078183217482733448056590230529739 mouse2_sample6 mouse2_slice229 Glutamatergic  L2/3 IT L23_IT_4 mouse2_slice229            0 0.2350597
+# 4: mouse2_slice229-100209662400867003194056898065587980841 mouse2_sample6 mouse2_slice229         Other    Oligo  Oligo_1 mouse2_slice229            1 0.3990417
+# 5: mouse2_slice229-100218038012295593766653119076639444055 mouse2_sample6 mouse2_slice229 Glutamatergic  L2/3 IT L23_IT_4 mouse2_slice229            0 0.2910255
+# 6: mouse2_slice229-100252992997994275968450436343196667192 mouse2_sample6 mouse2_slice229         Other    Astro  Astro_2 mouse2_slice229            2 0.8007477
+```
 
 The probability matrix of each cell assigned to each niche cluster and
 connectivity between niche cluster were stored here.
 ```{r, eval=FALSE}
 GiottoClass::list_expression(giotto_obj)
 ```
+
+```{r, eval = FALSE}
+#        spat_unit     feat_type       name
+#           <char>        <char>     <char>
+# 1:          cell           rna        raw
+# 2:          cell niche cluster       prob
+# 3: niche cluster  connectivity normalized
+```
+
 #### niche cluster prob
 ```{r, eval = FALSE}
 spatFeatPlot2D(gobject = giotto_obj, 
