@@ -4,18 +4,36 @@ Ruben Dries & Jiaji George Chen
 
 August 5th 2024
 
-## Slides
+## Presentation  
 
 [
-```{r,echo=FALSE}
-knitr::include_url("https://comunidadbioinfo.github.io/cdsb2023/dia1_sesion1_slides.html", height = "380px")
+```{r out.height = "460px", out.width='800px', echo=F}
+knitr::include_graphics("https://drieslab.github.io/giotto_workshop_2024/GS_workshop2024_giotto_intro.pdf")
 ```
-](https://comunidadbioinfo.github.io/cdsb2023/dia1_sesion1_slides.html)
+](https://drieslab.github.io/giotto_workshop_2024/GS_workshop2024_giotto_intro.pdf)
 
+<br> 
 
 ## Ecosystem
 
+Giotto Suite is a modular ecosystem of individual R packages that each provide
+different functionality and that together provide users with a fully integrated 
+spatial multi-omics workflow.
+
+![](img/01_session2/0-giottosuite_ecosystem.png)
+  
+  
+Each package also has its own website:  
+- **GiottoUtils**: https://drieslab.github.io/GiottoUtils/  
+- **GiottoClass**: https://drieslab.github.io/GiottoClass/   
+- **GiottoData**: https://drieslab.github.io/GiottoData/   
+- **GiottoVisuals**: https://drieslab.github.io/GiottoVisuals/   
+
+More information is available at https://drieslab.github.io/Giotto_website/articles/ecosystem.html 
+
 ## Installation + python environment
+
+
 
 ## Giotto instructions
 
