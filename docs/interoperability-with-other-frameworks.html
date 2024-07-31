@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>15 Interoperability with other frameworks | Workshop: Spatial multi-omics data analysis with Giotto Suite</title>
-  <meta name="description" content="15 Interoperability with other frameworks | Workshop: Spatial multi-omics data analysis with Giotto Suite" />
+  <title>14 Interoperability with other frameworks | Workshop: Spatial multi-omics data analysis with Giotto Suite</title>
+  <meta name="description" content="14 Interoperability with other frameworks | Workshop: Spatial multi-omics data analysis with Giotto Suite" />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="15 Interoperability with other frameworks | Workshop: Spatial multi-omics data analysis with Giotto Suite" />
+  <meta property="og:title" content="14 Interoperability with other frameworks | Workshop: Spatial multi-omics data analysis with Giotto Suite" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="drieslab/giotto_workshop_2024" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="15 Interoperability with other frameworks | Workshop: Spatial multi-omics data analysis with Giotto Suite" />
+  <meta name="twitter:title" content="14 Interoperability with other frameworks | Workshop: Spatial multi-omics data analysis with Giotto Suite" />
   
   
   
@@ -55,7 +55,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -135,7 +135,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Giotto Workshop 2024</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Giotto Suite Workshop 2024</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#instructors"><i class="fa fa-check"></i><b>1.1</b> Instructors</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#topics-and-schedule"><i class="fa fa-check"></i><b>1.2</b> Topics and Schedule:</a></li>
@@ -149,13 +149,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2.1" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#why-do-we-need-spatial-omics-technologies"><i class="fa fa-check"></i><b>2.2.1</b> Why do we need spatial omics technologies?</a></li>
 <li class="chapter" data-level="2.2.2" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#what-is-spatial-omics"><i class="fa fa-check"></i><b>2.2.2</b> What is spatial omics?</a></li>
 <li class="chapter" data-level="2.2.3" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#what-are-the-main-spatial-omics-technologies"><i class="fa fa-check"></i><b>2.2.3</b> What are the main spatial omics technologies?</a></li>
-<li class="chapter" data-level="2.2.4" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#other-spatial-omics-atac-seq-cutrun-lipidomics-etc"><i class="fa fa-check"></i><b>2.2.4</b> Other Spatial omics: ATAC-seq, CUT&amp;RUN, lipidomics, etc</a></li>
+<li class="chapter" data-level="2.2.4" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#other-spatial-omics-atac-seq-cuttag-lipidomics-etc"><i class="fa fa-check"></i><b>2.2.4</b> Other Spatial omics: ATAC-seq, CUT&amp;Tag, lipidomics, etc</a></li>
 <li class="chapter" data-level="2.2.5" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#what-are-the-different-types-of-spatial-downstream-analyses"><i class="fa fa-check"></i><b>2.2.5</b> What are the different types of spatial downstream analyses?</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html"><i class="fa fa-check"></i><b>3</b> Introduction to the Giotto package</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#slides"><i class="fa fa-check"></i><b>3.1</b> Slides</a></li>
+<li class="chapter" data-level="3.1" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#presentation-1"><i class="fa fa-check"></i><b>3.1</b> Presentation</a></li>
 <li class="chapter" data-level="3.2" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#ecosystem"><i class="fa fa-check"></i><b>3.2</b> Ecosystem</a></li>
 <li class="chapter" data-level="3.3" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#installation-python-environment"><i class="fa fa-check"></i><b>3.3</b> Installation + python environment</a></li>
 <li class="chapter" data-level="3.4" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#giotto-instructions"><i class="fa fa-check"></i><b>3.4</b> Giotto instructions</a></li>
@@ -271,63 +271,62 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html"><i class="fa fa-check"></i><b>12</b> Spatial multi-modal analysis</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#overview-1"><i class="fa fa-check"></i><b>12.1</b> Overview</a>
+<li class="chapter" data-level="12.1" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#overview-1"><i class="fa fa-check"></i><b>12.1</b> Overview</a></li>
+<li class="chapter" data-level="12.2" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-manipulation"><i class="fa fa-check"></i><b>12.2</b> Spatial manipulation</a>
 <ul>
-<li class="chapter" data-level="12.1.1" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-transforms-functions"><i class="fa fa-check"></i><b>12.1.1</b> Spatial transforms functions:</a></li>
-<li class="chapter" data-level="12.1.2" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-utilities"><i class="fa fa-check"></i><b>12.1.2</b> Spatial utilities:</a></li>
-<li class="chapter" data-level="12.1.3" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-classes"><i class="fa fa-check"></i><b>12.1.3</b> Spatial classes:</a></li>
+<li class="chapter" data-level="12.2.1" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-transforms"><i class="fa fa-check"></i><b>12.2.1</b> Spatial transforms:</a></li>
+<li class="chapter" data-level="12.2.2" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-utilities"><i class="fa fa-check"></i><b>12.2.2</b> Spatial utilities:</a></li>
+<li class="chapter" data-level="12.2.3" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-classes"><i class="fa fa-check"></i><b>12.2.3</b> Spatial classes:</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#image-transforms"><i class="fa fa-check"></i><b>12.3</b> Image transforms</a></li>
+<li class="chapter" data-level="12.4" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#co-registration-of-datasets"><i class="fa fa-check"></i><b>12.4</b> Co-registration of datasets</a></li>
+<li class="chapter" data-level="12.5" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#examples-in-giotto-suite-manuscript"><i class="fa fa-check"></i><b>12.5</b> Examples in giotto suite manuscript</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html"><i class="fa fa-check"></i><b>13</b> Multi-omics integration</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#introduction-to-the-spatial-dataset-1"><i class="fa fa-check"></i><b>13.1</b> Introduction to the spatial dataset</a></li>
+<li class="chapter" data-level="13.2" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#download-dataset-1"><i class="fa fa-check"></i><b>13.2</b> Download dataset</a></li>
+<li class="chapter" data-level="13.3" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#create-the-giotto-object-1"><i class="fa fa-check"></i><b>13.3</b> Create the Giotto object</a></li>
+<li class="chapter" data-level="13.4" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#subset-on-spots-that-were-covered-by-tissue-1"><i class="fa fa-check"></i><b>13.4</b> Subset on spots that were covered by tissue</a></li>
+<li class="chapter" data-level="13.5" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#rna-processing"><i class="fa fa-check"></i><b>13.5</b> RNA processing</a></li>
+<li class="chapter" data-level="13.6" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#protein-processing"><i class="fa fa-check"></i><b>13.6</b> Protein processing</a></li>
+<li class="chapter" data-level="13.7" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#multi-omics-integration-1"><i class="fa fa-check"></i><b>13.7</b> Multi-omics integration</a></li>
+<li class="chapter" data-level="13.8" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#session-info-2"><i class="fa fa-check"></i><b>13.8</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html"><i class="fa fa-check"></i><b>14</b> Interoperability with other frameworks</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#load-giotto-object"><i class="fa fa-check"></i><b>14.1</b> Load Giotto object</a></li>
+<li class="chapter" data-level="14.2" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#spatialexperiment"><i class="fa fa-check"></i><b>14.2</b> SpatialExperiment</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#convert-giotto-object-to-spatialexperiment-object"><i class="fa fa-check"></i><b>14.2.1</b> Convert Giotto Object to SpatialExperiment Object</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#identify-top-spatially-variable-genes-with-nnsvg"><i class="fa fa-check"></i><b>14.3</b> Identify top spatially variable genes with nnSVG</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#conversion-of-spatialexperiment-object-back-to-giotto"><i class="fa fa-check"></i><b>14.3.1</b> Conversion of SpatialExperiment object back to Giotto</a></li>
+<li class="chapter" data-level="14.3.2" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#plotting-top-genes-from-nnsvg-in-giotto"><i class="fa fa-check"></i><b>14.3.2</b> Plotting top genes from nnSVG in Giotto</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#seurat"><i class="fa fa-check"></i><b>14.4</b> Seurat</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#giotto-to-seurat"><i class="fa fa-check"></i><b>14.4.1</b> Giotto to Seurat</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#anndataspatialdata"><i class="fa fa-check"></i><b>14.5</b> AnnData/SpatialData</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html"><i class="fa fa-check"></i><b>15</b> Interoperability with isolated tools</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#spatial-niche-trajectory-analysis"><i class="fa fa-check"></i><b>15.1</b> Spatial niche trajectory analysis</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#dataset-download"><i class="fa fa-check"></i><b>15.1.1</b> Dataset download</a></li>
+<li class="chapter" data-level="15.1.2" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#create-the-giotto-object-2"><i class="fa fa-check"></i><b>15.1.2</b> Create the Giotto object</a></li>
+<li class="chapter" data-level="15.1.3" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#visualization"><i class="fa fa-check"></i><b>15.1.3</b> visualization</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="image-transforms.html"><a href="image-transforms.html"><i class="fa fa-check"></i><b>13</b> Image transforms</a>
+<li class="chapter" data-level="16" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html"><i class="fa fa-check"></i><b>16</b> Interactivity with the R/Spatial ecosystem</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="image-transforms.html"><a href="image-transforms.html#co-registration-of-datasets"><i class="fa fa-check"></i><b>13.1</b> Co-registration of datasets</a></li>
-<li class="chapter" data-level="13.2" data-path="image-transforms.html"><a href="image-transforms.html#examples-in-giotto-suite-manuscript"><i class="fa fa-check"></i><b>13.2</b> Examples in giotto suite manuscript</a></li>
+<li class="chapter" data-level="16.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#kriging"><i class="fa fa-check"></i><b>16.1</b> Kriging</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html"><i class="fa fa-check"></i><b>14</b> Multi-omics integration</a>
+<li class="chapter" data-level="17" data-path="contributing-to-giotto.html"><a href="contributing-to-giotto.html"><i class="fa fa-check"></i><b>17</b> Contributing to Giotto</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#introduction-to-the-spatial-dataset-1"><i class="fa fa-check"></i><b>14.1</b> Introduction to the spatial dataset</a></li>
-<li class="chapter" data-level="14.2" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#download-dataset-1"><i class="fa fa-check"></i><b>14.2</b> Download dataset</a></li>
-<li class="chapter" data-level="14.3" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#create-the-giotto-object-1"><i class="fa fa-check"></i><b>14.3</b> Create the Giotto object</a></li>
-<li class="chapter" data-level="14.4" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#subset-on-spots-that-were-covered-by-tissue-1"><i class="fa fa-check"></i><b>14.4</b> Subset on spots that were covered by tissue</a></li>
-<li class="chapter" data-level="14.5" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#rna-processing"><i class="fa fa-check"></i><b>14.5</b> RNA processing</a></li>
-<li class="chapter" data-level="14.6" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#protein-processing"><i class="fa fa-check"></i><b>14.6</b> Protein processing</a></li>
-<li class="chapter" data-level="14.7" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#multi-omics-integration-1"><i class="fa fa-check"></i><b>14.7</b> Multi-omics integration</a></li>
-<li class="chapter" data-level="14.8" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#session-info-2"><i class="fa fa-check"></i><b>14.8</b> Session info</a></li>
-</ul></li>
-<li class="chapter" data-level="15" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html"><i class="fa fa-check"></i><b>15</b> Interoperability with other frameworks</a>
-<ul>
-<li class="chapter" data-level="15.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#load-giotto-object"><i class="fa fa-check"></i><b>15.1</b> Load Giotto object</a></li>
-<li class="chapter" data-level="15.2" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#spatialexperiment"><i class="fa fa-check"></i><b>15.2</b> SpatialExperiment</a>
-<ul>
-<li class="chapter" data-level="15.2.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#convert-giotto-object-to-spatialexperiment-object"><i class="fa fa-check"></i><b>15.2.1</b> Convert Giotto Object to SpatialExperiment Object</a></li>
-</ul></li>
-<li class="chapter" data-level="15.3" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#identify-top-spatially-variable-genes-with-nnsvg"><i class="fa fa-check"></i><b>15.3</b> Identify top spatially variable genes with nnSVG</a>
-<ul>
-<li class="chapter" data-level="15.3.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#conversion-of-spatialexperiment-object-back-to-giotto"><i class="fa fa-check"></i><b>15.3.1</b> Conversion of SpatialExperiment object back to Giotto</a></li>
-<li class="chapter" data-level="15.3.2" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#plotting-top-genes-from-nnsvg-in-giotto"><i class="fa fa-check"></i><b>15.3.2</b> Plotting top genes from nnSVG in Giotto</a></li>
-</ul></li>
-<li class="chapter" data-level="15.4" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#seurat"><i class="fa fa-check"></i><b>15.4</b> Seurat</a>
-<ul>
-<li class="chapter" data-level="15.4.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#giotto-to-seurat"><i class="fa fa-check"></i><b>15.4.1</b> Giotto to Seurat</a></li>
-</ul></li>
-<li class="chapter" data-level="15.5" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#anndataspatialdata"><i class="fa fa-check"></i><b>15.5</b> AnnData/SpatialData</a></li>
-</ul></li>
-<li class="chapter" data-level="16" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html"><i class="fa fa-check"></i><b>16</b> Interoperability with isolated tools</a>
-<ul>
-<li class="chapter" data-level="16.1" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#spatial-niche-trajectory-analysis"><i class="fa fa-check"></i><b>16.1</b> Spatial niche trajectory analysis</a>
-<ul>
-<li class="chapter" data-level="16.1.1" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#dataset-download"><i class="fa fa-check"></i><b>16.1.1</b> Dataset download</a></li>
-<li class="chapter" data-level="16.1.2" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#create-the-giotto-object-2"><i class="fa fa-check"></i><b>16.1.2</b> Create the Giotto object</a></li>
-<li class="chapter" data-level="16.1.3" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#visualization"><i class="fa fa-check"></i><b>16.1.3</b> visualization</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="17" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html"><i class="fa fa-check"></i><b>17</b> Interactivity with the R/Spatial ecosystem</a>
-<ul>
-<li class="chapter" data-level="17.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#kriging"><i class="fa fa-check"></i><b>17.1</b> Kriging</a></li>
-</ul></li>
-<li class="chapter" data-level="18" data-path="contributing-to-giotto.html"><a href="contributing-to-giotto.html"><i class="fa fa-check"></i><b>18</b> Contributing to Giotto</a>
-<ul>
-<li class="chapter" data-level="18.1" data-path="contributing-to-giotto.html"><a href="contributing-to-giotto.html#contribution-guideline"><i class="fa fa-check"></i><b>18.1</b> Contribution guideline</a></li>
+<li class="chapter" data-level="17.1" data-path="contributing-to-giotto.html"><a href="contributing-to-giotto.html#contribution-guideline"><i class="fa fa-check"></i><b>17.1</b> Contribution guideline</a></li>
 </ul></li>
 </ul>
 
@@ -346,113 +345,86 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="interoperability-with-other-frameworks" class="section level1 hasAnchor" number="15">
-<h1><span class="header-section-number">15</span> Interoperability with other frameworks<a href="interoperability-with-other-frameworks.html#interoperability-with-other-frameworks" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="interoperability-with-other-frameworks" class="section level1 hasAnchor" number="14">
+<h1><span class="header-section-number">14</span> Interoperability with other frameworks<a href="interoperability-with-other-frameworks.html#interoperability-with-other-frameworks" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Iqra</p>
 <p>August 7th 2024</p>
 <p>Giotto facilitates seamless interoperability with various tools, including Seurat, annData, and SpatialExperiment. Below is a brief introductory tutorial on how Giotto interoperates with these other tools.</p>
-<div id="load-giotto-object" class="section level2 hasAnchor" number="15.1">
-<h2><span class="header-section-number">15.1</span> Load Giotto object<a href="interoperability-with-other-frameworks.html#load-giotto-object" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="load-giotto-object" class="section level2 hasAnchor" number="14.1">
+<h2><span class="header-section-number">14.1</span> Load Giotto object<a href="interoperability-with-other-frameworks.html#load-giotto-object" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To begin the interoperability of a Giotto object with other objects, we first load the required libraries and a Giotto mini object. We then continue with the conversion process:</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="interoperability-with-other-frameworks.html#cb135-1" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
-<span id="cb135-2"><a href="interoperability-with-other-frameworks.html#cb135-2" tabindex="-1"></a><span class="fu">library</span>(GiottoData)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="interoperability-with-other-frameworks.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
+<span id="cb1-2"><a href="interoperability-with-other-frameworks.html#cb1-2" tabindex="-1"></a><span class="fu">library</span>(GiottoData)</span></code></pre></div>
 <p>Here we load Giotto mini Visium object to continue with the interoperability.</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="interoperability-with-other-frameworks.html#cb136-1" tabindex="-1"></a>gobject <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadGiottoMini</span>(<span class="st">&quot;visium&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="interoperability-with-other-frameworks.html#cb2-1" tabindex="-1"></a>gobject <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadGiottoMini</span>(<span class="st">&quot;visium&quot;</span>)</span></code></pre></div>
 </div>
-<div id="spatialexperiment" class="section level2 hasAnchor" number="15.2">
-<h2><span class="header-section-number">15.2</span> SpatialExperiment<a href="interoperability-with-other-frameworks.html#spatialexperiment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="spatialexperiment" class="section level2 hasAnchor" number="14.2">
+<h2><span class="header-section-number">14.2</span> SpatialExperiment<a href="interoperability-with-other-frameworks.html#spatialexperiment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The Giotto package is interoperable with SpatialExperiment, extending its functionality to include spatial coordinates, images, and image metadata.</p>
 <p>To start the conversion of a Giotto mini Visium object to a SpatialExperiment object, we first load the required libraries.</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="interoperability-with-other-frameworks.html#cb137-1" tabindex="-1"></a><span class="fu">library</span>(SpatialExperiment)</span>
-<span id="cb137-2"><a href="interoperability-with-other-frameworks.html#cb137-2" tabindex="-1"></a><span class="fu">library</span>(ggspavis)</span>
-<span id="cb137-3"><a href="interoperability-with-other-frameworks.html#cb137-3" tabindex="-1"></a><span class="fu">library</span>(pheatmap)</span>
-<span id="cb137-4"><a href="interoperability-with-other-frameworks.html#cb137-4" tabindex="-1"></a><span class="fu">library</span>(scater)</span>
-<span id="cb137-5"><a href="interoperability-with-other-frameworks.html#cb137-5" tabindex="-1"></a><span class="fu">library</span>(scran)</span>
-<span id="cb137-6"><a href="interoperability-with-other-frameworks.html#cb137-6" tabindex="-1"></a><span class="fu">library</span>(nnSVG)</span></code></pre></div>
-<div id="convert-giotto-object-to-spatialexperiment-object" class="section level3 hasAnchor" number="15.2.1">
-<h3><span class="header-section-number">15.2.1</span> Convert Giotto Object to SpatialExperiment Object<a href="interoperability-with-other-frameworks.html#convert-giotto-object-to-spatialexperiment-object" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="interoperability-with-other-frameworks.html#cb3-1" tabindex="-1"></a><span class="fu">library</span>(SpatialExperiment)</span>
+<span id="cb3-2"><a href="interoperability-with-other-frameworks.html#cb3-2" tabindex="-1"></a><span class="fu">library</span>(ggspavis)</span>
+<span id="cb3-3"><a href="interoperability-with-other-frameworks.html#cb3-3" tabindex="-1"></a><span class="fu">library</span>(pheatmap)</span>
+<span id="cb3-4"><a href="interoperability-with-other-frameworks.html#cb3-4" tabindex="-1"></a><span class="fu">library</span>(scater)</span>
+<span id="cb3-5"><a href="interoperability-with-other-frameworks.html#cb3-5" tabindex="-1"></a><span class="fu">library</span>(scran)</span>
+<span id="cb3-6"><a href="interoperability-with-other-frameworks.html#cb3-6" tabindex="-1"></a><span class="fu">library</span>(nnSVG)</span></code></pre></div>
+<div id="convert-giotto-object-to-spatialexperiment-object" class="section level3 hasAnchor" number="14.2.1">
+<h3><span class="header-section-number">14.2.1</span> Convert Giotto Object to SpatialExperiment Object<a href="interoperability-with-other-frameworks.html#convert-giotto-object-to-spatialexperiment-object" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To convert the Giotto object to a SpatialExperiment object, we use the giottoToSpatialExperiment() function.</p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="interoperability-with-other-frameworks.html#cb138-1" tabindex="-1"></a>gspe <span class="ot">&lt;-</span> <span class="fu">giottoToSpatialExperiment</span>(gobject)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="interoperability-with-other-frameworks.html#cb4-1" tabindex="-1"></a>gspe <span class="ot">&lt;-</span> <span class="fu">giottoToSpatialExperiment</span>(gobject)</span></code></pre></div>
 <p>The converter function returns a separate SpatialExperiment object for each spatial unit. The output is a list of objects (one for each unit), and we select the first object for downstream use.</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="interoperability-with-other-frameworks.html#cb139-1" tabindex="-1"></a>spe <span class="ot">&lt;-</span> gspe[[<span class="dv">1</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="interoperability-with-other-frameworks.html#cb5-1" tabindex="-1"></a>spe <span class="ot">&lt;-</span> gspe[[<span class="dv">1</span>]]</span></code></pre></div>
 </div>
 </div>
-<div id="identify-top-spatially-variable-genes-with-nnsvg" class="section level2 hasAnchor" number="15.3">
-<h2><span class="header-section-number">15.3</span> Identify top spatially variable genes with nnSVG<a href="interoperability-with-other-frameworks.html#identify-top-spatially-variable-genes-with-nnsvg" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="identify-top-spatially-variable-genes-with-nnsvg" class="section level2 hasAnchor" number="14.3">
+<h2><span class="header-section-number">14.3</span> Identify top spatially variable genes with nnSVG<a href="interoperability-with-other-frameworks.html#identify-top-spatially-variable-genes-with-nnsvg" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We employ the nnSVG package to identify the top spatially variable genes in our SpatialExperiment object.Covariates can be added to our model; in this example, we use Leiden clustering labels as a covariate. These clustering results were initially computed using the Giotto suite and then transferred to the converted SpatialExperiment object.</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="interoperability-with-other-frameworks.html#cb140-1" tabindex="-1"></a><span class="co"># One of the assays should be &quot;logcounts&quot;</span></span>
-<span id="cb140-2"><a href="interoperability-with-other-frameworks.html#cb140-2" tabindex="-1"></a><span class="co"># We rename the normalized assay to &quot;logcounts&quot;</span></span>
-<span id="cb140-3"><a href="interoperability-with-other-frameworks.html#cb140-3" tabindex="-1"></a><span class="fu">assayNames</span>(spe)[[<span class="dv">2</span>]] <span class="ot">&lt;-</span> <span class="st">&quot;logcounts&quot;</span></span>
-<span id="cb140-4"><a href="interoperability-with-other-frameworks.html#cb140-4" tabindex="-1"></a></span>
-<span id="cb140-5"><a href="interoperability-with-other-frameworks.html#cb140-5" tabindex="-1"></a><span class="co"># Create model matrix for leiden clustering labels</span></span>
-<span id="cb140-6"><a href="interoperability-with-other-frameworks.html#cb140-6" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(<span class="sc">~</span> <span class="fu">colData</span>(spe)<span class="sc">$</span>leiden_clus)</span>
-<span id="cb140-7"><a href="interoperability-with-other-frameworks.html#cb140-7" tabindex="-1"></a><span class="fu">dim</span>(X)</span></code></pre></div>
-<pre><code>## [1] 624   2</code></pre>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="interoperability-with-other-frameworks.html#cb142-1" tabindex="-1"></a><span class="co"># Run nnSVG</span></span>
-<span id="cb142-2"><a href="interoperability-with-other-frameworks.html#cb142-2" tabindex="-1"></a>spe <span class="ot">&lt;-</span> <span class="fu">nnSVG</span>(spe, <span class="at">X =</span> X)</span>
-<span id="cb142-3"><a href="interoperability-with-other-frameworks.html#cb142-3" tabindex="-1"></a></span>
-<span id="cb142-4"><a href="interoperability-with-other-frameworks.html#cb142-4" tabindex="-1"></a><span class="co"># Show top 10 features</span></span>
-<span id="cb142-5"><a href="interoperability-with-other-frameworks.html#cb142-5" tabindex="-1"></a><span class="fu">rowData</span>(spe)[<span class="fu">order</span>(<span class="fu">rowData</span>(spe)<span class="sc">$</span>rank)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>], ]<span class="sc">$</span>feat_ID</span></code></pre></div>
-<pre><code>##  [1] &quot;Ttr&quot;     &quot;Tcf7l2&quot;  &quot;Zic1&quot;    &quot;Prkcd&quot;   &quot;Tnnt1&quot;   &quot;Ddn&quot;     &quot;Hpca&quot;   
-##  [8] &quot;Shox2&quot;   &quot;Cplx2&quot;   &quot;Slc17a6&quot;</code></pre>
-<div id="conversion-of-spatialexperiment-object-back-to-giotto" class="section level3 hasAnchor" number="15.3.1">
-<h3><span class="header-section-number">15.3.1</span> Conversion of SpatialExperiment object back to Giotto<a href="interoperability-with-other-frameworks.html#conversion-of-spatialexperiment-object-back-to-giotto" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="interoperability-with-other-frameworks.html#cb6-1" tabindex="-1"></a><span class="co"># One of the assays should be &quot;logcounts&quot;</span></span>
+<span id="cb6-2"><a href="interoperability-with-other-frameworks.html#cb6-2" tabindex="-1"></a><span class="co"># We rename the normalized assay to &quot;logcounts&quot;</span></span>
+<span id="cb6-3"><a href="interoperability-with-other-frameworks.html#cb6-3" tabindex="-1"></a><span class="fu">assayNames</span>(spe)[[<span class="dv">2</span>]] <span class="ot">&lt;-</span> <span class="st">&quot;logcounts&quot;</span></span>
+<span id="cb6-4"><a href="interoperability-with-other-frameworks.html#cb6-4" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="interoperability-with-other-frameworks.html#cb6-5" tabindex="-1"></a><span class="co"># Create model matrix for leiden clustering labels</span></span>
+<span id="cb6-6"><a href="interoperability-with-other-frameworks.html#cb6-6" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(<span class="sc">~</span> <span class="fu">colData</span>(spe)<span class="sc">$</span>leiden_clus)</span>
+<span id="cb6-7"><a href="interoperability-with-other-frameworks.html#cb6-7" tabindex="-1"></a><span class="fu">dim</span>(X)</span>
+<span id="cb6-8"><a href="interoperability-with-other-frameworks.html#cb6-8" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="interoperability-with-other-frameworks.html#cb6-9" tabindex="-1"></a><span class="co"># Run nnSVG</span></span>
+<span id="cb6-10"><a href="interoperability-with-other-frameworks.html#cb6-10" tabindex="-1"></a>spe <span class="ot">&lt;-</span> <span class="fu">nnSVG</span>(spe, <span class="at">X =</span> X)</span>
+<span id="cb6-11"><a href="interoperability-with-other-frameworks.html#cb6-11" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="interoperability-with-other-frameworks.html#cb6-12" tabindex="-1"></a><span class="co"># Show top 10 features</span></span>
+<span id="cb6-13"><a href="interoperability-with-other-frameworks.html#cb6-13" tabindex="-1"></a><span class="fu">rowData</span>(spe)[<span class="fu">order</span>(<span class="fu">rowData</span>(spe)<span class="sc">$</span>rank)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>], ]<span class="sc">$</span>feat_ID</span></code></pre></div>
+<div id="conversion-of-spatialexperiment-object-back-to-giotto" class="section level3 hasAnchor" number="14.3.1">
+<h3><span class="header-section-number">14.3.1</span> Conversion of SpatialExperiment object back to Giotto<a href="interoperability-with-other-frameworks.html#conversion-of-spatialexperiment-object-back-to-giotto" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We then convert the processed SpatialExperiment object back into a Giotto object for further downstream analysis using the Giotto suite. This is done using the <code>spatialExperimentToGiotto</code> function, where we explicitly specify the spatial network from the SpatialExperiment object.</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="interoperability-with-other-frameworks.html#cb144-1" tabindex="-1"></a>giottoFromSPE <span class="ot">&lt;-</span> <span class="fu">spatialExperimentToGiotto</span>(<span class="at">spe =</span> spe, </span>
-<span id="cb144-2"><a href="interoperability-with-other-frameworks.html#cb144-2" tabindex="-1"></a>                                           <span class="at">python_path =</span> <span class="cn">NULL</span>, </span>
-<span id="cb144-3"><a href="interoperability-with-other-frameworks.html#cb144-3" tabindex="-1"></a>                                           <span class="at">sp_network =</span> <span class="st">&quot;Delaunay_network&quot;</span>)</span>
-<span id="cb144-4"><a href="interoperability-with-other-frameworks.html#cb144-4" tabindex="-1"></a><span class="fu">print</span>(giottoFromSPE)</span></code></pre></div>
-<pre><code>## An object of class giotto 
-## &gt;Active spat_unit:  cell 
-## &gt;Active feat_type:  rna 
-## [SUBCELLULAR INFO]
-## [AGGREGATE INFO]
-## expression -----------------------
-##   [cell][rna] raw logcounts scaled_rna_cell
-## spatial locations ----------------
-##   [cell] raw
-## spatial networks -----------------
-##   [cell] Delaunay_network
-## dim reduction --------------------
-##   [cell][rna] pca custom_pca umap custom_umap tsne
-## nearest neighbor networks --------
-##   [cell][rna] sNN.pca custom_NN spatial_network
-## 
-## 
-## Use objHistory() to see steps and params used</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="interoperability-with-other-frameworks.html#cb7-1" tabindex="-1"></a>giottoFromSPE <span class="ot">&lt;-</span> <span class="fu">spatialExperimentToGiotto</span>(<span class="at">spe =</span> spe, </span>
+<span id="cb7-2"><a href="interoperability-with-other-frameworks.html#cb7-2" tabindex="-1"></a>                                           <span class="at">python_path =</span> <span class="cn">NULL</span>, </span>
+<span id="cb7-3"><a href="interoperability-with-other-frameworks.html#cb7-3" tabindex="-1"></a>                                           <span class="at">sp_network =</span> <span class="st">&quot;Delaunay_network&quot;</span>)</span>
+<span id="cb7-4"><a href="interoperability-with-other-frameworks.html#cb7-4" tabindex="-1"></a><span class="fu">print</span>(giottoFromSPE)</span></code></pre></div>
 </div>
-<div id="plotting-top-genes-from-nnsvg-in-giotto" class="section level3 hasAnchor" number="15.3.2">
-<h3><span class="header-section-number">15.3.2</span> Plotting top genes from nnSVG in Giotto<a href="interoperability-with-other-frameworks.html#plotting-top-genes-from-nnsvg-in-giotto" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="plotting-top-genes-from-nnsvg-in-giotto" class="section level3 hasAnchor" number="14.3.2">
+<h3><span class="header-section-number">14.3.2</span> Plotting top genes from nnSVG in Giotto<a href="interoperability-with-other-frameworks.html#plotting-top-genes-from-nnsvg-in-giotto" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Now, we visualize the genes previously identified in the SpatialExperiment object using the nnSVG package within the Giotto toolkit, leveraging the converted Giotto object.</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="interoperability-with-other-frameworks.html#cb146-1" tabindex="-1"></a>ext_spatial_genes <span class="ot">&lt;-</span> <span class="fu">getFeatureMetadata</span>(giottoFromSPE, <span class="at">output =</span> <span class="st">&quot;data.table&quot;</span>)</span>
-<span id="cb146-2"><a href="interoperability-with-other-frameworks.html#cb146-2" tabindex="-1"></a>ext_spatial_genes <span class="ot">&lt;-</span> ext_spatial_genes[<span class="fu">order</span>(ext_spatial_genes<span class="sc">$</span>rank)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>], ]<span class="sc">$</span>feat_ID</span></code></pre></div>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="interoperability-with-other-frameworks.html#cb147-1" tabindex="-1"></a><span class="fu">spatFeatPlot2D</span>(giottoFromSPE, </span>
-<span id="cb147-2"><a href="interoperability-with-other-frameworks.html#cb147-2" tabindex="-1"></a>               <span class="at">expression_values =</span> <span class="st">&#39;scaled_rna_cell&#39;</span>,</span>
-<span id="cb147-3"><a href="interoperability-with-other-frameworks.html#cb147-3" tabindex="-1"></a>               <span class="at">feats =</span> ext_spatial_genes[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], </span>
-<span id="cb147-4"><a href="interoperability-with-other-frameworks.html#cb147-4" tabindex="-1"></a>               <span class="at">point_size =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="img/03_session4/ext_spatial_genes.png" width="100%" /></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="interoperability-with-other-frameworks.html#cb8-1" tabindex="-1"></a>ext_spatial_genes <span class="ot">&lt;-</span> <span class="fu">getFeatureMetadata</span>(giottoFromSPE, <span class="at">output =</span> <span class="st">&quot;data.table&quot;</span>)</span>
+<span id="cb8-2"><a href="interoperability-with-other-frameworks.html#cb8-2" tabindex="-1"></a>ext_spatial_genes <span class="ot">&lt;-</span> ext_spatial_genes[<span class="fu">order</span>(ext_spatial_genes<span class="sc">$</span>rank)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>], ]<span class="sc">$</span>feat_ID</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="interoperability-with-other-frameworks.html#cb9-1" tabindex="-1"></a><span class="fu">spatFeatPlot2D</span>(giottoFromSPE, </span>
+<span id="cb9-2"><a href="interoperability-with-other-frameworks.html#cb9-2" tabindex="-1"></a>               <span class="at">expression_values =</span> <span class="st">&#39;scaled_rna_cell&#39;</span>,</span>
+<span id="cb9-3"><a href="interoperability-with-other-frameworks.html#cb9-3" tabindex="-1"></a>               <span class="at">feats =</span> ext_spatial_genes[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], </span>
+<span id="cb9-4"><a href="interoperability-with-other-frameworks.html#cb9-4" tabindex="-1"></a>               <span class="at">point_size =</span> <span class="dv">2</span>)</span></code></pre></div>
 </div>
 </div>
-<div id="seurat" class="section level2 hasAnchor" number="15.4">
-<h2><span class="header-section-number">15.4</span> Seurat<a href="interoperability-with-other-frameworks.html#seurat" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="seurat" class="section level2 hasAnchor" number="14.4">
+<h2><span class="header-section-number">14.4</span> Seurat<a href="interoperability-with-other-frameworks.html#seurat" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The process of conversion between Giotto and Seurat relies on four main functions. <code>giottoToSeuratV4</code> and <code>seuratToGiottoV4</code> are designed for Seurat version 4, whereas <code>giottoToSeuratV5</code> and <code>seuratToGiottoV5</code> are specifically for Seurat version 5. In this demonstration, we will only cover the conversion between Seurat version 5 and Giotto.</p>
-<div id="giotto-to-seurat" class="section level3 hasAnchor" number="15.4.1">
-<h3><span class="header-section-number">15.4.1</span> Giotto to Seurat<a href="interoperability-with-other-frameworks.html#giotto-to-seurat" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="giotto-to-seurat" class="section level3 hasAnchor" number="14.4.1">
+<h3><span class="header-section-number">14.4.1</span> Giotto to Seurat<a href="interoperability-with-other-frameworks.html#giotto-to-seurat" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To convert Giotto object to Seurat V5 object, we first load required libraries and use the function <code>giottoToSeuratV5()</code> function</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="interoperability-with-other-frameworks.html#cb148-1" tabindex="-1"></a><span class="fu">library</span>(Seurat)</span></code></pre></div>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="interoperability-with-other-frameworks.html#cb149-1" tabindex="-1"></a>gToS <span class="ot">&lt;-</span> <span class="fu">giottoToSeuratV5</span>(<span class="at">gobject =</span> gobject, <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="interoperability-with-other-frameworks.html#cb10-1" tabindex="-1"></a><span class="fu">library</span>(Seurat)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="interoperability-with-other-frameworks.html#cb11-1" tabindex="-1"></a>gToS <span class="ot">&lt;-</span> <span class="fu">giottoToSeuratV5</span>(<span class="at">gobject =</span> gobject, <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>)</span></code></pre></div>
 </div>
 </div>
-<div id="anndataspatialdata" class="section level2 hasAnchor" number="15.5">
-<h2><span class="header-section-number">15.5</span> AnnData/SpatialData<a href="interoperability-with-other-frameworks.html#anndataspatialdata" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="anndataspatialdata" class="section level2 hasAnchor" number="14.5">
+<h2><span class="header-section-number">14.5</span> AnnData/SpatialData<a href="interoperability-with-other-frameworks.html#anndataspatialdata" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To convert the giotto object to annData, we use the Giotto’s function “giottoToAnnData()”</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="interoperability-with-other-frameworks.html#cb150-1" tabindex="-1"></a>gToAnnData <span class="ot">&lt;-</span> <span class="fu">giottoToAnnData</span>(gobject)</span></code></pre></div>
-<pre><code>## X  (624, 634)
-## lay  (624, 634)
-## &lt;class &#39;scipy.sparse._csr.csr_matrix&#39;&gt;
-## X  (624, 634)
-## lay  (624, 634)
-## &lt;class &#39;numpy.ndarray&#39;&gt;</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="interoperability-with-other-frameworks.html#cb12-1" tabindex="-1"></a>gToAnnData <span class="ot">&lt;-</span> <span class="fu">giottoToAnnData</span>(gobject)</span></code></pre></div>
 <p>already nn in giotto
 for giotto
 generate nn network in giotto and use it in anndata for visualization
