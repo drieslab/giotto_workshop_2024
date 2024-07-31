@@ -9,13 +9,13 @@ Giotto facilitates seamless interoperability with various tools, including Seura
 ## Load Giotto object
 To begin the interoperability of a Giotto object with other objects, we first load the required libraries and a Giotto mini object. We then continue with the conversion process:
 
-```{r}
+```{r, eval=FALSE}
 library(Giotto)
 library(GiottoData)
 ```
 Here we load Giotto mini Visium object to continue with the interoperability.
 
-```{r, message=FALSE, warning=FALSE}
+```{r, eval=FALSE, message=FALSE, warning=FALSE}
 gobject <- GiottoData::loadGiottoMini("visium")
 ```
 
@@ -24,7 +24,7 @@ The Giotto package is interoperable with SpatialExperiment, extending its functi
 
 To start the conversion of a Giotto mini Visium object to a SpatialExperiment object, we first load the required libraries.
 
-```{r, message=FALSE, warning=FALSE}
+```{r, eval=FALSE, message=FALSE, warning=FALSE}
 library(SpatialExperiment)
 library(ggspavis)
 library(pheatmap)
@@ -36,20 +36,20 @@ library(nnSVG)
 ### Convert Giotto Object to SpatialExperiment Object
 To convert the Giotto object to a SpatialExperiment object, we use the giottoToSpatialExperiment() function.
 
-```{r, message=FALSE, warning=FALSE}
+```{r, eval=FALSE, message=FALSE, warning=FALSE}
 gspe <- giottoToSpatialExperiment(gobject)
 ```
 
 The converter function returns a separate SpatialExperiment object for each spatial unit. The output is a list of objects (one for each unit), and we select the first object for downstream use.
 
-```{r}
+```{r, eval=FALSE}
 spe <- gspe[[1]]
 ```
 
 ## Identify top spatially variable genes with nnSVG
 We employ the nnSVG package to identify the top spatially variable genes in our SpatialExperiment object.Covariates can be added to our model; in this example, we use Leiden clustering labels as a covariate. These clustering results were initially computed using the Giotto suite and then transferred to the converted SpatialExperiment object.
 
-```{r}
+```{r, eval=FALSE}
 # One of the assays should be "logcounts"
 # We rename the normalized assay to "logcounts"
 assayNames(spe)[[2]] <- "logcounts"
@@ -68,7 +68,7 @@ rowData(spe)[order(rowData(spe)$rank)[1:10], ]$feat_ID
 ### Conversion of SpatialExperiment object back to Giotto
 We then convert the processed SpatialExperiment object back into a Giotto object for further downstream analysis using the Giotto suite. This is done using the `spatialExperimentToGiotto` function, where we explicitly specify the spatial network from the SpatialExperiment object.
 
-```{r, warning=FALSE, message=FALSE}
+```{r, eval=FALSE, warning=FALSE, message=FALSE}
 giottoFromSPE <- spatialExperimentToGiotto(spe = spe, 
                                            python_path = NULL, 
                                            sp_network = "Delaunay_network")
@@ -78,7 +78,7 @@ print(giottoFromSPE)
 ### Plotting top genes from nnSVG in Giotto 
 Now, we visualize the genes previously identified in the SpatialExperiment object using the nnSVG package within the Giotto toolkit, leveraging the converted Giotto object.
 
-```{r, warning=FALSE}
+```{r, eval=FALSE, warning=FALSE}
 ext_spatial_genes <- getFeatureMetadata(giottoFromSPE, output = "data.table")
 ext_spatial_genes <- ext_spatial_genes[order(ext_spatial_genes$rank)[1:10], ]$feat_ID
 ```
@@ -90,7 +90,7 @@ spatFeatPlot2D(giottoFromSPE,
                point_size = 2)
 ```
 
-```{r, echo=FALSE, out.width="100%"}
+```{r, eval=FALSE, echo=FALSE, out.width="100%"}
 knitr::include_graphics("img/03_session4/ext_spatial_genes.png")
 ```
 
@@ -101,11 +101,11 @@ The process of conversion between Giotto and Seurat relies on four main function
 ### Giotto to Seurat
 
 To convert Giotto object to Seurat V5 object, we first load required libraries and use the function `giottoToSeuratV5()` function 
-```{r, message=FALSE, warning=FALSE}
+```{r, eval=FALSE, message=FALSE, warning=FALSE}
 library(Seurat)
 ```
 
-```{r, warning=FALSE, message=FALSE}
+```{r, eval=FALSE, warning=FALSE, message=FALSE}
 gToS <- giottoToSeuratV5(gobject = gobject, spat_unit = "cell")
 ```
 
@@ -113,7 +113,7 @@ gToS <- giottoToSeuratV5(gobject = gobject, spat_unit = "cell")
 
 To convert the giotto object to annData, we use the Giotto's function "giottoToAnnData()"
 
-```{r, warning=FALSE, message=FALSE}
+```{r, eval=FALSE, warning=FALSE, message=FALSE}
 gToAnnData <- giottoToAnnData(gobject)
 ```
 already nn in giotto
