@@ -55,7 +55,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -407,14 +407,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>August 7th 2024</p>
 <div id="kriging" class="section level2 hasAnchor" number="16.1">
 <h2><span class="header-section-number">16.1</span> Kriging<a href="interactivity-with-the-rspatial-ecosystem.html#kriging" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Low resolution spatial data typically covers multiple cells making it difficult to
-delineate the cell contribution to gene expression. Using a process called kriging
-we can interpolate gene expression at the single cell levels from low resolution
+<p>Low resolution spatial data typically covers multiple cells making it difficult to delineate the cell contribution to gene expression. Using a process called kriging we can interpolate gene expression at the single cell levels from low resolution
 datasets.</p>
-<p>Visium datasets require a high resolution H&amp;E or IF image to align spots to. Using
-these images we can identify individual nuclei and cells to be used for kriging. Identifying
-nuclei is outside the scope of the current tutorial but is required to perform kriging.
-Tutorials can found here for H&amp;E and IF.</p>
+<p>Visium datasets require a high resolution H&amp;E or IF image to align spots to. Using these images we can identify individual nuclei and cells to be used for kriging. Identifying nuclei is outside the scope of the current tutorial but is required to perform kriging.</p>
+<p>Tutorials can found here for H&amp;E and IF.</p>
 <div id="dataset" class="section level3 hasAnchor" number="16.1.1">
 <h3><span class="header-section-number">16.1.1</span> Dataset<a href="interactivity-with-the-rspatial-ecosystem.html#dataset" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For this tutorial we’ll be using the mouse brain dataset described in section 6.</p>
@@ -428,21 +424,25 @@ Tutorials can found here for H&amp;E and IF.</p>
 <span id="cb184-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb184-3" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">&quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz&quot;</span>,</span>
 <span id="cb184-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb184-4" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="st">&quot;data/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning in download.file(url =
-## &quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz&quot;, : URL
-## https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz: cannot
-## open destfile &#39;data/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz&#39;, reason &#39;No such file or directory&#39;</code></pre>
+## &quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz&quot;,
+## : URL
+## https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz:
+## cannot open destfile &#39;data/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz&#39;, reason &#39;No
+## such file or directory&#39;</code></pre>
 <pre><code>## Warning in download.file(url =
-## &quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz&quot;, :
-## download had nonzero exit status</code></pre>
+## &quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz&quot;,
+## : download had nonzero exit status</code></pre>
 <div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb187-1" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">&quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_spatial.tar.gz&quot;</span>,</span>
 <span id="cb187-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb187-2" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="st">&quot;data/V1_Adult_Mouse_Brain_spatial.tar.gz&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning in download.file(url =
-## &quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_spatial.tar.gz&quot;, : URL
-## https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_spatial.tar.gz: cannot open destfile
-## &#39;data/V1_Adult_Mouse_Brain_spatial.tar.gz&#39;, reason &#39;No such file or directory&#39;</code></pre>
+## &quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_spatial.tar.gz&quot;,
+## : URL
+## https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_spatial.tar.gz:
+## cannot open destfile &#39;data/V1_Adult_Mouse_Brain_spatial.tar.gz&#39;, reason &#39;No such file or
+## directory&#39;</code></pre>
 <pre><code>## Warning in download.file(url =
-## &quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_spatial.tar.gz&quot;, : download had
-## nonzero exit status</code></pre>
+## &quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_spatial.tar.gz&quot;,
+## : download had nonzero exit status</code></pre>
 <p>After downloading, unzip the gz files. You should get the “raw_feature_bc_matrix” and “spatial” folders inside “data/”.</p>
 <div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb190-1" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
 <span id="cb190-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb190-2" tabindex="-1"></a></span>

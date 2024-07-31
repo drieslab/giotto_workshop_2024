@@ -55,7 +55,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -407,7 +407,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>August 7th 2024</p>
 <div id="objective-1" class="section level2 hasAnchor" number="11.1">
 <h2><span class="header-section-number">11.1</span> Objective<a href="working-with-multiple-samples.html#objective-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This tutorial demonstrates how to incorporate multiple datasets into a single Giotto object and harmonize expression across datasets.</p>
+<p>Giotto allows us to group objects into a single object that we can analyze together as a single object. Datasets can be spatially distributed in the x, y or z directions. This can be used to create 3D datasets using the Z plane or analyze grouped datasets such as multiple replicates or samples of the same type. Whilst we can integrate multiple datasets, batch effects from samples can impair integration. More complex integration is sometimes required to integrate and cluster samples as one. An example of an integration method is <a href="https://www.nature.com/articles/s41592-019-0619-0">Harmony</a> integration, which will be explained in greater detail later in this tutorial.</p>
+<p>The following tutorial will explore integrating two visium datasets together</p>
 </div>
 <div id="background-1" class="section level2 hasAnchor" number="11.2">
 <h2><span class="header-section-number">11.2</span> Background<a href="working-with-multiple-samples.html#background-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -666,7 +667,7 @@ Figure 11.10: Tissue contribution for leiden clustering for the normal prostate 
 </div>
 <div id="perform-harmony-and-default-workflows" class="section level2 hasAnchor" number="11.8">
 <h2><span class="header-section-number">11.8</span> Perform Harmony and default workflows<a href="working-with-multiple-samples.html#perform-harmony-and-default-workflows" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We can use harmony to integrate multiple datasets, grouping equivelent cell types between samples. This can help overcome batch effects, especially when samples are processed separately.</p>
+<p>We can use harmony to integrate multiple datasets, grouping equivelent cell types between samples. Harmony is an algorithm that iteratively adjusts cell coordinates in a reduced-dimensional space to correct for dataset-specific effects. It uses fuzzy clustering to assign cells to multiple clusters, calculates dataset-specific correction factors, and applies these corrections to each cell, repeating the process until the influence of the dataset diminishes.</p>
 <div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="working-with-multiple-samples.html#cb118-1" tabindex="-1"></a><span class="fu">library</span>(harmony)</span>
 <span id="cb118-2"><a href="working-with-multiple-samples.html#cb118-2" tabindex="-1"></a></span>
 <span id="cb118-3"><a href="working-with-multiple-samples.html#cb118-3" tabindex="-1"></a><span class="do">## run harmony integration</span></span>
