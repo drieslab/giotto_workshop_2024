@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="working-with-multiple-samples.html"/>
-<link rel="next" href="image-transforms.html"/>
+<link rel="next" href="multi-omics-integration.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -55,7 +55,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -135,7 +135,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Giotto Workshop 2024</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Giotto Suite Workshop 2024</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#instructors"><i class="fa fa-check"></i><b>1.1</b> Instructors</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#topics-and-schedule"><i class="fa fa-check"></i><b>1.2</b> Topics and Schedule:</a></li>
@@ -149,13 +149,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.2.1" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#why-do-we-need-spatial-omics-technologies"><i class="fa fa-check"></i><b>2.2.1</b> Why do we need spatial omics technologies?</a></li>
 <li class="chapter" data-level="2.2.2" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#what-is-spatial-omics"><i class="fa fa-check"></i><b>2.2.2</b> What is spatial omics?</a></li>
 <li class="chapter" data-level="2.2.3" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#what-are-the-main-spatial-omics-technologies"><i class="fa fa-check"></i><b>2.2.3</b> What are the main spatial omics technologies?</a></li>
-<li class="chapter" data-level="2.2.4" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#other-spatial-omics-atac-seq-cutrun-lipidomics-etc"><i class="fa fa-check"></i><b>2.2.4</b> Other Spatial omics: ATAC-seq, CUT&amp;RUN, lipidomics, etc</a></li>
+<li class="chapter" data-level="2.2.4" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#other-spatial-omics-atac-seq-cuttag-lipidomics-etc"><i class="fa fa-check"></i><b>2.2.4</b> Other Spatial omics: ATAC-seq, CUT&amp;Tag, lipidomics, etc</a></li>
 <li class="chapter" data-level="2.2.5" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#what-are-the-different-types-of-spatial-downstream-analyses"><i class="fa fa-check"></i><b>2.2.5</b> What are the different types of spatial downstream analyses?</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html"><i class="fa fa-check"></i><b>3</b> Introduction to the Giotto package</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#slides"><i class="fa fa-check"></i><b>3.1</b> Slides</a></li>
+<li class="chapter" data-level="3.1" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#presentation-1"><i class="fa fa-check"></i><b>3.1</b> Presentation</a></li>
 <li class="chapter" data-level="3.2" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#ecosystem"><i class="fa fa-check"></i><b>3.2</b> Ecosystem</a></li>
 <li class="chapter" data-level="3.3" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#installation-python-environment"><i class="fa fa-check"></i><b>3.3</b> Installation + python environment</a></li>
 <li class="chapter" data-level="3.4" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#giotto-instructions"><i class="fa fa-check"></i><b>3.4</b> Giotto instructions</a></li>
@@ -264,70 +264,125 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="11" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html"><i class="fa fa-check"></i><b>11</b> Working with multiple samples</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#create-individual-giotto-objects"><i class="fa fa-check"></i><b>11.1</b> Create individual giotto objects</a></li>
-<li class="chapter" data-level="11.2" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#join-giotto-objects"><i class="fa fa-check"></i><b>11.2</b> Join Giotto Objects</a></li>
-<li class="chapter" data-level="11.3" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#perform-harmony-and-default-workflows"><i class="fa fa-check"></i><b>11.3</b> Perform Harmony and default workflows</a></li>
-<li class="chapter" data-level="11.4" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#visualizations-1"><i class="fa fa-check"></i><b>11.4</b> Visualizations</a></li>
+<li class="chapter" data-level="11.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#objective-1"><i class="fa fa-check"></i><b>11.1</b> Objective</a></li>
+<li class="chapter" data-level="11.2" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#background-1"><i class="fa fa-check"></i><b>11.2</b> Background</a></li>
+<li class="chapter" data-level="11.3" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#create-individual-giotto-objects"><i class="fa fa-check"></i><b>11.3</b> Create individual giotto objects</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#download-the-data"><i class="fa fa-check"></i><b>11.3.1</b> Download the data</a></li>
+<li class="chapter" data-level="11.3.2" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#create-giotto-instructions"><i class="fa fa-check"></i><b>11.3.2</b> create giotto instructions</a></li>
+<li class="chapter" data-level="11.3.3" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#load-visium-data-into-giotto"><i class="fa fa-check"></i><b>11.3.3</b> load visium data into Giotto</a></li>
+<li class="chapter" data-level="11.3.4" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#healthy-prostate-tissue-coverage"><i class="fa fa-check"></i><b>11.3.4</b> Healthy prostate tissue coverage</a></li>
+<li class="chapter" data-level="11.3.5" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#adenocarcinoma-prostate-tissue-coverage"><i class="fa fa-check"></i><b>11.3.5</b> Adenocarcinoma prostate tissue coverage</a></li>
+<li class="chapter" data-level="11.3.6" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#showing-the-data-strucutre-for-the-inidividual-objects"><i class="fa fa-check"></i><b>11.3.6</b> Showing the data strucutre for the inidividual objects</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#join-giotto-objects"><i class="fa fa-check"></i><b>11.4</b> Join Giotto Objects</a></li>
+<li class="chapter" data-level="11.5" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#visualizing-combined-datasets"><i class="fa fa-check"></i><b>11.5</b> Visualizing combined datasets</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#vizualizing-in-the-same-plot"><i class="fa fa-check"></i><b>11.5.1</b> Vizualizing in the same plot</a></li>
+<li class="chapter" data-level="11.5.2" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#vizualizing-on-separate-plots"><i class="fa fa-check"></i><b>11.5.2</b> Vizualizing on separate plots</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#splitting-combined-dataset"><i class="fa fa-check"></i><b>11.6</b> Splitting combined dataset</a></li>
+<li class="chapter" data-level="11.7" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#analyzing-joined-objects"><i class="fa fa-check"></i><b>11.7</b> Analyzing joined objects</a>
+<ul>
+<li class="chapter" data-level="11.7.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#normalization-and-adding-statistics"><i class="fa fa-check"></i><b>11.7.1</b> Normalization and adding statistics</a></li>
+<li class="chapter" data-level="11.7.2" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#clustering-the-datasets"><i class="fa fa-check"></i><b>11.7.2</b> Clustering the datasets</a></li>
+<li class="chapter" data-level="11.7.3" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#vizualizing-spatial-location-of-clusters"><i class="fa fa-check"></i><b>11.7.3</b> Vizualizing spatial location of clusters</a></li>
+<li class="chapter" data-level="11.7.4" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#vizualizing-tissue-contribution-to-clusters"><i class="fa fa-check"></i><b>11.7.4</b> Vizualizing tissue contribution to clusters</a></li>
+</ul></li>
+<li class="chapter" data-level="11.8" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#perform-harmony-and-default-workflows"><i class="fa fa-check"></i><b>11.8</b> Perform Harmony and default workflows</a>
+<ul>
+<li class="chapter" data-level="11.8.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#clustering-harmonized-object"><i class="fa fa-check"></i><b>11.8.1</b> Clustering harmonized object</a></li>
+<li class="chapter" data-level="11.8.2" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#vizualizing-the-tissue-contribution"><i class="fa fa-check"></i><b>11.8.2</b> Vizualizing the tissue contribution</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html"><i class="fa fa-check"></i><b>12</b> Spatial multi-modal analysis</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#overview-1"><i class="fa fa-check"></i><b>12.1</b> Overview</a>
+<li class="chapter" data-level="12.1" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#overview-1"><i class="fa fa-check"></i><b>12.1</b> Overview</a></li>
+<li class="chapter" data-level="12.2" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-manipulation"><i class="fa fa-check"></i><b>12.2</b> Spatial manipulation</a>
 <ul>
-<li class="chapter" data-level="12.1.1" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-transforms-functions"><i class="fa fa-check"></i><b>12.1.1</b> Spatial transforms functions:</a></li>
-<li class="chapter" data-level="12.1.2" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-utilities"><i class="fa fa-check"></i><b>12.1.2</b> Spatial utilities:</a></li>
-<li class="chapter" data-level="12.1.3" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-classes"><i class="fa fa-check"></i><b>12.1.3</b> Spatial classes:</a></li>
+<li class="chapter" data-level="12.2.1" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-transforms"><i class="fa fa-check"></i><b>12.2.1</b> Spatial transforms:</a></li>
+<li class="chapter" data-level="12.2.2" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-utilities"><i class="fa fa-check"></i><b>12.2.2</b> Spatial utilities:</a></li>
+<li class="chapter" data-level="12.2.3" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-classes"><i class="fa fa-check"></i><b>12.2.3</b> Spatial classes:</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#image-transforms"><i class="fa fa-check"></i><b>12.3</b> Image transforms</a></li>
+<li class="chapter" data-level="12.4" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#co-registration-of-datasets"><i class="fa fa-check"></i><b>12.4</b> Co-registration of datasets</a></li>
+<li class="chapter" data-level="12.5" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#examples-in-giotto-suite-manuscript"><i class="fa fa-check"></i><b>12.5</b> Examples in giotto suite manuscript</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html"><i class="fa fa-check"></i><b>13</b> Multi-omics integration</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#introduction-to-the-spatial-dataset-1"><i class="fa fa-check"></i><b>13.1</b> Introduction to the spatial dataset</a></li>
+<li class="chapter" data-level="13.2" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#download-dataset-1"><i class="fa fa-check"></i><b>13.2</b> Download dataset</a></li>
+<li class="chapter" data-level="13.3" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#create-the-giotto-object-1"><i class="fa fa-check"></i><b>13.3</b> Create the Giotto object</a></li>
+<li class="chapter" data-level="13.4" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#subset-on-spots-that-were-covered-by-tissue-1"><i class="fa fa-check"></i><b>13.4</b> Subset on spots that were covered by tissue</a></li>
+<li class="chapter" data-level="13.5" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#rna-processing"><i class="fa fa-check"></i><b>13.5</b> RNA processing</a></li>
+<li class="chapter" data-level="13.6" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#protein-processing"><i class="fa fa-check"></i><b>13.6</b> Protein processing</a></li>
+<li class="chapter" data-level="13.7" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#multi-omics-integration-1"><i class="fa fa-check"></i><b>13.7</b> Multi-omics integration</a></li>
+<li class="chapter" data-level="13.8" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#session-info-2"><i class="fa fa-check"></i><b>13.8</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html"><i class="fa fa-check"></i><b>14</b> Interoperability with other frameworks</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#load-giotto-object"><i class="fa fa-check"></i><b>14.1</b> Load Giotto object</a></li>
+<li class="chapter" data-level="14.2" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#spatialexperiment"><i class="fa fa-check"></i><b>14.2</b> SpatialExperiment</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#convert-giotto-object-to-spatialexperiment-object"><i class="fa fa-check"></i><b>14.2.1</b> Convert Giotto Object to SpatialExperiment Object</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#identify-top-spatially-variable-genes-with-nnsvg"><i class="fa fa-check"></i><b>14.3</b> Identify top spatially variable genes with nnSVG</a>
+<ul>
+<li class="chapter" data-level="14.3.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#conversion-of-spatialexperiment-object-back-to-giotto"><i class="fa fa-check"></i><b>14.3.1</b> Conversion of SpatialExperiment object back to Giotto</a></li>
+<li class="chapter" data-level="14.3.2" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#plotting-top-genes-from-nnsvg-in-giotto"><i class="fa fa-check"></i><b>14.3.2</b> Plotting top genes from nnSVG in Giotto</a></li>
+</ul></li>
+<li class="chapter" data-level="14.4" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#seurat"><i class="fa fa-check"></i><b>14.4</b> Seurat</a>
+<ul>
+<li class="chapter" data-level="14.4.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#giotto-to-seurat"><i class="fa fa-check"></i><b>14.4.1</b> Giotto to Seurat</a></li>
+</ul></li>
+<li class="chapter" data-level="14.5" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#anndataspatialdata"><i class="fa fa-check"></i><b>14.5</b> AnnData/SpatialData</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html"><i class="fa fa-check"></i><b>15</b> Interoperability with isolated tools</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#spatial-niche-trajectory-analysis"><i class="fa fa-check"></i><b>15.1</b> Spatial niche trajectory analysis</a>
+<ul>
+<li class="chapter" data-level="15.1.1" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#dataset-download"><i class="fa fa-check"></i><b>15.1.1</b> Dataset download</a></li>
+<li class="chapter" data-level="15.1.2" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#create-the-giotto-object-2"><i class="fa fa-check"></i><b>15.1.2</b> Create the Giotto object</a></li>
+<li class="chapter" data-level="15.1.3" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#visualization"><i class="fa fa-check"></i><b>15.1.3</b> visualization</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="image-transforms.html"><a href="image-transforms.html"><i class="fa fa-check"></i><b>13</b> Image transforms</a>
+<li class="chapter" data-level="16" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html"><i class="fa fa-check"></i><b>16</b> Interactivity with the R/Spatial ecosystem</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="image-transforms.html"><a href="image-transforms.html#co-registration-of-datasets"><i class="fa fa-check"></i><b>13.1</b> Co-registration of datasets</a></li>
-<li class="chapter" data-level="13.2" data-path="image-transforms.html"><a href="image-transforms.html#examples-in-giotto-suite-manuscript"><i class="fa fa-check"></i><b>13.2</b> Examples in giotto suite manuscript</a></li>
+<li class="chapter" data-level="16.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#kriging"><i class="fa fa-check"></i><b>16.1</b> Kriging</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#dataset"><i class="fa fa-check"></i><b>16.1.1</b> Dataset</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html"><i class="fa fa-check"></i><b>14</b> Multi-omics integration</a>
+<li class="chapter" data-level="16.2" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#importing-visium-data"><i class="fa fa-check"></i><b>16.2</b> Importing visium data</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#introduction-to-the-spatial-dataset-1"><i class="fa fa-check"></i><b>14.1</b> Introduction to the spatial dataset</a></li>
-<li class="chapter" data-level="14.2" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#download-dataset-1"><i class="fa fa-check"></i><b>14.2</b> Download dataset</a></li>
-<li class="chapter" data-level="14.3" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#create-the-giotto-object-1"><i class="fa fa-check"></i><b>14.3</b> Create the Giotto object</a></li>
-<li class="chapter" data-level="14.4" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#subset-on-spots-that-were-covered-by-tissue-1"><i class="fa fa-check"></i><b>14.4</b> Subset on spots that were covered by tissue</a></li>
-<li class="chapter" data-level="14.5" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#rna-processing"><i class="fa fa-check"></i><b>14.5</b> RNA processing</a></li>
-<li class="chapter" data-level="14.6" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#protein-processing"><i class="fa fa-check"></i><b>14.6</b> Protein processing</a></li>
-<li class="chapter" data-level="14.7" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#multi-omics-integration-1"><i class="fa fa-check"></i><b>14.7</b> Multi-omics integration</a></li>
-<li class="chapter" data-level="14.8" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#session-info-2"><i class="fa fa-check"></i><b>14.8</b> Session info</a></li>
+<li class="chapter" data-level="16.2.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#identifying-spatially-organized-features"><i class="fa fa-check"></i><b>16.2.1</b> Identifying spatially organized features</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html"><i class="fa fa-check"></i><b>15</b> Interoperability with other frameworks</a>
+<li class="chapter" data-level="16.3" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#adding-cell-polygons-to-giotto-object"><i class="fa fa-check"></i><b>16.3</b> Adding cell polygons to Giotto object</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#load-giotto-object"><i class="fa fa-check"></i><b>15.1</b> Load Giotto object</a></li>
-<li class="chapter" data-level="15.2" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#spatialexperiment"><i class="fa fa-check"></i><b>15.2</b> SpatialExperiment</a>
-<ul>
-<li class="chapter" data-level="15.2.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#convert-giotto-object-to-spatialexperiment-object"><i class="fa fa-check"></i><b>15.2.1</b> Convert Giotto Object to SpatialExperiment Object</a></li>
+<li class="chapter" data-level="16.3.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#read-in-the-poly-information"><i class="fa fa-check"></i><b>16.3.1</b> Read in the poly information</a></li>
+<li class="chapter" data-level="16.3.2" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#vizualizing-polygons"><i class="fa fa-check"></i><b>16.3.2</b> Vizualizing polygons</a></li>
+<li class="chapter" data-level="16.3.3" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#showing-giotto-object-prior-to-polygon-addition"><i class="fa fa-check"></i><b>16.3.3</b> Showing Giotto object prior to polygon addition</a></li>
+<li class="chapter" data-level="16.3.4" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#adding-polygons-to-giotto-object"><i class="fa fa-check"></i><b>16.3.4</b> Adding polygons to giotto object</a></li>
+<li class="chapter" data-level="16.3.5" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#check-polygon-information"><i class="fa fa-check"></i><b>16.3.5</b> Check polygon information</a></li>
 </ul></li>
-<li class="chapter" data-level="15.3" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#identify-top-spatially-variable-genes-with-nnsvg"><i class="fa fa-check"></i><b>15.3</b> Identify top spatially variable genes with nnSVG</a>
+<li class="chapter" data-level="16.4" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#performing-kriging"><i class="fa fa-check"></i><b>16.4</b> Performing kriging</a>
 <ul>
-<li class="chapter" data-level="15.3.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#conversion-of-spatialexperiment-object-back-to-giotto"><i class="fa fa-check"></i><b>15.3.1</b> Conversion of SpatialExperiment object back to Giotto</a></li>
-<li class="chapter" data-level="15.3.2" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#plotting-top-genes-from-nnsvg-in-giotto"><i class="fa fa-check"></i><b>15.3.2</b> Plotting top genes from nnSVG in Giotto</a></li>
+<li class="chapter" data-level="16.4.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#interpolating-features"><i class="fa fa-check"></i><b>16.4.1</b> Interpolating features</a></li>
+<li class="chapter" data-level="16.4.2" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#expression-overlap"><i class="fa fa-check"></i><b>16.4.2</b> Expression overlap</a></li>
 </ul></li>
-<li class="chapter" data-level="15.4" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#seurat"><i class="fa fa-check"></i><b>15.4</b> Seurat</a>
+<li class="chapter" data-level="16.5" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#reading-in-larger-dataset"><i class="fa fa-check"></i><b>16.5</b> Reading in larger dataset</a></li>
+<li class="chapter" data-level="16.6" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#analyzing-interpolated-features"><i class="fa fa-check"></i><b>16.6</b> Analyzing interpolated features</a>
 <ul>
-<li class="chapter" data-level="15.4.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#giotto-to-seurat"><i class="fa fa-check"></i><b>15.4.1</b> Giotto to Seurat</a></li>
-</ul></li>
-<li class="chapter" data-level="15.5" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#anndataspatialdata"><i class="fa fa-check"></i><b>15.5</b> AnnData/SpatialData</a></li>
-</ul></li>
-<li class="chapter" data-level="16" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html"><i class="fa fa-check"></i><b>16</b> Interoperability with isolated tools</a>
-<ul>
-<li class="chapter" data-level="16.1" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#spatial-niche-trajectory-analysis"><i class="fa fa-check"></i><b>16.1</b> Spatial niche trajectory analysis</a>
-<ul>
-<li class="chapter" data-level="16.1.1" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#dataset-download"><i class="fa fa-check"></i><b>16.1.1</b> Dataset download</a></li>
-<li class="chapter" data-level="16.1.2" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#create-the-giotto-object-2"><i class="fa fa-check"></i><b>16.1.2</b> Create the Giotto object</a></li>
-<li class="chapter" data-level="16.1.3" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#visualization"><i class="fa fa-check"></i><b>16.1.3</b> visualization</a></li>
+<li class="chapter" data-level="16.6.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#filter-and-normalization"><i class="fa fa-check"></i><b>16.6.1</b> Filter and normalization</a></li>
+<li class="chapter" data-level="16.6.2" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#visualizing-gene-expression-from-interpolated-expression"><i class="fa fa-check"></i><b>16.6.2</b> Visualizing gene expression from interpolated expression</a></li>
+<li class="chapter" data-level="16.6.3" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#run-pca"><i class="fa fa-check"></i><b>16.6.3</b> Run PCA</a></li>
+<li class="chapter" data-level="16.6.4" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#clustering-1"><i class="fa fa-check"></i><b>16.6.4</b> Clustering</a></li>
+<li class="chapter" data-level="16.6.5" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#visualizing-clustering"><i class="fa fa-check"></i><b>16.6.5</b> Visualizing clustering</a></li>
+<li class="chapter" data-level="16.6.6" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#cropping-objects"><i class="fa fa-check"></i><b>16.6.6</b> Cropping objects</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html"><i class="fa fa-check"></i><b>17</b> Interactivity with the R/Spatial ecosystem</a>
+<li class="chapter" data-level="17" data-path="contributing-to-giotto.html"><a href="contributing-to-giotto.html"><i class="fa fa-check"></i><b>17</b> Contributing to Giotto</a>
 <ul>
-<li class="chapter" data-level="17.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#kriging"><i class="fa fa-check"></i><b>17.1</b> Kriging</a></li>
-</ul></li>
-<li class="chapter" data-level="18" data-path="contributing-to-giotto.html"><a href="contributing-to-giotto.html"><i class="fa fa-check"></i><b>18</b> Contributing to Giotto</a>
-<ul>
-<li class="chapter" data-level="18.1" data-path="contributing-to-giotto.html"><a href="contributing-to-giotto.html#contribution-guideline"><i class="fa fa-check"></i><b>18.1</b> Contribution guideline</a></li>
+<li class="chapter" data-level="17.1" data-path="contributing-to-giotto.html"><a href="contributing-to-giotto.html#contribution-guideline"><i class="fa fa-check"></i><b>17.1</b> Contribution guideline</a></li>
 </ul></li>
 </ul>
 
@@ -352,12 +407,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>August 7th 2024</p>
 <div id="overview-1" class="section level2 hasAnchor" number="12.1">
 <h2><span class="header-section-number">12.1</span> Overview<a href="spatial-multi-modal-analysis.html#overview-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Spatial transformations of data will become more and more important in the near future due to the fact that performing spatial analyses across any two sections of tissue from the same block will require that data to be spatially aligned into a common coordinate space. Minute differences during the sectioning process from the cutting motion to how long an FFPE section was floated can result in even neighboring sections being distorted when compared side-by-side.</p>
+<p>Spatial multimodal datasets are created when there is more than one modality available for a single piece of tissue. One way that these datasets can be assembled is by performing multiple spatial assays on closely adjacent tissue sections or ideally the same section. However, for these datasets, in addition to the usual expression space integration, we must also first spatially align them.</p>
+</div>
+<div id="spatial-manipulation" class="section level2 hasAnchor" number="12.2">
+<h2><span class="header-section-number">12.2</span> Spatial manipulation<a href="spatial-multi-modal-analysis.html#spatial-manipulation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Performing spatial analyses across any two sections of tissue from the same block requires that data to be spatially aligned into a common coordinate space. Minute differences during the sectioning process from the cutting motion to how long an FFPE section was floated can result in even neighboring sections being distorted when compared side-by-side.</p>
 <p>These differences make it difficult to assemble multislice and/or cross platform multimodal datasets into a cohesive 3D volume. The solution for this is to perform registration across either the dataset images or expression information. Based on the registration results, both the raster images and vector feature and polygon information can be aligned into a continuous whole.</p>
 <p>Ideally this registration will be a free deformation based on sets of control points or a deformation matrix, however affine transforms already provide a good approximation. In either case, <em>the transform or deformation applied must work in the same way across both raster and vector information.</em></p>
 <p>Giotto provides spatial classes and methods for easy manipulation of data with 2D affine transformations. These functionalities are all available from <em>GiottoClass</em>.</p>
-<div id="spatial-transforms-functions" class="section level3 hasAnchor" number="12.1.1">
-<h3><span class="header-section-number">12.1.1</span> Spatial transforms functions:<a href="spatial-multi-modal-analysis.html#spatial-transforms-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="spatial-transforms" class="section level3 hasAnchor" number="12.2.1">
+<h3><span class="header-section-number">12.2.1</span> Spatial transforms:<a href="spatial-multi-modal-analysis.html#spatial-transforms" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We support simple transformations and more complex affine transformations which can be used to combine and encode more than one simple transform.</p>
 <ul>
 <li><code>spatShift()</code> - translations</li>
@@ -369,8 +428,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>affine()</code> - affine matrix transform</li>
 </ul>
 </div>
-<div id="spatial-utilities" class="section level3 hasAnchor" number="12.1.2">
-<h3><span class="header-section-number">12.1.2</span> Spatial utilities:<a href="spatial-multi-modal-analysis.html#spatial-utilities" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="spatial-utilities" class="section level3 hasAnchor" number="12.2.2">
+<h3><span class="header-section-number">12.2.2</span> Spatial utilities:<a href="spatial-multi-modal-analysis.html#spatial-utilities" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Helpful functions for use alongside these spatial transforms are <code>ext()</code> for finding the spatial bounding box of where your data object is, <code>crop()</code> for cutting out a spatial region of the data, and <code>plot()</code> for <em>terra</em>/<em>base</em> plots of the data.</p>
 <ul>
 <li><code>ext()</code> - spatial extent or bounding box</li>
@@ -378,8 +437,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>plot()</code> - plot a spatial object</li>
 </ul>
 </div>
-<div id="spatial-classes" class="section level3 hasAnchor" number="12.1.3">
-<h3><span class="header-section-number">12.1.3</span> Spatial classes:<a href="spatial-multi-modal-analysis.html#spatial-classes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="spatial-classes" class="section level3 hasAnchor" number="12.2.3">
+<h3><span class="header-section-number">12.2.3</span> Spatial classes:<a href="spatial-multi-modal-analysis.html#spatial-classes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Giotto’s spatial subobjects respond to the above functions. The Giotto object itself can also be affine transformed.</p>
 <ul>
 <li><code>spatLocsObj</code> - xy centroids</li>
@@ -391,45 +450,80 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>affine2d</code> - affine matrix container</li>
 <li><code>giotto</code> - giotto analysis object</li>
 </ul>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="spatial-multi-modal-analysis.html#cb104-1" tabindex="-1"></a><span class="co"># load in data</span></span>
-<span id="cb104-2"><a href="spatial-multi-modal-analysis.html#cb104-2" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
-<span id="cb104-3"><a href="spatial-multi-modal-analysis.html#cb104-3" tabindex="-1"></a>g <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadGiottoMini</span>(<span class="st">&quot;vizgen&quot;</span>)</span>
-<span id="cb104-4"><a href="spatial-multi-modal-analysis.html#cb104-4" tabindex="-1"></a><span class="fu">activeSpatUnit</span>(g) <span class="ot">&lt;-</span> <span class="st">&quot;aggregate&quot;</span></span>
-<span id="cb104-5"><a href="spatial-multi-modal-analysis.html#cb104-5" tabindex="-1"></a>gpoly <span class="ot">&lt;-</span> <span class="fu">getPolygonInfo</span>(g, <span class="at">return_giottoPolygon =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb104-6"><a href="spatial-multi-modal-analysis.html#cb104-6" tabindex="-1"></a>gimg <span class="ot">&lt;-</span> <span class="fu">getGiottoImage</span>(g)</span></code></pre></div>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="spatial-multi-modal-analysis.html#cb105-1" tabindex="-1"></a><span class="co"># examples of the simple transforms using giottoPolygon</span></span>
-<span id="cb105-2"><a href="spatial-multi-modal-analysis.html#cb105-2" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb105-3"><a href="spatial-multi-modal-analysis.html#cb105-3" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>))</span>
-<span id="cb105-4"><a href="spatial-multi-modal-analysis.html#cb105-4" tabindex="-1"></a><span class="fu">plot</span>(gpoly)</span>
-<span id="cb105-5"><a href="spatial-multi-modal-analysis.html#cb105-5" tabindex="-1"></a>gpoly <span class="sc">|&gt;</span> <span class="fu">spatShift</span>(<span class="at">dx =</span> <span class="dv">1000</span>) <span class="sc">|&gt;</span> <span class="fu">plot</span>(<span class="at">main =</span> <span class="st">&quot;spatShift()&quot;</span>)</span>
-<span id="cb105-6"><a href="spatial-multi-modal-analysis.html#cb105-6" tabindex="-1"></a>gpoly <span class="sc">|&gt;</span> <span class="fu">spin</span>(<span class="dv">45</span>) <span class="sc">|&gt;</span> <span class="fu">plot</span>(<span class="at">main =</span> <span class="st">&quot;spin()&quot;</span>)</span>
-<span id="cb105-7"><a href="spatial-multi-modal-analysis.html#cb105-7" tabindex="-1"></a>gpoly <span class="sc">|&gt;</span> <span class="fu">rescale</span>(<span class="dv">10</span>) <span class="sc">|&gt;</span> <span class="fu">plot</span>(<span class="at">main =</span> <span class="st">&quot;rescale()&quot;</span>)</span>
-<span id="cb105-8"><a href="spatial-multi-modal-analysis.html#cb105-8" tabindex="-1"></a>gpoly <span class="sc">|&gt;</span> <span class="fu">flip</span>(<span class="at">direction =</span> <span class="st">&quot;vertical&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">plot</span>(<span class="at">main =</span> <span class="st">&quot;flip()&quot;</span>)</span>
-<span id="cb105-9"><a href="spatial-multi-modal-analysis.html#cb105-9" tabindex="-1"></a>gpoly <span class="sc">|&gt;</span> <span class="fu">t</span>() <span class="sc">|&gt;</span> <span class="fu">plot</span>(<span class="at">main =</span> <span class="st">&quot;t()&quot;</span>)</span>
-<span id="cb105-10"><a href="spatial-multi-modal-analysis.html#cb105-10" tabindex="-1"></a>gpoly <span class="sc">|&gt;</span> <span class="fu">shear</span>(<span class="at">fx =</span> <span class="fl">0.5</span>) <span class="sc">|&gt;</span> <span class="fu">plot</span>(<span class="at">main =</span> <span class="st">&quot;shear()&quot;</span>)</span>
-<span id="cb105-11"><a href="spatial-multi-modal-analysis.html#cb105-11" tabindex="-1"></a><span class="fu">par</span>(p)</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="spatial-multi-modal-analysis.html#cb121-1" tabindex="-1"></a><span class="co"># load in data</span></span>
+<span id="cb121-2"><a href="spatial-multi-modal-analysis.html#cb121-2" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
+<span id="cb121-3"><a href="spatial-multi-modal-analysis.html#cb121-3" tabindex="-1"></a>g <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadGiottoMini</span>(<span class="st">&quot;vizgen&quot;</span>)</span>
+<span id="cb121-4"><a href="spatial-multi-modal-analysis.html#cb121-4" tabindex="-1"></a><span class="fu">activeSpatUnit</span>(g) <span class="ot">&lt;-</span> <span class="st">&quot;aggregate&quot;</span></span>
+<span id="cb121-5"><a href="spatial-multi-modal-analysis.html#cb121-5" tabindex="-1"></a>gpoly <span class="ot">&lt;-</span> <span class="fu">getPolygonInfo</span>(g, <span class="at">return_giottoPolygon =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb121-6"><a href="spatial-multi-modal-analysis.html#cb121-6" tabindex="-1"></a>gimg <span class="ot">&lt;-</span> <span class="fu">getGiottoImage</span>(g)</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="spatial-multi-modal-analysis.html#cb122-1" tabindex="-1"></a><span class="co"># examples of the simple transforms using giottoPolygon</span></span>
+<span id="cb122-2"><a href="spatial-multi-modal-analysis.html#cb122-2" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">no.readonly =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb122-3"><a href="spatial-multi-modal-analysis.html#cb122-3" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>))</span>
+<span id="cb122-4"><a href="spatial-multi-modal-analysis.html#cb122-4" tabindex="-1"></a><span class="fu">plot</span>(gpoly)</span>
+<span id="cb122-5"><a href="spatial-multi-modal-analysis.html#cb122-5" tabindex="-1"></a>gpoly <span class="sc">|&gt;</span> <span class="fu">spatShift</span>(<span class="at">dx =</span> <span class="dv">1000</span>) <span class="sc">|&gt;</span> <span class="fu">plot</span>(<span class="at">main =</span> <span class="st">&quot;spatShift()&quot;</span>)</span>
+<span id="cb122-6"><a href="spatial-multi-modal-analysis.html#cb122-6" tabindex="-1"></a>gpoly <span class="sc">|&gt;</span> <span class="fu">spin</span>(<span class="dv">45</span>) <span class="sc">|&gt;</span> <span class="fu">plot</span>(<span class="at">main =</span> <span class="st">&quot;spin()&quot;</span>)</span>
+<span id="cb122-7"><a href="spatial-multi-modal-analysis.html#cb122-7" tabindex="-1"></a>gpoly <span class="sc">|&gt;</span> <span class="fu">rescale</span>(<span class="dv">10</span>) <span class="sc">|&gt;</span> <span class="fu">plot</span>(<span class="at">main =</span> <span class="st">&quot;rescale()&quot;</span>)</span>
+<span id="cb122-8"><a href="spatial-multi-modal-analysis.html#cb122-8" tabindex="-1"></a>gpoly <span class="sc">|&gt;</span> <span class="fu">flip</span>(<span class="at">direction =</span> <span class="st">&quot;vertical&quot;</span>) <span class="sc">|&gt;</span> <span class="fu">plot</span>(<span class="at">main =</span> <span class="st">&quot;flip()&quot;</span>)</span>
+<span id="cb122-9"><a href="spatial-multi-modal-analysis.html#cb122-9" tabindex="-1"></a>gpoly <span class="sc">|&gt;</span> <span class="fu">t</span>() <span class="sc">|&gt;</span> <span class="fu">plot</span>(<span class="at">main =</span> <span class="st">&quot;t()&quot;</span>)</span>
+<span id="cb122-10"><a href="spatial-multi-modal-analysis.html#cb122-10" tabindex="-1"></a>gpoly <span class="sc">|&gt;</span> <span class="fu">shear</span>(<span class="at">fx =</span> <span class="fl">0.5</span>) <span class="sc">|&gt;</span> <span class="fu">plot</span>(<span class="at">main =</span> <span class="st">&quot;shear()&quot;</span>)</span>
+<span id="cb122-11"><a href="spatial-multi-modal-analysis.html#cb122-11" tabindex="-1"></a><span class="fu">par</span>(p)</span></code></pre></div>
 <p><img src="img/03_session2/transforms.png" width="544" /></p>
 <p>Giotto also provides a utility <code>affine2d</code> class that can be created from any affine matrix.
 The <code>affine2d</code> can then be used to accumulate simple transforms that can be applied to spatial objects in a single step using <code>affine()</code></p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="spatial-multi-modal-analysis.html#cb106-1" tabindex="-1"></a><span class="co"># create affine2d</span></span>
-<span id="cb106-2"><a href="spatial-multi-modal-analysis.html#cb106-2" tabindex="-1"></a>aff <span class="ot">&lt;-</span> <span class="fu">affine</span>(<span class="fu">diag</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>)))</span>
-<span id="cb106-3"><a href="spatial-multi-modal-analysis.html#cb106-3" tabindex="-1"></a>aff <span class="ot">&lt;-</span> aff <span class="sc">|&gt;</span> </span>
-<span id="cb106-4"><a href="spatial-multi-modal-analysis.html#cb106-4" tabindex="-1"></a>    <span class="fu">spatShift</span>(<span class="at">dx =</span> <span class="dv">1000</span>) <span class="sc">|&gt;</span></span>
-<span id="cb106-5"><a href="spatial-multi-modal-analysis.html#cb106-5" tabindex="-1"></a>    <span class="fu">spin</span>(<span class="dv">45</span>) <span class="sc">|&gt;</span></span>
-<span id="cb106-6"><a href="spatial-multi-modal-analysis.html#cb106-6" tabindex="-1"></a>    <span class="fu">rescale</span>(<span class="dv">10</span>) <span class="sc">|&gt;</span></span>
-<span id="cb106-7"><a href="spatial-multi-modal-analysis.html#cb106-7" tabindex="-1"></a>    <span class="fu">flip</span>(<span class="at">direction =</span> <span class="st">&quot;vertical&quot;</span>) <span class="sc">|&gt;</span></span>
-<span id="cb106-8"><a href="spatial-multi-modal-analysis.html#cb106-8" tabindex="-1"></a>    <span class="fu">t</span>() <span class="sc">|&gt;</span></span>
-<span id="cb106-9"><a href="spatial-multi-modal-analysis.html#cb106-9" tabindex="-1"></a>    <span class="fu">shear</span>(<span class="at">fx =</span> <span class="fl">0.5</span>)</span>
-<span id="cb106-10"><a href="spatial-multi-modal-analysis.html#cb106-10" tabindex="-1"></a><span class="fu">force</span>(aff)</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="spatial-multi-modal-analysis.html#cb123-1" tabindex="-1"></a><span class="co"># create affine2d</span></span>
+<span id="cb123-2"><a href="spatial-multi-modal-analysis.html#cb123-2" tabindex="-1"></a>aff <span class="ot">&lt;-</span> <span class="fu">affine</span>()</span>
+<span id="cb123-3"><a href="spatial-multi-modal-analysis.html#cb123-3" tabindex="-1"></a>aff <span class="ot">&lt;-</span> aff <span class="sc">|&gt;</span> </span>
+<span id="cb123-4"><a href="spatial-multi-modal-analysis.html#cb123-4" tabindex="-1"></a>    <span class="fu">spatShift</span>(<span class="at">dx =</span> <span class="dv">1000</span>) <span class="sc">|&gt;</span></span>
+<span id="cb123-5"><a href="spatial-multi-modal-analysis.html#cb123-5" tabindex="-1"></a>    <span class="fu">spin</span>(<span class="dv">45</span>) <span class="sc">|&gt;</span></span>
+<span id="cb123-6"><a href="spatial-multi-modal-analysis.html#cb123-6" tabindex="-1"></a>    <span class="fu">rescale</span>(<span class="dv">10</span>) <span class="sc">|&gt;</span></span>
+<span id="cb123-7"><a href="spatial-multi-modal-analysis.html#cb123-7" tabindex="-1"></a>    <span class="fu">flip</span>(<span class="at">direction =</span> <span class="st">&quot;vertical&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb123-8"><a href="spatial-multi-modal-analysis.html#cb123-8" tabindex="-1"></a>    <span class="fu">t</span>() <span class="sc">|&gt;</span></span>
+<span id="cb123-9"><a href="spatial-multi-modal-analysis.html#cb123-9" tabindex="-1"></a>    <span class="fu">shear</span>(<span class="at">fx =</span> <span class="fl">0.5</span>)</span>
+<span id="cb123-10"><a href="spatial-multi-modal-analysis.html#cb123-10" tabindex="-1"></a><span class="fu">force</span>(aff)</span></code></pre></div>
 <pre><code>&lt;affine2d&gt;
 anchor    : -180, 180, -90, 90  (xmin, xmax, ymin, ymax)
 rotate    : -0.785398163397448  (rad)
 shear     : 0.5, 0  (x, y)
 scale     : 10, 10  (x, y)
 translate : 3.43401245619535e-13, 1000  (x, y)</code></pre>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="spatial-multi-modal-analysis.html#cb108-1" tabindex="-1"></a>gpoly <span class="sc">|&gt;</span> <span class="fu">affine</span>(aff) <span class="sc">|&gt;</span> <span class="fu">plot</span>(<span class="at">main =</span> <span class="st">&quot;affine()&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="spatial-multi-modal-analysis.html#cb125-1" tabindex="-1"></a>gpoly <span class="sc">|&gt;</span> <span class="fu">affine</span>(aff) <span class="sc">|&gt;</span> <span class="fu">plot</span>(<span class="at">main =</span> <span class="st">&quot;affine()&quot;</span>)</span></code></pre></div>
 <p><img src="img/03_session2/affine.png" width="350" /></p>
 </div>
+</div>
+<div id="image-transforms" class="section level2 hasAnchor" number="12.3">
+<h2><span class="header-section-number">12.3</span> Image transforms<a href="spatial-multi-modal-analysis.html#image-transforms" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Giotto uses <code>giottoLargeImages</code> as the core image class which is based on <em>terra</em> <code>SpatRaster</code>. Images are not loaded into memory when the object is generated and instead an amount of regular sampling appropriate to the zoom level requested is performed at time of plotting.</p>
+<p><code>spatShift()</code> and <code>rescale()</code> operations are supported by <em>terra</em> <code>SpatRaster</code>, and we inherit those functionalities. <code>spin()</code>, <code>flip()</code>, <code>t()</code>, <code>shear()</code>, <code>affine()</code> operations will coerce <code>giottoLargeImage</code> to <code>giottoAffineImage</code>, which is much the same, except it contains an <code>affine2d</code> object that tracks spatial manipulations performed, so that they can be applied through <code>magick::image_distort()</code> processing after sampled values are pulled into memory. <code>giottoAffineImage</code> also has alternative <code>ext()</code> and <code>crop()</code> methods so that those operations respect both the expected post-affine space and untransformed source image.</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="spatial-multi-modal-analysis.html#cb126-1" tabindex="-1"></a><span class="co"># affine transform of image info matches with polygon info</span></span>
+<span id="cb126-2"><a href="spatial-multi-modal-analysis.html#cb126-2" tabindex="-1"></a>gimg <span class="sc">|&gt;</span> <span class="fu">affine</span>(aff) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span>
+<span id="cb126-3"><a href="spatial-multi-modal-analysis.html#cb126-3" tabindex="-1"></a>gpoly <span class="sc">|&gt;</span> <span class="fu">affine</span>(aff) <span class="sc">|&gt;</span> </span>
+<span id="cb126-4"><a href="spatial-multi-modal-analysis.html#cb126-4" tabindex="-1"></a>    <span class="fu">plot</span>(<span class="at">add =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb126-5"><a href="spatial-multi-modal-analysis.html#cb126-5" tabindex="-1"></a>         <span class="at">border =</span> <span class="st">&quot;cyan&quot;</span>,</span>
+<span id="cb126-6"><a href="spatial-multi-modal-analysis.html#cb126-6" tabindex="-1"></a>         <span class="at">lwd =</span> <span class="fl">0.3</span>)</span></code></pre></div>
+<p><img src="img/03_session2/polys_and_image.png" width="350" /></p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="spatial-multi-modal-analysis.html#cb127-1" tabindex="-1"></a><span class="co"># affine of the giotto object</span></span>
+<span id="cb127-2"><a href="spatial-multi-modal-analysis.html#cb127-2" tabindex="-1"></a>g <span class="sc">|&gt;</span> <span class="fu">affine</span>(aff) <span class="sc">|&gt;</span> </span>
+<span id="cb127-3"><a href="spatial-multi-modal-analysis.html#cb127-3" tabindex="-1"></a>    <span class="fu">spatInSituPlotPoints</span>(</span>
+<span id="cb127-4"><a href="spatial-multi-modal-analysis.html#cb127-4" tabindex="-1"></a>        <span class="at">show_image =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb127-5"><a href="spatial-multi-modal-analysis.html#cb127-5" tabindex="-1"></a>        <span class="at">feats =</span> <span class="fu">list</span>(<span class="at">rna =</span> <span class="fu">c</span>(<span class="st">&quot;Adgrl1&quot;</span>, <span class="st">&quot;Gfap&quot;</span>, <span class="st">&quot;Ntrk3&quot;</span>, <span class="st">&quot;Slc17a7&quot;</span>)),</span>
+<span id="cb127-6"><a href="spatial-multi-modal-analysis.html#cb127-6" tabindex="-1"></a>        <span class="at">feats_color_code =</span> <span class="fu">rainbow</span>(<span class="dv">4</span>),</span>
+<span id="cb127-7"><a href="spatial-multi-modal-analysis.html#cb127-7" tabindex="-1"></a>        <span class="at">polygon_color =</span> <span class="st">&quot;cyan&quot;</span>,</span>
+<span id="cb127-8"><a href="spatial-multi-modal-analysis.html#cb127-8" tabindex="-1"></a>        <span class="at">polygon_line_size =</span> <span class="fl">0.1</span>,</span>
+<span id="cb127-9"><a href="spatial-multi-modal-analysis.html#cb127-9" tabindex="-1"></a>        <span class="at">point_size =</span> <span class="fl">0.1</span>,</span>
+<span id="cb127-10"><a href="spatial-multi-modal-analysis.html#cb127-10" tabindex="-1"></a>        <span class="at">use_overlap =</span> <span class="cn">FALSE</span></span>
+<span id="cb127-11"><a href="spatial-multi-modal-analysis.html#cb127-11" tabindex="-1"></a>    )</span></code></pre></div>
+<p><img src="img/03_session2/gobj_affine.png" width="350" /></p>
+<p>Currently <em>giotto</em> image objects are not fully compatible with .ome.tif files. <em>terra</em> which relies on <em>gdal</em> drivers for image loading will find that the Gtiff driver opens some .ome.tif images, but fails when certain compressions (notably JP2000 as used by 10x for their single-channel stains) are used.</p>
+</div>
+<div id="co-registration-of-datasets" class="section level2 hasAnchor" number="12.4">
+<h2><span class="header-section-number">12.4</span> Co-registration of datasets<a href="spatial-multi-modal-analysis.html#co-registration-of-datasets" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>text</p>
+</div>
+<div id="examples-in-giotto-suite-manuscript" class="section level2 hasAnchor" number="12.5">
+<h2><span class="header-section-number">12.5</span> Examples in giotto suite manuscript<a href="spatial-multi-modal-analysis.html#examples-in-giotto-suite-manuscript" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>text</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="spatial-multi-modal-analysis.html#cb128-1" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
+
 </div>
 </div>
             </section>
@@ -438,7 +532,7 @@ translate : 3.43401245619535e-13, 1000  (x, y)</code></pre>
         </div>
       </div>
 <a href="working-with-multiple-samples.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="image-transforms.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="multi-omics-integration.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
