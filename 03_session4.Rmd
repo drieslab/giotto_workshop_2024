@@ -39,7 +39,7 @@ library(dplyr)
 
 Now we convert the Giotto object to a Seurat V5 object and create violin and spatial feature plots to visualize the RNA count data.
 
-```{r, eval=FALSE}
+```{r eval=FALSE}
 gToS <- giottoToSeuratV5(gobject = gobject, spat_unit = "cell")
 
 plot1 <- VlnPlot(gToS, features = "nCount_rna", pt.size = 0.1) + NoLegend()
@@ -55,18 +55,17 @@ knitr::include_graphics("img/03_session4/1.png")
 #### Apply SCTransform
 We apply SCTransform to perform data transformation on the RNA assay: `SCTransform()` function.
 
-```{r, eval=FALSE , out.width="50%", fig.align="center"}
+```{r, eval=FALSE}
 gToS <- SCTransform(gToS, assay = "rna", verbose = FALSE)
 ```
 
 #### Dimension Reduction
 We perform Principal Component Analysis (PCA), find neighbors, and run UMAP for dimensionality reduction and clustering on the transformed Seurat object:
 
-```{r, eval=FALSE , out.width="50%", fig.align="center"}
+```{r, eval=FALSE}
 gToS <- RunPCA(gToS, assay = "SCT")
 gToS <- FindNeighbors(gToS, reduction = "pca", dims = 1:30)
 gToS <- RunUMAP(gToS, reduction = "pca", dims = 1:30)
-
 ```
 
 ### Conversion of Seurat object Back to Giotto Object
@@ -169,6 +168,7 @@ spe <- gspe[[1]]
 We employ the nnSVG package to identify the top spatially variable genes in our SpatialExperiment object. Covariates can be added to our model; in this example, we use Leiden clustering labels as a covariate:
 
 ```{r eval=FALSE}
+
 # One of the assays should be "logcounts"
 # We rename the normalized assay to "logcounts"
 assayNames(spe)[[2]] <- "logcounts"
@@ -189,6 +189,9 @@ We then convert the processed SpatialExperiment object back into a Giotto object
 
 ```{r, eval=FALSE}
 giottoFromSPE <- spatialExperimentToGiotto(spe = spe, python_path = "/share/pkg.7/python3/3.8.3/install/bin/python", sp_network = "Delaunay_network")
+giottoFromSPE <- spatialExperimentToGiotto(spe = spe, 
+                                           python_path = NULL, 
+                                           sp_network = "Delaunay_network")
 print(giottoFromSPE)
 ```
 
@@ -196,12 +199,18 @@ print(giottoFromSPE)
 Now, we visualize the genes previously identified in the SpatialExperiment object using the nnSVG package within the Giotto toolkit, leveraging the converted Giotto object.
 
 ```{r, eval=FALSE}
+
 ext_spatial_genes <- getFeatureMetadata(giottoFromSPE, output = "data.table")
 ext_spatial_genes <- ext_spatial_genes[order(ext_spatial_genes$rank)[1:10], ]$feat_ID
-
-spatFeatPlot2D(giottoFromSPE, expression_values = 'scaled_rna_cell',
-               feats = ext_spatial_genes[1:4], point_size = 2)
 ```
+
+```{r, eval=FALSE}
+spatFeatPlot2D(giottoFromSPE, 
+               expression_values = 'scaled_rna_cell',
+               feats = ext_spatial_genes[1:4], 
+               point_size = 2)
+```
+
 ```{r, echo=FALSE, out.width="80%", fig.align="center"}
 knitr::include_graphics("img/03_session4/4.png")
 ```
@@ -215,6 +224,7 @@ knitr::include_graphics("img/03_session4/anndata.png")
 
 ### Load Required Libraries
 To start, we need to load the necessary libraries, including `reticulate` for interfacing with Python.
+
 
 ```{r eval=FALSE}
 library(reticulate)
@@ -278,12 +288,12 @@ scanpy$tl$umap(adata)
 # Save the processed AnnData object
 adata$write("/projectnb/rd-spat/HOME/iamin1/RProjects/Giotto_workshop/Giotto/cell_rna_converted_gobject2.h5ad")
 processed_file_path <- "/projectnb/rd-spat/HOME/iamin1/RProjects/Giotto_workshop/Giotto/cell_rna_converted_gobject2.h5ad"
-
 ```
 
 ### Convert AnnData to Giotto
 
 Finally, we convert the processed AnnData object back into a Giotto object for further analysis using Giotto.
+
 
 ```{r eval=FALSE}
 giottoFromAnndata <- anndataToGiotto(anndata_path =  processed_file_path)

@@ -4,10 +4,21 @@ Jiaji George Chen
 
 August 5th 2024
 
+### Used packages
+```
+Giotto      GiottoClass     GiottoData      pak
+```
 
-```{r}
+```{r, eval=FALSE}
 save_dir <- "~/Documents/GitHub/giotto_workshop_2024/img/01_session4"
 ```
+
+## Overview
+
+*Giotto* has representations for both aggregated (cell by count) + xy(z) 
+information and subcellular polygon or mask information and transcript xy(z)
+or image information. A *Giotto* object can be set up from either of the two
+above sets of information.
 
 ## From matrix + locations
 
@@ -21,6 +32,11 @@ createGiottoObject()
 createGiottoObjectSubcellular()
 ```
 
+The above two methods accept data, converts them into Giotto's compatible
+formats, and then assembles the final giotto object.
+
+If desired you can also assemble a giotto object piece-wise after creating
+the Giotto subobjects manually.
 
 ## From piece-wise
 
@@ -31,8 +47,12 @@ g <- setGiotto(g, ??)
 
 ## Using convenience functions for popular technologies (Vizgen, Xenium, CosMx, …)
 
+There are also several convenience functions we provide for loading in data
+from popular platforms. Many of these will be touched on later during other
+sessions
 ```
 createGiottoVisiumObject()
+createGiottoVisiumHDObject()
 createGiottoXeniumObject()
 createGiottoCosMxObject()
 createGiottoMerscopeObject()
@@ -40,7 +60,18 @@ createGiottoMerscopeObject()
 
 ## Spatial plots
 
-some text
+Giotto has several spatial plotting functions.
+At the lowest level, you directly call `plot()` on several subobjects in order
+to see what they look like, particularly the ones containing spatial info.
+
+```{r, eval=FALSE}
+gpoints <- GiottoData::loadSubObjectMini("giottoPoints")
+gpoly <- GiottoData::loadSubObjectMini("giottoPolygon")
+spatlocs <- GiottoData::loadSubObjectMini("spatLocsObj")
+spatnet <- GiottoData::loadSubObjectMini("spatialNetworkObj")
+pca <- GiottoData::loadSubObjectMini("dimObj")
+plot(pca, dims = c(3,10))
+```
 
 ## Subsetting
 
@@ -55,7 +86,7 @@ some text
 Giotto makes available several mini objects to allow devs and users to work
 with easily loadable Giotto objects. These are small subsets of a larger
 dataset that often contain some worked through analyses and are fully functional.
-```{r}
+```{r, eval=FALSE}
 pak::pak("drieslab/GiottoData")
 ```
 

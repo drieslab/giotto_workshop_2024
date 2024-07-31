@@ -1,7 +1,7 @@
 ---
 title: "Workshop: Spatial multi-omics data analysis with Giotto Suite"
 author: "Ruben Dries, Jiaji George Chen, Joselyn Cristina Chávez-Fuentes, Junxiang Xu
-, Edward Ruiz, Jeff Sheridan, Wen Wang"
+,Edward Ruiz, Jeff Sheridan, Iqra Amin, Wen Wang"
 site: bookdown::bookdown_site
 documentclass: book
 url: 'https://drieslab.github.io/giotto_workshop_2024 '
@@ -11,9 +11,14 @@ output:
   
 ---
 
-# Giotto Workshop 2024
+# Giotto Suite Workshop 2024
 
-Workshop: Spatial multi-omics data analysis with Giotto Suite
+Workshop: Spatial multi-omics data analysis with Giotto Suite  
+
+- Github repo: https://github.com/drieslab/giotto_workshop_2024/  
+- Giotto Suite Website: http://www.giottosuite.com  
+- Twitter/X: https://x.com/GiottoSpatial
+
 
 ## Instructors
 
@@ -21,21 +26,23 @@ Workshop: Spatial multi-omics data analysis with Giotto Suite
 
 - [Joselyn Cristina Chávez Fuentes](https://comunidadbioinfo.github.io/es/authors/josschavezf/): Postdoctoral fellow at Icahn School of Medicine at Mount Sinai
 
-- [Jiaji George Chen](https://x/jiaji_g_chen): Ph.D. Student at Boston University
+- [Jiaji George Chen](https://x/jiaji_g_chen): Ph.D. student at Boston University
 
-- [Junxiang Xu]()
+- [Junxiang Xu](): Ph.D. student at Boston University
 
-- [Edward C. Ruiz](https://x.com/ed2uiz): Ph.D. Student at Boston University 
+- [Edward C. Ruiz](https://x.com/ed2uiz): Ph.D. student at Boston University 
 
-- [Jeff Sheridan]()
+- [Jeff Sheridan](): Postdoctoral fellow at Boston University
 
-- [Wen Wang]()
+- [Iqra Amin](): Bioinformatician
+
+- [Wen Wang](): Postdoctoral fellow at Icahn School of Medicine at Mount Sinai
 
 
 ## Topics and Schedule:
 
 
-- Day 1: Introduction
+- **Day 1: Introduction**
     - Spatial omics technologies
         - Spatial sequencing
         - Spatial in situ 
@@ -78,8 +85,9 @@ Workshop: Spatial multi-omics data analysis with Giotto Suite
             - Spatial variable genes
             - Spatial co-expression modules
 
+<br>  
     
-- Day 2: Spatial Data Analysis
+- **Day 2: Spatial Data Analysis**
     - Spatial sequencing based technology: Visium
         - Differential expression
         - Enrichment & Deconvolution
@@ -120,8 +128,9 @@ Workshop: Spatial multi-omics data analysis with Giotto Suite
             - Typical aggregated workflow
             - Visualizations
 
+<br>  
 
-- Day 3:  Advanced Tutorials
+- **Day 3:  Advanced Tutorials**
     - Multiple samples 
         - Create individual giotto objects
         - Join Giotto Objects
