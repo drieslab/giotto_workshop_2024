@@ -6,7 +6,11 @@ August 7th 2024
 
 ## Overview
 
-Spatial transformations of data will become more and more important in the near future due to the fact that performing spatial analyses across any two sections of tissue from the same block will require that data to be spatially aligned into a common coordinate space. Minute differences during the sectioning process from the cutting motion to how long an FFPE section was floated can result in even neighboring sections being distorted when compared side-by-side.
+Spatial multimodal datasets are created when there is more than one modality available for a single piece of tissue. One way that these datasets can be assembled is by performing multiple spatial assays on closely adjacent tissue sections or ideally the same section. However, for these datasets, in addition to the usual expression space integration, we must also first spatially align them.
+
+## Spatial manipulation
+
+Performing spatial analyses across any two sections of tissue from the same block requires that data to be spatially aligned into a common coordinate space. Minute differences during the sectioning process from the cutting motion to how long an FFPE section was floated can result in even neighboring sections being distorted when compared side-by-side.
 
 These differences make it difficult to assemble multislice and/or cross platform multimodal datasets into a cohesive 3D volume. The solution for this is to perform registration across either the dataset images or expression information. Based on the registration results, both the raster images and vector feature and polygon information can be aligned into a continuous whole.
 
@@ -14,7 +18,7 @@ Ideally this registration will be a free deformation based on sets of control po
 
 Giotto provides spatial classes and methods for easy manipulation of data with 2D affine transformations. These functionalities are all available from *GiottoClass*.
 
-### Spatial transforms functions:
+### Spatial transforms:
 
 We support simple transformations and more complex affine transformations which can be used to combine and encode more than one simple transform.
 
@@ -79,7 +83,7 @@ Giotto also provides a utility `affine2d` class that can be created from any aff
 The `affine2d` can then be used to accumulate simple transforms that can be applied to spatial objects in a single step using `affine()`
 ```{r, eval=FALSE}
 # create affine2d
-aff <- affine(diag(c(1,1)))
+aff <- affine()
 aff <- aff |> 
     spatShift(dx = 1000) |>
     spin(45) |>
@@ -107,7 +111,7 @@ gpoly |> affine(aff) |> plot(main = "affine()")
 knitr::include_graphics("img/03_session2/affine.png")
 ```
 
-# Image transforms
+## Image transforms
 Giotto uses `giottoLargeImages` as the core image class which is based on _terra_ `SpatRaster`. Images are not loaded into memory when the object is generated and instead an amount of regular sampling appropriate to the zoom level requested is performed at time of plotting.
 
 `spatShift()` and `rescale()` operations are supported by _terra_ `SpatRaster`, and we inherit those functionalities. `spin()`, `flip()`, `t()`, `shear()`, `affine()` operations will coerce `giottoLargeImage` to `giottoAffineImage`, which is much the same, except it contains an `affine2d` object that tracks spatial manipulations performed, so that they can be applied through `magick::image_distort()` processing after sampled values are pulled into memory. `giottoAffineImage` also has alternative `ext()` and `crop()` methods so that those operations respect both the expected post-affine space and untransformed source image.
