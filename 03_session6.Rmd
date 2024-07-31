@@ -8,14 +8,11 @@ August 7th 2024
 ## Kriging
 
 
-Low resolution spatial data typically covers multiple cells making it difficult to 
-delineate the cell contribution to gene expression. Using a process called kriging
-we can interpolate gene expression at the single cell levels from low resolution 
+Low resolution spatial data typically covers multiple cells making it difficult to delineate the cell contribution to gene expression. Using a process called kriging we can interpolate gene expression at the single cell levels from low resolution 
 datasets.
 
-Visium datasets require a high resolution H&E or IF image to align spots to. Using 
-these images we can identify individual nuclei and cells to be used for kriging. Identifying
-nuclei is outside the scope of the current tutorial but is required to perform kriging.
+Visium datasets require a high resolution H&E or IF image to align spots to. Using these images we can identify individual nuclei and cells to be used for kriging. Identifying nuclei is outside the scope of the current tutorial but is required to perform kriging.
+
 Tutorials can found here for H&E and IF.
 
 ### Dataset
