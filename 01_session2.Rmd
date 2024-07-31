@@ -5,12 +5,8 @@ Ruben Dries & Jiaji George Chen
 August 5th 2024
 
 ## Presentation  
-
-[
-```{r out.height = "460px", out.width='800px', echo=F}
-knitr::include_graphics("https://drieslab.github.io/giotto_workshop_2024/GS_workshop2024_giotto_intro.pdf")
-```
-](https://drieslab.github.io/giotto_workshop_2024/GS_workshop2024_giotto_intro.pdf)
+  
+xxx
 
 <br> 
 
