@@ -5,7 +5,9 @@ Jeff Sheridan
 August 7th 2024
 
 ## Objective
-This tutorial demonstrates how to incorporate multiple datasets into a single Giotto object and harmonize expression across datasets.
+Giotto allows us to group objects  into a single object that we can analyze together as a single object. Datasets can be spatially distributed in the x, y or z directions. This can be used to create 3D datasets using the Z plane or analyze grouped datasets such as multiple replicates or samples of the same type. Whilst we can integrate multiple datasets, batch effects from samples can impair integration. More complex integration is sometimes required to integrate and cluster samples as one. An example of an integration method is [Harmony](https://www.nature.com/articles/s41592-019-0619-0) integration, which will be explained in greater detail later in this tutorial. 
+
+The following tutorial will explore integrating two visium datasets together
 
 ## Background
 For this tutorial we will be using two prostate visium datasets produced by 10X Genomics, one an [Adenocarcinoma with Invasive Carcinoma](https://www.10xgenomics.com/datasets/human-prostate-cancer-adenocarcinoma-with-invasive-carcinoma-ffpe-1-standard-1-3-0) and the other a [normal prostate](https://www.10xgenomics.com/datasets/normal-human-prostate-ffpe-1-standard-1-3-0) sample. Details on visium technology can be found in section 6.
@@ -14,7 +16,7 @@ For this tutorial we will be using two prostate visium datasets produced by 10X 
 
 ### Download the data
 You need to download the expression matrix and spatial information by running these commands:
-```{r eval=FALSE}
+```{r, eval=FALSE}
 data_dir <- 'data'
 
 dir.create(file.path(data_dir, 'Visium_FFPE_Human_Prostate_Cancer'), showWarnings = T, recursive = T)
@@ -41,7 +43,7 @@ download.file(url = 'https://cf.10xgenomics.com/samples/spatial-exp/1.3.0/Visium
 
 ### create giotto instructions
 
-```{r eval=FALSE}
+```{r, eval=FALSE}
 library(Giotto)
 
 save_dir <- "~/Documents/GitHub/giotto_workshop_2024/img/03_session1"
@@ -55,7 +57,7 @@ instrs = createGiottoInstructions(save_dir = save_dir,
 ### load visium data into Giotto
 
 First we need to load in the datasets as individual Giotto objects.
-```{r eval=FALSE}
+```{r, eval=FALSE}
 print(data_dir)
 print(file.path(data_dir, 'Visium_FFPE_Human_Normal_Prostate'))
 ## Healthy prostate
@@ -82,7 +84,7 @@ knitr::include_graphics("img/03_session1/03_ses1_single_gobject.png")
 
 
 ### Healthy prostate tissue coverage
-```{r eval=FALSE}
+```{r,eval=FALSE}
 spatPlot2D(gobject = N_pros, cell_color = 'in_tissue',
            show_image = T, point_size = 2.5,cell_color_code = c('black', 'red'),
            point_alpha = 0.5, save_param = list(save_name = "03_ses1_normal_prostate_tissue"))
@@ -93,7 +95,7 @@ knitr::include_graphics("img/03_session1/03_ses1_normal_prostate_tissue.png")
 
 
 ### Adenocarcinoma prostate tissue coverage
-```{r eval=FALSE}
+```{r,eval=FALSE}
 spatPlot2D(gobject = C_pros, cell_color = 'in_tissue',
            show_image = T, point_size = 2.5,cell_color_code = c('black', 'red'), 
            point_alpha = 0.5, save_param = list(save_name = "03_ses1_adeno_prostate_tissue"))
@@ -103,7 +105,7 @@ knitr::include_graphics("img/03_session1/03_ses1_adeno_prostate_tissue.png")
 ```
 
 ### Showing the data strucutre for the inidividual objects
-```{r eval=FALSE}
+```{r, eval=FALSE}
 # Printing the file structure for the individual datasets
 print(head(pDataDT(N_pros)))
 print(N_pros)
@@ -115,7 +117,7 @@ joining with x_shift has the advantage that you can join both 2D and 3D data
  x_padding determines how much distance is between each dataset
  if x_shift = NULL, then the total shift will be guessed from the giotto image
 
-```{r eval=FALSE}
+```{r, eval=FALSE}
 
 combined_pros = joinGiottoObjects(gobject_list = list(N_pros, C_pros),
                               gobject_names = c('NP', 'CP'),
@@ -136,7 +138,7 @@ The combined dataset can either visualized in the same space or in two separate 
 
 ### Vizualizing in the same plot
 
-```{r eval=FALSE}
+```{r, eval=FALSE}
 spatPlot2D(gobject = combined_pros, cell_color = 'in_tissue', cell_color_code = c('black', 'red'),
            show_image = T, image_name = c("NP-image", "CP-image"), point_size = 1, 
            point_alpha = 0.5, save_param = list(save_name = "03_ses1_combined_tissue"))
@@ -147,7 +149,7 @@ knitr::include_graphics("img/03_session1/03_ses1_combined_tissue.png")
 ```
 
 ### Vizualizing on separate plots
-```{r eval=FALSE}
+```{r, eval=FALSE}
 spatPlot2D(gobject = combined_pros, cell_color = 'in_tissue', cell_color_code = c('black', 'pink'),
            show_image = T, image_name = c("NP-image", "CP-image"),
            group_by = 'list_ID', point_alpha = 0.5, point_size = 0.5, cow_n_col = 1,
@@ -160,7 +162,7 @@ knitr::include_graphics("img/03_session1/03_ses1_combined_tissue_group.png")
 ## Splitting combined dataset
 
 The individual objects can be split into single objects again through subsetting the cell metadata.
-```{r eval=FALSE}
+```{r, eval=FALSE}
 # Getting the cell information
 combined_cells <- pDataDT(combined_pros)
 np_cells <- combined_cells[list_ID == 'NP']
@@ -183,7 +185,7 @@ knitr::include_graphics("img/03_session1/03_ses1_split_object.png")
 The joined objects can be analyzed as if they were a single dataset as seen in section 6.
 
 ### Normalization and adding statistics
-```{r eval=FALSE}
+```{r, eval=FALSE}
 # subset on in-tissue spots
 metadata = pDataDT(combined_pros)
 in_tissue_barcodes = metadata[in_tissue == 1]$cell_ID
@@ -216,7 +218,7 @@ knitr::include_graphics("img/03_session1/ses3_1_feat_expression.png")
 
 ### Clustering the datasets
 
-```{r eval=FALSE}
+```{r, eval=FALSE}
 ## PCA ##
 combined_pros <- calculateHVF(gobject = combined_pros)
 
@@ -236,7 +238,7 @@ combined_pros = runUMAP(combined_pros)
 ```
 
 ### Vizualizing spatial location of clusters
-```{r eval=FALSE}
+```{r,eval=FALSE}
 spatDimPlot2D(gobject = combined_pros,
               cell_color = 'leiden_clus', show_image = TRUE, 
               image_name = c("NP-image", "CP-image"),
@@ -249,7 +251,7 @@ knitr::include_graphics("img/03_session1/ses3_1_leiden_clus.png")
 
 ### Vizualizing tissue contribution to clusters
 We can see that the samples are clustered distinctly within the UMAP.
-```{r eval=FALSE}
+```{r, eval=FALSE}
 spatDimPlot2D(gobject = combined_pros,
               cell_color = 'list_ID',show_image = TRUE, 
               image_name = c("NP-image", "CP-image"),
@@ -261,8 +263,8 @@ knitr::include_graphics("img/03_session1/ses3_1_tissue_contribution.png")
 
 
 ## Perform Harmony and default workflows
-We can use harmony to integrate multiple datasets, grouping equivelent cell types between samples. This can help overcome batch effects, especially when samples are processed separately. 
-```{r eval=FALSE}
+We can use harmony to integrate multiple datasets, grouping equivelent cell types between samples. Harmony is an algorithm that iteratively adjusts cell coordinates in a reduced-dimensional space to correct for dataset-specific effects. It uses fuzzy clustering to assign cells to multiple clusters, calculates dataset-specific correction factors, and applies these corrections to each cell, repeating the process until the influence of the dataset diminishes.
+```{r,eval=FALSE}
 library(harmony)
 
 ## run harmony integration
@@ -270,7 +272,7 @@ combined_pros = runGiottoHarmony(combined_pros, vars_use = 'list_ID', do_pca = F
 ```
 
 ### Clustering harmonized object
-```{r eval=FALSE}
+```{r, eval=FALSE}
 ## sNN network (default)
 combined_pros <- createNearestNetwork(gobject = combined_pros,
                                   dim_reduction_to_use = 'harmony', dim_reduction_name = 'harmony', name = 'NN.harmony',
@@ -295,7 +297,7 @@ knitr::include_graphics("img/03_session1/leiden_clustering_harmony.png")
 
 ### Vizualizing the tissue contribution
 We can see that after performing harmony that the clusters from the two tissue samples are now clustered together. There is still a cluster that is unique to the adenocarcinoma sample, however this is expected as this represents the visium spots that cover the tumor regions of the tissue, which are not found in the normal tissue.
-```{r eval=FALSE}
+```{r, eval=FALSE}
  spatDimPlot2D(gobject = combined_pros,
                dim_reduction_to_use = 'umap', dim_reduction_name = 'umap_harmony',
                cell_color = 'list_ID', save_plot = TRUE,
