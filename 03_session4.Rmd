@@ -279,7 +279,6 @@ scanpy$tl$umap(adata)
 adata$write("/projectnb/rd-spat/HOME/iamin1/RProjects/Giotto_workshop/Giotto/cell_rna_converted_gobject2.h5ad")
 processed_file_path <- "/projectnb/rd-spat/HOME/iamin1/RProjects/Giotto_workshop/Giotto/cell_rna_converted_gobject2.h5ad"
 
-
 ```
 
 ### Convert AnnData to Giotto
