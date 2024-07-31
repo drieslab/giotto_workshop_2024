@@ -1,7 +1,4 @@
-fig:unnamed-chunk-146
-fig:unnamed-chunk-147
-fig:unnamed-chunk-148
-giotto-workshop-2024
+giotto-suite-workshop-2024
 instructors
 topics-and-schedule
 license
@@ -11,10 +8,10 @@ short-summary
 why-do-we-need-spatial-omics-technologies
 what-is-spatial-omics
 what-are-the-main-spatial-omics-technologies
-other-spatial-omics-atac-seq-cutrun-lipidomics-etc
+other-spatial-omics-atac-seq-cuttag-lipidomics-etc
 what-are-the-different-types-of-spatial-downstream-analyses
 introduction-to-the-giotto-package
-slides
+presentation-1
 ecosystem
 installation-python-environment
 giotto-instructions
@@ -97,7 +94,8 @@ perform-harmony-and-default-workflows
 visualizations-1
 spatial-multi-modal-analysis
 overview-1
-spatial-transforms-functions
+spatial-manipulation
+spatial-transforms
 spatial-utilities
 spatial-classes
 image-transforms
@@ -139,7 +137,3 @@ interactivity-with-the-rspatial-ecosystem
 kriging
 contributing-to-giotto
 contribution-guideline
-spatial-manipulation
-spatial-transforms
-giotto-suite-workshop-2024
-other-spatial-omics-atac-seq-cuttag-lipidomics-etc
