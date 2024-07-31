@@ -139,3 +139,7 @@ interactivity-with-the-rspatial-ecosystem
 kriging
 contributing-to-giotto
 contribution-guideline
+spatial-manipulation
+spatial-transforms
+giotto-suite-workshop-2024
+other-spatial-omics-atac-seq-cuttag-lipidomics-etc

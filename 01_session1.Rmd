@@ -36,7 +36,7 @@ together with understanding the obtained results through spatial data science.
 
 ### What are the main spatial omics technologies?
 
-The large majority - and most popular or accessible - spatial technologies are
+The large majority - and most popular or accessible - spatial technologies are:  
 - spatial antibody-multiplex proteomics  
 - spatial multiplex **in situ hybridization** (ISH)-based transcriptomics  
 - spatial sequencing-based transcriptomics
@@ -44,8 +44,15 @@ The large majority - and most popular or accessible - spatial technologies are
 ![](img/01_session1/2-spatial_technologies_web.png)
 
 
-### Other Spatial omics: ATAC-seq, CUT&RUN, lipidomics, etc
+### Other Spatial omics: ATAC-seq, CUT&Tag, lipidomics, etc
 
+A growing number of other spatial technologies exist that profile different types
+of molecular analytes. One example is using a deterministic barcoding approach 
+(Rong Fan's group) to explore open (ATAC-seq) or modified (CUT&Tag) chromatin in 
+a spatially aware manner.  
+
+
+![](img/01_session1/3-spatial_other_technologies.png)
 
 <br>  
 
@@ -54,4 +61,4 @@ The large majority - and most popular or accessible - spatial technologies are
 There exist a large and diverse amount of different downstream spatial data analyses
 that use different available data types and formats as input.
 
-![](img/01_session1/3-spatial_downstream_analyses.png)
+![](img/01_session1/4-spatial_downstream_analyses.png)
