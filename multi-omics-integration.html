@@ -342,14 +342,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="14" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html"><i class="fa fa-check"></i><b>14</b> Multi-omics integration</a>
 <ul>
-<li class="chapter" data-level="14.1" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#introduction-to-the-spatial-dataset-1"><i class="fa fa-check"></i><b>14.1</b> Introduction to the spatial dataset</a></li>
-<li class="chapter" data-level="14.2" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#download-dataset-1"><i class="fa fa-check"></i><b>14.2</b> Download dataset</a></li>
-<li class="chapter" data-level="14.3" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#create-the-giotto-object-1"><i class="fa fa-check"></i><b>14.3</b> Create the Giotto object</a></li>
-<li class="chapter" data-level="14.4" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#subset-on-spots-that-were-covered-by-tissue-1"><i class="fa fa-check"></i><b>14.4</b> Subset on spots that were covered by tissue</a></li>
-<li class="chapter" data-level="14.5" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#rna-processing"><i class="fa fa-check"></i><b>14.5</b> RNA processing</a></li>
-<li class="chapter" data-level="14.6" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#protein-processing"><i class="fa fa-check"></i><b>14.6</b> Protein processing</a></li>
-<li class="chapter" data-level="14.7" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#multi-omics-integration-1"><i class="fa fa-check"></i><b>14.7</b> Multi-omics integration</a></li>
-<li class="chapter" data-level="14.8" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#session-info-2"><i class="fa fa-check"></i><b>14.8</b> Session info</a></li>
+<li class="chapter" data-level="14.1" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#the-cytassist-technology"><i class="fa fa-check"></i><b>14.1</b> The CytAssist technology</a></li>
+<li class="chapter" data-level="14.2" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#introduction-to-the-spatial-dataset-1"><i class="fa fa-check"></i><b>14.2</b> Introduction to the spatial dataset</a></li>
+<li class="chapter" data-level="14.3" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#download-dataset-1"><i class="fa fa-check"></i><b>14.3</b> Download dataset</a></li>
+<li class="chapter" data-level="14.4" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#create-the-giotto-object-1"><i class="fa fa-check"></i><b>14.4</b> Create the Giotto object</a></li>
+<li class="chapter" data-level="14.5" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#subset-on-spots-that-were-covered-by-tissue-1"><i class="fa fa-check"></i><b>14.5</b> Subset on spots that were covered by tissue</a></li>
+<li class="chapter" data-level="14.6" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#rna-processing"><i class="fa fa-check"></i><b>14.6</b> RNA processing</a></li>
+<li class="chapter" data-level="14.7" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#protein-processing"><i class="fa fa-check"></i><b>14.7</b> Protein processing</a></li>
+<li class="chapter" data-level="14.8" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#multi-omics-integration-1"><i class="fa fa-check"></i><b>14.8</b> Multi-omics integration</a></li>
+<li class="chapter" data-level="14.9" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#session-info-2"><i class="fa fa-check"></i><b>14.9</b> Session info</a></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html"><i class="fa fa-check"></i><b>15</b> Interoperability with other frameworks</a>
 <ul>
@@ -444,13 +445,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">14</span> Multi-omics integration<a href="multi-omics-integration.html#multi-omics-integration" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Joselyn Cristina Chávez Fuentes</p>
 <p>August 7th 2024</p>
-<div id="introduction-to-the-spatial-dataset-1" class="section level2 hasAnchor" number="14.1">
-<h2><span class="header-section-number">14.1</span> Introduction to the spatial dataset<a href="multi-omics-integration.html#introduction-to-the-spatial-dataset-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="the-cytassist-technology" class="section level2 hasAnchor" number="14.1">
+<h2><span class="header-section-number">14.1</span> The CytAssist technology<a href="multi-omics-integration.html#the-cytassist-technology" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The Visium CytAssist Spatial Gene and Protein Expression assay is designed to introduce simultaneous Gene Expression and Protein Expression analysis to FFPE samples processed with Visium CytAssist. The assay uses NGS to measure the abundance of oligo-tagged antibodies with spatial resolution, in addition to the whole transcriptome and a morphological image.</p>
+<p><img src="img/03_session3/cytassist.png" width="50%" style="display: block; margin: auto;" /></p>
+<p>The 10X human immune cell profiling panel features 35 antibodies from Abcam and Biolegend, and includes cell surface and intracellular targets. The rna probes hybridize to ~18,000 genes, or RNA targets, within the tissue section to achieve whole transcriptome gene expression profiling. The remaining steps, starting with probe extension, follow the standard Visium workflow outside of the instrument.</p>
+<p><img src="img/03_session3/workflow.png" width="100%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="introduction-to-the-spatial-dataset-1" class="section level2 hasAnchor" number="14.2">
+<h2><span class="header-section-number">14.2</span> Introduction to the spatial dataset<a href="multi-omics-integration.html#introduction-to-the-spatial-dataset-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The <a href="https://www.10xgenomics.com/datasets/gene-protein-expression-library-of-human-tonsil-cytassist-ffpe-2-standard">Human Tonsil (FFPE) dataset</a> was obtained from 10X Genomics. The tissue was sectioned as described in Visium CytAssist Spatial Gene and Protein Expression for FFPE – Tissue Preparation Guide (CG000660). 5 µm tissue sections were placed on Superfrost glass slides, deparaffinized, H&amp;E stained (CG000658) and coverslipped. Sections were imaged, decoverslipped, followed by decrosslinking per the Staining Demonstrated Protocol (CG000658).</p>
 <p>More information about this dataset can be found <a href="https://www.10xgenomics.com/datasets/gene-protein-expression-library-of-human-tonsil-cytassist-ffpe-2-standard">here</a>.</p>
 </div>
-<div id="download-dataset-1" class="section level2 hasAnchor" number="14.2">
-<h2><span class="header-section-number">14.2</span> Download dataset<a href="multi-omics-integration.html#download-dataset-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="download-dataset-1" class="section level2 hasAnchor" number="14.3">
+<h2><span class="header-section-number">14.3</span> Download dataset<a href="multi-omics-integration.html#download-dataset-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You need to download the expression matrix and spatial information by running these commands:</p>
 <div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="multi-omics-integration.html#cb140-1" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&quot;data&quot;</span>)</span>
 <span id="cb140-2"><a href="multi-omics-integration.html#cb140-2" tabindex="-1"></a></span>
@@ -461,8 +469,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb140-7"><a href="multi-omics-integration.html#cb140-7" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="st">&quot;data/CytAssist_FFPE_Protein_Expression_Human_Tonsil_spatial.tar.gz&quot;</span>)</span></code></pre></div>
 <p>After downloading, unzip the gz files. You should get the “raw_feature_bc_matrix” and “spatial” folders inside “data/”.</p>
 </div>
-<div id="create-the-giotto-object-1" class="section level2 hasAnchor" number="14.3">
-<h2><span class="header-section-number">14.3</span> Create the Giotto object<a href="multi-omics-integration.html#create-the-giotto-object-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="create-the-giotto-object-1" class="section level2 hasAnchor" number="14.4">
+<h2><span class="header-section-number">14.4</span> Create the Giotto object<a href="multi-omics-integration.html#create-the-giotto-object-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The minimum requirements are:</p>
 <ul>
 <li>matrix with expression information (or the path to)</li>
@@ -500,8 +508,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="multi-omics-integration.html#cb142-1" tabindex="-1"></a>visium_tonsil</span></code></pre></div>
 </div>
-<div id="subset-on-spots-that-were-covered-by-tissue-1" class="section level2 hasAnchor" number="14.4">
-<h2><span class="header-section-number">14.4</span> Subset on spots that were covered by tissue<a href="multi-omics-integration.html#subset-on-spots-that-were-covered-by-tissue-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="subset-on-spots-that-were-covered-by-tissue-1" class="section level2 hasAnchor" number="14.5">
+<h2><span class="header-section-number">14.5</span> Subset on spots that were covered by tissue<a href="multi-omics-integration.html#subset-on-spots-that-were-covered-by-tissue-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="multi-omics-integration.html#cb143-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(</span>
 <span id="cb143-2"><a href="multi-omics-integration.html#cb143-2" tabindex="-1"></a>  <span class="at">gobject =</span> visium_tonsil,</span>
 <span id="cb143-3"><a href="multi-omics-integration.html#cb143-3" tabindex="-1"></a>  <span class="at">cell_color =</span> <span class="st">&quot;in_tissue&quot;</span>,</span>
@@ -519,8 +527,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb144-6"><a href="multi-omics-integration.html#cb144-6" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">subsetGiotto</span>(visium_tonsil, </span>
 <span id="cb144-7"><a href="multi-omics-integration.html#cb144-7" tabindex="-1"></a>                              <span class="at">cell_ids =</span> in_tissue_barcodes)</span></code></pre></div>
 </div>
-<div id="rna-processing" class="section level2 hasAnchor" number="14.5">
-<h2><span class="header-section-number">14.5</span> RNA processing<a href="multi-omics-integration.html#rna-processing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="rna-processing" class="section level2 hasAnchor" number="14.6">
+<h2><span class="header-section-number">14.6</span> RNA processing<a href="multi-omics-integration.html#rna-processing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Filtering, normalization, and statistics</li>
 </ul>
@@ -573,8 +581,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb149-4"><a href="multi-omics-integration.html#cb149-4" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="dv">3</span>)</span></code></pre></div>
 <p><img src="img/03_session3/2-spatPlot2D.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="protein-processing" class="section level2 hasAnchor" number="14.6">
-<h2><span class="header-section-number">14.6</span> Protein processing<a href="multi-omics-integration.html#protein-processing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="protein-processing" class="section level2 hasAnchor" number="14.7">
+<h2><span class="header-section-number">14.7</span> Protein processing<a href="multi-omics-integration.html#protein-processing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Filtering, normalization, and statistics</li>
 </ul>
@@ -644,8 +652,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb154-6"><a href="multi-omics-integration.html#cb154-6" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="dv">3</span>)</span></code></pre></div>
 <p><img src="img/03_session3/4-spatPlot2D.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="multi-omics-integration-1" class="section level2 hasAnchor" number="14.7">
-<h2><span class="header-section-number">14.7</span> Multi-omics integration<a href="multi-omics-integration.html#multi-omics-integration-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="multi-omics-integration-1" class="section level2 hasAnchor" number="14.8">
+<h2><span class="header-section-number">14.8</span> Multi-omics integration<a href="multi-omics-integration.html#multi-omics-integration-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Calculate kNN</li>
 </ul>
@@ -719,8 +727,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb160-7"><a href="multi-omics-integration.html#cb160-7" tabindex="-1"></a>           <span class="at">title =</span> <span class="st">&quot;Integrated Leiden clustering&quot;</span>)</span></code></pre></div>
 <p><img src="img/03_session3/6-spatPlot2D.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="session-info-2" class="section level2 hasAnchor" number="14.8">
-<h2><span class="header-section-number">14.8</span> Session info<a href="multi-omics-integration.html#session-info-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="session-info-2" class="section level2 hasAnchor" number="14.9">
+<h2><span class="header-section-number">14.9</span> Session info<a href="multi-omics-integration.html#session-info-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="multi-omics-integration.html#cb161-1" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
 <div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="multi-omics-integration.html#cb162-1" tabindex="-1"></a>R version <span class="dv">4</span>.<span class="fl">4.1</span> (<span class="dv">2024-06-14</span>)</span>
 <span id="cb162-2"><a href="multi-omics-integration.html#cb162-2" tabindex="-1"></a>Platform<span class="sc">:</span> aarch64<span class="sc">-</span>apple<span class="sc">-</span>darwin20</span>
