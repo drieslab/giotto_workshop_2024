@@ -9,7 +9,8 @@ on:
 
 name: bookdown
 
-permissions: read-all
+permissions:
+  contents: write
 
 jobs:
   bookdown:
@@ -47,3 +48,4 @@ jobs:
         with:
           branch: gh-pages
           folder: docs
+          token: ${{ secrets.GITHUB_TOKEN }}
