@@ -64,13 +64,26 @@ gimg <- getGiottoImage(g)
 # examples of the simple transforms using giottoPolygon
 p <- par(no.readonly = TRUE)
 par(mfrow=c(2,4))
-plot(gpoly)
-gpoly |> spatShift(dx = 1000) |> plot(main = "spatShift()")
-gpoly |> spin(45) |> plot(main = "spin()")
-gpoly |> rescale(10) |> plot(main = "rescale()")
-gpoly |> flip(direction = "vertical") |> plot(main = "flip()")
-gpoly |> t() |> plot(main = "t()")
-gpoly |> shear(fx = 0.5) |> plot(main = "shear()")
+gpoly |>
+    plot(main = "no transform")
+gpoly |> 
+    spatShift(dx = 1000) |> 
+    plot(main = "spatShift(dx = 1000)")
+gpoly |> 
+    spin(45) |> 
+    plot(main = "spin(45)")
+gpoly |> 
+    rescale(fx = 10, fy = 6) |> 
+    plot(main = "rescale(fx = 10, fy = 6)")
+gpoly |> 
+    flip(direction = "vertical") |> 
+    plot(main = "flip()")
+gpoly |> 
+    t() |> 
+    plot(main = "t()")
+gpoly |> 
+    shear(fx = 0.5) |> 
+    plot(main = "shear(fx = 0.5)")
 par(p)
 ```
 
