@@ -60,64 +60,104 @@ gpoly <- getPolygonInfo(g, return_giottoPolygon = TRUE)
 gimg <- getGiottoImage(g)
 ```
 
+## Examples of the simple transforms with a giottoPolygon
 ```{r, eval=FALSE, fig.height=10, fig.width=10}
-# examples of the simple transforms using giottoPolygon
+rain <- rainbow(nrow(gpoly))
+line_width <- 0.3
+
+# par to setup the grid plotting layout
 p <- par(no.readonly = TRUE)
-par(mfrow=c(2,4))
-gpoly |>
-    plot(main = "no transform")
+par(mfrow=c(3,3))
 gpoly |> 
-    spatShift(dx = 1000) |> 
-    plot(main = "spatShift(dx = 1000)")
-gpoly |> 
-    spin(45) |> 
-    plot(main = "spin(45)")
-gpoly |> 
-    rescale(fx = 10, fy = 6) |> 
-    plot(main = "rescale(fx = 10, fy = 6)")
-gpoly |> 
-    flip(direction = "vertical") |> 
-    plot(main = "flip()")
-gpoly |> 
-    t() |> 
-    plot(main = "t()")
-gpoly |> 
-    shear(fx = 0.5) |> 
-    plot(main = "shear(fx = 0.5)")
+    plot(main = "no transform", col = rain, lwd = line_width)
+
+gpoly |> spatShift(dx = 1000) |> 
+    plot(main = "spatShift(dx = 1000)", col = rain, lwd = line_width)
+
+gpoly |> spin(45) |> 
+    plot(main = "spin(45)", col = rain, lwd = line_width)
+
+gpoly |> rescale(fx = 10, fy = 6) |> 
+    plot(main = "rescale(fx = 10, fy = 6)", col = rain, lwd = line_width)
+
+gpoly |> flip(direction = "vertical") |> 
+    plot(main = "flip()", col = rain, lwd = line_width)
+
+gpoly |> t() |> 
+    plot(main = "t()", col = rain, lwd = line_width)
+
+gpoly |> shear(fx = 0.5) |> 
+    plot(main = "shear(fx = 0.5)", col = rain, lwd = line_width)
 par(p)
 ```
 
-```{r,echo=FALSE}
+```{r, echo=FALSE}
 knitr::include_graphics("img/03_session2/transforms.png")
 ```
 
+## Affine transforms
 
-Giotto also provides a utility `affine2d` class that can be created from any affine matrix.
-The `affine2d` can then be used to accumulate simple transforms that can be applied to spatial objects in a single step using `affine()`
+The above transforms are all simple to understand in how they work, but you can imagine that performing them in sequence on your dataset can be computationally expensive. 
+
+Luckily, the above operations are all affine transformation, and they can be condensed into a single step. Affine transforms where the x and y values undergo a linear transform. These transforms in 2D, can all be represented as a 2x2 matrix or 2x3 if the xy translation values are included. To perform the linear transform, the xy coordinates just need to be matrix multiplied by the 2x2 affine matrix.
+
+```{r, echo=FALSE}
+knitr::include_graphics("img/03_session2/matrix.png")
+```
+```{r, echo=FALSE}
+ knitr::include_graphics("img/03_session2/apply_matrix.png")
+```
+
+Due to the nature of matrix multiplication, you can simply multiply the affine matrices with each other and when the xy coordinates are multiplied by the resulting matrix, it performs both linear transforms in the same step.
+
+_Giotto_ provides a utility `affine2d` S4 class that can be created from any affine matrix and responds to the affine transform functions to simplify this accumulation of simple transforms.
+Once done, the `affine2d` can be applied to spatial objects in a single step using `affine()` in the same way that you would use a matrix.
 ```{r, eval=FALSE}
 # create affine2d
-aff <- affine()
+aff <- affine() # when called without params, this is the same as affine(diag(c(1, 1)))
+```
+The `affine2d` object also has an anchor spatial extent, which is used in calculations of the translation values. `affine2d` generates with a default extent, but a specific one matching that of the object you are manipulating (such as that of the giottoPolygon) should be set.
+```{r, eval=FALSE}
+aff@anchor <- ext(gpoly)
+aff <- initialize(aff)
+```
+
+
+```{r, eval=FALSE}
+# append several simple transforms
 aff <- aff |> 
     spatShift(dx = 1000) |>
-    spin(45) |>
-    rescale(10) |>
+    spin(45, x0 = 0, y0 = 0) |> # without the x0, y0 params, the extent center is used
+    rescale(10, x0 = 0, y0 = 0) |> # without the x0, y0 params, the extent center is used
     flip(direction = "vertical") |>
     t() |>
     shear(fx = 0.5)
 force(aff)
 ```
-
 ```
 <affine2d>
-anchor    : -180, 180, -90, 90  (xmin, xmax, ymin, ymax)
+anchor    : 6399.24384990901, 6903.24298517207, -5152.38959073896, -4694.86823300896  (xmin, xmax, ymin, ymax)
 rotate    : -0.785398163397448  (rad)
 shear     : 0.5, 0  (x, y)
 scale     : 10, 10  (x, y)
-translate : 3.43401245619535e-13, 1000  (x, y)
+translate : 963.028150700062, 7071.06781186548  (x, y)
 ```
 
+The show function displays some information about the stored affine transform, including a set of decomposed simple transformations.
+
+You can then plot the affine object and see a projection of the spatial transform where blue is the starting position and red is the end.
 ```{r, eval=FALSE}
-gpoly |> affine(aff) |> plot(main = "affine()")
+plot(aff)
+```
+
+```{r, echo=FALSE}
+knitr::include_graphics("img/03_session2/affplot.png")
+```
+
+We can then apply the affine transforms to the `giottoPolygon` to see that it indeed in the location and orientation that the projection suggests.
+```{r, eval=FALSE}
+gpoly |> affine(aff) |> 
+    plot(main = "affine()", col = rain, lwd = line_width)
 ```
 
 ```{r, echo=FALSE}
@@ -158,8 +198,6 @@ g |> affine(aff) |>
 ```{r, echo=FALSE}
 knitr::include_graphics("img/03_session2/gobj_affine.png")
 ```
-
-
 
 Currently _giotto_ image objects are not fully compatible with .ome.tif files. _terra_ which relies on _gdal_ drivers for image loading will find that the Gtiff driver opens some .ome.tif images, but fails when certain compressions (notably JP2000 as used by 10x for their single-channel stains) are used.
 
