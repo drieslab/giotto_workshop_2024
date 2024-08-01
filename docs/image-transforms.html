@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>13 Image transforms | Workshop: Spatial multi-omics data analysis with Giotto Suite</title>
+  <meta name="description" content="13 Image transforms | Workshop: Spatial multi-omics data analysis with Giotto Suite" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="13 Image transforms | Workshop: Spatial multi-omics data analysis with Giotto Suite" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="drieslab/giotto_workshop_2024" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="13 Image transforms | Workshop: Spatial multi-omics data analysis with Giotto Suite" />
+  
+  
+  
+
+<meta name="author" content="Ruben Dries, Jiaji George Chen, Joselyn Cristina Chávez-Fuentes, Junxiang Xu ,Edward Ruiz, Jeff Sheridan, Iqra Amin, Wen Wang" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="spatial-multi-modal-analysis.html"/>
+<link rel="next" href="multi-omics-integration.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Giotto Workshop 2024</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#instructors"><i class="fa fa-check"></i><b>1.1</b> Instructors</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#topics-and-schedule"><i class="fa fa-check"></i><b>1.2</b> Topics and Schedule:</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.3</b> License</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html"><i class="fa fa-check"></i><b>2</b> Spatial omics technologies</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#presentation"><i class="fa fa-check"></i><b>2.1</b> Presentation</a></li>
+<li class="chapter" data-level="2.2" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#short-summary"><i class="fa fa-check"></i><b>2.2</b> Short summary</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#why-do-we-need-spatial-omics-technologies"><i class="fa fa-check"></i><b>2.2.1</b> Why do we need spatial omics technologies?</a></li>
+<li class="chapter" data-level="2.2.2" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#what-is-spatial-omics"><i class="fa fa-check"></i><b>2.2.2</b> What is spatial omics?</a></li>
+<li class="chapter" data-level="2.2.3" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#what-are-the-main-spatial-omics-technologies"><i class="fa fa-check"></i><b>2.2.3</b> What are the main spatial omics technologies?</a></li>
+<li class="chapter" data-level="2.2.4" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#other-spatial-omics-atac-seq-cutrun-lipidomics-etc"><i class="fa fa-check"></i><b>2.2.4</b> Other Spatial omics: ATAC-seq, CUT&amp;RUN, lipidomics, etc</a></li>
+<li class="chapter" data-level="2.2.5" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#what-are-the-different-types-of-spatial-downstream-analyses"><i class="fa fa-check"></i><b>2.2.5</b> What are the different types of spatial downstream analyses?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html"><i class="fa fa-check"></i><b>3</b> Introduction to the Giotto package</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#slides"><i class="fa fa-check"></i><b>3.1</b> Slides</a></li>
+<li class="chapter" data-level="3.2" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#ecosystem"><i class="fa fa-check"></i><b>3.2</b> Ecosystem</a></li>
+<li class="chapter" data-level="3.3" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#installation-python-environment"><i class="fa fa-check"></i><b>3.3</b> Installation + python environment</a></li>
+<li class="chapter" data-level="3.4" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#giotto-instructions"><i class="fa fa-check"></i><b>3.4</b> Giotto instructions</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html"><i class="fa fa-check"></i><b>4</b> Data formatting and Pre-processing</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#data-formats"><i class="fa fa-check"></i><b>4.1</b> Data formats</a></li>
+<li class="chapter" data-level="4.2" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#pre-processing"><i class="fa fa-check"></i><b>4.2</b> Pre-processing</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html"><i class="fa fa-check"></i><b>5</b> Creating a Giotto object</a>
+<ul>
+<li class="chapter" data-level="5.0.1" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#used-packages"><i class="fa fa-check"></i><b>5.0.1</b> Used packages</a></li>
+<li class="chapter" data-level="5.1" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#overview"><i class="fa fa-check"></i><b>5.1</b> Overview</a></li>
+<li class="chapter" data-level="5.2" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#from-matrix-locations"><i class="fa fa-check"></i><b>5.2</b> From matrix + locations</a></li>
+<li class="chapter" data-level="5.3" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#from-subcellular-raw-data-transcripts-or-images-polygons"><i class="fa fa-check"></i><b>5.3</b> From subcellular raw data (transcripts or images) + polygons</a></li>
+<li class="chapter" data-level="5.4" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#from-piece-wise"><i class="fa fa-check"></i><b>5.4</b> From piece-wise</a></li>
+<li class="chapter" data-level="5.5" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#using-convenience-functions-for-popular-technologies-vizgen-xenium-cosmx"><i class="fa fa-check"></i><b>5.5</b> Using convenience functions for popular technologies (Vizgen, Xenium, CosMx, …)</a></li>
+<li class="chapter" data-level="5.6" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#spatial-plots"><i class="fa fa-check"></i><b>5.6</b> Spatial plots</a></li>
+<li class="chapter" data-level="5.7" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#subsetting"><i class="fa fa-check"></i><b>5.7</b> Subsetting</a></li>
+<li class="chapter" data-level="5.8" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#mini-objects-giottodata"><i class="fa fa-check"></i><b>5.8</b> Mini objects &amp; GiottoData</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="visium-part-i.html"><a href="visium-part-i.html"><i class="fa fa-check"></i><b>6</b> Visium Part I</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="visium-part-i.html"><a href="visium-part-i.html#introduction-to-the-spatial-dataset"><i class="fa fa-check"></i><b>6.1</b> Introduction to the spatial dataset</a></li>
+<li class="chapter" data-level="6.2" data-path="visium-part-i.html"><a href="visium-part-i.html#download-dataset"><i class="fa fa-check"></i><b>6.2</b> Download dataset</a></li>
+<li class="chapter" data-level="6.3" data-path="visium-part-i.html"><a href="visium-part-i.html#create-the-giotto-object"><i class="fa fa-check"></i><b>6.3</b> Create the Giotto object</a></li>
+<li class="chapter" data-level="6.4" data-path="visium-part-i.html"><a href="visium-part-i.html#subset-on-spots-that-were-covered-by-tissue"><i class="fa fa-check"></i><b>6.4</b> Subset on spots that were covered by tissue</a></li>
+<li class="chapter" data-level="6.5" data-path="visium-part-i.html"><a href="visium-part-i.html#quality-control"><i class="fa fa-check"></i><b>6.5</b> Quality control</a></li>
+<li class="chapter" data-level="6.6" data-path="visium-part-i.html"><a href="visium-part-i.html#filtering"><i class="fa fa-check"></i><b>6.6</b> Filtering</a></li>
+<li class="chapter" data-level="6.7" data-path="visium-part-i.html"><a href="visium-part-i.html#normalization"><i class="fa fa-check"></i><b>6.7</b> Normalization</a></li>
+<li class="chapter" data-level="6.8" data-path="visium-part-i.html"><a href="visium-part-i.html#feature-selection"><i class="fa fa-check"></i><b>6.8</b> Feature selection</a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="visium-part-i.html"><a href="visium-part-i.html#highly-variable-features"><i class="fa fa-check"></i><b>6.8.1</b> Highly Variable Features:</a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="visium-part-i.html"><a href="visium-part-i.html#dimension-reduction"><i class="fa fa-check"></i><b>6.9</b> Dimension Reduction</a>
+<ul>
+<li class="chapter" data-level="6.9.1" data-path="visium-part-i.html"><a href="visium-part-i.html#pca"><i class="fa fa-check"></i><b>6.9.1</b> PCA</a></li>
+<li class="chapter" data-level="6.9.2" data-path="visium-part-i.html"><a href="visium-part-i.html#umap"><i class="fa fa-check"></i><b>6.9.2</b> UMAP</a></li>
+<li class="chapter" data-level="6.9.3" data-path="visium-part-i.html"><a href="visium-part-i.html#t-sne"><i class="fa fa-check"></i><b>6.9.3</b> t-SNE</a></li>
+</ul></li>
+<li class="chapter" data-level="6.10" data-path="visium-part-i.html"><a href="visium-part-i.html#clustering"><i class="fa fa-check"></i><b>6.10</b> Clustering</a>
+<ul>
+<li class="chapter" data-level="6.10.1" data-path="visium-part-i.html"><a href="visium-part-i.html#calculate-leiden-clustering"><i class="fa fa-check"></i><b>6.10.1</b> Calculate Leiden clustering</a></li>
+<li class="chapter" data-level="6.10.2" data-path="visium-part-i.html"><a href="visium-part-i.html#calculate-louvain-clustering"><i class="fa fa-check"></i><b>6.10.2</b> Calculate Louvain clustering</a></li>
+</ul></li>
+<li class="chapter" data-level="6.11" data-path="visium-part-i.html"><a href="visium-part-i.html#save-the-object"><i class="fa fa-check"></i><b>6.11</b> Save the object</a></li>
+<li class="chapter" data-level="6.12" data-path="visium-part-i.html"><a href="visium-part-i.html#session-info"><i class="fa fa-check"></i><b>6.12</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="visium-part-ii.html"><a href="visium-part-ii.html"><i class="fa fa-check"></i><b>7</b> Visium Part II</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="visium-part-ii.html"><a href="visium-part-ii.html#load-the-object"><i class="fa fa-check"></i><b>7.1</b> Load the object</a></li>
+<li class="chapter" data-level="7.2" data-path="visium-part-ii.html"><a href="visium-part-ii.html#differential-expression"><i class="fa fa-check"></i><b>7.2</b> Differential expression</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="visium-part-ii.html"><a href="visium-part-ii.html#gini-markers"><i class="fa fa-check"></i><b>7.2.1</b> Gini markers</a></li>
+<li class="chapter" data-level="7.2.2" data-path="visium-part-ii.html"><a href="visium-part-ii.html#scran-markers"><i class="fa fa-check"></i><b>7.2.2</b> Scran markers</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="visium-part-ii.html"><a href="visium-part-ii.html#enrichment-deconvolution"><i class="fa fa-check"></i><b>7.3</b> Enrichment &amp; Deconvolution</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="visium-part-ii.html"><a href="visium-part-ii.html#pagerank"><i class="fa fa-check"></i><b>7.3.1</b> PAGE/Rank</a></li>
+<li class="chapter" data-level="7.3.2" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatialdwls"><i class="fa fa-check"></i><b>7.3.2</b> SpatialDWLS</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatial-expression-patterns"><i class="fa fa-check"></i><b>7.4</b> Spatial expression patterns</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatial-variable-genes"><i class="fa fa-check"></i><b>7.4.1</b> Spatial variable genes</a></li>
+<li class="chapter" data-level="7.4.2" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatial-co-expression-modules"><i class="fa fa-check"></i><b>7.4.2</b> Spatial co-expression modules</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatially-informed-clusters"><i class="fa fa-check"></i><b>7.5</b> Spatially informed clusters</a></li>
+<li class="chapter" data-level="7.6" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatial-domains-hmrf"><i class="fa fa-check"></i><b>7.6</b> Spatial domains HMRF</a></li>
+<li class="chapter" data-level="7.7" data-path="visium-part-ii.html"><a href="visium-part-ii.html#interactive-tools"><i class="fa fa-check"></i><b>7.7</b> Interactive tools</a></li>
+<li class="chapter" data-level="7.8" data-path="visium-part-ii.html"><a href="visium-part-ii.html#session-info-1"><i class="fa fa-check"></i><b>7.8</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="visium-hd.html"><a href="visium-hd.html"><i class="fa fa-check"></i><b>8</b> Visium HD</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="visium-hd.html"><a href="visium-hd.html#objective"><i class="fa fa-check"></i><b>8.1</b> Objective</a></li>
+<li class="chapter" data-level="8.2" data-path="visium-hd.html"><a href="visium-hd.html#background"><i class="fa fa-check"></i><b>8.2</b> Background</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="visium-hd.html"><a href="visium-hd.html#visium-hd-technology"><i class="fa fa-check"></i><b>8.2.1</b> Visium HD Technology</a></li>
+<li class="chapter" data-level="8.2.2" data-path="visium-hd.html"><a href="visium-hd.html#colorectal-cancer-sample"><i class="fa fa-check"></i><b>8.2.2</b> Colorectal Cancer Sample</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="visium-hd.html"><a href="visium-hd.html#data-ingestion"><i class="fa fa-check"></i><b>8.3</b> Data Ingestion</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="visium-hd.html"><a href="visium-hd.html#visium-hd-output-data-format"><i class="fa fa-check"></i><b>8.3.1</b> Visium HD output data format</a></li>
+<li class="chapter" data-level="8.3.2" data-path="visium-hd.html"><a href="visium-hd.html#read-in-raw-data"><i class="fa fa-check"></i><b>8.3.2</b> Read in raw data</a></li>
+<li class="chapter" data-level="8.3.3" data-path="visium-hd.html"><a href="visium-hd.html#giotto-visium-hd-convenience-function"><i class="fa fa-check"></i><b>8.3.3</b> Giotto Visium HD convenience function</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="visium-hd.html"><a href="visium-hd.html#tiling-and-aggregation"><i class="fa fa-check"></i><b>8.4</b> Tiling and aggregation</a></li>
+<li class="chapter" data-level="8.5" data-path="visium-hd.html"><a href="visium-hd.html#scalability-and-projection-functions"><i class="fa fa-check"></i><b>8.5</b> Scalability and projection functions</a></li>
+<li class="chapter" data-level="8.6" data-path="visium-hd.html"><a href="visium-hd.html#spatial-expression-patterns-1"><i class="fa fa-check"></i><b>8.6</b> Spatial expression patterns</a></li>
+<li class="chapter" data-level="8.7" data-path="visium-hd.html"><a href="visium-hd.html#spatial-co-expression-modules-1"><i class="fa fa-check"></i><b>8.7</b> Spatial co-expression modules</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="xenium.html"><a href="xenium.html"><i class="fa fa-check"></i><b>9</b> Xenium</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="xenium.html"><a href="xenium.html#introduction-to-spatial-dataset"><i class="fa fa-check"></i><b>9.1</b> Introduction to spatial dataset</a></li>
+<li class="chapter" data-level="9.2" data-path="xenium.html"><a href="xenium.html#additional-package-requirements"><i class="fa fa-check"></i><b>9.2</b> Additional package requirements</a></li>
+<li class="chapter" data-level="9.3" data-path="xenium.html"><a href="xenium.html#introduce-mini-object"><i class="fa fa-check"></i><b>9.3</b> Introduce mini object</a></li>
+<li class="chapter" data-level="9.4" data-path="xenium.html"><a href="xenium.html#read-in-raw-data-1"><i class="fa fa-check"></i><b>9.4</b> Read in raw data</a></li>
+<li class="chapter" data-level="9.5" data-path="xenium.html"><a href="xenium.html#overlap-txs-polygons"><i class="fa fa-check"></i><b>9.5</b> Overlap txs &amp; polygons</a></li>
+<li class="chapter" data-level="9.6" data-path="xenium.html"><a href="xenium.html#transcript-enrichment-gsea"><i class="fa fa-check"></i><b>9.6</b> Transcript enrichment GSEA</a></li>
+<li class="chapter" data-level="9.7" data-path="xenium.html"><a href="xenium.html#spatial-location-analysis"><i class="fa fa-check"></i><b>9.7</b> Spatial location analysis</a></li>
+<li class="chapter" data-level="9.8" data-path="xenium.html"><a href="xenium.html#visualizations"><i class="fa fa-check"></i><b>9.8</b> Visualizations</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="spatial-proteomics-multiplex-if.html"><a href="spatial-proteomics-multiplex-if.html"><i class="fa fa-check"></i><b>10</b> Spatial proteomics: multiplex IF</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="spatial-proteomics-multiplex-if.html"><a href="spatial-proteomics-multiplex-if.html#read-in-raw-data-2"><i class="fa fa-check"></i><b>10.1</b> Read in raw data</a></li>
+<li class="chapter" data-level="10.2" data-path="spatial-proteomics-multiplex-if.html"><a href="spatial-proteomics-multiplex-if.html#overlap-intensity-workflows"><i class="fa fa-check"></i><b>10.2</b> Overlap intensity &amp; workflows</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html"><i class="fa fa-check"></i><b>11</b> Working with multiple samples</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#create-individual-giotto-objects"><i class="fa fa-check"></i><b>11.1</b> Create individual giotto objects</a></li>
+<li class="chapter" data-level="11.2" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#join-giotto-objects"><i class="fa fa-check"></i><b>11.2</b> Join Giotto Objects</a></li>
+<li class="chapter" data-level="11.3" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#perform-harmony-and-default-workflows"><i class="fa fa-check"></i><b>11.3</b> Perform Harmony and default workflows</a></li>
+<li class="chapter" data-level="11.4" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#visualizations-1"><i class="fa fa-check"></i><b>11.4</b> Visualizations</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html"><i class="fa fa-check"></i><b>12</b> Spatial multi-modal analysis</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#overview-1"><i class="fa fa-check"></i><b>12.1</b> Overview</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-transforms-functions"><i class="fa fa-check"></i><b>12.1.1</b> Spatial transforms functions:</a></li>
+<li class="chapter" data-level="12.1.2" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-utilities"><i class="fa fa-check"></i><b>12.1.2</b> Spatial utilities:</a></li>
+<li class="chapter" data-level="12.1.3" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-classes"><i class="fa fa-check"></i><b>12.1.3</b> Spatial classes:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="image-transforms.html"><a href="image-transforms.html"><i class="fa fa-check"></i><b>13</b> Image transforms</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="image-transforms.html"><a href="image-transforms.html#co-registration-of-datasets"><i class="fa fa-check"></i><b>13.1</b> Co-registration of datasets</a></li>
+<li class="chapter" data-level="13.2" data-path="image-transforms.html"><a href="image-transforms.html#examples-in-giotto-suite-manuscript"><i class="fa fa-check"></i><b>13.2</b> Examples in giotto suite manuscript</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html"><i class="fa fa-check"></i><b>14</b> Multi-omics integration</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#introduction-to-the-spatial-dataset-1"><i class="fa fa-check"></i><b>14.1</b> Introduction to the spatial dataset</a></li>
+<li class="chapter" data-level="14.2" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#download-dataset-1"><i class="fa fa-check"></i><b>14.2</b> Download dataset</a></li>
+<li class="chapter" data-level="14.3" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#create-the-giotto-object-1"><i class="fa fa-check"></i><b>14.3</b> Create the Giotto object</a></li>
+<li class="chapter" data-level="14.4" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#subset-on-spots-that-were-covered-by-tissue-1"><i class="fa fa-check"></i><b>14.4</b> Subset on spots that were covered by tissue</a></li>
+<li class="chapter" data-level="14.5" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#rna-processing"><i class="fa fa-check"></i><b>14.5</b> RNA processing</a></li>
+<li class="chapter" data-level="14.6" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#protein-processing"><i class="fa fa-check"></i><b>14.6</b> Protein processing</a></li>
+<li class="chapter" data-level="14.7" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#multi-omics-integration-1"><i class="fa fa-check"></i><b>14.7</b> Multi-omics integration</a></li>
+<li class="chapter" data-level="14.8" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#session-info-2"><i class="fa fa-check"></i><b>14.8</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html"><i class="fa fa-check"></i><b>15</b> Interoperability with other frameworks</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#load-giotto-object"><i class="fa fa-check"></i><b>15.1</b> Load Giotto object</a></li>
+<li class="chapter" data-level="15.2" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#spatialexperiment"><i class="fa fa-check"></i><b>15.2</b> SpatialExperiment</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#convert-giotto-object-to-spatialexperiment-object"><i class="fa fa-check"></i><b>15.2.1</b> Convert Giotto Object to SpatialExperiment Object</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#identify-top-spatially-variable-genes-with-nnsvg"><i class="fa fa-check"></i><b>15.3</b> Identify top spatially variable genes with nnSVG</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#conversion-of-spatialexperiment-object-back-to-giotto"><i class="fa fa-check"></i><b>15.3.1</b> Conversion of SpatialExperiment object back to Giotto</a></li>
+<li class="chapter" data-level="15.3.2" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#plotting-top-genes-from-nnsvg-in-giotto"><i class="fa fa-check"></i><b>15.3.2</b> Plotting top genes from nnSVG in Giotto</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#seurat"><i class="fa fa-check"></i><b>15.4</b> Seurat</a>
+<ul>
+<li class="chapter" data-level="15.4.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#giotto-to-seurat"><i class="fa fa-check"></i><b>15.4.1</b> Giotto to Seurat</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#anndataspatialdata"><i class="fa fa-check"></i><b>15.5</b> AnnData/SpatialData</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html"><i class="fa fa-check"></i><b>16</b> Interoperability with isolated tools</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#spatial-niche-trajectory-analysis"><i class="fa fa-check"></i><b>16.1</b> Spatial niche trajectory analysis</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#dataset-download"><i class="fa fa-check"></i><b>16.1.1</b> Dataset download</a></li>
+<li class="chapter" data-level="16.1.2" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#create-the-giotto-object-2"><i class="fa fa-check"></i><b>16.1.2</b> Create the Giotto object</a></li>
+<li class="chapter" data-level="16.1.3" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#visualization"><i class="fa fa-check"></i><b>16.1.3</b> visualization</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html"><i class="fa fa-check"></i><b>17</b> Interactivity with the R/Spatial ecosystem</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#kriging"><i class="fa fa-check"></i><b>17.1</b> Kriging</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="contributing-to-giotto.html"><a href="contributing-to-giotto.html"><i class="fa fa-check"></i><b>18</b> Contributing to Giotto</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="contributing-to-giotto.html"><a href="contributing-to-giotto.html#contribution-guideline"><i class="fa fa-check"></i><b>18.1</b> Contribution guideline</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Workshop: Spatial multi-omics data analysis with Giotto Suite</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="image-transforms" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">13</span> Image transforms<a href="image-transforms.html#image-transforms" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Giotto uses <code>giottoLargeImages</code> as the core image class which is based on <em>terra</em> <code>SpatRaster</code>. Images are not loaded into memory when the object is generated and instead an amount of regular sampling appropriate to the zoom level requested is performed at time of plotting.</p>
+<p><code>spatShift()</code> and <code>rescale()</code> operations are supported by <em>terra</em> <code>SpatRaster</code>, and we inherit those functionalities. <code>spin()</code>, <code>flip()</code>, <code>t()</code>, <code>shear()</code>, <code>affine()</code> operations will coerce <code>giottoLargeImage</code> to <code>giottoAffineImage</code>, which is much the same, except it contains an <code>affine2d</code> object that tracks spatial manipulations performed, so that they can be applied through <code>magick::image_distort()</code> processing after sampled values are pulled into memory. <code>giottoAffineImage</code> also has alternative <code>ext()</code> and <code>crop()</code> methods so that those operations respect both the expected post-affine space and untransformed source image.</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="image-transforms.html#cb109-1" tabindex="-1"></a><span class="co"># affine transform of image info matches with polygon info</span></span>
+<span id="cb109-2"><a href="image-transforms.html#cb109-2" tabindex="-1"></a>gimg <span class="sc">|&gt;</span> <span class="fu">affine</span>(aff) <span class="sc">|&gt;</span> <span class="fu">plot</span>()</span>
+<span id="cb109-3"><a href="image-transforms.html#cb109-3" tabindex="-1"></a>gpoly <span class="sc">|&gt;</span> <span class="fu">affine</span>(aff) <span class="sc">|&gt;</span> </span>
+<span id="cb109-4"><a href="image-transforms.html#cb109-4" tabindex="-1"></a>    <span class="fu">plot</span>(<span class="at">add =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb109-5"><a href="image-transforms.html#cb109-5" tabindex="-1"></a>         <span class="at">border =</span> <span class="st">&quot;cyan&quot;</span>,</span>
+<span id="cb109-6"><a href="image-transforms.html#cb109-6" tabindex="-1"></a>         <span class="at">lwd =</span> <span class="fl">0.3</span>)</span></code></pre></div>
+<p><img src="img/03_session2/polys_and_image.png" width="350" /></p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="image-transforms.html#cb110-1" tabindex="-1"></a><span class="co"># affine of the giotto object</span></span>
+<span id="cb110-2"><a href="image-transforms.html#cb110-2" tabindex="-1"></a>g <span class="sc">|&gt;</span> <span class="fu">affine</span>(aff) <span class="sc">|&gt;</span> </span>
+<span id="cb110-3"><a href="image-transforms.html#cb110-3" tabindex="-1"></a>    <span class="fu">spatInSituPlotPoints</span>(</span>
+<span id="cb110-4"><a href="image-transforms.html#cb110-4" tabindex="-1"></a>        <span class="at">show_image =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb110-5"><a href="image-transforms.html#cb110-5" tabindex="-1"></a>        <span class="at">feats =</span> <span class="fu">list</span>(<span class="at">rna =</span> <span class="fu">c</span>(<span class="st">&quot;Adgrl1&quot;</span>, <span class="st">&quot;Gfap&quot;</span>, <span class="st">&quot;Ntrk3&quot;</span>, <span class="st">&quot;Slc17a7&quot;</span>)),</span>
+<span id="cb110-6"><a href="image-transforms.html#cb110-6" tabindex="-1"></a>        <span class="at">feats_color_code =</span> <span class="fu">rainbow</span>(<span class="dv">4</span>),</span>
+<span id="cb110-7"><a href="image-transforms.html#cb110-7" tabindex="-1"></a>        <span class="at">polygon_color =</span> <span class="st">&quot;cyan&quot;</span>,</span>
+<span id="cb110-8"><a href="image-transforms.html#cb110-8" tabindex="-1"></a>        <span class="at">polygon_line_size =</span> <span class="fl">0.1</span>,</span>
+<span id="cb110-9"><a href="image-transforms.html#cb110-9" tabindex="-1"></a>        <span class="at">point_size =</span> <span class="fl">0.1</span>,</span>
+<span id="cb110-10"><a href="image-transforms.html#cb110-10" tabindex="-1"></a>        <span class="at">use_overlap =</span> <span class="cn">FALSE</span></span>
+<span id="cb110-11"><a href="image-transforms.html#cb110-11" tabindex="-1"></a>    )</span></code></pre></div>
+<p><img src="img/03_session2/gobj_affine.png" width="350" /></p>
+<p>Currently <em>giotto</em> image objects are not fully compatible with .ome.tif files. <em>terra</em> which relies on <em>gdal</em> drivers for image loading will find that the Gtiff driver opens some .ome.tif images, but fails when certain compressions (notably JP2000 as used by 10x for their single-channel stains) are used.</p>
+<div id="co-registration-of-datasets" class="section level2 hasAnchor" number="13.1">
+<h2><span class="header-section-number">13.1</span> Co-registration of datasets<a href="image-transforms.html#co-registration-of-datasets" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>text</p>
+</div>
+<div id="examples-in-giotto-suite-manuscript" class="section level2 hasAnchor" number="13.2">
+<h2><span class="header-section-number">13.2</span> Examples in giotto suite manuscript<a href="image-transforms.html#examples-in-giotto-suite-manuscript" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>text</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="image-transforms.html#cb111-1" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="spatial-multi-modal-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="multi-omics-integration.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
