@@ -428,25 +428,21 @@ datasets.</p>
 <span id="cb198-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb198-3" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">&quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz&quot;</span>,</span>
 <span id="cb198-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb198-4" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="st">&quot;data/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning in download.file(url =
-## &quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz&quot;,
-## : URL
-## https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz:
-## cannot open destfile &#39;data/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz&#39;, reason &#39;No
-## such file or directory&#39;</code></pre>
+## &quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz&quot;, : URL
+## https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz: cannot
+## open destfile &#39;data/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz&#39;, reason &#39;No such file or directory&#39;</code></pre>
 <pre><code>## Warning in download.file(url =
-## &quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz&quot;,
-## : download had nonzero exit status</code></pre>
+## &quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz&quot;, :
+## download had nonzero exit status</code></pre>
 <div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb201-1" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">&quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_spatial.tar.gz&quot;</span>,</span>
 <span id="cb201-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb201-2" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="st">&quot;data/V1_Adult_Mouse_Brain_spatial.tar.gz&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning in download.file(url =
-## &quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_spatial.tar.gz&quot;,
-## : URL
-## https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_spatial.tar.gz:
-## cannot open destfile &#39;data/V1_Adult_Mouse_Brain_spatial.tar.gz&#39;, reason &#39;No such file or
-## directory&#39;</code></pre>
+## &quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_spatial.tar.gz&quot;, : URL
+## https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_spatial.tar.gz: cannot open destfile
+## &#39;data/V1_Adult_Mouse_Brain_spatial.tar.gz&#39;, reason &#39;No such file or directory&#39;</code></pre>
 <pre><code>## Warning in download.file(url =
-## &quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_spatial.tar.gz&quot;,
-## : download had nonzero exit status</code></pre>
+## &quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_spatial.tar.gz&quot;, : download had
+## nonzero exit status</code></pre>
 <p>After downloading, unzip the gz files. You should get the “raw_feature_bc_matrix” and “spatial” folders inside “data/”.</p>
 <div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb204-1" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
 <span id="cb204-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb204-2" tabindex="-1"></a></span>
@@ -522,7 +518,7 @@ datasets.</p>
 <span id="cb204-72"><a href="interactivity-with-the-rspatial-ecosystem.html#cb204-72" tabindex="-1"></a>           <span class="at">show_legend =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb204-73"><a href="interactivity-with-the-rspatial-ecosystem.html#cb204-73" tabindex="-1"></a>           <span class="at">save_plot =</span> T,</span>
 <span id="cb204-74"><a href="interactivity-with-the-rspatial-ecosystem.html#cb204-74" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&#39;03_ses6_1_vis_spat&#39;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-289"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-290"></span>
 <img src="img/03_session6/03_ses6_1_vis_spat.png" alt="Mouse brain spatial plot showing leiden clustering" width="75%" />
 <p class="caption">
 Figure 16.1: Mouse brain spatial plot showing leiden clustering
@@ -564,13 +560,13 @@ we’ll interpolate gene expression onto. These will then be added to the Giotto
 <h3><span class="header-section-number">16.3.2</span> Vizualizing polygons<a href="interactivity-with-the-rspatial-ecosystem.html#vizualizing-polygons" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb207-1" tabindex="-1"></a><span class="co"># show the data</span></span>
 <span id="cb207-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb207-2" tabindex="-1"></a><span class="fu">plot</span>(stardist_cell_gpoly, <span class="at">max_poly =</span> <span class="fl">1e6</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-293"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-294"></span>
 <img src="img/03_session6/03_ses6_2_cell_poly.png" alt="Mouse brain cell polygons" width="100%" />
 <p class="caption">
 Figure 16.2: Mouse brain cell polygons
 </p>
 </div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-294"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-295"></span>
 <img src="img/03_session6/03_ses6_2_cell_poly_flipped.png" alt="Mouse brain cell polygons with artifacts removed and flipped" width="100%" />
 <p class="caption">
 Figure 16.3: Mouse brain cell polygons with artifacts removed and flipped
@@ -587,7 +583,7 @@ Figure 16.3: Mouse brain cell polygons with artifacts removed and flipped
 <span id="cb209-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb209-2" tabindex="-1"></a>                             <span class="at">gpolygons =</span> <span class="fu">list</span>(<span class="st">&#39;stardist_cell&#39;</span> <span class="ot">=</span> stardist_cell_gpoly))</span>
 <span id="cb209-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb209-3" tabindex="-1"></a></span>
 <span id="cb209-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb209-4" tabindex="-1"></a><span class="fu">print</span>(v_brain)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-297"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-298"></span>
 <img src="img/03_session6/03_ses6_gobject_sub.png" alt="Giotto object after to adding subcellular polygons. Addition of new stardist_cell polygon." width="40%" />
 <p class="caption">
 Figure 16.4: Giotto object after to adding subcellular polygons. Addition of new stardist_cell polygon.
@@ -616,7 +612,7 @@ analyzing 50 genes to show the process of expression interpolation.</p>
 <span id="cb211-7"><a href="interactivity-with-the-rspatial-ecosystem.html#cb211-7" tabindex="-1"></a>                                  <span class="at">overwrite =</span> T)</span>
 <span id="cb211-8"><a href="interactivity-with-the-rspatial-ecosystem.html#cb211-8" tabindex="-1"></a></span>
 <span id="cb211-9"><a href="interactivity-with-the-rspatial-ecosystem.html#cb211-9" tabindex="-1"></a><span class="fu">print</span>(subcell_v_brain)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-300"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-301"></span>
 <img src="img/03_session6/03_ses6_gobject_sub_interpolate.png" alt="Giotto object after to interpolating features. Addition of images for each interoplated feature (left) and an example of rasterized gene expression image (right)." width="100%" />
 <p class="caption">
 Figure 16.5: Giotto object after to interpolating features. Addition of images for each interoplated feature (left) and an example of rasterized gene expression image (right).
@@ -636,7 +632,7 @@ Figure 16.5: Giotto object after to interpolating features. Addition of images f
 <span id="cb212-8"><a href="interactivity-with-the-rspatial-ecosystem.html#cb212-8" tabindex="-1"></a>                                     <span class="at">feat_info =</span> <span class="st">&quot;rna&quot;</span>,</span>
 <span id="cb212-9"><a href="interactivity-with-the-rspatial-ecosystem.html#cb212-9" tabindex="-1"></a>                                     <span class="at">aggr_function =</span> <span class="st">&quot;sum&quot;</span>,</span>
 <span id="cb212-10"><a href="interactivity-with-the-rspatial-ecosystem.html#cb212-10" tabindex="-1"></a>                                     <span class="at">type=</span><span class="st">&#39;intensity&#39;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-302"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-303"></span>
 <img src="img/03_session6/03_ses6_interpolate_gene_express.png" alt="Gene expression for cells based on interpolation." width="100%" />
 <p class="caption">
 Figure 16.6: Gene expression for cells based on interpolation.
@@ -707,7 +703,7 @@ Figure 16.6: Gene expression for cells based on interpolation.
 <span id="cb215-37"><a href="interactivity-with-the-rspatial-ecosystem.html#cb215-37" tabindex="-1"></a>              <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb215-38"><a href="interactivity-with-the-rspatial-ecosystem.html#cb215-38" tabindex="-1"></a>              <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb215-39"><a href="interactivity-with-the-rspatial-ecosystem.html#cb215-39" tabindex="-1"></a>              <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&#39;03_ses6_pantr1&#39;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-306"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-307"></span>
 <img src="img/03_session6/03_ses6_gene_expression.png" alt="Gene expression for visium (left) and interpolated (right) expression for Sparc (top) and Pantr1 (bottom)." width="100%" />
 <p class="caption">
 Figure 16.7: Gene expression for visium (left) and interpolated (right) expression for Sparc (top) and Pantr1 (bottom).
@@ -746,7 +742,7 @@ Figure 16.7: Gene expression for visium (left) and interpolated (right) expressi
 <span id="cb217-21"><a href="interactivity-with-the-rspatial-ecosystem.html#cb217-21" tabindex="-1"></a>                                  <span class="at">partition_type =</span> <span class="st">&#39;RBConfigurationVertexPartition&#39;</span>)</span>
 <span id="cb217-22"><a href="interactivity-with-the-rspatial-ecosystem.html#cb217-22" tabindex="-1"></a></span>
 <span id="cb217-23"><a href="interactivity-with-the-rspatial-ecosystem.html#cb217-23" tabindex="-1"></a><span class="fu">plotUMAP</span>(subcell_v_brain, <span class="at">spat_unit =</span> <span class="st">&#39;stardist_cell&#39;</span>, <span class="at">cell_color =</span> <span class="st">&#39;leiden_clus&#39;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-309"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-310"></span>
 <img src="img/03_session6/03_ses6_subcell_umap.png" alt="UMAP for stardist_cell based on the 1500 interpolated gene expressions. Colored based on leiden clustering." width="100%" />
 <p class="caption">
 Figure 16.8: UMAP for stardist_cell based on the 1500 interpolated gene expressions. Colored based on leiden clustering.
@@ -775,7 +771,7 @@ Figure 16.8: UMAP for stardist_cell based on the 1500 interpolated gene expressi
 <span id="cb218-18"><a href="interactivity-with-the-rspatial-ecosystem.html#cb218-18" tabindex="-1"></a>           <span class="at">show_legend =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb218-19"><a href="interactivity-with-the-rspatial-ecosystem.html#cb218-19" tabindex="-1"></a>           <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb218-20"><a href="interactivity-with-the-rspatial-ecosystem.html#cb218-20" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&#39;03_ses6_subcell_spat&#39;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-311"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-312"></span>
 <img src="img/03_session6/03_ses6_spat_plots.png" alt="Spatial plots showing leiden clustering mapped onto the base visium spots (left) and individual nuceli through interpolation (right)" width="100%" />
 <p class="caption">
 Figure 16.9: Spatial plots showing leiden clustering mapped onto the base visium spots (left) and individual nuceli through interpolation (right)
@@ -814,7 +810,7 @@ Figure 16.9: Spatial plots showing leiden clustering mapped onto the base visium
 <span id="cb219-28"><a href="interactivity-with-the-rspatial-ecosystem.html#cb219-28" tabindex="-1"></a>           <span class="at">show_legend =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb219-29"><a href="interactivity-with-the-rspatial-ecosystem.html#cb219-29" tabindex="-1"></a>           <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb219-30"><a href="interactivity-with-the-rspatial-ecosystem.html#cb219-30" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&#39;03_ses6_subcell_spat_crop&#39;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-313"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-314"></span>
 <img src="img/03_session6/03_ses_spat_crop.png" alt="Spatial plots showing leiden clustering mapped onto the base visium spots (left) and individual nuceli through interpolation (right)" width="100%" />
 <p class="caption">
 Figure 16.10: Spatial plots showing leiden clustering mapped onto the base visium spots (left) and individual nuceli through interpolation (right)
