@@ -48,5 +48,4 @@ jobs:
         with:
           branch: gh-pages
           folder: docs
-          target-folder: docs
           token: ${{ secrets.GITHUB_TOKEN }}
