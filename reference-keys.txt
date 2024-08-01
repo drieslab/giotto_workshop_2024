@@ -23,11 +23,12 @@ fig:unnamed-chunk-310
 fig:unnamed-chunk-312
 fig:unnamed-chunk-314
 fig:unnamed-chunk-316
-fig:unnamed-chunk-318
-fig:unnamed-chunk-322
-fig:unnamed-chunk-325
-fig:unnamed-chunk-327
-fig:unnamed-chunk-329
+fig:unnamed-chunk-317
+fig:unnamed-chunk-319
+fig:unnamed-chunk-323
+fig:unnamed-chunk-326
+fig:unnamed-chunk-328
+fig:unnamed-chunk-330
 giotto-suite-workshop-2024
 instructors
 topics-and-schedule
