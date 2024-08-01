@@ -159,9 +159,9 @@ knitr::include_graphics("img/03_session3/1-UMAP.png")
 
 ```{r, eval=FALSE}
 spatPlot2D(gobject = visium_tonsil,
-           show_image = FALSE,
+           show_image = TRUE,
            cell_color = "leiden_clus",
-           point_size = 2)
+           point_size = 3)
 ```
 
 ```{r, echo=FALSE, out.width="80%", fig.align="center"}
@@ -246,9 +246,9 @@ knitr::include_graphics("img/03_session3/3-UMAP.png")
 spatPlot2D(gobject = visium_tonsil,
            spat_unit = "cell",
            feat_type = "protein",
-           show_image = FALSE,
+           show_image = TRUE,
            cell_color = "leiden_clus",
-           point_size = 2)
+           point_size = 3)
 ```
 
 ```{r, echo=FALSE, out.width="80%", fig.align="center"}
@@ -338,8 +338,8 @@ spatPlot2D(visium_tonsil,
            spat_unit = "cell",
            feat_type = "rna",
            cell_color = "integrated_leiden_clus",
-           point_size = 2,
-           show_image = FALSE,
+           point_size = 3,
+           show_image = TRUE,
            title = "Integrated Leiden clustering")
 ```
 
