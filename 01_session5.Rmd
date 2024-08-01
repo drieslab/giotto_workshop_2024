@@ -4,6 +4,16 @@ Joselyn Cristina Chávez Fuentes
 
 August 5th 2024
 
+## The Visium technology
+
+Visium allows you to perform spatial transcriptomics, which combines histological information with whole transcriptome gene expression profiles (fresh frozen or FFPE) to provide you with spatially resolved gene expression.
+
+```{r, echo=FALSE, out.width="100%", fig.align='center'}
+knitr::include_graphics("img/01_session5/workflow.png")
+```
+
+You can use standard fixation and staining techniques, including hematoxylin and eosin (H&E) staining, to visualize tissue sections on slides using a brightfield microscope and immunofluorescence (IF) staining to visualize protein detection in tissue sections on slides using a fluorescent microscope.
+
 ## Introduction to the spatial dataset
 
 The Visium brain data to run this tutorial can be found [here](https://support.10xgenomics.com/spatial-gene-expression/datasets/1.1.0/V1_Adult_Mouse_Brain)
