@@ -1,6 +1,6 @@
-# Needed packages
+## Needed packages
 
-## CRAN dependencies:
+### CRAN dependencies:
 
 ```{r, eval=FALSE}
 cran_dependencies <-
@@ -11,7 +11,7 @@ cran_dependencies <-
 install.packages(cran_dependencies, Ncpus = 4)
 ```
 
-## *terra* installation
+### *terra* installation
 
 *terra* may have some additional steps when installing depending on which system you are on. Please see the *terra* [repo](https://github.com/rspatial/terra) for specifics. Installations of the CRAN release on Windows and Mac are expected to be simple, only requiring the code below.
 
@@ -35,7 +35,7 @@ On our AlmaLinux 8 HPC, the following versions have been working well:
 install.packages("terra")
 ```
 
-## *Matrix* installation
+### *Matrix* installation
 
 !! FOR R VERSIONS LOWER THAN 4.4.0 !!
 
@@ -45,14 +45,14 @@ install.packages("terra")
 # devtools::install_version("Matrix", version = "1.6-5")
 ```
 
-## *Giotto* installation
+### *Giotto* installation
 
 ```{r, eval=FALSE}
 pak::pak("drieslab/Giotto")
 pak::pak("drieslab/GiottoData")
 ```
 
-## *irlba* install
+### *irlba* install
 
 Reinstall *irlba* from source. Avoids the common `function 'as_cholmod_sparse' not provided by package 'Matrix'` error. See this [issue](https://github.com/bwlewis/irlba/issues/70) for more info.
 
@@ -60,7 +60,7 @@ Reinstall *irlba* from source. Avoids the common `function 'as_cholmod_sparse' n
 install.packages("irlba", type = "source")
 ```
 
-## *arrow* install
+### *arrow* install
 
 *arrow* is a suggested package that we use here to open `parquet` files. The parquet files that 10X provides use zstd compression which the default *arrow* installation may not provide.
 
@@ -76,7 +76,7 @@ if (!has_arrow || !zstd) {
 }
 ```
 
-## Bioconductor dependencies:
+### Bioconductor dependencies:
 
 ```{r, eval=FALSE}
 bioc_dependencies <- c(
@@ -89,7 +89,7 @@ bioc_dependencies <- c(
 )
 ```
 
-## CRAN packages:
+### CRAN packages:
 
 ```{r, eval=FALSE}
 needed_packages_cran <- c(
@@ -120,7 +120,7 @@ pak::pkg_install(c(bioc_dependencies,
                    needed_packages_cran))
 ```
 
-## Packages from GitHub
+### Packages from GitHub
 
 ```{r, eval=FALSE}
 github_packages <- c(
@@ -129,7 +129,7 @@ github_packages <- c(
 pak::pkg_install(github_packages)
 ```
 
-## Python environments
+### Python environments
 
 ```{r, eval=FALSE}
 # default giotto environment
