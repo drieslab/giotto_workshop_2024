@@ -226,10 +226,16 @@ subcell_v_brain <- interpolateFeature(v_brain,
 
 print(subcell_v_brain)
 ```
+
 ```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Giotto object after to interpolating features. Addition of images for each interoplated feature (left) and an example of rasterized gene expression image (right)."}
 knitr::include_graphics("img/03_session6/03_ses6_gobject_sub_interpolate.png")
 ```
 
+For each gene that we interpolate a raster image is exported based on the gene expression. Shown below is an example of an output for the gene Pantr1.
+
+```{r, echo=FALSE, out.width="50%", fig.align="center", fig.cap="Raster of gene expression interpolation for Pantr1"}
+knitr::include_graphics("img/03_session6/Pantr1_raster.png")
+```
 
 ### Expression overlap
 The raster we created above gives the gene expression in a graphical form. We next need to determine how that relates to the nuclei location. To determine that we will calculate the overlap of the rasterized gene expression image to the polygons supplied earlier. 
@@ -259,7 +265,7 @@ knitr::include_graphics("img/03_session6/03_ses6_interpolate_gene_express.png")
 For better results more genes are required. The above data used only 15 genes. We will now read in a dataset that has 1500 interpolated genes an use this for the remained of the tutorial. If you haven't downloaded this dataset please download it [here](https://zenodo.org/records/13144556).
 
 ```{r, eval=FALSE}
-subcell_v_brain <- loadGiotto(file.path(data_directory, 'subcellular_1500_overlap'))
+subcell_v_brain <- loadGiotto(file.path(data_directory, 'subcellular_gobject'))
 ```
 
 ## Analyzing interpolated features
