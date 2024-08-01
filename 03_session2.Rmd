@@ -99,11 +99,14 @@ knitr::include_graphics("img/03_session2/transforms.png")
 
 The above transforms are all simple to understand in how they work, but you can imagine that performing them in sequence on your dataset can be computationally expensive. 
 
-Luckily, the above operations are all affine transformation, and they can be condensed into a single step. Affine transforms where the x and y values undergo a linear transform. These transforms in 2D, can all be represented as a 2x2 matrix or 2x3 if the xy translation values are included. To perform the linear transform, the xy coordinates just need to be matrix multiplied by the 2x2 affine matrix.
+Luckily, the above operations are all affine transformation, and they can be condensed into a single step. Affine transforms where the x and y values undergo a linear transform. These transforms in 2D, can all be represented as a 2x2 matrix or 2x3 if the xy translation values are included.
 
 ```{r, echo=FALSE}
 knitr::include_graphics("img/03_session2/matrix.png")
 ```
+
+To perform the linear transform, the xy coordinates just need to be matrix multiplied by the 2x2 affine matrix. The resulting values should then be added to the translate values.
+
 ```{r, echo=FALSE}
  knitr::include_graphics("img/03_session2/apply_matrix.png")
 ```
