@@ -28,6 +28,16 @@ giotto-suite-workshop-2024
 instructors
 topics-and-schedule
 license
+datasets-to-download
+zenodo-repository
+x-genomics-visium-mouse-brain-section-coronal-dataset
+x-genomics-visium-hd-ffpe-human-colon-cancer
+x-genomics-multi-modal-dataset
+x-genomics-multi-omics-visium-cytassist-human-tonsil-dataset
+x-genomics-human-prostate-cancer-adenocarcinoma-with-invasive-carcinoma-ffpe
+x-genomics-normal-human-prostate-ffpe
+xenium
+merfish-cortex-dataset
 spatial-omics-technologies
 presentation
 short-summary
@@ -101,7 +111,7 @@ tiling-and-aggregation
 scalability-and-projection-functions
 spatial-expression-patterns-1
 spatial-co-expression-modules-1
-xenium
+xenium-1
 introduction-to-spatial-dataset
 additional-package-requirements
 introduce-mini-object
