@@ -1,4 +1,3 @@
-fig:unnamed-chunk-2
 fig:unnamed-chunk-146
 fig:unnamed-chunk-147
 fig:unnamed-chunk-148

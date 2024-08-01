@@ -440,25 +440,21 @@ datasets.</p>
 <span id="cb198-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb198-3" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">&quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz&quot;</span>,</span>
 <span id="cb198-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb198-4" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="st">&quot;data/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning in download.file(url =
-## &quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz&quot;,
-## : URL
-## https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz:
-## cannot open destfile &#39;data/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz&#39;,
-## reason &#39;No such file or directory&#39;</code></pre>
+## &quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz&quot;, : URL
+## https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz: cannot
+## open destfile &#39;data/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz&#39;, reason &#39;No such file or directory&#39;</code></pre>
 <pre><code>## Warning in download.file(url =
-## &quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz&quot;,
-## : download had nonzero exit status</code></pre>
+## &quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz&quot;, :
+## download had nonzero exit status</code></pre>
 <div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb201-1" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">&quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_spatial.tar.gz&quot;</span>,</span>
 <span id="cb201-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb201-2" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="st">&quot;data/V1_Adult_Mouse_Brain_spatial.tar.gz&quot;</span>)</span></code></pre></div>
 <pre><code>## Warning in download.file(url =
-## &quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_spatial.tar.gz&quot;,
-## : URL
-## https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_spatial.tar.gz:
-## cannot open destfile &#39;data/V1_Adult_Mouse_Brain_spatial.tar.gz&#39;, reason &#39;No such
-## file or directory&#39;</code></pre>
+## &quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_spatial.tar.gz&quot;, : URL
+## https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_spatial.tar.gz: cannot open destfile
+## &#39;data/V1_Adult_Mouse_Brain_spatial.tar.gz&#39;, reason &#39;No such file or directory&#39;</code></pre>
 <pre><code>## Warning in download.file(url =
-## &quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_spatial.tar.gz&quot;,
-## : download had nonzero exit status</code></pre>
+## &quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_spatial.tar.gz&quot;, : download had
+## nonzero exit status</code></pre>
 <p>After downloading, unzip the gz files. You should get the “raw_feature_bc_matrix” and “spatial” folders inside “data/”.</p>
 <div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb204-1" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
 <span id="cb204-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb204-2" tabindex="-1"></a></span>
