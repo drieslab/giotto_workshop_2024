@@ -4,6 +4,20 @@ Joselyn Cristina Chávez Fuentes
 
 August 7th 2024
 
+## The CytAssist technology
+
+The Visium CytAssist Spatial Gene and Protein Expression assay is designed to introduce simultaneous Gene Expression and Protein Expression analysis to FFPE samples processed with Visium CytAssist. The assay uses NGS to measure the abundance of oligo-tagged antibodies with spatial resolution, in addition to the whole transcriptome and a morphological image.
+
+```{r, echo=FALSE, out.width="50%", fig.align='center'}
+knitr::include_graphics("img/03_session3/cytassist.png")
+```
+
+The 10X human immune cell profiling panel features 35 antibodies from Abcam and Biolegend, and includes cell surface and intracellular targets. The rna probes hybridize to ~18,000 genes, or RNA targets, within the tissue section to achieve whole transcriptome gene expression profiling. The remaining steps, starting with probe extension, follow the standard Visium workflow outside of the instrument.
+
+```{r, echo=FALSE, out.width="100%", fig.align='center'}
+knitr::include_graphics("img/03_session3/workflow.png")
+```
+
 ## Introduction to the spatial dataset
 
 The [Human Tonsil (FFPE) dataset](https://www.10xgenomics.com/datasets/gene-protein-expression-library-of-human-tonsil-cytassist-ffpe-2-standard) was obtained from 10X Genomics. The tissue was sectioned as described in Visium CytAssist Spatial Gene and Protein Expression for FFPE – Tissue Preparation Guide (CG000660). 5 µm tissue sections were placed on Superfrost glass slides, deparaffinized, H&E stained (CG000658) and coverslipped. Sections were imaged, decoverslipped, followed by decrosslinking per the Staining Demonstrated Protocol (CG000658).
