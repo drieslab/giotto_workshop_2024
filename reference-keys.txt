@@ -32,6 +32,7 @@ giotto-suite-workshop-2024
 instructors
 topics-and-schedule
 license
+datasets-packages
 datasets-to-download
 zenodo-repository
 x-genomics-visium-mouse-brain-section-coronal-dataset
