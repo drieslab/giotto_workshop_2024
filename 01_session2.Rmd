@@ -6,9 +6,13 @@ August 5th 2024
 
 ## Presentation  
   
-xxx
 
-<br> 
+```{r, echo = FALSE, message=FALSE, fig.align='center', fig.cap='Giotto Suite slides', out.height = "460px", out.width='800px', fig.pos='H'}
+knitr::include_graphics("./img/01_session2/GS_workshop2024_giotto_intro.pdf")
+```
+
+<br>  
+
 
 ## Ecosystem
 

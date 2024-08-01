@@ -212,3 +212,5 @@ visualizing-clustering
 cropping-objects
 contributing-to-giotto
 contribution-guideline
+fig:image-ref-for-in-text
+fig:unnamed-chunk-1
