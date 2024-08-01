@@ -9,7 +9,8 @@ on:
 
 name: bookdown
 
-permissions: read-all
+permissions:
+  contents: write
 
 jobs:
   bookdown:
@@ -46,4 +47,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.5.0
         with:
           branch: gh-pages
-          folder: _book
+          folder: docs
+          token: ${{ secrets.GITHUB_TOKEN }}
