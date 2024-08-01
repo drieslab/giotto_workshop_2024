@@ -1,0 +1,42 @@
+# Datasets to download
+
+Please download the following datasets to reproduce the examples. You can download them from their original source using the individual links listed below or download all of them from  the following Zenodo repository:
+
+## Zenodo repository
+
+https://zenodo.org/communities/gw2024/records?q=&l=list&p=1&s=10&sort=newest
+
+
+## 10X Genomics Visium Mouse Brain Section (Coronal) dataset
+
+https://support.10xgenomics.com/spatial-gene-expression/datasets/1.1.0/V1_Adult_Mouse_Brain
+
+## 10X Genomics Visium HD: FFPE Human Colon Cancer
+
+https://www.10xgenomics.com/datasets/visium-hd-cytassist-gene-expression-libraries-of-human-crc
+
+## 10X Genomics multi-modal dataset
+
+https://www.10xgenomics.com/products/xenium-in-situ/preview-dataset-human-breast 
+
+## 10X Genomics multi-omics Visium CytAssist Human Tonsil dataset
+
+https://www.10xgenomics.com/resources/datasets/gene-protein-expression-library-of-human-tonsil-cytassist-ffpe-2-standard 
+
+## 10X Genomics Human Prostate Cancer Adenocarcinoma with Invasive Carcinoma (FFPE)
+
+https://www.10xgenomics.com/datasets/human-prostate-cancer-adenocarcinoma-with-invasive-carcinoma-ffpe-1-standard-1-3-0
+
+## 10X Genomics Normal Human Prostate (FFPE)
+
+https://www.10xgenomics.com/datasets/normal-human-prostate-ffpe-1-standard-1-3-0
+
+## Xenium 
+
+https://www.10xgenomics.com/datasets/preview-data-ffpe-human-lung-cancer-with-xenium-multimodal-cell-segmentation-1-standard
+
+## MERFISH cortex dataset
+
+https://doi.brainimagelibrary.org/doi/10.35077/g.21 
+
+
