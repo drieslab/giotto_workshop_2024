@@ -22,7 +22,7 @@ For this tutorial we'll be using the mouse brain dataset described in section 6.
 ## Importing visium data
 
 We first need to import a dataset that we want to perform kriging on.
-```{r}
+```{r, eval=FALSE}
 
 data_directory <- "data"
 
