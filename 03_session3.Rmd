@@ -8,7 +8,7 @@ August 7th 2024
 
 The Visium CytAssist Spatial Gene and Protein Expression assay is designed to introduce simultaneous Gene Expression and Protein Expression analysis to FFPE samples processed with Visium CytAssist. The assay uses NGS to measure the abundance of oligo-tagged antibodies with spatial resolution, in addition to the whole transcriptome and a morphological image.
 
-```{r, echo=FALSE, out.width="50%", fig.align='center'}
+```{r, echo=FALSE, out.width="80%", fig.align='center'}
 knitr::include_graphics("img/03_session3/cytassist.png")
 ```
 
