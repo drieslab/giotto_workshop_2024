@@ -534,9 +534,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="affine-transforms" class="section level2 hasAnchor" number="13.4">
 <h2><span class="header-section-number">13.4</span> Affine transforms<a href="spatial-multi-modal-analysis.html#affine-transforms" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The above transforms are all simple to understand in how they work, but you can imagine that performing them in sequence on your dataset can be computationally expensive.</p>
-<p>Luckily, the above operations are all affine transformation, and they can be condensed into a single step. Affine transforms where the x and y values undergo a linear transform. These transforms in 2D, can all be represented as a 2x2 matrix or 2x3 if the xy translation values are included. To perform the linear transform, the xy coordinates just need to be matrix multiplied by the 2x2 affine matrix.</p>
-<p><img src="img/03_session2/matrix.png" /><!-- -->
-<img src="img/03_session2/apply_matrix.png" /><!-- --></p>
+<p>Luckily, the above operations are all affine transformation, and they can be condensed into a single step. Affine transforms where the x and y values undergo a linear transform. These transforms in 2D, can all be represented as a 2x2 matrix or 2x3 if the xy translation values are included.</p>
+<p><img src="img/03_session2/matrix.png" /><!-- --></p>
+<p>To perform the linear transform, the xy coordinates just need to be matrix multiplied by the 2x2 affine matrix. The resulting values should then be added to the translate values.</p>
+<p><img src="img/03_session2/apply_matrix.png" /><!-- --></p>
 <p>Due to the nature of matrix multiplication, you can simply multiply the affine matrices with each other and when the xy coordinates are multiplied by the resulting matrix, it performs both linear transforms in the same step.</p>
 <p><em>Giotto</em> provides a utility <code>affine2d</code> S4 class that can be created from any affine matrix and responds to the affine transform functions to simplify this accumulation of simple transforms.
 Once done, the <code>affine2d</code> can be applied to spatial objects in a single step using <code>affine()</code> in the same way that you would use a matrix.</p>
