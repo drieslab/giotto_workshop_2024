@@ -277,7 +277,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html"><i class="fa fa-check"></i><b>12</b> Working with multiple samples</a>
 <ul>
 <li class="chapter" data-level="12.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#objective-1"><i class="fa fa-check"></i><b>12.1</b> Objective</a></li>
-<li class="chapter" data-level="12.2" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#background-1"><i class="fa fa-check"></i><b>12.2</b> Background</a></li>
+<li class="chapter" data-level="12.2" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#background-1"><i class="fa fa-check"></i><b>12.2</b> Background</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#dataset"><i class="fa fa-check"></i><b>12.2.1</b> Dataset</a></li>
+<li class="chapter" data-level="12.2.2" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#visium-technology"><i class="fa fa-check"></i><b>12.2.2</b> Visium technology</a></li>
+</ul></li>
 <li class="chapter" data-level="12.3" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#create-individual-giotto-objects"><i class="fa fa-check"></i><b>12.3</b> Create individual giotto objects</a>
 <ul>
 <li class="chapter" data-level="12.3.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#download-the-data"><i class="fa fa-check"></i><b>12.3.1</b> Download the data</a></li>
@@ -366,7 +370,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="17.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#kriging"><i class="fa fa-check"></i><b>17.1</b> Kriging</a>
 <ul>
-<li class="chapter" data-level="17.1.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#dataset"><i class="fa fa-check"></i><b>17.1.1</b> Dataset</a></li>
+<li class="chapter" data-level="17.1.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#dataset-1"><i class="fa fa-check"></i><b>17.1.1</b> Dataset</a></li>
 </ul></li>
 <li class="chapter" data-level="17.2" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#importing-visium-data"><i class="fa fa-check"></i><b>17.2</b> Importing visium data</a>
 <ul>
@@ -423,12 +427,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>August 7th 2024</p>
 <div id="objective-1" class="section level2 hasAnchor" number="12.1">
 <h2><span class="header-section-number">12.1</span> Objective<a href="working-with-multiple-samples.html#objective-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Giotto allows us to group objects into a single object that we can analyze together as a single object. Datasets can be spatially distributed in the x, y or z directions. This can be used to create 3D datasets using the Z plane or analyze grouped datasets such as multiple replicates or samples of the same type. Whilst we can integrate multiple datasets, batch effects from samples can impair integration. More complex integration is sometimes required to integrate and cluster samples as one. An example of an integration method is <a href="https://www.nature.com/articles/s41592-019-0619-0">Harmony</a> integration, which will be explained in greater detail later in this tutorial.</p>
-<p>The following tutorial will explore integrating two visium datasets together</p>
+<p>Giotto enables the grouping of multiple objects into a single object for combined analysis. Datasets can be spatially distributed across the x, y, or z axes, allowing for the creation of 3D datasets using the z-plane or the analysis of grouped datasets, such as multiple replicates or similar samples. While it’s possible to integrate multiple datasets, batch effects from samples can hinder effective integration. In such cases, more sophisticated methods may be needed to successfully integrate and cluster samples as a unified dataset. One example of an advanced integration technique is <a href="https://www.nature.com/articles/s41592-019-0619-0">Harmony</a>, which will be discussed in more detail later in this tutorial. This tutorial will demonstrate the integration of two Visium datasets, examining the results before and after Harmony integration.</p>
 </div>
 <div id="background-1" class="section level2 hasAnchor" number="12.2">
 <h2><span class="header-section-number">12.2</span> Background<a href="working-with-multiple-samples.html#background-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>For this tutorial we will be using two prostate visium datasets produced by 10X Genomics, one an <a href="https://www.10xgenomics.com/datasets/human-prostate-cancer-adenocarcinoma-with-invasive-carcinoma-ffpe-1-standard-1-3-0">Adenocarcinoma with Invasive Carcinoma</a> and the other a <a href="https://www.10xgenomics.com/datasets/normal-human-prostate-ffpe-1-standard-1-3-0">normal prostate</a> sample. Details on visium technology can be found in section 6.</p>
+<div id="dataset" class="section level3 hasAnchor" number="12.2.1">
+<h3><span class="header-section-number">12.2.1</span> Dataset<a href="working-with-multiple-samples.html#dataset" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For this tutorial we will be using two prostate visium datasets produced by 10X Genomics, one an <a href="https://www.10xgenomics.com/datasets/human-prostate-cancer-adenocarcinoma-with-invasive-carcinoma-ffpe-1-standard-1-3-0">Adenocarcinoma with Invasive Carcinoma</a> and the other a <a href="https://www.10xgenomics.com/datasets/normal-human-prostate-ffpe-1-standard-1-3-0">normal prostate</a> sample.</p>
+</div>
+<div id="visium-technology" class="section level3 hasAnchor" number="12.2.2">
+<h3><span class="header-section-number">12.2.2</span> Visium technology<a href="working-with-multiple-samples.html#visium-technology" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-157"></span>
+<img src="img/03_session1/visium_overview.png" alt="Overview of Visium. Source: 10X Genomics." width="80%" />
+<p class="caption">
+Figure 12.1: Overview of Visium. Source: 10X Genomics.
+</p>
+</div>
+<p>Visium by 10x Genomics is a spatial gene expression platform that allows for the mapping of gene expression to high-resolution histology through RNA sequencing The process involves placing a tissue section on a specially prepared slide with an array of barcoded spots, which are 55 µm in diameter with a spot to spot distance of 100 µm. Each spot contains unique barcodes that capture the mRNA from the tissue section, preserving the spatial information. After the tissue is imaged and RNA is captured, the mRNA is sequenced, and the data is mapped back to the tissue’s spatial coordinates. This technology is particularly useful in understanding complex tissue environments, such as tumors, by providing insights into how gene expression varies across different regions.</p>
+</div>
 </div>
 <div id="create-individual-giotto-objects" class="section level2 hasAnchor" number="12.3">
 <h2><span class="header-section-number">12.3</span> Create individual giotto objects<a href="working-with-multiple-samples.html#create-individual-giotto-objects" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -459,6 +475,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="create-giotto-instructions" class="section level3 hasAnchor" number="12.3.2">
 <h3><span class="header-section-number">12.3.2</span> create giotto instructions<a href="working-with-multiple-samples.html#create-giotto-instructions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We must first create instructions for our Giotto object. This will tell the object where to save outputs, whether to shor or output plots and the python path. Specifying the python path is often not required as Giotto will identify the relevant python environment, but might be required in some instances.</p>
 <div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="working-with-multiple-samples.html#cb105-1" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
 <span id="cb105-2"><a href="working-with-multiple-samples.html#cb105-2" tabindex="-1"></a></span>
 <span id="cb105-3"><a href="working-with-multiple-samples.html#cb105-3" tabindex="-1"></a>save_dir <span class="ot">&lt;-</span> <span class="st">&quot;~/Documents/GitHub/giotto_workshop_2024/img/03_session1&quot;</span></span>
@@ -470,7 +487,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="load-visium-data-into-giotto" class="section level3 hasAnchor" number="12.3.3">
 <h3><span class="header-section-number">12.3.3</span> load visium data into Giotto<a href="working-with-multiple-samples.html#load-visium-data-into-giotto" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>First we need to load in the datasets as individual Giotto objects.</p>
+<p>We next need to read in the data for the Giotto object. To do this we will use the createGiottoVisiumObject() convinience function. This requires us to specify the directory that contains the visium data output from 10X Genomics’s Spaceranger. We also specify the expression data to use (raw or filtered) as well as the image to align. Spaceranger outputs two images, a low and high resolution image.</p>
 <div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="working-with-multiple-samples.html#cb106-1" tabindex="-1"></a><span class="fu">print</span>(data_dir)</span>
 <span id="cb106-2"><a href="working-with-multiple-samples.html#cb106-2" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">file.path</span>(data_dir, <span class="st">&#39;Visium_FFPE_Human_Normal_Prostate&#39;</span>))</span>
 <span id="cb106-3"><a href="working-with-multiple-samples.html#cb106-3" tabindex="-1"></a><span class="do">## Healthy prostate</span></span>
@@ -490,22 +507,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb106-17"><a href="working-with-multiple-samples.html#cb106-17" tabindex="-1"></a>  <span class="at">gene_column_index =</span> <span class="dv">2</span>,</span>
 <span id="cb106-18"><a href="working-with-multiple-samples.html#cb106-18" tabindex="-1"></a>  <span class="at">instructions =</span> instrs</span>
 <span id="cb106-19"><a href="working-with-multiple-samples.html#cb106-19" tabindex="-1"></a>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-160"></span>
+<p>We can see that the gobject contains information for the cells (polygon and spatial units), the RNA express (raw) and the relevant image.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-161"></span>
 <img src="img/03_session1/03_ses1_single_gobject.png" alt="Structure of Giotto object containing a single dataset." width="40%" />
 <p class="caption">
-Figure 12.1: Structure of Giotto object containing a single dataset.
+Figure 12.2: Structure of Giotto object containing a single dataset.
 </p>
 </div>
 </div>
 <div id="healthy-prostate-tissue-coverage" class="section level3 hasAnchor" number="12.3.4">
 <h3><span class="header-section-number">12.3.4</span> Healthy prostate tissue coverage<a href="working-with-multiple-samples.html#healthy-prostate-tissue-coverage" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Aligning the Visium spots to the tissue using the fiducials that border the capture area enables the identification of spots containing expression data from the tissue. These spots can be visualized using the spatPlot2D function by setting the cell_color parameter to ‘in_tissue’.</p>
 <div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="working-with-multiple-samples.html#cb107-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> N_pros, <span class="at">cell_color =</span> <span class="st">&#39;in_tissue&#39;</span>,</span>
 <span id="cb107-2"><a href="working-with-multiple-samples.html#cb107-2" tabindex="-1"></a>           <span class="at">show_image =</span> T, <span class="at">point_size =</span> <span class="fl">2.5</span>,<span class="at">cell_color_code =</span> <span class="fu">c</span>(<span class="st">&#39;black&#39;</span>, <span class="st">&#39;red&#39;</span>),</span>
 <span id="cb107-3"><a href="working-with-multiple-samples.html#cb107-3" tabindex="-1"></a>           <span class="at">point_alpha =</span> <span class="fl">0.5</span>, <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;03_ses1_normal_prostate_tissue&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-162"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-163"></span>
 <img src="img/03_session1/03_ses1_normal_prostate_tissue.png" alt="Tissue coverage for the normal prostate sample." width="70%" />
 <p class="caption">
-Figure 12.2: Tissue coverage for the normal prostate sample.
+Figure 12.3: Tissue coverage for the normal prostate sample.
 </p>
 </div>
 </div>
@@ -514,10 +533,10 @@ Figure 12.2: Tissue coverage for the normal prostate sample.
 <div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="working-with-multiple-samples.html#cb108-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> C_pros, <span class="at">cell_color =</span> <span class="st">&#39;in_tissue&#39;</span>,</span>
 <span id="cb108-2"><a href="working-with-multiple-samples.html#cb108-2" tabindex="-1"></a>           <span class="at">show_image =</span> T, <span class="at">point_size =</span> <span class="fl">2.5</span>,<span class="at">cell_color_code =</span> <span class="fu">c</span>(<span class="st">&#39;black&#39;</span>, <span class="st">&#39;red&#39;</span>), </span>
 <span id="cb108-3"><a href="working-with-multiple-samples.html#cb108-3" tabindex="-1"></a>           <span class="at">point_alpha =</span> <span class="fl">0.5</span>, <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;03_ses1_adeno_prostate_tissue&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-164"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-165"></span>
 <img src="img/03_session1/03_ses1_adeno_prostate_tissue.png" alt="Tissue coverage for the adenocarcinoma prostate sample." width="70%" />
 <p class="caption">
-Figure 12.3: Tissue coverage for the adenocarcinoma prostate sample.
+Figure 12.4: Tissue coverage for the adenocarcinoma prostate sample.
 </p>
 </div>
 </div>
@@ -530,9 +549,7 @@ Figure 12.3: Tissue coverage for the adenocarcinoma prostate sample.
 </div>
 <div id="join-giotto-objects" class="section level2 hasAnchor" number="12.4">
 <h2><span class="header-section-number">12.4</span> Join Giotto Objects<a href="working-with-multiple-samples.html#join-giotto-objects" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>joining with x_shift has the advantage that you can join both 2D and 3D data
-x_padding determines how much distance is between each dataset
-if x_shift = NULL, then the total shift will be guessed from the giotto image</p>
+<p>To join objects together we can use the joinGittoObjects() function. For this we need to supply a list of objects as well as the names for each of these objects. We can also specify the x and y padding to separate the objects in space or the Z position for 3D datasets. If the x_shift is set to NULL then the total shift will be guessed from the Giotto image.</p>
 <div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="working-with-multiple-samples.html#cb110-1" tabindex="-1"></a>combined_pros <span class="ot">=</span> <span class="fu">joinGiottoObjects</span>(<span class="at">gobject_list =</span> <span class="fu">list</span>(N_pros, C_pros),</span>
 <span id="cb110-2"><a href="working-with-multiple-samples.html#cb110-2" tabindex="-1"></a>                              <span class="at">gobject_names =</span> <span class="fu">c</span>(<span class="st">&#39;NP&#39;</span>, <span class="st">&#39;CP&#39;</span>),</span>
 <span id="cb110-3"><a href="working-with-multiple-samples.html#cb110-3" tabindex="-1"></a>                              <span class="at">join_method =</span> <span class="st">&#39;shift&#39;</span>, <span class="at">x_padding =</span> <span class="dv">1000</span>)</span>
@@ -540,10 +557,11 @@ if x_shift = NULL, then the total shift will be guessed from the giotto image</p
 <span id="cb110-5"><a href="working-with-multiple-samples.html#cb110-5" tabindex="-1"></a><span class="co"># Printing the file structure for the individual datasets</span></span>
 <span id="cb110-6"><a href="working-with-multiple-samples.html#cb110-6" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(<span class="fu">pDataDT</span>(combined_pros)))</span>
 <span id="cb110-7"><a href="working-with-multiple-samples.html#cb110-7" tabindex="-1"></a><span class="fu">print</span>(combined_pros)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-167"></span>
+<p>From the joined data we can see the same information that was present in the single dataset objects as well as the addition of another image. The images are renamed from ‘image’ to include the object name in the image name e.g. ‘NP-image’. We can also see in the cell metadata that there is a new column ‘list_ID’ that contains the original object names. The cell_ID column also has the original object name appended to the beginnging of each cell ID e.g. ‘NP-AAACAACGAATAGTTC-1’.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-168"></span>
 <img src="img/03_session1/03_ses1_combined_data.png" alt="Structure of Giotto object containing two datasets (left) and cell metadata on the left. Note the addition of multiple images and the addition of the list_ID column to define the dataset." width="100%" />
 <p class="caption">
-Figure 12.4: Structure of Giotto object containing two datasets (left) and cell metadata on the left. Note the addition of multiple images and the addition of the list_ID column to define the dataset.
+Figure 12.5: Structure of Giotto object containing two datasets (left) and cell metadata on the left. Note the addition of multiple images and the addition of the list_ID column to define the dataset.
 </p>
 </div>
 </div>
@@ -552,33 +570,35 @@ Figure 12.4: Structure of Giotto object containing two datasets (left) and cell 
 <p>The combined dataset can either visualized in the same space or in two separate plots through the group_by variable. To show images both the show_image variable and the image_name variable containing both image names needs to be used.</p>
 <div id="vizualizing-in-the-same-plot" class="section level3 hasAnchor" number="12.5.1">
 <h3><span class="header-section-number">12.5.1</span> Vizualizing in the same plot<a href="working-with-multiple-samples.html#vizualizing-in-the-same-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Due to the x_padding provided when joining the objects each of the datasets can be vizualized in the same plotting area. We can see below the normal prostate sample on the left and the healthy prostate on the right. By including the show_image function and supplying both of the image names (“NP-image”, “CP-image”), we can also include the relevant images within the same plot.</p>
 <div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="working-with-multiple-samples.html#cb111-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> combined_pros, <span class="at">cell_color =</span> <span class="st">&#39;in_tissue&#39;</span>, <span class="at">cell_color_code =</span> <span class="fu">c</span>(<span class="st">&#39;black&#39;</span>, <span class="st">&#39;red&#39;</span>),</span>
 <span id="cb111-2"><a href="working-with-multiple-samples.html#cb111-2" tabindex="-1"></a>           <span class="at">show_image =</span> T, <span class="at">image_name =</span> <span class="fu">c</span>(<span class="st">&quot;NP-image&quot;</span>, <span class="st">&quot;CP-image&quot;</span>), <span class="at">point_size =</span> <span class="dv">1</span>, </span>
 <span id="cb111-3"><a href="working-with-multiple-samples.html#cb111-3" tabindex="-1"></a>           <span class="at">point_alpha =</span> <span class="fl">0.5</span>, <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;03_ses1_combined_tissue&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-169"></span>
-<img src="img/03_session1/03_ses1_combined_tissue.png" alt="Structure of Giotto object containing two datasets (left) and cell metadata on the left. Note the addition of multiple images and the addition of the list_ID column to define the dataset." width="100%" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-170"></span>
+<img src="img/03_session1/03_ses1_combined_tissue.png" alt="Vizualizing the visium spots that overlap tissue in normal prostate (left) and adenocarcinoma samples (right) within the same plot." width="100%" />
 <p class="caption">
-Figure 12.5: Structure of Giotto object containing two datasets (left) and cell metadata on the left. Note the addition of multiple images and the addition of the list_ID column to define the dataset.
+Figure 12.6: Vizualizing the visium spots that overlap tissue in normal prostate (left) and adenocarcinoma samples (right) within the same plot.
 </p>
 </div>
 </div>
 <div id="vizualizing-on-separate-plots" class="section level3 hasAnchor" number="12.5.2">
 <h3><span class="header-section-number">12.5.2</span> Vizualizing on separate plots<a href="working-with-multiple-samples.html#vizualizing-on-separate-plots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If we want to vizualize the datasets in separate plots we can supply the ‘group_by’ variable. Below we group the data by ‘list_ID’, which corresponds to each dataset. We can specify the number of columns through the ‘cow_n_col’ variable.</p>
 <div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="working-with-multiple-samples.html#cb112-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> combined_pros, <span class="at">cell_color =</span> <span class="st">&#39;in_tissue&#39;</span>, <span class="at">cell_color_code =</span> <span class="fu">c</span>(<span class="st">&#39;black&#39;</span>, <span class="st">&#39;pink&#39;</span>),</span>
 <span id="cb112-2"><a href="working-with-multiple-samples.html#cb112-2" tabindex="-1"></a>           <span class="at">show_image =</span> T, <span class="at">image_name =</span> <span class="fu">c</span>(<span class="st">&quot;NP-image&quot;</span>, <span class="st">&quot;CP-image&quot;</span>),</span>
 <span id="cb112-3"><a href="working-with-multiple-samples.html#cb112-3" tabindex="-1"></a>           <span class="at">group_by =</span> <span class="st">&#39;list_ID&#39;</span>, <span class="at">point_alpha =</span> <span class="fl">0.5</span>, <span class="at">point_size =</span> <span class="fl">0.5</span>, <span class="at">cow_n_col =</span> <span class="dv">1</span>,</span>
 <span id="cb112-4"><a href="working-with-multiple-samples.html#cb112-4" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;03_ses1_combined_tissue_group&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-171"></span>
-<img src="img/03_session1/03_ses1_combined_tissue_group.png" alt="Structure of Giotto object containing two datasets (left) and cell metadata on the left. Note the addition of multiple images and the addition of the list_ID column to define the dataset." width="100%" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-172"></span>
+<img src="img/03_session1/03_ses1_combined_tissue_group.png" alt="Vizualizing the visium spots that overlap tissue in normal prostate (left) and adenocarcinoma samples (right) in separate plots." width="100%" />
 <p class="caption">
-Figure 12.6: Structure of Giotto object containing two datasets (left) and cell metadata on the left. Note the addition of multiple images and the addition of the list_ID column to define the dataset.
+Figure 12.7: Vizualizing the visium spots that overlap tissue in normal prostate (left) and adenocarcinoma samples (right) in separate plots.
 </p>
 </div>
 </div>
 </div>
 <div id="splitting-combined-dataset" class="section level2 hasAnchor" number="12.6">
 <h2><span class="header-section-number">12.6</span> Splitting combined dataset<a href="working-with-multiple-samples.html#splitting-combined-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The individual objects can be split into single objects again through subsetting the cell metadata.</p>
+<p>If needed it’s possible to split the individual objects into single objects again through subsetting the cell metadata as shown below.</p>
 <div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="working-with-multiple-samples.html#cb113-1" tabindex="-1"></a><span class="co"># Getting the cell information</span></span>
 <span id="cb113-2"><a href="working-with-multiple-samples.html#cb113-2" tabindex="-1"></a>combined_cells <span class="ot">&lt;-</span> <span class="fu">pDataDT</span>(combined_pros)</span>
 <span id="cb113-3"><a href="working-with-multiple-samples.html#cb113-3" tabindex="-1"></a>np_cells <span class="ot">&lt;-</span> combined_cells[list_ID <span class="sc">==</span> <span class="st">&#39;NP&#39;</span>]</span>
@@ -591,18 +611,18 @@ Figure 12.6: Structure of Giotto object containing two datasets (left) and cell 
 <span id="cb113-10"><a href="working-with-multiple-samples.html#cb113-10" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> np_split, <span class="at">cell_color =</span> <span class="st">&#39;in_tissue&#39;</span>, <span class="at">cell_color_code =</span> <span class="fu">c</span>(<span class="st">&#39;black&#39;</span>, <span class="st">&#39;red&#39;</span>),</span>
 <span id="cb113-11"><a href="working-with-multiple-samples.html#cb113-11" tabindex="-1"></a>           <span class="at">show_image =</span> T, <span class="at">point_alpha =</span> <span class="fl">0.5</span>, <span class="at">point_size =</span> <span class="fl">0.5</span>, </span>
 <span id="cb113-12"><a href="working-with-multiple-samples.html#cb113-12" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;03_ses1_split_object&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-173"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-174"></span>
 <img src="img/03_session1/03_ses1_split_object.png" alt="Structure of Giotto object containing two datasets (left) and cell metadata on the left. Note the addition of multiple images and the addition of the list_ID column to define the dataset." width="100%" />
 <p class="caption">
-Figure 12.7: Structure of Giotto object containing two datasets (left) and cell metadata on the left. Note the addition of multiple images and the addition of the list_ID column to define the dataset.
+Figure 12.8: Structure of Giotto object containing two datasets (left) and cell metadata on the left. Note the addition of multiple images and the addition of the list_ID column to define the dataset.
 </p>
 </div>
 </div>
 <div id="analyzing-joined-objects" class="section level2 hasAnchor" number="12.7">
 <h2><span class="header-section-number">12.7</span> Analyzing joined objects<a href="working-with-multiple-samples.html#analyzing-joined-objects" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The joined objects can be analyzed as if they were a single dataset as seen in section 6.</p>
 <div id="normalization-and-adding-statistics" class="section level3 hasAnchor" number="12.7.1">
 <h3><span class="header-section-number">12.7.1</span> Normalization and adding statistics<a href="working-with-multiple-samples.html#normalization-and-adding-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now that the objects have been joined we can analyze the object as if it was a single object. This means all of the analyses will be performed in parallel. Therefore, all of the filtering and normalization will be identifical between datasets.</p>
 <div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="working-with-multiple-samples.html#cb114-1" tabindex="-1"></a><span class="co"># subset on in-tissue spots</span></span>
 <span id="cb114-2"><a href="working-with-multiple-samples.html#cb114-2" tabindex="-1"></a>metadata <span class="ot">=</span> <span class="fu">pDataDT</span>(combined_pros)</span>
 <span id="cb114-3"><a href="working-with-multiple-samples.html#cb114-3" tabindex="-1"></a>in_tissue_barcodes <span class="ot">=</span> metadata[in_tissue <span class="sc">==</span> <span class="dv">1</span>]<span class="sc">$</span>cell_ID</span>
@@ -627,15 +647,17 @@ Figure 12.7: Structure of Giotto object containing two datasets (left) and cell 
 <span id="cb114-22"><a href="working-with-multiple-samples.html#cb114-22" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&#39;nr_feats&#39;</span>, <span class="at">color_as_factor =</span> F, <span class="at">point_size =</span> <span class="dv">1</span>, </span>
 <span id="cb114-23"><a href="working-with-multiple-samples.html#cb114-23" tabindex="-1"></a>           <span class="at">show_image =</span> T, <span class="at">image_name =</span> <span class="fu">c</span>(<span class="st">&quot;NP-image&quot;</span>, <span class="st">&quot;CP-image&quot;</span>),</span>
 <span id="cb114-24"><a href="working-with-multiple-samples.html#cb114-24" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;ses3_1_feat_expression&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-175"></span>
+<p>After performing the addStatistics() function on both the datasets we can see the relative expression for each spot in both samples.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-176"></span>
 <img src="img/03_session1/ses3_1_feat_expression.png" alt="Unique feat expression for visium spots for both prostate samples." width="100%" />
 <p class="caption">
-Figure 12.8: Unique feat expression for visium spots for both prostate samples.
+Figure 12.9: Unique feat expression for visium spots for both prostate samples.
 </p>
 </div>
 </div>
 <div id="clustering-the-datasets" class="section level3 hasAnchor" number="12.7.2">
 <h3><span class="header-section-number">12.7.2</span> Clustering the datasets<a href="working-with-multiple-samples.html#clustering-the-datasets" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Since we shifted the objects within space the spatial networks for each dataset will remain separate, assuming that the lower limits for neighbours is smaller than the distance of each dataset. However, the individual spot clustering will be performed on all spots from both datasets as if they were a single object, meaning that the same cell types between objects should be clustered together</p>
 <div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="working-with-multiple-samples.html#cb115-1" tabindex="-1"></a><span class="do">## PCA ##</span></span>
 <span id="cb115-2"><a href="working-with-multiple-samples.html#cb115-2" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">calculateHVF</span>(<span class="at">gobject =</span> combined_pros)</span>
 <span id="cb115-3"><a href="working-with-multiple-samples.html#cb115-3" tabindex="-1"></a></span>
@@ -648,48 +670,58 @@ Figure 12.8: Unique feat expression for visium spots for both prostate samples.
 <span id="cb115-10"><a href="working-with-multiple-samples.html#cb115-10" tabindex="-1"></a>                                  <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">k =</span> <span class="dv">15</span>)</span>
 <span id="cb115-11"><a href="working-with-multiple-samples.html#cb115-11" tabindex="-1"></a></span>
 <span id="cb115-12"><a href="working-with-multiple-samples.html#cb115-12" tabindex="-1"></a><span class="co"># Leiden clustering</span></span>
-<span id="cb115-13"><a href="working-with-multiple-samples.html#cb115-13" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">doLeidenCluster</span>(<span class="at">gobject =</span> combined_pros, <span class="at">resolution =</span> <span class="fl">0.2</span>, <span class="at">n_iterations =</span> <span class="dv">1000</span>)</span>
+<span id="cb115-13"><a href="working-with-multiple-samples.html#cb115-13" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">doLeidenCluster</span>(<span class="at">gobject =</span> combined_pros, <span class="at">resolution =</span> <span class="fl">0.2</span>, <span class="at">n_iterations =</span> <span class="dv">200</span>)</span>
 <span id="cb115-14"><a href="working-with-multiple-samples.html#cb115-14" tabindex="-1"></a></span>
 <span id="cb115-15"><a href="working-with-multiple-samples.html#cb115-15" tabindex="-1"></a><span class="co"># UMAP</span></span>
 <span id="cb115-16"><a href="working-with-multiple-samples.html#cb115-16" tabindex="-1"></a>combined_pros <span class="ot">=</span> <span class="fu">runUMAP</span>(combined_pros)</span></code></pre></div>
 </div>
 <div id="vizualizing-spatial-location-of-clusters" class="section level3 hasAnchor" number="12.7.3">
 <h3><span class="header-section-number">12.7.3</span> Vizualizing spatial location of clusters<a href="working-with-multiple-samples.html#vizualizing-spatial-location-of-clusters" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can vizualize the clusters determined through leiden clustering on both of the datasets within the same plot.</p>
 <div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="working-with-multiple-samples.html#cb116-1" tabindex="-1"></a><span class="fu">spatDimPlot2D</span>(<span class="at">gobject =</span> combined_pros,</span>
 <span id="cb116-2"><a href="working-with-multiple-samples.html#cb116-2" tabindex="-1"></a>              <span class="at">cell_color =</span> <span class="st">&#39;leiden_clus&#39;</span>, <span class="at">show_image =</span> <span class="cn">TRUE</span>, </span>
 <span id="cb116-3"><a href="working-with-multiple-samples.html#cb116-3" tabindex="-1"></a>              <span class="at">image_name =</span> <span class="fu">c</span>(<span class="st">&quot;NP-image&quot;</span>, <span class="st">&quot;CP-image&quot;</span>),</span>
 <span id="cb116-4"><a href="working-with-multiple-samples.html#cb116-4" tabindex="-1"></a>              <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;ses3_1_leiden_clus&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-178"></span>
-<img src="img/03_session1/ses3_1_leiden_clus.png" alt="Leiden clustering for the normal prostate (left) and the adenocarcinoma prostate sample (right)." width="100%" />
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-179"></span>
+<img src="img/03_session1/ses3_1_leiden_clus.png" alt="UMAP (top) for both samples colored by Leiden clusters vizualized in a spatial plot (bottom) for the normal prostate (left) and the adenocarcinoma prostate sample (right)." width="100%" />
 <p class="caption">
-Figure 12.9: Leiden clustering for the normal prostate (left) and the adenocarcinoma prostate sample (right).
+Figure 12.10: UMAP (top) for both samples colored by Leiden clusters vizualized in a spatial plot (bottom) for the normal prostate (left) and the adenocarcinoma prostate sample (right).
 </p>
 </div>
 </div>
 <div id="vizualizing-tissue-contribution-to-clusters" class="section level3 hasAnchor" number="12.7.4">
 <h3><span class="header-section-number">12.7.4</span> Vizualizing tissue contribution to clusters<a href="working-with-multiple-samples.html#vizualizing-tissue-contribution-to-clusters" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>We can see that the samples are clustered distinctly within the UMAP.</p>
+<p>We can also color the UMAP to vizualize the contribution from each tissue in the UMAP. To do this we color the UMAP by ‘list_ID’ rather than ‘leiden_clus’. If each of the cell types between both samples cluster together then we would expect that clusters should contain the cell color of both samples. However, we can see that the samples are clustered distinctly within the UMAP. This indicates that the cell types shared between both samples are found within different clusters indicating that more complex intergration techniques might be required for these samples.</p>
 <div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="working-with-multiple-samples.html#cb117-1" tabindex="-1"></a><span class="fu">spatDimPlot2D</span>(<span class="at">gobject =</span> combined_pros,</span>
 <span id="cb117-2"><a href="working-with-multiple-samples.html#cb117-2" tabindex="-1"></a>              <span class="at">cell_color =</span> <span class="st">&#39;list_ID&#39;</span>,<span class="at">show_image =</span> <span class="cn">TRUE</span>, </span>
 <span id="cb117-3"><a href="working-with-multiple-samples.html#cb117-3" tabindex="-1"></a>              <span class="at">image_name =</span> <span class="fu">c</span>(<span class="st">&quot;NP-image&quot;</span>, <span class="st">&quot;CP-image&quot;</span>),</span>
 <span id="cb117-4"><a href="working-with-multiple-samples.html#cb117-4" tabindex="-1"></a>              <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;ses3_1_tissue_contribution&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-180"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-181"></span>
 <img src="img/03_session1/ses3_1_tissue_contribution.png" alt="Tissue contribution for leiden clustering for the normal prostate (left) and the adenocarcinoma prostate sample (right)." width="100%" />
 <p class="caption">
-Figure 12.10: Tissue contribution for leiden clustering for the normal prostate (left) and the adenocarcinoma prostate sample (right).
+Figure 12.11: Tissue contribution for leiden clustering for the normal prostate (left) and the adenocarcinoma prostate sample (right).
 </p>
 </div>
 </div>
 </div>
 <div id="perform-harmony-and-default-workflows" class="section level2 hasAnchor" number="12.8">
 <h2><span class="header-section-number">12.8</span> Perform Harmony and default workflows<a href="working-with-multiple-samples.html#perform-harmony-and-default-workflows" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We can use harmony to integrate multiple datasets, grouping equivelent cell types between samples. Harmony is an algorithm that iteratively adjusts cell coordinates in a reduced-dimensional space to correct for dataset-specific effects. It uses fuzzy clustering to assign cells to multiple clusters, calculates dataset-specific correction factors, and applies these corrections to each cell, repeating the process until the influence of the dataset diminishes.</p>
+<p>We can use Harmony to integrate multiple datasets, grouping equivelent cell types between samples. Harmony is an algorithm that iteratively adjusts cell coordinates in a reduced-dimensional space to correct for dataset-specific effects. It uses fuzzy clustering to assign cells to multiple clusters, calculates dataset-specific correction factors, and applies these corrections to each cell, repeating the process until the influence of the dataset diminishes.</p>
+<p>Before running Harmony we need to run the PCA function or set ‘do_pca’ to TRUE. We ran this above so do not need to perform this step. Harmony will default to attempting 10 rounds of integration. Not all samples will need the full 10 and will finish accordingly. The follwoing dataset should converge after 5 iterations.</p>
 <div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="working-with-multiple-samples.html#cb118-1" tabindex="-1"></a><span class="fu">library</span>(harmony)</span>
 <span id="cb118-2"><a href="working-with-multiple-samples.html#cb118-2" tabindex="-1"></a></span>
 <span id="cb118-3"><a href="working-with-multiple-samples.html#cb118-3" tabindex="-1"></a><span class="do">## run harmony integration</span></span>
-<span id="cb118-4"><a href="working-with-multiple-samples.html#cb118-4" tabindex="-1"></a>combined_pros <span class="ot">=</span> <span class="fu">runGiottoHarmony</span>(combined_pros, <span class="at">vars_use =</span> <span class="st">&#39;list_ID&#39;</span>, <span class="at">do_pca =</span> F)</span></code></pre></div>
+<span id="cb118-4"><a href="working-with-multiple-samples.html#cb118-4" tabindex="-1"></a>combined_pros <span class="ot">=</span> <span class="fu">runGiottoHarmony</span>(combined_pros, <span class="at">vars_use =</span> <span class="st">&#39;list_ID&#39;</span>)</span></code></pre></div>
+<p>After running the Harmony function successfully we can see that the outputted gobject has a new dim reduction names ‘harmony’. We dan use this for all subsequent spatial steps.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-183"></span>
+<img src="img/03_session1/harmony_gobject.png" alt="Data structure of the gobject after running Harmony integration." width="40%" />
+<p class="caption">
+Figure 12.12: Data structure of the gobject after running Harmony integration.
+</p>
+</div>
 <div id="clustering-harmonized-object" class="section level3 hasAnchor" number="12.8.1">
 <h3><span class="header-section-number">12.8.1</span> Clustering harmonized object<a href="working-with-multiple-samples.html#clustering-harmonized-object" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We can now perform the same clusetering steps as before but instead using the ‘harmony’ dim reduction rather than PCA. We will also be creating new UMAP and nearest network data for the gobject that will be named differently to before to preserve the orginal analyses. If using the same name then this will overwrite the original analysis.</p>
 <div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="working-with-multiple-samples.html#cb119-1" tabindex="-1"></a><span class="do">## sNN network (default)</span></span>
 <span id="cb119-2"><a href="working-with-multiple-samples.html#cb119-2" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">createNearestNetwork</span>(<span class="at">gobject =</span> combined_pros,</span>
 <span id="cb119-3"><a href="working-with-multiple-samples.html#cb119-3" tabindex="-1"></a>                                  <span class="at">dim_reduction_to_use =</span> <span class="st">&#39;harmony&#39;</span>, <span class="at">dim_reduction_name =</span> <span class="st">&#39;harmony&#39;</span>, <span class="at">name =</span> <span class="st">&#39;NN.harmony&#39;</span>,</span>
@@ -706,10 +738,11 @@ Figure 12.10: Tissue contribution for leiden clustering for the normal prostate 
 <span id="cb119-14"><a href="working-with-multiple-samples.html#cb119-14" tabindex="-1"></a>              <span class="at">dim_reduction_to_use =</span> <span class="st">&#39;umap&#39;</span>, <span class="at">dim_reduction_name =</span> <span class="st">&#39;umap_harmony&#39;</span>,</span>
 <span id="cb119-15"><a href="working-with-multiple-samples.html#cb119-15" tabindex="-1"></a>              <span class="at">cell_color =</span> <span class="st">&#39;leiden_harmony&#39;</span>, <span class="at">show_image =</span> T, <span class="at">image_name =</span> <span class="fu">c</span>(<span class="st">&quot;NP-image&quot;</span>, <span class="st">&quot;CP-image&quot;</span>),</span>
 <span id="cb119-16"><a href="working-with-multiple-samples.html#cb119-16" tabindex="-1"></a>              <span class="at">spat_point_size =</span> <span class="dv">1</span>, <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;leiden_clustering_harmony&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-183"></span>
+We can see a different UMAP and clustering to that seen in the original steps above. We can again map these onto the tissue spots and see where the clusters are spatially.
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-185"></span>
 <img src="img/03_session1/leiden_clustering_harmony.png" alt="Leiden clustering after harmony was performed for the normal prostate (left) and the adenocarcinoma prostate sample (right)." width="100%" />
 <p class="caption">
-Figure 12.11: Leiden clustering after harmony was performed for the normal prostate (left) and the adenocarcinoma prostate sample (right).
+Figure 12.13: Leiden clustering after harmony was performed for the normal prostate (left) and the adenocarcinoma prostate sample (right).
 </p>
 </div>
 </div>
@@ -720,10 +753,10 @@ Figure 12.11: Leiden clustering after harmony was performed for the normal prost
 <span id="cb120-2"><a href="working-with-multiple-samples.html#cb120-2" tabindex="-1"></a>               <span class="at">dim_reduction_to_use =</span> <span class="st">&#39;umap&#39;</span>, <span class="at">dim_reduction_name =</span> <span class="st">&#39;umap_harmony&#39;</span>,</span>
 <span id="cb120-3"><a href="working-with-multiple-samples.html#cb120-3" tabindex="-1"></a>               <span class="at">cell_color =</span> <span class="st">&#39;list_ID&#39;</span>, <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb120-4"><a href="working-with-multiple-samples.html#cb120-4" tabindex="-1"></a>               <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;leiden_clustering_harmony_contribution&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-185"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-187"></span>
 <img src="img/03_session1/leiden_clustering_harmony_contribution.png" alt="Tissue contribution for leiden clustering after harmony for the normal prostate (left) and the adenocarcinoma prostate sample (right)." width="100%" />
 <p class="caption">
-Figure 12.12: Tissue contribution for leiden clustering after harmony for the normal prostate (left) and the adenocarcinoma prostate sample (right).
+Figure 12.14: Tissue contribution for leiden clustering after harmony for the normal prostate (left) and the adenocarcinoma prostate sample (right).
 </p>
 </div>
 
