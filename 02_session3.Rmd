@@ -95,7 +95,7 @@ The default behavior is to load:
 For the full dataset:    
 _time: 1-2min_    
 _memory: 24GB on HPC_     
-```{r}
+```{r, eval=FALSE}
 ?createGiottoXeniumObject
 g <- createGiottoXeniumObject(xenium_dir = data_path)
 ```
@@ -217,7 +217,7 @@ image_paths <- list.files(
 
 
 ### Specific imports with `importXenium()`
-```{r}
+```{r, eval=FALSE}
 x <- importXenium(data_path)
 force(x)
 ```
@@ -243,14 +243,14 @@ funs      : load_transcripts()
 
 
 
-```{r}
+```{r, eval=FALSE}
 
 ```
 
 
 
 
-```{r}
+```{r, eval=FALSE}
 
 ```
 
