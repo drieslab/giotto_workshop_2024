@@ -8,13 +8,13 @@ August 7th 2024
 
 The Visium CytAssist Spatial Gene and Protein Expression assay is designed to introduce simultaneous Gene Expression and Protein Expression analysis to FFPE samples processed with Visium CytAssist. The assay uses NGS to measure the abundance of oligo-tagged antibodies with spatial resolution, in addition to the whole transcriptome and a morphological image.
 
-```{r, echo=FALSE, out.width="80%", fig.align='center'}
+```{r, echo=FALSE, out.width="80%", fig.align="center", fig.cap="CystAssits multi-omics diagram. Source: 10X genomics."}
 knitr::include_graphics("img/03_session3/cytassist.png")
 ```
 
 The 10X human immune cell profiling panel features 35 antibodies from Abcam and Biolegend, and includes cell surface and intracellular targets. The rna probes hybridize to ~18,000 genes, or RNA targets, within the tissue section to achieve whole transcriptome gene expression profiling. The remaining steps, starting with probe extension, follow the standard Visium workflow outside of the instrument.
 
-```{r, echo=FALSE, out.width="100%", fig.align='center'}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="CytAssist workflow. Source: 10X genomics."}
 knitr::include_graphics("img/03_session3/workflow.png")
 ```
 
@@ -29,16 +29,16 @@ More information about this dataset can be found [here](https://www.10xgenomics.
 You need to download the expression matrix and spatial information by running these commands:
 
 ```{r, eval=FALSE}
-dir.create("data/day3_session3")
+dir.create("data/03_session3")
 
 download.file(url = "https://cf.10xgenomics.com/samples/spatial-exp/2.1.0/CytAssist_FFPE_Protein_Expression_Human_Tonsil/CytAssist_FFPE_Protein_Expression_Human_Tonsil_raw_feature_bc_matrix.tar.gz",
-              destfile = "data/CytAssist_FFPE_Protein_Expression_Human_Tonsil_raw_feature_bc_matrix.tar.gz")
+              destfile = "data/03_session3/CytAssist_FFPE_Protein_Expression_Human_Tonsil_raw_feature_bc_matrix.tar.gz")
 
 download.file(url = "https://cf.10xgenomics.com/samples/spatial-exp/2.1.0/CytAssist_FFPE_Protein_Expression_Human_Tonsil/CytAssist_FFPE_Protein_Expression_Human_Tonsil_spatial.tar.gz",
-              destfile = "data/CytAssist_FFPE_Protein_Expression_Human_Tonsil_spatial.tar.gz")
+              destfile = "data/03_session3/CytAssist_FFPE_Protein_Expression_Human_Tonsil_spatial.tar.gz")
 ```
 
-After downloading, unzip the gz files. You should get the "raw_feature_bc_matrix" and "spatial" folders inside "data/".
+After downloading, unzip the gz files. You should get the "raw_feature_bc_matrix" and "spatial" folders inside "data/03_session3/".
 
 ## Create the Giotto object
 
@@ -53,7 +53,7 @@ createGiottoVisiumObject() will automatically detect both RNA and Protein modali
 library(Giotto)
 
 ## Set instructions
-results_folder <- "results/"
+results_folder <- "results/03_session3/"
 
 python_path <- NULL
 
@@ -66,7 +66,7 @@ instructions <- createGiottoInstructions(
 )
 
 # Provide the path to the data folder
-data_path <- "data"
+data_path <- "data/03_session3/"
 
 # Create object directly from the data folder
 visium_tonsil <- createGiottoVisiumObject(
@@ -78,7 +78,7 @@ visium_tonsil <- createGiottoVisiumObject(
 )
 ```
 
-- Print the information of the object, note that both rna and protein are listed in the expression slot
+- Print the information of the object, note that both rna and protein are listed in the expression slot.
 
 ```{r, eval=FALSE}
 visium_tonsil
@@ -97,9 +97,11 @@ spatPlot2D(
 )
 ```
 
-```{r, echo=FALSE, out.width="80%", fig.align="center"}
+```{r, echo=FALSE, out.width="80%", fig.align="center", fig.cap="Spatial plot of the CytAssist human tonsil sample, color indicates wheter the spot is in tissue (1) or not (0)."}
 knitr::include_graphics("img/03_session3/0-spatPlot2D.png")
 ```
+
+Use the metadata table to identify the spots corresponding to the tissue area, given by the "in_tissue" column. Then use the spot IDs to subset the giotto object.
 
 ```{r, eval=FALSE}
 metadata <- getCellMetadata(gobject = visium_tonsil,
@@ -114,7 +116,7 @@ visium_tonsil <- subsetGiotto(visium_tonsil,
 
 ## RNA processing
 
-- Filtering, normalization, and statistics
+- Run the Filtering, normalization, and statistics steps using only the RNA feature.
 
 ```{r, eval=FALSE}
 visium_tonsil <- filterGiotto(
@@ -134,6 +136,8 @@ visium_tonsil <- addStatistics(gobject = visium_tonsil)
 
 - Dimension reduction
 
+Identify the highly variable features using the RNA features, then calculate the principal components based on the HVFs.   
+
 ```{r, eval=FALSE}
 visium_tonsil <- calculateHVF(gobject = visium_tonsil)
 
@@ -141,6 +145,8 @@ visium_tonsil <- runPCA(gobject = visium_tonsil)
 ```
 
 - Clustering
+
+Calculate the UMAP, tSNE, and shared nearest neighbor network using the first 10 principal components for the RNA modality.
 
 ```{r, eval=FALSE}
 visium_tonsil <- runUMAP(visium_tonsil,
@@ -152,13 +158,19 @@ visium_tonsil <- runtSNE(visium_tonsil,
 visium_tonsil <- createNearestNetwork(gobject = visium_tonsil,
                                       dimensions_to_use = 1:10,
                                       k = 30)
+```
 
+Calculate the RNA-based Leiden clusters.
+
+```{r, eval=FALSE}
 visium_tonsil <- doLeidenCluster(gobject = visium_tonsil,
                                  resolution = 1,
                                  n_iterations = 1000)
 ```
 
 - Visualization
+
+Plot the RNA-based UMAP with the corresponding RNA-based Leiden cluster per spot.
 
 ```{r, eval=FALSE}
 plotUMAP(gobject = visium_tonsil,
@@ -167,9 +179,11 @@ plotUMAP(gobject = visium_tonsil,
          point_size = 2)
 ```
 
-```{r, echo=FALSE, out.width="80%", fig.align="center"}
+```{r, echo=FALSE, out.width="80%", fig.align="center", fig.cap="RNA UMAP, color indicates the RNA-based Leiden clusters."}
 knitr::include_graphics("img/03_session3/1-UMAP.png")
 ```
+
+Plot the spatial distribution of the RNA-based Leiden cluster per spot.
 
 ```{r, eval=FALSE}
 spatPlot2D(gobject = visium_tonsil,
@@ -178,13 +192,13 @@ spatPlot2D(gobject = visium_tonsil,
            point_size = 3)
 ```
 
-```{r, echo=FALSE, out.width="80%", fig.align="center"}
+```{r, echo=FALSE, out.width="80%", fig.align="center", fig.cap="Spatial distribution of RNA-based Leiden clusters."}
 knitr::include_graphics("img/03_session3/2-spatPlot2D.png")
 ```
 
 ## Protein processing
 
-- Filtering, normalization, and statistics
+- Run the Filtering, normalization, and statistics steps for the protein modality.
 
 ```{r, eval=FALSE}
 visium_tonsil <- filterGiotto(gobject = visium_tonsil, 
@@ -209,6 +223,8 @@ visium_tonsil <- addStatistics(gobject = visium_tonsil,
 
 - Dimension reduction
 
+Calculate the principal components using all the proteins available in the dataset.
+
 ```{r, eval=FALSE}
 visium_tonsil <- runPCA(gobject = visium_tonsil,
                         spat_unit = "cell",
@@ -217,6 +233,8 @@ visium_tonsil <- runPCA(gobject = visium_tonsil,
 
 - Clustering
 
+Calculate the UMAP, tSNE, and shared nearest neighbors network using the first 10 principal components for the Protein modality.
+
 ```{r, eval=FALSE}
 visium_tonsil <- runUMAP(visium_tonsil,
                          spat_unit = "cell", 
@@ -224,8 +242,8 @@ visium_tonsil <- runUMAP(visium_tonsil,
                          dimensions_to_use = 1:10)
 
 visium_tonsil <- runtSNE(visium_tonsil, 
-                         spat_unit = 'cell',
-                         feat_type = 'protein',
+                         spat_unit = "cell",
+                         feat_type = "protein",
                          dimensions_to_use = 1:10)
 
 visium_tonsil <- createNearestNetwork(gobject = visium_tonsil,
@@ -233,7 +251,11 @@ visium_tonsil <- createNearestNetwork(gobject = visium_tonsil,
                                       feat_type = "protein",
                                       dimensions_to_use = 1:10,
                                       k = 30)
+```
 
+Calculate the Protein-based Leiden clusters.
+
+```{r, eval=FALSE}
 visium_tonsil <- doLeidenCluster(gobject = visium_tonsil,
                                  spat_unit = "cell",
                                  feat_type = "protein",
@@ -242,6 +264,8 @@ visium_tonsil <- doLeidenCluster(gobject = visium_tonsil,
 ```
 
 - Visualization
+
+Plot the Protein UMAP and color the spots using the Protein-based Leiden clusters.
 
 ```{r, eval=FALSE}
 plotUMAP(gobject = visium_tonsil,
@@ -252,9 +276,11 @@ plotUMAP(gobject = visium_tonsil,
          point_size = 2)
 ```
 
-```{r, echo=FALSE, out.width="80%", fig.align="center"}
+```{r, echo=FALSE, out.width="80%", fig.align="center", fig.cap="Protein UMAP, color indicates the Protein-based Leiden clusters."}
 knitr::include_graphics("img/03_session3/3-UMAP.png")
 ```
+
+Plot the spatial distribution of the Protein-based Leiden clusters.
 
 ```{r, eval=FALSE}
 spatPlot2D(gobject = visium_tonsil,
@@ -265,13 +291,15 @@ spatPlot2D(gobject = visium_tonsil,
            point_size = 3)
 ```
 
-```{r, echo=FALSE, out.width="80%", fig.align="center"}
+```{r, echo=FALSE, out.width="80%", fig.align="center", fig.cap="Spatial distribution of Protein-based Leiden clusters."}
 knitr::include_graphics("img/03_session3/4-spatPlot2D.png")
 ```
 
 ## Multi-omics integration
 
 - Calculate kNN
+
+Calculate the k nearest neighbors network for each modality (RNA and Protein), using the first 10 principal components of each feature type.
 
 ```{r, eval=FALSE}
 ## RNA modality
@@ -291,6 +319,8 @@ visium_tonsil <- createNearestNetwork(gobject = visium_tonsil,
 
 - Run WNN
 
+Run the Weighted Nearest Neighbor analysis to weight the contribution of each feature type per spot. The results will be saved in the multiomics slot of the giotto object.
+
 ```{r, eval=FALSE}
 visium_tonsil <- runWNN(visium_tonsil,
                         spat_unit = "cell",
@@ -308,6 +338,8 @@ visium_tonsil <- runWNN(visium_tonsil,
 
 - Run Integrated umap
 
+Calculate the UMAP using the weights of each feature per spot.
+
 ```{r, eval=FALSE}
 visium_tonsil <- runIntegratedUMAP(visium_tonsil,
                                    modality1 = "rna",
@@ -319,6 +351,8 @@ visium_tonsil <- runIntegratedUMAP(visium_tonsil,
 
 - Calculate integrated clusters
 
+Calculate the multiomics-based Leiden clusters using the weights of each feature per spot.
+
 ```{r, eval=FALSE}
 visium_tonsil <- doLeidenCluster(gobject = visium_tonsil,
                                  spat_unit = "cell",
@@ -329,7 +363,9 @@ visium_tonsil <- doLeidenCluster(gobject = visium_tonsil,
                                  resolution = 1)
 ```
 
-- Visualize the integrated umap
+- Visualize the integrated UMAP
+
+Plot the integrated UMAP and color the spots using the integrated Leiden clusters.
 
 ```{r, eval=FALSE}
 plotUMAP(gobject = visium_tonsil,
@@ -341,11 +377,13 @@ plotUMAP(gobject = visium_tonsil,
          title = "Integrated UMAP using Integrated Leiden clusters")
 ```
 
-```{r, echo=FALSE, out.width="80%", fig.align="center"}
+```{r, echo=FALSE, out.width="80%", fig.align="center", fig.cap="Integrated UMAP. Color represents the integrated Leiden clusters."}
 knitr::include_graphics("img/03_session3/5-UMAP.png")
 ```
 
 - Visualize spatial plot with integrated clusters
+
+Plot the spatial distribution of the integrated Leiden clusters.
 
 ```{r, eval=FALSE}
 spatPlot2D(visium_tonsil,
@@ -357,7 +395,7 @@ spatPlot2D(visium_tonsil,
            title = "Integrated Leiden clustering")
 ```
 
-```{r, echo=FALSE, out.width="80%", fig.align="center"}
+```{r, echo=FALSE, out.width="80%", fig.align="center", fig.cap="Spatial distribution of the integrated Leiden clusters."}
 knitr::include_graphics("img/03_session3/6-spatPlot2D.png")
 ```
 
