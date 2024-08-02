@@ -36,6 +36,14 @@ download.file(url = "https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adu
 
 After downloading, unzip the gz files. You should get the "raw_feature_bc_matrix" and "spatial" folders inside "data/01_session5/".
 
+```{r, eval=FALSE}
+untar(tarfile = "data/01_session5/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz", 
+      exdir = "data/01_session5")
+
+untar(tarfile = "data/01_session5/V1_Adult_Mouse_Brain_spatial.tar.gz", 
+      exdir = "data/01_session5")
+```
+
 ## Create the Giotto object
 
 createGiottoVisiumObject() will look for the standardized files organization from the visium technology in the data folder and will automatically load the expression and spatial information to create the Giotto object.

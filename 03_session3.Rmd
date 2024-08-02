@@ -40,6 +40,14 @@ download.file(url = "https://cf.10xgenomics.com/samples/spatial-exp/2.1.0/CytAss
 
 After downloading, unzip the gz files. You should get the "raw_feature_bc_matrix" and "spatial" folders inside "data/03_session3/".
 
+```{r, eval=FALSE}
+untar(tarfile = "data/03_session3/CytAssist_FFPE_Protein_Expression_Human_Tonsil_raw_feature_bc_matrix.tar.gz", 
+      exdir = "data/03_session3")
+
+untar(tarfile = "data/03_session3/CytAssist_FFPE_Protein_Expression_Human_Tonsil_spatial.tar.gz", 
+      exdir = "data/03_session3")
+```
+
 ## Create the Giotto object
 
 The minimum requirements are:
