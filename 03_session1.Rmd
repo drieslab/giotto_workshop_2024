@@ -26,7 +26,7 @@ Visium by 10x Genomics is a spatial gene expression platform that allows for the
 ### Download the data
 You need to download the expression matrix and spatial information by running these commands:
 ```{r, eval=FALSE}
-data_dir <- 'data'
+data_dir <- 'data/3_session1'
 
 dir.create(file.path(data_dir, 'Visium_FFPE_Human_Prostate_Cancer'), showWarnings = T, recursive = T)
 
