@@ -517,10 +517,10 @@ exported data is from their Xenium Onboard Analysis v2.0.0 pipeline.</p>
     └── Xenium_V1_humanLung_Cancer_FFPE_he_imagealignment.csv</code></pre>
 <p>The above directory structuring and naming is characteristic of Xenium v2.0 pipeline outputs. The only items that may not be exactly the same across all outputs are the morphology focus directory and the naming of the aligned image items.</p>
 <p>For the morphology focus images, you may have fewer images if the experiment did not include the multimodal cell segmentation. As for the aligned images, this is usually done after the Xenium experiment concludes and is added on using Xenium Explorer. Naming and location of the aligned image and associated alignment .csv are entirely up to the user. In this example dataset, they have very detailed names.</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="xenium-1.html#cb119-1" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
-<span id="cb119-2"><a href="xenium-1.html#cb119-2" tabindex="-1"></a><span class="co"># set up paths</span></span>
-<span id="cb119-3"><a href="xenium-1.html#cb119-3" tabindex="-1"></a>data_path <span class="ot">&lt;-</span> <span class="st">&quot;[PATH/TO/XENIUM/DATASET/UNZIPPED/DIRECTORY]&quot;</span></span>
-<span id="cb119-4"><a href="xenium-1.html#cb119-4" tabindex="-1"></a>save_dir <span class="ot">&lt;-</span> <span class="st">&quot;results/02_session3/&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="xenium-1.html#cb120-1" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
+<span id="cb120-2"><a href="xenium-1.html#cb120-2" tabindex="-1"></a><span class="co"># set up paths</span></span>
+<span id="cb120-3"><a href="xenium-1.html#cb120-3" tabindex="-1"></a>data_path <span class="ot">&lt;-</span> <span class="st">&quot;[PATH/TO/XENIUM/DATASET/UNZIPPED/DIRECTORY]&quot;</span></span>
+<span id="cb120-4"><a href="xenium-1.html#cb120-4" tabindex="-1"></a>save_dir <span class="ot">&lt;-</span> <span class="st">&quot;results/02_session3/&quot;</span></span></code></pre></div>
 </div>
 <div id="convenience-function" class="section level2 hasAnchor" number="10.3">
 <h2><span class="header-section-number">10.3</span> Convenience function<a href="xenium-1.html#convenience-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -534,8 +534,8 @@ exported data is from their Xenium Onboard Analysis v2.0.0 pipeline.</p>
 <p>For the full dataset:<br />
 <em>time: 1-2min</em><br />
 <em>memory: 24GB on HPC</em></p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="xenium-1.html#cb120-1" tabindex="-1"></a>?createGiottoXeniumObject</span>
-<span id="cb120-2"><a href="xenium-1.html#cb120-2" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">createGiottoXeniumObject</span>(<span class="at">xenium_dir =</span> data_path)</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="xenium-1.html#cb121-1" tabindex="-1"></a>?createGiottoXeniumObject</span>
+<span id="cb121-2"><a href="xenium-1.html#cb121-2" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">createGiottoXeniumObject</span>(<span class="at">xenium_dir =</span> data_path)</span></code></pre></div>
 <p>There are a lot of other params for additional or alternative items you can load</p>
 <div id="specific-filepaths" class="section level3 hasAnchor" number="10.3.1">
 <h3><span class="header-section-number">10.3.1</span> Specific filepaths<a href="xenium-1.html#specific-filepaths" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -604,9 +604,9 @@ QV Calculation
 <div id="image-conversion-may-change" class="section level3 hasAnchor" number="10.3.5">
 <h3><span class="header-section-number">10.3.5</span> Image conversion (may change)<a href="xenium-1.html#image-conversion-may-change" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Xenium generates ome.tif images which Giotto is currently not fully compatible with. So we convert them to normal tif images. By default, <code>ometif_to_tif()</code> will convert</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="xenium-1.html#cb125-1" tabindex="-1"></a>image_paths <span class="ot">&lt;-</span> <span class="fu">list.files</span>(</span>
-<span id="cb125-2"><a href="xenium-1.html#cb125-2" tabindex="-1"></a>  data_path, <span class="at">pattern =</span> <span class="st">&quot;morphology_focus|he_image.ome&quot;</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span></span>
-<span id="cb125-3"><a href="xenium-1.html#cb125-3" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="xenium-1.html#cb126-1" tabindex="-1"></a>image_paths <span class="ot">&lt;-</span> <span class="fu">list.files</span>(</span>
+<span id="cb126-2"><a href="xenium-1.html#cb126-2" tabindex="-1"></a>  data_path, <span class="at">pattern =</span> <span class="st">&quot;morphology_focus|he_image.ome&quot;</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span></span>
+<span id="cb126-3"><a href="xenium-1.html#cb126-3" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <div id="image-loading" class="section level3 hasAnchor" number="10.3.6">
 <h3><span class="header-section-number">10.3.6</span> Image loading<a href="xenium-1.html#image-loading" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -626,8 +626,8 @@ QV Calculation
 </div>
 <div id="specific-imports-with-importxenium" class="section level3 hasAnchor" number="10.3.7">
 <h3><span class="header-section-number">10.3.7</span> Specific imports with <code>importXenium()</code><a href="xenium-1.html#specific-imports-with-importxenium" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="xenium-1.html#cb127-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">importXenium</span>(data_path)</span>
-<span id="cb127-2"><a href="xenium-1.html#cb127-2" tabindex="-1"></a><span class="fu">force</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="xenium-1.html#cb128-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">importXenium</span>(data_path)</span>
+<span id="cb128-2"><a href="xenium-1.html#cb128-2" tabindex="-1"></a><span class="fu">force</span>(x)</span></code></pre></div>
 <pre><code>Giotto &lt;XeniumReader&gt;
 dir       : /projectnb2/rd-[...]enium/v2.0_pipeline/FFPE_LungCancer/ 
 qv_cutoff : 20 
