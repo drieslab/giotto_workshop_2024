@@ -48,6 +48,7 @@ needed-packages
 cran-dependencies
 terra-installation
 matrix-installation
+rtools-installation
 giotto-installation
 irlba-install
 arrow-install
