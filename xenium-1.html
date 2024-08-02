@@ -552,13 +552,14 @@ exported data is from their Xenium Onboard Analysis v2.0.0 pipeline.</p>
 <p>The Quality Value is a Phred-based 0-40 value that 10X provides for every detection in their transcripts output. Higher values mean higher confidence in the decoded transcript identity. By default 10X uses a cutoff of QV = 20 for transcripts to use downstream.</p>
 <details>
 <summary>
-<p>QV Calculation&lt;&gt;</p>
+QV Calculation
+</summary>
 <ol style="list-style-type: decimal">
 <li>Raw Q-score based on how likely it is that an observed code is to be the codeword that it gets mapped to vs less likely codeword.</li>
 <li>Adjustment of raw Q-score by binning the transcripts by Q-value then adjusting the exact Q per bin based on proportion of <strong>Negative Control Codewords</strong> detected within.</li>
 </ol>
 <p><a href="https://www.10xgenomics.com/support/software/xenium-onboard-analysis/latest/algorithms-overview/xoa-algorithms#qvs">further info</a></p>
-<p>&lt;&gt;</p>
+</details>
 </div>
 <div id="transcript-type-splitting" class="section level3 hasAnchor" number="10.3.3">
 <h3><span class="header-section-number">10.3.3</span> Transcript type splitting<a href="xenium-1.html#transcript-type-splitting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -596,7 +597,7 @@ exported data is from their Xenium Onboard Analysis v2.0.0 pipeline.</p>
 <p>Some care needs to be taken when loading this information:</p>
 <ul>
 <li>The <code>feat_type</code> of the loaded expression information should be matched to the used <code>feat_type</code> params passed to the convenience function.</li>
-<li>The <code>qv_threshold</code> used should be 20 since the 10X outputs are based on that cutoff.</li>
+<li>The <code>qv_threshold</code> used must be 20 since the 10X outputs are based on that cutoff.</li>
 </ul>
 </div>
 <div id="image-conversion-may-change" class="section level3 hasAnchor" number="10.3.5">
