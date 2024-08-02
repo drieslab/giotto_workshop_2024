@@ -538,8 +538,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb7-5"><a href="datasets-packages.html#cb7-5" tabindex="-1"></a>}</span>
 <span id="cb7-6"><a href="datasets-packages.html#cb7-6" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span>has_arrow <span class="sc">||</span> <span class="sc">!</span>zstd) {</span>
 <span id="cb7-7"><a href="datasets-packages.html#cb7-7" tabindex="-1"></a>    <span class="fu">Sys.setenv</span>(<span class="at">ARROW_WITH_ZSTD =</span> <span class="st">&quot;ON&quot;</span>) </span>
-<span id="cb7-8"><a href="datasets-packages.html#cb7-8" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;arrow&quot;</span>, <span class="at">repos =</span> <span class="fu">c</span>(<span class="st">&quot;https://apache.r-universe.dev&quot;</span>))</span>
-<span id="cb7-9"><a href="datasets-packages.html#cb7-9" tabindex="-1"></a>}</span></code></pre></div>
+<span id="cb7-8"><a href="datasets-packages.html#cb7-8" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;assertthat&quot;</span>, <span class="st">&quot;bit64&quot;</span>)</span>
+<span id="cb7-9"><a href="datasets-packages.html#cb7-9" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;arrow&quot;</span>, <span class="at">repos =</span> <span class="fu">c</span>(<span class="st">&quot;https://apache.r-universe.dev&quot;</span>))</span>
+<span id="cb7-10"><a href="datasets-packages.html#cb7-10" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 <div id="bioconductor-dependencies" class="section level3 hasAnchor" number="2.2.7">
 <h3><span class="header-section-number">2.2.7</span> Bioconductor dependencies:<a href="datasets-packages.html#bioconductor-dependencies" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -571,15 +572,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb9-15"><a href="datasets-packages.html#cb9-15" tabindex="-1"></a>    <span class="st">&quot;pheatmap&quot;</span>,</span>
 <span id="cb9-16"><a href="datasets-packages.html#cb9-16" tabindex="-1"></a>    <span class="st">&quot;patchwork&quot;</span>,</span>
 <span id="cb9-17"><a href="datasets-packages.html#cb9-17" tabindex="-1"></a>    <span class="st">&quot;Seurat&quot;</span>,</span>
-<span id="cb9-18"><a href="datasets-packages.html#cb9-18" tabindex="-1"></a>    <span class="st">&quot;SeuratData&quot;</span>,</span>
-<span id="cb9-19"><a href="datasets-packages.html#cb9-19" tabindex="-1"></a>    <span class="st">&quot;harmony&quot;</span>,</span>
-<span id="cb9-20"><a href="datasets-packages.html#cb9-20" tabindex="-1"></a>    <span class="st">&quot;scatterpie&quot;</span>,</span>
-<span id="cb9-21"><a href="datasets-packages.html#cb9-21" tabindex="-1"></a>    <span class="st">&quot;R.utils&quot;</span>,</span>
-<span id="cb9-22"><a href="datasets-packages.html#cb9-22" tabindex="-1"></a>    <span class="st">&quot;qs&quot;</span></span>
-<span id="cb9-23"><a href="datasets-packages.html#cb9-23" tabindex="-1"></a>)</span>
-<span id="cb9-24"><a href="datasets-packages.html#cb9-24" tabindex="-1"></a></span>
-<span id="cb9-25"><a href="datasets-packages.html#cb9-25" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pkg_install</span>(<span class="fu">c</span>(bioc_dependencies,</span>
-<span id="cb9-26"><a href="datasets-packages.html#cb9-26" tabindex="-1"></a>                   needed_packages_cran))</span></code></pre></div>
+<span id="cb9-18"><a href="datasets-packages.html#cb9-18" tabindex="-1"></a>    <span class="st">&quot;harmony&quot;</span>,</span>
+<span id="cb9-19"><a href="datasets-packages.html#cb9-19" tabindex="-1"></a>    <span class="st">&quot;scatterpie&quot;</span>,</span>
+<span id="cb9-20"><a href="datasets-packages.html#cb9-20" tabindex="-1"></a>    <span class="st">&quot;R.utils&quot;</span>,</span>
+<span id="cb9-21"><a href="datasets-packages.html#cb9-21" tabindex="-1"></a>    <span class="st">&quot;qs&quot;</span></span>
+<span id="cb9-22"><a href="datasets-packages.html#cb9-22" tabindex="-1"></a>)</span>
+<span id="cb9-23"><a href="datasets-packages.html#cb9-23" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="datasets-packages.html#cb9-24" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pkg_install</span>(<span class="fu">c</span>(bioc_dependencies,</span>
+<span id="cb9-25"><a href="datasets-packages.html#cb9-25" tabindex="-1"></a>                   needed_packages_cran))</span></code></pre></div>
 </div>
 <div id="packages-from-github" class="section level3 hasAnchor" number="2.2.9">
 <h3><span class="header-section-number">2.2.9</span> Packages from GitHub<a href="datasets-packages.html#packages-from-github" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -593,23 +593,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="datasets-packages.html#cb11-1" tabindex="-1"></a><span class="co"># default giotto environment</span></span>
 <span id="cb11-2"><a href="datasets-packages.html#cb11-2" tabindex="-1"></a>Giotto<span class="sc">::</span><span class="fu">installGiottoEnvironment</span>()</span>
 <span id="cb11-3"><a href="datasets-packages.html#cb11-3" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="datasets-packages.html#cb11-4" tabindex="-1"></a><span class="co"># install another environment with py 3.8 for cellpose</span></span>
-<span id="cb11-5"><a href="datasets-packages.html#cb11-5" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">conda_create</span>(<span class="at">envname =</span> <span class="st">&quot;giotto_cellpose&quot;</span>,</span>
-<span id="cb11-6"><a href="datasets-packages.html#cb11-6" tabindex="-1"></a>                         <span class="at">python_version =</span> <span class="fl">3.8</span>)</span>
-<span id="cb11-7"><a href="datasets-packages.html#cb11-7" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">py_install</span>(</span>
-<span id="cb11-8"><a href="datasets-packages.html#cb11-8" tabindex="-1"></a>    <span class="at">pip =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb11-9"><a href="datasets-packages.html#cb11-9" tabindex="-1"></a>    <span class="at">envname =</span> <span class="st">&#39;giotto_cellpose&#39;</span>,</span>
-<span id="cb11-10"><a href="datasets-packages.html#cb11-10" tabindex="-1"></a>    <span class="at">packages =</span> <span class="fu">c</span>(</span>
-<span id="cb11-11"><a href="datasets-packages.html#cb11-11" tabindex="-1"></a>        <span class="st">&quot;pandas&quot;</span>,</span>
-<span id="cb11-12"><a href="datasets-packages.html#cb11-12" tabindex="-1"></a>        <span class="st">&quot;networkx&quot;</span>,</span>
-<span id="cb11-13"><a href="datasets-packages.html#cb11-13" tabindex="-1"></a>        <span class="st">&quot;python-igraph&quot;</span>,</span>
-<span id="cb11-14"><a href="datasets-packages.html#cb11-14" tabindex="-1"></a>        <span class="st">&quot;leidenalg&quot;</span>,</span>
-<span id="cb11-15"><a href="datasets-packages.html#cb11-15" tabindex="-1"></a>        <span class="st">&quot;scikit-learn&quot;</span>,</span>
-<span id="cb11-16"><a href="datasets-packages.html#cb11-16" tabindex="-1"></a>        <span class="st">&quot;cellpose&quot;</span>,</span>
-<span id="cb11-17"><a href="datasets-packages.html#cb11-17" tabindex="-1"></a>        <span class="st">&quot;smfishhmrf&quot;</span>,</span>
-<span id="cb11-18"><a href="datasets-packages.html#cb11-18" tabindex="-1"></a>        <span class="st">&quot;git+https://github.com/wwang-chcn/bento-tools.git@giotto_install&quot;</span></span>
-<span id="cb11-19"><a href="datasets-packages.html#cb11-19" tabindex="-1"></a>    )</span>
-<span id="cb11-20"><a href="datasets-packages.html#cb11-20" tabindex="-1"></a>)</span></code></pre></div>
+<span id="cb11-4"><a href="datasets-packages.html#cb11-4" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">py_install</span>(</span>
+<span id="cb11-5"><a href="datasets-packages.html#cb11-5" tabindex="-1"></a>    <span class="at">pip =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb11-6"><a href="datasets-packages.html#cb11-6" tabindex="-1"></a>    <span class="at">envname =</span> <span class="st">&#39;giotto_env&#39;</span>,</span>
+<span id="cb11-7"><a href="datasets-packages.html#cb11-7" tabindex="-1"></a>    <span class="at">packages =</span> <span class="fu">c</span>(</span>
+<span id="cb11-8"><a href="datasets-packages.html#cb11-8" tabindex="-1"></a>        <span class="st">&quot;scanpy&quot;</span></span>
+<span id="cb11-9"><a href="datasets-packages.html#cb11-9" tabindex="-1"></a>    )</span>
+<span id="cb11-10"><a href="datasets-packages.html#cb11-10" tabindex="-1"></a>)</span>
+<span id="cb11-11"><a href="datasets-packages.html#cb11-11" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="datasets-packages.html#cb11-12" tabindex="-1"></a><span class="co"># install another environment with py 3.8 for cellpose</span></span>
+<span id="cb11-13"><a href="datasets-packages.html#cb11-13" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">conda_create</span>(<span class="at">envname =</span> <span class="st">&quot;giotto_cellpose&quot;</span>,</span>
+<span id="cb11-14"><a href="datasets-packages.html#cb11-14" tabindex="-1"></a>                         <span class="at">python_version =</span> <span class="fl">3.8</span>)</span>
+<span id="cb11-15"><a href="datasets-packages.html#cb11-15" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">py_install</span>(</span>
+<span id="cb11-16"><a href="datasets-packages.html#cb11-16" tabindex="-1"></a>    <span class="at">pip =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb11-17"><a href="datasets-packages.html#cb11-17" tabindex="-1"></a>    <span class="at">envname =</span> <span class="st">&#39;giotto_cellpose&#39;</span>,</span>
+<span id="cb11-18"><a href="datasets-packages.html#cb11-18" tabindex="-1"></a>    <span class="at">packages =</span> <span class="fu">c</span>(</span>
+<span id="cb11-19"><a href="datasets-packages.html#cb11-19" tabindex="-1"></a>        <span class="st">&quot;pandas&quot;</span>,</span>
+<span id="cb11-20"><a href="datasets-packages.html#cb11-20" tabindex="-1"></a>        <span class="st">&quot;networkx&quot;</span>,</span>
+<span id="cb11-21"><a href="datasets-packages.html#cb11-21" tabindex="-1"></a>        <span class="st">&quot;python-igraph&quot;</span>,</span>
+<span id="cb11-22"><a href="datasets-packages.html#cb11-22" tabindex="-1"></a>        <span class="st">&quot;leidenalg&quot;</span>,</span>
+<span id="cb11-23"><a href="datasets-packages.html#cb11-23" tabindex="-1"></a>        <span class="st">&quot;scikit-learn&quot;</span>,</span>
+<span id="cb11-24"><a href="datasets-packages.html#cb11-24" tabindex="-1"></a>        <span class="st">&quot;cellpose&quot;</span>,</span>
+<span id="cb11-25"><a href="datasets-packages.html#cb11-25" tabindex="-1"></a>        <span class="st">&quot;smfishhmrf&quot;</span>,</span>
+<span id="cb11-26"><a href="datasets-packages.html#cb11-26" tabindex="-1"></a>        <span class="st">&quot;git+https://github.com/wwang-chcn/bento-tools.git@giotto_install&quot;</span></span>
+<span id="cb11-27"><a href="datasets-packages.html#cb11-27" tabindex="-1"></a>    )</span>
+<span id="cb11-28"><a href="datasets-packages.html#cb11-28" tabindex="-1"></a>)</span></code></pre></div>
 
 </div>
 </div>
