@@ -44,7 +44,7 @@ violinPlot(visium_brain,
            save_param = list(base_width = 5, base_height = 30))
 ```
 
-```{r, echo=FALSE, out.width="50%", fig.align="center"}
+```{r, echo=FALSE, out.width="50%", fig.align="center", fig.cap="Violin plot showing the top gini genes normalized expression."}
 knitr::include_graphics("img/02_session1/0-violinPlot.png")
 ```
 
@@ -57,7 +57,7 @@ plotMetaDataHeatmap(visium_brain,
                     x_text_size = 10, y_text_size = 10)
 ```
 
-```{r, echo=FALSE, out.width="80%", fig.align="center"}
+```{r, echo=FALSE, out.width="80%", fig.align="center", fig.cap="Heatmap showing the top gini genes normalized expression per Leiden cluster."}
 knitr::include_graphics("img/02_session1/1-plotMetaDataHeatmap.png")
 ```
 
@@ -72,7 +72,7 @@ dimFeatPlot2D(visium_brain,
               save_param = list(base_width = 15, base_height = 20))
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Spatial distribution of the top gini genes scaled expression."}
 knitr::include_graphics("img/02_session1/2-dimFeatPlot2D.png")
 ```
 
@@ -105,7 +105,7 @@ violinPlot(visium_brain,
            save_param = list(base_width = 5, base_height = 30))
 ```
 
-```{r, echo=FALSE, out.width="50%", fig.align="center"}
+```{r, echo=FALSE, out.width="50%", fig.align="center", fig.cap="Violin plot of the top scran genes normalized expression."}
 knitr::include_graphics("img/02_session1/3-violinPlot.png")
 ```
 
@@ -118,7 +118,7 @@ plotMetaDataHeatmap(visium_brain,
                     x_text_size = 10, y_text_size = 10)
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Heatmap showing the top scran genes normalized expression per Leiden cluster."}
 knitr::include_graphics("img/02_session1/4-plotMetaDataHeatmap.png")
 ```
 
@@ -133,7 +133,7 @@ dimFeatPlot2D(visium_brain,
               save_param = list(base_width = 20, base_height = 20))
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Spatial distribution of the top scran genes scaled expression."}
 knitr::include_graphics("img/02_session1/5-dimFeatPlot2D.png")
 ```
 
@@ -146,13 +146,14 @@ Visium spatial transcriptomics does not provide single-cell resolution, making c
 - Download the single-cell dataset
 
 ```{r, eval=FALSE}
-GiottoData::getSpatialDataset(dataset = "scRNA_mouse_brain", directory = "data/")
+GiottoData::getSpatialDataset(dataset = "scRNA_mouse_brain", 
+                              directory = "data/02_session1/")
 ```
 
 - Create the single-cell object and run the normalization step
 
 ```{r, eval=FALSE}
-results_folder <- "results/"
+results_folder <- "results/02_session1/"
 
 python_path <- NULL
 
@@ -163,8 +164,8 @@ instructions <- createGiottoInstructions(
     python_path = python_path
 )
 
-sc_expression <- "data/brain_sc_expression_matrix.txt.gz"
-sc_metadata <- "data/brain_sc_metadata.csv"
+sc_expression <- "data/02_session1/brain_sc_expression_matrix.txt.gz"
+sc_metadata <- "data/02_session1/brain_sc_metadata.csv"
 
 giotto_SC <- createGiottoObject(expression = sc_expression,
                                 instructions = instructions)
@@ -228,7 +229,7 @@ plotMetaDataCellsHeatmap(gobject = visium_brain,
                          y_text_size = 8)
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Cell types enrichment per Leiden cluster, identified using the PAGE method."}
 knitr::include_graphics("img/02_session1/6-plotMetaDataCellsHeatmap.png")
 ```
 
@@ -244,7 +245,7 @@ spatCellPlot2D(gobject = visium_brain,
                show_legend = TRUE)
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Spatial distribution of cell types identified using the PAGE method."}
 knitr::include_graphics("img/02_session1/7-spatCellPlot2D.png")
 ```
 
@@ -283,7 +284,7 @@ spatDeconvPlot(visium_brain,
                save_param = list(save_name = "8_spat_DWLS_pie_plot"))
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Spatial deconvolution plot showing the proportion of cell types per spot, identified using the DWLS method."}
 knitr::include_graphics("img/02_session1/8_spat_DWLS_pie_plot.png")
 ```
 
@@ -306,7 +307,7 @@ spatPlot2D(gobject = visium_brain,
            spatial_network_name = "spatial_network")
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Spatial network across spots in the Visium mouse sample."}
 knitr::include_graphics("img/02_session1/9-spatPlot2D.png")
 ```
 
@@ -326,7 +327,7 @@ ranktest <- binSpect(visium_brain,
 
 - Visualize top results
 
-Plot the scaled expression of genes with the highest probability of being spatial genes. 
+Plot the scaled expression of genes with the highest probability of being spatial genes.
 
 ```{r, eval=FALSE}
 spatFeatPlot2D(visium_brain, 
@@ -336,7 +337,7 @@ spatFeatPlot2D(visium_brain,
                point_size = 1)
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Spatial distribution of the top spatial genes scaled expression."}
 knitr::include_graphics("img/02_session1/10-spatFeatPlot2D.png")
 ```
 
@@ -377,7 +378,7 @@ spatFeatPlot2D(visium_brain,
                point_size = 1.5)
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Spatial distribution of the scaled expression of 3 genes with similar spatial pattern to Mbp."}
 knitr::include_graphics("img/02_session1/11-spatFeatPlot2D.png")
 ```
 
@@ -400,7 +401,7 @@ heatmSpatialCorFeats(visium_brain,
                      heatmap_legend_param = list(title = NULL))
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Correlations heatmap between spatial genes and correlated clusters."}
 knitr::include_graphics("img/02_session1/12-heatmSpatialCorFeats.png")
 ```
 
@@ -422,7 +423,7 @@ top_netw_spat_cluster <- showSpatialCorFeats(spat_cor_netw_DT,
                                             show_top_feats = 1)
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Ranking of spatial correlated groups. Size indicates the number spatial genes per group."}
 knitr::include_graphics("img/02_session1/13-rankSpatialCorGroups.png")
 ```
 
@@ -451,7 +452,7 @@ spatCellPlot(visium_brain,
              cow_n_col = 5)
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Spatial distribution of metagene enrichment scores per co-expression cluster."}
 knitr::include_graphics("img/02_session1/14-spatCellPlot2D.png")
 ```
 
@@ -509,7 +510,7 @@ spatPlot2D(visium_brain,
            point_size = 3)
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Spatial distribution of Leiden clusters calculated using spatial genes."}
 knitr::include_graphics("img/02_session1/15-spatPlot2D.png")
 ```
 
@@ -520,7 +521,7 @@ plotUMAP(gobject = visium_brain,
          cell_color = "custom_leiden")
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="UMAP plot, colors indicate the Leiden clusters calculated using spatial genes."}
 knitr::include_graphics("img/02_session1/16-UMAP.png")
 ```
 
@@ -554,14 +555,14 @@ visium_brain <- addHMRF(gobject = visium_brain,
 
 - Visualize 
 
-Plot the spatial distribution of the HMRF clusters.
+Plot the spatial distribution of the HMRF domains.
 
 ```{r, eval=FALSE}
 spatPlot2D(gobject = visium_brain, 
            cell_color = "HMRF_k20_b.40")
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Spatial distribution of HMRF domains."}
 knitr::include_graphics("img/02_session1/17-spatPlot2D.png")
 ```
 
@@ -587,7 +588,7 @@ brain_spatPlot
 plotInteractivePolygons(brain_spatPlot)
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Shiny app using the visium brain sample."}
 knitr::include_graphics("img/02_session1/18-spatPlot2D.png")
 ```
 
@@ -597,7 +598,7 @@ knitr::include_graphics("img/02_session1/18-spatPlot2D.png")
 polygon_coordinates <- plotInteractivePolygons(brain_spatPlot)
 ```
 
-```{r, echo=FALSE, out.width="60%", fig.align="center"}
+```{r, echo=FALSE, out.width="60%", fig.align="center", fig.cap="Polygons selected using the interactive Shiny app."}
 knitr::include_graphics("img/02_session1/19-spatPlot2D.png")
 ```
 
@@ -645,7 +646,7 @@ comparePolygonExpression(visium_brain,
                          selected_feats = c("Stmn1", "Psd", "Ly6h"))
 ```
 
-```{r, echo=FALSE, out.width="60%", fig.align="center"}
+```{r, echo=FALSE, out.width="60%", fig.align="center", fig.cap="Heatmap showing the z-scores of three genes per selected polygon."}
 knitr::include_graphics("img/02_session1/20-heatmap.png")
 ```
 
@@ -667,7 +668,7 @@ comparePolygonExpression(visium_brain,
                          selected_feats = top_genes)
 ```
 
-```{r, echo=FALSE, out.width="60%", fig.align="center"}
+```{r, echo=FALSE, out.width="60%", fig.align="center", fig.cap="Heatmap showing the z-scores of top scran genes per selected polygon."}
 knitr::include_graphics("img/02_session1/21-heatmap.png")
 ```
 
@@ -677,7 +678,7 @@ knitr::include_graphics("img/02_session1/21-heatmap.png")
 compareCellAbundance(visium_brain)
 ```
 
-```{r, echo=FALSE, out.width="60%", fig.align="center"}
+```{r, echo=FALSE, out.width="60%", fig.align="center", fig.cap="Heatmap showing the cell abundance per selected polygon."}
 knitr::include_graphics("img/02_session1/22-heatmap.png")
 ```
 
@@ -688,7 +689,7 @@ compareCellAbundance(visium_brain,
                      cell_type_column = "custom_leiden")
 ```
 
-```{r, echo=FALSE, out.width="60%", fig.align="center"}
+```{r, echo=FALSE, out.width="60%", fig.align="center", fig.cap="Heatmap showing the Leiden clusters abundance per selected polygon."}
 knitr::include_graphics("img/02_session1/23-heatmap.png")
 ```
 
@@ -703,7 +704,7 @@ spatPlot2D(visium_brain,
            show_legend = FALSE)
 ```
 
-```{r, echo=FALSE, out.width="80%", fig.align="center"}
+```{r, echo=FALSE, out.width="80%", fig.align="center", fig.cap="Spatial distribution of Leiden clusters across the selected polygons."}
 knitr::include_graphics("img/02_session1/24-spatPlot2D.png")
 ```
 
@@ -717,7 +718,7 @@ spatFeatPlot2D(visium_brain,
                point_size = 2)
 ```
 
-```{r, echo=FALSE, out.width="80%", fig.align="center"}
+```{r, echo=FALSE, out.width="80%", fig.align="center", fig.cap="Spatial distribution of Psd scaled expression across the selected polygons."}
 knitr::include_graphics("img/02_session1/25-spatFeatPlot2D.png")
 ```
 
@@ -729,7 +730,7 @@ plotPolygons(visium_brain,
              x = brain_spatPlot)
 ```
 
-```{r, echo=FALSE, out.width="60%", fig.align="center"}
+```{r, echo=FALSE, out.width="60%", fig.align="center", fig.cap="Spatial location of selected polygons."}
 knitr::include_graphics("img/02_session1/26-spatPlot2D.png")
 ```
 
