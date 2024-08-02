@@ -490,13 +490,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb61-4"><a href="visium-part-ii.html#cb61-4" tabindex="-1"></a>           <span class="at">strip_text =</span> <span class="dv">6</span>, </span>
 <span id="cb61-5"><a href="visium-part-ii.html#cb61-5" tabindex="-1"></a>           <span class="at">strip_position =</span> <span class="st">&quot;right&quot;</span>,</span>
 <span id="cb61-6"><a href="visium-part-ii.html#cb61-6" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">base_width =</span> <span class="dv">5</span>, <span class="at">base_height =</span> <span class="dv">30</span>))</span></code></pre></div>
-<p><img src="img/02_session1/0-violinPlot.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-80"></span>
+<img src="img/02_session1/0-violinPlot.png" alt="Violin plot showing the top gini genes normalized expression." width="50%" />
+<p class="caption">
+Figure 8.1: Violin plot showing the top gini genes normalized expression.
+</p>
+</div>
 <p>Use the cluster IDs to create a heatmap with the normalized expression of the top expressed genes per cluster.</p>
 <div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="visium-part-ii.html#cb62-1" tabindex="-1"></a><span class="fu">plotMetaDataHeatmap</span>(visium_brain, </span>
 <span id="cb62-2"><a href="visium-part-ii.html#cb62-2" tabindex="-1"></a>                    <span class="at">selected_feats =</span> <span class="fu">unique</span>(topgenes_gini),</span>
 <span id="cb62-3"><a href="visium-part-ii.html#cb62-3" tabindex="-1"></a>                    <span class="at">metadata_cols =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
 <span id="cb62-4"><a href="visium-part-ii.html#cb62-4" tabindex="-1"></a>                    <span class="at">x_text_size =</span> <span class="dv">10</span>, <span class="at">y_text_size =</span> <span class="dv">10</span>)</span></code></pre></div>
-<p><img src="img/02_session1/1-plotMetaDataHeatmap.png" width="80%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-82"></span>
+<img src="img/02_session1/1-plotMetaDataHeatmap.png" alt="Heatmap showing the top gini genes normalized expression per Leiden cluster." width="80%" />
+<p class="caption">
+Figure 8.2: Heatmap showing the top gini genes normalized expression per Leiden cluster.
+</p>
+</div>
 <p>Visualize the scaled expression spatial distribution of the top expressed genes across the sample.</p>
 <div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="visium-part-ii.html#cb63-1" tabindex="-1"></a><span class="fu">dimFeatPlot2D</span>(visium_brain, </span>
 <span id="cb63-2"><a href="visium-part-ii.html#cb63-2" tabindex="-1"></a>              <span class="at">expression_values =</span> <span class="st">&quot;scaled&quot;</span>,</span>
@@ -504,7 +514,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb63-4"><a href="visium-part-ii.html#cb63-4" tabindex="-1"></a>              <span class="at">cow_n_col =</span> <span class="dv">5</span>, </span>
 <span id="cb63-5"><a href="visium-part-ii.html#cb63-5" tabindex="-1"></a>              <span class="at">point_size =</span> <span class="dv">1</span>,</span>
 <span id="cb63-6"><a href="visium-part-ii.html#cb63-6" tabindex="-1"></a>              <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">base_width =</span> <span class="dv">15</span>, <span class="at">base_height =</span> <span class="dv">20</span>))</span></code></pre></div>
-<p><img src="img/02_session1/2-dimFeatPlot2D.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-84"></span>
+<img src="img/02_session1/2-dimFeatPlot2D.png" alt="Spatial distribution of the top gini genes scaled expression." width="100%" />
+<p class="caption">
+Figure 8.3: Spatial distribution of the top gini genes scaled expression.
+</p>
+</div>
 </div>
 <div id="scran-markers" class="section level3 hasAnchor" number="8.2.2">
 <h3><span class="header-section-number">8.2.2</span> Scran markers<a href="visium-part-ii.html#scran-markers" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -529,13 +544,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb65-4"><a href="visium-part-ii.html#cb65-4" tabindex="-1"></a>           <span class="at">strip_text =</span> <span class="dv">6</span>, </span>
 <span id="cb65-5"><a href="visium-part-ii.html#cb65-5" tabindex="-1"></a>           <span class="at">strip_position =</span> <span class="st">&quot;right&quot;</span>,</span>
 <span id="cb65-6"><a href="visium-part-ii.html#cb65-6" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">base_width =</span> <span class="dv">5</span>, <span class="at">base_height =</span> <span class="dv">30</span>))</span></code></pre></div>
-<p><img src="img/02_session1/3-violinPlot.png" width="50%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-87"></span>
+<img src="img/02_session1/3-violinPlot.png" alt="Violin plot of the top scran genes normalized expression." width="50%" />
+<p class="caption">
+Figure 8.4: Violin plot of the top scran genes normalized expression.
+</p>
+</div>
 <p>Use the cluster IDs to create a heatmap with the normalized expression of the top expressed genes per cluster.</p>
 <div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="visium-part-ii.html#cb66-1" tabindex="-1"></a><span class="fu">plotMetaDataHeatmap</span>(visium_brain, </span>
 <span id="cb66-2"><a href="visium-part-ii.html#cb66-2" tabindex="-1"></a>                    <span class="at">selected_feats =</span> <span class="fu">unique</span>(topgenes_scran),</span>
 <span id="cb66-3"><a href="visium-part-ii.html#cb66-3" tabindex="-1"></a>                    <span class="at">metadata_cols =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
 <span id="cb66-4"><a href="visium-part-ii.html#cb66-4" tabindex="-1"></a>                    <span class="at">x_text_size =</span> <span class="dv">10</span>, <span class="at">y_text_size =</span> <span class="dv">10</span>)</span></code></pre></div>
-<p><img src="img/02_session1/4-plotMetaDataHeatmap.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-89"></span>
+<img src="img/02_session1/4-plotMetaDataHeatmap.png" alt="Heatmap showing the top scran genes normalized expression per Leiden cluster." width="100%" />
+<p class="caption">
+Figure 8.5: Heatmap showing the top scran genes normalized expression per Leiden cluster.
+</p>
+</div>
 <p>Visualize the scaled expression spatial distribution of the top expressed genes across the sample.</p>
 <div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="visium-part-ii.html#cb67-1" tabindex="-1"></a><span class="fu">dimFeatPlot2D</span>(visium_brain, </span>
 <span id="cb67-2"><a href="visium-part-ii.html#cb67-2" tabindex="-1"></a>              <span class="at">expression_values =</span> <span class="st">&quot;scaled&quot;</span>,</span>
@@ -543,7 +568,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb67-4"><a href="visium-part-ii.html#cb67-4" tabindex="-1"></a>              <span class="at">cow_n_col =</span> <span class="dv">5</span>, </span>
 <span id="cb67-5"><a href="visium-part-ii.html#cb67-5" tabindex="-1"></a>              <span class="at">point_size =</span> <span class="dv">1</span>,</span>
 <span id="cb67-6"><a href="visium-part-ii.html#cb67-6" tabindex="-1"></a>              <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">base_width =</span> <span class="dv">20</span>, <span class="at">base_height =</span> <span class="dv">20</span>))</span></code></pre></div>
-<p><img src="img/02_session1/5-dimFeatPlot2D.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-91"></span>
+<img src="img/02_session1/5-dimFeatPlot2D.png" alt="Spatial distribution of the top scran genes scaled expression." width="100%" />
+<p class="caption">
+Figure 8.6: Spatial distribution of the top scran genes scaled expression.
+</p>
+</div>
 <p>In practice, it is often beneficial to apply both methods and compare results for a more complete understanding of differential gene expression across clusters.</p>
 </div>
 </div>
@@ -553,11 +583,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Download the single-cell dataset</li>
 </ul>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="visium-part-ii.html#cb68-1" tabindex="-1"></a>GiottoData<span class="sc">::</span><span class="fu">getSpatialDataset</span>(<span class="at">dataset =</span> <span class="st">&quot;scRNA_mouse_brain&quot;</span>, <span class="at">directory =</span> <span class="st">&quot;data/&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="visium-part-ii.html#cb68-1" tabindex="-1"></a>GiottoData<span class="sc">::</span><span class="fu">getSpatialDataset</span>(<span class="at">dataset =</span> <span class="st">&quot;scRNA_mouse_brain&quot;</span>, </span>
+<span id="cb68-2"><a href="visium-part-ii.html#cb68-2" tabindex="-1"></a>                              <span class="at">directory =</span> <span class="st">&quot;data/02_session1/&quot;</span>)</span></code></pre></div>
 <ul>
 <li>Create the single-cell object and run the normalization step</li>
 </ul>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="visium-part-ii.html#cb69-1" tabindex="-1"></a>results_folder <span class="ot">&lt;-</span> <span class="st">&quot;results/&quot;</span></span>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="visium-part-ii.html#cb69-1" tabindex="-1"></a>results_folder <span class="ot">&lt;-</span> <span class="st">&quot;results/02_session1/&quot;</span></span>
 <span id="cb69-2"><a href="visium-part-ii.html#cb69-2" tabindex="-1"></a></span>
 <span id="cb69-3"><a href="visium-part-ii.html#cb69-3" tabindex="-1"></a>python_path <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
 <span id="cb69-4"><a href="visium-part-ii.html#cb69-4" tabindex="-1"></a></span>
@@ -568,8 +599,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb69-9"><a href="visium-part-ii.html#cb69-9" tabindex="-1"></a>    <span class="at">python_path =</span> python_path</span>
 <span id="cb69-10"><a href="visium-part-ii.html#cb69-10" tabindex="-1"></a>)</span>
 <span id="cb69-11"><a href="visium-part-ii.html#cb69-11" tabindex="-1"></a></span>
-<span id="cb69-12"><a href="visium-part-ii.html#cb69-12" tabindex="-1"></a>sc_expression <span class="ot">&lt;-</span> <span class="st">&quot;data/brain_sc_expression_matrix.txt.gz&quot;</span></span>
-<span id="cb69-13"><a href="visium-part-ii.html#cb69-13" tabindex="-1"></a>sc_metadata <span class="ot">&lt;-</span> <span class="st">&quot;data/brain_sc_metadata.csv&quot;</span></span>
+<span id="cb69-12"><a href="visium-part-ii.html#cb69-12" tabindex="-1"></a>sc_expression <span class="ot">&lt;-</span> <span class="st">&quot;data/02_session1/brain_sc_expression_matrix.txt.gz&quot;</span></span>
+<span id="cb69-13"><a href="visium-part-ii.html#cb69-13" tabindex="-1"></a>sc_metadata <span class="ot">&lt;-</span> <span class="st">&quot;data/02_session1/brain_sc_metadata.csv&quot;</span></span>
 <span id="cb69-14"><a href="visium-part-ii.html#cb69-14" tabindex="-1"></a></span>
 <span id="cb69-15"><a href="visium-part-ii.html#cb69-15" tabindex="-1"></a>giotto_SC <span class="ot">&lt;-</span> <span class="fu">createGiottoObject</span>(<span class="at">expression =</span> sc_expression,</span>
 <span id="cb69-16"><a href="visium-part-ii.html#cb69-16" tabindex="-1"></a>                                <span class="at">instructions =</span> instructions)</span>
@@ -620,7 +651,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb73-6"><a href="visium-part-ii.html#cb73-6" tabindex="-1"></a>                         <span class="at">spat_enr_names =</span> <span class="st">&quot;PAGE&quot;</span>,</span>
 <span id="cb73-7"><a href="visium-part-ii.html#cb73-7" tabindex="-1"></a>                         <span class="at">x_text_size =</span> <span class="dv">8</span>,</span>
 <span id="cb73-8"><a href="visium-part-ii.html#cb73-8" tabindex="-1"></a>                         <span class="at">y_text_size =</span> <span class="dv">8</span>)</span></code></pre></div>
-<p><img src="img/02_session1/6-plotMetaDataCellsHeatmap.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-98"></span>
+<img src="img/02_session1/6-plotMetaDataCellsHeatmap.png" alt="Cell types enrichment per Leiden cluster, identified using the PAGE method." width="100%" />
+<p class="caption">
+Figure 8.7: Cell types enrichment per Leiden cluster, identified using the PAGE method.
+</p>
+</div>
 <p>Plot the spatial distribution of the cell types.</p>
 <div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="visium-part-ii.html#cb74-1" tabindex="-1"></a><span class="fu">spatCellPlot2D</span>(<span class="at">gobject =</span> visium_brain,</span>
 <span id="cb74-2"><a href="visium-part-ii.html#cb74-2" tabindex="-1"></a>               <span class="at">spat_enr_names =</span> <span class="st">&quot;PAGE&quot;</span>,</span>
@@ -629,7 +665,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb74-5"><a href="visium-part-ii.html#cb74-5" tabindex="-1"></a>               <span class="at">coord_fix_ratio =</span> <span class="dv">1</span>, </span>
 <span id="cb74-6"><a href="visium-part-ii.html#cb74-6" tabindex="-1"></a>               <span class="at">point_size =</span> <span class="dv">1</span>, </span>
 <span id="cb74-7"><a href="visium-part-ii.html#cb74-7" tabindex="-1"></a>               <span class="at">show_legend =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="img/02_session1/7-spatCellPlot2D.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-100"></span>
+<img src="img/02_session1/7-spatCellPlot2D.png" alt="Spatial distribution of cell types identified using the PAGE method." width="100%" />
+<p class="caption">
+Figure 8.8: Spatial distribution of cell types identified using the PAGE method.
+</p>
+</div>
 </div>
 <div id="spatialdwls" class="section level3 hasAnchor" number="8.3.2">
 <h3><span class="header-section-number">8.3.2</span> SpatialDWLS<a href="visium-part-ii.html#spatialdwls" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -657,7 +698,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb77-2"><a href="visium-part-ii.html#cb77-2" tabindex="-1"></a>               <span class="at">show_image =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb77-3"><a href="visium-part-ii.html#cb77-3" tabindex="-1"></a>               <span class="at">radius =</span> <span class="dv">50</span>,</span>
 <span id="cb77-4"><a href="visium-part-ii.html#cb77-4" tabindex="-1"></a>               <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;8_spat_DWLS_pie_plot&quot;</span>))</span></code></pre></div>
-<p><img src="img/02_session1/8_spat_DWLS_pie_plot.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-104"></span>
+<img src="img/02_session1/8_spat_DWLS_pie_plot.png" alt="Spatial deconvolution plot showing the proportion of cell types per spot, identified using the DWLS method." width="100%" />
+<p class="caption">
+Figure 8.9: Spatial deconvolution plot showing the proportion of cell types per spot, identified using the DWLS method.
+</p>
+</div>
 </div>
 </div>
 <div id="spatial-expression-patterns" class="section level2 hasAnchor" number="8.4">
@@ -677,7 +723,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb78-8"><a href="visium-part-ii.html#cb78-8" tabindex="-1"></a>           <span class="at">show_network=</span> <span class="cn">TRUE</span>,</span>
 <span id="cb78-9"><a href="visium-part-ii.html#cb78-9" tabindex="-1"></a>           <span class="at">network_color =</span> <span class="st">&quot;blue&quot;</span>, </span>
 <span id="cb78-10"><a href="visium-part-ii.html#cb78-10" tabindex="-1"></a>           <span class="at">spatial_network_name =</span> <span class="st">&quot;spatial_network&quot;</span>)</span></code></pre></div>
-<p><img src="img/02_session1/9-spatPlot2D.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-106"></span>
+<img src="img/02_session1/9-spatPlot2D.png" alt="Spatial network across spots in the Visium mouse sample." width="100%" />
+<p class="caption">
+Figure 8.10: Spatial network across spots in the Visium mouse sample.
+</p>
+</div>
 <ul>
 <li>Rank binarization</li>
 </ul>
@@ -697,7 +748,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb80-3"><a href="visium-part-ii.html#cb80-3" tabindex="-1"></a>               <span class="at">feats =</span> ranktest<span class="sc">$</span>feats[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>], </span>
 <span id="cb80-4"><a href="visium-part-ii.html#cb80-4" tabindex="-1"></a>               <span class="at">cow_n_col =</span> <span class="dv">2</span>, </span>
 <span id="cb80-5"><a href="visium-part-ii.html#cb80-5" tabindex="-1"></a>               <span class="at">point_size =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="img/02_session1/10-spatFeatPlot2D.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-109"></span>
+<img src="img/02_session1/10-spatFeatPlot2D.png" alt="Spatial distribution of the top spatial genes scaled expression." width="100%" />
+<p class="caption">
+Figure 8.11: Spatial distribution of the top spatial genes scaled expression.
+</p>
+</div>
 </div>
 <div id="spatial-co-expression-modules" class="section level3 hasAnchor" number="8.4.2">
 <h3><span class="header-section-number">8.4.2</span> Spatial co-expression modules<a href="visium-part-ii.html#spatial-co-expression-modules" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -727,7 +783,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb84-2"><a href="visium-part-ii.html#cb84-2" tabindex="-1"></a>               <span class="at">expression_values =</span> <span class="st">&quot;scaled&quot;</span>,</span>
 <span id="cb84-3"><a href="visium-part-ii.html#cb84-3" tabindex="-1"></a>               <span class="at">feats =</span> top10_genes<span class="sc">$</span>variable[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], </span>
 <span id="cb84-4"><a href="visium-part-ii.html#cb84-4" tabindex="-1"></a>               <span class="at">point_size =</span> <span class="fl">1.5</span>)</span></code></pre></div>
-<p><img src="img/02_session1/11-spatFeatPlot2D.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-114"></span>
+<img src="img/02_session1/11-spatFeatPlot2D.png" alt="Spatial distribution of the scaled expression of 3 genes with similar spatial pattern to Mbp." width="100%" />
+<p class="caption">
+Figure 8.12: Spatial distribution of the scaled expression of 3 genes with similar spatial pattern to Mbp.
+</p>
+</div>
 <ul>
 <li>Cluster spatial genes</li>
 </ul>
@@ -742,7 +803,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb86-2"><a href="visium-part-ii.html#cb86-2" tabindex="-1"></a>                     <span class="at">spatCorObject =</span> spat_cor_netw_DT,</span>
 <span id="cb86-3"><a href="visium-part-ii.html#cb86-3" tabindex="-1"></a>                     <span class="at">use_clus_name =</span> <span class="st">&quot;spat_netw_clus&quot;</span>,</span>
 <span id="cb86-4"><a href="visium-part-ii.html#cb86-4" tabindex="-1"></a>                     <span class="at">heatmap_legend_param =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="cn">NULL</span>))</span></code></pre></div>
-<p><img src="img/02_session1/12-heatmSpatialCorFeats.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-117"></span>
+<img src="img/02_session1/12-heatmSpatialCorFeats.png" alt="Correlations heatmap between spatial genes and correlated clusters." width="100%" />
+<p class="caption">
+Figure 8.13: Correlations heatmap between spatial genes and correlated clusters.
+</p>
+</div>
 <ul>
 <li>Rank spatial correlated clusters and show genes for selected clusters</li>
 </ul>
@@ -755,7 +821,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb88-2"><a href="visium-part-ii.html#cb88-2" tabindex="-1"></a>                                            <span class="at">use_clus_name =</span> <span class="st">&quot;spat_netw_clus&quot;</span>,</span>
 <span id="cb88-3"><a href="visium-part-ii.html#cb88-3" tabindex="-1"></a>                                            <span class="at">selected_clusters =</span> <span class="dv">6</span>, </span>
 <span id="cb88-4"><a href="visium-part-ii.html#cb88-4" tabindex="-1"></a>                                            <span class="at">show_top_feats =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="img/02_session1/13-rankSpatialCorGroups.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-120"></span>
+<img src="img/02_session1/13-rankSpatialCorGroups.png" alt="Ranking of spatial correlated groups. Size indicates the number spatial genes per group." width="100%" />
+<p class="caption">
+Figure 8.14: Ranking of spatial correlated groups. Size indicates the number spatial genes per group.
+</p>
+</div>
 <ul>
 <li>Create the metagene enrichment score per co-expression cluster</li>
 </ul>
@@ -775,7 +846,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb90-3"><a href="visium-part-ii.html#cb90-3" tabindex="-1"></a>             <span class="at">cell_annotation_values =</span> netw_ranks<span class="sc">$</span>clusters,</span>
 <span id="cb90-4"><a href="visium-part-ii.html#cb90-4" tabindex="-1"></a>             <span class="at">point_size =</span> <span class="dv">1</span>, </span>
 <span id="cb90-5"><a href="visium-part-ii.html#cb90-5" tabindex="-1"></a>             <span class="at">cow_n_col =</span> <span class="dv">5</span>)</span></code></pre></div>
-<p><img src="img/02_session1/14-spatCellPlot2D.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-123"></span>
+<img src="img/02_session1/14-spatCellPlot2D.png" alt="Spatial distribution of metagene enrichment scores per co-expression cluster." width="100%" />
+<p class="caption">
+Figure 8.15: Spatial distribution of metagene enrichment scores per co-expression cluster.
+</p>
+</div>
 </div>
 </div>
 <div id="spatially-informed-clusters" class="section level2 hasAnchor" number="8.5">
@@ -823,11 +899,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="visium-part-ii.html#cb93-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(visium_brain, </span>
 <span id="cb93-2"><a href="visium-part-ii.html#cb93-2" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;custom_leiden&quot;</span>,</span>
 <span id="cb93-3"><a href="visium-part-ii.html#cb93-3" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="dv">3</span>)</span></code></pre></div>
-<p><img src="img/02_session1/15-spatPlot2D.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-127"></span>
+<img src="img/02_session1/15-spatPlot2D.png" alt="Spatial distribution of Leiden clusters calculated using spatial genes." width="100%" />
+<p class="caption">
+Figure 8.16: Spatial distribution of Leiden clusters calculated using spatial genes.
+</p>
+</div>
 <p>Plot the UMAP and color the spots using the Leiden clusters calculated based on the spatial genes.</p>
 <div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="visium-part-ii.html#cb94-1" tabindex="-1"></a><span class="fu">plotUMAP</span>(<span class="at">gobject =</span> visium_brain, </span>
 <span id="cb94-2"><a href="visium-part-ii.html#cb94-2" tabindex="-1"></a>         <span class="at">cell_color =</span> <span class="st">&quot;custom_leiden&quot;</span>)</span></code></pre></div>
-<p><img src="img/02_session1/16-UMAP.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-129"></span>
+<img src="img/02_session1/16-UMAP.png" alt="UMAP plot, colors indicate the Leiden clusters calculated using spatial genes." width="100%" />
+<p class="caption">
+Figure 8.17: UMAP plot, colors indicate the Leiden clusters calculated using spatial genes.
+</p>
+</div>
 </div>
 <div id="spatial-domains-hmrf" class="section level2 hasAnchor" number="8.6">
 <h2><span class="header-section-number">8.6</span> Spatial domains HMRF<a href="visium-part-ii.html#spatial-domains-hmrf" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -852,10 +938,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Visualize</li>
 </ul>
-<p>Plot the spatial distribution of the HMRF clusters.</p>
+<p>Plot the spatial distribution of the HMRF domains.</p>
 <div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="visium-part-ii.html#cb97-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> visium_brain, </span>
 <span id="cb97-2"><a href="visium-part-ii.html#cb97-2" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;HMRF_k20_b.40&quot;</span>)</span></code></pre></div>
-<p><img src="img/02_session1/17-spatPlot2D.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-133"></span>
+<img src="img/02_session1/17-spatPlot2D.png" alt="Spatial distribution of HMRF domains." width="100%" />
+<p class="caption">
+Figure 8.18: Spatial distribution of HMRF domains.
+</p>
+</div>
 </div>
 <div id="interactive-tools" class="section level2 hasAnchor" number="8.7">
 <h2><span class="header-section-number">8.7</span> Interactive tools<a href="visium-part-ii.html#interactive-tools" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -874,12 +965,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Run the Shiny app</li>
 </ul>
 <div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="visium-part-ii.html#cb99-1" tabindex="-1"></a><span class="fu">plotInteractivePolygons</span>(brain_spatPlot)</span></code></pre></div>
-<p><img src="img/02_session1/18-spatPlot2D.png" width="100%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-136"></span>
+<img src="img/02_session1/18-spatPlot2D.png" alt="Shiny app using the visium brain sample." width="100%" />
+<p class="caption">
+Figure 8.19: Shiny app using the visium brain sample.
+</p>
+</div>
 <ul>
 <li>Select the regions of interest and save the coordinates</li>
 </ul>
 <div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="visium-part-ii.html#cb100-1" tabindex="-1"></a>polygon_coordinates <span class="ot">&lt;-</span> <span class="fu">plotInteractivePolygons</span>(brain_spatPlot)</span></code></pre></div>
-<p><img src="img/02_session1/19-spatPlot2D.png" width="60%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-138"></span>
+<img src="img/02_session1/19-spatPlot2D.png" alt="Polygons selected using the interactive Shiny app." width="60%" />
+<p class="caption">
+Figure 8.20: Polygons selected using the interactive Shiny app.
+</p>
+</div>
 <ul>
 <li>Transform the data.table or data.frame with coordinates into a Giotto polygon object</li>
 </ul>
@@ -910,7 +1011,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="visium-part-ii.html#cb106-1" tabindex="-1"></a><span class="fu">comparePolygonExpression</span>(visium_brain,</span>
 <span id="cb106-2"><a href="visium-part-ii.html#cb106-2" tabindex="-1"></a>                         <span class="at">selected_feats =</span> <span class="fu">c</span>(<span class="st">&quot;Stmn1&quot;</span>, <span class="st">&quot;Psd&quot;</span>, <span class="st">&quot;Ly6h&quot;</span>))</span></code></pre></div>
-<p><img src="img/02_session1/20-heatmap.png" width="60%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-145"></span>
+<img src="img/02_session1/20-heatmap.png" alt="Heatmap showing the z-scores of three genes per selected polygon." width="60%" />
+<p class="caption">
+Figure 8.21: Heatmap showing the z-scores of three genes per selected polygon.
+</p>
+</div>
 <ul>
 <li>Calculate the top genes expressed within each region, then provide the result to compare polygons</li>
 </ul>
@@ -927,18 +1033,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb107-11"><a href="visium-part-ii.html#cb107-11" tabindex="-1"></a></span>
 <span id="cb107-12"><a href="visium-part-ii.html#cb107-12" tabindex="-1"></a><span class="fu">comparePolygonExpression</span>(visium_brain,</span>
 <span id="cb107-13"><a href="visium-part-ii.html#cb107-13" tabindex="-1"></a>                         <span class="at">selected_feats =</span> top_genes)</span></code></pre></div>
-<p><img src="img/02_session1/21-heatmap.png" width="60%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-147"></span>
+<img src="img/02_session1/21-heatmap.png" alt="Heatmap showing the z-scores of top scran genes per selected polygon." width="60%" />
+<p class="caption">
+Figure 8.22: Heatmap showing the z-scores of top scran genes per selected polygon.
+</p>
+</div>
 <ul>
 <li>Compare the abundance of cell types between the selected regions</li>
 </ul>
 <div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="visium-part-ii.html#cb108-1" tabindex="-1"></a><span class="fu">compareCellAbundance</span>(visium_brain)</span></code></pre></div>
-<p><img src="img/02_session1/22-heatmap.png" width="60%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-149"></span>
+<img src="img/02_session1/22-heatmap.png" alt="Heatmap showing the cell abundance per selected polygon." width="60%" />
+<p class="caption">
+Figure 8.23: Heatmap showing the cell abundance per selected polygon.
+</p>
+</div>
 <ul>
 <li>Use other columns within the cell metadata table to compare the cell type abundances</li>
 </ul>
 <div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="visium-part-ii.html#cb109-1" tabindex="-1"></a><span class="fu">compareCellAbundance</span>(visium_brain, </span>
 <span id="cb109-2"><a href="visium-part-ii.html#cb109-2" tabindex="-1"></a>                     <span class="at">cell_type_column =</span> <span class="st">&quot;custom_leiden&quot;</span>)</span></code></pre></div>
-<p><img src="img/02_session1/23-heatmap.png" width="60%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-151"></span>
+<img src="img/02_session1/23-heatmap.png" alt="Heatmap showing the Leiden clusters abundance per selected polygon." width="60%" />
+<p class="caption">
+Figure 8.24: Heatmap showing the Leiden clusters abundance per selected polygon.
+</p>
+</div>
 <ul>
 <li>Use the spatPlot arguments to isolate and plot each region.</li>
 </ul>
@@ -948,7 +1069,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb110-4"><a href="visium-part-ii.html#cb110-4" tabindex="-1"></a>           <span class="at">cow_n_col =</span> <span class="dv">3</span>,</span>
 <span id="cb110-5"><a href="visium-part-ii.html#cb110-5" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="dv">2</span>,</span>
 <span id="cb110-6"><a href="visium-part-ii.html#cb110-6" tabindex="-1"></a>           <span class="at">show_legend =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<p><img src="img/02_session1/24-spatPlot2D.png" width="80%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-153"></span>
+<img src="img/02_session1/24-spatPlot2D.png" alt="Spatial distribution of Leiden clusters across the selected polygons." width="80%" />
+<p class="caption">
+Figure 8.25: Spatial distribution of Leiden clusters across the selected polygons.
+</p>
+</div>
 <ul>
 <li>Color each cell by cluster, cell type or expression level.</li>
 </ul>
@@ -957,14 +1083,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb111-3"><a href="visium-part-ii.html#cb111-3" tabindex="-1"></a>               <span class="at">group_by =</span> <span class="st">&quot;selections&quot;</span>,</span>
 <span id="cb111-4"><a href="visium-part-ii.html#cb111-4" tabindex="-1"></a>               <span class="at">feats =</span> <span class="st">&quot;Psd&quot;</span>,</span>
 <span id="cb111-5"><a href="visium-part-ii.html#cb111-5" tabindex="-1"></a>               <span class="at">point_size =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="img/02_session1/25-spatFeatPlot2D.png" width="80%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-155"></span>
+<img src="img/02_session1/25-spatFeatPlot2D.png" alt="Spatial distribution of Psd scaled expression across the selected polygons." width="80%" />
+<p class="caption">
+Figure 8.26: Spatial distribution of Psd scaled expression across the selected polygons.
+</p>
+</div>
 <ul>
 <li>Plot again the polygons</li>
 </ul>
 <div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="visium-part-ii.html#cb112-1" tabindex="-1"></a><span class="fu">plotPolygons</span>(visium_brain,</span>
 <span id="cb112-2"><a href="visium-part-ii.html#cb112-2" tabindex="-1"></a>             <span class="at">polygon_name =</span> <span class="st">&quot;selections&quot;</span>,</span>
 <span id="cb112-3"><a href="visium-part-ii.html#cb112-3" tabindex="-1"></a>             <span class="at">x =</span> brain_spatPlot)</span></code></pre></div>
-<p><img src="img/02_session1/26-spatPlot2D.png" width="60%" style="display: block; margin: auto;" /></p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-157"></span>
+<img src="img/02_session1/26-spatPlot2D.png" alt="Spatial location of selected polygons." width="60%" />
+<p class="caption">
+Figure 8.27: Spatial location of selected polygons.
+</p>
+</div>
 </div>
 <div id="session-info-1" class="section level2 hasAnchor" number="8.8">
 <h2><span class="header-section-number">8.8</span> Session info<a href="visium-part-ii.html#session-info-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
