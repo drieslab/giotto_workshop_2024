@@ -1,11 +1,16 @@
 
 # Workshop: Spatial multi-omics data analysis with Giotto Suite
 
-## August 5-7, 2024
+## Flyer:
+<img src="./img/misc/giotto_flyer.png" alt="image" width="500" height="auto">
 
 ## Book
 
 Find the book at: https://drieslab.github.io/giotto_workshop_2024/
+
+## Website
+
+Find more information about Giotto Suite at www.giottosuite.com
 
 ## Instructors
 
@@ -13,15 +18,17 @@ Find the book at: https://drieslab.github.io/giotto_workshop_2024/
 
 - [Joselyn Cristina Chávez Fuentes](https://comunidadbioinfo.github.io/es/authors/josschavezf/): Postdoctoral fellow at Icahn School of Medicine at Mount Sinai
 
-- [Jiaji George Chen](https://x/jiaji_g_chen): Ph.D. Student at Boston University
+- [Jiaji George Chen](https://x/jiaji_g_chen): Ph.D. student at Boston University
 
-- [Junxiang Xu]()
+- [Junxiang Xu](): Ph.D. student at Boston University
 
-- [Edward C. Ruiz](https://x.com/ed2uiz): Ph.D. Student at Boston University  
+- [Edward C. Ruiz](https://x.com/ed2uiz): Ph.D. student at Boston University 
 
-- [Jeff Sheridan]()
+- [Jeff Sheridan](): Postdoctoral fellow at Boston University
 
-- [Wen Wang]()
+- [Iqra Amin](): Bioinformatician
+
+- [Wen Wang](): Postdoctoral fellow at Icahn School of Medicine at Mount Sinai
 
 
 ## Topics and Schedule:
@@ -133,3 +140,5 @@ Find the book at: https://drieslab.github.io/giotto_workshop_2024/
     - Interactivity with the R/Spatial ecosystem 
         - Kriging
     - Contributing to Giotto
+
+

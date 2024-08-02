@@ -1,0 +1,155 @@
+## Needed packages
+
+### CRAN dependencies:
+
+```{r, eval=FALSE}
+cran_dependencies <-
+    c("BiocManager",
+      "devtools",
+      "pak")
+
+install.packages(cran_dependencies, Ncpus = 4)
+```
+
+### *terra* installation
+
+*terra* may have some additional steps when installing depending on which system you are on. Please see the *terra* [repo](https://github.com/rspatial/terra) for specifics. Installations of the CRAN release on Windows and Mac are expected to be simple, only requiring the code below.
+
+For Linux, there are several prerequisite installs:
+
+```         
+GDAL (>= 2.2.3), GEOS (>= 3.4.0), PROJ (>= 4.9.3), sqlite3
+```
+
+On our AlmaLinux 8 HPC, the following versions have been working well:
+
+-   gdal/3.6.4
+
+-   geos/3.11.1
+
+-   proj/9.2.0
+
+-   sqlite3/3.37.2
+
+```{r, eval=FALSE}
+install.packages("terra")
+```
+
+### *Matrix* installation
+
+!! FOR R VERSIONS LOWER THAN 4.4.0 !!
+
+*Giotto* requires *Matrix* 1.6-2 or greater, but when installing *Giotto* with *pak* on an *R* version lower than 4.4.0, the installation can fail asking for R 4.5 which doesn't exist yet. We can solve this by installing the 1.6-5 version directly by un-commenting and running the line below.
+
+```{r, eval=FALSE}
+# devtools::install_version("Matrix", version = "1.6-5")
+```
+
+### *Giotto* installation
+
+```{r, eval=FALSE}
+pak::pak("drieslab/Giotto")
+pak::pak("drieslab/GiottoData")
+```
+
+### *irlba* install
+
+Reinstall *irlba* from source. Avoids the common `function 'as_cholmod_sparse' not provided by package 'Matrix'` error. See this [issue](https://github.com/bwlewis/irlba/issues/70) for more info.
+
+```{r, eval=FALSE}
+install.packages("irlba", type = "source")
+```
+
+### *arrow* install
+
+*arrow* is a suggested package that we use here to open `parquet` files. The parquet files that 10X provides use zstd compression which the default *arrow* installation may not provide.
+
+```{r, eval=FALSE}
+has_arrow <- requireNamespace("arrow", quietly = TRUE)
+zstd <- TRUE
+if (has_arrow) {
+    zstd <- arrow::arrow_info()$capabilities[["zstd"]]
+}
+if (!has_arrow || !zstd) {
+    Sys.setenv(ARROW_WITH_ZSTD = "ON") 
+    install.packages("arrow", repos = c("https://apache.r-universe.dev"))
+}
+```
+
+### Bioconductor dependencies:
+
+```{r, eval=FALSE}
+bioc_dependencies <- c(
+    "scran",
+    "ComplexHeatmap",
+    "SpatialExperiment",
+    "ggspavis",
+    "scater",
+    "nnSVG"
+)
+```
+
+### CRAN packages:
+
+```{r, eval=FALSE}
+needed_packages_cran <- c(
+    "dplyr",
+    "gstat",
+    "hdf5r",
+    "miniUI",
+    "shiny",
+    "xml2",
+    "future",
+    "future.apply",
+    "exactextractr",
+    "tidyr",
+    "viridis",
+    "quadprog",
+    "Rfast",
+    "pheatmap",
+    "patchwork",
+    "Seurat",
+    "SeuratData",
+    "harmony",
+    "scatterpie",
+    "R.utils",
+    "qs"
+)
+
+pak::pkg_install(c(bioc_dependencies,
+                   needed_packages_cran))
+```
+
+### Packages from GitHub
+
+```{r, eval=FALSE}
+github_packages <- c(
+    "satijalab/seurat-data"
+)
+pak::pkg_install(github_packages)
+```
+
+### Python environments
+
+```{r, eval=FALSE}
+# default giotto environment
+Giotto::installGiottoEnvironment()
+
+# install another environment with py 3.8 for cellpose
+reticulate::conda_create(envname = "giotto_cellpose",
+                         python_version = 3.8)
+reticulate::py_install(
+    pip = TRUE,
+    envname = 'giotto_cellpose',
+    packages = c(
+        "pandas",
+        "networkx",
+        "python-igraph",
+        "leidenalg",
+        "scikit-learn",
+        "cellpose",
+        "smfishhmrf",
+        "git+https://github.com/wwang-chcn/bento-tools.git@giotto_install"
+    )
+)
+```

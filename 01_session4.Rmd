@@ -4,6 +4,10 @@ Jiaji George Chen
 
 August 5th 2024
 
+### Used packages
+```
+Giotto      GiottoClass     GiottoData      pak
+```
 
 ```{r, eval=FALSE}
 save_dir <- "~/Documents/GitHub/giotto_workshop_2024/img/01_session4"
@@ -11,9 +15,9 @@ save_dir <- "~/Documents/GitHub/giotto_workshop_2024/img/01_session4"
 
 ## Overview
 
-Giotto has representations for both aggregated (cell by count) + xy(z) 
+*Giotto* has representations for both aggregated (cell by count) + xy(z) 
 information and subcellular polygon or mask information and transcript xy(z)
-or image information. A Giotto object can be set up from either of the two
+or image information. A *Giotto* object can be set up from either of the two
 above sets of information.
 
 ## From matrix + locations
@@ -60,7 +64,7 @@ Giotto has several spatial plotting functions.
 At the lowest level, you directly call `plot()` on several subobjects in order
 to see what they look like, particularly the ones containing spatial info.
 
-```{r}
+```{r, eval=FALSE}
 gpoints <- GiottoData::loadSubObjectMini("giottoPoints")
 gpoly <- GiottoData::loadSubObjectMini("giottoPolygon")
 spatlocs <- GiottoData::loadSubObjectMini("spatLocsObj")

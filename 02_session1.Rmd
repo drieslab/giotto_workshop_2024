@@ -17,7 +17,9 @@ visium_brain <- loadGiotto("visium_brain_object")
 
 ### Gini markers
 
-- Calculate the top marker genes per cluster using the gini method
+The Gini method identifies genes that are very selectively expressed in a specific cluster, however not always expressed in all cells of that cluster. In other words, highly specific but not necessarily sensitive at the single-cell level.
+
+- Calculate the top marker genes per cluster using the gini method.
 
 ```{r, eval=FALSE}
 gini_markers <- findMarkers_one_vs_all(gobject = visium_brain,
@@ -29,7 +31,9 @@ gini_markers <- findMarkers_one_vs_all(gobject = visium_brain,
 topgenes_gini <- gini_markers[, head(.SD, 2), by = "cluster"]$feats
 ```
 
-- Visualize
+- Visualize 
+
+Plot the normalized expression distribution of the top expressed genes.
 
 ```{r, eval=FALSE}
 violinPlot(visium_brain, 
@@ -44,6 +48,8 @@ violinPlot(visium_brain,
 knitr::include_graphics("img/02_session1/0-violinPlot.png")
 ```
 
+Use the cluster IDs to create a heatmap with the normalized expression of the top expressed genes per cluster.
+
 ```{r, eval=FALSE}
 plotMetaDataHeatmap(visium_brain, 
                     selected_feats = unique(topgenes_gini),
@@ -54,6 +60,8 @@ plotMetaDataHeatmap(visium_brain,
 ```{r, echo=FALSE, out.width="80%", fig.align="center"}
 knitr::include_graphics("img/02_session1/1-plotMetaDataHeatmap.png")
 ```
+
+Visualize the scaled expression spatial distribution of the top expressed genes across the sample.
 
 ```{r, eval=FALSE}
 dimFeatPlot2D(visium_brain, 
@@ -70,8 +78,9 @@ knitr::include_graphics("img/02_session1/2-dimFeatPlot2D.png")
 
 ### Scran markers
 
-- Calculate the top marker genes per cluster using the scran method
+The Scran method is preferred for robust differential expression analysis, especially when addressing technical variability or differences in sequencing depth across spatial locations. [redo]
 
+- Calculate the top marker genes per cluster using the scran method
 
 ```{r, eval=FALSE}
 scran_markers <- findMarkers_one_vs_all(gobject = visium_brain,
@@ -83,7 +92,9 @@ scran_markers <- findMarkers_one_vs_all(gobject = visium_brain,
 topgenes_scran <- scran_markers[, head(.SD, 2), by = "cluster"]$feats
 ```
 
-- Visualize
+- Visualize 
+
+Plot the normalized expression distribution of the top expressed genes.
 
 ```{r, eval=FALSE}
 violinPlot(visium_brain, 
@@ -98,6 +109,8 @@ violinPlot(visium_brain,
 knitr::include_graphics("img/02_session1/3-violinPlot.png")
 ```
 
+Use the cluster IDs to create a heatmap with the normalized expression of the top expressed genes per cluster.
+
 ```{r, eval=FALSE}
 plotMetaDataHeatmap(visium_brain, 
                     selected_feats = unique(topgenes_scran),
@@ -108,6 +121,8 @@ plotMetaDataHeatmap(visium_brain,
 ```{r, echo=FALSE, out.width="100%", fig.align="center"}
 knitr::include_graphics("img/02_session1/4-plotMetaDataHeatmap.png")
 ```
+
+Visualize the scaled expression spatial distribution of the top expressed genes across the sample.
 
 ```{r, eval=FALSE}
 dimFeatPlot2D(visium_brain, 
@@ -123,7 +138,8 @@ knitr::include_graphics("img/02_session1/5-dimFeatPlot2D.png")
 ```
 
 
-In practice, it is often beneficial to apply both gini and scran methods and compare results for a more complete understanding of differential gene expression across clusters. 
+In practice, it is often beneficial to apply both Gini and Scran methods and compare results for a more complete understanding of differential gene expression across clusters. 
+
 
 ## Enrichment & Deconvolution
 
@@ -135,7 +151,7 @@ Visium spatial transcriptomics does not provide single-cell resolution, making c
 GiottoData::getSpatialDataset(dataset = "scRNA_mouse_brain", directory = "data/")
 ```
 
-- Create the single-cell object
+- Create the single-cell object and run the normalization step
 
 ```{r, eval=FALSE}
 results_folder <- "results/"
@@ -201,6 +217,8 @@ visium_brain <- runPAGEEnrich(gobject = visium_brain,
 
 - Visualize
 
+Create a heatmap showing the enrichment of cell types (from the single-cell data annotation) in the spatial dataset clusters.
+
 ```{r, eval=FALSE}
 cell_types_PAGE <- colnames(sign_matrix)
 
@@ -215,6 +233,8 @@ plotMetaDataCellsHeatmap(gobject = visium_brain,
 ```{r, echo=FALSE, out.width="100%", fig.align="center"}
 knitr::include_graphics("img/02_session1/6-plotMetaDataCellsHeatmap.png")
 ```
+
+Plot the spatial distribution of the cell types.
 
 ```{r, eval=FALSE}
 spatCellPlot2D(gobject = visium_brain,
@@ -247,6 +267,8 @@ sign_matrix <- makeSignMatrixDWLSfromMatrix(
 
 - Run the DWLS Deconvolution
 
+This step may take a couple of minutes to run.
+
 ```{r, eval=FALSE}
 visium_brain <- runDWLSDeconv(gobject = visium_brain, 
                               sign_matrix = sign_matrix)
@@ -254,8 +276,9 @@ visium_brain <- runDWLSDeconv(gobject = visium_brain,
 
 - Visualize
 
+Plot the DWLS deconvolution result creating with pie plots showing the proportion of each cell type per spot.
+
 ```{r, eval=FALSE}
-# Plot DWLS deconvolution result with Pie plots
 spatDeconvPlot(visium_brain, 
                show_image = FALSE,
                radius = 50,
@@ -291,6 +314,10 @@ knitr::include_graphics("img/02_session1/9-spatPlot2D.png")
 
 - Rank binarization
 
+Rank the genes on the spatial dataset depending on whether they exhibit a spatial pattern location or not.
+
+This step may take a few minutes to run.
+
 ```{r, eval=FALSE}
 ranktest <- binSpect(visium_brain, 
                      bin_method = "rank",
@@ -300,6 +327,8 @@ ranktest <- binSpect(visium_brain,
 ```
 
 - Visualize top results
+
+Plot the scaled expression of genes with the highest probability of being spatial genes. 
 
 ```{r, eval=FALSE}
 spatFeatPlot2D(visium_brain, 
@@ -341,6 +370,8 @@ top10_genes <- showSpatialCorFeats(spat_cor_netw_DT,
 
 - Visualize
 
+Plot the scaled expression of the 3 genes with most similar spatial patterns to Mbp.
+
 ```{r, eval=FALSE}
 spatFeatPlot2D(visium_brain, 
                expression_values = "scaled",
@@ -362,6 +393,8 @@ spat_cor_netw_DT <- clusterSpatialCorFeats(spat_cor_netw_DT,
 
 - Visualize clusters
 
+Plot the correlation of the top 500 spatial genes with their assigned cluster.
+
 ```{r, eval=FALSE}
 heatmSpatialCorFeats(visium_brain,
                      spatCorObject = spat_cor_netw_DT,
@@ -380,7 +413,11 @@ netw_ranks <- rankSpatialCorGroups(
   visium_brain,
   spatCorObject = spat_cor_netw_DT, 
   use_clus_name = "spat_netw_clus")
+```
 
+Plot the correlation and number of spatial genes in each cluster.
+
+```{r, eval=FALSE}
 top_netw_spat_cluster <- showSpatialCorFeats(spat_cor_netw_DT, 
                                             use_clus_name = "spat_netw_clus",
                                             selected_clusters = 6, 
@@ -391,7 +428,7 @@ top_netw_spat_cluster <- showSpatialCorFeats(spat_cor_netw_DT,
 knitr::include_graphics("img/02_session1/13-rankSpatialCorGroups.png")
 ```
 
-- Create metagene enrichment score for clusters
+- Create the metagene enrichment score per co-expression cluster
 
 ```{r, eval=FALSE}
 cluster_genes_DT <- showSpatialCorFeats(spat_cor_netw_DT, 
@@ -404,7 +441,11 @@ names(cluster_genes) <- cluster_genes_DT$feat_ID
 visium_brain <- createMetafeats(visium_brain, 
                                 feat_clusters = cluster_genes, 
                                 name = "cluster_metagene")
+```
 
+Plot the spatial distribution of the metagene enrichment scores of each spatial co-expression cluster.
+
+```{r, eval=FALSE}
 spatCellPlot(visium_brain,
              spat_enr_names = "cluster_metagene",
              cell_annotation_values = netw_ranks$clusters,
@@ -435,6 +476,8 @@ spatial_genes <- top30_coexpr_dt$genes
 
 - Re-calculate the clustering
 
+Use the spatial genes to calculate again the principal components, umap, network and clustering
+
 ```{r, eval=FALSE}
 visium_brain <- runPCA(gobject = visium_brain,
                        feats_to_use = spatial_genes,
@@ -460,19 +503,23 @@ visium_brain <- doLeidenCluster(gobject = visium_brain,
 
 - Visualize
 
+Plot the spatial distribution of the Leiden clusters calculated based on the spatial genes.
+
 ```{r, eval=FALSE}
 spatPlot2D(visium_brain, 
-           cell_color = "custom_leiden")
+           cell_color = "custom_leiden",
+           point_size = 3)
 ```
 
 ```{r, echo=FALSE, out.width="100%", fig.align="center"}
 knitr::include_graphics("img/02_session1/15-spatPlot2D.png")
 ```
 
+Plot the UMAP and color the spots using the Leiden clusters calculated based on the spatial genes.
+
 ```{r, eval=FALSE}
 plotUMAP(gobject = visium_brain, 
-         cell_color = "custom_leiden", 
-         point_size = 1.5)
+         cell_color = "custom_leiden")
 ```
 
 ```{r, echo=FALSE, out.width="100%", fig.align="center"}
@@ -485,6 +532,8 @@ Hidden Markov Random Field (HMRF) models capture spatial dependencies and segmen
 
 - Do HMRF with different betas on top 30 genes per spatial co-expression module
 
+This step may take several minutes to run.
+
 ```{r, eval=FALSE}
 HMRF_spatial_genes <- doHMRF(gobject = visium_brain,
                             expression_values = "scaled",
@@ -493,7 +542,11 @@ HMRF_spatial_genes <- doHMRF(gobject = visium_brain,
                             spatial_network_name = "spatial_network",
                             betas = c(0, 10, 5),
                             output_folder = "11_HMRF/")
+```
 
+Add the HMRF results to the giotto object
+
+```{r, eval=FALSE}
 visium_brain <- addHMRF(gobject = visium_brain, 
                         HMRFoutput = HMRF_spatial_genes,
                         k = 20, 
@@ -501,18 +554,22 @@ visium_brain <- addHMRF(gobject = visium_brain,
                         hmrf_name = "HMRF")
 ```
 
+- Visualize 
+
+Plot the spatial distribution of the HMRF clusters.
+
 ```{r, eval=FALSE}
 spatPlot2D(gobject = visium_brain, 
            cell_color = "HMRF_k20_b.40")
 ```
-
-- Visualize 
 
 ```{r, echo=FALSE, out.width="100%", fig.align="center"}
 knitr::include_graphics("img/02_session1/17-spatPlot2D.png")
 ```
 
 ## Interactive tools
+
+We have integrated a shiny app in Giotto to interactively select regions of a spatial plot.
 
 - Create a spatial plot
 
@@ -597,13 +654,14 @@ knitr::include_graphics("img/02_session1/20-heatmap.png")
 - Calculate the top genes expressed within each region, then provide the result to compare polygons
 
 ```{r, eval=FALSE}
-scran_results <- findMarkers_one_vs_all(visium_brain,
-                                        spat_unit = "cell",
-                                        feat_type = "rna",
-                                        method = "scran",
-                                        expression_values = "normalized",
-                                        cluster_column = "selections",
-                                        min_feats = 2)
+scran_results <- findMarkers_one_vs_all(
+  visium_brain,
+  spat_unit = "cell",
+  feat_type = "rna",
+  method = "scran",
+  expression_values = "normalized",
+  cluster_column = "selections",
+  min_feats = 2)
 
 top_genes <- scran_results[, head(.SD, 2), by = "cluster"]$feats
 
@@ -684,5 +742,102 @@ sessionInfo()
 ```
 
 ```{r, eval=FALSE}
+R version 4.4.1 (2024-06-14)
+Platform: aarch64-apple-darwin20
+Running under: macOS Sonoma 14.5
 
+Matrix products: default
+BLAS:   /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+time zone: America/New_York
+tzcode source: internal
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] shiny_1.8.1.1     Giotto_4.1.0      GiottoClass_0.3.3
+
+loaded via a namespace (and not attached):
+  [1] later_1.3.2                 tibble_3.2.1               
+  [3] R.oo_1.26.0                 polyclip_1.10-7            
+  [5] lifecycle_1.0.4             edgeR_4.2.1                
+  [7] doParallel_1.0.17           lattice_0.22-6             
+  [9] MASS_7.3-61                 backports_1.5.0            
+ [11] magrittr_2.0.3              sass_0.4.9                 
+ [13] limma_3.60.4                plotly_4.10.4              
+ [15] rmarkdown_2.27              jquerylib_0.1.4            
+ [17] yaml_2.3.9                  metapod_1.12.0             
+ [19] httpuv_1.6.15               sp_2.1-4                   
+ [21] reticulate_1.38.0           cowplot_1.1.3              
+ [23] RColorBrewer_1.1-3          abind_1.4-5                
+ [25] zlibbioc_1.50.0             quadprog_1.5-8             
+ [27] GenomicRanges_1.56.1        purrr_1.0.2                
+ [29] R.utils_2.12.3              BiocGenerics_0.50.0        
+ [31] tweenr_2.0.3                circlize_0.4.16            
+ [33] GenomeInfoDbData_1.2.12     IRanges_2.38.1             
+ [35] S4Vectors_0.42.1            ggrepel_0.9.5              
+ [37] irlba_2.3.5.1               terra_1.7-78               
+ [39] dqrng_0.4.1                 DelayedMatrixStats_1.26.0  
+ [41] colorRamp2_0.1.0            codetools_0.2-20           
+ [43] DelayedArray_0.30.1         scuttle_1.14.0             
+ [45] ggforce_0.4.2               tidyselect_1.2.1           
+ [47] shape_1.4.6.1               UCSC.utils_1.0.0           
+ [49] farver_2.1.2                ScaledMatrix_1.12.0        
+ [51] matrixStats_1.3.0           stats4_4.4.1               
+ [53] GiottoData_0.2.12.0         jsonlite_1.8.8             
+ [55] GetoptLong_1.0.5            BiocNeighbors_1.22.0       
+ [57] progressr_0.14.0            iterators_1.0.14           
+ [59] systemfonts_1.1.0           foreach_1.5.2              
+ [61] dbscan_1.2-0                tools_4.4.1                
+ [63] ragg_1.3.2                  Rcpp_1.0.13                
+ [65] glue_1.7.0                  SparseArray_1.4.8          
+ [67] xfun_0.46                   MatrixGenerics_1.16.0      
+ [69] GenomeInfoDb_1.40.1         dplyr_1.1.4                
+ [71] withr_3.0.0                 fastmap_1.2.0              
+ [73] bluster_1.14.0              fansi_1.0.6                
+ [75] digest_0.6.36               rsvd_1.0.5                 
+ [77] R6_2.5.1                    mime_0.12                  
+ [79] textshaping_0.4.0           colorspace_2.1-0           
+ [81] scattermore_1.2             Cairo_1.6-2                
+ [83] gtools_3.9.5                R.methodsS3_1.8.2          
+ [85] utf8_1.2.4                  tidyr_1.3.1                
+ [87] generics_0.1.3              data.table_1.15.4          
+ [89] FNN_1.1.4                   httr_1.4.7                 
+ [91] htmlwidgets_1.6.4           S4Arrays_1.4.1             
+ [93] scatterpie_0.2.3            uwot_0.2.2                 
+ [95] pkgconfig_2.0.3             gtable_0.3.5               
+ [97] ComplexHeatmap_2.20.0       GiottoVisuals_0.2.4        
+ [99] SingleCellExperiment_1.26.0 XVector_0.44.0             
+[101] htmltools_0.5.8.1           bookdown_0.40              
+[103] clue_0.3-65                 scales_1.3.0               
+[105] Biobase_2.64.0              GiottoUtils_0.1.10         
+[107] png_0.1-8                   SpatialExperiment_1.14.0   
+[109] scran_1.32.0                ggfun_0.1.5                
+[111] knitr_1.48                  rstudioapi_0.16.0          
+[113] reshape2_1.4.4              rjson_0.2.21               
+[115] checkmate_2.3.1             cachem_1.1.0               
+[117] GlobalOptions_0.1.2         stringr_1.5.1              
+[119] parallel_4.4.1              miniUI_0.1.1.1             
+[121] RcppZiggurat_0.1.6          pillar_1.9.0               
+[123] grid_4.4.1                  vctrs_0.6.5                
+[125] promises_1.3.0              BiocSingular_1.20.0        
+[127] beachmat_2.20.0             xtable_1.8-4               
+[129] cluster_2.1.6               evaluate_0.24.0            
+[131] magick_2.8.4                cli_3.6.3                  
+[133] locfit_1.5-9.10             compiler_4.4.1             
+[135] rlang_1.1.4                 crayon_1.5.3               
+[137] labeling_0.4.3              plyr_1.8.9                 
+[139] stringi_1.8.4               viridisLite_0.4.2          
+[141] deldir_2.0-4                BiocParallel_1.38.0        
+[143] munsell_0.5.1               lazyeval_0.2.2             
+[145] Matrix_1.7-0                sparseMatrixStats_1.16.0   
+[147] ggplot2_3.5.1               statmod_1.5.0              
+[149] SummarizedExperiment_1.34.0 Rfast_2.1.0                
+[151] memoise_2.0.1               igraph_2.0.3               
+[153] bslib_0.7.0                 RcppParallel_5.1.8  
 ```
