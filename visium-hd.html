@@ -456,7 +456,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">9.2</span> Background<a href="visium-hd.html#background" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="visium-hd-technology" class="section level3 hasAnchor" number="9.2.1">
 <h3><span class="header-section-number">9.2.1</span> Visium HD Technology<a href="visium-hd.html#visium-hd-technology" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-157"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-160"></span>
 <img src="img/02_session2/1.png" alt="Overview of Visium HD. Source: *10X Genomics*" width="80%" />
 <p class="caption">
 Figure 9.1: Overview of Visium HD. Source: <em>10X Genomics</em>
@@ -467,7 +467,7 @@ Figure 9.1: Overview of Visium HD. Source: <em>10X Genomics</em>
 </div>
 <div id="colorectal-cancer-sample" class="section level3 hasAnchor" number="9.2.2">
 <h3><span class="header-section-number">9.2.2</span> Colorectal Cancer Sample<a href="visium-hd.html#colorectal-cancer-sample" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-158"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-161"></span>
 <img src="img/02_session2/2.png" alt="Colorectal Cancer Overview. Source: *10X Genomics*" width="80%" />
 <p class="caption">
 Figure 9.2: Colorectal Cancer Overview. Source: <em>10X Genomics</em>
@@ -481,7 +481,7 @@ Figure 9.2: Colorectal Cancer Overview. Source: <em>10X Genomics</em>
 <h2><span class="header-section-number">9.3</span> Data Ingestion<a href="visium-hd.html#data-ingestion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="visium-hd-output-data-format" class="section level3 hasAnchor" number="9.3.1">
 <h3><span class="header-section-number">9.3.1</span> Visium HD output data format<a href="visium-hd.html#visium-hd-output-data-format" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-159"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-162"></span>
 <img src="img/02_session2/3.png" alt="File structure of Visium HD data processed with spaceranger pipeline." width="80%" />
 <p class="caption">
 Figure 9.3: File structure of Visium HD data processed with spaceranger pipeline.
@@ -491,19 +491,19 @@ Figure 9.3: File structure of Visium HD data processed with spaceranger pipeline
 </div>
 <div id="read-in-raw-data" class="section level3 hasAnchor" number="9.3.2">
 <h3><span class="header-section-number">9.3.2</span> Read in raw data<a href="visium-hd.html#read-in-raw-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="visium-hd.html#cb111-1" tabindex="-1"></a><span class="co"># get10Xmatrix()</span></span>
-<span id="cb111-2"><a href="visium-hd.html#cb111-2" tabindex="-1"></a><span class="co"># GiottoData::</span></span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="visium-hd.html#cb115-1" tabindex="-1"></a><span class="co"># get10Xmatrix()</span></span>
+<span id="cb115-2"><a href="visium-hd.html#cb115-2" tabindex="-1"></a><span class="co"># GiottoData::</span></span></code></pre></div>
 </div>
 <div id="giotto-visium-hd-convenience-function" class="section level3 hasAnchor" number="9.3.3">
 <h3><span class="header-section-number">9.3.3</span> Giotto Visium HD convenience function<a href="visium-hd.html#giotto-visium-hd-convenience-function" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We have also developed a convenience function to read in Visium HD data directly into Giotto. This function will read in the data and create a Giotto Object.</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="visium-hd.html#cb112-1" tabindex="-1"></a><span class="co"># importVisiumHD()</span></span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="visium-hd.html#cb116-1" tabindex="-1"></a><span class="co"># importVisiumHD()</span></span></code></pre></div>
 </div>
 </div>
 <div id="tiling-and-aggregation" class="section level2 hasAnchor" number="9.4">
 <h2><span class="header-section-number">9.4</span> Tiling and aggregation<a href="visium-hd.html#tiling-and-aggregation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The Visium HD data is organized in a grid format. We can aggregate the data into larger bins to reduce the dimensionality of the data. Giotto Suite provides options to bin data not only with squares, but also through hexagons and triangles. Here we use a hexagon tesselation to aggregate the data into arbitrary cells.</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="visium-hd.html#cb113-1" tabindex="-1"></a><span class="co"># tessellate()</span></span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="visium-hd.html#cb117-1" tabindex="-1"></a><span class="co"># tessellate()</span></span></code></pre></div>
 </div>
 <div id="scalability-and-projection-functions" class="section level2 hasAnchor" number="9.5">
 <h2><span class="header-section-number">9.5</span> Scalability and projection functions<a href="visium-hd.html#scalability-and-projection-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
