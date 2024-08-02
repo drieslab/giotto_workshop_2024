@@ -474,7 +474,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="download-dataset-1" class="section level2 hasAnchor" number="14.3">
 <h2><span class="header-section-number">14.3</span> Download dataset<a href="multi-omics-integration.html#download-dataset-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You need to download the expression matrix and spatial information by running these commands:</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="multi-omics-integration.html#cb158-1" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&quot;data&quot;</span>)</span>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="multi-omics-integration.html#cb158-1" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&quot;data/day3_session3&quot;</span>)</span>
 <span id="cb158-2"><a href="multi-omics-integration.html#cb158-2" tabindex="-1"></a></span>
 <span id="cb158-3"><a href="multi-omics-integration.html#cb158-3" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">&quot;https://cf.10xgenomics.com/samples/spatial-exp/2.1.0/CytAssist_FFPE_Protein_Expression_Human_Tonsil/CytAssist_FFPE_Protein_Expression_Human_Tonsil_raw_feature_bc_matrix.tar.gz&quot;</span>,</span>
 <span id="cb158-4"><a href="multi-omics-integration.html#cb158-4" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="st">&quot;data/CytAssist_FFPE_Protein_Expression_Human_Tonsil_raw_feature_bc_matrix.tar.gz&quot;</span>)</span>
