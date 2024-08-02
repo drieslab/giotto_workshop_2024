@@ -29,7 +29,7 @@ More information about this dataset can be found [here](https://www.10xgenomics.
 You need to download the expression matrix and spatial information by running these commands:
 
 ```{r, eval=FALSE}
-dir.create("data")
+dir.create("data/day3_session3")
 
 download.file(url = "https://cf.10xgenomics.com/samples/spatial-exp/2.1.0/CytAssist_FFPE_Protein_Expression_Human_Tonsil/CytAssist_FFPE_Protein_Expression_Human_Tonsil_raw_feature_bc_matrix.tar.gz",
               destfile = "data/CytAssist_FFPE_Protein_Expression_Human_Tonsil_raw_feature_bc_matrix.tar.gz")

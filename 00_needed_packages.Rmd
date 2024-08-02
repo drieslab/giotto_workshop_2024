@@ -45,8 +45,10 @@ install.packages("terra")
 # devtools::install_version("Matrix", version = "1.6-5")
 ```
 
-### *Giotto* installation
+### *Rtools* installation
+Before installing Giotto on a windows PC please make sure to install the relevant version of [Rtools](https://cran.r-project.org/bin/windows/Rtools/). If you have a Mac or linux PC, or have already installed Rtools, please ignore this step.
 
+### *Giotto* installation 
 ```{r, eval=FALSE}
 pak::pak("drieslab/Giotto")
 pak::pak("drieslab/GiottoData")
@@ -146,6 +148,7 @@ reticulate::py_install(
 # install another environment with py 3.8 for cellpose
 reticulate::conda_create(envname = "giotto_cellpose",
                          python_version = 3.8)
+
 reticulate::py_install(
     pip = TRUE,
     envname = 'giotto_cellpose',
