@@ -125,14 +125,14 @@ You can also select a different file format to be used by passing in a different
 The Quality Value is a Phred-based 0-40 value that 10X provides for every detection in their transcripts output. Higher values mean higher confidence in the decoded transcript identity. By default 10X uses a cutoff of QV = 20 for transcripts to use downstream.
 
 <details>
-<summary>QV Calculation<\\summary>
+<summary>QV Calculation</summary>
 
 1. Raw Q-score based on how likely it is that an observed code is to be the codeword that it gets mapped to vs less likely codeword.
 2. Adjustment of raw Q-score by binning the transcripts by Q-value then adjusting the exact Q per bin based on proportion of **Negative Control Codewords** detected within.
 
 [further info](https://www.10xgenomics.com/support/software/xenium-onboard-analysis/latest/algorithms-overview/xoa-algorithms#qvs)
 
-<\\details>
+</details>
 
 ### Transcript type splitting
 ```
