@@ -278,13 +278,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10" data-path="xenium-1.html"><a href="xenium-1.html"><i class="fa fa-check"></i><b>10</b> Xenium</a>
 <ul>
 <li class="chapter" data-level="10.1" data-path="xenium-1.html"><a href="xenium-1.html#introduction-to-spatial-dataset"><i class="fa fa-check"></i><b>10.1</b> Introduction to spatial dataset</a></li>
-<li class="chapter" data-level="10.2" data-path="xenium-1.html"><a href="xenium-1.html#additional-package-requirements"><i class="fa fa-check"></i><b>10.2</b> Additional package requirements</a></li>
-<li class="chapter" data-level="10.3" data-path="xenium-1.html"><a href="xenium-1.html#introduce-mini-object"><i class="fa fa-check"></i><b>10.3</b> Introduce mini object</a></li>
-<li class="chapter" data-level="10.4" data-path="xenium-1.html"><a href="xenium-1.html#read-in-raw-data-1"><i class="fa fa-check"></i><b>10.4</b> Read in raw data</a></li>
-<li class="chapter" data-level="10.5" data-path="xenium-1.html"><a href="xenium-1.html#overlap-txs-polygons"><i class="fa fa-check"></i><b>10.5</b> Overlap txs &amp; polygons</a></li>
-<li class="chapter" data-level="10.6" data-path="xenium-1.html"><a href="xenium-1.html#transcript-enrichment-gsea"><i class="fa fa-check"></i><b>10.6</b> Transcript enrichment GSEA</a></li>
-<li class="chapter" data-level="10.7" data-path="xenium-1.html"><a href="xenium-1.html#spatial-location-analysis"><i class="fa fa-check"></i><b>10.7</b> Spatial location analysis</a></li>
-<li class="chapter" data-level="10.8" data-path="xenium-1.html"><a href="xenium-1.html#visualizations"><i class="fa fa-check"></i><b>10.8</b> Visualizations</a></li>
+<li class="chapter" data-level="10.2" data-path="xenium-1.html"><a href="xenium-1.html#output-directory-structure"><i class="fa fa-check"></i><b>10.2</b> Output directory structure</a></li>
+<li class="chapter" data-level="10.3" data-path="xenium-1.html"><a href="xenium-1.html#convenience-function"><i class="fa fa-check"></i><b>10.3</b> Convenience function</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="xenium-1.html"><a href="xenium-1.html#specific-filepaths"><i class="fa fa-check"></i><b>10.3.1</b> Specific filepaths</a></li>
+<li class="chapter" data-level="10.3.2" data-path="xenium-1.html"><a href="xenium-1.html#quality-value"><i class="fa fa-check"></i><b>10.3.2</b> Quality value</a></li>
+<li class="chapter" data-level="10.3.3" data-path="xenium-1.html"><a href="xenium-1.html#transcript-type-splitting"><i class="fa fa-check"></i><b>10.3.3</b> Transcript type splitting</a></li>
+<li class="chapter" data-level="10.3.4" data-path="xenium-1.html"><a href="xenium-1.html#optional-loading-pre-aggregated-data"><i class="fa fa-check"></i><b>10.3.4</b> (optional) Loading pre-aggregated data</a></li>
+<li class="chapter" data-level="10.3.5" data-path="xenium-1.html"><a href="xenium-1.html#image-conversion-may-change"><i class="fa fa-check"></i><b>10.3.5</b> Image conversion (may change)</a></li>
+<li class="chapter" data-level="10.3.6" data-path="xenium-1.html"><a href="xenium-1.html#image-loading"><i class="fa fa-check"></i><b>10.3.6</b> Image loading</a></li>
+<li class="chapter" data-level="10.3.7" data-path="xenium-1.html"><a href="xenium-1.html#specific-imports-with-importxenium"><i class="fa fa-check"></i><b>10.3.7</b> Specific imports with <code>importXenium()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="xenium-1.html"><a href="xenium-1.html#introduce-mini-object"><i class="fa fa-check"></i><b>10.4</b> Introduce mini object</a></li>
+<li class="chapter" data-level="10.5" data-path="xenium-1.html"><a href="xenium-1.html#read-in-raw-data-1"><i class="fa fa-check"></i><b>10.5</b> Read in raw data</a></li>
+<li class="chapter" data-level="10.6" data-path="xenium-1.html"><a href="xenium-1.html#overlap-txs-polygons"><i class="fa fa-check"></i><b>10.6</b> Overlap txs &amp; polygons</a></li>
+<li class="chapter" data-level="10.7" data-path="xenium-1.html"><a href="xenium-1.html#transcript-enrichment-gsea"><i class="fa fa-check"></i><b>10.7</b> Transcript enrichment GSEA</a></li>
+<li class="chapter" data-level="10.8" data-path="xenium-1.html"><a href="xenium-1.html#spatial-location-analysis"><i class="fa fa-check"></i><b>10.8</b> Spatial location analysis</a></li>
+<li class="chapter" data-level="10.9" data-path="xenium-1.html"><a href="xenium-1.html#visualizations"><i class="fa fa-check"></i><b>10.9</b> Visualizations</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="spatial-proteomics-multiplex-if.html"><a href="spatial-proteomics-multiplex-if.html"><i class="fa fa-check"></i><b>11</b> Spatial proteomics: multiplex IF</a>
 <ul>
@@ -448,7 +458,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">18</span> Contributing to Giotto<a href="contributing-to-giotto.html#contributing-to-giotto" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Jiaji George Chen</p>
 <p>August 7th 2024</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="contributing-to-giotto.html#cb234-1" tabindex="-1"></a>save_dir <span class="ot">&lt;-</span> <span class="st">&quot;~/Documents/GitHub/giotto_workshop_2024/img/03_session7&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="contributing-to-giotto.html#cb244-1" tabindex="-1"></a>save_dir <span class="ot">&lt;-</span> <span class="st">&quot;~/Documents/GitHub/giotto_workshop_2024/img/03_session7&quot;</span></span></code></pre></div>
 <div id="contribution-guideline" class="section level2 hasAnchor" number="18.1">
 <h2><span class="header-section-number">18.1</span> Contribution guideline<a href="contributing-to-giotto.html#contribution-guideline" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><a href="https://drieslab.github.io/Giotto_website/CONTRIBUTING.html" class="uri">https://drieslab.github.io/Giotto_website/CONTRIBUTING.html</a></p>

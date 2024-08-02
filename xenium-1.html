@@ -278,13 +278,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10" data-path="xenium-1.html"><a href="xenium-1.html"><i class="fa fa-check"></i><b>10</b> Xenium</a>
 <ul>
 <li class="chapter" data-level="10.1" data-path="xenium-1.html"><a href="xenium-1.html#introduction-to-spatial-dataset"><i class="fa fa-check"></i><b>10.1</b> Introduction to spatial dataset</a></li>
-<li class="chapter" data-level="10.2" data-path="xenium-1.html"><a href="xenium-1.html#additional-package-requirements"><i class="fa fa-check"></i><b>10.2</b> Additional package requirements</a></li>
-<li class="chapter" data-level="10.3" data-path="xenium-1.html"><a href="xenium-1.html#introduce-mini-object"><i class="fa fa-check"></i><b>10.3</b> Introduce mini object</a></li>
-<li class="chapter" data-level="10.4" data-path="xenium-1.html"><a href="xenium-1.html#read-in-raw-data-1"><i class="fa fa-check"></i><b>10.4</b> Read in raw data</a></li>
-<li class="chapter" data-level="10.5" data-path="xenium-1.html"><a href="xenium-1.html#overlap-txs-polygons"><i class="fa fa-check"></i><b>10.5</b> Overlap txs &amp; polygons</a></li>
-<li class="chapter" data-level="10.6" data-path="xenium-1.html"><a href="xenium-1.html#transcript-enrichment-gsea"><i class="fa fa-check"></i><b>10.6</b> Transcript enrichment GSEA</a></li>
-<li class="chapter" data-level="10.7" data-path="xenium-1.html"><a href="xenium-1.html#spatial-location-analysis"><i class="fa fa-check"></i><b>10.7</b> Spatial location analysis</a></li>
-<li class="chapter" data-level="10.8" data-path="xenium-1.html"><a href="xenium-1.html#visualizations"><i class="fa fa-check"></i><b>10.8</b> Visualizations</a></li>
+<li class="chapter" data-level="10.2" data-path="xenium-1.html"><a href="xenium-1.html#output-directory-structure"><i class="fa fa-check"></i><b>10.2</b> Output directory structure</a></li>
+<li class="chapter" data-level="10.3" data-path="xenium-1.html"><a href="xenium-1.html#convenience-function"><i class="fa fa-check"></i><b>10.3</b> Convenience function</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="xenium-1.html"><a href="xenium-1.html#specific-filepaths"><i class="fa fa-check"></i><b>10.3.1</b> Specific filepaths</a></li>
+<li class="chapter" data-level="10.3.2" data-path="xenium-1.html"><a href="xenium-1.html#quality-value"><i class="fa fa-check"></i><b>10.3.2</b> Quality value</a></li>
+<li class="chapter" data-level="10.3.3" data-path="xenium-1.html"><a href="xenium-1.html#transcript-type-splitting"><i class="fa fa-check"></i><b>10.3.3</b> Transcript type splitting</a></li>
+<li class="chapter" data-level="10.3.4" data-path="xenium-1.html"><a href="xenium-1.html#optional-loading-pre-aggregated-data"><i class="fa fa-check"></i><b>10.3.4</b> (optional) Loading pre-aggregated data</a></li>
+<li class="chapter" data-level="10.3.5" data-path="xenium-1.html"><a href="xenium-1.html#image-conversion-may-change"><i class="fa fa-check"></i><b>10.3.5</b> Image conversion (may change)</a></li>
+<li class="chapter" data-level="10.3.6" data-path="xenium-1.html"><a href="xenium-1.html#image-loading"><i class="fa fa-check"></i><b>10.3.6</b> Image loading</a></li>
+<li class="chapter" data-level="10.3.7" data-path="xenium-1.html"><a href="xenium-1.html#specific-imports-with-importxenium"><i class="fa fa-check"></i><b>10.3.7</b> Specific imports with <code>importXenium()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="xenium-1.html"><a href="xenium-1.html#introduce-mini-object"><i class="fa fa-check"></i><b>10.4</b> Introduce mini object</a></li>
+<li class="chapter" data-level="10.5" data-path="xenium-1.html"><a href="xenium-1.html#read-in-raw-data-1"><i class="fa fa-check"></i><b>10.5</b> Read in raw data</a></li>
+<li class="chapter" data-level="10.6" data-path="xenium-1.html"><a href="xenium-1.html#overlap-txs-polygons"><i class="fa fa-check"></i><b>10.6</b> Overlap txs &amp; polygons</a></li>
+<li class="chapter" data-level="10.7" data-path="xenium-1.html"><a href="xenium-1.html#transcript-enrichment-gsea"><i class="fa fa-check"></i><b>10.7</b> Transcript enrichment GSEA</a></li>
+<li class="chapter" data-level="10.8" data-path="xenium-1.html"><a href="xenium-1.html#spatial-location-analysis"><i class="fa fa-check"></i><b>10.8</b> Spatial location analysis</a></li>
+<li class="chapter" data-level="10.9" data-path="xenium-1.html"><a href="xenium-1.html#visualizations"><i class="fa fa-check"></i><b>10.9</b> Visualizations</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="spatial-proteomics-multiplex-if.html"><a href="spatial-proteomics-multiplex-if.html"><i class="fa fa-check"></i><b>11</b> Spatial proteomics: multiplex IF</a>
 <ul>
@@ -454,31 +464,190 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>This is the 10X Xenium FFPE Human Lung Cancer dataset. Xenium captures
 individual transcript detections with a spatial resolution of 100s of
 nanometers, providing an extremely highly resolved subcellular spatial
-dataset. This particular dataset also showcases their newly released
+dataset. This particular dataset also showcases their recent
 multimodal cell segmentation outputs.</p>
 <p>The Xenium Human Multi-Tissue and Cancer Panel (377) genes was used. The
 exported data is from their Xenium Onboard Analysis v2.0.0 pipeline.</p>
 <p>The full data for this example can be found here:
 <a href="https://www.10xgenomics.com/datasets/preview-data-ffpe-human-lung-cancer-with-xenium-multimodal-cell-segmentation-1-standard">here</a></p>
+<p>The relevant items are:</p>
 <ul>
-<li><em>Input Files</em> are additional files that are not part of the output
-bundles, usually some raw files the pipeline uses or extra info.</li>
-<li><em>Output Files</em> are the directories that are exported by the Xenium
-pipeline that can be expected from every run.</li>
+<li>Xenium Output Bundle (full)</li>
+<li>Supplemental: Post-Xenium H&amp;E image (OME-TIFF)</li>
+<li>Supplemental: H&amp;E Image Alignment File (CSV)</li>
+</ul>
+<p><strong>Additional package requirements</strong></p>
+<p>When working with this data and trying to open the parquet files, you will need <em>arrow</em> built with ZTSD support. See the datasets &amp; packages section for specific install instructions.</p>
+</div>
+<div id="output-directory-structure" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> Output directory structure<a href="xenium-1.html#output-directory-structure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<pre><code>    ├── analysis.tar.gz
+    ├── analysis.zarr.zip
+    ├── analysis_summary.html
+    ├── aux_outputs.tar.gz
+    ├── transcripts.csv.gz
+    ├── transcripts.parquet
+    ├── transcripts.zarr.zip
+    ├── cell_boundaries.csv.gz
+    ├── cell_boundaries.parquet
+    ├── nucleus_boundaries.csv.gz
+    ├── nucleus_boundaries.parquet
+    ├── cell_feature_matrix.tar.gz
+    ├── cell_feature_matrix
+    │   ├── barcodes.tsv.gz
+    │   ├── features.tsv.gz
+    │   └── matrix.mtx.gz
+    ├── cell_feature_matrix.h5
+    ├── cell_feature_matrix.zarr.zip
+    ├── cells.csv.gz
+    ├── cells.parquet
+    ├── cells.zarr.zip
+    ├── experiment.xenium
+    ├── gene_panel.json
+    ├── metrics_summary.csv
+    ├── morphology.ome.tif
+    ├── morphology_focus
+    │   ├── morphology_focus_0000.ome.tif
+    │   ├── morphology_focus_0001.ome.tif
+    │   ├── morphology_focus_0002.ome.tif
+    │   ├── morphology_focus_0003.ome.tif
+    ├── Xenium_V1_humanLung_Cancer_FFPE_gene_panel.json
+    ├── Xenium_V1_humanLung_Cancer_FFPE_he_image.ome.tif
+    └── Xenium_V1_humanLung_Cancer_FFPE_he_imagealignment.csv</code></pre>
+<p>The above directory structuring and naming is characteristic of Xenium v2.0 pipeline outputs. The only items that may not be exactly the same across all outputs are the morphology focus directory and the naming of the aligned image items.</p>
+<p>For the morphology focus images, you may have fewer images if the experiment did not include the multimodal cell segmentation. As for the aligned images, this is usually done after the Xenium experiment concludes and is added on using Xenium Explorer. Naming and location of the aligned image and associated alignment .csv are entirely up to the user. In this example dataset, they have very detailed names.</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="xenium-1.html#cb119-1" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
+<span id="cb119-2"><a href="xenium-1.html#cb119-2" tabindex="-1"></a><span class="co"># set up paths</span></span>
+<span id="cb119-3"><a href="xenium-1.html#cb119-3" tabindex="-1"></a>data_path <span class="ot">&lt;-</span> <span class="st">&quot;[PATH/TO/XENIUM/DATASET/UNZIPPED/DIRECTORY]&quot;</span></span>
+<span id="cb119-4"><a href="xenium-1.html#cb119-4" tabindex="-1"></a>save_dir <span class="ot">&lt;-</span> <span class="st">&quot;results/02_session3/&quot;</span></span></code></pre></div>
+</div>
+<div id="convenience-function" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> Convenience function<a href="xenium-1.html#convenience-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Giotto has flexible methods for working with the Xenium outputs. The convenience function will generate a <code>giotto</code> object in a single step when provided the output directory.</p>
+<p>The default behavior is to load:</p>
+<ul>
+<li>transcripts information</li>
+<li>cell and nucleus boundaries</li>
+<li>feature metadata (gene_panel.json)</li>
+</ul>
+<p>For the full dataset:<br />
+<em>time: 1-2min</em><br />
+<em>memory: 24GB on HPC</em></p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="xenium-1.html#cb120-1" tabindex="-1"></a>?createGiottoXeniumObject</span>
+<span id="cb120-2"><a href="xenium-1.html#cb120-2" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">createGiottoXeniumObject</span>(<span class="at">xenium_dir =</span> data_path)</span></code></pre></div>
+<p>There are a lot of other params for additional or alternative items you can load</p>
+<div id="specific-filepaths" class="section level3 hasAnchor" number="10.3.1">
+<h3><span class="header-section-number">10.3.1</span> Specific filepaths<a href="xenium-1.html#specific-filepaths" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>    expression_path = ,
+    cell_metadata_path = ,
+    transcript_path = ,
+    bounds_path = ,
+    gene_panel_json_path = , </code></pre>
+<p>There is no need to supply these filepaths params to the convenience function when the naming within the Xenium output is in the expected format. However, if needed, a specific filepath can be supplied to the convenience function using these params.</p>
+<p>You can also select a different file format to be used by passing in a different filepath. Giotto prefers the .parquet tabular and .h5 matrix formats over other formats when available. .zarr is also currently not supported.</p>
+</div>
+<div id="quality-value" class="section level3 hasAnchor" number="10.3.2">
+<h3><span class="header-section-number">10.3.2</span> Quality value<a href="xenium-1.html#quality-value" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>    qv_threshold = 20 # default</code></pre>
+<p>The Quality Value is a Phred-based 0-40 value that 10X provides for every detection in their transcripts output. Higher values mean higher confidence in the decoded transcript identity. By default 10X uses a cutoff of QV = 20 for transcripts to use downstream.</p>
+<details>
+<summary>
+<p>QV Calculation&lt;&gt;</p>
+<ol style="list-style-type: decimal">
+<li>Raw Q-score based on how likely it is that an observed code is to be the codeword that it gets mapped to vs less likely codeword.</li>
+<li>Adjustment of raw Q-score by binning the transcripts by Q-value then adjusting the exact Q per bin based on proportion of <strong>Negative Control Codewords</strong> detected within.</li>
+</ol>
+<p><a href="https://www.10xgenomics.com/support/software/xenium-onboard-analysis/latest/algorithms-overview/xoa-algorithms#qvs">further info</a></p>
+<p>&lt;&gt;</p>
+</div>
+<div id="transcript-type-splitting" class="section level3 hasAnchor" number="10.3.3">
+<h3><span class="header-section-number">10.3.3</span> Transcript type splitting<a href="xenium-1.html#transcript-type-splitting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>    feat_type =  c(
+        &quot;rna&quot;,
+        &quot;NegControlProbe&quot;,
+        &quot;UnassignedCodeword&quot;,
+        &quot;NegControlCodeword&quot;
+    ),
+    split_keyword = list(
+        c(&quot;NegControlProbe&quot;),
+        c(&quot;UnassignedCodeword&quot;),
+        c(&quot;NegControlCodeword)&quot;
+    )</code></pre>
+<p>There are 4 types of transcript detections that 10X reports with their v2.0 pipeline:</p>
+<ul>
+<li><strong>Gene expression</strong> - This is the rna gene detections</li>
+<li><strong>Negative Control Codeword</strong> - (QC) Codewords that do not map to genes, but are in the codebook. Used to determine specificity of decoding algorithm.</li>
+<li><strong>Negative Control Probe</strong> - (QC) Probes in panel but target non-biological sequences. Used to determine specificity of assay.</li>
+<li><strong>Unassigned Codeword</strong> - (QC) Codewords that should not be used in the current panel</li>
+</ul>
+<p>With V3 on their Xenium prime outputs, there is additionally:</p>
+<ul>
+<li><strong>Genomic Control Codeword</strong> (QC) Probes for intergenic genomic DNA instead of transcripts</li>
+</ul>
+<hr>
+<p>How to deal with these different types of detections is easily adjustable. With the <code>feat_type</code> param you declare which categories/<code>feat_types</code> you want to split transcript detections into. Then with <code>split_keyword</code>, you provide a list of character vectors containing <code>grep()</code> terms to search for.</p>
+<p>Note that there are 4 <code>feat_types</code> declared in this set of defaults, but 3 items passed to <code>split_keyword</code>. Any transcripts not matched by items in <code>split_keyword</code>, get categorized as the first provided <code>feat_type</code> (“rna”).</p>
+</div>
+<div id="optional-loading-pre-aggregated-data" class="section level3 hasAnchor" number="10.3.4">
+<h3><span class="header-section-number">10.3.4</span> (optional) Loading pre-aggregated data<a href="xenium-1.html#optional-loading-pre-aggregated-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>    load_expression = TRUE, # default is FALSE
+    load_cellmeta = TRUE    # default is FALSE</code></pre>
+<p>Giotto can spatially aggregate the transcripts information based on a provided set of boundaries information, however 10X also provides a pre-aggregated set of cell by feature information and metadata. These values may be slightly different from those calculated by Giotto’s pipeline, and are not loaded by default.</p>
+<p>Some care needs to be taken when loading this information:</p>
+<ul>
+<li>The <code>feat_type</code> of the loaded expression information should be matched to the used <code>feat_type</code> params passed to the convenience function.</li>
+<li>The <code>qv_threshold</code> used should be 20 since the 10X outputs are based on that cutoff.</li>
 </ul>
 </div>
-<div id="additional-package-requirements" class="section level2 hasAnchor" number="10.2">
-<h2><span class="header-section-number">10.2</span> Additional package requirements<a href="xenium-1.html#additional-package-requirements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>When working with this data, some additional packages must be downloaded.
-- arrow is needed
-- requires ZTSD codec to open these parquets.</p>
+<div id="image-conversion-may-change" class="section level3 hasAnchor" number="10.3.5">
+<h3><span class="header-section-number">10.3.5</span> Image conversion (may change)<a href="xenium-1.html#image-conversion-may-change" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Xenium generates ome.tif images which Giotto is currently not fully compatible with. So we convert them to normal tif images. By default, <code>ometif_to_tif()</code> will convert</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="xenium-1.html#cb125-1" tabindex="-1"></a>image_paths <span class="ot">&lt;-</span> <span class="fu">list.files</span>(</span>
+<span id="cb125-2"><a href="xenium-1.html#cb125-2" tabindex="-1"></a>  data_path, <span class="at">pattern =</span> <span class="st">&quot;morphology_focus|he_image.ome&quot;</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span></span>
+<span id="cb125-3"><a href="xenium-1.html#cb125-3" tabindex="-1"></a>)</span></code></pre></div>
 </div>
-<div id="introduce-mini-object" class="section level2 hasAnchor" number="10.3">
-<h2><span class="header-section-number">10.3</span> Introduce mini object<a href="xenium-1.html#introduce-mini-object" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="xenium-1.html#cb118-1" tabindex="-1"></a>save_dir <span class="ot">&lt;-</span> <span class="st">&quot;~/Documents/GitHub/giotto_workshop_2024/img/02_session3&quot;</span></span></code></pre></div>
+<div id="image-loading" class="section level3 hasAnchor" number="10.3.6">
+<h3><span class="header-section-number">10.3.6</span> Image loading<a href="xenium-1.html#image-loading" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>    load_images = list(
+        img1 = &quot;[img_path1.tif]&quot;,
+        img2 = &quot;[img_path2.tif]&quot;,
+        img3 = &quot;...&quot;
+    ),
+    load_aligned_images = list(
+        aligned_img = c(
+            &quot;[path to image.tif]&quot;,
+            &quot;imagealignment.csv&quot;
+        )
+    ),
+
+)</code></pre>
 </div>
-<div id="read-in-raw-data-1" class="section level2 hasAnchor" number="10.4">
-<h2><span class="header-section-number">10.4</span> Read in raw data<a href="xenium-1.html#read-in-raw-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="specific-imports-with-importxenium" class="section level3 hasAnchor" number="10.3.7">
+<h3><span class="header-section-number">10.3.7</span> Specific imports with <code>importXenium()</code><a href="xenium-1.html#specific-imports-with-importxenium" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="xenium-1.html#cb127-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">importXenium</span>(data_path)</span>
+<span id="cb127-2"><a href="xenium-1.html#cb127-2" tabindex="-1"></a><span class="fu">force</span>(x)</span></code></pre></div>
+<pre><code>Giotto &lt;XeniumReader&gt;
+dir       : /projectnb2/rd-[...]enium/v2.0_pipeline/FFPE_LungCancer/ 
+qv_cutoff : 20 
+filetype  : transcripts -- parquet
+            boundaries  -- parquet
+            expression  -- h5
+            cell_meta   -- parquet
+funs      : load_transcripts()
+            load_polys()
+            load_cellmeta()
+            load_featmeta()
+            load_expression()
+            load_image()
+            load_aligned_image()
+            create_gobject()</code></pre>
+</div>
+</div>
+<div id="introduce-mini-object" class="section level2 hasAnchor" number="10.4">
+<h2><span class="header-section-number">10.4</span> Introduce mini object<a href="xenium-1.html#introduce-mini-object" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="read-in-raw-data-1" class="section level2 hasAnchor" number="10.5">
+<h2><span class="header-section-number">10.5</span> Read in raw data<a href="xenium-1.html#read-in-raw-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <pre><code>    # 3D stack - DAPI
     
             # 2D fusion images
@@ -495,28 +664,28 @@ pipeline that can be expected from every run.</li>
 <li><p>affine mapping?</p></li>
 </ul>
 </div>
-<div id="overlap-txs-polygons" class="section level2 hasAnchor" number="10.5">
-<h2><span class="header-section-number">10.5</span> Overlap txs &amp; polygons<a href="xenium-1.html#overlap-txs-polygons" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="overlap-txs-polygons" class="section level2 hasAnchor" number="10.6">
+<h2><span class="header-section-number">10.6</span> Overlap txs &amp; polygons<a href="xenium-1.html#overlap-txs-polygons" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Typical aggregated workflow</li>
 <li>Feature/molecule specific analysis</li>
 <li>Visualizations</li>
 </ul>
 </div>
-<div id="transcript-enrichment-gsea" class="section level2 hasAnchor" number="10.6">
-<h2><span class="header-section-number">10.6</span> Transcript enrichment GSEA<a href="xenium-1.html#transcript-enrichment-gsea" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="transcript-enrichment-gsea" class="section level2 hasAnchor" number="10.7">
+<h2><span class="header-section-number">10.7</span> Transcript enrichment GSEA<a href="xenium-1.html#transcript-enrichment-gsea" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>text</p>
 </div>
-<div id="spatial-location-analysis" class="section level2 hasAnchor" number="10.7">
-<h2><span class="header-section-number">10.7</span> Spatial location analysis<a href="xenium-1.html#spatial-location-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="spatial-location-analysis" class="section level2 hasAnchor" number="10.8">
+<h2><span class="header-section-number">10.8</span> Spatial location analysis<a href="xenium-1.html#spatial-location-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Spatial cell type co-localization analysis</li>
 <li>Spatial niche analysis</li>
 <li>Spatial niche trajectory analysis</li>
 </ul>
 </div>
-<div id="visualizations" class="section level2 hasAnchor" number="10.8">
-<h2><span class="header-section-number">10.8</span> Visualizations<a href="xenium-1.html#visualizations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="visualizations" class="section level2 hasAnchor" number="10.9">
+<h2><span class="header-section-number">10.9</span> Visualizations<a href="xenium-1.html#visualizations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>
