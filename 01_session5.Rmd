@@ -231,7 +231,7 @@ visium_brain <- calculateHVF(gobject = visium_brain,
 knitr::include_graphics("img/01_session5/6-HVFplot_loess.png")
 ```
 
-- pearson residuals are used when the relationship between mean expression and variance is linear or can be described by a parametric model.
+- pearson residuals are used for variance stabilization (to account for technical noise) and highlighting overdispersed genes. 
 
 ```{r, eval=FALSE}
 visium_brain <- calculateHVF(gobject = visium_brain, 
@@ -244,7 +244,7 @@ visium_brain <- calculateHVF(gobject = visium_brain,
 knitr::include_graphics("img/01_session5/7-HVFplot_pearson.png")
 ```
 
-- binned (covariance groups) are used when variability in gene expression differs across expression levels or spatial regions, without assuming a specific relationship between mean expression and variance. This is the default method in the calculateHVF() function.
+- binned (covariance groups) are used when gene expression variability differs across expression levels or spatial regions, without assuming a specific relationship between mean expression and variance. This is the default method in the calculateHVF() function.
 
 ```{r, eval=FALSE}
 visium_brain <- calculateHVF(gobject = visium_brain, 
@@ -316,7 +316,9 @@ plotPCA(gobject = visium_brain,
 knitr::include_graphics("img/01_session5/11-PCA.png")
 ```
 
-Unlike PCA, Unifold Manifold Approximation and Projection (UMAP) and t-Stochastic Neighbor Embedding (t-SNE) do not assume linearity. After running PCA, UMAP or t-SNE follows to further reduce the PCs.   
+
+Unlike PCA, Uniform Manifold Approximation and Projection (UMAP) and t-Stochastic Neighbor Embedding (t-SNE) do not assume linearity. After running PCA, UMAP or t-SNE allows you to visualize the dataset in 2D.  
+
 
 ### UMAP
 
@@ -353,12 +355,11 @@ plotTSNE(gobject = visium_brain)
 knitr::include_graphics("img/01_session5/13-tSNE.png")
 ```
 
-UMAP generally provides a more balanced view of expression relationships and biological context, while t-SNE can be more effective in highlighting specific clusters or proximal groups.
 
 
 ## Clustering
 
-Shared Nearest Neighbor (sNN) emphasizes local coherence by considering spots that share nearest neighbors, highlighting cohesive spatial structures in the data. k-Nearest Neighbors (kNN) defines spatial relationships based on direct proximity, focusing on the nearest neighbors of each spot without considering shared neighborhood patterns as explicitly as sNN. 
+
 
 - Create a sNN network (default)
 
@@ -478,7 +479,6 @@ spatPlot2D(visium_brain,
 knitr::include_graphics("img/01_session5/20-spatPlot2D.png")
 ```
 
-Leiden clustering is generally preferred for larger and more complex datasets, where as Louvain clustering may be suitable for more smaller datasets or scenarios where computational efficiency is a priority. 
 
 You can find more information about the differences between the Leiden and Louvain methods in this paper: [From Louvain to Leiden: guaranteeing well-connected communities, 2019](https://www.nature.com/articles/s41598-019-41695-z#:~:text=Unlike%20the%20Louvain%20algorithm%2C%20the,moved%20to%20a%20different%20community.)
 
