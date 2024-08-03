@@ -44,7 +44,7 @@ knitr::include_graphics("img/02_session4/seqIF_Cycles_700x850.jpg")
 ```
 This is the example Lunaphore dataset from Lunaphore the official [website](https://lunaphore.com/download-center-tma-downstream-analysis/) and we are using the cropped one small area as an example. This is an overview of a subset of how the data would look like.
 ```{r, echo=FALSE, out.width="80%", fig.align='center'}
-#knitr::include_graphics("img/02_session4/Lunaphore_sample.png")
+knitr::include_graphics("img/02_session4/Lunaphore_sample.png")
 ```
 
 
