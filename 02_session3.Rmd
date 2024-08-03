@@ -295,7 +295,7 @@ tx <- x$load_transcripts()
 plot(tx[[1]]$rna, dens = TRUE)
 ```
 
-```{r, echo=FALSE, fig.align="center", out.width="80%, fig.cap="plot of Gene expression ('rna') density"}
+```{r, echo=FALSE, fig.align="center", out.width="80%", fig.cap="plot of Gene expression ('rna') density"}
 knitr::include_graphics("img/02_session3/tx_plot.png")
 ```
 
