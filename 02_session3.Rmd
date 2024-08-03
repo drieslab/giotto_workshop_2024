@@ -34,7 +34,7 @@ When working with this data and trying to open the parquet files, you will need 
 
 
 ## Output directory structure
-```{,fig.cap="10X Xenium FFPE Human Lung Cancer Output Bundle Structure"}
+```
     ├── analysis.tar.gz
     ├── analysis.zarr.zip
     ├── analysis_summary.html
@@ -437,8 +437,8 @@ rm(g2) # save space
 Xenium outputs have several image outputs. For this dataset:
 
 - `morphology.ome.tif` is a z-stacked image of the DAPI staining, with z levels separated as pages within the `ome.tif`. In this dataset, only pages 6 and 7 are really in focus.
-- `morphology_focus` is a folder containing several single-channel images, but with the original z information collapsed into a single in-focus layer. These are the recommended immunofluorescence staining images to import.
-- `Xenium_V1_humanLung_Cancer_FFPE_he_image.ome.tif`
+- `morphology_focus` is a folder containing single-channel image(s), but with the original z information collapsed into a single in-focus layer. For all datasets, image 0000 will be DAPI staining, but if you have additional stains, such as the multimodal segmentation, they will also be here. These are the recommended immunofluorescence staining images to import.
+- `Xenium_V1_humanLung_Cancer_FFPE_he_image.ome.tif` is an added on (in this case H&E) image with manual affine registration. 
 
 
         # 3D stack - DAPI
