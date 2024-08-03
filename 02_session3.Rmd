@@ -455,7 +455,7 @@ Xenium outputs have several image outputs. For this dataset:
 
 ```{r, eval=FALSE}
 img_xml_path <- file.path(data_path, "morphology_focus", "morphology_focus_0000.xml")
-omemeta <- xml2::read_xml(imeta_savepath)
+omemeta <- xml2::read_xml(img_xml_path)
 res <- xml2::xml_find_all(omemeta, "//d1:Channel", ns = xml2::xml_ns(omemeta))
 res <- Reduce(rbind, xml2::xml_attrs(res))
 rownames(res) <- NULL
@@ -494,7 +494,7 @@ morphology_focus images only require a scaling by the pixel to micron scaling fa
 
 aligned images are usually additional images added on with manual affine registration. 
 
-```{r, echo=FALSE, fig.align="center", out.width="80%, fig.cap="Spatial extent/bounds of transcripts (red), immunofluorescence morphology focus images (blue), H&E aligned image (gold). Lower right shows the affine matrix for aligning the H&E"}
+```{r, echo=FALSE, fig.align="center", out.width="80%", fig.cap="Spatial extent/bounds of transcripts (red), immunofluorescence morphology focus images (blue), H&E aligned image (gold). Lower right shows the affine matrix for aligning the H&E"}
 knitr::include_graphics("img/02_session3/img_orig_ext.png")
 ```
 
