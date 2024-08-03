@@ -148,7 +148,6 @@ reticulate::py_install(
 # install another environment with py 3.8 for cellpose
 reticulate::conda_create(envname = "giotto_cellpose",
                          python_version = 3.8)
-
 reticulate::py_install(
     pip = TRUE,
     envname = 'giotto_cellpose',
@@ -160,7 +159,8 @@ reticulate::py_install(
         "scikit-learn",
         "cellpose",
         "smfishhmrf",
-        "git+https://github.com/wwang-chcn/bento-tools.git@giotto_install"
+        'tifffile',
+        'scikit-image'
     )
 )
 ```
