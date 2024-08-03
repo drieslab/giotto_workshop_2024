@@ -33,7 +33,7 @@ The relevant items are:
 When working with this data and trying to open the parquet files, you will need _arrow_ built with ZTSD support. See the datasets & packages section for specific install instructions.
 
 
-## Output directory structure
+### Output directory structure
 ```
     ├── analysis.tar.gz
     ├── analysis.zarr.zip
@@ -75,7 +75,7 @@ For the morphology focus images, you may have fewer images if the experiment did
 
 
 
-## Mini Xenium Dataset
+### Mini Xenium Dataset
 
 ```{r, eval=FALSE}
 library(Giotto)
@@ -253,7 +253,7 @@ spatInSituPlotPoints(g,
 )
 ```
 
-```{r, echo=FALSE, fig.align="center", out.width="80%", fig.cap="Simple subcellular plotting to check data"}
+```{r, echo=FALSE, fig.align="center", out.width="100%", fig.cap="Simple subcellular plotting to check data"}
 knitr::include_graphics("img/02_session3/situ_plot_head.png")
 ```
 
@@ -440,18 +440,13 @@ Xenium outputs have several image outputs. For this dataset:
 - `morphology_focus` is a folder containing single-channel image(s), but with the original z information collapsed into a single in-focus layer. For all datasets, image 0000 will be DAPI staining, but if you have additional stains, such as the multimodal segmentation, they will also be here. These are the recommended immunofluorescence staining images to import.
 - `Xenium_V1_humanLung_Cancer_FFPE_he_image.ome.tif` is an added on (in this case H&E) image with manual affine registration. 
 
-
-        # 3D stack - DAPI
-        
-                # 2D fusion images
-        # - DAPI
-        # - stainings for multimodal segmentation
-
-        # Maximum intensity projection (MIP) of the morphology image.
-        # (Xenium Outputs v1.0 - 1.9. only)
-- image mip 
-
 ### Image metadata
+
+The `morphology_focus` directory may contain multiple images, but to know more information, we have to check the `ome.tif` `xml` metadata. With a normal dataset, you can use: 
+```
+`GiottoClass::ometif_metadata([filepath], node = "Channel")`
+```
+on one of the `morphology_focus` images, but since the mini dataset images are pre-processed, there is only an exported `.xml` to explore. The output of the code chunk below is the same as that from calling `ometif_metadata()` and looking for the `Channel` node.
 
 ```{r, eval=FALSE}
 img_xml_path <- file.path(data_path, "morphology_focus", "morphology_focus_0000.xml")
@@ -473,7 +468,16 @@ force(res)
 
 ### Image loading
 
+`morphology_focus` images need to be scaled by the micron scaling factor. Aligned images need to first be affine transformed then scaled. The micron scaling factor can be found in the json-like `experiment.xenium` file under `pixel_size` (0.2125 for this dataset).
+
+```{r, echo=FALSE, fig.align="center", out.width="80%", fig.cap="Spatial extent/bounds of transcripts (red), immunofluorescence morphology focus images (blue), H&E aligned image (gold). Lower right shows the affine matrix for aligning the H&E"}
+knitr::include_graphics("img/02_session3/img_orig_ext.png")
 ```
+
+These transforms are normally done automatically when using:
+
+```
+# convenience function params
     load_images = list(
         img1 = "[img_path1.tif]",
         img2 = "[img_path2.tif]",
@@ -482,37 +486,91 @@ force(res)
     load_aligned_images = list(
         aligned_img = c(
             "[path to image.tif]",
-            "imagealignment.csv"
+            "[path to magealignment.csv]"
         )
-    ),
+    )
 
+# importer params
+x$load_image(path = "[img_path1.tif]", name = "img1")
+x$load_image(path = "[img_path2.tif]", name = "img2")
+...
+x$load_aligned_image(
+    path = "[path to image.tif]",
+    imagealignment_path = "[path to magealignment.csv]",
+    name = "aligned_img"
+)
+```
+
+Specifically for the aligned image, there is also `read10xAffineImage()` which has similar params, but also asks for the micron scaling factor.
+
+
+But for the mini dataset, the images are pre-processed and can be directly added.
+```{r, eval=FALSE}
+img_paths <- c(
+    sprintf("data/02_session3/morphology_focus/morphology_focus_%04d.tif", 0:3),
+    "data/02_session3/he_mini.tif"
+)
+img_list <- createGiottoLargeImageList(
+    img_paths, 
+    # naming is based on the channel metadata above
+    names = c("DAPI", "18S", "ATP1A1/CD45/E-Cadherin", "alphaSMA/Vimentin", "HE"),
+    use_rast_ext = TRUE,
+    verbose = FALSE
+)
+
+# make some images brighter
+img_list[[1]]@max_window <- 5000
+img_list[[2]]@max_window <- 5000
+img_list[[3]]@max_window <- 5000
+
+
+# append images to gobject
+g <- setGiotto(g, img_list)
+
+# example plots
+spatInSituPlotPoints(g,
+    show_image = TRUE,
+    image_name = "HE",
+    polygon_feat_type = "cell",
+    polygon_color = "cyan",
+    polygon_line_size = 0.1,
+    polygon_alpha = 0
+)
+spatInSituPlotPoints(g,
+    show_image = TRUE,
+    image_name = "DAPI",
+    polygon_feat_type = "nucleus",
+    polygon_color = "cyan",
+    polygon_line_size = 0.1,
+    polygon_alpha = 0
+)
+spatInSituPlotPoints(g,
+    show_image = TRUE,
+    image_name = "18S",
+    polygon_feat_type = "cell",
+    polygon_color = "cyan",
+    polygon_line_size = 0.1,
+    polygon_alpha = 0
+)
+spatInSituPlotPoints(g,
+    show_image = TRUE,
+    image_name = "ATP1A1/CD45/E-Cadherin",
+    polygon_feat_type = "nucleus",
+    polygon_color = "cyan",
+    polygon_line_size = 0.1,
+    polygon_alpha = 0
 )
 ```
 
 
-morphology_focus images only require a scaling by the pixel to micron scaling factor. This can be found from the `experiment.xenium` to be 0.2125 for this dataset and is auto-detected by the convenience functions.
-
-aligned images are usually additional images added on with manual affine registration. 
-
-```{r, echo=FALSE, fig.align="center", out.width="80%", fig.cap="Spatial extent/bounds of transcripts (red), immunofluorescence morphology focus images (blue), H&E aligned image (gold). Lower right shows the affine matrix for aligning the H&E"}
-knitr::include_graphics("img/02_session3/img_orig_ext.png")
+```{r, echo=FALSE, fig.cap="H&E and Cell polys (top left), DAPI and nuclear polys (top right), 18S and cell polys (lower left), ATP1A1/CD45/E-Cadherin and nuclear polys (lower right)"}
+knitr::include_graphics("img/02_session3/imgplots.png")
 ```
 
 
+## Spatial aggregation
 
 
-
-
-
-
-
-## Read in raw data
-
-
-
-- Transcript coordinates
-- Polygon coordinates
-- Visualizations
 
 
 ```{r, eval=FALSE}
