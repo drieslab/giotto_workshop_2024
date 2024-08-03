@@ -488,7 +488,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">8.2</span> Differential expression<a href="visium-part-ii.html#differential-expression" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="gini-markers" class="section level3 hasAnchor" number="8.2.1">
 <h3><span class="header-section-number">8.2.1</span> Gini markers<a href="visium-part-ii.html#gini-markers" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The Gini method is preferred when identifying genes that exhibit significant expression differences across clusters, highlighting genes with distinct expression patters between different clusters.</p>
+<p>The Gini method identifies genes that are very selectively expressed in a specific cluster, however not always expressed in all cells of that cluster. In other words, highly specific but not necessarily sensitive at the single-cell level.</p>
 <ul>
 <li>Calculate the top marker genes per cluster using the gini method.</li>
 </ul>
@@ -542,7 +542,7 @@ Figure 8.3: Spatial distribution of the top gini genes scaled expression.
 </div>
 <div id="scran-markers" class="section level3 hasAnchor" number="8.2.2">
 <h3><span class="header-section-number">8.2.2</span> Scran markers<a href="visium-part-ii.html#scran-markers" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The Scran method is preferred for robust differential expression analysis, especially when addressing technical variability or differences in sequencing depth across spatial locations.</p>
+<p>The Scran method is preferred for robust differential expression analysis, especially when addressing technical variability or differences in sequencing depth across spatial locations. [redo]</p>
 <ul>
 <li>Calculate the top marker genes per cluster using the scran method</li>
 </ul>
@@ -593,7 +593,7 @@ Figure 8.5: Heatmap showing the top scran genes normalized expression per Leiden
 Figure 8.6: Spatial distribution of the top scran genes scaled expression.
 </p>
 </div>
-<p>In practice, it is often beneficial to apply both methods and compare results for a more complete understanding of differential gene expression across clusters.</p>
+<p>In practice, it is often beneficial to apply both Gini and Scran methods and compare results for a more complete understanding of differential gene expression across clusters.</p>
 </div>
 </div>
 <div id="enrichment-deconvolution" class="section level2 hasAnchor" number="8.3">
@@ -693,7 +693,7 @@ Figure 8.8: Spatial distribution of cell types identified using the PAGE method.
 </div>
 <div id="spatialdwls" class="section level3 hasAnchor" number="8.3.2">
 <h3><span class="header-section-number">8.3.2</span> SpatialDWLS<a href="visium-part-ii.html#spatialdwls" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Spatial Diffusion Weighted Least Squares (DWLS) estimates the proportions of different cell types or spatial gradients of gene expression across spots in a tissue.</p>
+<p>Spatial Dampened Weighted Least Squares (DWLS) estimates the proportions of different cell types across spots in a tissue.</p>
 <ul>
 <li>Create the signature matrix</li>
 </ul>
@@ -936,7 +936,7 @@ Figure 8.17: UMAP plot, colors indicate the Leiden clusters calculated using spa
 </div>
 <div id="spatial-domains-hmrf" class="section level2 hasAnchor" number="8.6">
 <h2><span class="header-section-number">8.6</span> Spatial domains HMRF<a href="visium-part-ii.html#spatial-domains-hmrf" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Hidden Markov Random Field (HMRF) models capture spatial dependencies and segment tissue regions based on shared gene expression patterns.</p>
+<p>Hidden Markov Random Field (HMRF) models capture spatial dependencies and segment tissue regions based on shared and gene expression patterns.</p>
 <ul>
 <li>Do HMRF with different betas on top 30 genes per spatial co-expression module</li>
 </ul>
@@ -1007,7 +1007,7 @@ Figure 8.20: Polygons selected using the interactive Shiny app.
 <span id="cb102-2"><a href="visium-part-ii.html#cb102-2" tabindex="-1"></a>                                               <span class="at">name =</span> <span class="st">&quot;selections&quot;</span>,</span>
 <span id="cb102-3"><a href="visium-part-ii.html#cb102-3" tabindex="-1"></a>                                               <span class="at">calc_centroids =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <ul>
-<li>Add the polygons (or spatial units) to the Giotto object</li>
+<li>Add the polygons to the Giotto object</li>
 </ul>
 <div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="visium-part-ii.html#cb103-1" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">addGiottoPolygons</span>(<span class="at">gobject =</span> visium_brain,</span>
 <span id="cb103-2"><a href="visium-part-ii.html#cb103-2" tabindex="-1"></a>                                  <span class="at">gpolygons =</span> <span class="fu">list</span>(giotto_polygons))</span></code></pre></div>
