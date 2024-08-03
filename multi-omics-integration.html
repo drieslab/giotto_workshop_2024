@@ -517,19 +517,19 @@ Figure 14.2: CytAssist workflow. Source: 10X genomics.
 <div id="download-dataset-1" class="section level2 hasAnchor" number="14.3">
 <h2><span class="header-section-number">14.3</span> Download dataset<a href="multi-omics-integration.html#download-dataset-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You need to download the expression matrix and spatial information by running these commands:</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="multi-omics-integration.html#cb198-1" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&quot;data/03_session3&quot;</span>)</span>
-<span id="cb198-2"><a href="multi-omics-integration.html#cb198-2" tabindex="-1"></a></span>
-<span id="cb198-3"><a href="multi-omics-integration.html#cb198-3" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">&quot;https://cf.10xgenomics.com/samples/spatial-exp/2.1.0/CytAssist_FFPE_Protein_Expression_Human_Tonsil/CytAssist_FFPE_Protein_Expression_Human_Tonsil_raw_feature_bc_matrix.tar.gz&quot;</span>,</span>
-<span id="cb198-4"><a href="multi-omics-integration.html#cb198-4" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="st">&quot;data/03_session3/CytAssist_FFPE_Protein_Expression_Human_Tonsil_raw_feature_bc_matrix.tar.gz&quot;</span>)</span>
-<span id="cb198-5"><a href="multi-omics-integration.html#cb198-5" tabindex="-1"></a></span>
-<span id="cb198-6"><a href="multi-omics-integration.html#cb198-6" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">&quot;https://cf.10xgenomics.com/samples/spatial-exp/2.1.0/CytAssist_FFPE_Protein_Expression_Human_Tonsil/CytAssist_FFPE_Protein_Expression_Human_Tonsil_spatial.tar.gz&quot;</span>,</span>
-<span id="cb198-7"><a href="multi-omics-integration.html#cb198-7" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="st">&quot;data/03_session3/CytAssist_FFPE_Protein_Expression_Human_Tonsil_spatial.tar.gz&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="multi-omics-integration.html#cb199-1" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&quot;data/03_session3&quot;</span>)</span>
+<span id="cb199-2"><a href="multi-omics-integration.html#cb199-2" tabindex="-1"></a></span>
+<span id="cb199-3"><a href="multi-omics-integration.html#cb199-3" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">&quot;https://cf.10xgenomics.com/samples/spatial-exp/2.1.0/CytAssist_FFPE_Protein_Expression_Human_Tonsil/CytAssist_FFPE_Protein_Expression_Human_Tonsil_raw_feature_bc_matrix.tar.gz&quot;</span>,</span>
+<span id="cb199-4"><a href="multi-omics-integration.html#cb199-4" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="st">&quot;data/03_session3/CytAssist_FFPE_Protein_Expression_Human_Tonsil_raw_feature_bc_matrix.tar.gz&quot;</span>)</span>
+<span id="cb199-5"><a href="multi-omics-integration.html#cb199-5" tabindex="-1"></a></span>
+<span id="cb199-6"><a href="multi-omics-integration.html#cb199-6" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">&quot;https://cf.10xgenomics.com/samples/spatial-exp/2.1.0/CytAssist_FFPE_Protein_Expression_Human_Tonsil/CytAssist_FFPE_Protein_Expression_Human_Tonsil_spatial.tar.gz&quot;</span>,</span>
+<span id="cb199-7"><a href="multi-omics-integration.html#cb199-7" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="st">&quot;data/03_session3/CytAssist_FFPE_Protein_Expression_Human_Tonsil_spatial.tar.gz&quot;</span>)</span></code></pre></div>
 <p>After downloading, unzip the gz files. You should get the “raw_feature_bc_matrix” and “spatial” folders inside “data/03_session3/”.</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="multi-omics-integration.html#cb199-1" tabindex="-1"></a><span class="fu">untar</span>(<span class="at">tarfile =</span> <span class="st">&quot;data/03_session3/CytAssist_FFPE_Protein_Expression_Human_Tonsil_raw_feature_bc_matrix.tar.gz&quot;</span>, </span>
-<span id="cb199-2"><a href="multi-omics-integration.html#cb199-2" tabindex="-1"></a>      <span class="at">exdir =</span> <span class="st">&quot;data/03_session3&quot;</span>)</span>
-<span id="cb199-3"><a href="multi-omics-integration.html#cb199-3" tabindex="-1"></a></span>
-<span id="cb199-4"><a href="multi-omics-integration.html#cb199-4" tabindex="-1"></a><span class="fu">untar</span>(<span class="at">tarfile =</span> <span class="st">&quot;data/03_session3/CytAssist_FFPE_Protein_Expression_Human_Tonsil_spatial.tar.gz&quot;</span>, </span>
-<span id="cb199-5"><a href="multi-omics-integration.html#cb199-5" tabindex="-1"></a>      <span class="at">exdir =</span> <span class="st">&quot;data/03_session3&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="multi-omics-integration.html#cb200-1" tabindex="-1"></a><span class="fu">untar</span>(<span class="at">tarfile =</span> <span class="st">&quot;data/03_session3/CytAssist_FFPE_Protein_Expression_Human_Tonsil_raw_feature_bc_matrix.tar.gz&quot;</span>, </span>
+<span id="cb200-2"><a href="multi-omics-integration.html#cb200-2" tabindex="-1"></a>      <span class="at">exdir =</span> <span class="st">&quot;data/03_session3&quot;</span>)</span>
+<span id="cb200-3"><a href="multi-omics-integration.html#cb200-3" tabindex="-1"></a></span>
+<span id="cb200-4"><a href="multi-omics-integration.html#cb200-4" tabindex="-1"></a><span class="fu">untar</span>(<span class="at">tarfile =</span> <span class="st">&quot;data/03_session3/CytAssist_FFPE_Protein_Expression_Human_Tonsil_spatial.tar.gz&quot;</span>, </span>
+<span id="cb200-5"><a href="multi-omics-integration.html#cb200-5" tabindex="-1"></a>      <span class="at">exdir =</span> <span class="st">&quot;data/03_session3&quot;</span>)</span></code></pre></div>
 </div>
 <div id="create-the-giotto-object-1" class="section level2 hasAnchor" number="14.4">
 <h2><span class="header-section-number">14.4</span> Create the Giotto object<a href="multi-omics-integration.html#create-the-giotto-object-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -539,47 +539,47 @@ Figure 14.2: CytAssist workflow. Source: 10X genomics.
 <li>x,y(,z) coordinates for cells or spots (or the path to)</li>
 </ul>
 <p>createGiottoVisiumObject() will automatically detect both RNA and Protein modalities in the expression matrix and will create a multi-omics Giotto object.</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="multi-omics-integration.html#cb200-1" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
-<span id="cb200-2"><a href="multi-omics-integration.html#cb200-2" tabindex="-1"></a></span>
-<span id="cb200-3"><a href="multi-omics-integration.html#cb200-3" tabindex="-1"></a><span class="do">## Set instructions</span></span>
-<span id="cb200-4"><a href="multi-omics-integration.html#cb200-4" tabindex="-1"></a>results_folder <span class="ot">&lt;-</span> <span class="st">&quot;results/03_session3/&quot;</span></span>
-<span id="cb200-5"><a href="multi-omics-integration.html#cb200-5" tabindex="-1"></a></span>
-<span id="cb200-6"><a href="multi-omics-integration.html#cb200-6" tabindex="-1"></a>python_path <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb200-7"><a href="multi-omics-integration.html#cb200-7" tabindex="-1"></a></span>
-<span id="cb200-8"><a href="multi-omics-integration.html#cb200-8" tabindex="-1"></a>instructions <span class="ot">&lt;-</span> <span class="fu">createGiottoInstructions</span>(</span>
-<span id="cb200-9"><a href="multi-omics-integration.html#cb200-9" tabindex="-1"></a>  <span class="at">save_dir =</span> results_folder,</span>
-<span id="cb200-10"><a href="multi-omics-integration.html#cb200-10" tabindex="-1"></a>  <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb200-11"><a href="multi-omics-integration.html#cb200-11" tabindex="-1"></a>  <span class="at">show_plot =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb200-12"><a href="multi-omics-integration.html#cb200-12" tabindex="-1"></a>  <span class="at">return_plot =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb200-13"><a href="multi-omics-integration.html#cb200-13" tabindex="-1"></a>  <span class="at">python_path =</span> python_path</span>
-<span id="cb200-14"><a href="multi-omics-integration.html#cb200-14" tabindex="-1"></a>)</span>
-<span id="cb200-15"><a href="multi-omics-integration.html#cb200-15" tabindex="-1"></a></span>
-<span id="cb200-16"><a href="multi-omics-integration.html#cb200-16" tabindex="-1"></a><span class="co"># Provide the path to the data folder</span></span>
-<span id="cb200-17"><a href="multi-omics-integration.html#cb200-17" tabindex="-1"></a>data_path <span class="ot">&lt;-</span> <span class="st">&quot;data/03_session3/&quot;</span></span>
-<span id="cb200-18"><a href="multi-omics-integration.html#cb200-18" tabindex="-1"></a></span>
-<span id="cb200-19"><a href="multi-omics-integration.html#cb200-19" tabindex="-1"></a><span class="co"># Create object directly from the data folder</span></span>
-<span id="cb200-20"><a href="multi-omics-integration.html#cb200-20" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">createGiottoVisiumObject</span>(</span>
-<span id="cb200-21"><a href="multi-omics-integration.html#cb200-21" tabindex="-1"></a>  <span class="at">visium_dir =</span> data_path,</span>
-<span id="cb200-22"><a href="multi-omics-integration.html#cb200-22" tabindex="-1"></a>  <span class="at">expr_data =</span> <span class="st">&quot;raw&quot;</span>,</span>
-<span id="cb200-23"><a href="multi-omics-integration.html#cb200-23" tabindex="-1"></a>  <span class="at">png_name =</span> <span class="st">&quot;tissue_lowres_image.png&quot;</span>,</span>
-<span id="cb200-24"><a href="multi-omics-integration.html#cb200-24" tabindex="-1"></a>  <span class="at">gene_column_index =</span> <span class="dv">2</span>,</span>
-<span id="cb200-25"><a href="multi-omics-integration.html#cb200-25" tabindex="-1"></a>  <span class="at">instructions =</span> instructions</span>
-<span id="cb200-26"><a href="multi-omics-integration.html#cb200-26" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="multi-omics-integration.html#cb201-1" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
+<span id="cb201-2"><a href="multi-omics-integration.html#cb201-2" tabindex="-1"></a></span>
+<span id="cb201-3"><a href="multi-omics-integration.html#cb201-3" tabindex="-1"></a><span class="do">## Set instructions</span></span>
+<span id="cb201-4"><a href="multi-omics-integration.html#cb201-4" tabindex="-1"></a>results_folder <span class="ot">&lt;-</span> <span class="st">&quot;results/03_session3/&quot;</span></span>
+<span id="cb201-5"><a href="multi-omics-integration.html#cb201-5" tabindex="-1"></a></span>
+<span id="cb201-6"><a href="multi-omics-integration.html#cb201-6" tabindex="-1"></a>python_path <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb201-7"><a href="multi-omics-integration.html#cb201-7" tabindex="-1"></a></span>
+<span id="cb201-8"><a href="multi-omics-integration.html#cb201-8" tabindex="-1"></a>instructions <span class="ot">&lt;-</span> <span class="fu">createGiottoInstructions</span>(</span>
+<span id="cb201-9"><a href="multi-omics-integration.html#cb201-9" tabindex="-1"></a>  <span class="at">save_dir =</span> results_folder,</span>
+<span id="cb201-10"><a href="multi-omics-integration.html#cb201-10" tabindex="-1"></a>  <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb201-11"><a href="multi-omics-integration.html#cb201-11" tabindex="-1"></a>  <span class="at">show_plot =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb201-12"><a href="multi-omics-integration.html#cb201-12" tabindex="-1"></a>  <span class="at">return_plot =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb201-13"><a href="multi-omics-integration.html#cb201-13" tabindex="-1"></a>  <span class="at">python_path =</span> python_path</span>
+<span id="cb201-14"><a href="multi-omics-integration.html#cb201-14" tabindex="-1"></a>)</span>
+<span id="cb201-15"><a href="multi-omics-integration.html#cb201-15" tabindex="-1"></a></span>
+<span id="cb201-16"><a href="multi-omics-integration.html#cb201-16" tabindex="-1"></a><span class="co"># Provide the path to the data folder</span></span>
+<span id="cb201-17"><a href="multi-omics-integration.html#cb201-17" tabindex="-1"></a>data_path <span class="ot">&lt;-</span> <span class="st">&quot;data/03_session3/&quot;</span></span>
+<span id="cb201-18"><a href="multi-omics-integration.html#cb201-18" tabindex="-1"></a></span>
+<span id="cb201-19"><a href="multi-omics-integration.html#cb201-19" tabindex="-1"></a><span class="co"># Create object directly from the data folder</span></span>
+<span id="cb201-20"><a href="multi-omics-integration.html#cb201-20" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">createGiottoVisiumObject</span>(</span>
+<span id="cb201-21"><a href="multi-omics-integration.html#cb201-21" tabindex="-1"></a>  <span class="at">visium_dir =</span> data_path,</span>
+<span id="cb201-22"><a href="multi-omics-integration.html#cb201-22" tabindex="-1"></a>  <span class="at">expr_data =</span> <span class="st">&quot;raw&quot;</span>,</span>
+<span id="cb201-23"><a href="multi-omics-integration.html#cb201-23" tabindex="-1"></a>  <span class="at">png_name =</span> <span class="st">&quot;tissue_lowres_image.png&quot;</span>,</span>
+<span id="cb201-24"><a href="multi-omics-integration.html#cb201-24" tabindex="-1"></a>  <span class="at">gene_column_index =</span> <span class="dv">2</span>,</span>
+<span id="cb201-25"><a href="multi-omics-integration.html#cb201-25" tabindex="-1"></a>  <span class="at">instructions =</span> instructions</span>
+<span id="cb201-26"><a href="multi-omics-integration.html#cb201-26" tabindex="-1"></a>)</span></code></pre></div>
 <ul>
 <li>Print the information of the object, note that both rna and protein are listed in the expression slot.</li>
 </ul>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="multi-omics-integration.html#cb201-1" tabindex="-1"></a>visium_tonsil</span></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="multi-omics-integration.html#cb202-1" tabindex="-1"></a>visium_tonsil</span></code></pre></div>
 </div>
 <div id="subset-on-spots-that-were-covered-by-tissue-1" class="section level2 hasAnchor" number="14.5">
 <h2><span class="header-section-number">14.5</span> Subset on spots that were covered by tissue<a href="multi-omics-integration.html#subset-on-spots-that-were-covered-by-tissue-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="multi-omics-integration.html#cb202-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(</span>
-<span id="cb202-2"><a href="multi-omics-integration.html#cb202-2" tabindex="-1"></a>  <span class="at">gobject =</span> visium_tonsil,</span>
-<span id="cb202-3"><a href="multi-omics-integration.html#cb202-3" tabindex="-1"></a>  <span class="at">cell_color =</span> <span class="st">&quot;in_tissue&quot;</span>,</span>
-<span id="cb202-4"><a href="multi-omics-integration.html#cb202-4" tabindex="-1"></a>  <span class="at">point_size =</span> <span class="dv">2</span>,</span>
-<span id="cb202-5"><a href="multi-omics-integration.html#cb202-5" tabindex="-1"></a>  <span class="at">cell_color_code =</span> <span class="fu">c</span>(<span class="st">&quot;0&quot;</span> <span class="ot">=</span> <span class="st">&quot;lightgrey&quot;</span>, <span class="st">&quot;1&quot;</span> <span class="ot">=</span> <span class="st">&quot;blue&quot;</span>),</span>
-<span id="cb202-6"><a href="multi-omics-integration.html#cb202-6" tabindex="-1"></a>  <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb202-7"><a href="multi-omics-integration.html#cb202-7" tabindex="-1"></a>  <span class="at">image_name =</span> <span class="st">&quot;image&quot;</span></span>
-<span id="cb202-8"><a href="multi-omics-integration.html#cb202-8" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="multi-omics-integration.html#cb203-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(</span>
+<span id="cb203-2"><a href="multi-omics-integration.html#cb203-2" tabindex="-1"></a>  <span class="at">gobject =</span> visium_tonsil,</span>
+<span id="cb203-3"><a href="multi-omics-integration.html#cb203-3" tabindex="-1"></a>  <span class="at">cell_color =</span> <span class="st">&quot;in_tissue&quot;</span>,</span>
+<span id="cb203-4"><a href="multi-omics-integration.html#cb203-4" tabindex="-1"></a>  <span class="at">point_size =</span> <span class="dv">2</span>,</span>
+<span id="cb203-5"><a href="multi-omics-integration.html#cb203-5" tabindex="-1"></a>  <span class="at">cell_color_code =</span> <span class="fu">c</span>(<span class="st">&quot;0&quot;</span> <span class="ot">=</span> <span class="st">&quot;lightgrey&quot;</span>, <span class="st">&quot;1&quot;</span> <span class="ot">=</span> <span class="st">&quot;blue&quot;</span>),</span>
+<span id="cb203-6"><a href="multi-omics-integration.html#cb203-6" tabindex="-1"></a>  <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb203-7"><a href="multi-omics-integration.html#cb203-7" tabindex="-1"></a>  <span class="at">image_name =</span> <span class="st">&quot;image&quot;</span></span>
+<span id="cb203-8"><a href="multi-omics-integration.html#cb203-8" tabindex="-1"></a>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-288"></span>
 <img src="img/03_session3/0-spatPlot2D.png" alt="Spatial plot of the CytAssist human tonsil sample, color indicates wheter the spot is in tissue (1) or not (0)." width="80%" />
 <p class="caption">
@@ -587,64 +587,64 @@ Figure 14.3: Spatial plot of the CytAssist human tonsil sample, color indicates 
 </p>
 </div>
 <p>Use the metadata table to identify the spots corresponding to the tissue area, given by the “in_tissue” column. Then use the spot IDs to subset the giotto object.</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="multi-omics-integration.html#cb203-1" tabindex="-1"></a>metadata <span class="ot">&lt;-</span> <span class="fu">getCellMetadata</span>(<span class="at">gobject =</span> visium_tonsil,</span>
-<span id="cb203-2"><a href="multi-omics-integration.html#cb203-2" tabindex="-1"></a>                            <span class="at">output =</span> <span class="st">&quot;data.table&quot;</span>)</span>
-<span id="cb203-3"><a href="multi-omics-integration.html#cb203-3" tabindex="-1"></a></span>
-<span id="cb203-4"><a href="multi-omics-integration.html#cb203-4" tabindex="-1"></a>in_tissue_barcodes <span class="ot">&lt;-</span> metadata[in_tissue <span class="sc">==</span> <span class="dv">1</span>]<span class="sc">$</span>cell_ID</span>
-<span id="cb203-5"><a href="multi-omics-integration.html#cb203-5" tabindex="-1"></a></span>
-<span id="cb203-6"><a href="multi-omics-integration.html#cb203-6" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">subsetGiotto</span>(visium_tonsil, </span>
-<span id="cb203-7"><a href="multi-omics-integration.html#cb203-7" tabindex="-1"></a>                              <span class="at">cell_ids =</span> in_tissue_barcodes)</span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="multi-omics-integration.html#cb204-1" tabindex="-1"></a>metadata <span class="ot">&lt;-</span> <span class="fu">getCellMetadata</span>(<span class="at">gobject =</span> visium_tonsil,</span>
+<span id="cb204-2"><a href="multi-omics-integration.html#cb204-2" tabindex="-1"></a>                            <span class="at">output =</span> <span class="st">&quot;data.table&quot;</span>)</span>
+<span id="cb204-3"><a href="multi-omics-integration.html#cb204-3" tabindex="-1"></a></span>
+<span id="cb204-4"><a href="multi-omics-integration.html#cb204-4" tabindex="-1"></a>in_tissue_barcodes <span class="ot">&lt;-</span> metadata[in_tissue <span class="sc">==</span> <span class="dv">1</span>]<span class="sc">$</span>cell_ID</span>
+<span id="cb204-5"><a href="multi-omics-integration.html#cb204-5" tabindex="-1"></a></span>
+<span id="cb204-6"><a href="multi-omics-integration.html#cb204-6" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">subsetGiotto</span>(visium_tonsil, </span>
+<span id="cb204-7"><a href="multi-omics-integration.html#cb204-7" tabindex="-1"></a>                              <span class="at">cell_ids =</span> in_tissue_barcodes)</span></code></pre></div>
 </div>
 <div id="rna-processing" class="section level2 hasAnchor" number="14.6">
 <h2><span class="header-section-number">14.6</span> RNA processing<a href="multi-omics-integration.html#rna-processing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Run the Filtering, normalization, and statistics steps using only the RNA feature.</li>
 </ul>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="multi-omics-integration.html#cb204-1" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">filterGiotto</span>(</span>
-<span id="cb204-2"><a href="multi-omics-integration.html#cb204-2" tabindex="-1"></a>  <span class="at">gobject =</span> visium_tonsil,</span>
-<span id="cb204-3"><a href="multi-omics-integration.html#cb204-3" tabindex="-1"></a>  <span class="at">expression_threshold =</span> <span class="dv">1</span>,</span>
-<span id="cb204-4"><a href="multi-omics-integration.html#cb204-4" tabindex="-1"></a>  <span class="at">feat_det_in_min_cells =</span> <span class="dv">50</span>,</span>
-<span id="cb204-5"><a href="multi-omics-integration.html#cb204-5" tabindex="-1"></a>  <span class="at">min_det_feats_per_cell =</span> <span class="dv">1000</span>,</span>
-<span id="cb204-6"><a href="multi-omics-integration.html#cb204-6" tabindex="-1"></a>  <span class="at">expression_values =</span> <span class="st">&quot;raw&quot;</span>,</span>
-<span id="cb204-7"><a href="multi-omics-integration.html#cb204-7" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb204-8"><a href="multi-omics-integration.html#cb204-8" tabindex="-1"></a></span>
-<span id="cb204-9"><a href="multi-omics-integration.html#cb204-9" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">normalizeGiotto</span>(<span class="at">gobject =</span> visium_tonsil,</span>
-<span id="cb204-10"><a href="multi-omics-integration.html#cb204-10" tabindex="-1"></a>                                 <span class="at">scalefactor =</span> <span class="dv">6000</span>,</span>
-<span id="cb204-11"><a href="multi-omics-integration.html#cb204-11" tabindex="-1"></a>                                 <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb204-12"><a href="multi-omics-integration.html#cb204-12" tabindex="-1"></a></span>
-<span id="cb204-13"><a href="multi-omics-integration.html#cb204-13" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">addStatistics</span>(<span class="at">gobject =</span> visium_tonsil)</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="multi-omics-integration.html#cb205-1" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">filterGiotto</span>(</span>
+<span id="cb205-2"><a href="multi-omics-integration.html#cb205-2" tabindex="-1"></a>  <span class="at">gobject =</span> visium_tonsil,</span>
+<span id="cb205-3"><a href="multi-omics-integration.html#cb205-3" tabindex="-1"></a>  <span class="at">expression_threshold =</span> <span class="dv">1</span>,</span>
+<span id="cb205-4"><a href="multi-omics-integration.html#cb205-4" tabindex="-1"></a>  <span class="at">feat_det_in_min_cells =</span> <span class="dv">50</span>,</span>
+<span id="cb205-5"><a href="multi-omics-integration.html#cb205-5" tabindex="-1"></a>  <span class="at">min_det_feats_per_cell =</span> <span class="dv">1000</span>,</span>
+<span id="cb205-6"><a href="multi-omics-integration.html#cb205-6" tabindex="-1"></a>  <span class="at">expression_values =</span> <span class="st">&quot;raw&quot;</span>,</span>
+<span id="cb205-7"><a href="multi-omics-integration.html#cb205-7" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb205-8"><a href="multi-omics-integration.html#cb205-8" tabindex="-1"></a></span>
+<span id="cb205-9"><a href="multi-omics-integration.html#cb205-9" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">normalizeGiotto</span>(<span class="at">gobject =</span> visium_tonsil,</span>
+<span id="cb205-10"><a href="multi-omics-integration.html#cb205-10" tabindex="-1"></a>                                 <span class="at">scalefactor =</span> <span class="dv">6000</span>,</span>
+<span id="cb205-11"><a href="multi-omics-integration.html#cb205-11" tabindex="-1"></a>                                 <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb205-12"><a href="multi-omics-integration.html#cb205-12" tabindex="-1"></a></span>
+<span id="cb205-13"><a href="multi-omics-integration.html#cb205-13" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">addStatistics</span>(<span class="at">gobject =</span> visium_tonsil)</span></code></pre></div>
 <ul>
 <li>Dimension reduction</li>
 </ul>
 <p>Identify the highly variable features using the RNA features, then calculate the principal components based on the HVFs.</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="multi-omics-integration.html#cb205-1" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">calculateHVF</span>(<span class="at">gobject =</span> visium_tonsil)</span>
-<span id="cb205-2"><a href="multi-omics-integration.html#cb205-2" tabindex="-1"></a></span>
-<span id="cb205-3"><a href="multi-omics-integration.html#cb205-3" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">runPCA</span>(<span class="at">gobject =</span> visium_tonsil)</span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="multi-omics-integration.html#cb206-1" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">calculateHVF</span>(<span class="at">gobject =</span> visium_tonsil)</span>
+<span id="cb206-2"><a href="multi-omics-integration.html#cb206-2" tabindex="-1"></a></span>
+<span id="cb206-3"><a href="multi-omics-integration.html#cb206-3" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">runPCA</span>(<span class="at">gobject =</span> visium_tonsil)</span></code></pre></div>
 <ul>
 <li>Clustering</li>
 </ul>
 <p>Calculate the UMAP, tSNE, and shared nearest neighbor network using the first 10 principal components for the RNA modality.</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="multi-omics-integration.html#cb206-1" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">runUMAP</span>(visium_tonsil,</span>
-<span id="cb206-2"><a href="multi-omics-integration.html#cb206-2" tabindex="-1"></a>                         <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<span id="cb206-3"><a href="multi-omics-integration.html#cb206-3" tabindex="-1"></a></span>
-<span id="cb206-4"><a href="multi-omics-integration.html#cb206-4" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">runtSNE</span>(visium_tonsil, </span>
-<span id="cb206-5"><a href="multi-omics-integration.html#cb206-5" tabindex="-1"></a>                         <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<span id="cb206-6"><a href="multi-omics-integration.html#cb206-6" tabindex="-1"></a></span>
-<span id="cb206-7"><a href="multi-omics-integration.html#cb206-7" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">createNearestNetwork</span>(<span class="at">gobject =</span> visium_tonsil,</span>
-<span id="cb206-8"><a href="multi-omics-integration.html#cb206-8" tabindex="-1"></a>                                      <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
-<span id="cb206-9"><a href="multi-omics-integration.html#cb206-9" tabindex="-1"></a>                                      <span class="at">k =</span> <span class="dv">30</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="multi-omics-integration.html#cb207-1" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">runUMAP</span>(visium_tonsil,</span>
+<span id="cb207-2"><a href="multi-omics-integration.html#cb207-2" tabindex="-1"></a>                         <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb207-3"><a href="multi-omics-integration.html#cb207-3" tabindex="-1"></a></span>
+<span id="cb207-4"><a href="multi-omics-integration.html#cb207-4" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">runtSNE</span>(visium_tonsil, </span>
+<span id="cb207-5"><a href="multi-omics-integration.html#cb207-5" tabindex="-1"></a>                         <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb207-6"><a href="multi-omics-integration.html#cb207-6" tabindex="-1"></a></span>
+<span id="cb207-7"><a href="multi-omics-integration.html#cb207-7" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">createNearestNetwork</span>(<span class="at">gobject =</span> visium_tonsil,</span>
+<span id="cb207-8"><a href="multi-omics-integration.html#cb207-8" tabindex="-1"></a>                                      <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb207-9"><a href="multi-omics-integration.html#cb207-9" tabindex="-1"></a>                                      <span class="at">k =</span> <span class="dv">30</span>)</span></code></pre></div>
 <p>Calculate the RNA-based Leiden clusters.</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="multi-omics-integration.html#cb207-1" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">doLeidenCluster</span>(<span class="at">gobject =</span> visium_tonsil,</span>
-<span id="cb207-2"><a href="multi-omics-integration.html#cb207-2" tabindex="-1"></a>                                 <span class="at">resolution =</span> <span class="dv">1</span>,</span>
-<span id="cb207-3"><a href="multi-omics-integration.html#cb207-3" tabindex="-1"></a>                                 <span class="at">n_iterations =</span> <span class="dv">1000</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="multi-omics-integration.html#cb208-1" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">doLeidenCluster</span>(<span class="at">gobject =</span> visium_tonsil,</span>
+<span id="cb208-2"><a href="multi-omics-integration.html#cb208-2" tabindex="-1"></a>                                 <span class="at">resolution =</span> <span class="dv">1</span>,</span>
+<span id="cb208-3"><a href="multi-omics-integration.html#cb208-3" tabindex="-1"></a>                                 <span class="at">n_iterations =</span> <span class="dv">1000</span>)</span></code></pre></div>
 <ul>
 <li>Visualization</li>
 </ul>
 <p>Plot the RNA-based UMAP with the corresponding RNA-based Leiden cluster per spot.</p>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="multi-omics-integration.html#cb208-1" tabindex="-1"></a><span class="fu">plotUMAP</span>(<span class="at">gobject =</span> visium_tonsil,</span>
-<span id="cb208-2"><a href="multi-omics-integration.html#cb208-2" tabindex="-1"></a>         <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
-<span id="cb208-3"><a href="multi-omics-integration.html#cb208-3" tabindex="-1"></a>         <span class="at">show_NN_network =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb208-4"><a href="multi-omics-integration.html#cb208-4" tabindex="-1"></a>         <span class="at">point_size =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="multi-omics-integration.html#cb209-1" tabindex="-1"></a><span class="fu">plotUMAP</span>(<span class="at">gobject =</span> visium_tonsil,</span>
+<span id="cb209-2"><a href="multi-omics-integration.html#cb209-2" tabindex="-1"></a>         <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
+<span id="cb209-3"><a href="multi-omics-integration.html#cb209-3" tabindex="-1"></a>         <span class="at">show_NN_network =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb209-4"><a href="multi-omics-integration.html#cb209-4" tabindex="-1"></a>         <span class="at">point_size =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-295"></span>
 <img src="img/03_session3/1-UMAP.png" alt="RNA UMAP, color indicates the RNA-based Leiden clusters." width="80%" />
 <p class="caption">
@@ -652,10 +652,10 @@ Figure 14.4: RNA UMAP, color indicates the RNA-based Leiden clusters.
 </p>
 </div>
 <p>Plot the spatial distribution of the RNA-based Leiden cluster per spot.</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="multi-omics-integration.html#cb209-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> visium_tonsil,</span>
-<span id="cb209-2"><a href="multi-omics-integration.html#cb209-2" tabindex="-1"></a>           <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb209-3"><a href="multi-omics-integration.html#cb209-3" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
-<span id="cb209-4"><a href="multi-omics-integration.html#cb209-4" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="multi-omics-integration.html#cb210-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> visium_tonsil,</span>
+<span id="cb210-2"><a href="multi-omics-integration.html#cb210-2" tabindex="-1"></a>           <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb210-3"><a href="multi-omics-integration.html#cb210-3" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
+<span id="cb210-4"><a href="multi-omics-integration.html#cb210-4" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="dv">3</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-297"></span>
 <img src="img/03_session3/2-spatPlot2D.png" alt="Spatial distribution of RNA-based Leiden clusters." width="80%" />
 <p class="caption">
@@ -668,66 +668,66 @@ Figure 14.5: Spatial distribution of RNA-based Leiden clusters.
 <ul>
 <li>Run the Filtering, normalization, and statistics steps for the protein modality.</li>
 </ul>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="multi-omics-integration.html#cb210-1" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">filterGiotto</span>(<span class="at">gobject =</span> visium_tonsil, </span>
-<span id="cb210-2"><a href="multi-omics-integration.html#cb210-2" tabindex="-1"></a>                              <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
-<span id="cb210-3"><a href="multi-omics-integration.html#cb210-3" tabindex="-1"></a>                              <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>,</span>
-<span id="cb210-4"><a href="multi-omics-integration.html#cb210-4" tabindex="-1"></a>                              <span class="at">expression_threshold =</span> <span class="dv">1</span>,</span>
-<span id="cb210-5"><a href="multi-omics-integration.html#cb210-5" tabindex="-1"></a>                              <span class="at">feat_det_in_min_cells =</span> <span class="dv">50</span>, </span>
-<span id="cb210-6"><a href="multi-omics-integration.html#cb210-6" tabindex="-1"></a>                              <span class="at">min_det_feats_per_cell =</span> <span class="dv">1</span>,</span>
-<span id="cb210-7"><a href="multi-omics-integration.html#cb210-7" tabindex="-1"></a>                              <span class="at">expression_values =</span> <span class="st">&quot;raw&quot;</span>, </span>
-<span id="cb210-8"><a href="multi-omics-integration.html#cb210-8" tabindex="-1"></a>                              <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb210-9"><a href="multi-omics-integration.html#cb210-9" tabindex="-1"></a></span>
-<span id="cb210-10"><a href="multi-omics-integration.html#cb210-10" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">normalizeGiotto</span>(<span class="at">gobject =</span> visium_tonsil,</span>
-<span id="cb210-11"><a href="multi-omics-integration.html#cb210-11" tabindex="-1"></a>                                 <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>, </span>
-<span id="cb210-12"><a href="multi-omics-integration.html#cb210-12" tabindex="-1"></a>                                 <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>, </span>
-<span id="cb210-13"><a href="multi-omics-integration.html#cb210-13" tabindex="-1"></a>                                 <span class="at">scalefactor =</span> <span class="dv">6000</span>, </span>
-<span id="cb210-14"><a href="multi-omics-integration.html#cb210-14" tabindex="-1"></a>                                 <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb210-15"><a href="multi-omics-integration.html#cb210-15" tabindex="-1"></a></span>
-<span id="cb210-16"><a href="multi-omics-integration.html#cb210-16" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">addStatistics</span>(<span class="at">gobject =</span> visium_tonsil,</span>
-<span id="cb210-17"><a href="multi-omics-integration.html#cb210-17" tabindex="-1"></a>                               <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>, </span>
-<span id="cb210-18"><a href="multi-omics-integration.html#cb210-18" tabindex="-1"></a>                               <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="multi-omics-integration.html#cb211-1" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">filterGiotto</span>(<span class="at">gobject =</span> visium_tonsil, </span>
+<span id="cb211-2"><a href="multi-omics-integration.html#cb211-2" tabindex="-1"></a>                              <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
+<span id="cb211-3"><a href="multi-omics-integration.html#cb211-3" tabindex="-1"></a>                              <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>,</span>
+<span id="cb211-4"><a href="multi-omics-integration.html#cb211-4" tabindex="-1"></a>                              <span class="at">expression_threshold =</span> <span class="dv">1</span>,</span>
+<span id="cb211-5"><a href="multi-omics-integration.html#cb211-5" tabindex="-1"></a>                              <span class="at">feat_det_in_min_cells =</span> <span class="dv">50</span>, </span>
+<span id="cb211-6"><a href="multi-omics-integration.html#cb211-6" tabindex="-1"></a>                              <span class="at">min_det_feats_per_cell =</span> <span class="dv">1</span>,</span>
+<span id="cb211-7"><a href="multi-omics-integration.html#cb211-7" tabindex="-1"></a>                              <span class="at">expression_values =</span> <span class="st">&quot;raw&quot;</span>, </span>
+<span id="cb211-8"><a href="multi-omics-integration.html#cb211-8" tabindex="-1"></a>                              <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb211-9"><a href="multi-omics-integration.html#cb211-9" tabindex="-1"></a></span>
+<span id="cb211-10"><a href="multi-omics-integration.html#cb211-10" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">normalizeGiotto</span>(<span class="at">gobject =</span> visium_tonsil,</span>
+<span id="cb211-11"><a href="multi-omics-integration.html#cb211-11" tabindex="-1"></a>                                 <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>, </span>
+<span id="cb211-12"><a href="multi-omics-integration.html#cb211-12" tabindex="-1"></a>                                 <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>, </span>
+<span id="cb211-13"><a href="multi-omics-integration.html#cb211-13" tabindex="-1"></a>                                 <span class="at">scalefactor =</span> <span class="dv">6000</span>, </span>
+<span id="cb211-14"><a href="multi-omics-integration.html#cb211-14" tabindex="-1"></a>                                 <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb211-15"><a href="multi-omics-integration.html#cb211-15" tabindex="-1"></a></span>
+<span id="cb211-16"><a href="multi-omics-integration.html#cb211-16" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">addStatistics</span>(<span class="at">gobject =</span> visium_tonsil,</span>
+<span id="cb211-17"><a href="multi-omics-integration.html#cb211-17" tabindex="-1"></a>                               <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>, </span>
+<span id="cb211-18"><a href="multi-omics-integration.html#cb211-18" tabindex="-1"></a>                               <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>)</span></code></pre></div>
 <ul>
 <li>Dimension reduction</li>
 </ul>
 <p>Calculate the principal components using all the proteins available in the dataset.</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="multi-omics-integration.html#cb211-1" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">runPCA</span>(<span class="at">gobject =</span> visium_tonsil,</span>
-<span id="cb211-2"><a href="multi-omics-integration.html#cb211-2" tabindex="-1"></a>                        <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
-<span id="cb211-3"><a href="multi-omics-integration.html#cb211-3" tabindex="-1"></a>                        <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="multi-omics-integration.html#cb212-1" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">runPCA</span>(<span class="at">gobject =</span> visium_tonsil,</span>
+<span id="cb212-2"><a href="multi-omics-integration.html#cb212-2" tabindex="-1"></a>                        <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
+<span id="cb212-3"><a href="multi-omics-integration.html#cb212-3" tabindex="-1"></a>                        <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>)</span></code></pre></div>
 <ul>
 <li>Clustering</li>
 </ul>
 <p>Calculate the UMAP, tSNE, and shared nearest neighbors network using the first 10 principal components for the Protein modality.</p>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="multi-omics-integration.html#cb212-1" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">runUMAP</span>(visium_tonsil,</span>
-<span id="cb212-2"><a href="multi-omics-integration.html#cb212-2" tabindex="-1"></a>                         <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>, </span>
-<span id="cb212-3"><a href="multi-omics-integration.html#cb212-3" tabindex="-1"></a>                         <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>, </span>
-<span id="cb212-4"><a href="multi-omics-integration.html#cb212-4" tabindex="-1"></a>                         <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<span id="cb212-5"><a href="multi-omics-integration.html#cb212-5" tabindex="-1"></a></span>
-<span id="cb212-6"><a href="multi-omics-integration.html#cb212-6" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">runtSNE</span>(visium_tonsil, </span>
-<span id="cb212-7"><a href="multi-omics-integration.html#cb212-7" tabindex="-1"></a>                         <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
-<span id="cb212-8"><a href="multi-omics-integration.html#cb212-8" tabindex="-1"></a>                         <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>,</span>
-<span id="cb212-9"><a href="multi-omics-integration.html#cb212-9" tabindex="-1"></a>                         <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
-<span id="cb212-10"><a href="multi-omics-integration.html#cb212-10" tabindex="-1"></a></span>
-<span id="cb212-11"><a href="multi-omics-integration.html#cb212-11" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">createNearestNetwork</span>(<span class="at">gobject =</span> visium_tonsil,</span>
-<span id="cb212-12"><a href="multi-omics-integration.html#cb212-12" tabindex="-1"></a>                                      <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
-<span id="cb212-13"><a href="multi-omics-integration.html#cb212-13" tabindex="-1"></a>                                      <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>,</span>
-<span id="cb212-14"><a href="multi-omics-integration.html#cb212-14" tabindex="-1"></a>                                      <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
-<span id="cb212-15"><a href="multi-omics-integration.html#cb212-15" tabindex="-1"></a>                                      <span class="at">k =</span> <span class="dv">30</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="multi-omics-integration.html#cb213-1" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">runUMAP</span>(visium_tonsil,</span>
+<span id="cb213-2"><a href="multi-omics-integration.html#cb213-2" tabindex="-1"></a>                         <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>, </span>
+<span id="cb213-3"><a href="multi-omics-integration.html#cb213-3" tabindex="-1"></a>                         <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>, </span>
+<span id="cb213-4"><a href="multi-omics-integration.html#cb213-4" tabindex="-1"></a>                         <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb213-5"><a href="multi-omics-integration.html#cb213-5" tabindex="-1"></a></span>
+<span id="cb213-6"><a href="multi-omics-integration.html#cb213-6" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">runtSNE</span>(visium_tonsil, </span>
+<span id="cb213-7"><a href="multi-omics-integration.html#cb213-7" tabindex="-1"></a>                         <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
+<span id="cb213-8"><a href="multi-omics-integration.html#cb213-8" tabindex="-1"></a>                         <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>,</span>
+<span id="cb213-9"><a href="multi-omics-integration.html#cb213-9" tabindex="-1"></a>                         <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb213-10"><a href="multi-omics-integration.html#cb213-10" tabindex="-1"></a></span>
+<span id="cb213-11"><a href="multi-omics-integration.html#cb213-11" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">createNearestNetwork</span>(<span class="at">gobject =</span> visium_tonsil,</span>
+<span id="cb213-12"><a href="multi-omics-integration.html#cb213-12" tabindex="-1"></a>                                      <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
+<span id="cb213-13"><a href="multi-omics-integration.html#cb213-13" tabindex="-1"></a>                                      <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>,</span>
+<span id="cb213-14"><a href="multi-omics-integration.html#cb213-14" tabindex="-1"></a>                                      <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb213-15"><a href="multi-omics-integration.html#cb213-15" tabindex="-1"></a>                                      <span class="at">k =</span> <span class="dv">30</span>)</span></code></pre></div>
 <p>Calculate the Protein-based Leiden clusters.</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="multi-omics-integration.html#cb213-1" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">doLeidenCluster</span>(<span class="at">gobject =</span> visium_tonsil,</span>
-<span id="cb213-2"><a href="multi-omics-integration.html#cb213-2" tabindex="-1"></a>                                 <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
-<span id="cb213-3"><a href="multi-omics-integration.html#cb213-3" tabindex="-1"></a>                                 <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>,</span>
-<span id="cb213-4"><a href="multi-omics-integration.html#cb213-4" tabindex="-1"></a>                                 <span class="at">resolution =</span> <span class="dv">1</span>,</span>
-<span id="cb213-5"><a href="multi-omics-integration.html#cb213-5" tabindex="-1"></a>                                 <span class="at">n_iterations =</span> <span class="dv">1000</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="multi-omics-integration.html#cb214-1" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">doLeidenCluster</span>(<span class="at">gobject =</span> visium_tonsil,</span>
+<span id="cb214-2"><a href="multi-omics-integration.html#cb214-2" tabindex="-1"></a>                                 <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
+<span id="cb214-3"><a href="multi-omics-integration.html#cb214-3" tabindex="-1"></a>                                 <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>,</span>
+<span id="cb214-4"><a href="multi-omics-integration.html#cb214-4" tabindex="-1"></a>                                 <span class="at">resolution =</span> <span class="dv">1</span>,</span>
+<span id="cb214-5"><a href="multi-omics-integration.html#cb214-5" tabindex="-1"></a>                                 <span class="at">n_iterations =</span> <span class="dv">1000</span>)</span></code></pre></div>
 <ul>
 <li>Visualization</li>
 </ul>
 <p>Plot the Protein UMAP and color the spots using the Protein-based Leiden clusters.</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="multi-omics-integration.html#cb214-1" tabindex="-1"></a><span class="fu">plotUMAP</span>(<span class="at">gobject =</span> visium_tonsil,</span>
-<span id="cb214-2"><a href="multi-omics-integration.html#cb214-2" tabindex="-1"></a>         <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>, </span>
-<span id="cb214-3"><a href="multi-omics-integration.html#cb214-3" tabindex="-1"></a>         <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>, </span>
-<span id="cb214-4"><a href="multi-omics-integration.html#cb214-4" tabindex="-1"></a>         <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>, </span>
-<span id="cb214-5"><a href="multi-omics-integration.html#cb214-5" tabindex="-1"></a>         <span class="at">show_NN_network =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb214-6"><a href="multi-omics-integration.html#cb214-6" tabindex="-1"></a>         <span class="at">point_size =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="multi-omics-integration.html#cb215-1" tabindex="-1"></a><span class="fu">plotUMAP</span>(<span class="at">gobject =</span> visium_tonsil,</span>
+<span id="cb215-2"><a href="multi-omics-integration.html#cb215-2" tabindex="-1"></a>         <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>, </span>
+<span id="cb215-3"><a href="multi-omics-integration.html#cb215-3" tabindex="-1"></a>         <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>, </span>
+<span id="cb215-4"><a href="multi-omics-integration.html#cb215-4" tabindex="-1"></a>         <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>, </span>
+<span id="cb215-5"><a href="multi-omics-integration.html#cb215-5" tabindex="-1"></a>         <span class="at">show_NN_network =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb215-6"><a href="multi-omics-integration.html#cb215-6" tabindex="-1"></a>         <span class="at">point_size =</span> <span class="dv">2</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-303"></span>
 <img src="img/03_session3/3-UMAP.png" alt="Protein UMAP, color indicates the Protein-based Leiden clusters." width="80%" />
 <p class="caption">
@@ -735,12 +735,12 @@ Figure 14.6: Protein UMAP, color indicates the Protein-based Leiden clusters.
 </p>
 </div>
 <p>Plot the spatial distribution of the Protein-based Leiden clusters.</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="multi-omics-integration.html#cb215-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> visium_tonsil,</span>
-<span id="cb215-2"><a href="multi-omics-integration.html#cb215-2" tabindex="-1"></a>           <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
-<span id="cb215-3"><a href="multi-omics-integration.html#cb215-3" tabindex="-1"></a>           <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>,</span>
-<span id="cb215-4"><a href="multi-omics-integration.html#cb215-4" tabindex="-1"></a>           <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb215-5"><a href="multi-omics-integration.html#cb215-5" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
-<span id="cb215-6"><a href="multi-omics-integration.html#cb215-6" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="multi-omics-integration.html#cb216-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> visium_tonsil,</span>
+<span id="cb216-2"><a href="multi-omics-integration.html#cb216-2" tabindex="-1"></a>           <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
+<span id="cb216-3"><a href="multi-omics-integration.html#cb216-3" tabindex="-1"></a>           <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>,</span>
+<span id="cb216-4"><a href="multi-omics-integration.html#cb216-4" tabindex="-1"></a>           <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb216-5"><a href="multi-omics-integration.html#cb216-5" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
+<span id="cb216-6"><a href="multi-omics-integration.html#cb216-6" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="dv">3</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-305"></span>
 <img src="img/03_session3/4-spatPlot2D.png" alt="Spatial distribution of Protein-based Leiden clusters." width="80%" />
 <p class="caption">
@@ -754,67 +754,67 @@ Figure 14.7: Spatial distribution of Protein-based Leiden clusters.
 <li>Calculate kNN</li>
 </ul>
 <p>Calculate the k nearest neighbors network for each modality (RNA and Protein), using the first 10 principal components of each feature type.</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="multi-omics-integration.html#cb216-1" tabindex="-1"></a><span class="do">## RNA modality</span></span>
-<span id="cb216-2"><a href="multi-omics-integration.html#cb216-2" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">createNearestNetwork</span>(<span class="at">gobject =</span> visium_tonsil,</span>
-<span id="cb216-3"><a href="multi-omics-integration.html#cb216-3" tabindex="-1"></a>                                      <span class="at">type =</span> <span class="st">&quot;kNN&quot;</span>,</span>
-<span id="cb216-4"><a href="multi-omics-integration.html#cb216-4" tabindex="-1"></a>                                      <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
-<span id="cb216-5"><a href="multi-omics-integration.html#cb216-5" tabindex="-1"></a>                                      <span class="at">k =</span> <span class="dv">20</span>)</span>
-<span id="cb216-6"><a href="multi-omics-integration.html#cb216-6" tabindex="-1"></a></span>
-<span id="cb216-7"><a href="multi-omics-integration.html#cb216-7" tabindex="-1"></a><span class="do">## Protein modality</span></span>
-<span id="cb216-8"><a href="multi-omics-integration.html#cb216-8" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">createNearestNetwork</span>(<span class="at">gobject =</span> visium_tonsil,</span>
-<span id="cb216-9"><a href="multi-omics-integration.html#cb216-9" tabindex="-1"></a>                                      <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
-<span id="cb216-10"><a href="multi-omics-integration.html#cb216-10" tabindex="-1"></a>                                      <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>,</span>
-<span id="cb216-11"><a href="multi-omics-integration.html#cb216-11" tabindex="-1"></a>                                      <span class="at">type =</span> <span class="st">&quot;kNN&quot;</span>,</span>
-<span id="cb216-12"><a href="multi-omics-integration.html#cb216-12" tabindex="-1"></a>                                      <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
-<span id="cb216-13"><a href="multi-omics-integration.html#cb216-13" tabindex="-1"></a>                                      <span class="at">k =</span> <span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="multi-omics-integration.html#cb217-1" tabindex="-1"></a><span class="do">## RNA modality</span></span>
+<span id="cb217-2"><a href="multi-omics-integration.html#cb217-2" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">createNearestNetwork</span>(<span class="at">gobject =</span> visium_tonsil,</span>
+<span id="cb217-3"><a href="multi-omics-integration.html#cb217-3" tabindex="-1"></a>                                      <span class="at">type =</span> <span class="st">&quot;kNN&quot;</span>,</span>
+<span id="cb217-4"><a href="multi-omics-integration.html#cb217-4" tabindex="-1"></a>                                      <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb217-5"><a href="multi-omics-integration.html#cb217-5" tabindex="-1"></a>                                      <span class="at">k =</span> <span class="dv">20</span>)</span>
+<span id="cb217-6"><a href="multi-omics-integration.html#cb217-6" tabindex="-1"></a></span>
+<span id="cb217-7"><a href="multi-omics-integration.html#cb217-7" tabindex="-1"></a><span class="do">## Protein modality</span></span>
+<span id="cb217-8"><a href="multi-omics-integration.html#cb217-8" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">createNearestNetwork</span>(<span class="at">gobject =</span> visium_tonsil,</span>
+<span id="cb217-9"><a href="multi-omics-integration.html#cb217-9" tabindex="-1"></a>                                      <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
+<span id="cb217-10"><a href="multi-omics-integration.html#cb217-10" tabindex="-1"></a>                                      <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>,</span>
+<span id="cb217-11"><a href="multi-omics-integration.html#cb217-11" tabindex="-1"></a>                                      <span class="at">type =</span> <span class="st">&quot;kNN&quot;</span>,</span>
+<span id="cb217-12"><a href="multi-omics-integration.html#cb217-12" tabindex="-1"></a>                                      <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb217-13"><a href="multi-omics-integration.html#cb217-13" tabindex="-1"></a>                                      <span class="at">k =</span> <span class="dv">20</span>)</span></code></pre></div>
 <ul>
 <li>Run WNN</li>
 </ul>
 <p>Run the Weighted Nearest Neighbor analysis to weight the contribution of each feature type per spot. The results will be saved in the multiomics slot of the giotto object.</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="multi-omics-integration.html#cb217-1" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">runWNN</span>(visium_tonsil,</span>
-<span id="cb217-2"><a href="multi-omics-integration.html#cb217-2" tabindex="-1"></a>                        <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
-<span id="cb217-3"><a href="multi-omics-integration.html#cb217-3" tabindex="-1"></a>                        <span class="at">modality_1 =</span> <span class="st">&quot;rna&quot;</span>,</span>
-<span id="cb217-4"><a href="multi-omics-integration.html#cb217-4" tabindex="-1"></a>                        <span class="at">modality_2 =</span> <span class="st">&quot;protein&quot;</span>,</span>
-<span id="cb217-5"><a href="multi-omics-integration.html#cb217-5" tabindex="-1"></a>                        <span class="at">pca_name_modality_1 =</span> <span class="st">&quot;pca&quot;</span>,</span>
-<span id="cb217-6"><a href="multi-omics-integration.html#cb217-6" tabindex="-1"></a>                        <span class="at">pca_name_modality_2 =</span> <span class="st">&quot;protein.pca&quot;</span>,</span>
-<span id="cb217-7"><a href="multi-omics-integration.html#cb217-7" tabindex="-1"></a>                        <span class="at">k =</span> <span class="dv">20</span>,</span>
-<span id="cb217-8"><a href="multi-omics-integration.html#cb217-8" tabindex="-1"></a>                        <span class="at">integrated_feat_type =</span> <span class="cn">NULL</span>,</span>
-<span id="cb217-9"><a href="multi-omics-integration.html#cb217-9" tabindex="-1"></a>                        <span class="at">matrix_result_name =</span> <span class="cn">NULL</span>,</span>
-<span id="cb217-10"><a href="multi-omics-integration.html#cb217-10" tabindex="-1"></a>                        <span class="at">w_name_modality_1 =</span> <span class="cn">NULL</span>,</span>
-<span id="cb217-11"><a href="multi-omics-integration.html#cb217-11" tabindex="-1"></a>                        <span class="at">w_name_modality_2 =</span> <span class="cn">NULL</span>,</span>
-<span id="cb217-12"><a href="multi-omics-integration.html#cb217-12" tabindex="-1"></a>                        <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="multi-omics-integration.html#cb218-1" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">runWNN</span>(visium_tonsil,</span>
+<span id="cb218-2"><a href="multi-omics-integration.html#cb218-2" tabindex="-1"></a>                        <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
+<span id="cb218-3"><a href="multi-omics-integration.html#cb218-3" tabindex="-1"></a>                        <span class="at">modality_1 =</span> <span class="st">&quot;rna&quot;</span>,</span>
+<span id="cb218-4"><a href="multi-omics-integration.html#cb218-4" tabindex="-1"></a>                        <span class="at">modality_2 =</span> <span class="st">&quot;protein&quot;</span>,</span>
+<span id="cb218-5"><a href="multi-omics-integration.html#cb218-5" tabindex="-1"></a>                        <span class="at">pca_name_modality_1 =</span> <span class="st">&quot;pca&quot;</span>,</span>
+<span id="cb218-6"><a href="multi-omics-integration.html#cb218-6" tabindex="-1"></a>                        <span class="at">pca_name_modality_2 =</span> <span class="st">&quot;protein.pca&quot;</span>,</span>
+<span id="cb218-7"><a href="multi-omics-integration.html#cb218-7" tabindex="-1"></a>                        <span class="at">k =</span> <span class="dv">20</span>,</span>
+<span id="cb218-8"><a href="multi-omics-integration.html#cb218-8" tabindex="-1"></a>                        <span class="at">integrated_feat_type =</span> <span class="cn">NULL</span>,</span>
+<span id="cb218-9"><a href="multi-omics-integration.html#cb218-9" tabindex="-1"></a>                        <span class="at">matrix_result_name =</span> <span class="cn">NULL</span>,</span>
+<span id="cb218-10"><a href="multi-omics-integration.html#cb218-10" tabindex="-1"></a>                        <span class="at">w_name_modality_1 =</span> <span class="cn">NULL</span>,</span>
+<span id="cb218-11"><a href="multi-omics-integration.html#cb218-11" tabindex="-1"></a>                        <span class="at">w_name_modality_2 =</span> <span class="cn">NULL</span>,</span>
+<span id="cb218-12"><a href="multi-omics-integration.html#cb218-12" tabindex="-1"></a>                        <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <ul>
 <li>Run Integrated umap</li>
 </ul>
 <p>Calculate the UMAP using the weights of each feature per spot.</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="multi-omics-integration.html#cb218-1" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">runIntegratedUMAP</span>(visium_tonsil,</span>
-<span id="cb218-2"><a href="multi-omics-integration.html#cb218-2" tabindex="-1"></a>                                   <span class="at">modality1 =</span> <span class="st">&quot;rna&quot;</span>,</span>
-<span id="cb218-3"><a href="multi-omics-integration.html#cb218-3" tabindex="-1"></a>                                   <span class="at">modality2 =</span> <span class="st">&quot;protein&quot;</span>,</span>
-<span id="cb218-4"><a href="multi-omics-integration.html#cb218-4" tabindex="-1"></a>                                   <span class="at">spread =</span> <span class="dv">7</span>,</span>
-<span id="cb218-5"><a href="multi-omics-integration.html#cb218-5" tabindex="-1"></a>                                   <span class="at">min_dist =</span> <span class="dv">1</span>,</span>
-<span id="cb218-6"><a href="multi-omics-integration.html#cb218-6" tabindex="-1"></a>                                   <span class="at">force =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="multi-omics-integration.html#cb219-1" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">runIntegratedUMAP</span>(visium_tonsil,</span>
+<span id="cb219-2"><a href="multi-omics-integration.html#cb219-2" tabindex="-1"></a>                                   <span class="at">modality1 =</span> <span class="st">&quot;rna&quot;</span>,</span>
+<span id="cb219-3"><a href="multi-omics-integration.html#cb219-3" tabindex="-1"></a>                                   <span class="at">modality2 =</span> <span class="st">&quot;protein&quot;</span>,</span>
+<span id="cb219-4"><a href="multi-omics-integration.html#cb219-4" tabindex="-1"></a>                                   <span class="at">spread =</span> <span class="dv">7</span>,</span>
+<span id="cb219-5"><a href="multi-omics-integration.html#cb219-5" tabindex="-1"></a>                                   <span class="at">min_dist =</span> <span class="dv">1</span>,</span>
+<span id="cb219-6"><a href="multi-omics-integration.html#cb219-6" tabindex="-1"></a>                                   <span class="at">force =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <ul>
 <li>Calculate integrated clusters</li>
 </ul>
 <p>Calculate the multiomics-based Leiden clusters using the weights of each feature per spot.</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="multi-omics-integration.html#cb219-1" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">doLeidenCluster</span>(<span class="at">gobject =</span> visium_tonsil,</span>
-<span id="cb219-2"><a href="multi-omics-integration.html#cb219-2" tabindex="-1"></a>                                 <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
-<span id="cb219-3"><a href="multi-omics-integration.html#cb219-3" tabindex="-1"></a>                                 <span class="at">feat_type =</span> <span class="st">&quot;rna&quot;</span>,</span>
-<span id="cb219-4"><a href="multi-omics-integration.html#cb219-4" tabindex="-1"></a>                                 <span class="at">nn_network_to_use =</span> <span class="st">&quot;kNN&quot;</span>,</span>
-<span id="cb219-5"><a href="multi-omics-integration.html#cb219-5" tabindex="-1"></a>                                 <span class="at">network_name =</span> <span class="st">&quot;integrated_kNN&quot;</span>,</span>
-<span id="cb219-6"><a href="multi-omics-integration.html#cb219-6" tabindex="-1"></a>                                 <span class="at">name =</span> <span class="st">&quot;integrated_leiden_clus&quot;</span>,</span>
-<span id="cb219-7"><a href="multi-omics-integration.html#cb219-7" tabindex="-1"></a>                                 <span class="at">resolution =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="multi-omics-integration.html#cb220-1" tabindex="-1"></a>visium_tonsil <span class="ot">&lt;-</span> <span class="fu">doLeidenCluster</span>(<span class="at">gobject =</span> visium_tonsil,</span>
+<span id="cb220-2"><a href="multi-omics-integration.html#cb220-2" tabindex="-1"></a>                                 <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
+<span id="cb220-3"><a href="multi-omics-integration.html#cb220-3" tabindex="-1"></a>                                 <span class="at">feat_type =</span> <span class="st">&quot;rna&quot;</span>,</span>
+<span id="cb220-4"><a href="multi-omics-integration.html#cb220-4" tabindex="-1"></a>                                 <span class="at">nn_network_to_use =</span> <span class="st">&quot;kNN&quot;</span>,</span>
+<span id="cb220-5"><a href="multi-omics-integration.html#cb220-5" tabindex="-1"></a>                                 <span class="at">network_name =</span> <span class="st">&quot;integrated_kNN&quot;</span>,</span>
+<span id="cb220-6"><a href="multi-omics-integration.html#cb220-6" tabindex="-1"></a>                                 <span class="at">name =</span> <span class="st">&quot;integrated_leiden_clus&quot;</span>,</span>
+<span id="cb220-7"><a href="multi-omics-integration.html#cb220-7" tabindex="-1"></a>                                 <span class="at">resolution =</span> <span class="dv">1</span>)</span></code></pre></div>
 <ul>
 <li>Visualize the integrated UMAP</li>
 </ul>
 <p>Plot the integrated UMAP and color the spots using the integrated Leiden clusters.</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="multi-omics-integration.html#cb220-1" tabindex="-1"></a><span class="fu">plotUMAP</span>(<span class="at">gobject =</span> visium_tonsil,</span>
-<span id="cb220-2"><a href="multi-omics-integration.html#cb220-2" tabindex="-1"></a>         <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
-<span id="cb220-3"><a href="multi-omics-integration.html#cb220-3" tabindex="-1"></a>         <span class="at">feat_type =</span> <span class="st">&quot;rna&quot;</span>,</span>
-<span id="cb220-4"><a href="multi-omics-integration.html#cb220-4" tabindex="-1"></a>         <span class="at">cell_color =</span> <span class="st">&quot;integrated_leiden_clus&quot;</span>,</span>
-<span id="cb220-5"><a href="multi-omics-integration.html#cb220-5" tabindex="-1"></a>         <span class="at">dim_reduction_name =</span> <span class="st">&quot;integrated.umap&quot;</span>,</span>
-<span id="cb220-6"><a href="multi-omics-integration.html#cb220-6" tabindex="-1"></a>         <span class="at">point_size =</span> <span class="dv">2</span>,</span>
-<span id="cb220-7"><a href="multi-omics-integration.html#cb220-7" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">&quot;Integrated UMAP using Integrated Leiden clusters&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="multi-omics-integration.html#cb221-1" tabindex="-1"></a><span class="fu">plotUMAP</span>(<span class="at">gobject =</span> visium_tonsil,</span>
+<span id="cb221-2"><a href="multi-omics-integration.html#cb221-2" tabindex="-1"></a>         <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
+<span id="cb221-3"><a href="multi-omics-integration.html#cb221-3" tabindex="-1"></a>         <span class="at">feat_type =</span> <span class="st">&quot;rna&quot;</span>,</span>
+<span id="cb221-4"><a href="multi-omics-integration.html#cb221-4" tabindex="-1"></a>         <span class="at">cell_color =</span> <span class="st">&quot;integrated_leiden_clus&quot;</span>,</span>
+<span id="cb221-5"><a href="multi-omics-integration.html#cb221-5" tabindex="-1"></a>         <span class="at">dim_reduction_name =</span> <span class="st">&quot;integrated.umap&quot;</span>,</span>
+<span id="cb221-6"><a href="multi-omics-integration.html#cb221-6" tabindex="-1"></a>         <span class="at">point_size =</span> <span class="dv">2</span>,</span>
+<span id="cb221-7"><a href="multi-omics-integration.html#cb221-7" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">&quot;Integrated UMAP using Integrated Leiden clusters&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-311"></span>
 <img src="img/03_session3/5-UMAP.png" alt="Integrated UMAP. Color represents the integrated Leiden clusters." width="80%" />
 <p class="caption">
@@ -825,13 +825,13 @@ Figure 14.8: Integrated UMAP. Color represents the integrated Leiden clusters.
 <li>Visualize spatial plot with integrated clusters</li>
 </ul>
 <p>Plot the spatial distribution of the integrated Leiden clusters.</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="multi-omics-integration.html#cb221-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(visium_tonsil,</span>
-<span id="cb221-2"><a href="multi-omics-integration.html#cb221-2" tabindex="-1"></a>           <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
-<span id="cb221-3"><a href="multi-omics-integration.html#cb221-3" tabindex="-1"></a>           <span class="at">feat_type =</span> <span class="st">&quot;rna&quot;</span>,</span>
-<span id="cb221-4"><a href="multi-omics-integration.html#cb221-4" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;integrated_leiden_clus&quot;</span>,</span>
-<span id="cb221-5"><a href="multi-omics-integration.html#cb221-5" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="dv">3</span>,</span>
-<span id="cb221-6"><a href="multi-omics-integration.html#cb221-6" tabindex="-1"></a>           <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb221-7"><a href="multi-omics-integration.html#cb221-7" tabindex="-1"></a>           <span class="at">title =</span> <span class="st">&quot;Integrated Leiden clustering&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="multi-omics-integration.html#cb222-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(visium_tonsil,</span>
+<span id="cb222-2"><a href="multi-omics-integration.html#cb222-2" tabindex="-1"></a>           <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
+<span id="cb222-3"><a href="multi-omics-integration.html#cb222-3" tabindex="-1"></a>           <span class="at">feat_type =</span> <span class="st">&quot;rna&quot;</span>,</span>
+<span id="cb222-4"><a href="multi-omics-integration.html#cb222-4" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;integrated_leiden_clus&quot;</span>,</span>
+<span id="cb222-5"><a href="multi-omics-integration.html#cb222-5" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="dv">3</span>,</span>
+<span id="cb222-6"><a href="multi-omics-integration.html#cb222-6" tabindex="-1"></a>           <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb222-7"><a href="multi-omics-integration.html#cb222-7" tabindex="-1"></a>           <span class="at">title =</span> <span class="st">&quot;Integrated Leiden clustering&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-313"></span>
 <img src="img/03_session3/6-spatPlot2D.png" alt="Spatial distribution of the integrated Leiden clusters." width="80%" />
 <p class="caption">
@@ -841,85 +841,85 @@ Figure 14.9: Spatial distribution of the integrated Leiden clusters.
 </div>
 <div id="session-info-2" class="section level2 hasAnchor" number="14.9">
 <h2><span class="header-section-number">14.9</span> Session info<a href="multi-omics-integration.html#session-info-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="multi-omics-integration.html#cb222-1" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="multi-omics-integration.html#cb223-1" tabindex="-1"></a>R version <span class="dv">4</span>.<span class="fl">4.1</span> (<span class="dv">2024-06-14</span>)</span>
-<span id="cb223-2"><a href="multi-omics-integration.html#cb223-2" tabindex="-1"></a>Platform<span class="sc">:</span> aarch64<span class="sc">-</span>apple<span class="sc">-</span>darwin20</span>
-<span id="cb223-3"><a href="multi-omics-integration.html#cb223-3" tabindex="-1"></a>Running under<span class="sc">:</span> macOS Sonoma <span class="fl">14.5</span></span>
-<span id="cb223-4"><a href="multi-omics-integration.html#cb223-4" tabindex="-1"></a></span>
-<span id="cb223-5"><a href="multi-omics-integration.html#cb223-5" tabindex="-1"></a>Matrix products<span class="sc">:</span> default</span>
-<span id="cb223-6"><a href="multi-omics-integration.html#cb223-6" tabindex="-1"></a>BLAS<span class="sc">:</span>   <span class="er">/</span>System<span class="sc">/</span>Library<span class="sc">/</span>Frameworks<span class="sc">/</span>Accelerate.framework<span class="sc">/</span>Versions<span class="sc">/</span>A<span class="sc">/</span>Frameworks<span class="sc">/</span>vecLib.framework<span class="sc">/</span>Versions<span class="sc">/</span>A<span class="sc">/</span>libBLAS.dylib </span>
-<span id="cb223-7"><a href="multi-omics-integration.html#cb223-7" tabindex="-1"></a>LAPACK<span class="sc">:</span> <span class="er">/</span>Library<span class="sc">/</span>Frameworks<span class="sc">/</span>R.framework<span class="sc">/</span>Versions<span class="sc">/</span><span class="fl">4.4</span><span class="sc">-</span>arm64<span class="sc">/</span>Resources<span class="sc">/</span>lib<span class="sc">/</span>libRlapack.dylib;  LAPACK version <span class="dv">3</span>.<span class="fl">12.0</span></span>
-<span id="cb223-8"><a href="multi-omics-integration.html#cb223-8" tabindex="-1"></a></span>
-<span id="cb223-9"><a href="multi-omics-integration.html#cb223-9" tabindex="-1"></a>locale<span class="sc">:</span></span>
-<span id="cb223-10"><a href="multi-omics-integration.html#cb223-10" tabindex="-1"></a>[<span class="dv">1</span>] en_US.UTF<span class="dv">-8</span><span class="sc">/</span>en_US.UTF<span class="dv">-8</span><span class="sc">/</span>en_US.UTF<span class="dv">-8</span><span class="sc">/</span>C<span class="sc">/</span>en_US.UTF<span class="dv">-8</span><span class="sc">/</span>en_US.UTF<span class="dv">-8</span></span>
-<span id="cb223-11"><a href="multi-omics-integration.html#cb223-11" tabindex="-1"></a></span>
-<span id="cb223-12"><a href="multi-omics-integration.html#cb223-12" tabindex="-1"></a>time zone<span class="sc">:</span> America<span class="sc">/</span>New_York</span>
-<span id="cb223-13"><a href="multi-omics-integration.html#cb223-13" tabindex="-1"></a>tzcode source<span class="sc">:</span> internal</span>
-<span id="cb223-14"><a href="multi-omics-integration.html#cb223-14" tabindex="-1"></a></span>
-<span id="cb223-15"><a href="multi-omics-integration.html#cb223-15" tabindex="-1"></a>attached base packages<span class="sc">:</span></span>
-<span id="cb223-16"><a href="multi-omics-integration.html#cb223-16" tabindex="-1"></a>[<span class="dv">1</span>] stats     graphics  grDevices utils     datasets  methods   base     </span>
-<span id="cb223-17"><a href="multi-omics-integration.html#cb223-17" tabindex="-1"></a></span>
-<span id="cb223-18"><a href="multi-omics-integration.html#cb223-18" tabindex="-1"></a>other attached packages<span class="sc">:</span></span>
-<span id="cb223-19"><a href="multi-omics-integration.html#cb223-19" tabindex="-1"></a>[<span class="dv">1</span>] Giotto_4.<span class="fl">1.0</span>      GiottoClass_0.<span class="fl">3.3</span></span>
-<span id="cb223-20"><a href="multi-omics-integration.html#cb223-20" tabindex="-1"></a></span>
-<span id="cb223-21"><a href="multi-omics-integration.html#cb223-21" tabindex="-1"></a>loaded via a <span class="fu">namespace</span> (and not attached)<span class="sc">:</span></span>
-<span id="cb223-22"><a href="multi-omics-integration.html#cb223-22" tabindex="-1"></a>  [<span class="dv">1</span>] colorRamp2_0.<span class="fl">1.0</span>            deldir_2<span class="fl">.0</span><span class="dv">-4</span>               </span>
-<span id="cb223-23"><a href="multi-omics-integration.html#cb223-23" tabindex="-1"></a>  [<span class="dv">3</span>] rlang_1.<span class="fl">1.4</span>                 magrittr_2.<span class="fl">0.3</span>             </span>
-<span id="cb223-24"><a href="multi-omics-integration.html#cb223-24" tabindex="-1"></a>  [<span class="dv">5</span>] RcppAnnoy_0.<span class="fl">0.22</span>            GiottoUtils_0.<span class="fl">1.10</span>         </span>
-<span id="cb223-25"><a href="multi-omics-integration.html#cb223-25" tabindex="-1"></a>  [<span class="dv">7</span>] matrixStats_1.<span class="fl">3.0</span>           compiler_4.<span class="fl">4.1</span>             </span>
-<span id="cb223-26"><a href="multi-omics-integration.html#cb223-26" tabindex="-1"></a>  [<span class="dv">9</span>] png_0<span class="fl">.1</span><span class="dv">-8</span>                   systemfonts_1.<span class="fl">1.0</span>          </span>
-<span id="cb223-27"><a href="multi-omics-integration.html#cb223-27" tabindex="-1"></a> [<span class="dv">11</span>] vctrs_0.<span class="fl">6.5</span>                 reshape2_1.<span class="fl">4.4</span>             </span>
-<span id="cb223-28"><a href="multi-omics-integration.html#cb223-28" tabindex="-1"></a> [<span class="dv">13</span>] stringr_1.<span class="fl">5.1</span>               pkgconfig_2.<span class="fl">0.3</span>            </span>
-<span id="cb223-29"><a href="multi-omics-integration.html#cb223-29" tabindex="-1"></a> [<span class="dv">15</span>] SpatialExperiment_1.<span class="fl">14.0</span>    crayon_1.<span class="fl">5.3</span>               </span>
-<span id="cb223-30"><a href="multi-omics-integration.html#cb223-30" tabindex="-1"></a> [<span class="dv">17</span>] fastmap_1.<span class="fl">2.0</span>               backports_1.<span class="fl">5.0</span>            </span>
-<span id="cb223-31"><a href="multi-omics-integration.html#cb223-31" tabindex="-1"></a> [<span class="dv">19</span>] magick_2.<span class="fl">8.4</span>                XVector_0.<span class="fl">44.0</span>             </span>
-<span id="cb223-32"><a href="multi-omics-integration.html#cb223-32" tabindex="-1"></a> [<span class="dv">21</span>] labeling_0.<span class="fl">4.3</span>              utf8_1.<span class="fl">2.4</span>                 </span>
-<span id="cb223-33"><a href="multi-omics-integration.html#cb223-33" tabindex="-1"></a> [<span class="dv">23</span>] rmarkdown_2<span class="fl">.27</span>              UCSC.utils_1.<span class="fl">0.0</span>           </span>
-<span id="cb223-34"><a href="multi-omics-integration.html#cb223-34" tabindex="-1"></a> [<span class="dv">25</span>] ragg_1.<span class="fl">3.2</span>                  purrr_1.<span class="fl">0.2</span>                </span>
-<span id="cb223-35"><a href="multi-omics-integration.html#cb223-35" tabindex="-1"></a> [<span class="dv">27</span>] xfun_0<span class="fl">.46</span>                   beachmat_2.<span class="fl">20.0</span>            </span>
-<span id="cb223-36"><a href="multi-omics-integration.html#cb223-36" tabindex="-1"></a> [<span class="dv">29</span>] zlibbioc_1.<span class="fl">50.0</span>             GenomeInfoDb_1.<span class="fl">40.1</span>        </span>
-<span id="cb223-37"><a href="multi-omics-integration.html#cb223-37" tabindex="-1"></a> [<span class="dv">31</span>] jsonlite_1.<span class="fl">8.8</span>              DelayedArray_0.<span class="fl">30.1</span>        </span>
-<span id="cb223-38"><a href="multi-omics-integration.html#cb223-38" tabindex="-1"></a> [<span class="dv">33</span>] BiocParallel_1.<span class="fl">38.0</span>         terra_1<span class="fl">.7</span><span class="dv">-78</span>               </span>
-<span id="cb223-39"><a href="multi-omics-integration.html#cb223-39" tabindex="-1"></a> [<span class="dv">35</span>] irlba_2.<span class="dv">3</span>.<span class="fl">5.1</span>               parallel_4.<span class="fl">4.1</span>             </span>
-<span id="cb223-40"><a href="multi-omics-integration.html#cb223-40" tabindex="-1"></a> [<span class="dv">37</span>] R6_2.<span class="fl">5.1</span>                    stringi_1.<span class="fl">8.4</span>              </span>
-<span id="cb223-41"><a href="multi-omics-integration.html#cb223-41" tabindex="-1"></a> [<span class="dv">39</span>] RColorBrewer_1<span class="fl">.1</span><span class="dv">-3</span>          reticulate_1.<span class="fl">38.0</span>          </span>
-<span id="cb223-42"><a href="multi-omics-integration.html#cb223-42" tabindex="-1"></a> [<span class="dv">41</span>] parallelly_1.<span class="fl">37.1</span>           GenomicRanges_1.<span class="fl">56.1</span>       </span>
-<span id="cb223-43"><a href="multi-omics-integration.html#cb223-43" tabindex="-1"></a> [<span class="dv">43</span>] scattermore_1<span class="fl">.2</span>             Rcpp_1.<span class="fl">0.13</span>                </span>
-<span id="cb223-44"><a href="multi-omics-integration.html#cb223-44" tabindex="-1"></a> [<span class="dv">45</span>] bookdown_0<span class="fl">.40</span>               SummarizedExperiment_1.<span class="fl">34.0</span></span>
-<span id="cb223-45"><a href="multi-omics-integration.html#cb223-45" tabindex="-1"></a> [<span class="dv">47</span>] knitr_1<span class="fl">.48</span>                  future.apply_1.<span class="fl">11.2</span>        </span>
-<span id="cb223-46"><a href="multi-omics-integration.html#cb223-46" tabindex="-1"></a> [<span class="dv">49</span>] R.utils_2.<span class="fl">12.3</span>              IRanges_2.<span class="fl">38.1</span>             </span>
-<span id="cb223-47"><a href="multi-omics-integration.html#cb223-47" tabindex="-1"></a> [<span class="dv">51</span>] Matrix_1<span class="fl">.7</span><span class="dv">-0</span>                igraph_2.<span class="fl">0.3</span>               </span>
-<span id="cb223-48"><a href="multi-omics-integration.html#cb223-48" tabindex="-1"></a> [<span class="dv">53</span>] tidyselect_1.<span class="fl">2.1</span>            rstudioapi_0.<span class="fl">16.0</span>          </span>
-<span id="cb223-49"><a href="multi-omics-integration.html#cb223-49" tabindex="-1"></a> [<span class="dv">55</span>] abind_1<span class="fl">.4</span><span class="dv">-5</span>                 yaml_2.<span class="fl">3.9</span>                 </span>
-<span id="cb223-50"><a href="multi-omics-integration.html#cb223-50" tabindex="-1"></a> [<span class="dv">57</span>] codetools_0<span class="fl">.2</span><span class="dv">-20</span>            listenv_0.<span class="fl">9.1</span>              </span>
-<span id="cb223-51"><a href="multi-omics-integration.html#cb223-51" tabindex="-1"></a> [<span class="dv">59</span>] lattice_0<span class="fl">.22</span><span class="dv">-6</span>              tibble_3.<span class="fl">2.1</span>               </span>
-<span id="cb223-52"><a href="multi-omics-integration.html#cb223-52" tabindex="-1"></a> [<span class="dv">61</span>] plyr_1.<span class="fl">8.9</span>                  Biobase_2.<span class="fl">64.0</span>             </span>
-<span id="cb223-53"><a href="multi-omics-integration.html#cb223-53" tabindex="-1"></a> [<span class="dv">63</span>] withr_3.<span class="fl">0.0</span>                 Rtsne_0<span class="fl">.17</span>                 </span>
-<span id="cb223-54"><a href="multi-omics-integration.html#cb223-54" tabindex="-1"></a> [<span class="dv">65</span>] evaluate_0.<span class="fl">24.0</span>             future_1.<span class="fl">33.2</span>              </span>
-<span id="cb223-55"><a href="multi-omics-integration.html#cb223-55" tabindex="-1"></a> [<span class="dv">67</span>] pillar_1.<span class="fl">9.0</span>                MatrixGenerics_1.<span class="fl">16.0</span>      </span>
-<span id="cb223-56"><a href="multi-omics-integration.html#cb223-56" tabindex="-1"></a> [<span class="dv">69</span>] checkmate_2.<span class="fl">3.1</span>             stats4_4.<span class="fl">4.1</span>               </span>
-<span id="cb223-57"><a href="multi-omics-integration.html#cb223-57" tabindex="-1"></a> [<span class="dv">71</span>] plotly_4.<span class="fl">10.4</span>               generics_0.<span class="fl">1.3</span>             </span>
-<span id="cb223-58"><a href="multi-omics-integration.html#cb223-58" tabindex="-1"></a> [<span class="dv">73</span>] dbscan_1<span class="fl">.2</span><span class="dv">-0</span>                sp_2<span class="fl">.1</span><span class="dv">-4</span>                   </span>
-<span id="cb223-59"><a href="multi-omics-integration.html#cb223-59" tabindex="-1"></a> [<span class="dv">75</span>] S4Vectors_0.<span class="fl">42.1</span>            ggplot2_3.<span class="fl">5.1</span>              </span>
-<span id="cb223-60"><a href="multi-omics-integration.html#cb223-60" tabindex="-1"></a> [<span class="dv">77</span>] munsell_0.<span class="fl">5.1</span>               scales_1.<span class="fl">3.0</span>               </span>
-<span id="cb223-61"><a href="multi-omics-integration.html#cb223-61" tabindex="-1"></a> [<span class="dv">79</span>] globals_0.<span class="fl">16.3</span>              gtools_3.<span class="fl">9.5</span>               </span>
-<span id="cb223-62"><a href="multi-omics-integration.html#cb223-62" tabindex="-1"></a> [<span class="dv">81</span>] glue_1.<span class="fl">7.0</span>                  lazyeval_0.<span class="fl">2.2</span>             </span>
-<span id="cb223-63"><a href="multi-omics-integration.html#cb223-63" tabindex="-1"></a> [<span class="dv">83</span>] tools_4.<span class="fl">4.1</span>                 GiottoVisuals_0.<span class="fl">2.4</span>        </span>
-<span id="cb223-64"><a href="multi-omics-integration.html#cb223-64" tabindex="-1"></a> [<span class="dv">85</span>] data.table_1.<span class="fl">15.4</span>           ScaledMatrix_1.<span class="fl">12.0</span>        </span>
-<span id="cb223-65"><a href="multi-omics-integration.html#cb223-65" tabindex="-1"></a> [<span class="dv">87</span>] cowplot_1.<span class="fl">1.3</span>               grid_4.<span class="fl">4.1</span>                 </span>
-<span id="cb223-66"><a href="multi-omics-integration.html#cb223-66" tabindex="-1"></a> [<span class="dv">89</span>] tidyr_1.<span class="fl">3.1</span>                 colorspace_2<span class="fl">.1</span><span class="dv">-0</span>           </span>
-<span id="cb223-67"><a href="multi-omics-integration.html#cb223-67" tabindex="-1"></a> [<span class="dv">91</span>] SingleCellExperiment_1.<span class="fl">26.0</span> GenomeInfoDbData_1.<span class="fl">2.12</span>    </span>
-<span id="cb223-68"><a href="multi-omics-integration.html#cb223-68" tabindex="-1"></a> [<span class="dv">93</span>] BiocSingular_1.<span class="fl">20.0</span>         rsvd_1.<span class="fl">0.5</span>                 </span>
-<span id="cb223-69"><a href="multi-omics-integration.html#cb223-69" tabindex="-1"></a> [<span class="dv">95</span>] cli_3.<span class="fl">6.3</span>                   textshaping_0.<span class="fl">4.0</span>          </span>
-<span id="cb223-70"><a href="multi-omics-integration.html#cb223-70" tabindex="-1"></a> [<span class="dv">97</span>] fansi_1.<span class="fl">0.6</span>                 S4Arrays_1.<span class="fl">4.1</span>             </span>
-<span id="cb223-71"><a href="multi-omics-integration.html#cb223-71" tabindex="-1"></a> [<span class="dv">99</span>] viridisLite_0.<span class="fl">4.2</span>           dplyr_1.<span class="fl">1.4</span>                </span>
-<span id="cb223-72"><a href="multi-omics-integration.html#cb223-72" tabindex="-1"></a>[<span class="dv">101</span>] uwot_0.<span class="fl">2.2</span>                  gtable_0.<span class="fl">3.5</span>               </span>
-<span id="cb223-73"><a href="multi-omics-integration.html#cb223-73" tabindex="-1"></a>[<span class="dv">103</span>] R.methodsS3_1.<span class="fl">8.2</span>           digest_0.<span class="fl">6.36</span>              </span>
-<span id="cb223-74"><a href="multi-omics-integration.html#cb223-74" tabindex="-1"></a>[<span class="dv">105</span>] BiocGenerics_0.<span class="fl">50.0</span>         SparseArray_1.<span class="fl">4.8</span>          </span>
-<span id="cb223-75"><a href="multi-omics-integration.html#cb223-75" tabindex="-1"></a>[<span class="dv">107</span>] ggrepel_0.<span class="fl">9.5</span>               farver_2.<span class="fl">1.2</span>               </span>
-<span id="cb223-76"><a href="multi-omics-integration.html#cb223-76" tabindex="-1"></a>[<span class="dv">109</span>] rjson_0.<span class="fl">2.21</span>                htmlwidgets_1.<span class="fl">6.4</span>          </span>
-<span id="cb223-77"><a href="multi-omics-integration.html#cb223-77" tabindex="-1"></a>[<span class="dv">111</span>] htmltools_0.<span class="dv">5</span>.<span class="fl">8.1</span>           R.oo_1.<span class="fl">26.0</span>                </span>
-<span id="cb223-78"><a href="multi-omics-integration.html#cb223-78" tabindex="-1"></a>[<span class="dv">113</span>] lifecycle_1.<span class="fl">0.4</span>             httr_1.<span class="fl">4.7</span>  </span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="multi-omics-integration.html#cb223-1" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="multi-omics-integration.html#cb224-1" tabindex="-1"></a>R version <span class="dv">4</span>.<span class="fl">4.1</span> (<span class="dv">2024-06-14</span>)</span>
+<span id="cb224-2"><a href="multi-omics-integration.html#cb224-2" tabindex="-1"></a>Platform<span class="sc">:</span> aarch64<span class="sc">-</span>apple<span class="sc">-</span>darwin20</span>
+<span id="cb224-3"><a href="multi-omics-integration.html#cb224-3" tabindex="-1"></a>Running under<span class="sc">:</span> macOS Sonoma <span class="fl">14.5</span></span>
+<span id="cb224-4"><a href="multi-omics-integration.html#cb224-4" tabindex="-1"></a></span>
+<span id="cb224-5"><a href="multi-omics-integration.html#cb224-5" tabindex="-1"></a>Matrix products<span class="sc">:</span> default</span>
+<span id="cb224-6"><a href="multi-omics-integration.html#cb224-6" tabindex="-1"></a>BLAS<span class="sc">:</span>   <span class="er">/</span>System<span class="sc">/</span>Library<span class="sc">/</span>Frameworks<span class="sc">/</span>Accelerate.framework<span class="sc">/</span>Versions<span class="sc">/</span>A<span class="sc">/</span>Frameworks<span class="sc">/</span>vecLib.framework<span class="sc">/</span>Versions<span class="sc">/</span>A<span class="sc">/</span>libBLAS.dylib </span>
+<span id="cb224-7"><a href="multi-omics-integration.html#cb224-7" tabindex="-1"></a>LAPACK<span class="sc">:</span> <span class="er">/</span>Library<span class="sc">/</span>Frameworks<span class="sc">/</span>R.framework<span class="sc">/</span>Versions<span class="sc">/</span><span class="fl">4.4</span><span class="sc">-</span>arm64<span class="sc">/</span>Resources<span class="sc">/</span>lib<span class="sc">/</span>libRlapack.dylib;  LAPACK version <span class="dv">3</span>.<span class="fl">12.0</span></span>
+<span id="cb224-8"><a href="multi-omics-integration.html#cb224-8" tabindex="-1"></a></span>
+<span id="cb224-9"><a href="multi-omics-integration.html#cb224-9" tabindex="-1"></a>locale<span class="sc">:</span></span>
+<span id="cb224-10"><a href="multi-omics-integration.html#cb224-10" tabindex="-1"></a>[<span class="dv">1</span>] en_US.UTF<span class="dv">-8</span><span class="sc">/</span>en_US.UTF<span class="dv">-8</span><span class="sc">/</span>en_US.UTF<span class="dv">-8</span><span class="sc">/</span>C<span class="sc">/</span>en_US.UTF<span class="dv">-8</span><span class="sc">/</span>en_US.UTF<span class="dv">-8</span></span>
+<span id="cb224-11"><a href="multi-omics-integration.html#cb224-11" tabindex="-1"></a></span>
+<span id="cb224-12"><a href="multi-omics-integration.html#cb224-12" tabindex="-1"></a>time zone<span class="sc">:</span> America<span class="sc">/</span>New_York</span>
+<span id="cb224-13"><a href="multi-omics-integration.html#cb224-13" tabindex="-1"></a>tzcode source<span class="sc">:</span> internal</span>
+<span id="cb224-14"><a href="multi-omics-integration.html#cb224-14" tabindex="-1"></a></span>
+<span id="cb224-15"><a href="multi-omics-integration.html#cb224-15" tabindex="-1"></a>attached base packages<span class="sc">:</span></span>
+<span id="cb224-16"><a href="multi-omics-integration.html#cb224-16" tabindex="-1"></a>[<span class="dv">1</span>] stats     graphics  grDevices utils     datasets  methods   base     </span>
+<span id="cb224-17"><a href="multi-omics-integration.html#cb224-17" tabindex="-1"></a></span>
+<span id="cb224-18"><a href="multi-omics-integration.html#cb224-18" tabindex="-1"></a>other attached packages<span class="sc">:</span></span>
+<span id="cb224-19"><a href="multi-omics-integration.html#cb224-19" tabindex="-1"></a>[<span class="dv">1</span>] Giotto_4.<span class="fl">1.0</span>      GiottoClass_0.<span class="fl">3.3</span></span>
+<span id="cb224-20"><a href="multi-omics-integration.html#cb224-20" tabindex="-1"></a></span>
+<span id="cb224-21"><a href="multi-omics-integration.html#cb224-21" tabindex="-1"></a>loaded via a <span class="fu">namespace</span> (and not attached)<span class="sc">:</span></span>
+<span id="cb224-22"><a href="multi-omics-integration.html#cb224-22" tabindex="-1"></a>  [<span class="dv">1</span>] colorRamp2_0.<span class="fl">1.0</span>            deldir_2<span class="fl">.0</span><span class="dv">-4</span>               </span>
+<span id="cb224-23"><a href="multi-omics-integration.html#cb224-23" tabindex="-1"></a>  [<span class="dv">3</span>] rlang_1.<span class="fl">1.4</span>                 magrittr_2.<span class="fl">0.3</span>             </span>
+<span id="cb224-24"><a href="multi-omics-integration.html#cb224-24" tabindex="-1"></a>  [<span class="dv">5</span>] RcppAnnoy_0.<span class="fl">0.22</span>            GiottoUtils_0.<span class="fl">1.10</span>         </span>
+<span id="cb224-25"><a href="multi-omics-integration.html#cb224-25" tabindex="-1"></a>  [<span class="dv">7</span>] matrixStats_1.<span class="fl">3.0</span>           compiler_4.<span class="fl">4.1</span>             </span>
+<span id="cb224-26"><a href="multi-omics-integration.html#cb224-26" tabindex="-1"></a>  [<span class="dv">9</span>] png_0<span class="fl">.1</span><span class="dv">-8</span>                   systemfonts_1.<span class="fl">1.0</span>          </span>
+<span id="cb224-27"><a href="multi-omics-integration.html#cb224-27" tabindex="-1"></a> [<span class="dv">11</span>] vctrs_0.<span class="fl">6.5</span>                 reshape2_1.<span class="fl">4.4</span>             </span>
+<span id="cb224-28"><a href="multi-omics-integration.html#cb224-28" tabindex="-1"></a> [<span class="dv">13</span>] stringr_1.<span class="fl">5.1</span>               pkgconfig_2.<span class="fl">0.3</span>            </span>
+<span id="cb224-29"><a href="multi-omics-integration.html#cb224-29" tabindex="-1"></a> [<span class="dv">15</span>] SpatialExperiment_1.<span class="fl">14.0</span>    crayon_1.<span class="fl">5.3</span>               </span>
+<span id="cb224-30"><a href="multi-omics-integration.html#cb224-30" tabindex="-1"></a> [<span class="dv">17</span>] fastmap_1.<span class="fl">2.0</span>               backports_1.<span class="fl">5.0</span>            </span>
+<span id="cb224-31"><a href="multi-omics-integration.html#cb224-31" tabindex="-1"></a> [<span class="dv">19</span>] magick_2.<span class="fl">8.4</span>                XVector_0.<span class="fl">44.0</span>             </span>
+<span id="cb224-32"><a href="multi-omics-integration.html#cb224-32" tabindex="-1"></a> [<span class="dv">21</span>] labeling_0.<span class="fl">4.3</span>              utf8_1.<span class="fl">2.4</span>                 </span>
+<span id="cb224-33"><a href="multi-omics-integration.html#cb224-33" tabindex="-1"></a> [<span class="dv">23</span>] rmarkdown_2<span class="fl">.27</span>              UCSC.utils_1.<span class="fl">0.0</span>           </span>
+<span id="cb224-34"><a href="multi-omics-integration.html#cb224-34" tabindex="-1"></a> [<span class="dv">25</span>] ragg_1.<span class="fl">3.2</span>                  purrr_1.<span class="fl">0.2</span>                </span>
+<span id="cb224-35"><a href="multi-omics-integration.html#cb224-35" tabindex="-1"></a> [<span class="dv">27</span>] xfun_0<span class="fl">.46</span>                   beachmat_2.<span class="fl">20.0</span>            </span>
+<span id="cb224-36"><a href="multi-omics-integration.html#cb224-36" tabindex="-1"></a> [<span class="dv">29</span>] zlibbioc_1.<span class="fl">50.0</span>             GenomeInfoDb_1.<span class="fl">40.1</span>        </span>
+<span id="cb224-37"><a href="multi-omics-integration.html#cb224-37" tabindex="-1"></a> [<span class="dv">31</span>] jsonlite_1.<span class="fl">8.8</span>              DelayedArray_0.<span class="fl">30.1</span>        </span>
+<span id="cb224-38"><a href="multi-omics-integration.html#cb224-38" tabindex="-1"></a> [<span class="dv">33</span>] BiocParallel_1.<span class="fl">38.0</span>         terra_1<span class="fl">.7</span><span class="dv">-78</span>               </span>
+<span id="cb224-39"><a href="multi-omics-integration.html#cb224-39" tabindex="-1"></a> [<span class="dv">35</span>] irlba_2.<span class="dv">3</span>.<span class="fl">5.1</span>               parallel_4.<span class="fl">4.1</span>             </span>
+<span id="cb224-40"><a href="multi-omics-integration.html#cb224-40" tabindex="-1"></a> [<span class="dv">37</span>] R6_2.<span class="fl">5.1</span>                    stringi_1.<span class="fl">8.4</span>              </span>
+<span id="cb224-41"><a href="multi-omics-integration.html#cb224-41" tabindex="-1"></a> [<span class="dv">39</span>] RColorBrewer_1<span class="fl">.1</span><span class="dv">-3</span>          reticulate_1.<span class="fl">38.0</span>          </span>
+<span id="cb224-42"><a href="multi-omics-integration.html#cb224-42" tabindex="-1"></a> [<span class="dv">41</span>] parallelly_1.<span class="fl">37.1</span>           GenomicRanges_1.<span class="fl">56.1</span>       </span>
+<span id="cb224-43"><a href="multi-omics-integration.html#cb224-43" tabindex="-1"></a> [<span class="dv">43</span>] scattermore_1<span class="fl">.2</span>             Rcpp_1.<span class="fl">0.13</span>                </span>
+<span id="cb224-44"><a href="multi-omics-integration.html#cb224-44" tabindex="-1"></a> [<span class="dv">45</span>] bookdown_0<span class="fl">.40</span>               SummarizedExperiment_1.<span class="fl">34.0</span></span>
+<span id="cb224-45"><a href="multi-omics-integration.html#cb224-45" tabindex="-1"></a> [<span class="dv">47</span>] knitr_1<span class="fl">.48</span>                  future.apply_1.<span class="fl">11.2</span>        </span>
+<span id="cb224-46"><a href="multi-omics-integration.html#cb224-46" tabindex="-1"></a> [<span class="dv">49</span>] R.utils_2.<span class="fl">12.3</span>              IRanges_2.<span class="fl">38.1</span>             </span>
+<span id="cb224-47"><a href="multi-omics-integration.html#cb224-47" tabindex="-1"></a> [<span class="dv">51</span>] Matrix_1<span class="fl">.7</span><span class="dv">-0</span>                igraph_2.<span class="fl">0.3</span>               </span>
+<span id="cb224-48"><a href="multi-omics-integration.html#cb224-48" tabindex="-1"></a> [<span class="dv">53</span>] tidyselect_1.<span class="fl">2.1</span>            rstudioapi_0.<span class="fl">16.0</span>          </span>
+<span id="cb224-49"><a href="multi-omics-integration.html#cb224-49" tabindex="-1"></a> [<span class="dv">55</span>] abind_1<span class="fl">.4</span><span class="dv">-5</span>                 yaml_2.<span class="fl">3.9</span>                 </span>
+<span id="cb224-50"><a href="multi-omics-integration.html#cb224-50" tabindex="-1"></a> [<span class="dv">57</span>] codetools_0<span class="fl">.2</span><span class="dv">-20</span>            listenv_0.<span class="fl">9.1</span>              </span>
+<span id="cb224-51"><a href="multi-omics-integration.html#cb224-51" tabindex="-1"></a> [<span class="dv">59</span>] lattice_0<span class="fl">.22</span><span class="dv">-6</span>              tibble_3.<span class="fl">2.1</span>               </span>
+<span id="cb224-52"><a href="multi-omics-integration.html#cb224-52" tabindex="-1"></a> [<span class="dv">61</span>] plyr_1.<span class="fl">8.9</span>                  Biobase_2.<span class="fl">64.0</span>             </span>
+<span id="cb224-53"><a href="multi-omics-integration.html#cb224-53" tabindex="-1"></a> [<span class="dv">63</span>] withr_3.<span class="fl">0.0</span>                 Rtsne_0<span class="fl">.17</span>                 </span>
+<span id="cb224-54"><a href="multi-omics-integration.html#cb224-54" tabindex="-1"></a> [<span class="dv">65</span>] evaluate_0.<span class="fl">24.0</span>             future_1.<span class="fl">33.2</span>              </span>
+<span id="cb224-55"><a href="multi-omics-integration.html#cb224-55" tabindex="-1"></a> [<span class="dv">67</span>] pillar_1.<span class="fl">9.0</span>                MatrixGenerics_1.<span class="fl">16.0</span>      </span>
+<span id="cb224-56"><a href="multi-omics-integration.html#cb224-56" tabindex="-1"></a> [<span class="dv">69</span>] checkmate_2.<span class="fl">3.1</span>             stats4_4.<span class="fl">4.1</span>               </span>
+<span id="cb224-57"><a href="multi-omics-integration.html#cb224-57" tabindex="-1"></a> [<span class="dv">71</span>] plotly_4.<span class="fl">10.4</span>               generics_0.<span class="fl">1.3</span>             </span>
+<span id="cb224-58"><a href="multi-omics-integration.html#cb224-58" tabindex="-1"></a> [<span class="dv">73</span>] dbscan_1<span class="fl">.2</span><span class="dv">-0</span>                sp_2<span class="fl">.1</span><span class="dv">-4</span>                   </span>
+<span id="cb224-59"><a href="multi-omics-integration.html#cb224-59" tabindex="-1"></a> [<span class="dv">75</span>] S4Vectors_0.<span class="fl">42.1</span>            ggplot2_3.<span class="fl">5.1</span>              </span>
+<span id="cb224-60"><a href="multi-omics-integration.html#cb224-60" tabindex="-1"></a> [<span class="dv">77</span>] munsell_0.<span class="fl">5.1</span>               scales_1.<span class="fl">3.0</span>               </span>
+<span id="cb224-61"><a href="multi-omics-integration.html#cb224-61" tabindex="-1"></a> [<span class="dv">79</span>] globals_0.<span class="fl">16.3</span>              gtools_3.<span class="fl">9.5</span>               </span>
+<span id="cb224-62"><a href="multi-omics-integration.html#cb224-62" tabindex="-1"></a> [<span class="dv">81</span>] glue_1.<span class="fl">7.0</span>                  lazyeval_0.<span class="fl">2.2</span>             </span>
+<span id="cb224-63"><a href="multi-omics-integration.html#cb224-63" tabindex="-1"></a> [<span class="dv">83</span>] tools_4.<span class="fl">4.1</span>                 GiottoVisuals_0.<span class="fl">2.4</span>        </span>
+<span id="cb224-64"><a href="multi-omics-integration.html#cb224-64" tabindex="-1"></a> [<span class="dv">85</span>] data.table_1.<span class="fl">15.4</span>           ScaledMatrix_1.<span class="fl">12.0</span>        </span>
+<span id="cb224-65"><a href="multi-omics-integration.html#cb224-65" tabindex="-1"></a> [<span class="dv">87</span>] cowplot_1.<span class="fl">1.3</span>               grid_4.<span class="fl">4.1</span>                 </span>
+<span id="cb224-66"><a href="multi-omics-integration.html#cb224-66" tabindex="-1"></a> [<span class="dv">89</span>] tidyr_1.<span class="fl">3.1</span>                 colorspace_2<span class="fl">.1</span><span class="dv">-0</span>           </span>
+<span id="cb224-67"><a href="multi-omics-integration.html#cb224-67" tabindex="-1"></a> [<span class="dv">91</span>] SingleCellExperiment_1.<span class="fl">26.0</span> GenomeInfoDbData_1.<span class="fl">2.12</span>    </span>
+<span id="cb224-68"><a href="multi-omics-integration.html#cb224-68" tabindex="-1"></a> [<span class="dv">93</span>] BiocSingular_1.<span class="fl">20.0</span>         rsvd_1.<span class="fl">0.5</span>                 </span>
+<span id="cb224-69"><a href="multi-omics-integration.html#cb224-69" tabindex="-1"></a> [<span class="dv">95</span>] cli_3.<span class="fl">6.3</span>                   textshaping_0.<span class="fl">4.0</span>          </span>
+<span id="cb224-70"><a href="multi-omics-integration.html#cb224-70" tabindex="-1"></a> [<span class="dv">97</span>] fansi_1.<span class="fl">0.6</span>                 S4Arrays_1.<span class="fl">4.1</span>             </span>
+<span id="cb224-71"><a href="multi-omics-integration.html#cb224-71" tabindex="-1"></a> [<span class="dv">99</span>] viridisLite_0.<span class="fl">4.2</span>           dplyr_1.<span class="fl">1.4</span>                </span>
+<span id="cb224-72"><a href="multi-omics-integration.html#cb224-72" tabindex="-1"></a>[<span class="dv">101</span>] uwot_0.<span class="fl">2.2</span>                  gtable_0.<span class="fl">3.5</span>               </span>
+<span id="cb224-73"><a href="multi-omics-integration.html#cb224-73" tabindex="-1"></a>[<span class="dv">103</span>] R.methodsS3_1.<span class="fl">8.2</span>           digest_0.<span class="fl">6.36</span>              </span>
+<span id="cb224-74"><a href="multi-omics-integration.html#cb224-74" tabindex="-1"></a>[<span class="dv">105</span>] BiocGenerics_0.<span class="fl">50.0</span>         SparseArray_1.<span class="fl">4.8</span>          </span>
+<span id="cb224-75"><a href="multi-omics-integration.html#cb224-75" tabindex="-1"></a>[<span class="dv">107</span>] ggrepel_0.<span class="fl">9.5</span>               farver_2.<span class="fl">1.2</span>               </span>
+<span id="cb224-76"><a href="multi-omics-integration.html#cb224-76" tabindex="-1"></a>[<span class="dv">109</span>] rjson_0.<span class="fl">2.21</span>                htmlwidgets_1.<span class="fl">6.4</span>          </span>
+<span id="cb224-77"><a href="multi-omics-integration.html#cb224-77" tabindex="-1"></a>[<span class="dv">111</span>] htmltools_0.<span class="dv">5</span>.<span class="fl">8.1</span>           R.oo_1.<span class="fl">26.0</span>                </span>
+<span id="cb224-78"><a href="multi-omics-integration.html#cb224-78" tabindex="-1"></a>[<span class="dv">113</span>] lifecycle_1.<span class="fl">0.4</span>             httr_1.<span class="fl">4.7</span>  </span></code></pre></div>
 
 </div>
 </div>
