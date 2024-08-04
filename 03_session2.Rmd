@@ -54,15 +54,21 @@ Giotto's spatial subobjects respond to the above functions. The Giotto object it
 ```{r, eval=FALSE}
 # load in data
 library(Giotto)
+
 g <- GiottoData::loadGiottoMini("vizgen")
+
 activeSpatUnit(g) <- "aggregate"
+
 gpoly <- getPolygonInfo(g, return_giottoPolygon = TRUE)
+
 gimg <- getGiottoImage(g)
 ```
 
 ## Examples of the simple transforms with a giottoPolygon
+
 ```{r, eval=FALSE, fig.height=10, fig.width=10}
 rain <- rainbow(nrow(gpoly))
+
 line_width <- 0.3
 
 # par to setup the grid plotting layout
@@ -114,12 +120,16 @@ To perform the linear transform, the xy coordinates just need to be matrix multi
 Due to the nature of matrix multiplication, you can simply multiply the affine matrices with each other and when the xy coordinates are multiplied by the resulting matrix, it performs both linear transforms in the same step.
 
 _Giotto_ provides a utility `affine2d` S4 class that can be created from any affine matrix and responds to the affine transform functions to simplify this accumulation of simple transforms.
+
 Once done, the `affine2d` can be applied to spatial objects in a single step using `affine()` in the same way that you would use a matrix.
+
 ```{r, eval=FALSE}
 # create affine2d
 aff <- affine() # when called without params, this is the same as affine(diag(c(1, 1)))
 ```
+
 The `affine2d` object also has an anchor spatial extent, which is used in calculations of the translation values. `affine2d` generates with a default extent, but a specific one matching that of the object you are manipulating (such as that of the giottoPolygon) should be set.
+
 ```{r, eval=FALSE}
 aff@anchor <- ext(gpoly)
 aff <- initialize(aff)
@@ -137,6 +147,7 @@ aff <- aff |>
     shear(fx = 0.5)
 force(aff)
 ```
+
 ```
 <affine2d>
 anchor    : 6399.24384990901, 6903.24298517207, -5152.38959073896, -4694.86823300896  (xmin, xmax, ymin, ymax)
@@ -146,9 +157,10 @@ scale     : 10, 10  (x, y)
 translate : 963.028150700062, 7071.06781186548  (x, y)
 ```
 
-The show function displays some information about the stored affine transform, including a set of decomposed simple transformations.
+The show() function displays some information about the stored affine transform, including a set of decomposed simple transformations.
 
 You can then plot the affine object and see a projection of the spatial transform where blue is the starting position and red is the end.
+
 ```{r, eval=FALSE}
 plot(aff)
 ```
@@ -158,6 +170,7 @@ knitr::include_graphics("img/03_session2/affplot.png")
 ```
 
 We can then apply the affine transforms to the `giottoPolygon` to see that it indeed in the location and orientation that the projection suggests.
+
 ```{r, eval=FALSE}
 gpoly |> affine(aff) |> 
     plot(main = "affine()", col = rain, lwd = line_width)
@@ -168,9 +181,11 @@ knitr::include_graphics("img/03_session2/affine.png")
 ```
 
 ## Image transforms
+
 Giotto uses `giottoLargeImages` as the core image class which is based on _terra_ `SpatRaster`. Images are not loaded into memory when the object is generated and instead an amount of regular sampling appropriate to the zoom level requested is performed at time of plotting.
 
-`spatShift()` and `rescale()` operations are supported by _terra_ `SpatRaster`, and we inherit those functionalities. `spin()`, `flip()`, `t()`, `shear()`, `affine()` operations will coerce `giottoLargeImage` to `giottoAffineImage`, which is much the same, except it contains an `affine2d` object that tracks spatial manipulations performed, so that they can be applied through `magick::image_distort()` processing after sampled values are pulled into memory. `giottoAffineImage` also has alternative `ext()` and `crop()` methods so that those operations respect both the expected post-affine space and untransformed source image.
+`spatShift()` and `rescale()` operations are supported by _terra_ `SpatRaster`, and we inherit those functionalities. `spin()`, `flip()`, `t()`, `shear()`, `affine()` operations will coerce `giottoLargeImage` to `giottoAffineImage`, which is much the same, except it contains an `affine2d` object that tracks spatial manipulations performed, so that they can be applied through `magick::image_distort()` processing after sampled values are pulled into memory. `giottoAffineImage` also has alternative `ext()` and `crop()` methods so that those operations respect both the expected post-affine space and un-transformed source image.
+
 ```{r, eval=FALSE}
 # affine transform of image info matches with polygon info
 gimg |> affine(aff) |> plot()
