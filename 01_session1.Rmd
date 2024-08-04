@@ -8,9 +8,9 @@ August 5th 2024
 
 [
 ```{r out.height = "460px", out.width='800px', echo=F}
-knitr::include_graphics("https://drieslab.github.io/giotto_workshop_2024/spatial_omics_technologies_GS_workshop.pdf")
+knitr::include_graphics("https://drieslab.github.io/giotto_workshop_2024/pdf/spatial_omics_technologies_GS_workshop.pdf")
 ```
-](https://drieslab.github.io/giotto_workshop_2024/spatial_omics_technologies_GS_workshop.pdf)
+](https://drieslab.github.io/giotto_workshop_2024/pdf/spatial_omics_technologies_GS_workshop.pdf)
 
 <br>   
 
