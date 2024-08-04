@@ -30,6 +30,9 @@ jobs:
           use-public-rspm: true
 
       - uses: r-lib/actions/setup-renv@v2
+        with:
+          extra-packages: |
+            any::pdftools
 
       - name: Cache bookdown results
         uses: actions/cache@v4
