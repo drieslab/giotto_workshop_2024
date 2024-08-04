@@ -86,7 +86,7 @@ devtools::install_version("Matrix", version = "1.6-5")
 ```
 
 If you come across the `function 'as_cholmod_sparse' not provided by package 'Matrix'` error when running Giotto, reinstalling _irlba_ from source may resolve it.
-```{r}
+```{r, eval=FALSE}
 install.packages("irlba", type = "source")
 ```
 
