@@ -796,11 +796,11 @@ cellProximityBarplot(g,
 )
 ```
 
-```{r, out.width="60%", echo=FALSE, fig.cap="Cell-cell interaction enrichments and depletions (left). Number of interactions of each type found (right)"}
+```{r, echo=FALSE, fig.cap="Cell-cell interaction enrichments and depletions (left). Number of interactions of each type found (right)"}
 knitr::include_graphics("img/02_session3/cc_prox.png")
 ```
 
-Most enrichments are self-self interactions, which is expected. However, 6--8, 2--9, and 10--12 stand out as being hetero interactions that are enriched.
+Most enrichments are self-self interactions, which is expected. However, 6--8, 2--9, and 10--12 stand out as being hetero interactions that are enriched. We can take a closer look by plotting these annotation pairs with colors that stand out.
 
 ```{r, eval=FALSE}
 # set up colors
@@ -839,10 +839,12 @@ spatInSituPlotPoints(g,
 )
 ```
 
-```{r, out.width="60%", echo=FALSE, fig.cap="Spatial plot of enriched leiden annotation interactions. 6 to 8 (top), 2 to 9 (middle), 10 to 12 (bottom)"}
+```{r, echo=FALSE, fig.cap="Spatial plot of enriched leiden annotation interactions. 6 to 8 (top), 2 to 9 (middle), 10 to 12 (bottom)"}
 knitr::include_graphics("img/02_session3/cc_enrich.png")
 ```
 
+
+## Interaction changed features
 
 
 
