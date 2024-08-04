@@ -241,12 +241,12 @@ library(Giotto)
 instrs <- createGiottoInstructions(save_dir = file.path(getwd(),'/img/03_session2/'),
                                   save_plot = TRUE,
                                   show_plot = TRUE)
-
+options(timeout = 999999)
 download_dir <-file.path(getwd(),'/data/03_session2/')
 destfile <- file.path(download_dir,'Multimodal_registration.zip')
 if (!dir.exists(download_dir)) { dir.create(download_dir, recursive = TRUE) }
-#download.file('', destfile = destfile)
-#unzip(paste0(download_dir,'/Multimodal_registration.zip'), exdir = download_dir)
+download.file('https://zenodo.org/records/13208139/files/Multimodal_registration.zip?download=1', destfile = destfile)
+unzip(paste0(download_dir,'/Multimodal_registration.zip'), exdir = download_dir)
 Xenium_dir <- paste0(download_dir,'/Multimodal_registration/Xenium/')
 Visium_dir <- paste0(download_dir,'/Multimodal_registration/Visium/')
 ```
