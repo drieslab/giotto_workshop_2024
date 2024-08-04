@@ -195,8 +195,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html"><i class="fa fa-check"></i><b>5</b> Data formatting and Pre-processing</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#data-formats"><i class="fa fa-check"></i><b>5.1</b> Data formats</a></li>
-<li class="chapter" data-level="5.2" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#pre-processing"><i class="fa fa-check"></i><b>5.2</b> Pre-processing</a></li>
+<li class="chapter" data-level="5.1" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#data-formats"><i class="fa fa-check"></i><b>5.1</b> Data formats</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#general-formats"><i class="fa fa-check"></i><b>5.1.1</b> General formats</a></li>
+<li class="chapter" data-level="5.1.2" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#matrix-formats"><i class="fa fa-check"></i><b>5.1.2</b> Matrix formats</a></li>
+<li class="chapter" data-level="5.1.3" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#tabular-formats"><i class="fa fa-check"></i><b>5.1.3</b> Tabular formats</a></li>
+<li class="chapter" data-level="5.1.4" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#spatial-formats"><i class="fa fa-check"></i><b>5.1.4</b> Spatial formats</a></li>
+<li class="chapter" data-level="5.1.5" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#mask-files"><i class="fa fa-check"></i><b>5.1.5</b> Mask files</a></li>
+<li class="chapter" data-level="5.1.6" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#images"><i class="fa fa-check"></i><b>5.1.6</b> images</a></li>
+<li class="chapter" data-level="5.1.7" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#jsonlike-formats"><i class="fa fa-check"></i><b>5.1.7</b> jsonlike formats</a></li>
+<li class="chapter" data-level="5.1.8" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#hierarchical-formats"><i class="fa fa-check"></i><b>5.1.8</b> Hierarchical formats</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#pre-processing"><i class="fa fa-check"></i><b>5.2</b> Pre-processing</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#expression-matrix"><i class="fa fa-check"></i><b>5.2.1</b> Expression matrix</a></li>
+<li class="chapter" data-level="5.2.2" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#spatial-locations"><i class="fa fa-check"></i><b>5.2.2</b> Spatial locations</a></li>
+<li class="chapter" data-level="5.2.3" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#giottopoints"><i class="fa fa-check"></i><b>5.2.3</b> giottoPoints</a></li>
+<li class="chapter" data-level="5.2.4" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#giottopolygon"><i class="fa fa-check"></i><b>5.2.4</b> giottoPolygon</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#subobject-utility-functions"><i class="fa fa-check"></i><b>5.3</b> Subobject utility functions</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#ids"><i class="fa fa-check"></i><b>5.3.1</b> IDs</a></li>
+<li class="chapter" data-level="5.3.2" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#bracket-subsetting-and-extraction"><i class="fa fa-check"></i><b>5.3.2</b> Bracket subsetting and extraction</a></li>
+<li class="chapter" data-level="5.3.3" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#nesting-metadata-generics"><i class="fa fa-check"></i><b>5.3.3</b> Nesting metadata generics</a></li>
+<li class="chapter" data-level="5.3.4" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#appending-to-a-giotto-object"><i class="fa fa-check"></i><b>5.3.4</b> Appending to a giotto object</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html"><i class="fa fa-check"></i><b>6</b> Creating a Giotto object</a>
 <ul>
@@ -522,24 +545,381 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">5</span> Data formatting and Pre-processing<a href="data-formatting-and-pre-processing.html#data-formatting-and-pre-processing" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Jiaji George Chen</p>
 <p>August 5th 2024</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="data-formatting-and-pre-processing.html#cb26-1" tabindex="-1"></a>save_dir <span class="ot">&lt;-</span> <span class="st">&quot;~/Documents/GitHub/giotto_workshop_2024/img/01_session3&quot;</span></span></code></pre></div>
 <div id="data-formats" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> Data formats<a href="data-formatting-and-pre-processing.html#data-formats" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>.h5</p>
-<p>.mtx
-- get10xmatrix
-.parquet
-.csv/.tsv
-- fread
-.json
--jsonlite
-.geojson
-.tiff/.ome.tif</p>
+<p>There are many kinds of outputs and data formats that are currently being used in the spatial omics field for storage and dissemination of information. The following are some that we commonly work with. For Giotto, much of the data wrangling task is to get the information read in out of these formats into R native formats and wrapped as Giotto subobjects.</p>
+<p>The subobjects then enforce formatting and allow the data types to behave as building blocks of the <code>giotto</code> object</p>
+<div id="general-formats" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> General formats<a href="data-formatting-and-pre-processing.html#general-formats" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>.csv</code>/<code>.tsv</code> are standard delimited filetypes, where the values are separated by commas (<code>.csv</code>), tabs (<code>.tsv</code>). These can be read in with a wide array of functions and packages: <code>utils::read.delim()</code>, <code>readr::read_delim()</code>, <code>data.table::fread()</code> etc. They are easy to use, but large files are hard to scan through.</p>
+</div>
+<div id="matrix-formats" class="section level3 hasAnchor" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Matrix formats<a href="data-formatting-and-pre-processing.html#matrix-formats" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>10X regularly provides their cell feature counts matrices in both the <code>.mtx</code> (matrix market or MM) and <code>.h5</code> formats. The MM formats come in a zipped folder. Within, the structure is usually</p>
+<pre><code>├── barcodes.tsv.gz
+├── features.tsv.gz
+└── matrix.mtx.gz</code></pre>
+<p>MM format by itself does not carry dimnames so they are stored in .tsv files for the barcodes (cells/observations) and features.</p>
+<p>barcodes.tsv.gz from a Xenium dataset</p>
+<pre><code>                V1
+            &lt;char&gt;
+     1: aaaadpbp-1
+     2: aaaaficg-1
+     3: aaabbaka-1
+     4: aaabbjoo-1
+     5: aaablchg-1
+    ---           
+162250: ojaaphhh-1
+162251: ojabeldf-1
+162252: ojacfbid-1
+162253: ojacfhhg-1
+162254: ojacpeii-1</code></pre>
+<p>features.tsv.gz from a Xenium dataset</p>
+<pre><code>                          V1                      V2                  V3
+                      &lt;char&gt;                  &lt;char&gt;              &lt;char&gt;
+  1:         ENSG00000121270                  ABCC11     Gene Expression
+  2:         ENSG00000130234                    ACE2     Gene Expression
+  3:         ENSG00000213088                   ACKR1     Gene Expression
+  4:         ENSG00000107796                   ACTA2     Gene Expression
+  5:         ENSG00000163017                   ACTG2     Gene Expression
+ ---                                                                    
+537: UnassignedCodeword_0495 UnassignedCodeword_0495 Unassigned Codeword
+538: UnassignedCodeword_0496 UnassignedCodeword_0496 Unassigned Codeword
+539: UnassignedCodeword_0497 UnassignedCodeword_0497 Unassigned Codeword
+540: UnassignedCodeword_0498 UnassignedCodeword_0498 Unassigned Codeword
+541: UnassignedCodeword_0499 UnassignedCodeword_0499 Unassigned Codeword</code></pre>
+<p>The <code>matrix.mtx</code> file then contains the actual sparse matrix values in triplet format.</p>
+<p>The <code>.h5</code> format is very similar, except that it is a hierarchical format that contains all three of these items in the same file.</p>
+<p><em>Giotto</em> provides <code>get10Xmatrix()</code> and <code>get10Xmatrix_h5()</code> as convenient functions to open these exports and read them in as one or more <em>Matrix</em> sparse representations.</p>
+</div>
+<div id="tabular-formats" class="section level3 hasAnchor" number="5.1.3">
+<h3><span class="header-section-number">5.1.3</span> Tabular formats<a href="data-formatting-and-pre-processing.html#tabular-formats" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>.parquet</code> is a great format for storing large amounts of table information and providing fast access to only portions of the data at a time. 10X is using this format for things such as the table of all transcripts detections in Xenium or the polygons. They can be opened and worked with using <em>arrow</em> and <em>dplyr</em> verbs.</p>
+<p>Currently, <em>giotto</em> extracts information from these files and then converts them to in-memory <code>data.tables</code> or <em>terra</em> <code>SpatVectors</code> depending on what data they contain.</p>
+</div>
+<div id="spatial-formats" class="section level3 hasAnchor" number="5.1.4">
+<h3><span class="header-section-number">5.1.4</span> Spatial formats<a href="data-formatting-and-pre-processing.html#spatial-formats" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>.shp</code> and <code>.geojson</code> are common formats for polygon and point data. They are commonly used as exports from segmentation software such as QuPath. <code>GiottoClass::createGiottoPolygon()</code> and the more specific <code>createGiottoPolygonsFromGeoJSON()</code> can be used for reading these in.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="data-formatting-and-pre-processing.html#cb28-1" tabindex="-1"></a>shp <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata/toy_poly.shp&quot;</span>, <span class="at">package =</span> <span class="st">&quot;GiottoClass&quot;</span>)</span>
+<span id="cb28-2"><a href="data-formatting-and-pre-processing.html#cb28-2" tabindex="-1"></a>gpoly <span class="ot">&lt;-</span> <span class="fu">createGiottoPolygon</span>(shp, <span class="at">name =</span> <span class="st">&quot;test&quot;</span>)</span>
+<span id="cb28-3"><a href="data-formatting-and-pre-processing.html#cb28-3" tabindex="-1"></a><span class="fu">plot</span>(gpoly)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-34"></span>
+<img src="img/01_session3/shp_gpoly.png" alt="Plot of `giottoPolygon` from .shp" width="80%" />
+<p class="caption">
+Figure 5.1: Plot of <code>giottoPolygon</code> from .shp
+</p>
+</div>
+</div>
+<div id="mask-files" class="section level3 hasAnchor" number="5.1.5">
+<h3><span class="header-section-number">5.1.5</span> Mask files<a href="data-formatting-and-pre-processing.html#mask-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>.tif</code> files can be used as mask files where the integer values of the image encode where an annotation is. <code>createGiottoPolygonsFromMask()</code> guesses whether the image is single value or multi value mask. NanoString CosMx is one example of a platform that distributes the polygon information through a series of mask files.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="data-formatting-and-pre-processing.html#cb29-1" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata/toy_mask_multi.tif&quot;</span>, <span class="at">package =</span> <span class="st">&quot;GiottoClass&quot;</span>)</span>
+<span id="cb29-2"><a href="data-formatting-and-pre-processing.html#cb29-2" tabindex="-1"></a><span class="fu">plot</span>(terra<span class="sc">::</span><span class="fu">rast</span>(m), <span class="at">col =</span> grDevices<span class="sc">::</span><span class="fu">hcl.colors</span>(<span class="dv">7</span>))</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-36"></span>
+<img src="img/01_session3/mask.png" alt="Example mask image. Integer values are shown as different colors" width="80%" />
+<p class="caption">
+Figure 5.2: Example mask image. Integer values are shown as different colors
+</p>
+</div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="data-formatting-and-pre-processing.html#cb30-1" tabindex="-1"></a>gp <span class="ot">&lt;-</span> <span class="fu">createGiottoPolygon</span>(</span>
+<span id="cb30-2"><a href="data-formatting-and-pre-processing.html#cb30-2" tabindex="-1"></a>    m,</span>
+<span id="cb30-3"><a href="data-formatting-and-pre-processing.html#cb30-3" tabindex="-1"></a>    <span class="at">flip_vertical =</span> <span class="cn">FALSE</span>, <span class="at">flip_horizontal =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb30-4"><a href="data-formatting-and-pre-processing.html#cb30-4" tabindex="-1"></a>    <span class="at">shift_horizontal_step =</span> <span class="cn">FALSE</span>, <span class="at">shift_vertical_step =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb30-5"><a href="data-formatting-and-pre-processing.html#cb30-5" tabindex="-1"></a>    <span class="at">ID_fmt =</span> <span class="st">&quot;id_test_%03d&quot;</span>,</span>
+<span id="cb30-6"><a href="data-formatting-and-pre-processing.html#cb30-6" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;test&quot;</span></span>
+<span id="cb30-7"><a href="data-formatting-and-pre-processing.html#cb30-7" tabindex="-1"></a>)</span>
+<span id="cb30-8"><a href="data-formatting-and-pre-processing.html#cb30-8" tabindex="-1"></a><span class="fu">force</span>(gp)</span></code></pre></div>
+<pre><code>An object of class giottoPolygon
+spat_unit : &quot;test&quot;
+Spatial Information:
+ class       : SpatVector 
+ geometry    : polygons 
+ dimensions  : 7, 1  (geometries, attributes)
+ extent      : 3, 27, 1.04, 11.96  (xmin, xmax, ymin, ymax)
+ coord. ref. :  
+ centroids   : NULL
+ overlaps    : NULL</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="data-formatting-and-pre-processing.html#cb32-1" tabindex="-1"></a><span class="fu">plot</span>(gp, <span class="at">col =</span> grDevices<span class="sc">::</span><span class="fu">hcl.colors</span>(<span class="dv">7</span>))</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-39"></span>
+<img src="img/01_session3/gpoly.png" alt="`giottoPolygon` from mask image. Identical coloring order implies that encoded IDs have been properly imported." width="80%" />
+<p class="caption">
+Figure 5.3: <code>giottoPolygon</code> from mask image. Identical coloring order implies that encoded IDs have been properly imported.
+</p>
+</div>
+<p>For situations where all pixel values are the same, but not touching indicates different annotations:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="data-formatting-and-pre-processing.html#cb33-1" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata/toy_mask_single.tif&quot;</span>, <span class="at">package =</span> <span class="st">&quot;GiottoClass&quot;</span>)</span>
+<span id="cb33-2"><a href="data-formatting-and-pre-processing.html#cb33-2" tabindex="-1"></a><span class="fu">plot</span>(terra<span class="sc">::</span><span class="fu">rast</span>(m2), <span class="at">col =</span> grDevices<span class="sc">::</span><span class="fu">hcl.colors</span>(<span class="dv">7</span>))</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-41"></span>
+<img src="img/01_session3/mask_s.png" alt="Example mask image with only 1 value" width="80%" />
+<p class="caption">
+Figure 5.4: Example mask image with only 1 value
+</p>
+</div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="data-formatting-and-pre-processing.html#cb34-1" tabindex="-1"></a>gpoly1 <span class="ot">&lt;-</span> <span class="fu">createGiottoPolygonsFromMask</span>(</span>
+<span id="cb34-2"><a href="data-formatting-and-pre-processing.html#cb34-2" tabindex="-1"></a>    m2,</span>
+<span id="cb34-3"><a href="data-formatting-and-pre-processing.html#cb34-3" tabindex="-1"></a>    <span class="at">flip_vertical =</span> <span class="cn">FALSE</span>, <span class="at">flip_horizontal =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb34-4"><a href="data-formatting-and-pre-processing.html#cb34-4" tabindex="-1"></a>    <span class="at">shift_horizontal_step =</span> <span class="cn">FALSE</span>, <span class="at">shift_vertical_step =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb34-5"><a href="data-formatting-and-pre-processing.html#cb34-5" tabindex="-1"></a>    <span class="at">ID_fmt =</span> <span class="st">&quot;id_test_%03d&quot;</span>,</span>
+<span id="cb34-6"><a href="data-formatting-and-pre-processing.html#cb34-6" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;multi_test&quot;</span></span>
+<span id="cb34-7"><a href="data-formatting-and-pre-processing.html#cb34-7" tabindex="-1"></a>)</span>
+<span id="cb34-8"><a href="data-formatting-and-pre-processing.html#cb34-8" tabindex="-1"></a><span class="fu">plot</span>(gpoly1, <span class="at">col =</span> grDevices<span class="sc">::</span><span class="fu">hcl.colors</span>(<span class="dv">7</span>))</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-43"></span>
+<img src="img/01_session3/gpoly_s.png" alt="`giottoPolygon` from single value mask" width="80%" />
+<p class="caption">
+Figure 5.5: <code>giottoPolygon</code> from single value mask
+</p>
+</div>
+</div>
+<div id="images" class="section level3 hasAnchor" number="5.1.6">
+<h3><span class="header-section-number">5.1.6</span> images<a href="data-formatting-and-pre-processing.html#images" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Most images are openable using <code>createGiottoLargeImage()</code> which wraps <code>terra::rast()</code>. This allows compatibility with most common image types. Recent and non-geospatially related image formats are not well supported however. One example is <code>ome.tif</code> which 10X uses for large image exports from Xenium. For these, we use <code>ometif_to_tif()</code> to convert them into normal <code>.tif</code> files using the python <em>tifffile</em> package. <code>ometif_metadata</code> can be used to extract and access the associated <code>ome xml</code> image metadata.</p>
+</div>
+<div id="jsonlike-formats" class="section level3 hasAnchor" number="5.1.7">
+<h3><span class="header-section-number">5.1.7</span> jsonlike formats<a href="data-formatting-and-pre-processing.html#jsonlike-formats" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>jsonlike formats are ones that can be read in with <code>jsonlite::read_json()</code> and then coerced into list-like or tabular structures. 10X uses these <code>.json</code> to report the scalefactors information in Visium datasets. The <code>.xenium</code> file format is also openable as a json-like.</p>
+</div>
+<div id="hierarchical-formats" class="section level3 hasAnchor" number="5.1.8">
+<h3><span class="header-section-number">5.1.8</span> Hierarchical formats<a href="data-formatting-and-pre-processing.html#hierarchical-formats" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are many types of data in spatial-omics analysis. Hierarchical formats afford both a way to organize complex multi-type data and also to store and distribute them. In R, these can be opened with either <em>hdf5r</em> on CRAN or <em>rhdf5</em> on BioConductor. The complex nature of these formats and also the fact that they are just a storage format and not an organizational specification means that what data and how it is stored and represented can often be very different. <code>.gef</code> and <code>.bgef</code> which StereoSeq exports are <code>.hdf5</code>-like formats.</p>
+<p><code>.h5ad</code> is a specific flavor of these file formats where they follow the <em>AnnData</em> framework so that there is more common structure in how datasets are stored. <em>Giotto</em> provides <code>anndataToGiotto()</code> and <code>giottoToAnnData()</code> interoperability functions for interconverting.</p>
+<p><code>.zarr</code> is another hierarchical storage structure, however currently the R-native support is still being developed.</p>
+</div>
 </div>
 <div id="pre-processing" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> Pre-processing<a href="data-formatting-and-pre-processing.html#pre-processing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>necessary additional packages?</p>
+<p>The most common types of raw data needed for a Giotto object are expression matrices, centroids information, spatial feature points, polygons, and expression information. Evaluation of input data and conversion to compatible formats happens inside the <code>create*</code> functions that Giotto exports. There is one of these for each of the subobject classes.</p>
+<div id="expression-matrix" class="section level3 hasAnchor" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Expression matrix<a href="data-formatting-and-pre-processing.html#expression-matrix" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Not much processing is needed for matrices. All that is needed is a data type that is coercible to matrix (or <em>Matrix</em> classes). Dimnames should be added. Columns should be cells or observations. Rows should be features or variables.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="data-formatting-and-pre-processing.html#cb35-1" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">sample</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">10</span>), <span class="fu">rep</span>(<span class="dv">0</span>, <span class="dv">90</span>))), <span class="at">nrow =</span> <span class="dv">10</span>)</span>
+<span id="cb35-2"><a href="data-formatting-and-pre-processing.html#cb35-2" tabindex="-1"></a><span class="fu">rownames</span>(m) <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="st">&quot;feat_%02d&quot;</span>, <span class="fu">seq</span>(<span class="dv">10</span>))</span>
+<span id="cb35-3"><a href="data-formatting-and-pre-processing.html#cb35-3" tabindex="-1"></a><span class="fu">colnames</span>(m) <span class="ot">&lt;-</span> <span class="fu">sprintf</span>(<span class="st">&quot;cell_%02d&quot;</span>, <span class="fu">seq</span>(<span class="dv">10</span>))</span>
+<span id="cb35-4"><a href="data-formatting-and-pre-processing.html#cb35-4" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">createExprObj</span>(m)</span></code></pre></div>
+<pre><code>An object of class exprObj : &quot;test&quot;
+spat_unit : &quot;cell&quot;
+feat_type : &quot;rna&quot;
 
+contains:
+10 x 10 sparse Matrix of class &quot;dgCMatrix&quot;
+                           
+feat_01 . 1 1 1 . . . . . .
+feat_02 . . . . . . . . . .
+feat_03 . . . . . 1 . . . .
+feat_04 1 . . . 1 . . . . .
+
+ ........suppressing 2 rows in show(); maybe adjust options(max.print=, width=)
+                           
+feat_07 . 1 . . . 1 . . . 1
+feat_08 . . . . . . . . . .
+feat_09 . . . . . . . . . .
+feat_10 . . . . . . . . . .
+
+ First four colnames:
+ cell_01 cell_02 cell_03 cell_04 </code></pre>
+</div>
+<div id="spatial-locations" class="section level3 hasAnchor" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Spatial locations<a href="data-formatting-and-pre-processing.html#spatial-locations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For <em>Giotto</em> centroid locations, a tabular data.frame-like format is required. The first non-numeric column found will be set as the cell_ID. The numeric columns will then be kept as coordinates information.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="data-formatting-and-pre-processing.html#cb37-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb37-2"><a href="data-formatting-and-pre-processing.html#cb37-2" tabindex="-1"></a>xy <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb37-3"><a href="data-formatting-and-pre-processing.html#cb37-3" tabindex="-1"></a>    <span class="at">a =</span> <span class="fu">as.character</span>(<span class="fu">seq</span>(<span class="dv">100</span>)), </span>
+<span id="cb37-4"><a href="data-formatting-and-pre-processing.html#cb37-4" tabindex="-1"></a>    <span class="at">b =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>),</span>
+<span id="cb37-5"><a href="data-formatting-and-pre-processing.html#cb37-5" tabindex="-1"></a>    <span class="at">c =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb37-6"><a href="data-formatting-and-pre-processing.html#cb37-6" tabindex="-1"></a>)</span>
+<span id="cb37-7"><a href="data-formatting-and-pre-processing.html#cb37-7" tabindex="-1"></a>sl_xy <span class="ot">&lt;-</span> <span class="fu">createSpatLocsObj</span>(xy)</span>
+<span id="cb37-8"><a href="data-formatting-and-pre-processing.html#cb37-8" tabindex="-1"></a><span class="fu">plot</span>(sl_xy)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-46"></span>
+<img src="img/01_session3/sl_xy.png" alt="Plot of `spatLocsObj` created from xy information" width="60%" />
+<p class="caption">
+Figure 5.6: Plot of <code>spatLocsObj</code> created from xy information
+</p>
+</div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="data-formatting-and-pre-processing.html#cb38-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb38-2"><a href="data-formatting-and-pre-processing.html#cb38-2" tabindex="-1"></a>xyz <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb38-3"><a href="data-formatting-and-pre-processing.html#cb38-3" tabindex="-1"></a>    <span class="at">a =</span> <span class="fu">as.character</span>(<span class="fu">seq</span>(<span class="dv">100</span>)), </span>
+<span id="cb38-4"><a href="data-formatting-and-pre-processing.html#cb38-4" tabindex="-1"></a>    <span class="at">b =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>), </span>
+<span id="cb38-5"><a href="data-formatting-and-pre-processing.html#cb38-5" tabindex="-1"></a>    <span class="at">c =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>), </span>
+<span id="cb38-6"><a href="data-formatting-and-pre-processing.html#cb38-6" tabindex="-1"></a>    <span class="at">d =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb38-7"><a href="data-formatting-and-pre-processing.html#cb38-7" tabindex="-1"></a>)</span>
+<span id="cb38-8"><a href="data-formatting-and-pre-processing.html#cb38-8" tabindex="-1"></a>sl_xyz <span class="ot">&lt;-</span> <span class="fu">createSpatLocsObj</span>(xyz)</span>
+<span id="cb38-9"><a href="data-formatting-and-pre-processing.html#cb38-9" tabindex="-1"></a><span class="fu">plot</span>(sl_xyz)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-48"></span>
+<img src="img/01_session3/sl_xyz.png" alt="Plot of `spatLocsObj` created from xy and z information" width="60%" />
+<p class="caption">
+Figure 5.7: Plot of <code>spatLocsObj</code> created from xy and z information
+</p>
+</div>
+</div>
+<div id="giottopoints" class="section level3 hasAnchor" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> giottoPoints<a href="data-formatting-and-pre-processing.html#giottopoints" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>giottoPoints</code> are very similar. These subobjects wrap a <em>terra</em> <code>SpatVector</code> object and if tabular data is provided, what is needed are x, y, and feature ID. Additional columns are kept as metadata information.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="data-formatting-and-pre-processing.html#cb39-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb39-2"><a href="data-formatting-and-pre-processing.html#cb39-2" tabindex="-1"></a>tx <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb39-3"><a href="data-formatting-and-pre-processing.html#cb39-3" tabindex="-1"></a>    <span class="at">id =</span> <span class="fu">sprintf</span>(<span class="st">&quot;gene_%05d&quot;</span>, <span class="fu">seq</span>(<span class="fl">1e4</span>)),</span>
+<span id="cb39-4"><a href="data-formatting-and-pre-processing.html#cb39-4" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">rnorm</span>(<span class="fl">1e4</span>),</span>
+<span id="cb39-5"><a href="data-formatting-and-pre-processing.html#cb39-5" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="fl">1e4</span>),</span>
+<span id="cb39-6"><a href="data-formatting-and-pre-processing.html#cb39-6" tabindex="-1"></a>    <span class="at">meta =</span> <span class="fu">sprintf</span>(<span class="st">&quot;metadata_%05d&quot;</span>, <span class="fu">seq</span>(<span class="fl">1e4</span>))</span>
+<span id="cb39-7"><a href="data-formatting-and-pre-processing.html#cb39-7" tabindex="-1"></a>)</span>
+<span id="cb39-8"><a href="data-formatting-and-pre-processing.html#cb39-8" tabindex="-1"></a>gpoints <span class="ot">&lt;-</span> <span class="fu">createGiottoPoints</span>(tx)</span>
+<span id="cb39-9"><a href="data-formatting-and-pre-processing.html#cb39-9" tabindex="-1"></a><span class="fu">plot</span>(gpoints, <span class="at">raster =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb39-10"><a href="data-formatting-and-pre-processing.html#cb39-10" tabindex="-1"></a><span class="fu">plot</span>(gpoints, <span class="at">dens =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>An object of class giottoPoints
+feat_type : &quot;rna&quot;
+Feature Information:
+ class       : SpatVector 
+ geometry    : points 
+ dimensions  : 10000, 3  (geometries, attributes)
+ extent      : -3.396064, 3.618107, -4.126628, 3.727291  (xmin, xmax, ymin, ymax)
+ coord. ref. :  
+ names       :    feat_ID           meta feat_ID_uniq
+ type        :      &lt;chr&gt;          &lt;chr&gt;        &lt;int&gt;
+ values      : gene_00001 metadata_00001            1
+               gene_00002 metadata_00002            2
+               gene_00003 metadata_00003            3</code></pre>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-50"></span>
+<img src="img/01_session3/gpoints.png" alt="`giottoPoints` plotted without rasterization (left), with rasterization and colored by density (right)" width="60%" />
+<p class="caption">
+Figure 5.8: <code>giottoPoints</code> plotted without rasterization (left), with rasterization and colored by density (right)
+</p>
+</div>
+</div>
+<div id="giottopolygon" class="section level3 hasAnchor" number="5.2.4">
+<h3><span class="header-section-number">5.2.4</span> giottoPolygon<a href="data-formatting-and-pre-processing.html#giottopolygon" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Polygon information is often provided as a known spatial format or as image masks, which can be read in as shown earlier. However, they can also be provided as numerical values. This is the case for Vizgen MERSCOPE and 10X Xenium outputs, both of which now use <code>.parquet</code> to provide cell barcodes and xy vertices associated with them.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="data-formatting-and-pre-processing.html#cb41-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb41-2"><a href="data-formatting-and-pre-processing.html#cb41-2" tabindex="-1"></a></span>
+<span id="cb41-3"><a href="data-formatting-and-pre-processing.html#cb41-3" tabindex="-1"></a>hex <span class="ot">&lt;-</span> <span class="fu">hexVertices</span>(<span class="at">radius =</span> <span class="dv">1</span>)</span>
+<span id="cb41-4"><a href="data-formatting-and-pre-processing.html#cb41-4" tabindex="-1"></a>spatlocs <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">data.table</span>(</span>
+<span id="cb41-5"><a href="data-formatting-and-pre-processing.html#cb41-5" tabindex="-1"></a>    <span class="at">sdimx =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">20</span>),</span>
+<span id="cb41-6"><a href="data-formatting-and-pre-processing.html#cb41-6" tabindex="-1"></a>    <span class="at">sdimy =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">20</span>),</span>
+<span id="cb41-7"><a href="data-formatting-and-pre-processing.html#cb41-7" tabindex="-1"></a>    <span class="at">cell_ID =</span> <span class="fu">paste0</span>(<span class="st">&quot;spot_&quot;</span>, <span class="fu">seq_len</span>(<span class="dv">10</span>))</span>
+<span id="cb41-8"><a href="data-formatting-and-pre-processing.html#cb41-8" tabindex="-1"></a>)</span>
+<span id="cb41-9"><a href="data-formatting-and-pre-processing.html#cb41-9" tabindex="-1"></a>random_hex <span class="ot">&lt;-</span> <span class="fu">polyStamp</span>(hex, spatlocs)</span>
+<span id="cb41-10"><a href="data-formatting-and-pre-processing.html#cb41-10" tabindex="-1"></a>random_hex_poly <span class="ot">&lt;-</span> <span class="fu">createGiottoPolygon</span>(random_hex)</span>
+<span id="cb41-11"><a href="data-formatting-and-pre-processing.html#cb41-11" tabindex="-1"></a><span class="fu">plot</span>(random_hex_poly)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-52"></span>
+<img src="img/01_session3/vec_gpoly.png" alt="`giottoPolygon` created from ID and vertices" width="60%" />
+<p class="caption">
+Figure 5.9: <code>giottoPolygon</code> created from ID and vertices
+</p>
+</div>
+</div>
+</div>
+<div id="subobject-utility-functions" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Subobject utility functions<a href="data-formatting-and-pre-processing.html#subobject-utility-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <code>giotto</code> object is hierarchically organized first by slots that define their subobject/information type, then usually by which spatial unit and feature type information they contain. Lastly, they have specific object names. This makes the object very manually explorable.</p>
+<p>Most of the subobjects are tagged with metadata information that allow them find their place within this nesting, and there are also common functions that giotto subobjects respond to.</p>
+<div id="ids" class="section level3 hasAnchor" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> IDs<a href="data-formatting-and-pre-processing.html#ids" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>spatIDs</code> and <code>featIDs</code> are used to find the spatial or feature IDs of an object.</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="data-formatting-and-pre-processing.html#cb42-1" tabindex="-1"></a><span class="fu">spatIDs</span>(sl_xy)</span></code></pre></div>
+<pre><code>  [1] &quot;1&quot;   &quot;2&quot;   &quot;3&quot;   &quot;4&quot;   &quot;5&quot;   &quot;6&quot;   &quot;7&quot;   &quot;8&quot;   &quot;9&quot;   &quot;10&quot;  &quot;11&quot;  &quot;12&quot; 
+ [13] &quot;13&quot;  &quot;14&quot;  &quot;15&quot;  &quot;16&quot;  &quot;17&quot;  &quot;18&quot;  &quot;19&quot;  &quot;20&quot;  &quot;21&quot;  &quot;22&quot;  &quot;23&quot;  &quot;24&quot; 
+ [25] &quot;25&quot;  &quot;26&quot;  &quot;27&quot;  &quot;28&quot;  &quot;29&quot;  &quot;30&quot;  &quot;31&quot;  &quot;32&quot;  &quot;33&quot;  &quot;34&quot;  &quot;35&quot;  &quot;36&quot; 
+ [37] &quot;37&quot;  &quot;38&quot;  &quot;39&quot;  &quot;40&quot;  &quot;41&quot;  &quot;42&quot;  &quot;43&quot;  &quot;44&quot;  &quot;45&quot;  &quot;46&quot;  &quot;47&quot;  &quot;48&quot; 
+ [49] &quot;49&quot;  &quot;50&quot;  &quot;51&quot;  &quot;52&quot;  &quot;53&quot;  &quot;54&quot;  &quot;55&quot;  &quot;56&quot;  &quot;57&quot;  &quot;58&quot;  &quot;59&quot;  &quot;60&quot; 
+ [61] &quot;61&quot;  &quot;62&quot;  &quot;63&quot;  &quot;64&quot;  &quot;65&quot;  &quot;66&quot;  &quot;67&quot;  &quot;68&quot;  &quot;69&quot;  &quot;70&quot;  &quot;71&quot;  &quot;72&quot; 
+ [73] &quot;73&quot;  &quot;74&quot;  &quot;75&quot;  &quot;76&quot;  &quot;77&quot;  &quot;78&quot;  &quot;79&quot;  &quot;80&quot;  &quot;81&quot;  &quot;82&quot;  &quot;83&quot;  &quot;84&quot; 
+ [85] &quot;85&quot;  &quot;86&quot;  &quot;87&quot;  &quot;88&quot;  &quot;89&quot;  &quot;90&quot;  &quot;91&quot;  &quot;92&quot;  &quot;93&quot;  &quot;94&quot;  &quot;95&quot;  &quot;96&quot; 
+ [97] &quot;97&quot;  &quot;98&quot;  &quot;99&quot;  &quot;100&quot;</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="data-formatting-and-pre-processing.html#cb44-1" tabindex="-1"></a><span class="fu">spatIDs</span>(gpoly)</span></code></pre></div>
+<pre><code>&quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot;</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="data-formatting-and-pre-processing.html#cb46-1" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">featIDs</span>(gpoints))</span></code></pre></div>
+<pre><code> &quot;gene_00001&quot; &quot;gene_00002&quot; &quot;gene_00003&quot; &quot;gene_00004&quot; &quot;gene_00005&quot; &quot;gene_00006&quot;</code></pre>
+</div>
+<div id="bracket-subsetting-and-extraction" class="section level3 hasAnchor" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> Bracket subsetting and extraction<a href="data-formatting-and-pre-processing.html#bracket-subsetting-and-extraction" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Most of the subobjects also respond to indexing with <code>[</code>, but since many of them are wrappers around an underlying data structure, empty <code>[</code> calls will drop the object to the contained data structure</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="data-formatting-and-pre-processing.html#cb48-1" tabindex="-1"></a>gpoly[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code></pre></div>
+<pre><code>An object of class giottoPolygon
+spat_unit : &quot;test&quot;
+Spatial Information:
+ class       : SpatVector 
+ geometry    : polygons 
+ dimensions  : 2, 2  (geometries, attributes)
+ extent      : 3.015771, 12, 1.003947, 6.996053  (xmin, xmax, ymin, ymax)
+ coord. ref. :  
+ names       : poly_ID   idx
+ type        :   &lt;chr&gt; &lt;int&gt;
+ values      :       a    10
+                     b     9
+ centroids   : NULL
+ overlaps    : NULL</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="data-formatting-and-pre-processing.html#cb50-1" tabindex="-1"></a>gpoly[<span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;e&quot;</span>)]</span></code></pre></div>
+<pre><code>An object of class giottoPolygon
+spat_unit : &quot;test&quot;
+Spatial Information:
+ class       : SpatVector 
+ geometry    : polygons 
+ dimensions  : 2, 2  (geometries, attributes)
+ extent      : 3.015771, 27, 1.003947, 6.996053  (xmin, xmax, ymin, ymax)
+ coord. ref. :  
+ names       : poly_ID   idx
+ type        :   &lt;chr&gt; &lt;int&gt;
+ values      :       a    10
+                     e     6</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="data-formatting-and-pre-processing.html#cb52-1" tabindex="-1"></a>gpoints[]</span></code></pre></div>
+<pre><code> class       : SpatVector 
+ geometry    : points 
+ dimensions  : 10000, 3  (geometries, attributes)
+ extent      : -3.396064, 3.618107, -4.126628, 3.727291  (xmin, xmax, ymin, ymax)
+ coord. ref. :  
+ names       :    feat_ID           meta feat_ID_uniq
+ type        :      &lt;chr&gt;          &lt;chr&gt;        &lt;int&gt;
+ values      : gene_00001 metadata_00001            1
+               gene_00002 metadata_00002            2
+               gene_00003 metadata_00003            3 </code></pre>
+</div>
+<div id="nesting-metadata-generics" class="section level3 hasAnchor" number="5.3.3">
+<h3><span class="header-section-number">5.3.3</span> Nesting metadata generics<a href="data-formatting-and-pre-processing.html#nesting-metadata-generics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>spatUnit()</code>, <code>featType()</code>, <code>objName</code>, <code>prov()</code> are all generics that act on the metadata of the subobjects.
+They work both to access and replace the information.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="data-formatting-and-pre-processing.html#cb54-1" tabindex="-1"></a><span class="fu">featType</span>(x)</span></code></pre></div>
+<pre><code>[1] &quot;rna&quot;</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="data-formatting-and-pre-processing.html#cb56-1" tabindex="-1"></a><span class="fu">objName</span>(x) <span class="ot">&lt;-</span> <span class="st">&quot;raw2&quot;</span></span>
+<span id="cb56-2"><a href="data-formatting-and-pre-processing.html#cb56-2" tabindex="-1"></a><span class="fu">spatUnit</span>(x) <span class="ot">&lt;-</span> <span class="st">&quot;aggregate&quot;</span></span>
+<span id="cb56-3"><a href="data-formatting-and-pre-processing.html#cb56-3" tabindex="-1"></a><span class="fu">force</span>(x)</span></code></pre></div>
+<pre><code>An object of class exprObj : &quot;raw2&quot;
+spat_unit : &quot;aggregate&quot;
+feat_type : &quot;rna&quot;
+
+contains:
+10 x 10 sparse Matrix of class &quot;dgCMatrix&quot;
+                           
+feat_01 . 1 1 1 . . . . . .
+feat_02 . . . . . . . . . .
+feat_03 . . . . . 1 . . . .
+feat_04 1 . . . 1 . . . . .
+
+ ........suppressing 2 rows in show(); maybe adjust options(max.print=, width=)
+                           
+feat_07 . 1 . . . 1 . . . 1
+feat_08 . . . . . . . . . .
+feat_09 . . . . . . . . . .
+feat_10 . . . . . . . . . .
+
+ First four colnames:
+ cell_01 cell_02 cell_03 cell_04 </code></pre>
+</div>
+<div id="appending-to-a-giotto-object" class="section level3 hasAnchor" number="5.3.4">
+<h3><span class="header-section-number">5.3.4</span> Appending to a giotto object<a href="data-formatting-and-pre-processing.html#appending-to-a-giotto-object" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Subobjects are formatted to for Giotto and can directly be added to the <code>giotto</code> object using the <code>setGiotto()</code> generic.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="data-formatting-and-pre-processing.html#cb58-1" tabindex="-1"></a><span class="co"># initialize an empty object</span></span>
+<span id="cb58-2"><a href="data-formatting-and-pre-processing.html#cb58-2" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">giotto</span>()</span>
+<span id="cb58-3"><a href="data-formatting-and-pre-processing.html#cb58-3" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">setGiotto</span>(g, x)</span>
+<span id="cb58-4"><a href="data-formatting-and-pre-processing.html#cb58-4" tabindex="-1"></a><span class="fu">force</span>(g)</span></code></pre></div>
+<pre><code>An object of class giotto 
+&gt;Active spat_unit:  aggregate 
+&gt;Active feat_type:  rna 
+[SUBCELLULAR INFO]
+[AGGREGATE INFO]
+expression -----------------------
+  [aggregate][rna] raw2
+
+
+Use objHistory() to see steps and params used</code></pre>
+
+</div>
 </div>
 </div>
             </section>
