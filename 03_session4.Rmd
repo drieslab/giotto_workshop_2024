@@ -207,8 +207,7 @@ X <- model.matrix(~ colData(spe)$leiden_clus)
 dim(X)
 ```
 
-
-# Run nnSVG
+- Run nnSVG
 
 This step will take several minutes to run
 
