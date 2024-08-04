@@ -186,7 +186,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.1" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#presentation-1"><i class="fa fa-check"></i><b>4.1</b> Presentation</a></li>
 <li class="chapter" data-level="4.2" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#ecosystem"><i class="fa fa-check"></i><b>4.2</b> Ecosystem</a></li>
-<li class="chapter" data-level="4.3" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#installation-python-environment"><i class="fa fa-check"></i><b>4.3</b> Installation + python environment</a></li>
+<li class="chapter" data-level="4.3" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#installation-python-environment"><i class="fa fa-check"></i><b>4.3</b> Installation + python environment</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#giotto-installation-1"><i class="fa fa-check"></i><b>4.3.1</b> Giotto installation</a></li>
+<li class="chapter" data-level="4.3.2" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#python-environment"><i class="fa fa-check"></i><b>4.3.2</b> Python environment</a></li>
+</ul></li>
 <li class="chapter" data-level="4.4" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#giotto-instructions"><i class="fa fa-check"></i><b>4.4</b> Giotto instructions</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html"><i class="fa fa-check"></i><b>5</b> Data formatting and Pre-processing</a>
@@ -572,24 +576,24 @@ exported data is from their Xenium Onboard Analysis v2.0.0 pipeline.</p>
 </div>
 <div id="mini-xenium-dataset" class="section level3 hasAnchor" number="10.1.2">
 <h3><span class="header-section-number">10.1.2</span> Mini Xenium Dataset<a href="xenium-1.html#mini-xenium-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="xenium-1.html#cb120-1" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
-<span id="cb120-2"><a href="xenium-1.html#cb120-2" tabindex="-1"></a><span class="co"># set up paths</span></span>
-<span id="cb120-3"><a href="xenium-1.html#cb120-3" tabindex="-1"></a>data_path <span class="ot">&lt;-</span> <span class="st">&quot;data/02_session3/&quot;</span></span>
-<span id="cb120-4"><a href="xenium-1.html#cb120-4" tabindex="-1"></a>save_dir <span class="ot">&lt;-</span> <span class="st">&quot;results/02_session3/&quot;</span></span>
-<span id="cb120-5"><a href="xenium-1.html#cb120-5" tabindex="-1"></a><span class="fu">dir.create</span>(save_dir, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb120-6"><a href="xenium-1.html#cb120-6" tabindex="-1"></a></span>
-<span id="cb120-7"><a href="xenium-1.html#cb120-7" tabindex="-1"></a><span class="co"># download the mini dataset and untar</span></span>
-<span id="cb120-8"><a href="xenium-1.html#cb120-8" tabindex="-1"></a><span class="fu">options</span>(<span class="st">&quot;timeout&quot;</span> <span class="ot">=</span> <span class="cn">Inf</span>)</span>
-<span id="cb120-9"><a href="xenium-1.html#cb120-9" tabindex="-1"></a><span class="fu">download.file</span>(</span>
-<span id="cb120-10"><a href="xenium-1.html#cb120-10" tabindex="-1"></a>    <span class="at">url =</span> <span class="st">&quot;https://zenodo.org/records/13207308/files/workshop_xenium.zip?download=1&quot;</span>,</span>
-<span id="cb120-11"><a href="xenium-1.html#cb120-11" tabindex="-1"></a>    <span class="at">destfile =</span> <span class="fu">file.path</span>(save_dir, <span class="st">&quot;workshop_xenium.zip&quot;</span>)</span>
-<span id="cb120-12"><a href="xenium-1.html#cb120-12" tabindex="-1"></a>)</span>
-<span id="cb120-13"><a href="xenium-1.html#cb120-13" tabindex="-1"></a><span class="fu">untar</span>(<span class="at">tarfile =</span> <span class="fu">file.path</span>(save_dir, <span class="st">&quot;workshop_xenium.zip&quot;</span>), </span>
-<span id="cb120-14"><a href="xenium-1.html#cb120-14" tabindex="-1"></a>      <span class="at">exdir =</span> data_path)</span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="xenium-1.html#cb127-1" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
+<span id="cb127-2"><a href="xenium-1.html#cb127-2" tabindex="-1"></a><span class="co"># set up paths</span></span>
+<span id="cb127-3"><a href="xenium-1.html#cb127-3" tabindex="-1"></a>data_path <span class="ot">&lt;-</span> <span class="st">&quot;data/02_session3/&quot;</span></span>
+<span id="cb127-4"><a href="xenium-1.html#cb127-4" tabindex="-1"></a>save_dir <span class="ot">&lt;-</span> <span class="st">&quot;results/02_session3/&quot;</span></span>
+<span id="cb127-5"><a href="xenium-1.html#cb127-5" tabindex="-1"></a><span class="fu">dir.create</span>(save_dir, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb127-6"><a href="xenium-1.html#cb127-6" tabindex="-1"></a></span>
+<span id="cb127-7"><a href="xenium-1.html#cb127-7" tabindex="-1"></a><span class="co"># download the mini dataset and untar</span></span>
+<span id="cb127-8"><a href="xenium-1.html#cb127-8" tabindex="-1"></a><span class="fu">options</span>(<span class="st">&quot;timeout&quot;</span> <span class="ot">=</span> <span class="cn">Inf</span>)</span>
+<span id="cb127-9"><a href="xenium-1.html#cb127-9" tabindex="-1"></a><span class="fu">download.file</span>(</span>
+<span id="cb127-10"><a href="xenium-1.html#cb127-10" tabindex="-1"></a>    <span class="at">url =</span> <span class="st">&quot;https://zenodo.org/records/13207308/files/workshop_xenium.zip?download=1&quot;</span>,</span>
+<span id="cb127-11"><a href="xenium-1.html#cb127-11" tabindex="-1"></a>    <span class="at">destfile =</span> <span class="fu">file.path</span>(save_dir, <span class="st">&quot;workshop_xenium.zip&quot;</span>)</span>
+<span id="cb127-12"><a href="xenium-1.html#cb127-12" tabindex="-1"></a>)</span>
+<span id="cb127-13"><a href="xenium-1.html#cb127-13" tabindex="-1"></a><span class="fu">untar</span>(<span class="at">tarfile =</span> <span class="fu">file.path</span>(save_dir, <span class="st">&quot;workshop_xenium.zip&quot;</span>), </span>
+<span id="cb127-14"><a href="xenium-1.html#cb127-14" tabindex="-1"></a>      <span class="at">exdir =</span> data_path)</span></code></pre></div>
 <p>In order to speed up the steps of the workshop and make it locally runnable, we provide a subset of the full dataset.</p>
 <pre><code>- Full: -16.039, 12342.984, -3511.515, -294.455 (xmin, xmax, ymin, ymax)
 - Mini: 6000,    7000,      -2200,     -1400    (xmin, xmax, ymin, ymax)</code></pre>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-178"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-185"></span>
 <img src="img/02_session3/mini_roi.png" alt="Shown is the H&amp;E aligned to the Xenium dataset with micron scaling. The blue bounds mark out the area provided as a mini dataset"  />
 <p class="caption">
 Figure 10.1: Shown is the H&amp;E aligned to the Xenium dataset with micron scaling. The blue bounds mark out the area provided as a mini dataset
@@ -604,15 +608,15 @@ Figure 10.1: Shown is the H&amp;E aligned to the Xenium dataset with micron scal
 <p>First is actually dealing with the image formats. Xenium generates <code>ome.tif</code> images which Giotto is currently not fully compatible with. So we convert them to normal <code>tif</code> images using <code>ometif_to_tif()</code> which works through the python <em>tifffile</em> package.</p>
 <p>The image files can then be loaded in downstream steps.</p>
 <p><em>These commented out steps are not needed for today since the mini dataset provides .tif images that have already been spatially aligned and converted. However, the code needed to do this is provided below.</em></p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="xenium-1.html#cb122-1" tabindex="-1"></a><span class="co"># image_paths &lt;- list.files(</span></span>
-<span id="cb122-2"><a href="xenium-1.html#cb122-2" tabindex="-1"></a><span class="co">#   data_path, pattern = &quot;morphology_focus|he_image.ome&quot;, </span></span>
-<span id="cb122-3"><a href="xenium-1.html#cb122-3" tabindex="-1"></a><span class="co">#   recursive = TRUE, full.names = TRUE</span></span>
-<span id="cb122-4"><a href="xenium-1.html#cb122-4" tabindex="-1"></a><span class="co"># )</span></span></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="xenium-1.html#cb129-1" tabindex="-1"></a><span class="co"># image_paths &lt;- list.files(</span></span>
+<span id="cb129-2"><a href="xenium-1.html#cb129-2" tabindex="-1"></a><span class="co">#   data_path, pattern = &quot;morphology_focus|he_image.ome&quot;, </span></span>
+<span id="cb129-3"><a href="xenium-1.html#cb129-3" tabindex="-1"></a><span class="co">#   recursive = TRUE, full.names = TRUE</span></span>
+<span id="cb129-4"><a href="xenium-1.html#cb129-4" tabindex="-1"></a><span class="co"># )</span></span></code></pre></div>
 <p><code>ometif_to_tif()</code> <code>output_dir</code> can be specified, but by default, it writes to a new subdirectory called <code>tif_exports</code> underneath the source image’s directory.
 <em>Keep in mind that where the exported tifs get exported to should be where downstream image reading functions should point to. The code run today is with the filepaths that the mini dataset has.</em></p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="xenium-1.html#cb123-1" tabindex="-1"></a><span class="co"># lapply(image_paths, function(img) {</span></span>
-<span id="cb123-2"><a href="xenium-1.html#cb123-2" tabindex="-1"></a><span class="co">#     GiottoClass::ometif_to_tif(img, overwrite = TRUE)</span></span>
-<span id="cb123-3"><a href="xenium-1.html#cb123-3" tabindex="-1"></a><span class="co"># })</span></span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="xenium-1.html#cb130-1" tabindex="-1"></a><span class="co"># lapply(image_paths, function(img) {</span></span>
+<span id="cb130-2"><a href="xenium-1.html#cb130-2" tabindex="-1"></a><span class="co">#     GiottoClass::ometif_to_tif(img, overwrite = TRUE)</span></span>
+<span id="cb130-3"><a href="xenium-1.html#cb130-3" tabindex="-1"></a><span class="co"># })</span></span></code></pre></div>
 <p>We are also working on a method of directly accessing the <code>ome.tifs</code> for better compatibility in the future.</p>
 </div>
 </div>
@@ -626,11 +630,11 @@ Figure 10.1: Shown is the H&amp;E aligned to the Xenium dataset with micron scal
 <li>feature metadata (gene_panel.json)</li>
 </ul>
 <p>For the full dataset (HPC): <em>time: 1-2min | memory: 24GBC</em></p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="xenium-1.html#cb124-1" tabindex="-1"></a>?createGiottoXeniumObject</span>
-<span id="cb124-2"><a href="xenium-1.html#cb124-2" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">createGiottoXeniumObject</span>(<span class="at">xenium_dir =</span> data_path)</span>
-<span id="cb124-3"><a href="xenium-1.html#cb124-3" tabindex="-1"></a><span class="co"># set instructions</span></span>
-<span id="cb124-4"><a href="xenium-1.html#cb124-4" tabindex="-1"></a><span class="fu">instructions</span>(g, <span class="st">&quot;save_dir&quot;</span>) <span class="ot">&lt;-</span> save_dir</span>
-<span id="cb124-5"><a href="xenium-1.html#cb124-5" tabindex="-1"></a><span class="fu">instructions</span>(g, <span class="st">&quot;save_plot&quot;</span>) <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="xenium-1.html#cb131-1" tabindex="-1"></a>?createGiottoXeniumObject</span>
+<span id="cb131-2"><a href="xenium-1.html#cb131-2" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">createGiottoXeniumObject</span>(<span class="at">xenium_dir =</span> data_path)</span>
+<span id="cb131-3"><a href="xenium-1.html#cb131-3" tabindex="-1"></a><span class="co"># set instructions</span></span>
+<span id="cb131-4"><a href="xenium-1.html#cb131-4" tabindex="-1"></a><span class="fu">instructions</span>(g, <span class="st">&quot;save_dir&quot;</span>) <span class="ot">&lt;-</span> save_dir</span>
+<span id="cb131-5"><a href="xenium-1.html#cb131-5" tabindex="-1"></a><span class="fu">instructions</span>(g, <span class="st">&quot;save_plot&quot;</span>) <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span></code></pre></div>
 <p>There are a lot of other params for additional or alternative items you can load. The next subsections will explain a couple of them.</p>
 <div id="specific-filepaths" class="section level3 hasAnchor" number="10.3.1">
 <h3><span class="header-section-number">10.3.1</span> Specific filepaths<a href="xenium-1.html#specific-filepaths" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -695,19 +699,19 @@ QV Calculation
 <div id="centroids-calculation" class="section level3 hasAnchor" number="10.3.4">
 <h3><span class="header-section-number">10.3.4</span> Centroids calculation<a href="xenium-1.html#centroids-calculation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Several Giotto operations require that a set of centroids are calculated for polygon spatial units.</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="xenium-1.html#cb128-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">addSpatialCentroidLocations</span>(g, <span class="at">poly_info =</span> <span class="st">&quot;cell&quot;</span>)</span>
-<span id="cb128-2"><a href="xenium-1.html#cb128-2" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">addSpatialCentroidLocations</span>(g, <span class="at">poly_info =</span> <span class="st">&quot;nucleus&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="xenium-1.html#cb135-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">addSpatialCentroidLocations</span>(g, <span class="at">poly_info =</span> <span class="st">&quot;cell&quot;</span>)</span>
+<span id="cb135-2"><a href="xenium-1.html#cb135-2" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">addSpatialCentroidLocations</span>(g, <span class="at">poly_info =</span> <span class="st">&quot;nucleus&quot;</span>)</span></code></pre></div>
 </div>
 <div id="simple-visualization" class="section level3 hasAnchor" number="10.3.5">
 <h3><span class="header-section-number">10.3.5</span> Simple visualization<a href="xenium-1.html#simple-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="xenium-1.html#cb129-1" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
-<span id="cb129-2"><a href="xenium-1.html#cb129-2" tabindex="-1"></a>    <span class="at">polygon_feat_type =</span> <span class="st">&quot;cell&quot;</span>,</span>
-<span id="cb129-3"><a href="xenium-1.html#cb129-3" tabindex="-1"></a>    <span class="at">feats =</span> <span class="fu">list</span>(<span class="at">rna =</span> <span class="fu">head</span>(<span class="fu">featIDs</span>(g))), </span>
-<span id="cb129-4"><a href="xenium-1.html#cb129-4" tabindex="-1"></a>    <span class="at">use_overlap =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb129-5"><a href="xenium-1.html#cb129-5" tabindex="-1"></a>    <span class="at">polygon_color =</span> <span class="st">&quot;cyan&quot;</span>, </span>
-<span id="cb129-6"><a href="xenium-1.html#cb129-6" tabindex="-1"></a>    <span class="at">polygon_line_size =</span> <span class="fl">0.1</span></span>
-<span id="cb129-7"><a href="xenium-1.html#cb129-7" tabindex="-1"></a>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-184"></span>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="xenium-1.html#cb136-1" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
+<span id="cb136-2"><a href="xenium-1.html#cb136-2" tabindex="-1"></a>    <span class="at">polygon_feat_type =</span> <span class="st">&quot;cell&quot;</span>,</span>
+<span id="cb136-3"><a href="xenium-1.html#cb136-3" tabindex="-1"></a>    <span class="at">feats =</span> <span class="fu">list</span>(<span class="at">rna =</span> <span class="fu">head</span>(<span class="fu">featIDs</span>(g))), </span>
+<span id="cb136-4"><a href="xenium-1.html#cb136-4" tabindex="-1"></a>    <span class="at">use_overlap =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb136-5"><a href="xenium-1.html#cb136-5" tabindex="-1"></a>    <span class="at">polygon_color =</span> <span class="st">&quot;cyan&quot;</span>, </span>
+<span id="cb136-6"><a href="xenium-1.html#cb136-6" tabindex="-1"></a>    <span class="at">polygon_line_size =</span> <span class="fl">0.1</span></span>
+<span id="cb136-7"><a href="xenium-1.html#cb136-7" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-191"></span>
 <img src="img/02_session3/situ_plot_head.png" alt="Simple subcellular plotting to check data" width="100%" />
 <p class="caption">
 Figure 10.2: Simple subcellular plotting to check data
@@ -718,8 +722,8 @@ Figure 10.2: Simple subcellular plotting to check data
 <div id="piecewise-loading" class="section level2 hasAnchor" number="10.4">
 <h2><span class="header-section-number">10.4</span> Piecewise loading<a href="xenium-1.html#piecewise-loading" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Giotto also provides the <code>importXenium()</code> import utility that allows independent creation of compatible Giotto subobjects for more flexibility.</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="xenium-1.html#cb130-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">importXenium</span>(data_path)</span>
-<span id="cb130-2"><a href="xenium-1.html#cb130-2" tabindex="-1"></a><span class="fu">force</span>(x)</span></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="xenium-1.html#cb137-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">importXenium</span>(data_path)</span>
+<span id="cb137-2"><a href="xenium-1.html#cb137-2" tabindex="-1"></a><span class="fu">force</span>(x)</span></code></pre></div>
 <pre><code>Giotto &lt;XeniumReader&gt;
 dir       : data/02_session3/ 
 qv_cutoff : 20 
@@ -737,17 +741,17 @@ funs      : load_transcripts()
             create_gobject()</code></pre>
 <div id="load-giottopoints-transcripts" class="section level3 hasAnchor" number="10.4.1">
 <h3><span class="header-section-number">10.4.1</span> load giottoPoints transcripts<a href="xenium-1.html#load-giottopoints-transcripts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="xenium-1.html#cb132-1" tabindex="-1"></a>x<span class="sc">$</span>qv <span class="ot">&lt;-</span> <span class="dv">20</span> <span class="co"># default</span></span>
-<span id="cb132-2"><a href="xenium-1.html#cb132-2" tabindex="-1"></a>tx <span class="ot">&lt;-</span> x<span class="sc">$</span><span class="fu">load_transcripts</span>()</span>
-<span id="cb132-3"><a href="xenium-1.html#cb132-3" tabindex="-1"></a><span class="fu">plot</span>(tx[[<span class="dv">1</span>]]<span class="sc">$</span>rna, <span class="at">dens =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-187"></span>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="xenium-1.html#cb139-1" tabindex="-1"></a>x<span class="sc">$</span>qv <span class="ot">&lt;-</span> <span class="dv">20</span> <span class="co"># default</span></span>
+<span id="cb139-2"><a href="xenium-1.html#cb139-2" tabindex="-1"></a>tx <span class="ot">&lt;-</span> x<span class="sc">$</span><span class="fu">load_transcripts</span>()</span>
+<span id="cb139-3"><a href="xenium-1.html#cb139-3" tabindex="-1"></a><span class="fu">plot</span>(tx[[<span class="dv">1</span>]]<span class="sc">$</span>rna, <span class="at">dens =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-194"></span>
 <img src="img/02_session3/tx_plot.png" alt="plot of Gene expression ('rna') density" width="80%" />
 <p class="caption">
 Figure 10.3: plot of Gene expression (‘rna’) density
 </p>
 </div>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="xenium-1.html#cb133-1" tabindex="-1"></a><span class="fu">force</span>(tx[[<span class="dv">1</span>]]<span class="sc">$</span>rna)</span>
-<span id="cb133-2"><a href="xenium-1.html#cb133-2" tabindex="-1"></a><span class="fu">rm</span>(tx) <span class="co"># save space</span></span></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="xenium-1.html#cb140-1" tabindex="-1"></a><span class="fu">force</span>(tx[[<span class="dv">1</span>]]<span class="sc">$</span>rna)</span>
+<span id="cb140-2"><a href="xenium-1.html#cb140-2" tabindex="-1"></a><span class="fu">rm</span>(tx) <span class="co"># save space</span></span></code></pre></div>
 <pre><code>An object of class giottoPoints
 feat_type : &quot;rna&quot;
 Feature Information:
@@ -775,13 +779,13 @@ Feature Information:
 <li>The <code>feat_type</code> of the loaded expression information should be matched to the used <code>feat_type</code> params passed to the convenience function.</li>
 <li>The <code>qv_threshold</code> used must be 20 since the 10X outputs are based on that cutoff.</li>
 </ul>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="xenium-1.html#cb135-1" tabindex="-1"></a>x<span class="sc">$</span>filetype<span class="sc">$</span>expression <span class="ot">&lt;-</span> <span class="st">&quot;mtx&quot;</span> <span class="co"># change to mtx instead of .h5 which is not in the mini dataset</span></span>
-<span id="cb135-2"><a href="xenium-1.html#cb135-2" tabindex="-1"></a>ex <span class="ot">&lt;-</span> x<span class="sc">$</span><span class="fu">load_expression</span>()</span>
-<span id="cb135-3"><a href="xenium-1.html#cb135-3" tabindex="-1"></a><span class="fu">featType</span>(ex)</span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="xenium-1.html#cb142-1" tabindex="-1"></a>x<span class="sc">$</span>filetype<span class="sc">$</span>expression <span class="ot">&lt;-</span> <span class="st">&quot;mtx&quot;</span> <span class="co"># change to mtx instead of .h5 which is not in the mini dataset</span></span>
+<span id="cb142-2"><a href="xenium-1.html#cb142-2" tabindex="-1"></a>ex <span class="ot">&lt;-</span> x<span class="sc">$</span><span class="fu">load_expression</span>()</span>
+<span id="cb142-3"><a href="xenium-1.html#cb142-3" tabindex="-1"></a><span class="fu">featType</span>(ex)</span></code></pre></div>
 <pre><code>[1] &quot;rna&quot;                       &quot;Negative Control Probe&quot;    &quot;Negative Control Codeword&quot;
 [4] &quot;Unassigned Codeword&quot;      </code></pre>
 <p>The feature types here do not match what we established for the transcripts, so we can just change them.</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="xenium-1.html#cb137-1" tabindex="-1"></a><span class="fu">force</span>(g)</span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="xenium-1.html#cb144-1" tabindex="-1"></a><span class="fu">force</span>(g)</span></code></pre></div>
 <pre><code>An object of class giotto 
 &gt;Active spat_unit:  cell 
 &gt;Active feat_type:  rna 
@@ -792,19 +796,19 @@ features      : rna NegControlProbe UnassignedCodeword NegControlCodeword
 spatial locations ----------------
   [cell] raw
   [nucleus] raw</code></pre>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="xenium-1.html#cb139-1" tabindex="-1"></a><span class="fu">featType</span>(ex[[<span class="dv">2</span>]]) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;NegControlProbe&quot;</span>)</span>
-<span id="cb139-2"><a href="xenium-1.html#cb139-2" tabindex="-1"></a><span class="fu">featType</span>(ex[[<span class="dv">3</span>]]) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;NegControlCodeword&quot;</span>)</span>
-<span id="cb139-3"><a href="xenium-1.html#cb139-3" tabindex="-1"></a><span class="fu">featType</span>(ex[[<span class="dv">4</span>]]) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;UnassignedCodeword&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="xenium-1.html#cb146-1" tabindex="-1"></a><span class="fu">featType</span>(ex[[<span class="dv">2</span>]]) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;NegControlProbe&quot;</span>)</span>
+<span id="cb146-2"><a href="xenium-1.html#cb146-2" tabindex="-1"></a><span class="fu">featType</span>(ex[[<span class="dv">3</span>]]) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;NegControlCodeword&quot;</span>)</span>
+<span id="cb146-3"><a href="xenium-1.html#cb146-3" tabindex="-1"></a><span class="fu">featType</span>(ex[[<span class="dv">4</span>]]) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;UnassignedCodeword&quot;</span>)</span></code></pre></div>
 <p>Then we can just append them to the Giotto object.<br />
 Here we set up a second object since we will be using Giotto’s own aggregation method downstream.</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="xenium-1.html#cb140-1" tabindex="-1"></a>g2 <span class="ot">&lt;-</span> g</span>
-<span id="cb140-2"><a href="xenium-1.html#cb140-2" tabindex="-1"></a><span class="co"># append the expression info</span></span>
-<span id="cb140-3"><a href="xenium-1.html#cb140-3" tabindex="-1"></a>g2 <span class="ot">&lt;-</span> <span class="fu">setGiotto</span>(g2, ex)</span>
-<span id="cb140-4"><a href="xenium-1.html#cb140-4" tabindex="-1"></a></span>
-<span id="cb140-5"><a href="xenium-1.html#cb140-5" tabindex="-1"></a><span class="co"># load cell metadata</span></span>
-<span id="cb140-6"><a href="xenium-1.html#cb140-6" tabindex="-1"></a>cx <span class="ot">&lt;-</span> x<span class="sc">$</span><span class="fu">load_cellmeta</span>()</span>
-<span id="cb140-7"><a href="xenium-1.html#cb140-7" tabindex="-1"></a>g2 <span class="ot">&lt;-</span> <span class="fu">setGiotto</span>(g2, cx)</span>
-<span id="cb140-8"><a href="xenium-1.html#cb140-8" tabindex="-1"></a><span class="fu">force</span>(g2)</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="xenium-1.html#cb147-1" tabindex="-1"></a>g2 <span class="ot">&lt;-</span> g</span>
+<span id="cb147-2"><a href="xenium-1.html#cb147-2" tabindex="-1"></a><span class="co"># append the expression info</span></span>
+<span id="cb147-3"><a href="xenium-1.html#cb147-3" tabindex="-1"></a>g2 <span class="ot">&lt;-</span> <span class="fu">setGiotto</span>(g2, ex)</span>
+<span id="cb147-4"><a href="xenium-1.html#cb147-4" tabindex="-1"></a></span>
+<span id="cb147-5"><a href="xenium-1.html#cb147-5" tabindex="-1"></a><span class="co"># load cell metadata</span></span>
+<span id="cb147-6"><a href="xenium-1.html#cb147-6" tabindex="-1"></a>cx <span class="ot">&lt;-</span> x<span class="sc">$</span><span class="fu">load_cellmeta</span>()</span>
+<span id="cb147-7"><a href="xenium-1.html#cb147-7" tabindex="-1"></a>g2 <span class="ot">&lt;-</span> <span class="fu">setGiotto</span>(g2, cx)</span>
+<span id="cb147-8"><a href="xenium-1.html#cb147-8" tabindex="-1"></a><span class="fu">force</span>(g2)</span></code></pre></div>
 <pre><code>An object of class giotto 
 &gt;Active spat_unit:  cell 
 &gt;Active feat_type:  rna 
@@ -820,32 +824,32 @@ expression -----------------------
 spatial locations ----------------
   [cell] raw
   [nucleus] raw</code></pre>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="xenium-1.html#cb142-1" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g2,</span>
-<span id="cb142-2"><a href="xenium-1.html#cb142-2" tabindex="-1"></a>        <span class="co"># polygon shading params</span></span>
-<span id="cb142-3"><a href="xenium-1.html#cb142-3" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;cell_area&quot;</span>,</span>
-<span id="cb142-4"><a href="xenium-1.html#cb142-4" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb142-5"><a href="xenium-1.html#cb142-5" tabindex="-1"></a>    <span class="at">polygon_fill_gradient_style =</span> <span class="st">&quot;sequential&quot;</span>,</span>
-<span id="cb142-6"><a href="xenium-1.html#cb142-6" tabindex="-1"></a>    <span class="co"># polygon line params</span></span>
-<span id="cb142-7"><a href="xenium-1.html#cb142-7" tabindex="-1"></a>    <span class="at">polygon_color =</span> <span class="st">&quot;grey&quot;</span>,</span>
-<span id="cb142-8"><a href="xenium-1.html#cb142-8" tabindex="-1"></a>    <span class="at">polygon_line_size =</span> <span class="fl">0.1</span></span>
-<span id="cb142-9"><a href="xenium-1.html#cb142-9" tabindex="-1"></a>)</span>
-<span id="cb142-10"><a href="xenium-1.html#cb142-10" tabindex="-1"></a></span>
-<span id="cb142-11"><a href="xenium-1.html#cb142-11" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g2,</span>
-<span id="cb142-12"><a href="xenium-1.html#cb142-12" tabindex="-1"></a>    <span class="co"># polygon shading params</span></span>
-<span id="cb142-13"><a href="xenium-1.html#cb142-13" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;transcript_counts&quot;</span>,</span>
-<span id="cb142-14"><a href="xenium-1.html#cb142-14" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb142-15"><a href="xenium-1.html#cb142-15" tabindex="-1"></a>    <span class="at">polygon_fill_gradient_style =</span> <span class="st">&quot;sequential&quot;</span>,</span>
-<span id="cb142-16"><a href="xenium-1.html#cb142-16" tabindex="-1"></a>    <span class="co"># polygon line params</span></span>
-<span id="cb142-17"><a href="xenium-1.html#cb142-17" tabindex="-1"></a>    <span class="at">polygon_color =</span> <span class="st">&quot;grey&quot;</span>,</span>
-<span id="cb142-18"><a href="xenium-1.html#cb142-18" tabindex="-1"></a>    <span class="at">polygon_line_size =</span> <span class="fl">0.1</span></span>
-<span id="cb142-19"><a href="xenium-1.html#cb142-19" tabindex="-1"></a>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-194"></span>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="xenium-1.html#cb149-1" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g2,</span>
+<span id="cb149-2"><a href="xenium-1.html#cb149-2" tabindex="-1"></a>        <span class="co"># polygon shading params</span></span>
+<span id="cb149-3"><a href="xenium-1.html#cb149-3" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;cell_area&quot;</span>,</span>
+<span id="cb149-4"><a href="xenium-1.html#cb149-4" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb149-5"><a href="xenium-1.html#cb149-5" tabindex="-1"></a>    <span class="at">polygon_fill_gradient_style =</span> <span class="st">&quot;sequential&quot;</span>,</span>
+<span id="cb149-6"><a href="xenium-1.html#cb149-6" tabindex="-1"></a>    <span class="co"># polygon line params</span></span>
+<span id="cb149-7"><a href="xenium-1.html#cb149-7" tabindex="-1"></a>    <span class="at">polygon_color =</span> <span class="st">&quot;grey&quot;</span>,</span>
+<span id="cb149-8"><a href="xenium-1.html#cb149-8" tabindex="-1"></a>    <span class="at">polygon_line_size =</span> <span class="fl">0.1</span></span>
+<span id="cb149-9"><a href="xenium-1.html#cb149-9" tabindex="-1"></a>)</span>
+<span id="cb149-10"><a href="xenium-1.html#cb149-10" tabindex="-1"></a></span>
+<span id="cb149-11"><a href="xenium-1.html#cb149-11" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g2,</span>
+<span id="cb149-12"><a href="xenium-1.html#cb149-12" tabindex="-1"></a>    <span class="co"># polygon shading params</span></span>
+<span id="cb149-13"><a href="xenium-1.html#cb149-13" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;transcript_counts&quot;</span>,</span>
+<span id="cb149-14"><a href="xenium-1.html#cb149-14" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb149-15"><a href="xenium-1.html#cb149-15" tabindex="-1"></a>    <span class="at">polygon_fill_gradient_style =</span> <span class="st">&quot;sequential&quot;</span>,</span>
+<span id="cb149-16"><a href="xenium-1.html#cb149-16" tabindex="-1"></a>    <span class="co"># polygon line params</span></span>
+<span id="cb149-17"><a href="xenium-1.html#cb149-17" tabindex="-1"></a>    <span class="at">polygon_color =</span> <span class="st">&quot;grey&quot;</span>,</span>
+<span id="cb149-18"><a href="xenium-1.html#cb149-18" tabindex="-1"></a>    <span class="at">polygon_line_size =</span> <span class="fl">0.1</span></span>
+<span id="cb149-19"><a href="xenium-1.html#cb149-19" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-201"></span>
 <img src="img/02_session3/cmeta_plots.png" alt="Example plot using 10X metadata. Left is 'cell_area', right is 'transcript_counts'"  />
 <p class="caption">
 Figure 10.4: Example plot using 10X metadata. Left is ‘cell_area’, right is ‘transcript_counts’
 </p>
 </div>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="xenium-1.html#cb143-1" tabindex="-1"></a><span class="fu">rm</span>(g2) <span class="co"># save space</span></span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="xenium-1.html#cb150-1" tabindex="-1"></a><span class="fu">rm</span>(g2) <span class="co"># save space</span></span></code></pre></div>
 </div>
 </div>
 <div id="xenium-images" class="section level2 hasAnchor" number="10.5">
@@ -861,13 +865,13 @@ Figure 10.4: Example plot using 10X metadata. Left is ‘cell_area’, right is 
 <p>The <code>morphology_focus</code> directory may contain multiple images, but to know more information, we have to check the <code>ome.tif</code> <code>xml</code> metadata. With a normal dataset, you can use:</p>
 <pre><code>`GiottoClass::ometif_metadata([filepath], node = &quot;Channel&quot;)`</code></pre>
 <p>on one of the <code>morphology_focus</code> images, but since the mini dataset images are pre-processed, there is only an exported <code>.xml</code> to explore. The output of the code chunk below is the same as that from calling <code>ometif_metadata()</code> and looking for the <code>Channel</code> node.</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="xenium-1.html#cb145-1" tabindex="-1"></a>img_xml_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(data_path, <span class="st">&quot;morphology_focus&quot;</span>, <span class="st">&quot;morphology_focus_0000.xml&quot;</span>)</span>
-<span id="cb145-2"><a href="xenium-1.html#cb145-2" tabindex="-1"></a>omemeta <span class="ot">&lt;-</span> xml2<span class="sc">::</span><span class="fu">read_xml</span>(img_xml_path)</span>
-<span id="cb145-3"><a href="xenium-1.html#cb145-3" tabindex="-1"></a>res <span class="ot">&lt;-</span> xml2<span class="sc">::</span><span class="fu">xml_find_all</span>(omemeta, <span class="st">&quot;//d1:Channel&quot;</span>, <span class="at">ns =</span> xml2<span class="sc">::</span><span class="fu">xml_ns</span>(omemeta))</span>
-<span id="cb145-4"><a href="xenium-1.html#cb145-4" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">Reduce</span>(rbind, xml2<span class="sc">::</span><span class="fu">xml_attrs</span>(res))</span>
-<span id="cb145-5"><a href="xenium-1.html#cb145-5" tabindex="-1"></a><span class="fu">rownames</span>(res) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb145-6"><a href="xenium-1.html#cb145-6" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(res)</span>
-<span id="cb145-7"><a href="xenium-1.html#cb145-7" tabindex="-1"></a><span class="fu">force</span>(res)</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="xenium-1.html#cb152-1" tabindex="-1"></a>img_xml_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(data_path, <span class="st">&quot;morphology_focus&quot;</span>, <span class="st">&quot;morphology_focus_0000.xml&quot;</span>)</span>
+<span id="cb152-2"><a href="xenium-1.html#cb152-2" tabindex="-1"></a>omemeta <span class="ot">&lt;-</span> xml2<span class="sc">::</span><span class="fu">read_xml</span>(img_xml_path)</span>
+<span id="cb152-3"><a href="xenium-1.html#cb152-3" tabindex="-1"></a>res <span class="ot">&lt;-</span> xml2<span class="sc">::</span><span class="fu">xml_find_all</span>(omemeta, <span class="st">&quot;//d1:Channel&quot;</span>, <span class="at">ns =</span> xml2<span class="sc">::</span><span class="fu">xml_ns</span>(omemeta))</span>
+<span id="cb152-4"><a href="xenium-1.html#cb152-4" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">Reduce</span>(rbind, xml2<span class="sc">::</span><span class="fu">xml_attrs</span>(res))</span>
+<span id="cb152-5"><a href="xenium-1.html#cb152-5" tabindex="-1"></a><span class="fu">rownames</span>(res) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb152-6"><a href="xenium-1.html#cb152-6" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(res)</span>
+<span id="cb152-7"><a href="xenium-1.html#cb152-7" tabindex="-1"></a><span class="fu">force</span>(res)</span></code></pre></div>
 <pre><code>         ID                   Name SamplesPerPixel
 1 Channel:0                   DAPI               1
 2 Channel:1                    18S               1
@@ -877,7 +881,7 @@ Figure 10.4: Example plot using 10X metadata. Left is ‘cell_area’, right is 
 <div id="image-loading" class="section level3 hasAnchor" number="10.5.2">
 <h3><span class="header-section-number">10.5.2</span> Image loading<a href="xenium-1.html#image-loading" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>morphology_focus</code> images need to be scaled by the micron scaling factor. Aligned images need to first be affine transformed then scaled. The micron scaling factor can be found in the json-like <code>experiment.xenium</code> file under <code>pixel_size</code> (0.2125 for this dataset).</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-197"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-204"></span>
 <img src="img/02_session3/img_orig_ext.png" alt="Spatial extent/bounds of transcripts (red), immunofluorescence morphology focus images (blue), H&amp;E aligned image (gold). Lower right shows the affine matrix for aligning the H&amp;E" width="80%" />
 <p class="caption">
 Figure 10.5: Spatial extent/bounds of transcripts (red), immunofluorescence morphology focus images (blue), H&amp;E aligned image (gold). Lower right shows the affine matrix for aligning the H&amp;E
@@ -908,61 +912,61 @@ x$load_aligned_image(
 )</code></pre>
 <p>Specifically for the aligned image, there is also <code>read10xAffineImage()</code> which has similar params, but also asks for the micron scaling factor.</p>
 <p>But for the mini dataset, the images are pre-processed and can be directly added.</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="xenium-1.html#cb148-1" tabindex="-1"></a>img_paths <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb148-2"><a href="xenium-1.html#cb148-2" tabindex="-1"></a>    <span class="fu">sprintf</span>(<span class="st">&quot;data/02_session3/morphology_focus/morphology_focus_%04d.tif&quot;</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>),</span>
-<span id="cb148-3"><a href="xenium-1.html#cb148-3" tabindex="-1"></a>    <span class="st">&quot;data/02_session3/he_mini.tif&quot;</span></span>
-<span id="cb148-4"><a href="xenium-1.html#cb148-4" tabindex="-1"></a>)</span>
-<span id="cb148-5"><a href="xenium-1.html#cb148-5" tabindex="-1"></a>img_list <span class="ot">&lt;-</span> <span class="fu">createGiottoLargeImageList</span>(</span>
-<span id="cb148-6"><a href="xenium-1.html#cb148-6" tabindex="-1"></a>    img_paths, </span>
-<span id="cb148-7"><a href="xenium-1.html#cb148-7" tabindex="-1"></a>    <span class="co"># naming is based on the channel metadata above</span></span>
-<span id="cb148-8"><a href="xenium-1.html#cb148-8" tabindex="-1"></a>    <span class="at">names =</span> <span class="fu">c</span>(<span class="st">&quot;DAPI&quot;</span>, <span class="st">&quot;18S&quot;</span>, <span class="st">&quot;ATP1A1/CD45/E-Cadherin&quot;</span>, <span class="st">&quot;alphaSMA/Vimentin&quot;</span>, <span class="st">&quot;HE&quot;</span>),</span>
-<span id="cb148-9"><a href="xenium-1.html#cb148-9" tabindex="-1"></a>    <span class="at">use_rast_ext =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb148-10"><a href="xenium-1.html#cb148-10" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="cn">FALSE</span></span>
-<span id="cb148-11"><a href="xenium-1.html#cb148-11" tabindex="-1"></a>)</span>
-<span id="cb148-12"><a href="xenium-1.html#cb148-12" tabindex="-1"></a></span>
-<span id="cb148-13"><a href="xenium-1.html#cb148-13" tabindex="-1"></a><span class="co"># make some images brighter</span></span>
-<span id="cb148-14"><a href="xenium-1.html#cb148-14" tabindex="-1"></a>img_list[[<span class="dv">1</span>]]<span class="sc">@</span>max_window <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
-<span id="cb148-15"><a href="xenium-1.html#cb148-15" tabindex="-1"></a>img_list[[<span class="dv">2</span>]]<span class="sc">@</span>max_window <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
-<span id="cb148-16"><a href="xenium-1.html#cb148-16" tabindex="-1"></a>img_list[[<span class="dv">3</span>]]<span class="sc">@</span>max_window <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
-<span id="cb148-17"><a href="xenium-1.html#cb148-17" tabindex="-1"></a></span>
-<span id="cb148-18"><a href="xenium-1.html#cb148-18" tabindex="-1"></a></span>
-<span id="cb148-19"><a href="xenium-1.html#cb148-19" tabindex="-1"></a><span class="co"># append images to gobject</span></span>
-<span id="cb148-20"><a href="xenium-1.html#cb148-20" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">setGiotto</span>(g, img_list)</span>
-<span id="cb148-21"><a href="xenium-1.html#cb148-21" tabindex="-1"></a></span>
-<span id="cb148-22"><a href="xenium-1.html#cb148-22" tabindex="-1"></a><span class="co"># example plots</span></span>
-<span id="cb148-23"><a href="xenium-1.html#cb148-23" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
-<span id="cb148-24"><a href="xenium-1.html#cb148-24" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb148-25"><a href="xenium-1.html#cb148-25" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;HE&quot;</span>,</span>
-<span id="cb148-26"><a href="xenium-1.html#cb148-26" tabindex="-1"></a>    <span class="at">polygon_feat_type =</span> <span class="st">&quot;cell&quot;</span>,</span>
-<span id="cb148-27"><a href="xenium-1.html#cb148-27" tabindex="-1"></a>    <span class="at">polygon_color =</span> <span class="st">&quot;cyan&quot;</span>,</span>
-<span id="cb148-28"><a href="xenium-1.html#cb148-28" tabindex="-1"></a>    <span class="at">polygon_line_size =</span> <span class="fl">0.1</span>,</span>
-<span id="cb148-29"><a href="xenium-1.html#cb148-29" tabindex="-1"></a>    <span class="at">polygon_alpha =</span> <span class="dv">0</span></span>
-<span id="cb148-30"><a href="xenium-1.html#cb148-30" tabindex="-1"></a>)</span>
-<span id="cb148-31"><a href="xenium-1.html#cb148-31" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
-<span id="cb148-32"><a href="xenium-1.html#cb148-32" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb148-33"><a href="xenium-1.html#cb148-33" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;DAPI&quot;</span>,</span>
-<span id="cb148-34"><a href="xenium-1.html#cb148-34" tabindex="-1"></a>    <span class="at">polygon_feat_type =</span> <span class="st">&quot;nucleus&quot;</span>,</span>
-<span id="cb148-35"><a href="xenium-1.html#cb148-35" tabindex="-1"></a>    <span class="at">polygon_color =</span> <span class="st">&quot;cyan&quot;</span>,</span>
-<span id="cb148-36"><a href="xenium-1.html#cb148-36" tabindex="-1"></a>    <span class="at">polygon_line_size =</span> <span class="fl">0.1</span>,</span>
-<span id="cb148-37"><a href="xenium-1.html#cb148-37" tabindex="-1"></a>    <span class="at">polygon_alpha =</span> <span class="dv">0</span></span>
-<span id="cb148-38"><a href="xenium-1.html#cb148-38" tabindex="-1"></a>)</span>
-<span id="cb148-39"><a href="xenium-1.html#cb148-39" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
-<span id="cb148-40"><a href="xenium-1.html#cb148-40" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb148-41"><a href="xenium-1.html#cb148-41" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;18S&quot;</span>,</span>
-<span id="cb148-42"><a href="xenium-1.html#cb148-42" tabindex="-1"></a>    <span class="at">polygon_feat_type =</span> <span class="st">&quot;cell&quot;</span>,</span>
-<span id="cb148-43"><a href="xenium-1.html#cb148-43" tabindex="-1"></a>    <span class="at">polygon_color =</span> <span class="st">&quot;cyan&quot;</span>,</span>
-<span id="cb148-44"><a href="xenium-1.html#cb148-44" tabindex="-1"></a>    <span class="at">polygon_line_size =</span> <span class="fl">0.1</span>,</span>
-<span id="cb148-45"><a href="xenium-1.html#cb148-45" tabindex="-1"></a>    <span class="at">polygon_alpha =</span> <span class="dv">0</span></span>
-<span id="cb148-46"><a href="xenium-1.html#cb148-46" tabindex="-1"></a>)</span>
-<span id="cb148-47"><a href="xenium-1.html#cb148-47" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
-<span id="cb148-48"><a href="xenium-1.html#cb148-48" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb148-49"><a href="xenium-1.html#cb148-49" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;ATP1A1/CD45/E-Cadherin&quot;</span>,</span>
-<span id="cb148-50"><a href="xenium-1.html#cb148-50" tabindex="-1"></a>    <span class="at">polygon_feat_type =</span> <span class="st">&quot;nucleus&quot;</span>,</span>
-<span id="cb148-51"><a href="xenium-1.html#cb148-51" tabindex="-1"></a>    <span class="at">polygon_color =</span> <span class="st">&quot;cyan&quot;</span>,</span>
-<span id="cb148-52"><a href="xenium-1.html#cb148-52" tabindex="-1"></a>    <span class="at">polygon_line_size =</span> <span class="fl">0.1</span>,</span>
-<span id="cb148-53"><a href="xenium-1.html#cb148-53" tabindex="-1"></a>    <span class="at">polygon_alpha =</span> <span class="dv">0</span></span>
-<span id="cb148-54"><a href="xenium-1.html#cb148-54" tabindex="-1"></a>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-199"></span>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="xenium-1.html#cb155-1" tabindex="-1"></a>img_paths <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb155-2"><a href="xenium-1.html#cb155-2" tabindex="-1"></a>    <span class="fu">sprintf</span>(<span class="st">&quot;data/02_session3/morphology_focus/morphology_focus_%04d.tif&quot;</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>),</span>
+<span id="cb155-3"><a href="xenium-1.html#cb155-3" tabindex="-1"></a>    <span class="st">&quot;data/02_session3/he_mini.tif&quot;</span></span>
+<span id="cb155-4"><a href="xenium-1.html#cb155-4" tabindex="-1"></a>)</span>
+<span id="cb155-5"><a href="xenium-1.html#cb155-5" tabindex="-1"></a>img_list <span class="ot">&lt;-</span> <span class="fu">createGiottoLargeImageList</span>(</span>
+<span id="cb155-6"><a href="xenium-1.html#cb155-6" tabindex="-1"></a>    img_paths, </span>
+<span id="cb155-7"><a href="xenium-1.html#cb155-7" tabindex="-1"></a>    <span class="co"># naming is based on the channel metadata above</span></span>
+<span id="cb155-8"><a href="xenium-1.html#cb155-8" tabindex="-1"></a>    <span class="at">names =</span> <span class="fu">c</span>(<span class="st">&quot;DAPI&quot;</span>, <span class="st">&quot;18S&quot;</span>, <span class="st">&quot;ATP1A1/CD45/E-Cadherin&quot;</span>, <span class="st">&quot;alphaSMA/Vimentin&quot;</span>, <span class="st">&quot;HE&quot;</span>),</span>
+<span id="cb155-9"><a href="xenium-1.html#cb155-9" tabindex="-1"></a>    <span class="at">use_rast_ext =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb155-10"><a href="xenium-1.html#cb155-10" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="cn">FALSE</span></span>
+<span id="cb155-11"><a href="xenium-1.html#cb155-11" tabindex="-1"></a>)</span>
+<span id="cb155-12"><a href="xenium-1.html#cb155-12" tabindex="-1"></a></span>
+<span id="cb155-13"><a href="xenium-1.html#cb155-13" tabindex="-1"></a><span class="co"># make some images brighter</span></span>
+<span id="cb155-14"><a href="xenium-1.html#cb155-14" tabindex="-1"></a>img_list[[<span class="dv">1</span>]]<span class="sc">@</span>max_window <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
+<span id="cb155-15"><a href="xenium-1.html#cb155-15" tabindex="-1"></a>img_list[[<span class="dv">2</span>]]<span class="sc">@</span>max_window <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
+<span id="cb155-16"><a href="xenium-1.html#cb155-16" tabindex="-1"></a>img_list[[<span class="dv">3</span>]]<span class="sc">@</span>max_window <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
+<span id="cb155-17"><a href="xenium-1.html#cb155-17" tabindex="-1"></a></span>
+<span id="cb155-18"><a href="xenium-1.html#cb155-18" tabindex="-1"></a></span>
+<span id="cb155-19"><a href="xenium-1.html#cb155-19" tabindex="-1"></a><span class="co"># append images to gobject</span></span>
+<span id="cb155-20"><a href="xenium-1.html#cb155-20" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">setGiotto</span>(g, img_list)</span>
+<span id="cb155-21"><a href="xenium-1.html#cb155-21" tabindex="-1"></a></span>
+<span id="cb155-22"><a href="xenium-1.html#cb155-22" tabindex="-1"></a><span class="co"># example plots</span></span>
+<span id="cb155-23"><a href="xenium-1.html#cb155-23" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
+<span id="cb155-24"><a href="xenium-1.html#cb155-24" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb155-25"><a href="xenium-1.html#cb155-25" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;HE&quot;</span>,</span>
+<span id="cb155-26"><a href="xenium-1.html#cb155-26" tabindex="-1"></a>    <span class="at">polygon_feat_type =</span> <span class="st">&quot;cell&quot;</span>,</span>
+<span id="cb155-27"><a href="xenium-1.html#cb155-27" tabindex="-1"></a>    <span class="at">polygon_color =</span> <span class="st">&quot;cyan&quot;</span>,</span>
+<span id="cb155-28"><a href="xenium-1.html#cb155-28" tabindex="-1"></a>    <span class="at">polygon_line_size =</span> <span class="fl">0.1</span>,</span>
+<span id="cb155-29"><a href="xenium-1.html#cb155-29" tabindex="-1"></a>    <span class="at">polygon_alpha =</span> <span class="dv">0</span></span>
+<span id="cb155-30"><a href="xenium-1.html#cb155-30" tabindex="-1"></a>)</span>
+<span id="cb155-31"><a href="xenium-1.html#cb155-31" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
+<span id="cb155-32"><a href="xenium-1.html#cb155-32" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb155-33"><a href="xenium-1.html#cb155-33" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;DAPI&quot;</span>,</span>
+<span id="cb155-34"><a href="xenium-1.html#cb155-34" tabindex="-1"></a>    <span class="at">polygon_feat_type =</span> <span class="st">&quot;nucleus&quot;</span>,</span>
+<span id="cb155-35"><a href="xenium-1.html#cb155-35" tabindex="-1"></a>    <span class="at">polygon_color =</span> <span class="st">&quot;cyan&quot;</span>,</span>
+<span id="cb155-36"><a href="xenium-1.html#cb155-36" tabindex="-1"></a>    <span class="at">polygon_line_size =</span> <span class="fl">0.1</span>,</span>
+<span id="cb155-37"><a href="xenium-1.html#cb155-37" tabindex="-1"></a>    <span class="at">polygon_alpha =</span> <span class="dv">0</span></span>
+<span id="cb155-38"><a href="xenium-1.html#cb155-38" tabindex="-1"></a>)</span>
+<span id="cb155-39"><a href="xenium-1.html#cb155-39" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
+<span id="cb155-40"><a href="xenium-1.html#cb155-40" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb155-41"><a href="xenium-1.html#cb155-41" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;18S&quot;</span>,</span>
+<span id="cb155-42"><a href="xenium-1.html#cb155-42" tabindex="-1"></a>    <span class="at">polygon_feat_type =</span> <span class="st">&quot;cell&quot;</span>,</span>
+<span id="cb155-43"><a href="xenium-1.html#cb155-43" tabindex="-1"></a>    <span class="at">polygon_color =</span> <span class="st">&quot;cyan&quot;</span>,</span>
+<span id="cb155-44"><a href="xenium-1.html#cb155-44" tabindex="-1"></a>    <span class="at">polygon_line_size =</span> <span class="fl">0.1</span>,</span>
+<span id="cb155-45"><a href="xenium-1.html#cb155-45" tabindex="-1"></a>    <span class="at">polygon_alpha =</span> <span class="dv">0</span></span>
+<span id="cb155-46"><a href="xenium-1.html#cb155-46" tabindex="-1"></a>)</span>
+<span id="cb155-47"><a href="xenium-1.html#cb155-47" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
+<span id="cb155-48"><a href="xenium-1.html#cb155-48" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb155-49"><a href="xenium-1.html#cb155-49" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;ATP1A1/CD45/E-Cadherin&quot;</span>,</span>
+<span id="cb155-50"><a href="xenium-1.html#cb155-50" tabindex="-1"></a>    <span class="at">polygon_feat_type =</span> <span class="st">&quot;nucleus&quot;</span>,</span>
+<span id="cb155-51"><a href="xenium-1.html#cb155-51" tabindex="-1"></a>    <span class="at">polygon_color =</span> <span class="st">&quot;cyan&quot;</span>,</span>
+<span id="cb155-52"><a href="xenium-1.html#cb155-52" tabindex="-1"></a>    <span class="at">polygon_line_size =</span> <span class="fl">0.1</span>,</span>
+<span id="cb155-53"><a href="xenium-1.html#cb155-53" tabindex="-1"></a>    <span class="at">polygon_alpha =</span> <span class="dv">0</span></span>
+<span id="cb155-54"><a href="xenium-1.html#cb155-54" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-206"></span>
 <img src="img/02_session3/imgplots.png" alt="H&amp;E and Cell polys (top left), DAPI and nuclear polys (top right), 18S and cell polys (lower left), ATP1A1/CD45/E-Cadherin and nuclear polys (lower right)"  />
 <p class="caption">
 Figure 10.6: H&amp;E and Cell polys (top left), DAPI and nuclear polys (top right), 18S and cell polys (lower left), ATP1A1/CD45/E-Cadherin and nuclear polys (lower right)
@@ -973,42 +977,42 @@ Figure 10.6: H&amp;E and Cell polys (top left), DAPI and nuclear polys (top righ
 <div id="spatial-aggregation" class="section level2 hasAnchor" number="10.6">
 <h2><span class="header-section-number">10.6</span> Spatial aggregation<a href="xenium-1.html#spatial-aggregation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>First calculate the <code>feat_info</code> ‘rna’ transcripts overlapped by the <code>spatial_info</code> ‘cell’ polygons with <code>calculateOverlap()</code>. Then, the overlaps information (relationships between points and polygons that overlap them) gets converted into a count matrix with <code>overlapToMatrix()</code>.</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="xenium-1.html#cb149-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">calculateOverlap</span>(g,</span>
-<span id="cb149-2"><a href="xenium-1.html#cb149-2" tabindex="-1"></a>    <span class="at">spatial_info =</span> <span class="st">&quot;cell&quot;</span>,</span>
-<span id="cb149-3"><a href="xenium-1.html#cb149-3" tabindex="-1"></a>    <span class="at">feat_info =</span> <span class="st">&quot;rna&quot;</span></span>
-<span id="cb149-4"><a href="xenium-1.html#cb149-4" tabindex="-1"></a>)</span>
-<span id="cb149-5"><a href="xenium-1.html#cb149-5" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">overlapToMatrix</span>(g)</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="xenium-1.html#cb156-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">calculateOverlap</span>(g,</span>
+<span id="cb156-2"><a href="xenium-1.html#cb156-2" tabindex="-1"></a>    <span class="at">spatial_info =</span> <span class="st">&quot;cell&quot;</span>,</span>
+<span id="cb156-3"><a href="xenium-1.html#cb156-3" tabindex="-1"></a>    <span class="at">feat_info =</span> <span class="st">&quot;rna&quot;</span></span>
+<span id="cb156-4"><a href="xenium-1.html#cb156-4" tabindex="-1"></a>)</span>
+<span id="cb156-5"><a href="xenium-1.html#cb156-5" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">overlapToMatrix</span>(g)</span></code></pre></div>
 </div>
 <div id="aggregate-analyses-workflow" class="section level2 hasAnchor" number="10.7">
 <h2><span class="header-section-number">10.7</span> Aggregate analyses workflow<a href="xenium-1.html#aggregate-analyses-workflow" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="filtering-1" class="section level3 hasAnchor" number="10.7.1">
 <h3><span class="header-section-number">10.7.1</span> Filtering<a href="xenium-1.html#filtering-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="xenium-1.html#cb150-1" tabindex="-1"></a><span class="co"># very permissive filtering. Mainly for removing 0 values</span></span>
-<span id="cb150-2"><a href="xenium-1.html#cb150-2" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">filterGiotto</span>(g,</span>
-<span id="cb150-3"><a href="xenium-1.html#cb150-3" tabindex="-1"></a>    <span class="at">expression_threshold =</span> <span class="dv">1</span>,</span>
-<span id="cb150-4"><a href="xenium-1.html#cb150-4" tabindex="-1"></a>    <span class="at">feat_det_in_min_cells =</span> <span class="dv">1</span>,</span>
-<span id="cb150-5"><a href="xenium-1.html#cb150-5" tabindex="-1"></a>    <span class="at">min_det_feats_per_cell =</span> <span class="dv">5</span></span>
-<span id="cb150-6"><a href="xenium-1.html#cb150-6" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="xenium-1.html#cb157-1" tabindex="-1"></a><span class="co"># very permissive filtering. Mainly for removing 0 values</span></span>
+<span id="cb157-2"><a href="xenium-1.html#cb157-2" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">filterGiotto</span>(g,</span>
+<span id="cb157-3"><a href="xenium-1.html#cb157-3" tabindex="-1"></a>    <span class="at">expression_threshold =</span> <span class="dv">1</span>,</span>
+<span id="cb157-4"><a href="xenium-1.html#cb157-4" tabindex="-1"></a>    <span class="at">feat_det_in_min_cells =</span> <span class="dv">1</span>,</span>
+<span id="cb157-5"><a href="xenium-1.html#cb157-5" tabindex="-1"></a>    <span class="at">min_det_feats_per_cell =</span> <span class="dv">5</span></span>
+<span id="cb157-6"><a href="xenium-1.html#cb157-6" tabindex="-1"></a>)</span></code></pre></div>
 <pre><code>Feature type:  rna 
 Number of cells removed:  0  out of  7129 
 Number of feats removed:  0  out of  377 </code></pre>
 </div>
 <div id="normalization-1" class="section level3 hasAnchor" number="10.7.2">
 <h3><span class="header-section-number">10.7.2</span> Normalization<a href="xenium-1.html#normalization-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="xenium-1.html#cb152-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">normalizeGiotto</span>(g)</span>
-<span id="cb152-2"><a href="xenium-1.html#cb152-2" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">addStatistics</span>(g)</span>
-<span id="cb152-3"><a href="xenium-1.html#cb152-3" tabindex="-1"></a></span>
-<span id="cb152-4"><a href="xenium-1.html#cb152-4" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
-<span id="cb152-5"><a href="xenium-1.html#cb152-5" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;nr_feats&quot;</span>,</span>
-<span id="cb152-6"><a href="xenium-1.html#cb152-6" tabindex="-1"></a>    <span class="at">polygon_fill_gradient_style =</span> <span class="st">&quot;sequential&quot;</span>,</span>
-<span id="cb152-7"><a href="xenium-1.html#cb152-7" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">FALSE</span></span>
-<span id="cb152-8"><a href="xenium-1.html#cb152-8" tabindex="-1"></a>)</span>
-<span id="cb152-9"><a href="xenium-1.html#cb152-9" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
-<span id="cb152-10"><a href="xenium-1.html#cb152-10" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;total_expr&quot;</span>,</span>
-<span id="cb152-11"><a href="xenium-1.html#cb152-11" tabindex="-1"></a>    <span class="at">polygon_fill_gradient_style =</span> <span class="st">&quot;sequential&quot;</span>,</span>
-<span id="cb152-12"><a href="xenium-1.html#cb152-12" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">FALSE</span></span>
-<span id="cb152-13"><a href="xenium-1.html#cb152-13" tabindex="-1"></a>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-203"></span>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="xenium-1.html#cb159-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">normalizeGiotto</span>(g)</span>
+<span id="cb159-2"><a href="xenium-1.html#cb159-2" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">addStatistics</span>(g)</span>
+<span id="cb159-3"><a href="xenium-1.html#cb159-3" tabindex="-1"></a></span>
+<span id="cb159-4"><a href="xenium-1.html#cb159-4" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
+<span id="cb159-5"><a href="xenium-1.html#cb159-5" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;nr_feats&quot;</span>,</span>
+<span id="cb159-6"><a href="xenium-1.html#cb159-6" tabindex="-1"></a>    <span class="at">polygon_fill_gradient_style =</span> <span class="st">&quot;sequential&quot;</span>,</span>
+<span id="cb159-7"><a href="xenium-1.html#cb159-7" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">FALSE</span></span>
+<span id="cb159-8"><a href="xenium-1.html#cb159-8" tabindex="-1"></a>)</span>
+<span id="cb159-9"><a href="xenium-1.html#cb159-9" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
+<span id="cb159-10"><a href="xenium-1.html#cb159-10" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;total_expr&quot;</span>,</span>
+<span id="cb159-11"><a href="xenium-1.html#cb159-11" tabindex="-1"></a>    <span class="at">polygon_fill_gradient_style =</span> <span class="st">&quot;sequential&quot;</span>,</span>
+<span id="cb159-12"><a href="xenium-1.html#cb159-12" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">FALSE</span></span>
+<span id="cb159-13"><a href="xenium-1.html#cb159-13" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-210"></span>
 <img src="img/02_session3/stats_plot.png" alt="'nr_feats' - Number of different gene species detected per cell (left), 'total_expr' - total detections per cell (right)"  />
 <p class="caption">
 Figure 10.7: ‘nr_feats’ - Number of different gene species detected per cell (left), ‘total_expr’ - total detections per cell (right)
@@ -1019,22 +1023,22 @@ Figure 10.7: ‘nr_feats’ - Number of different gene species detected per cell
 <div id="dimension-reduction-1" class="section level3 hasAnchor" number="10.7.3">
 <h3><span class="header-section-number">10.7.3</span> Dimension Reduction<a href="xenium-1.html#dimension-reduction-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Dimensional reduction of expression space to visualize expressional differences between cells and help with clustering.</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="xenium-1.html#cb153-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">runPCA</span>(g, <span class="at">feats_to_use =</span> <span class="cn">NULL</span>)</span>
-<span id="cb153-2"><a href="xenium-1.html#cb153-2" tabindex="-1"></a><span class="co"># feats_to_use = NULL since there are no HVFs calculated. Use all genes.</span></span>
-<span id="cb153-3"><a href="xenium-1.html#cb153-3" tabindex="-1"></a><span class="fu">screePlot</span>(g, <span class="at">ncp =</span> <span class="dv">30</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-205"></span>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="xenium-1.html#cb160-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">runPCA</span>(g, <span class="at">feats_to_use =</span> <span class="cn">NULL</span>)</span>
+<span id="cb160-2"><a href="xenium-1.html#cb160-2" tabindex="-1"></a><span class="co"># feats_to_use = NULL since there are no HVFs calculated. Use all genes.</span></span>
+<span id="cb160-3"><a href="xenium-1.html#cb160-3" tabindex="-1"></a><span class="fu">screePlot</span>(g, <span class="at">ncp =</span> <span class="dv">30</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-212"></span>
 <img src="img/02_session3/screeplot.png" alt="Plot of variance explained in the first 30 out of 100 principle components calculated" width="60%" />
 <p class="caption">
 Figure 10.8: Plot of variance explained in the first 30 out of 100 principle components calculated
 </p>
 </div>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="xenium-1.html#cb154-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">runUMAP</span>(g, </span>
-<span id="cb154-2"><a href="xenium-1.html#cb154-2" tabindex="-1"></a>    <span class="at">dimensions_to_use =</span> <span class="fu">seq</span>(<span class="dv">15</span>), </span>
-<span id="cb154-3"><a href="xenium-1.html#cb154-3" tabindex="-1"></a>    <span class="at">n_neighbors =</span> <span class="dv">40</span> <span class="co"># default</span></span>
-<span id="cb154-4"><a href="xenium-1.html#cb154-4" tabindex="-1"></a>)</span></code></pre></div>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="xenium-1.html#cb155-1" tabindex="-1"></a><span class="fu">plotPCA</span>(g)</span>
-<span id="cb155-2"><a href="xenium-1.html#cb155-2" tabindex="-1"></a><span class="fu">plotUMAP</span>(g)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-208"></span>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="xenium-1.html#cb161-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">runUMAP</span>(g, </span>
+<span id="cb161-2"><a href="xenium-1.html#cb161-2" tabindex="-1"></a>    <span class="at">dimensions_to_use =</span> <span class="fu">seq</span>(<span class="dv">15</span>), </span>
+<span id="cb161-3"><a href="xenium-1.html#cb161-3" tabindex="-1"></a>    <span class="at">n_neighbors =</span> <span class="dv">40</span> <span class="co"># default</span></span>
+<span id="cb161-4"><a href="xenium-1.html#cb161-4" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="xenium-1.html#cb162-1" tabindex="-1"></a><span class="fu">plotPCA</span>(g)</span>
+<span id="cb162-2"><a href="xenium-1.html#cb162-2" tabindex="-1"></a><span class="fu">plotUMAP</span>(g)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-215"></span>
 <img src="img/02_session3/dimplots.png" alt="PCA plot showing the first 2 PCs (left), UMAP generated from first 15 PCs (right)"  />
 <p class="caption">
 Figure 10.9: PCA plot showing the first 2 PCs (left), UMAP generated from first 15 PCs (right)
@@ -1043,37 +1047,37 @@ Figure 10.9: PCA plot showing the first 2 PCs (left), UMAP generated from first 
 </div>
 <div id="clustering-1" class="section level3 hasAnchor" number="10.7.4">
 <h3><span class="header-section-number">10.7.4</span> Clustering<a href="xenium-1.html#clustering-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="xenium-1.html#cb156-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">createNearestNetwork</span>(g,</span>
-<span id="cb156-2"><a href="xenium-1.html#cb156-2" tabindex="-1"></a>    <span class="at">dimensions_to_use =</span> <span class="fu">seq</span>(<span class="dv">15</span>), </span>
-<span id="cb156-3"><a href="xenium-1.html#cb156-3" tabindex="-1"></a>    <span class="at">k =</span> <span class="dv">40</span></span>
-<span id="cb156-4"><a href="xenium-1.html#cb156-4" tabindex="-1"></a>)</span>
-<span id="cb156-5"><a href="xenium-1.html#cb156-5" tabindex="-1"></a></span>
-<span id="cb156-6"><a href="xenium-1.html#cb156-6" tabindex="-1"></a><span class="co"># takes roughly 1 min to run</span></span>
-<span id="cb156-7"><a href="xenium-1.html#cb156-7" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">doLeidenCluster</span>(g)</span>
-<span id="cb156-8"><a href="xenium-1.html#cb156-8" tabindex="-1"></a></span>
-<span id="cb156-9"><a href="xenium-1.html#cb156-9" tabindex="-1"></a><span class="fu">plotPCA_3D</span>(g, </span>
-<span id="cb156-10"><a href="xenium-1.html#cb156-10" tabindex="-1"></a>    <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>, </span>
-<span id="cb156-11"><a href="xenium-1.html#cb156-11" tabindex="-1"></a>    <span class="at">point_size =</span> <span class="dv">1</span>,</span>
-<span id="cb156-12"><a href="xenium-1.html#cb156-12" tabindex="-1"></a>)</span>
-<span id="cb156-13"><a href="xenium-1.html#cb156-13" tabindex="-1"></a><span class="fu">plotUMAP</span>(g, </span>
-<span id="cb156-14"><a href="xenium-1.html#cb156-14" tabindex="-1"></a>    <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>, </span>
-<span id="cb156-15"><a href="xenium-1.html#cb156-15" tabindex="-1"></a>    <span class="at">point_size =</span> <span class="fl">0.1</span>, </span>
-<span id="cb156-16"><a href="xenium-1.html#cb156-16" tabindex="-1"></a>    <span class="at">point_shape =</span> <span class="st">&quot;no_border&quot;</span></span>
-<span id="cb156-17"><a href="xenium-1.html#cb156-17" tabindex="-1"></a>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-210"></span>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="xenium-1.html#cb163-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">createNearestNetwork</span>(g,</span>
+<span id="cb163-2"><a href="xenium-1.html#cb163-2" tabindex="-1"></a>    <span class="at">dimensions_to_use =</span> <span class="fu">seq</span>(<span class="dv">15</span>), </span>
+<span id="cb163-3"><a href="xenium-1.html#cb163-3" tabindex="-1"></a>    <span class="at">k =</span> <span class="dv">40</span></span>
+<span id="cb163-4"><a href="xenium-1.html#cb163-4" tabindex="-1"></a>)</span>
+<span id="cb163-5"><a href="xenium-1.html#cb163-5" tabindex="-1"></a></span>
+<span id="cb163-6"><a href="xenium-1.html#cb163-6" tabindex="-1"></a><span class="co"># takes roughly 1 min to run</span></span>
+<span id="cb163-7"><a href="xenium-1.html#cb163-7" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">doLeidenCluster</span>(g)</span>
+<span id="cb163-8"><a href="xenium-1.html#cb163-8" tabindex="-1"></a></span>
+<span id="cb163-9"><a href="xenium-1.html#cb163-9" tabindex="-1"></a><span class="fu">plotPCA_3D</span>(g, </span>
+<span id="cb163-10"><a href="xenium-1.html#cb163-10" tabindex="-1"></a>    <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>, </span>
+<span id="cb163-11"><a href="xenium-1.html#cb163-11" tabindex="-1"></a>    <span class="at">point_size =</span> <span class="dv">1</span>,</span>
+<span id="cb163-12"><a href="xenium-1.html#cb163-12" tabindex="-1"></a>)</span>
+<span id="cb163-13"><a href="xenium-1.html#cb163-13" tabindex="-1"></a><span class="fu">plotUMAP</span>(g, </span>
+<span id="cb163-14"><a href="xenium-1.html#cb163-14" tabindex="-1"></a>    <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>, </span>
+<span id="cb163-15"><a href="xenium-1.html#cb163-15" tabindex="-1"></a>    <span class="at">point_size =</span> <span class="fl">0.1</span>, </span>
+<span id="cb163-16"><a href="xenium-1.html#cb163-16" tabindex="-1"></a>    <span class="at">point_shape =</span> <span class="st">&quot;no_border&quot;</span></span>
+<span id="cb163-17"><a href="xenium-1.html#cb163-17" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-217"></span>
 <img src="img/02_session3/clustered_dimplots.png" alt="3D plot showing first PCs with leiden clustering annotations (left), UMAP plot showing leiden clustering results (right)"  />
 <p class="caption">
 Figure 10.10: 3D plot showing first PCs with leiden clustering annotations (left), UMAP plot showing leiden clustering results (right)
 </p>
 </div>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="xenium-1.html#cb157-1" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
-<span id="cb157-2"><a href="xenium-1.html#cb157-2" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
-<span id="cb157-3"><a href="xenium-1.html#cb157-3" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb157-4"><a href="xenium-1.html#cb157-4" tabindex="-1"></a>    <span class="at">polygon_alpha =</span> <span class="dv">1</span>,</span>
-<span id="cb157-5"><a href="xenium-1.html#cb157-5" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb157-6"><a href="xenium-1.html#cb157-6" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;HE&quot;</span></span>
-<span id="cb157-7"><a href="xenium-1.html#cb157-7" tabindex="-1"></a>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-212"></span>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="xenium-1.html#cb164-1" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
+<span id="cb164-2"><a href="xenium-1.html#cb164-2" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
+<span id="cb164-3"><a href="xenium-1.html#cb164-3" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb164-4"><a href="xenium-1.html#cb164-4" tabindex="-1"></a>    <span class="at">polygon_alpha =</span> <span class="dv">1</span>,</span>
+<span id="cb164-5"><a href="xenium-1.html#cb164-5" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb164-6"><a href="xenium-1.html#cb164-6" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;HE&quot;</span></span>
+<span id="cb164-7"><a href="xenium-1.html#cb164-7" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-219"></span>
 <img src="img/02_session3/leiden_spat.png" alt="Spatial plot with leiden clustering annotations."  />
 <p class="caption">
 Figure 10.11: Spatial plot with leiden clustering annotations.
@@ -1087,18 +1091,18 @@ Figure 10.11: Spatial plot with leiden clustering annotations.
 <div id="spatial-network" class="section level3 hasAnchor" number="10.8.1">
 <h3><span class="header-section-number">10.8.1</span> Spatial network<a href="xenium-1.html#spatial-network" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>First a spatial network must be generated so that spatial relationships between cells can be understood.</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="xenium-1.html#cb158-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">createSpatialNetwork</span>(g,</span>
-<span id="cb158-2"><a href="xenium-1.html#cb158-2" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;Delaunay&quot;</span></span>
-<span id="cb158-3"><a href="xenium-1.html#cb158-3" tabindex="-1"></a>)</span>
-<span id="cb158-4"><a href="xenium-1.html#cb158-4" tabindex="-1"></a></span>
-<span id="cb158-5"><a href="xenium-1.html#cb158-5" tabindex="-1"></a><span class="fu">spatPlot2D</span>(g, </span>
-<span id="cb158-6"><a href="xenium-1.html#cb158-6" tabindex="-1"></a>    <span class="at">point_shape =</span> <span class="st">&quot;no_border&quot;</span>, </span>
-<span id="cb158-7"><a href="xenium-1.html#cb158-7" tabindex="-1"></a>    <span class="at">show_network =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb158-8"><a href="xenium-1.html#cb158-8" tabindex="-1"></a>    <span class="at">point_size =</span> <span class="fl">0.1</span>,</span>
-<span id="cb158-9"><a href="xenium-1.html#cb158-9" tabindex="-1"></a>    <span class="at">point_alpha =</span> <span class="fl">0.5</span>,</span>
-<span id="cb158-10"><a href="xenium-1.html#cb158-10" tabindex="-1"></a>    <span class="at">network_color =</span> <span class="st">&quot;grey&quot;</span></span>
-<span id="cb158-11"><a href="xenium-1.html#cb158-11" tabindex="-1"></a>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-214"></span>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="xenium-1.html#cb165-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">createSpatialNetwork</span>(g,</span>
+<span id="cb165-2"><a href="xenium-1.html#cb165-2" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;Delaunay&quot;</span></span>
+<span id="cb165-3"><a href="xenium-1.html#cb165-3" tabindex="-1"></a>)</span>
+<span id="cb165-4"><a href="xenium-1.html#cb165-4" tabindex="-1"></a></span>
+<span id="cb165-5"><a href="xenium-1.html#cb165-5" tabindex="-1"></a><span class="fu">spatPlot2D</span>(g, </span>
+<span id="cb165-6"><a href="xenium-1.html#cb165-6" tabindex="-1"></a>    <span class="at">point_shape =</span> <span class="st">&quot;no_border&quot;</span>, </span>
+<span id="cb165-7"><a href="xenium-1.html#cb165-7" tabindex="-1"></a>    <span class="at">show_network =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb165-8"><a href="xenium-1.html#cb165-8" tabindex="-1"></a>    <span class="at">point_size =</span> <span class="fl">0.1</span>,</span>
+<span id="cb165-9"><a href="xenium-1.html#cb165-9" tabindex="-1"></a>    <span class="at">point_alpha =</span> <span class="fl">0.5</span>,</span>
+<span id="cb165-10"><a href="xenium-1.html#cb165-10" tabindex="-1"></a>    <span class="at">network_color =</span> <span class="st">&quot;grey&quot;</span></span>
+<span id="cb165-11"><a href="xenium-1.html#cb165-11" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-221"></span>
 <img src="img/02_session3/spatnet.png" alt="Delaunay spatial network`"  />
 <p class="caption">
 Figure 10.12: Delaunay spatial network`
@@ -1109,65 +1113,65 @@ Figure 10.12: Delaunay spatial network`
 <h3><span class="header-section-number">10.8.2</span> Niche calculation<a href="xenium-1.html#niche-calculation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Calculate a proportion table for a cell metadata table for all the spatial neighbors of each cell. This means that with each cell established as the center of its local niche, the enrichment of each leiden cluster label is found for that local niche.
 The results are stored as a new spatial enrichment entry called ‘leiden_niche’</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="xenium-1.html#cb159-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">calculateSpatCellMetadataProportions</span>(g,</span>
-<span id="cb159-2"><a href="xenium-1.html#cb159-2" tabindex="-1"></a>    <span class="at">spat_network =</span> <span class="st">&quot;Delaunay_network&quot;</span>,</span>
-<span id="cb159-3"><a href="xenium-1.html#cb159-3" tabindex="-1"></a>    <span class="at">metadata_column =</span> <span class="st">&quot;leiden_clus&quot;</span>, </span>
-<span id="cb159-4"><a href="xenium-1.html#cb159-4" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;leiden_niche&quot;</span></span>
-<span id="cb159-5"><a href="xenium-1.html#cb159-5" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="xenium-1.html#cb166-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">calculateSpatCellMetadataProportions</span>(g,</span>
+<span id="cb166-2"><a href="xenium-1.html#cb166-2" tabindex="-1"></a>    <span class="at">spat_network =</span> <span class="st">&quot;Delaunay_network&quot;</span>,</span>
+<span id="cb166-3"><a href="xenium-1.html#cb166-3" tabindex="-1"></a>    <span class="at">metadata_column =</span> <span class="st">&quot;leiden_clus&quot;</span>, </span>
+<span id="cb166-4"><a href="xenium-1.html#cb166-4" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;leiden_niche&quot;</span></span>
+<span id="cb166-5"><a href="xenium-1.html#cb166-5" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 <div id="kmeans-clustering-based-on-niche-signature" class="section level3 hasAnchor" number="10.8.3">
 <h3><span class="header-section-number">10.8.3</span> kmeans clustering based on niche signature<a href="xenium-1.html#kmeans-clustering-based-on-niche-signature" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="xenium-1.html#cb160-1" tabindex="-1"></a><span class="co"># retrieve the niche info</span></span>
-<span id="cb160-2"><a href="xenium-1.html#cb160-2" tabindex="-1"></a>prop_table <span class="ot">&lt;-</span> <span class="fu">getSpatialEnrichment</span>(g, <span class="at">name =</span> <span class="st">&quot;leiden_niche&quot;</span>, <span class="at">output =</span> <span class="st">&quot;data.table&quot;</span>)</span>
-<span id="cb160-3"><a href="xenium-1.html#cb160-3" tabindex="-1"></a><span class="co"># convert to matrix</span></span>
-<span id="cb160-4"><a href="xenium-1.html#cb160-4" tabindex="-1"></a>prop_matrix <span class="ot">&lt;-</span> GiottoUtils<span class="sc">::</span><span class="fu">dt_to_matrix</span>(prop_table)</span>
-<span id="cb160-5"><a href="xenium-1.html#cb160-5" tabindex="-1"></a></span>
-<span id="cb160-6"><a href="xenium-1.html#cb160-6" tabindex="-1"></a><span class="co"># perform kmeans clustering</span></span>
-<span id="cb160-7"><a href="xenium-1.html#cb160-7" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>) <span class="co"># make kmeans clustering reproducible</span></span>
-<span id="cb160-8"><a href="xenium-1.html#cb160-8" tabindex="-1"></a>prop_kmeans <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(</span>
-<span id="cb160-9"><a href="xenium-1.html#cb160-9" tabindex="-1"></a>    <span class="at">x =</span> prop_matrix, </span>
-<span id="cb160-10"><a href="xenium-1.html#cb160-10" tabindex="-1"></a>    <span class="at">centers =</span> <span class="dv">7</span>, <span class="co"># controls how many clusters will be formed</span></span>
-<span id="cb160-11"><a href="xenium-1.html#cb160-11" tabindex="-1"></a>    <span class="at">iter.max =</span> <span class="dv">1000</span>,</span>
-<span id="cb160-12"><a href="xenium-1.html#cb160-12" tabindex="-1"></a>    <span class="at">nstart =</span> <span class="dv">100</span></span>
-<span id="cb160-13"><a href="xenium-1.html#cb160-13" tabindex="-1"></a>)</span>
-<span id="cb160-14"><a href="xenium-1.html#cb160-14" tabindex="-1"></a>prop_kmeansDT <span class="ot">=</span> data.table<span class="sc">::</span><span class="fu">data.table</span>(</span>
-<span id="cb160-15"><a href="xenium-1.html#cb160-15" tabindex="-1"></a>    <span class="at">cell_ID =</span> <span class="fu">names</span>(prop_kmeans<span class="sc">$</span>cluster),</span>
-<span id="cb160-16"><a href="xenium-1.html#cb160-16" tabindex="-1"></a>    <span class="at">niche =</span> prop_kmeans<span class="sc">$</span>cluster</span>
-<span id="cb160-17"><a href="xenium-1.html#cb160-17" tabindex="-1"></a>)</span>
-<span id="cb160-18"><a href="xenium-1.html#cb160-18" tabindex="-1"></a></span>
-<span id="cb160-19"><a href="xenium-1.html#cb160-19" tabindex="-1"></a><span class="co"># return kmeans clustering on niche to gobject</span></span>
-<span id="cb160-20"><a href="xenium-1.html#cb160-20" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">addCellMetadata</span>(g, </span>
-<span id="cb160-21"><a href="xenium-1.html#cb160-21" tabindex="-1"></a>    <span class="at">new_metadata =</span> prop_kmeansDT, </span>
-<span id="cb160-22"><a href="xenium-1.html#cb160-22" tabindex="-1"></a>    <span class="at">by_column =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb160-23"><a href="xenium-1.html#cb160-23" tabindex="-1"></a>    <span class="at">column_cell_ID =</span> <span class="st">&quot;cell_ID&quot;</span></span>
-<span id="cb160-24"><a href="xenium-1.html#cb160-24" tabindex="-1"></a>)</span>
-<span id="cb160-25"><a href="xenium-1.html#cb160-25" tabindex="-1"></a></span>
-<span id="cb160-26"><a href="xenium-1.html#cb160-26" tabindex="-1"></a><span class="co"># visualize niches</span></span>
-<span id="cb160-27"><a href="xenium-1.html#cb160-27" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
-<span id="cb160-28"><a href="xenium-1.html#cb160-28" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb160-29"><a href="xenium-1.html#cb160-29" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;HE&quot;</span>,</span>
-<span id="cb160-30"><a href="xenium-1.html#cb160-30" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;niche&quot;</span>,</span>
-<span id="cb160-31"><a href="xenium-1.html#cb160-31" tabindex="-1"></a>    <span class="co"># polygon_fill_code = getColors(&quot;Accent&quot;, 8),</span></span>
-<span id="cb160-32"><a href="xenium-1.html#cb160-32" tabindex="-1"></a>    <span class="at">polygon_alpha =</span> <span class="dv">1</span>,</span>
-<span id="cb160-33"><a href="xenium-1.html#cb160-33" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">TRUE</span></span>
-<span id="cb160-34"><a href="xenium-1.html#cb160-34" tabindex="-1"></a>)</span>
-<span id="cb160-35"><a href="xenium-1.html#cb160-35" tabindex="-1"></a></span>
-<span id="cb160-36"><a href="xenium-1.html#cb160-36" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(</span>
-<span id="cb160-37"><a href="xenium-1.html#cb160-37" tabindex="-1"></a>    cx, ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">as.character</span>(leiden_clus), </span>
-<span id="cb160-38"><a href="xenium-1.html#cb160-38" tabindex="-1"></a>                     <span class="at">y =</span> <span class="dv">1</span>, </span>
-<span id="cb160-39"><a href="xenium-1.html#cb160-39" tabindex="-1"></a>                     <span class="at">x =</span> <span class="fu">as.character</span>(niche))) <span class="sc">+</span> </span>
-<span id="cb160-40"><a href="xenium-1.html#cb160-40" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;fill&quot;</span>, <span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb160-41"><a href="xenium-1.html#cb160-41" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(</span>
-<span id="cb160-42"><a href="xenium-1.html#cb160-42" tabindex="-1"></a>        <span class="st">&quot;#E7298A&quot;</span>, <span class="st">&quot;#FFED6F&quot;</span>, <span class="st">&quot;#80B1D3&quot;</span>, <span class="st">&quot;#E41A1C&quot;</span>, <span class="st">&quot;#377EB8&quot;</span>, <span class="st">&quot;#A65628&quot;</span>, </span>
-<span id="cb160-43"><a href="xenium-1.html#cb160-43" tabindex="-1"></a>        <span class="st">&quot;#4DAF4A&quot;</span>, <span class="st">&quot;#D9D9D9&quot;</span>, <span class="st">&quot;#FF7F00&quot;</span>, <span class="st">&quot;#BC80BD&quot;</span>, <span class="st">&quot;#666666&quot;</span>, <span class="st">&quot;#B3DE69&quot;</span>)</span>
-<span id="cb160-44"><a href="xenium-1.html#cb160-44" tabindex="-1"></a>    )</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-217"></span>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="xenium-1.html#cb167-1" tabindex="-1"></a><span class="co"># retrieve the niche info</span></span>
+<span id="cb167-2"><a href="xenium-1.html#cb167-2" tabindex="-1"></a>prop_table <span class="ot">&lt;-</span> <span class="fu">getSpatialEnrichment</span>(g, <span class="at">name =</span> <span class="st">&quot;leiden_niche&quot;</span>, <span class="at">output =</span> <span class="st">&quot;data.table&quot;</span>)</span>
+<span id="cb167-3"><a href="xenium-1.html#cb167-3" tabindex="-1"></a><span class="co"># convert to matrix</span></span>
+<span id="cb167-4"><a href="xenium-1.html#cb167-4" tabindex="-1"></a>prop_matrix <span class="ot">&lt;-</span> GiottoUtils<span class="sc">::</span><span class="fu">dt_to_matrix</span>(prop_table)</span>
+<span id="cb167-5"><a href="xenium-1.html#cb167-5" tabindex="-1"></a></span>
+<span id="cb167-6"><a href="xenium-1.html#cb167-6" tabindex="-1"></a><span class="co"># perform kmeans clustering</span></span>
+<span id="cb167-7"><a href="xenium-1.html#cb167-7" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>) <span class="co"># make kmeans clustering reproducible</span></span>
+<span id="cb167-8"><a href="xenium-1.html#cb167-8" tabindex="-1"></a>prop_kmeans <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(</span>
+<span id="cb167-9"><a href="xenium-1.html#cb167-9" tabindex="-1"></a>    <span class="at">x =</span> prop_matrix, </span>
+<span id="cb167-10"><a href="xenium-1.html#cb167-10" tabindex="-1"></a>    <span class="at">centers =</span> <span class="dv">7</span>, <span class="co"># controls how many clusters will be formed</span></span>
+<span id="cb167-11"><a href="xenium-1.html#cb167-11" tabindex="-1"></a>    <span class="at">iter.max =</span> <span class="dv">1000</span>,</span>
+<span id="cb167-12"><a href="xenium-1.html#cb167-12" tabindex="-1"></a>    <span class="at">nstart =</span> <span class="dv">100</span></span>
+<span id="cb167-13"><a href="xenium-1.html#cb167-13" tabindex="-1"></a>)</span>
+<span id="cb167-14"><a href="xenium-1.html#cb167-14" tabindex="-1"></a>prop_kmeansDT <span class="ot">=</span> data.table<span class="sc">::</span><span class="fu">data.table</span>(</span>
+<span id="cb167-15"><a href="xenium-1.html#cb167-15" tabindex="-1"></a>    <span class="at">cell_ID =</span> <span class="fu">names</span>(prop_kmeans<span class="sc">$</span>cluster),</span>
+<span id="cb167-16"><a href="xenium-1.html#cb167-16" tabindex="-1"></a>    <span class="at">niche =</span> prop_kmeans<span class="sc">$</span>cluster</span>
+<span id="cb167-17"><a href="xenium-1.html#cb167-17" tabindex="-1"></a>)</span>
+<span id="cb167-18"><a href="xenium-1.html#cb167-18" tabindex="-1"></a></span>
+<span id="cb167-19"><a href="xenium-1.html#cb167-19" tabindex="-1"></a><span class="co"># return kmeans clustering on niche to gobject</span></span>
+<span id="cb167-20"><a href="xenium-1.html#cb167-20" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">addCellMetadata</span>(g, </span>
+<span id="cb167-21"><a href="xenium-1.html#cb167-21" tabindex="-1"></a>    <span class="at">new_metadata =</span> prop_kmeansDT, </span>
+<span id="cb167-22"><a href="xenium-1.html#cb167-22" tabindex="-1"></a>    <span class="at">by_column =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb167-23"><a href="xenium-1.html#cb167-23" tabindex="-1"></a>    <span class="at">column_cell_ID =</span> <span class="st">&quot;cell_ID&quot;</span></span>
+<span id="cb167-24"><a href="xenium-1.html#cb167-24" tabindex="-1"></a>)</span>
+<span id="cb167-25"><a href="xenium-1.html#cb167-25" tabindex="-1"></a></span>
+<span id="cb167-26"><a href="xenium-1.html#cb167-26" tabindex="-1"></a><span class="co"># visualize niches</span></span>
+<span id="cb167-27"><a href="xenium-1.html#cb167-27" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
+<span id="cb167-28"><a href="xenium-1.html#cb167-28" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb167-29"><a href="xenium-1.html#cb167-29" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;HE&quot;</span>,</span>
+<span id="cb167-30"><a href="xenium-1.html#cb167-30" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;niche&quot;</span>,</span>
+<span id="cb167-31"><a href="xenium-1.html#cb167-31" tabindex="-1"></a>    <span class="co"># polygon_fill_code = getColors(&quot;Accent&quot;, 8),</span></span>
+<span id="cb167-32"><a href="xenium-1.html#cb167-32" tabindex="-1"></a>    <span class="at">polygon_alpha =</span> <span class="dv">1</span>,</span>
+<span id="cb167-33"><a href="xenium-1.html#cb167-33" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">TRUE</span></span>
+<span id="cb167-34"><a href="xenium-1.html#cb167-34" tabindex="-1"></a>)</span>
+<span id="cb167-35"><a href="xenium-1.html#cb167-35" tabindex="-1"></a></span>
+<span id="cb167-36"><a href="xenium-1.html#cb167-36" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(</span>
+<span id="cb167-37"><a href="xenium-1.html#cb167-37" tabindex="-1"></a>    cx, ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">as.character</span>(leiden_clus), </span>
+<span id="cb167-38"><a href="xenium-1.html#cb167-38" tabindex="-1"></a>                     <span class="at">y =</span> <span class="dv">1</span>, </span>
+<span id="cb167-39"><a href="xenium-1.html#cb167-39" tabindex="-1"></a>                     <span class="at">x =</span> <span class="fu">as.character</span>(niche))) <span class="sc">+</span> </span>
+<span id="cb167-40"><a href="xenium-1.html#cb167-40" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;fill&quot;</span>, <span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb167-41"><a href="xenium-1.html#cb167-41" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(</span>
+<span id="cb167-42"><a href="xenium-1.html#cb167-42" tabindex="-1"></a>        <span class="st">&quot;#E7298A&quot;</span>, <span class="st">&quot;#FFED6F&quot;</span>, <span class="st">&quot;#80B1D3&quot;</span>, <span class="st">&quot;#E41A1C&quot;</span>, <span class="st">&quot;#377EB8&quot;</span>, <span class="st">&quot;#A65628&quot;</span>, </span>
+<span id="cb167-43"><a href="xenium-1.html#cb167-43" tabindex="-1"></a>        <span class="st">&quot;#4DAF4A&quot;</span>, <span class="st">&quot;#D9D9D9&quot;</span>, <span class="st">&quot;#FF7F00&quot;</span>, <span class="st">&quot;#BC80BD&quot;</span>, <span class="st">&quot;#666666&quot;</span>, <span class="st">&quot;#B3DE69&quot;</span>)</span>
+<span id="cb167-44"><a href="xenium-1.html#cb167-44" tabindex="-1"></a>    )</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-224"></span>
 <img src="img/02_session3/niches_spat.png" alt="Leiden annotation-based spatial niches"  />
 <p class="caption">
 Figure 10.13: Leiden annotation-based spatial niches
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-218"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-225"></span>
 <img src="img/02_session3/niches_bar.png" alt="Stacked barplot of leiden annotation composition by niche"  />
 <p class="caption">
 Figure 10.14: Stacked barplot of leiden annotation composition by niche
@@ -1178,57 +1182,57 @@ Figure 10.14: Stacked barplot of leiden annotation composition by niche
 <div id="cell-proximity-enrichment" class="section level2 hasAnchor" number="10.9">
 <h2><span class="header-section-number">10.9</span> Cell proximity enrichment<a href="xenium-1.html#cell-proximity-enrichment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Using a spatial network, determine if there is an enrichment or depletion between annotation types by calculating the observed over the expected frequency of interactions.</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="xenium-1.html#cb161-1" tabindex="-1"></a><span class="co"># uses a lot of memory</span></span>
-<span id="cb161-2"><a href="xenium-1.html#cb161-2" tabindex="-1"></a>leiden_prox <span class="ot">&lt;-</span> <span class="fu">cellProximityEnrichment</span>(g,</span>
-<span id="cb161-3"><a href="xenium-1.html#cb161-3" tabindex="-1"></a>    <span class="at">cluster_column =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
-<span id="cb161-4"><a href="xenium-1.html#cb161-4" tabindex="-1"></a>    <span class="at">spatial_network_name =</span> <span class="st">&quot;Delaunay_network&quot;</span>,</span>
-<span id="cb161-5"><a href="xenium-1.html#cb161-5" tabindex="-1"></a>    <span class="at">adjust_method =</span> <span class="st">&quot;fdr&quot;</span>,</span>
-<span id="cb161-6"><a href="xenium-1.html#cb161-6" tabindex="-1"></a>    <span class="at">number_of_simulations =</span> <span class="dv">2000</span></span>
-<span id="cb161-7"><a href="xenium-1.html#cb161-7" tabindex="-1"></a>)</span>
-<span id="cb161-8"><a href="xenium-1.html#cb161-8" tabindex="-1"></a></span>
-<span id="cb161-9"><a href="xenium-1.html#cb161-9" tabindex="-1"></a><span class="fu">cellProximityBarplot</span>(g,</span>
-<span id="cb161-10"><a href="xenium-1.html#cb161-10" tabindex="-1"></a>    <span class="at">CPscore =</span> leiden_prox,</span>
-<span id="cb161-11"><a href="xenium-1.html#cb161-11" tabindex="-1"></a>    <span class="at">min_orig_ints =</span> <span class="dv">5</span>, <span class="co"># minimum original cell-cell interactions</span></span>
-<span id="cb161-12"><a href="xenium-1.html#cb161-12" tabindex="-1"></a>    <span class="at">min_sim_ints =</span> <span class="dv">5</span> <span class="co"># minimum simulated cell-cell interactions</span></span>
-<span id="cb161-13"><a href="xenium-1.html#cb161-13" tabindex="-1"></a>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-220"></span>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="xenium-1.html#cb168-1" tabindex="-1"></a><span class="co"># uses a lot of memory</span></span>
+<span id="cb168-2"><a href="xenium-1.html#cb168-2" tabindex="-1"></a>leiden_prox <span class="ot">&lt;-</span> <span class="fu">cellProximityEnrichment</span>(g,</span>
+<span id="cb168-3"><a href="xenium-1.html#cb168-3" tabindex="-1"></a>    <span class="at">cluster_column =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
+<span id="cb168-4"><a href="xenium-1.html#cb168-4" tabindex="-1"></a>    <span class="at">spatial_network_name =</span> <span class="st">&quot;Delaunay_network&quot;</span>,</span>
+<span id="cb168-5"><a href="xenium-1.html#cb168-5" tabindex="-1"></a>    <span class="at">adjust_method =</span> <span class="st">&quot;fdr&quot;</span>,</span>
+<span id="cb168-6"><a href="xenium-1.html#cb168-6" tabindex="-1"></a>    <span class="at">number_of_simulations =</span> <span class="dv">2000</span></span>
+<span id="cb168-7"><a href="xenium-1.html#cb168-7" tabindex="-1"></a>)</span>
+<span id="cb168-8"><a href="xenium-1.html#cb168-8" tabindex="-1"></a></span>
+<span id="cb168-9"><a href="xenium-1.html#cb168-9" tabindex="-1"></a><span class="fu">cellProximityBarplot</span>(g,</span>
+<span id="cb168-10"><a href="xenium-1.html#cb168-10" tabindex="-1"></a>    <span class="at">CPscore =</span> leiden_prox,</span>
+<span id="cb168-11"><a href="xenium-1.html#cb168-11" tabindex="-1"></a>    <span class="at">min_orig_ints =</span> <span class="dv">5</span>, <span class="co"># minimum original cell-cell interactions</span></span>
+<span id="cb168-12"><a href="xenium-1.html#cb168-12" tabindex="-1"></a>    <span class="at">min_sim_ints =</span> <span class="dv">5</span> <span class="co"># minimum simulated cell-cell interactions</span></span>
+<span id="cb168-13"><a href="xenium-1.html#cb168-13" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-227"></span>
 <img src="img/02_session3/cc_prox.png" alt="Cell-cell interaction enrichments and depletions (left). Number of interactions of each type found (right)"  />
 <p class="caption">
 Figure 10.15: Cell-cell interaction enrichments and depletions (left). Number of interactions of each type found (right)
 </p>
 </div>
 <p>Most enrichments are self-self interactions, which is expected. However, 6–8 and 2–9 stand out as being hetero interactions that are enriched with a large number of interactions. We can take a closer look by plotting these annotation pairs with colors that stand out.</p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="xenium-1.html#cb162-1" tabindex="-1"></a><span class="co"># set up colors</span></span>
-<span id="cb162-2"><a href="xenium-1.html#cb162-2" tabindex="-1"></a>other_cell_color <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">&quot;grey&quot;</span>, <span class="dv">12</span>)</span>
-<span id="cb162-3"><a href="xenium-1.html#cb162-3" tabindex="-1"></a>int_6_8 <span class="ot">&lt;-</span> int_2_9 <span class="ot">&lt;-</span> other_cell_color</span>
-<span id="cb162-4"><a href="xenium-1.html#cb162-4" tabindex="-1"></a>int_6_8[<span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">8</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;orange&quot;</span>, <span class="st">&quot;cornflowerblue&quot;</span>)</span>
-<span id="cb162-5"><a href="xenium-1.html#cb162-5" tabindex="-1"></a>int_2_9[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">9</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;orange&quot;</span>, <span class="st">&quot;cornflowerblue&quot;</span>)</span>
-<span id="cb162-6"><a href="xenium-1.html#cb162-6" tabindex="-1"></a></span>
-<span id="cb162-7"><a href="xenium-1.html#cb162-7" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
-<span id="cb162-8"><a href="xenium-1.html#cb162-8" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
-<span id="cb162-9"><a href="xenium-1.html#cb162-9" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb162-10"><a href="xenium-1.html#cb162-10" tabindex="-1"></a>    <span class="at">polygon_fill_code =</span> int_6_8,</span>
-<span id="cb162-11"><a href="xenium-1.html#cb162-11" tabindex="-1"></a>    <span class="at">polygon_line_size =</span> <span class="fl">0.1</span>,</span>
-<span id="cb162-12"><a href="xenium-1.html#cb162-12" tabindex="-1"></a>    <span class="at">polygon_alpha =</span> <span class="dv">1</span>,</span>
-<span id="cb162-13"><a href="xenium-1.html#cb162-13" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb162-14"><a href="xenium-1.html#cb162-14" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;HE&quot;</span></span>
-<span id="cb162-15"><a href="xenium-1.html#cb162-15" tabindex="-1"></a>)</span>
-<span id="cb162-16"><a href="xenium-1.html#cb162-16" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
-<span id="cb162-17"><a href="xenium-1.html#cb162-17" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
-<span id="cb162-18"><a href="xenium-1.html#cb162-18" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb162-19"><a href="xenium-1.html#cb162-19" tabindex="-1"></a>    <span class="at">polygon_fill_code =</span> int_2_9,</span>
-<span id="cb162-20"><a href="xenium-1.html#cb162-20" tabindex="-1"></a>    <span class="at">polygon_line_size =</span> <span class="fl">0.1</span>,</span>
-<span id="cb162-21"><a href="xenium-1.html#cb162-21" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb162-22"><a href="xenium-1.html#cb162-22" tabindex="-1"></a>    <span class="at">polygon_alpha =</span> <span class="dv">1</span>,</span>
-<span id="cb162-23"><a href="xenium-1.html#cb162-23" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;HE&quot;</span></span>
-<span id="cb162-24"><a href="xenium-1.html#cb162-24" tabindex="-1"></a>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-222"></span>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="xenium-1.html#cb169-1" tabindex="-1"></a><span class="co"># set up colors</span></span>
+<span id="cb169-2"><a href="xenium-1.html#cb169-2" tabindex="-1"></a>other_cell_color <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">&quot;grey&quot;</span>, <span class="dv">12</span>)</span>
+<span id="cb169-3"><a href="xenium-1.html#cb169-3" tabindex="-1"></a>int_6_8 <span class="ot">&lt;-</span> int_2_9 <span class="ot">&lt;-</span> other_cell_color</span>
+<span id="cb169-4"><a href="xenium-1.html#cb169-4" tabindex="-1"></a>int_6_8[<span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">8</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;orange&quot;</span>, <span class="st">&quot;cornflowerblue&quot;</span>)</span>
+<span id="cb169-5"><a href="xenium-1.html#cb169-5" tabindex="-1"></a>int_2_9[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">9</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;orange&quot;</span>, <span class="st">&quot;cornflowerblue&quot;</span>)</span>
+<span id="cb169-6"><a href="xenium-1.html#cb169-6" tabindex="-1"></a></span>
+<span id="cb169-7"><a href="xenium-1.html#cb169-7" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
+<span id="cb169-8"><a href="xenium-1.html#cb169-8" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
+<span id="cb169-9"><a href="xenium-1.html#cb169-9" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb169-10"><a href="xenium-1.html#cb169-10" tabindex="-1"></a>    <span class="at">polygon_fill_code =</span> int_6_8,</span>
+<span id="cb169-11"><a href="xenium-1.html#cb169-11" tabindex="-1"></a>    <span class="at">polygon_line_size =</span> <span class="fl">0.1</span>,</span>
+<span id="cb169-12"><a href="xenium-1.html#cb169-12" tabindex="-1"></a>    <span class="at">polygon_alpha =</span> <span class="dv">1</span>,</span>
+<span id="cb169-13"><a href="xenium-1.html#cb169-13" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb169-14"><a href="xenium-1.html#cb169-14" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;HE&quot;</span></span>
+<span id="cb169-15"><a href="xenium-1.html#cb169-15" tabindex="-1"></a>)</span>
+<span id="cb169-16"><a href="xenium-1.html#cb169-16" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
+<span id="cb169-17"><a href="xenium-1.html#cb169-17" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
+<span id="cb169-18"><a href="xenium-1.html#cb169-18" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb169-19"><a href="xenium-1.html#cb169-19" tabindex="-1"></a>    <span class="at">polygon_fill_code =</span> int_2_9,</span>
+<span id="cb169-20"><a href="xenium-1.html#cb169-20" tabindex="-1"></a>    <span class="at">polygon_line_size =</span> <span class="fl">0.1</span>,</span>
+<span id="cb169-21"><a href="xenium-1.html#cb169-21" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb169-22"><a href="xenium-1.html#cb169-22" tabindex="-1"></a>    <span class="at">polygon_alpha =</span> <span class="dv">1</span>,</span>
+<span id="cb169-23"><a href="xenium-1.html#cb169-23" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;HE&quot;</span></span>
+<span id="cb169-24"><a href="xenium-1.html#cb169-24" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-229"></span>
 <img src="img/02_session3/cc_enrich1.png" alt="Spatial plot of enriched leiden annotation 6 to 8 interactions"  />
 <p class="caption">
 Figure 10.16: Spatial plot of enriched leiden annotation 6 to 8 interactions
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-223"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-230"></span>
 <img src="img/02_session3/cc_enrich2.png" alt="Spatial plot of enriched leiden annotation 2 to 9 interactions"  />
 <p class="caption">
 Figure 10.17: Spatial plot of enriched leiden annotation 2 to 9 interactions
@@ -1241,18 +1245,18 @@ Figure 10.17: Spatial plot of enriched leiden annotation 2 to 9 interactions
 <p><code>makePseudoVisium</code> generates a Visium array of circular polygons across the spatial extent provided.</p>
 <p>Here we use <code>ext()</code> with the <code>prefer</code> arg pointing to the polygon and points data and <code>all_data = TRUE</code>, meaning that the combined spatial extent of those two data types will be returned, giving a good measure of where all the data in the object is at the moment.</p>
 <p><code>micron_size = 1</code> since the Xenium data is already scaled to microns.</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="xenium-1.html#cb163-1" tabindex="-1"></a>pvis <span class="ot">&lt;-</span> <span class="fu">makePseudoVisium</span>(</span>
-<span id="cb163-2"><a href="xenium-1.html#cb163-2" tabindex="-1"></a>    <span class="at">extent =</span> <span class="fu">ext</span>(g,</span>
-<span id="cb163-3"><a href="xenium-1.html#cb163-3" tabindex="-1"></a>        <span class="at">prefer =</span> <span class="fu">c</span>(<span class="st">&quot;polygon&quot;</span>, <span class="st">&quot;points&quot;</span>),</span>
-<span id="cb163-4"><a href="xenium-1.html#cb163-4" tabindex="-1"></a>        <span class="at">all_data =</span> <span class="cn">TRUE</span> <span class="co"># this is the default</span></span>
-<span id="cb163-5"><a href="xenium-1.html#cb163-5" tabindex="-1"></a>    ),</span>
-<span id="cb163-6"><a href="xenium-1.html#cb163-6" tabindex="-1"></a>    <span class="at">micron_size =</span> <span class="dv">1</span></span>
-<span id="cb163-7"><a href="xenium-1.html#cb163-7" tabindex="-1"></a>)</span>
-<span id="cb163-8"><a href="xenium-1.html#cb163-8" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">setGiotto</span>(g, pvis)</span>
-<span id="cb163-9"><a href="xenium-1.html#cb163-9" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">addSpatialCentroidLocations</span>(g, <span class="at">poly_info =</span> <span class="st">&quot;pseudo_visium&quot;</span>)</span>
-<span id="cb163-10"><a href="xenium-1.html#cb163-10" tabindex="-1"></a></span>
-<span id="cb163-11"><a href="xenium-1.html#cb163-11" tabindex="-1"></a><span class="fu">plot</span>(pvis)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-225"></span>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="xenium-1.html#cb170-1" tabindex="-1"></a>pvis <span class="ot">&lt;-</span> <span class="fu">makePseudoVisium</span>(</span>
+<span id="cb170-2"><a href="xenium-1.html#cb170-2" tabindex="-1"></a>    <span class="at">extent =</span> <span class="fu">ext</span>(g,</span>
+<span id="cb170-3"><a href="xenium-1.html#cb170-3" tabindex="-1"></a>        <span class="at">prefer =</span> <span class="fu">c</span>(<span class="st">&quot;polygon&quot;</span>, <span class="st">&quot;points&quot;</span>),</span>
+<span id="cb170-4"><a href="xenium-1.html#cb170-4" tabindex="-1"></a>        <span class="at">all_data =</span> <span class="cn">TRUE</span> <span class="co"># this is the default</span></span>
+<span id="cb170-5"><a href="xenium-1.html#cb170-5" tabindex="-1"></a>    ),</span>
+<span id="cb170-6"><a href="xenium-1.html#cb170-6" tabindex="-1"></a>    <span class="at">micron_size =</span> <span class="dv">1</span></span>
+<span id="cb170-7"><a href="xenium-1.html#cb170-7" tabindex="-1"></a>)</span>
+<span id="cb170-8"><a href="xenium-1.html#cb170-8" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">setGiotto</span>(g, pvis)</span>
+<span id="cb170-9"><a href="xenium-1.html#cb170-9" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">addSpatialCentroidLocations</span>(g, <span class="at">poly_info =</span> <span class="st">&quot;pseudo_visium&quot;</span>)</span>
+<span id="cb170-10"><a href="xenium-1.html#cb170-10" tabindex="-1"></a></span>
+<span id="cb170-11"><a href="xenium-1.html#cb170-11" tabindex="-1"></a><span class="fu">plot</span>(pvis)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-232"></span>
 <img src="img/02_session3/pvis_poly.png" alt="Pseudovisium spot geometries generated by `makePseudoVisium()`" width="60%" />
 <p class="caption">
 Figure 10.18: Pseudovisium spot geometries generated by <code>makePseudoVisium()</code>
@@ -1261,65 +1265,65 @@ Figure 10.18: Pseudovisium spot geometries generated by <code>makePseudoVisium()
 <div id="pseudovisium-aggregation-and-workflow" class="section level3 hasAnchor" number="10.10.1">
 <h3><span class="header-section-number">10.10.1</span> Pseudovisium aggregation and workflow<a href="xenium-1.html#pseudovisium-aggregation-and-workflow" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Make ‘pseudo_visium’ the new default spatial unit then proceed with aggregation and usual aggregate workflow</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="xenium-1.html#cb164-1" tabindex="-1"></a><span class="fu">activeSpatUnit</span>(g) <span class="ot">&lt;-</span> <span class="st">&quot;pseudo_visium&quot;</span></span>
-<span id="cb164-2"><a href="xenium-1.html#cb164-2" tabindex="-1"></a></span>
-<span id="cb164-3"><a href="xenium-1.html#cb164-3" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">calculateOverlap</span>(g,</span>
-<span id="cb164-4"><a href="xenium-1.html#cb164-4" tabindex="-1"></a>    <span class="at">spatial_info =</span> <span class="st">&quot;pseudo_visium&quot;</span>,</span>
-<span id="cb164-5"><a href="xenium-1.html#cb164-5" tabindex="-1"></a>    <span class="at">feat_info =</span> <span class="st">&quot;rna&quot;</span></span>
-<span id="cb164-6"><a href="xenium-1.html#cb164-6" tabindex="-1"></a>)</span>
-<span id="cb164-7"><a href="xenium-1.html#cb164-7" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">overlapToMatrix</span>(g)</span>
-<span id="cb164-8"><a href="xenium-1.html#cb164-8" tabindex="-1"></a></span>
-<span id="cb164-9"><a href="xenium-1.html#cb164-9" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">filterGiotto</span>(g,</span>
-<span id="cb164-10"><a href="xenium-1.html#cb164-10" tabindex="-1"></a>    <span class="at">expression_threshold =</span> <span class="dv">1</span>,</span>
-<span id="cb164-11"><a href="xenium-1.html#cb164-11" tabindex="-1"></a>    <span class="at">feat_det_in_min_cells =</span> <span class="dv">1</span>,</span>
-<span id="cb164-12"><a href="xenium-1.html#cb164-12" tabindex="-1"></a>    <span class="at">min_det_feats_per_cell =</span> <span class="dv">100</span></span>
-<span id="cb164-13"><a href="xenium-1.html#cb164-13" tabindex="-1"></a>)</span>
-<span id="cb164-14"><a href="xenium-1.html#cb164-14" tabindex="-1"></a></span>
-<span id="cb164-15"><a href="xenium-1.html#cb164-15" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">normalizeGiotto</span>(g)</span>
-<span id="cb164-16"><a href="xenium-1.html#cb164-16" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">addStatistics</span>(g)</span>
-<span id="cb164-17"><a href="xenium-1.html#cb164-17" tabindex="-1"></a></span>
-<span id="cb164-18"><a href="xenium-1.html#cb164-18" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
-<span id="cb164-19"><a href="xenium-1.html#cb164-19" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb164-20"><a href="xenium-1.html#cb164-20" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;HE&quot;</span>,</span>
-<span id="cb164-21"><a href="xenium-1.html#cb164-21" tabindex="-1"></a>    <span class="at">polygon_feat_type =</span> <span class="st">&quot;pseudo_visium&quot;</span>,</span>
-<span id="cb164-22"><a href="xenium-1.html#cb164-22" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;total_expr&quot;</span>,</span>
-<span id="cb164-23"><a href="xenium-1.html#cb164-23" tabindex="-1"></a>    <span class="at">polygon_fill_gradient_style =</span> <span class="st">&quot;sequential&quot;</span></span>
-<span id="cb164-24"><a href="xenium-1.html#cb164-24" tabindex="-1"></a>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-227"></span>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="xenium-1.html#cb171-1" tabindex="-1"></a><span class="fu">activeSpatUnit</span>(g) <span class="ot">&lt;-</span> <span class="st">&quot;pseudo_visium&quot;</span></span>
+<span id="cb171-2"><a href="xenium-1.html#cb171-2" tabindex="-1"></a></span>
+<span id="cb171-3"><a href="xenium-1.html#cb171-3" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">calculateOverlap</span>(g,</span>
+<span id="cb171-4"><a href="xenium-1.html#cb171-4" tabindex="-1"></a>    <span class="at">spatial_info =</span> <span class="st">&quot;pseudo_visium&quot;</span>,</span>
+<span id="cb171-5"><a href="xenium-1.html#cb171-5" tabindex="-1"></a>    <span class="at">feat_info =</span> <span class="st">&quot;rna&quot;</span></span>
+<span id="cb171-6"><a href="xenium-1.html#cb171-6" tabindex="-1"></a>)</span>
+<span id="cb171-7"><a href="xenium-1.html#cb171-7" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">overlapToMatrix</span>(g)</span>
+<span id="cb171-8"><a href="xenium-1.html#cb171-8" tabindex="-1"></a></span>
+<span id="cb171-9"><a href="xenium-1.html#cb171-9" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">filterGiotto</span>(g,</span>
+<span id="cb171-10"><a href="xenium-1.html#cb171-10" tabindex="-1"></a>    <span class="at">expression_threshold =</span> <span class="dv">1</span>,</span>
+<span id="cb171-11"><a href="xenium-1.html#cb171-11" tabindex="-1"></a>    <span class="at">feat_det_in_min_cells =</span> <span class="dv">1</span>,</span>
+<span id="cb171-12"><a href="xenium-1.html#cb171-12" tabindex="-1"></a>    <span class="at">min_det_feats_per_cell =</span> <span class="dv">100</span></span>
+<span id="cb171-13"><a href="xenium-1.html#cb171-13" tabindex="-1"></a>)</span>
+<span id="cb171-14"><a href="xenium-1.html#cb171-14" tabindex="-1"></a></span>
+<span id="cb171-15"><a href="xenium-1.html#cb171-15" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">normalizeGiotto</span>(g)</span>
+<span id="cb171-16"><a href="xenium-1.html#cb171-16" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">addStatistics</span>(g)</span>
+<span id="cb171-17"><a href="xenium-1.html#cb171-17" tabindex="-1"></a></span>
+<span id="cb171-18"><a href="xenium-1.html#cb171-18" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
+<span id="cb171-19"><a href="xenium-1.html#cb171-19" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb171-20"><a href="xenium-1.html#cb171-20" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;HE&quot;</span>,</span>
+<span id="cb171-21"><a href="xenium-1.html#cb171-21" tabindex="-1"></a>    <span class="at">polygon_feat_type =</span> <span class="st">&quot;pseudo_visium&quot;</span>,</span>
+<span id="cb171-22"><a href="xenium-1.html#cb171-22" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;total_expr&quot;</span>,</span>
+<span id="cb171-23"><a href="xenium-1.html#cb171-23" tabindex="-1"></a>    <span class="at">polygon_fill_gradient_style =</span> <span class="st">&quot;sequential&quot;</span></span>
+<span id="cb171-24"><a href="xenium-1.html#cb171-24" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-234"></span>
 <img src="img/02_session3/pvis_total_expr.png" alt="Pseudo visium total detections per spot"  />
 <p class="caption">
 Figure 10.19: Pseudo visium total detections per spot
 </p>
 </div>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="xenium-1.html#cb165-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">runPCA</span>(g, <span class="at">feats_to_use =</span> <span class="cn">NULL</span>)</span>
-<span id="cb165-2"><a href="xenium-1.html#cb165-2" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">runUMAP</span>(g, </span>
-<span id="cb165-3"><a href="xenium-1.html#cb165-3" tabindex="-1"></a>    <span class="at">dimensions_to_use =</span> <span class="fu">seq</span>(<span class="dv">15</span>), </span>
-<span id="cb165-4"><a href="xenium-1.html#cb165-4" tabindex="-1"></a>    <span class="at">n_neighbors =</span> <span class="dv">15</span></span>
-<span id="cb165-5"><a href="xenium-1.html#cb165-5" tabindex="-1"></a>)</span>
-<span id="cb165-6"><a href="xenium-1.html#cb165-6" tabindex="-1"></a></span>
-<span id="cb165-7"><a href="xenium-1.html#cb165-7" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">createNearestNetwork</span>(g,</span>
-<span id="cb165-8"><a href="xenium-1.html#cb165-8" tabindex="-1"></a>    <span class="at">dimensions_to_use =</span> <span class="fu">seq</span>(<span class="dv">15</span>), </span>
-<span id="cb165-9"><a href="xenium-1.html#cb165-9" tabindex="-1"></a>    <span class="at">k =</span> <span class="dv">15</span></span>
-<span id="cb165-10"><a href="xenium-1.html#cb165-10" tabindex="-1"></a>)</span>
-<span id="cb165-11"><a href="xenium-1.html#cb165-11" tabindex="-1"></a></span>
-<span id="cb165-12"><a href="xenium-1.html#cb165-12" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">doLeidenCluster</span>(g, <span class="at">resolution =</span> <span class="fl">1.5</span>)</span>
-<span id="cb165-13"><a href="xenium-1.html#cb165-13" tabindex="-1"></a></span>
-<span id="cb165-14"><a href="xenium-1.html#cb165-14" tabindex="-1"></a><span class="co"># plots</span></span>
-<span id="cb165-15"><a href="xenium-1.html#cb165-15" tabindex="-1"></a><span class="fu">plotPCA</span>(g, <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>, <span class="at">point_size =</span> <span class="dv">2</span>)</span>
-<span id="cb165-16"><a href="xenium-1.html#cb165-16" tabindex="-1"></a><span class="fu">plotUMAP</span>(g, <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>, <span class="at">point_size =</span> <span class="dv">2</span>)</span>
-<span id="cb165-17"><a href="xenium-1.html#cb165-17" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
-<span id="cb165-18"><a href="xenium-1.html#cb165-18" tabindex="-1"></a>    <span class="at">polygon_feat_type =</span> <span class="st">&quot;pseudo_visium&quot;</span>,</span>
-<span id="cb165-19"><a href="xenium-1.html#cb165-19" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
-<span id="cb165-20"><a href="xenium-1.html#cb165-20" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">TRUE</span></span>
-<span id="cb165-21"><a href="xenium-1.html#cb165-21" tabindex="-1"></a>)</span>
-<span id="cb165-22"><a href="xenium-1.html#cb165-22" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
-<span id="cb165-23"><a href="xenium-1.html#cb165-23" tabindex="-1"></a>    <span class="at">polygon_feat_type =</span> <span class="st">&quot;pseudo_visium&quot;</span>,</span>
-<span id="cb165-24"><a href="xenium-1.html#cb165-24" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
-<span id="cb165-25"><a href="xenium-1.html#cb165-25" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb165-26"><a href="xenium-1.html#cb165-26" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb165-27"><a href="xenium-1.html#cb165-27" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;HE&quot;</span></span>
-<span id="cb165-28"><a href="xenium-1.html#cb165-28" tabindex="-1"></a>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-229"></span>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="xenium-1.html#cb172-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">runPCA</span>(g, <span class="at">feats_to_use =</span> <span class="cn">NULL</span>)</span>
+<span id="cb172-2"><a href="xenium-1.html#cb172-2" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">runUMAP</span>(g, </span>
+<span id="cb172-3"><a href="xenium-1.html#cb172-3" tabindex="-1"></a>    <span class="at">dimensions_to_use =</span> <span class="fu">seq</span>(<span class="dv">15</span>), </span>
+<span id="cb172-4"><a href="xenium-1.html#cb172-4" tabindex="-1"></a>    <span class="at">n_neighbors =</span> <span class="dv">15</span></span>
+<span id="cb172-5"><a href="xenium-1.html#cb172-5" tabindex="-1"></a>)</span>
+<span id="cb172-6"><a href="xenium-1.html#cb172-6" tabindex="-1"></a></span>
+<span id="cb172-7"><a href="xenium-1.html#cb172-7" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">createNearestNetwork</span>(g,</span>
+<span id="cb172-8"><a href="xenium-1.html#cb172-8" tabindex="-1"></a>    <span class="at">dimensions_to_use =</span> <span class="fu">seq</span>(<span class="dv">15</span>), </span>
+<span id="cb172-9"><a href="xenium-1.html#cb172-9" tabindex="-1"></a>    <span class="at">k =</span> <span class="dv">15</span></span>
+<span id="cb172-10"><a href="xenium-1.html#cb172-10" tabindex="-1"></a>)</span>
+<span id="cb172-11"><a href="xenium-1.html#cb172-11" tabindex="-1"></a></span>
+<span id="cb172-12"><a href="xenium-1.html#cb172-12" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">doLeidenCluster</span>(g, <span class="at">resolution =</span> <span class="fl">1.5</span>)</span>
+<span id="cb172-13"><a href="xenium-1.html#cb172-13" tabindex="-1"></a></span>
+<span id="cb172-14"><a href="xenium-1.html#cb172-14" tabindex="-1"></a><span class="co"># plots</span></span>
+<span id="cb172-15"><a href="xenium-1.html#cb172-15" tabindex="-1"></a><span class="fu">plotPCA</span>(g, <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>, <span class="at">point_size =</span> <span class="dv">2</span>)</span>
+<span id="cb172-16"><a href="xenium-1.html#cb172-16" tabindex="-1"></a><span class="fu">plotUMAP</span>(g, <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>, <span class="at">point_size =</span> <span class="dv">2</span>)</span>
+<span id="cb172-17"><a href="xenium-1.html#cb172-17" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
+<span id="cb172-18"><a href="xenium-1.html#cb172-18" tabindex="-1"></a>    <span class="at">polygon_feat_type =</span> <span class="st">&quot;pseudo_visium&quot;</span>,</span>
+<span id="cb172-19"><a href="xenium-1.html#cb172-19" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
+<span id="cb172-20"><a href="xenium-1.html#cb172-20" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">TRUE</span></span>
+<span id="cb172-21"><a href="xenium-1.html#cb172-21" tabindex="-1"></a>)</span>
+<span id="cb172-22"><a href="xenium-1.html#cb172-22" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
+<span id="cb172-23"><a href="xenium-1.html#cb172-23" tabindex="-1"></a>    <span class="at">polygon_feat_type =</span> <span class="st">&quot;pseudo_visium&quot;</span>,</span>
+<span id="cb172-24"><a href="xenium-1.html#cb172-24" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
+<span id="cb172-25"><a href="xenium-1.html#cb172-25" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb172-26"><a href="xenium-1.html#cb172-26" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb172-27"><a href="xenium-1.html#cb172-27" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;HE&quot;</span></span>
+<span id="cb172-28"><a href="xenium-1.html#cb172-28" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-236"></span>
 <img src="img/02_session3/pvis_clustering.png" alt="Leiden clustering in PCA (top left) and UMAP (top right) spaces, and in spatial plot with no image (bottom left), and with image (bottom right)"  />
 <p class="caption">
 Figure 10.20: Leiden clustering in PCA (top left) and UMAP (top right) spaces, and in spatial plot with no image (bottom left), and with image (bottom right)

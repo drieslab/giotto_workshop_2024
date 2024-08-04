@@ -186,7 +186,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.1" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#presentation-1"><i class="fa fa-check"></i><b>4.1</b> Presentation</a></li>
 <li class="chapter" data-level="4.2" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#ecosystem"><i class="fa fa-check"></i><b>4.2</b> Ecosystem</a></li>
-<li class="chapter" data-level="4.3" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#installation-python-environment"><i class="fa fa-check"></i><b>4.3</b> Installation + python environment</a></li>
+<li class="chapter" data-level="4.3" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#installation-python-environment"><i class="fa fa-check"></i><b>4.3</b> Installation + python environment</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#giotto-installation-1"><i class="fa fa-check"></i><b>4.3.1</b> Giotto installation</a></li>
+<li class="chapter" data-level="4.3.2" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#python-environment"><i class="fa fa-check"></i><b>4.3.2</b> Python environment</a></li>
+</ul></li>
 <li class="chapter" data-level="4.4" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#giotto-instructions"><i class="fa fa-check"></i><b>4.4</b> Giotto instructions</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html"><i class="fa fa-check"></i><b>5</b> Data formatting and Pre-processing</a>
@@ -538,6 +542,83 @@ Figure 4.1: Overview of the modular Giotto Suite ecosystem
 </div>
 <div id="installation-python-environment" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> Installation + python environment<a href="introduction-to-the-giotto-package.html#installation-python-environment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="giotto-installation-1" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Giotto installation<a href="introduction-to-the-giotto-package.html#giotto-installation-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Giotto Suite is currently available installable only from GitHub, but we are actively working on getting it into a major repository.
+Much of this already covered in Section 2.2, but the highlights are:</p>
+<ol style="list-style-type: decimal">
+<li>Ensure your system</li>
+</ol>
+<p>To install the currently released version of Giotto on R 4.4 in a single step, we recommend using <em>pak</em>.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="introduction-to-the-giotto-package.html#cb12-1" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pak</span>(<span class="st">&quot;drieslab/Giotto&quot;</span>)</span></code></pre></div>
+</div>
+<div id="python-environment" class="section level3 hasAnchor" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Python environment<a href="introduction-to-the-giotto-package.html#python-environment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="default-installation" class="section level4 hasAnchor" number="4.3.2.1">
+<h4><span class="header-section-number">4.3.2.1</span> Default installation<a href="introduction-to-the-giotto-package.html#default-installation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>In order to make use of python packages, the first thing to do after installing Giotto for the first time is to create a giotto python environment. Giotto provides the following as a convenience wrapper around <em>reticulate</em> functions to setup a default environment.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="introduction-to-the-giotto-package.html#cb13-1" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
+<span id="cb13-2"><a href="introduction-to-the-giotto-package.html#cb13-2" tabindex="-1"></a><span class="fu">installGiottoEnvironment</span>()</span></code></pre></div>
+<p>Two things are needed for python to work:</p>
+<ol style="list-style-type: decimal">
+<li>A conda (e.g. miniconda or anaconda) installation which is the package and environment management system.</li>
+<li>Independent environment(s) with specific versions of the python language and associated python packages.</li>
+</ol>
+<p><code>installGiottoEnvironment()</code> checks both and will install miniconda using <em>reticulate</em> if necessary. If a specific conda binary already exists that you want to use, the <code>conda</code> param can be set, or you can set the <em>reticulate</em> option <code>options("reticulate.conda_binary" = "[conda path]")</code> or <code>Sys.setenv("RETICULATE_CONDA" = "[conda path]")</code>.</p>
+<p>After ensuring the conda binary exists, the default Giotto environment is installed which is a python 3.10.2 environment named ‘giotto_env’.
+It will contain several default packages that Giotto installs:</p>
+<ul>
+<li>“pandas==1.5.1”</li>
+<li>“networkx==2.8.8”</li>
+<li>“python-igraph==0.10.2”</li>
+<li>“leidenalg==0.9.0”</li>
+<li>“python-louvain==0.16”</li>
+<li>“python.app==1.4” (if needed)</li>
+<li>“scikit-learn==1.1.3”</li>
+</ul>
+</div>
+<div id="custom-installs" class="section level4 hasAnchor" number="4.3.2.2">
+<h4><span class="header-section-number">4.3.2.2</span> Custom installs<a href="introduction-to-the-giotto-package.html#custom-installs" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Custom python environments can be made by first setting up a new environment and establishing the name and python version to use.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="introduction-to-the-giotto-package.html#cb14-1" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">conda_create</span>(<span class="at">envname =</span> <span class="st">&quot;[name of env]&quot;</span>, <span class="at">python_version =</span> ???)</span></code></pre></div>
+<p>Following that, one or more python packages to install can be added to the environment.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="introduction-to-the-giotto-package.html#cb15-1" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">py_install</span>(</span>
+<span id="cb15-2"><a href="introduction-to-the-giotto-package.html#cb15-2" tabindex="-1"></a>  <span class="at">pip =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb15-3"><a href="introduction-to-the-giotto-package.html#cb15-3" tabindex="-1"></a>  <span class="at">envname =</span> <span class="st">&#39;[name of env]&#39;</span>,</span>
+<span id="cb15-4"><a href="introduction-to-the-giotto-package.html#cb15-4" tabindex="-1"></a>  <span class="at">packages =</span> <span class="fu">c</span>(</span>
+<span id="cb15-5"><a href="introduction-to-the-giotto-package.html#cb15-5" tabindex="-1"></a>      <span class="st">&quot;package1&quot;</span>,</span>
+<span id="cb15-6"><a href="introduction-to-the-giotto-package.html#cb15-6" tabindex="-1"></a>      <span class="st">&quot;package2&quot;</span>,</span>
+<span id="cb15-7"><a href="introduction-to-the-giotto-package.html#cb15-7" tabindex="-1"></a>      <span class="st">&quot;...&quot;</span></span>
+<span id="cb15-8"><a href="introduction-to-the-giotto-package.html#cb15-8" tabindex="-1"></a>  )</span>
+<span id="cb15-9"><a href="introduction-to-the-giotto-package.html#cb15-9" tabindex="-1"></a>)</span></code></pre></div>
+<p>Once an environment has been set up, <em>Giotto</em> can hook into it.</p>
+</div>
+<div id="using-a-specific-environment" class="section level4 hasAnchor" number="4.3.2.3">
+<h4><span class="header-section-number">4.3.2.3</span> Using a specific environment<a href="introduction-to-the-giotto-package.html#using-a-specific-environment" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>When using python through <em>reticulate</em>, R only allows one environment to be activated per session. Once a session has loaded a python environment, it can no longer switch to another one. Giotto activates a python environment when any of the following happens:</p>
+<ul>
+<li>a <code>giotto</code> object is created</li>
+<li><code>giottoInstructions</code> are created (<code>createGiottoInstructions()</code>)</li>
+<li><code>GiottoClass::set_giotto_python_path()</code> is called (most straightforward)</li>
+</ul>
+<p>Which environment is activated is based on a set of 5 defaults in decreasing priority.</p>
+<ol style="list-style-type: decimal">
+<li>User provided (when <code>python_path</code> param is given. Either a full filepath or an env name are accepted.)</li>
+<li>Any provided path or envname set in options <code>options("giotto.py_path" = "[path to env or envname]")</code></li>
+<li>Default expected giotto environment location based on <code>reticulate::miniconda_path()</code></li>
+<li>Envname <code>"giotto_env"</code></li>
+<li>System default python environment</li>
+</ol>
+<p>Method 2 is most recommended when there is a non-standard python environment to regularly use with Giotto.</p>
+<p>You would run <code>file.edit("~/.Rprofile")</code> and then add <code>options("giotto.py_path" = "[path to env or envname]")</code> as a line so that it is automatically set at the start of each session.</p>
+<p>If a specific environment should only be used a couple times then method 1 is easiest:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="introduction-to-the-giotto-package.html#cb16-1" tabindex="-1"></a>GiottoClass<span class="sc">::</span><span class="fu">set_giotto_python_path</span>(<span class="at">python_path =</span> <span class="st">&quot;[path to env or envname]&quot;</span>)</span></code></pre></div>
+<p>To check which conda environments exist on your machine:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="introduction-to-the-giotto-package.html#cb17-1" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">conda_list</span>()</span></code></pre></div>
+<p>Once an environment is activated, you can check more details and ensure that it is the one you are expecting by running:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="introduction-to-the-giotto-package.html#cb18-1" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">py_config</span>()</span></code></pre></div>
+</div>
+</div>
 </div>
 <div id="giotto-instructions" class="section level2 hasAnchor" number="4.4">
 <h2><span class="header-section-number">4.4</span> Giotto instructions<a href="introduction-to-the-giotto-package.html#giotto-instructions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
