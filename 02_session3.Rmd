@@ -692,7 +692,7 @@ spatInSituPlotPoints(g,
 )
 ```
 
-```{r, echo=FALSE, fig.cap="Spatial plots show leiden clustering annotations. Polygons only on left. With image on right"}
+```{r, echo=FALSE, fig.cap="Spatial plots show leiden clustering annotations. Polygons only on top. With image on bottom"}
 knitr::include_graphics("img/02_session3/spat_leiden.png")
 ```
 
