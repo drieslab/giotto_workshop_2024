@@ -250,6 +250,11 @@
       ],
       "Hash": "18e9c28c1d3ca1560ce30658b22ce104"
     },
+    "pdftools": {
+      "Package": "pdftools",
+      "Version": "3.4.0",
+      "Source": "Repository"
+    },
     "rappdirs": {
       "Package": "rappdirs",
       "Version": "0.3.3",
