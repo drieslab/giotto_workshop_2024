@@ -7,10 +7,11 @@ August 5th 2024
 ## Presentation  
   
 [
-```{r out.height = "460px", out.width='800px', echo=F}
+```{r out.height = "460px", out.width='800px', echo=F, fig.cap="Giotto Suite overview slides"}
 knitr::include_graphics("https://drieslab.github.io/giotto_workshop_2024/pdf/GS_workshop2024_giotto_intro.pdf")
 ```
 ](https://drieslab.github.io/giotto_workshop_2024/pdf/GS_workshop2024_giotto_intro.pdf)
+
 
 <br>  
 
@@ -21,8 +22,11 @@ Giotto Suite is a modular ecosystem of individual R packages that each provide
 different functionality and that together provide users with a fully integrated 
 spatial multi-omics workflow.
 
-![](img/01_session2/0-giottosuite_ecosystem.png)
   
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Overview of the modular Giotto Suite ecosystem"}
+knitr::include_graphics("img/01_session2/0-giottosuite_ecosystem.png")
+```
+
   
 Each package also has its own website:  
 - **GiottoUtils**: https://drieslab.github.io/GiottoUtils/  
