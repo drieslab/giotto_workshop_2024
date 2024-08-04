@@ -718,7 +718,7 @@ spatPlot2D(g,
 )
 ```
 
-```{r, out.width="60%", echo=FALSE, fig.cap="Delaunay spatial network`"}
+```{r, echo=FALSE, fig.cap="Delaunay spatial network`"}
 knitr::include_graphics("img/02_session3/spatnet.png")
 ```
 
@@ -776,6 +776,76 @@ spatInSituPlotPoints(g,
 ```{r, echo=FALSE, fig.cap="Leiden annotation-based spatial niches"}
 knitr::include_graphics("img/02_session3/spat_niches.png")
 ```
+
+## Cell proximity enrichment
+
+Using a spatial network, determine if there is an enrichment or depletion between annotation types by calculating the observed over the expected frequency of interactions.
+
+```{r, eval=FALSE}
+leiden_prox <- cellProximityEnrichment(g,
+    cluster_column = "leiden_clus",
+    spatial_network_name = "Delaunay_network",
+    adjust_method = "fdr",
+    number_of_simulations = 2000
+)
+
+cellProximityBarplot(g,
+    CPscore = leiden_prox,
+    min_orig_ints = 5, # minimum original cell-cell interactions
+    min_sim_ints = 5 # minimum simulated cell-cell interactions
+)
+```
+
+```{r, out.width="60%", echo=FALSE, fig.cap="Cell-cell interaction enrichments and depletions (left). Number of interactions of each type found (right)"}
+knitr::include_graphics("img/02_session3/cc_prox.png")
+```
+
+Most enrichments are self-self interactions, which is expected. However, 6--8, 2--9, and 10--12 stand out as being hetero interactions that are enriched.
+
+```{r, eval=FALSE}
+# set up colors
+other_cell_color <- rep("grey", 12)
+int_6_8 <- int_2_9 <- int_10_12 <- other_cell_color
+int_6_8[c(6, 8)] <- c("orange", "cornflowerblue")
+int_2_9[c(2, 9)] <- c("orange", "cornflowerblue")
+int_10_12[c(10, 12)] <- c("orange", "cornflowerblue")
+
+spatInSituPlotPoints(g,
+    polygon_fill = "leiden_clus",
+    polygon_fill_as_factor = TRUE,
+    polygon_fill_code = int_6_8,
+    polygon_line_size = 0.1,
+    polygon_alpha = 1,
+    show_image = TRUE,
+    image_name = "HE"
+)
+spatInSituPlotPoints(g,
+    polygon_fill = "leiden_clus",
+    polygon_fill_as_factor = TRUE,
+    polygon_fill_code = int_2_9,
+    polygon_line_size = 0.1,
+    show_image = TRUE,
+    polygon_alpha = 1,
+    image_name = "HE"
+)
+spatInSituPlotPoints(g,
+    polygon_fill = "leiden_clus",
+    polygon_fill_as_factor = TRUE,
+    polygon_fill_code = int_10_12,
+    polygon_line_size = 0.1,
+    polygon_alpha = 1,
+    show_image = TRUE,
+    image_name = "HE"
+)
+```
+
+```{r, out.width="60%", echo=FALSE, fig.cap="Spatial plot of enriched leiden annotation interactions. 6 to 8 (top), 2 to 9 (middle), 10 to 12 (bottom)"}
+knitr::include_graphics("img/02_session3/cc_enrich.png")
+```
+
+
+
+
 
 
 ## Pseudovisium
@@ -884,18 +954,14 @@ knitr::include_graphics("img/02_session3/pvis_clustering.png")
 
 
 
+## Transcript enrichment GSEA
+
 
 
 - Feature/molecule specific analysis
 
 
 
-## Transcript enrichment GSEA
-
-
-
-
-## Spatial location analysis
 
 
 
