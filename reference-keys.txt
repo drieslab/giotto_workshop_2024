@@ -235,6 +235,7 @@ spatial-network
 niche-calculation
 kmeans-clustering-based-on-niche-signature
 cell-proximity-enrichment
+interaction-changed-features
 pseudovisium
 pseudovisium-aggregation-and-workflow
 transcript-enrichment-gsea

@@ -320,11 +320,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.8.3" data-path="xenium-1.html"><a href="xenium-1.html#kmeans-clustering-based-on-niche-signature"><i class="fa fa-check"></i><b>10.8.3</b> kmeans clustering based on niche signature</a></li>
 </ul></li>
 <li class="chapter" data-level="10.9" data-path="xenium-1.html"><a href="xenium-1.html#cell-proximity-enrichment"><i class="fa fa-check"></i><b>10.9</b> Cell proximity enrichment</a></li>
-<li class="chapter" data-level="10.10" data-path="xenium-1.html"><a href="xenium-1.html#pseudovisium"><i class="fa fa-check"></i><b>10.10</b> Pseudovisium</a>
+<li class="chapter" data-level="10.10" data-path="xenium-1.html"><a href="xenium-1.html#interaction-changed-features"><i class="fa fa-check"></i><b>10.10</b> Interaction changed features</a></li>
+<li class="chapter" data-level="10.11" data-path="xenium-1.html"><a href="xenium-1.html#pseudovisium"><i class="fa fa-check"></i><b>10.11</b> Pseudovisium</a>
 <ul>
-<li class="chapter" data-level="10.10.1" data-path="xenium-1.html"><a href="xenium-1.html#pseudovisium-aggregation-and-workflow"><i class="fa fa-check"></i><b>10.10.1</b> Pseudovisium aggregation and workflow</a></li>
+<li class="chapter" data-level="10.11.1" data-path="xenium-1.html"><a href="xenium-1.html#pseudovisium-aggregation-and-workflow"><i class="fa fa-check"></i><b>10.11.1</b> Pseudovisium aggregation and workflow</a></li>
 </ul></li>
-<li class="chapter" data-level="10.11" data-path="xenium-1.html"><a href="xenium-1.html#transcript-enrichment-gsea"><i class="fa fa-check"></i><b>10.11</b> Transcript enrichment GSEA</a></li>
+<li class="chapter" data-level="10.12" data-path="xenium-1.html"><a href="xenium-1.html#transcript-enrichment-gsea"><i class="fa fa-check"></i><b>10.12</b> Transcript enrichment GSEA</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html"><i class="fa fa-check"></i><b>11</b> Spatial proteomics: Multiplexed Immunofluorescence</a>
 <ul>
@@ -1169,12 +1170,12 @@ Figure 10.13: Leiden annotation-based spatial niches
 <span id="cb161-11"><a href="xenium-1.html#cb161-11" tabindex="-1"></a>    <span class="at">min_sim_ints =</span> <span class="dv">5</span> <span class="co"># minimum simulated cell-cell interactions</span></span>
 <span id="cb161-12"><a href="xenium-1.html#cb161-12" tabindex="-1"></a>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-213"></span>
-<img src="img/02_session3/cc_prox.png" alt="Cell-cell interaction enrichments and depletions (left). Number of interactions of each type found (right)" width="60%" />
+<img src="img/02_session3/cc_prox.png" alt="Cell-cell interaction enrichments and depletions (left). Number of interactions of each type found (right)"  />
 <p class="caption">
 Figure 10.14: Cell-cell interaction enrichments and depletions (left). Number of interactions of each type found (right)
 </p>
 </div>
-<p>Most enrichments are self-self interactions, which is expected. However, 6–8, 2–9, and 10–12 stand out as being hetero interactions that are enriched.</p>
+<p>Most enrichments are self-self interactions, which is expected. However, 6–8, 2–9, and 10–12 stand out as being hetero interactions that are enriched. We can take a closer look by plotting these annotation pairs with colors that stand out.</p>
 <div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="xenium-1.html#cb162-1" tabindex="-1"></a><span class="co"># set up colors</span></span>
 <span id="cb162-2"><a href="xenium-1.html#cb162-2" tabindex="-1"></a>other_cell_color <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">&quot;grey&quot;</span>, <span class="dv">12</span>)</span>
 <span id="cb162-3"><a href="xenium-1.html#cb162-3" tabindex="-1"></a>int_6_8 <span class="ot">&lt;-</span> int_2_9 <span class="ot">&lt;-</span> int_10_12 <span class="ot">&lt;-</span> other_cell_color</span>
@@ -1210,14 +1211,17 @@ Figure 10.14: Cell-cell interaction enrichments and depletions (left). Number of
 <span id="cb162-33"><a href="xenium-1.html#cb162-33" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;HE&quot;</span></span>
 <span id="cb162-34"><a href="xenium-1.html#cb162-34" tabindex="-1"></a>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-215"></span>
-<img src="img/02_session3/cc_enrich.png" alt="Spatial plot of enriched leiden annotation interactions. 6 to 8 (top), 2 to 9 (middle), 10 to 12 (bottom)" width="60%" />
+<img src="img/02_session3/cc_enrich.png" alt="Spatial plot of enriched leiden annotation interactions. 6 to 8 (top), 2 to 9 (middle), 10 to 12 (bottom)"  />
 <p class="caption">
 Figure 10.15: Spatial plot of enriched leiden annotation interactions. 6 to 8 (top), 2 to 9 (middle), 10 to 12 (bottom)
 </p>
 </div>
 </div>
-<div id="pseudovisium" class="section level2 hasAnchor" number="10.10">
-<h2><span class="header-section-number">10.10</span> Pseudovisium<a href="xenium-1.html#pseudovisium" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="interaction-changed-features" class="section level2 hasAnchor" number="10.10">
+<h2><span class="header-section-number">10.10</span> Interaction changed features<a href="xenium-1.html#interaction-changed-features" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="pseudovisium" class="section level2 hasAnchor" number="10.11">
+<h2><span class="header-section-number">10.11</span> Pseudovisium<a href="xenium-1.html#pseudovisium" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Another thing we can do is create a “pseudovisium” dataset by tessellating across this dataset using the same layout and resolution as a Visium capture array.</p>
 <p><code>makePseudoVisium</code> generates a Visium array of circular polygons across the spatial extent provided.</p>
 <p>Here we use <code>ext()</code> with the <code>prefer</code> arg pointing to the polygon and points data and <code>all_data = TRUE</code>, meaning that the combined spatial extent of those two data types will be returned, giving a good measure of where all the data in the object is at the moment.</p>
@@ -1239,8 +1243,8 @@ Figure 10.15: Spatial plot of enriched leiden annotation interactions. 6 to 8 (t
 Figure 10.16: Pseudovisium spot geometries generated by <code>makePseudoVisium()</code>
 </p>
 </div>
-<div id="pseudovisium-aggregation-and-workflow" class="section level3 hasAnchor" number="10.10.1">
-<h3><span class="header-section-number">10.10.1</span> Pseudovisium aggregation and workflow<a href="xenium-1.html#pseudovisium-aggregation-and-workflow" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="pseudovisium-aggregation-and-workflow" class="section level3 hasAnchor" number="10.11.1">
+<h3><span class="header-section-number">10.11.1</span> Pseudovisium aggregation and workflow<a href="xenium-1.html#pseudovisium-aggregation-and-workflow" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Make ‘pseudo_visium’ the new default spatial unit then proceed with aggregation and usual aggregate workflow</p>
 <div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="xenium-1.html#cb164-1" tabindex="-1"></a><span class="fu">activeSpatUnit</span>(g) <span class="ot">&lt;-</span> <span class="st">&quot;pseudo_visium&quot;</span></span>
 <span id="cb164-2"><a href="xenium-1.html#cb164-2" tabindex="-1"></a></span>
@@ -1308,8 +1312,8 @@ Figure 10.18: Leiden clustering in PCA (top left) and UMAP (top right) spaces, a
 </div>
 </div>
 </div>
-<div id="transcript-enrichment-gsea" class="section level2 hasAnchor" number="10.11">
-<h2><span class="header-section-number">10.11</span> Transcript enrichment GSEA<a href="xenium-1.html#transcript-enrichment-gsea" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="transcript-enrichment-gsea" class="section level2 hasAnchor" number="10.12">
+<h2><span class="header-section-number">10.12</span> Transcript enrichment GSEA<a href="xenium-1.html#transcript-enrichment-gsea" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Feature/molecule specific analysis</li>
 </ul>
