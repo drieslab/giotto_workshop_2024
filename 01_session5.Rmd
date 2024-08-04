@@ -208,7 +208,7 @@ spatPlot2D(gobject = visium_brain,
            color_as_factor = FALSE)
 ```
 
-```{r, echo=FALSE, out.width="80%", fig.align="center", fig.cap="Spatial distribution of normalized features per spot."}
+```{r, echo=FALSE, out.width="80%", fig.align="center", fig.cap="Spatial distribution of the number of features per spot."}
 knitr::include_graphics("img/01_session5/5-spatPlot2D.png")
 ```
 
