@@ -516,7 +516,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="the-visium-technology" class="section level2 hasAnchor" number="7.1">
 <h2><span class="header-section-number">7.1</span> The Visium technology<a href="visium-part-i.html#the-visium-technology" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Visium allows you to perform spatial transcriptomics, which combines histological information with whole transcriptome gene expression profiles (fresh frozen or FFPE) to provide you with spatially resolved gene expression.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-22"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-23"></span>
 <img src="img/01_session5/workflow.png" alt="Visum workflow. Source: 10X Genomics" width="100%" />
 <p class="caption">
 Figure 7.1: Visum workflow. Source: 10X Genomics
@@ -585,7 +585,7 @@ Figure 7.1: Visum workflow. Source: 10X Genomics
 <span id="cb24-4"><a href="visium-part-i.html#cb24-4" tabindex="-1"></a>    <span class="at">point_size =</span> <span class="dv">2</span>,</span>
 <span id="cb24-5"><a href="visium-part-i.html#cb24-5" tabindex="-1"></a>    <span class="at">cell_color_code =</span> <span class="fu">c</span>(<span class="st">&quot;0&quot;</span> <span class="ot">=</span> <span class="st">&quot;lightgrey&quot;</span>, <span class="st">&quot;1&quot;</span> <span class="ot">=</span> <span class="st">&quot;blue&quot;</span>),</span>
 <span id="cb24-6"><a href="visium-part-i.html#cb24-6" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-27"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-28"></span>
 <img src="img/01_session5/0-spatPlot2D.png" alt="Spatial plot of the Visium mouse brain sample, color indicates wheter the spot is in tissue (1) or not (0)." width="80%" />
 <p class="caption">
 Figure 7.2: Spatial plot of the Visium mouse brain sample, color indicates wheter the spot is in tissue (1) or not (0).
@@ -613,7 +613,7 @@ Figure 7.2: Spatial plot of the Visium mouse brain sample, color indicates whete
 <span id="cb26-5"><a href="visium-part-i.html#cb26-5" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> visium_brain_statistics, </span>
 <span id="cb26-6"><a href="visium-part-i.html#cb26-6" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;nr_feats&quot;</span>, </span>
 <span id="cb26-7"><a href="visium-part-i.html#cb26-7" tabindex="-1"></a>           <span class="at">color_as_factor =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-30"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-31"></span>
 <img src="img/01_session5/1-spatPlot2D.png" alt="Spatial distribution of features per spot." width="80%" />
 <p class="caption">
 Figure 7.3: Spatial distribution of features per spot.
@@ -622,7 +622,7 @@ Figure 7.3: Spatial distribution of features per spot.
 <p>filterDistributions() creates a histogram to show the distribution of features per spot across the sample.</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="visium-part-i.html#cb27-1" tabindex="-1"></a><span class="fu">filterDistributions</span>(<span class="at">gobject =</span> visium_brain_statistics, </span>
 <span id="cb27-2"><a href="visium-part-i.html#cb27-2" tabindex="-1"></a>                    <span class="at">detection =</span> <span class="st">&quot;cells&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-32"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-33"></span>
 <img src="img/01_session5/2-filterDistributions.png" alt="Distribution of features per spot." width="50%" />
 <p class="caption">
 Figure 7.4: Distribution of features per spot.
@@ -631,7 +631,7 @@ Figure 7.4: Distribution of features per spot.
 <p>When setting the detection = “feats”, the histogram shows the distribution of cells with certain numbers of features across the sample.</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="visium-part-i.html#cb28-1" tabindex="-1"></a><span class="fu">filterDistributions</span>(<span class="at">gobject =</span> visium_brain_statistics, </span>
 <span id="cb28-2"><a href="visium-part-i.html#cb28-2" tabindex="-1"></a>                    <span class="at">detection =</span> <span class="st">&quot;feats&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-34"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-35"></span>
 <img src="img/01_session5/3-filterDistributions.png" alt="Distribution of cells with different features per spot." width="50%" />
 <p class="caption">
 Figure 7.5: Distribution of cells with different features per spot.
@@ -642,7 +642,7 @@ Figure 7.5: Distribution of cells with different features per spot.
 <span id="cb29-2"><a href="visium-part-i.html#cb29-2" tabindex="-1"></a>                   <span class="at">expression_thresholds =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
 <span id="cb29-3"><a href="visium-part-i.html#cb29-3" tabindex="-1"></a>                   <span class="at">feat_det_in_min_cells =</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">100</span>, <span class="dv">200</span>),</span>
 <span id="cb29-4"><a href="visium-part-i.html#cb29-4" tabindex="-1"></a>                   <span class="at">min_det_feats_per_cell =</span> <span class="fu">c</span>(<span class="dv">500</span>, <span class="dv">1000</span>, <span class="dv">1500</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-36"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-37"></span>
 <img src="img/01_session5/4-filterCombinations.png" alt="Number of spots and features filtered when using multiple feat_det_in_min_cells and min_det_feats_per_cell combinations." width="50%" />
 <p class="caption">
 Figure 7.6: Number of spots and features filtered when using multiple feat_det_in_min_cells and min_det_feats_per_cell combinations.
@@ -679,7 +679,7 @@ Figure 7.6: Number of spots and features filtered when using multiple feat_det_i
 <span id="cb33-4"><a href="visium-part-i.html#cb33-4" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> visium_brain, </span>
 <span id="cb33-5"><a href="visium-part-i.html#cb33-5" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;nr_feats&quot;</span>, </span>
 <span id="cb33-6"><a href="visium-part-i.html#cb33-6" tabindex="-1"></a>           <span class="at">color_as_factor =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-41"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-42"></span>
 <img src="img/01_session5/5-spatPlot2D.png" alt="Spatial distribution of the number of features per spot." width="80%" />
 <p class="caption">
 Figure 7.7: Spatial distribution of the number of features per spot.
@@ -698,7 +698,7 @@ Figure 7.7: Spatial distribution of the number of features per spot.
 <span id="cb34-2"><a href="visium-part-i.html#cb34-2" tabindex="-1"></a>                             <span class="at">method =</span> <span class="st">&quot;cov_loess&quot;</span>,</span>
 <span id="cb34-3"><a href="visium-part-i.html#cb34-3" tabindex="-1"></a>                             <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb34-4"><a href="visium-part-i.html#cb34-4" tabindex="-1"></a>                             <span class="at">default_save_name =</span> <span class="st">&quot;HVFplot_loess&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-43"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-44"></span>
 <img src="img/01_session5/6-HVFplot_loess.png" alt="Covariance of HVFs using the loess method." width="80%" />
 <p class="caption">
 Figure 7.8: Covariance of HVFs using the loess method.
@@ -711,7 +711,7 @@ Figure 7.8: Covariance of HVFs using the loess method.
 <span id="cb35-2"><a href="visium-part-i.html#cb35-2" tabindex="-1"></a>                             <span class="at">method =</span> <span class="st">&quot;var_p_resid&quot;</span>,</span>
 <span id="cb35-3"><a href="visium-part-i.html#cb35-3" tabindex="-1"></a>                             <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb35-4"><a href="visium-part-i.html#cb35-4" tabindex="-1"></a>                             <span class="at">default_save_name =</span> <span class="st">&quot;HVFplot_pearson&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-45"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-46"></span>
 <img src="img/01_session5/7-HVFplot_pearson.png" alt="Variance of HVFs using the pearson residuals method." width="80%" />
 <p class="caption">
 Figure 7.9: Variance of HVFs using the pearson residuals method.
@@ -724,7 +724,7 @@ Figure 7.9: Variance of HVFs using the pearson residuals method.
 <span id="cb36-2"><a href="visium-part-i.html#cb36-2" tabindex="-1"></a>                             <span class="at">method =</span> <span class="st">&quot;cov_groups&quot;</span>,</span>
 <span id="cb36-3"><a href="visium-part-i.html#cb36-3" tabindex="-1"></a>                             <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb36-4"><a href="visium-part-i.html#cb36-4" tabindex="-1"></a>                             <span class="at">default_save_name =</span> <span class="st">&quot;HVFplot_binned&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-47"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-48"></span>
 <img src="img/01_session5/8-HVFplot_binned.png" alt="Covariance of HVFs using the binned method." width="80%" />
 <p class="caption">
 Figure 7.10: Covariance of HVFs using the binned method.
@@ -757,7 +757,7 @@ Figure 7.10: Covariance of HVFs using the binned method.
 <p>Create a screeplot to visualize the percentage of variance explained by each component.</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="visium-part-i.html#cb39-1" tabindex="-1"></a><span class="fu">screePlot</span>(<span class="at">gobject =</span> visium_brain, </span>
 <span id="cb39-2"><a href="visium-part-i.html#cb39-2" tabindex="-1"></a>          <span class="at">ncp =</span> <span class="dv">30</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-51"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-52"></span>
 <img src="img/01_session5/9-screePlot.png" alt="Screeplot showing the variance explained per principal component." width="80%" />
 <p class="caption">
 Figure 7.11: Screeplot showing the variance explained per principal component.
@@ -765,7 +765,7 @@ Figure 7.11: Screeplot showing the variance explained per principal component.
 </div>
 <p>Visualized the PCA calculated using the HVFs.</p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="visium-part-i.html#cb40-1" tabindex="-1"></a><span class="fu">plotPCA</span>(<span class="at">gobject =</span> visium_brain)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-53"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-54"></span>
 <img src="img/01_session5/10-PCA.png" alt="PCA plot using HVFs." width="80%" />
 <p class="caption">
 Figure 7.12: PCA plot using HVFs.
@@ -774,7 +774,7 @@ Figure 7.12: PCA plot using HVFs.
 <p>Visualized the custom PCA calculated using the vector of features.</p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="visium-part-i.html#cb41-1" tabindex="-1"></a><span class="fu">plotPCA</span>(<span class="at">gobject =</span> visium_brain,</span>
 <span id="cb41-2"><a href="visium-part-i.html#cb41-2" tabindex="-1"></a>        <span class="at">dim_reduction_name =</span> <span class="st">&quot;custom_pca&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-55"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-56"></span>
 <img src="img/01_session5/11-PCA.png" alt="PCA using custom features." width="80%" />
 <p class="caption">
 Figure 7.13: PCA using custom features.
@@ -790,7 +790,7 @@ Figure 7.13: PCA using custom features.
 <li>Visualization</li>
 </ul>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="visium-part-i.html#cb43-1" tabindex="-1"></a><span class="fu">plotUMAP</span>(<span class="at">gobject =</span> visium_brain)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-58"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-59"></span>
 <img src="img/01_session5/12-UMAP.png" alt="UMAP using the 10 first principal components." width="80%" />
 <p class="caption">
 Figure 7.14: UMAP using the 10 first principal components.
@@ -805,7 +805,7 @@ Figure 7.14: UMAP using the 10 first principal components.
 <li>Visualization</li>
 </ul>
 <div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="visium-part-i.html#cb45-1" tabindex="-1"></a><span class="fu">plotTSNE</span>(<span class="at">gobject =</span> visium_brain)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-61"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-62"></span>
 <img src="img/01_session5/13-tSNE.png" alt="tSNE using the 10 first principal components." width="80%" />
 <p class="caption">
 Figure 7.15: tSNE using the 10 first principal components.
@@ -839,7 +839,7 @@ Figure 7.15: tSNE using the 10 first principal components.
 </ul>
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="visium-part-i.html#cb49-1" tabindex="-1"></a><span class="fu">plotPCA</span>(<span class="at">gobject =</span> visium_brain,</span>
 <span id="cb49-2"><a href="visium-part-i.html#cb49-2" tabindex="-1"></a>        <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-66"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-67"></span>
 <img src="img/01_session5/14-PCA.png" alt="PCA plot, colors indicate the Leiden clusters." width="80%" />
 <p class="caption">
 Figure 7.16: PCA plot, colors indicate the Leiden clusters.
@@ -850,7 +850,7 @@ Figure 7.16: PCA plot, colors indicate the Leiden clusters.
 <span id="cb50-2"><a href="visium-part-i.html#cb50-2" tabindex="-1"></a>         <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>, </span>
 <span id="cb50-3"><a href="visium-part-i.html#cb50-3" tabindex="-1"></a>         <span class="at">show_NN_network =</span> <span class="cn">FALSE</span>, </span>
 <span id="cb50-4"><a href="visium-part-i.html#cb50-4" tabindex="-1"></a>         <span class="at">point_size =</span> <span class="fl">2.5</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-68"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-69"></span>
 <img src="img/01_session5/15-UMAP.png" alt="UMAP plot, colors indicate the Leiden clusters." width="80%" />
 <p class="caption">
 Figure 7.17: UMAP plot, colors indicate the Leiden clusters.
@@ -861,7 +861,7 @@ Figure 7.17: UMAP plot, colors indicate the Leiden clusters.
 <span id="cb51-2"><a href="visium-part-i.html#cb51-2" tabindex="-1"></a>         <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>, </span>
 <span id="cb51-3"><a href="visium-part-i.html#cb51-3" tabindex="-1"></a>         <span class="at">show_NN_network =</span> <span class="cn">TRUE</span>, </span>
 <span id="cb51-4"><a href="visium-part-i.html#cb51-4" tabindex="-1"></a>         <span class="at">point_size =</span> <span class="fl">2.5</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-70"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-71"></span>
 <img src="img/01_session5/16-UMAP.png" alt="UMAP showing the nearest network." width="80%" />
 <p class="caption">
 Figure 7.18: UMAP showing the nearest network.
@@ -871,7 +871,7 @@ Figure 7.18: UMAP showing the nearest network.
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="visium-part-i.html#cb52-1" tabindex="-1"></a><span class="fu">plotTSNE</span>(<span class="at">gobject =</span> visium_brain,</span>
 <span id="cb52-2"><a href="visium-part-i.html#cb52-2" tabindex="-1"></a>         <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
 <span id="cb52-3"><a href="visium-part-i.html#cb52-3" tabindex="-1"></a>         <span class="at">point_size =</span> <span class="fl">2.5</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-72"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-73"></span>
 <img src="img/01_session5/17-tSNE.png" alt="tSNE plot, colors indicate the Leiden clusters." width="80%" />
 <p class="caption">
 Figure 7.19: tSNE plot, colors indicate the Leiden clusters.
@@ -882,7 +882,7 @@ Figure 7.19: tSNE plot, colors indicate the Leiden clusters.
 <span id="cb53-2"><a href="visium-part-i.html#cb53-2" tabindex="-1"></a>         <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
 <span id="cb53-3"><a href="visium-part-i.html#cb53-3" tabindex="-1"></a>         <span class="at">point_size =</span> <span class="fl">2.5</span>,</span>
 <span id="cb53-4"><a href="visium-part-i.html#cb53-4" tabindex="-1"></a>         <span class="at">show_NN_network =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-74"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-75"></span>
 <img src="img/01_session5/18-tSNE.png" alt="tSNE showing the nearest network." width="80%" />
 <p class="caption">
 Figure 7.20: tSNE showing the nearest network.
@@ -892,7 +892,7 @@ Figure 7.20: tSNE showing the nearest network.
 <div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="visium-part-i.html#cb54-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(visium_brain, </span>
 <span id="cb54-2"><a href="visium-part-i.html#cb54-2" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
 <span id="cb54-3"><a href="visium-part-i.html#cb54-3" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="dv">3</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-76"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-77"></span>
 <img src="img/01_session5/19-spatPlot2D.png" alt="Spatial plot, colors indicate the Leiden clusters." width="80%" />
 <p class="caption">
 Figure 7.21: Spatial plot, colors indicate the Leiden clusters.
@@ -905,7 +905,7 @@ Figure 7.21: Spatial plot, colors indicate the Leiden clusters.
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="visium-part-i.html#cb55-1" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">doLouvainCluster</span>(visium_brain)</span></code></pre></div>
 <div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="visium-part-i.html#cb56-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(visium_brain, </span>
 <span id="cb56-2"><a href="visium-part-i.html#cb56-2" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;louvain_clus&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-79"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-80"></span>
 <img src="img/01_session5/20-spatPlot2D.png" alt="Spatial plot, colors indicate the Louvain clusters." width="80%" />
 <p class="caption">
 Figure 7.22: Spatial plot, colors indicate the Louvain clusters.

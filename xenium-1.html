@@ -589,7 +589,7 @@ exported data is from their Xenium Onboard Analysis v2.0.0 pipeline.</p>
 <p>In order to speed up the steps of the workshop and make it locally runnable, we provide a subset of the full dataset.</p>
 <pre><code>- Full: -16.039, 12342.984, -3511.515, -294.455 (xmin, xmax, ymin, ymax)
 - Mini: 6000,    7000,      -2200,     -1400    (xmin, xmax, ymin, ymax)</code></pre>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-177"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-178"></span>
 <img src="img/02_session3/mini_roi.png" alt="Shown is the H&amp;E aligned to the Xenium dataset with micron scaling. The blue bounds mark out the area provided as a mini dataset"  />
 <p class="caption">
 Figure 10.1: Shown is the H&amp;E aligned to the Xenium dataset with micron scaling. The blue bounds mark out the area provided as a mini dataset
@@ -707,7 +707,7 @@ QV Calculation
 <span id="cb129-5"><a href="xenium-1.html#cb129-5" tabindex="-1"></a>    <span class="at">polygon_color =</span> <span class="st">&quot;cyan&quot;</span>, </span>
 <span id="cb129-6"><a href="xenium-1.html#cb129-6" tabindex="-1"></a>    <span class="at">polygon_line_size =</span> <span class="fl">0.1</span></span>
 <span id="cb129-7"><a href="xenium-1.html#cb129-7" tabindex="-1"></a>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-183"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-184"></span>
 <img src="img/02_session3/situ_plot_head.png" alt="Simple subcellular plotting to check data" width="100%" />
 <p class="caption">
 Figure 10.2: Simple subcellular plotting to check data
@@ -740,7 +740,7 @@ funs      : load_transcripts()
 <div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="xenium-1.html#cb132-1" tabindex="-1"></a>x<span class="sc">$</span>qv <span class="ot">&lt;-</span> <span class="dv">20</span> <span class="co"># default</span></span>
 <span id="cb132-2"><a href="xenium-1.html#cb132-2" tabindex="-1"></a>tx <span class="ot">&lt;-</span> x<span class="sc">$</span><span class="fu">load_transcripts</span>()</span>
 <span id="cb132-3"><a href="xenium-1.html#cb132-3" tabindex="-1"></a><span class="fu">plot</span>(tx[[<span class="dv">1</span>]]<span class="sc">$</span>rna, <span class="at">dens =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-186"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-187"></span>
 <img src="img/02_session3/tx_plot.png" alt="plot of Gene expression ('rna') density" width="80%" />
 <p class="caption">
 Figure 10.3: plot of Gene expression (‘rna’) density
@@ -839,7 +839,7 @@ spatial locations ----------------
 <span id="cb142-17"><a href="xenium-1.html#cb142-17" tabindex="-1"></a>    <span class="at">polygon_color =</span> <span class="st">&quot;grey&quot;</span>,</span>
 <span id="cb142-18"><a href="xenium-1.html#cb142-18" tabindex="-1"></a>    <span class="at">polygon_line_size =</span> <span class="fl">0.1</span></span>
 <span id="cb142-19"><a href="xenium-1.html#cb142-19" tabindex="-1"></a>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-193"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-194"></span>
 <img src="img/02_session3/cmeta_plots.png" alt="Example plot using 10X metadata. Left is 'cell_area', right is 'transcript_counts'"  />
 <p class="caption">
 Figure 10.4: Example plot using 10X metadata. Left is ‘cell_area’, right is ‘transcript_counts’
@@ -877,7 +877,7 @@ Figure 10.4: Example plot using 10X metadata. Left is ‘cell_area’, right is 
 <div id="image-loading" class="section level3 hasAnchor" number="10.5.2">
 <h3><span class="header-section-number">10.5.2</span> Image loading<a href="xenium-1.html#image-loading" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>morphology_focus</code> images need to be scaled by the micron scaling factor. Aligned images need to first be affine transformed then scaled. The micron scaling factor can be found in the json-like <code>experiment.xenium</code> file under <code>pixel_size</code> (0.2125 for this dataset).</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-196"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-197"></span>
 <img src="img/02_session3/img_orig_ext.png" alt="Spatial extent/bounds of transcripts (red), immunofluorescence morphology focus images (blue), H&amp;E aligned image (gold). Lower right shows the affine matrix for aligning the H&amp;E" width="80%" />
 <p class="caption">
 Figure 10.5: Spatial extent/bounds of transcripts (red), immunofluorescence morphology focus images (blue), H&amp;E aligned image (gold). Lower right shows the affine matrix for aligning the H&amp;E
@@ -962,7 +962,7 @@ x$load_aligned_image(
 <span id="cb148-52"><a href="xenium-1.html#cb148-52" tabindex="-1"></a>    <span class="at">polygon_line_size =</span> <span class="fl">0.1</span>,</span>
 <span id="cb148-53"><a href="xenium-1.html#cb148-53" tabindex="-1"></a>    <span class="at">polygon_alpha =</span> <span class="dv">0</span></span>
 <span id="cb148-54"><a href="xenium-1.html#cb148-54" tabindex="-1"></a>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-198"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-199"></span>
 <img src="img/02_session3/imgplots.png" alt="H&amp;E and Cell polys (top left), DAPI and nuclear polys (top right), 18S and cell polys (lower left), ATP1A1/CD45/E-Cadherin and nuclear polys (lower right)"  />
 <p class="caption">
 Figure 10.6: H&amp;E and Cell polys (top left), DAPI and nuclear polys (top right), 18S and cell polys (lower left), ATP1A1/CD45/E-Cadherin and nuclear polys (lower right)
@@ -1008,7 +1008,7 @@ Number of feats removed:  0  out of  377 </code></pre>
 <span id="cb152-11"><a href="xenium-1.html#cb152-11" tabindex="-1"></a>    <span class="at">polygon_fill_gradient_style =</span> <span class="st">&quot;sequential&quot;</span>,</span>
 <span id="cb152-12"><a href="xenium-1.html#cb152-12" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">FALSE</span></span>
 <span id="cb152-13"><a href="xenium-1.html#cb152-13" tabindex="-1"></a>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-202"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-203"></span>
 <img src="img/02_session3/stats_plot.png" alt="'nr_feats' - Number of different gene species detected per cell (left), 'total_expr' - total detections per cell (right)"  />
 <p class="caption">
 Figure 10.7: ‘nr_feats’ - Number of different gene species detected per cell (left), ‘total_expr’ - total detections per cell (right)
@@ -1022,7 +1022,7 @@ Figure 10.7: ‘nr_feats’ - Number of different gene species detected per cell
 <div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="xenium-1.html#cb153-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">runPCA</span>(g, <span class="at">feats_to_use =</span> <span class="cn">NULL</span>)</span>
 <span id="cb153-2"><a href="xenium-1.html#cb153-2" tabindex="-1"></a><span class="co"># feats_to_use = NULL since there are no HVFs calculated. Use all genes.</span></span>
 <span id="cb153-3"><a href="xenium-1.html#cb153-3" tabindex="-1"></a><span class="fu">screePlot</span>(g, <span class="at">ncp =</span> <span class="dv">30</span>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-204"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-205"></span>
 <img src="img/02_session3/screeplot.png" alt="Plot of variance explained in the first 30 out of 100 principle components calculated" width="60%" />
 <p class="caption">
 Figure 10.8: Plot of variance explained in the first 30 out of 100 principle components calculated
@@ -1034,7 +1034,7 @@ Figure 10.8: Plot of variance explained in the first 30 out of 100 principle com
 <span id="cb154-4"><a href="xenium-1.html#cb154-4" tabindex="-1"></a>)</span></code></pre></div>
 <div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="xenium-1.html#cb155-1" tabindex="-1"></a><span class="fu">plotPCA</span>(g)</span>
 <span id="cb155-2"><a href="xenium-1.html#cb155-2" tabindex="-1"></a><span class="fu">plotUMAP</span>(g)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-207"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-208"></span>
 <img src="img/02_session3/dimplots.png" alt="PCA plot showing the first 2 PCs (left), UMAP generated from first 15 PCs (right)"  />
 <p class="caption">
 Figure 10.9: PCA plot showing the first 2 PCs (left), UMAP generated from first 15 PCs (right)
@@ -1060,7 +1060,7 @@ Figure 10.9: PCA plot showing the first 2 PCs (left), UMAP generated from first 
 <span id="cb156-15"><a href="xenium-1.html#cb156-15" tabindex="-1"></a>    <span class="at">point_size =</span> <span class="fl">0.1</span>, </span>
 <span id="cb156-16"><a href="xenium-1.html#cb156-16" tabindex="-1"></a>    <span class="at">point_shape =</span> <span class="st">&quot;no_border&quot;</span></span>
 <span id="cb156-17"><a href="xenium-1.html#cb156-17" tabindex="-1"></a>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-209"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-210"></span>
 <img src="img/02_session3/clustered_dimplots.png" alt="3D plot showing first PCs with leiden clustering annotations (left), UMAP plot showing leiden clustering results (right)"  />
 <p class="caption">
 Figure 10.10: 3D plot showing first PCs with leiden clustering annotations (left), UMAP plot showing leiden clustering results (right)
@@ -1073,7 +1073,7 @@ Figure 10.10: 3D plot showing first PCs with leiden clustering annotations (left
 <span id="cb157-5"><a href="xenium-1.html#cb157-5" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb157-6"><a href="xenium-1.html#cb157-6" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;HE&quot;</span></span>
 <span id="cb157-7"><a href="xenium-1.html#cb157-7" tabindex="-1"></a>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-211"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-212"></span>
 <img src="img/02_session3/leiden_spat.png" alt="Spatial plot with leiden clustering annotations."  />
 <p class="caption">
 Figure 10.11: Spatial plot with leiden clustering annotations.
@@ -1098,7 +1098,7 @@ Figure 10.11: Spatial plot with leiden clustering annotations.
 <span id="cb158-9"><a href="xenium-1.html#cb158-9" tabindex="-1"></a>    <span class="at">point_alpha =</span> <span class="fl">0.5</span>,</span>
 <span id="cb158-10"><a href="xenium-1.html#cb158-10" tabindex="-1"></a>    <span class="at">network_color =</span> <span class="st">&quot;grey&quot;</span></span>
 <span id="cb158-11"><a href="xenium-1.html#cb158-11" tabindex="-1"></a>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-213"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-214"></span>
 <img src="img/02_session3/spatnet.png" alt="Delaunay spatial network`"  />
 <p class="caption">
 Figure 10.12: Delaunay spatial network`
@@ -1161,13 +1161,13 @@ The results are stored as a new spatial enrichment entry called ‘leiden_niche�
 <span id="cb160-42"><a href="xenium-1.html#cb160-42" tabindex="-1"></a>        <span class="st">&quot;#E7298A&quot;</span>, <span class="st">&quot;#FFED6F&quot;</span>, <span class="st">&quot;#80B1D3&quot;</span>, <span class="st">&quot;#E41A1C&quot;</span>, <span class="st">&quot;#377EB8&quot;</span>, <span class="st">&quot;#A65628&quot;</span>, </span>
 <span id="cb160-43"><a href="xenium-1.html#cb160-43" tabindex="-1"></a>        <span class="st">&quot;#4DAF4A&quot;</span>, <span class="st">&quot;#D9D9D9&quot;</span>, <span class="st">&quot;#FF7F00&quot;</span>, <span class="st">&quot;#BC80BD&quot;</span>, <span class="st">&quot;#666666&quot;</span>, <span class="st">&quot;#B3DE69&quot;</span>)</span>
 <span id="cb160-44"><a href="xenium-1.html#cb160-44" tabindex="-1"></a>    )</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-216"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-217"></span>
 <img src="img/02_session3/niches_spat.png" alt="Leiden annotation-based spatial niches"  />
 <p class="caption">
 Figure 10.13: Leiden annotation-based spatial niches
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-217"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-218"></span>
 <img src="img/02_session3/niches_bar.png" alt="Stacked barplot of leiden annotation composition by niche"  />
 <p class="caption">
 Figure 10.14: Stacked barplot of leiden annotation composition by niche
@@ -1191,7 +1191,7 @@ Figure 10.14: Stacked barplot of leiden annotation composition by niche
 <span id="cb161-11"><a href="xenium-1.html#cb161-11" tabindex="-1"></a>    <span class="at">min_orig_ints =</span> <span class="dv">5</span>, <span class="co"># minimum original cell-cell interactions</span></span>
 <span id="cb161-12"><a href="xenium-1.html#cb161-12" tabindex="-1"></a>    <span class="at">min_sim_ints =</span> <span class="dv">5</span> <span class="co"># minimum simulated cell-cell interactions</span></span>
 <span id="cb161-13"><a href="xenium-1.html#cb161-13" tabindex="-1"></a>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-219"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-220"></span>
 <img src="img/02_session3/cc_prox.png" alt="Cell-cell interaction enrichments and depletions (left). Number of interactions of each type found (right)"  />
 <p class="caption">
 Figure 10.15: Cell-cell interaction enrichments and depletions (left). Number of interactions of each type found (right)
@@ -1222,13 +1222,13 @@ Figure 10.15: Cell-cell interaction enrichments and depletions (left). Number of
 <span id="cb162-22"><a href="xenium-1.html#cb162-22" tabindex="-1"></a>    <span class="at">polygon_alpha =</span> <span class="dv">1</span>,</span>
 <span id="cb162-23"><a href="xenium-1.html#cb162-23" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;HE&quot;</span></span>
 <span id="cb162-24"><a href="xenium-1.html#cb162-24" tabindex="-1"></a>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-221"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-222"></span>
 <img src="img/02_session3/cc_enrich1.png" alt="Spatial plot of enriched leiden annotation 6 to 8 interactions"  />
 <p class="caption">
 Figure 10.16: Spatial plot of enriched leiden annotation 6 to 8 interactions
 </p>
 </div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-222"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-223"></span>
 <img src="img/02_session3/cc_enrich2.png" alt="Spatial plot of enriched leiden annotation 2 to 9 interactions"  />
 <p class="caption">
 Figure 10.17: Spatial plot of enriched leiden annotation 2 to 9 interactions
@@ -1252,7 +1252,7 @@ Figure 10.17: Spatial plot of enriched leiden annotation 2 to 9 interactions
 <span id="cb163-9"><a href="xenium-1.html#cb163-9" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">addSpatialCentroidLocations</span>(g, <span class="at">poly_info =</span> <span class="st">&quot;pseudo_visium&quot;</span>)</span>
 <span id="cb163-10"><a href="xenium-1.html#cb163-10" tabindex="-1"></a></span>
 <span id="cb163-11"><a href="xenium-1.html#cb163-11" tabindex="-1"></a><span class="fu">plot</span>(pvis)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-224"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-225"></span>
 <img src="img/02_session3/pvis_poly.png" alt="Pseudovisium spot geometries generated by `makePseudoVisium()`" width="60%" />
 <p class="caption">
 Figure 10.18: Pseudovisium spot geometries generated by <code>makePseudoVisium()</code>
@@ -1285,7 +1285,7 @@ Figure 10.18: Pseudovisium spot geometries generated by <code>makePseudoVisium()
 <span id="cb164-22"><a href="xenium-1.html#cb164-22" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;total_expr&quot;</span>,</span>
 <span id="cb164-23"><a href="xenium-1.html#cb164-23" tabindex="-1"></a>    <span class="at">polygon_fill_gradient_style =</span> <span class="st">&quot;sequential&quot;</span></span>
 <span id="cb164-24"><a href="xenium-1.html#cb164-24" tabindex="-1"></a>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-226"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-227"></span>
 <img src="img/02_session3/pvis_total_expr.png" alt="Pseudo visium total detections per spot"  />
 <p class="caption">
 Figure 10.19: Pseudo visium total detections per spot
@@ -1319,7 +1319,7 @@ Figure 10.19: Pseudo visium total detections per spot
 <span id="cb165-26"><a href="xenium-1.html#cb165-26" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb165-27"><a href="xenium-1.html#cb165-27" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;HE&quot;</span></span>
 <span id="cb165-28"><a href="xenium-1.html#cb165-28" tabindex="-1"></a>)</span></code></pre></div>
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-228"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-229"></span>
 <img src="img/02_session3/pvis_clustering.png" alt="Leiden clustering in PCA (top left) and UMAP (top right) spaces, and in spatial plot with no image (bottom left), and with image (bottom right)"  />
 <p class="caption">
 Figure 10.20: Leiden clustering in PCA (top left) and UMAP (top right) spaces, and in spatial plot with no image (bottom left), and with image (bottom right)
