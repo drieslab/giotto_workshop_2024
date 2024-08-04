@@ -153,19 +153,21 @@ reticulate::py_install(
 # install another environment with py 3.8 for cellpose
 reticulate::conda_create(envname = "giotto_cellpose",
                          python_version = 3.8)
+#.re.restartR()
+reticulate::use_condaenv('giotto_cellpose')
 reticulate::py_install(
-    pip = TRUE,
-    envname = 'giotto_cellpose',
-    packages = c(
-        "pandas",
-        "networkx",
-        "python-igraph",
-        "leidenalg",
-        "scikit-learn",
-        "cellpose",
-        "smfishhmrf",
-        'tifffile',
-        'scikit-image'
-    )
+  pip = TRUE,
+  envname = 'giotto_cellpose',
+  packages = c(
+    "pandas",
+    "networkx",
+    "python-igraph",
+    "leidenalg",
+    "scikit-learn",
+    "cellpose",
+    "smfishhmrf",
+    'tifffile',
+    'scikit-image'
+  )
 )
 ```

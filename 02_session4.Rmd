@@ -9,20 +9,22 @@ Before you start, this tutorial contains an optional part to run image segmentat
 #Install the Giotto Environment with Cellpose, note that we only need to do it once
 reticulate::conda_create(envname = "giotto_cellpose",
                          python_version = 3.8)
+#.re.restartR()
+reticulate::use_condaenv('giotto_cellpose')
 reticulate::py_install(
-    pip = TRUE,
-    envname = 'giotto_cellpose',
-    packages = c(
-        "pandas",
-        "networkx",
-        "python-igraph",
-        "leidenalg",
-        "scikit-learn",
-        "cellpose",
-        "smfishhmrf",
-        'tifffile',
-        'scikit-image'
-    )
+  pip = TRUE,
+  envname = 'giotto_cellpose',
+  packages = c(
+    "pandas",
+    "networkx",
+    "python-igraph",
+    "leidenalg",
+    "scikit-learn",
+    "cellpose",
+    "smfishhmrf",
+    'tifffile',
+    'scikit-image'
+  )
 )
 #.rs.restartR()
 ```
@@ -58,7 +60,7 @@ instrs = createGiottoInstructions(save_dir = file.path(getwd(),'/img/02_session4
                                   save_plot = TRUE,
                                   show_plot = TRUE,
                                   python_path = 'giotto_cellpose')
-
+options(timeout = 9999999)
 download_dir =file.path(getwd(),'/data/02_session4/')
 destfile = file.path(download_dir,'Lunaphore.zip')
 if (!dir.exists(download_dir)) { dir.create(download_dir, recursive = TRUE) }
