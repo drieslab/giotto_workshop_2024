@@ -1,5 +1,10 @@
 ## Needed packages
 
+To run all the tutorials from this Giotto Suite workshop you will need to install
+additional R and Python packages. Here we provide detailed instructions and discuss 
+some common difficulties with installing these packages. The easiest way would be
+to copy each code snippet into your R/Rstudio Console using fresh R session.
+
 ### CRAN dependencies:
 
 ```{r, eval=FALSE}
