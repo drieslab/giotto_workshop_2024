@@ -325,7 +325,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="10.11.1" data-path="xenium-1.html"><a href="xenium-1.html#pseudovisium-aggregation-and-workflow"><i class="fa fa-check"></i><b>10.11.1</b> Pseudovisium aggregation and workflow</a></li>
 </ul></li>
-<li class="chapter" data-level="10.12" data-path="xenium-1.html"><a href="xenium-1.html#transcript-enrichment-gsea"><i class="fa fa-check"></i><b>10.12</b> Transcript enrichment GSEA</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html"><i class="fa fa-check"></i><b>11</b> Spatial proteomics: Multiplexed Immunofluorescence</a>
 <ul>
@@ -527,7 +526,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="visium-technology" class="section level3 hasAnchor" number="12.2.2">
 <h3><span class="header-section-number">12.2.2</span> Visium technology<a href="working-with-multiple-samples.html#visium-technology" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-266"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-268"></span>
 <img src="img/03_session1/visium_overview.png" alt="Overview of Visium. Source: 10X Genomics." width="80%" />
 <p class="caption">
 Figure 12.1: Overview of Visium. Source: 10X Genomics.
@@ -601,7 +600,7 @@ Figure 12.1: Overview of Visium. Source: 10X Genomics.
 <span id="cb192-19"><a href="working-with-multiple-samples.html#cb192-19" tabindex="-1"></a>  <span class="at">instructions =</span> instrs</span>
 <span id="cb192-20"><a href="working-with-multiple-samples.html#cb192-20" tabindex="-1"></a>)</span></code></pre></div>
 <p>We can see that the gobject contains information for the cells (polygon and spatial units), the RNA express (raw) and the relevant image.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-270"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-272"></span>
 <img src="img/03_session1/03_ses1_single_gobject.png" alt="Structure of Giotto object containing a single dataset." width="40%" />
 <p class="caption">
 Figure 12.2: Structure of Giotto object containing a single dataset.
@@ -618,7 +617,7 @@ Figure 12.2: Structure of Giotto object containing a single dataset.
 <span id="cb193-5"><a href="working-with-multiple-samples.html#cb193-5" tabindex="-1"></a>           <span class="at">cell_color_code =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>),</span>
 <span id="cb193-6"><a href="working-with-multiple-samples.html#cb193-6" tabindex="-1"></a>           <span class="at">point_alpha =</span> <span class="fl">0.5</span>, </span>
 <span id="cb193-7"><a href="working-with-multiple-samples.html#cb193-7" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;03_ses1_normal_prostate_tissue&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-272"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-274"></span>
 <img src="img/03_session1/03_ses1_normal_prostate_tissue.png" alt="Tissue coverage for the normal prostate sample." width="70%" />
 <p class="caption">
 Figure 12.3: Tissue coverage for the normal prostate sample.
@@ -634,7 +633,7 @@ Figure 12.3: Tissue coverage for the normal prostate sample.
 <span id="cb194-5"><a href="working-with-multiple-samples.html#cb194-5" tabindex="-1"></a>           <span class="at">cell_color_code =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>), </span>
 <span id="cb194-6"><a href="working-with-multiple-samples.html#cb194-6" tabindex="-1"></a>           <span class="at">point_alpha =</span> <span class="fl">0.5</span>, </span>
 <span id="cb194-7"><a href="working-with-multiple-samples.html#cb194-7" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;03_ses1_adeno_prostate_tissue&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-274"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-276"></span>
 <img src="img/03_session1/03_ses1_adeno_prostate_tissue.png" alt="Tissue coverage for the adenocarcinoma prostate sample." width="70%" />
 <p class="caption">
 Figure 12.4: Tissue coverage for the adenocarcinoma prostate sample.
@@ -659,7 +658,7 @@ Figure 12.4: Tissue coverage for the adenocarcinoma prostate sample.
 <span id="cb196-6"><a href="working-with-multiple-samples.html#cb196-6" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(<span class="fu">pDataDT</span>(combined_pros)))</span>
 <span id="cb196-7"><a href="working-with-multiple-samples.html#cb196-7" tabindex="-1"></a><span class="fu">print</span>(combined_pros)</span></code></pre></div>
 <p>From the joined data we can see the same information that was present in the single dataset objects as well as the addition of another image. The images are renamed from “image” to include the object name in the image name e.g. “NP-image”. We can also see in the cell metadata that there is a new column “list_ID” that contains the original object names. The cell_ID column also has the original object name appended to the beginning of each cell ID e.g. “NP-AAACAACGAATAGTTC-1”.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-277"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-279"></span>
 <img src="img/03_session1/03_ses1_combined_data.png" alt="Structure of Giotto object containing two datasets (left) and cell metadata on the left. Note the addition of multiple images and the addition of the list_ID column to define the dataset." width="100%" />
 <p class="caption">
 Figure 12.5: Structure of Giotto object containing two datasets (left) and cell metadata on the left. Note the addition of multiple images and the addition of the list_ID column to define the dataset.
@@ -680,7 +679,7 @@ Figure 12.5: Structure of Giotto object containing two datasets (left) and cell 
 <span id="cb197-6"><a href="working-with-multiple-samples.html#cb197-6" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="dv">1</span>, </span>
 <span id="cb197-7"><a href="working-with-multiple-samples.html#cb197-7" tabindex="-1"></a>           <span class="at">point_alpha =</span> <span class="fl">0.5</span>, </span>
 <span id="cb197-8"><a href="working-with-multiple-samples.html#cb197-8" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;03_ses1_combined_tissue&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-279"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-281"></span>
 <img src="img/03_session1/03_ses1_combined_tissue.png" alt="Vizualizing the visium spots that overlap tissue in normal prostate (left) and adenocarcinoma samples (right) within the same plot." width="100%" />
 <p class="caption">
 Figure 12.6: Vizualizing the visium spots that overlap tissue in normal prostate (left) and adenocarcinoma samples (right) within the same plot.
@@ -700,7 +699,7 @@ Figure 12.6: Vizualizing the visium spots that overlap tissue in normal prostate
 <span id="cb198-8"><a href="working-with-multiple-samples.html#cb198-8" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="fl">0.5</span>, </span>
 <span id="cb198-9"><a href="working-with-multiple-samples.html#cb198-9" tabindex="-1"></a>           <span class="at">cow_n_col =</span> <span class="dv">1</span>,</span>
 <span id="cb198-10"><a href="working-with-multiple-samples.html#cb198-10" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;03_ses1_combined_tissue_group&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-281"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-283"></span>
 <img src="img/03_session1/03_ses1_combined_tissue_group.png" alt="Vizualizing the visium spots that overlap tissue in normal prostate (left) and adenocarcinoma samples (right) in separate plots." width="100%" />
 <p class="caption">
 Figure 12.7: Vizualizing the visium spots that overlap tissue in normal prostate (left) and adenocarcinoma samples (right) in separate plots.
@@ -727,7 +726,7 @@ Figure 12.7: Vizualizing the visium spots that overlap tissue in normal prostate
 <span id="cb199-14"><a href="working-with-multiple-samples.html#cb199-14" tabindex="-1"></a>           <span class="at">point_alpha =</span> <span class="fl">0.5</span>, </span>
 <span id="cb199-15"><a href="working-with-multiple-samples.html#cb199-15" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="fl">0.5</span>, </span>
 <span id="cb199-16"><a href="working-with-multiple-samples.html#cb199-16" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;03_ses1_split_object&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-283"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-285"></span>
 <img src="img/03_session1/03_ses1_split_object.png" alt="Structure of Giotto object containing two datasets (left) and cell metadata on the left. Note the addition of multiple images and the addition of the list_ID column to define the dataset." width="100%" />
 <p class="caption">
 Figure 12.8: Structure of Giotto object containing two datasets (left) and cell metadata on the left. Note the addition of multiple images and the addition of the list_ID column to define the dataset.
@@ -770,7 +769,7 @@ Figure 12.8: Structure of Giotto object containing two datasets (left) and cell 
 <span id="cb200-29"><a href="working-with-multiple-samples.html#cb200-29" tabindex="-1"></a>           <span class="at">image_name =</span> <span class="fu">c</span>(<span class="st">&quot;NP-image&quot;</span>, <span class="st">&quot;CP-image&quot;</span>),</span>
 <span id="cb200-30"><a href="working-with-multiple-samples.html#cb200-30" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;ses3_1_feat_expression&quot;</span>))</span></code></pre></div>
 <p>After performing the addStatistics() function on both the datasets we can see the relative expression for each spot in both samples.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-285"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-287"></span>
 <img src="img/03_session1/ses3_1_feat_expression.png" alt="Unique feat expression for visium spots for both prostate samples." width="100%" />
 <p class="caption">
 Figure 12.9: Unique feat expression for visium spots for both prostate samples.
@@ -811,7 +810,7 @@ Figure 12.9: Unique feat expression for visium spots for both prostate samples.
 <span id="cb202-3"><a href="working-with-multiple-samples.html#cb202-3" tabindex="-1"></a>              <span class="at">show_image =</span> <span class="cn">TRUE</span>, </span>
 <span id="cb202-4"><a href="working-with-multiple-samples.html#cb202-4" tabindex="-1"></a>              <span class="at">image_name =</span> <span class="fu">c</span>(<span class="st">&quot;NP-image&quot;</span>, <span class="st">&quot;CP-image&quot;</span>),</span>
 <span id="cb202-5"><a href="working-with-multiple-samples.html#cb202-5" tabindex="-1"></a>              <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;ses3_1_leiden_clus&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-288"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-290"></span>
 <img src="img/03_session1/ses3_1_leiden_clus.png" alt="UMAP (top) for both samples colored by Leiden clusters visualized in a spatial plot (bottom) for the normal prostate (left) and the adenocarcinoma prostate sample (right)." width="100%" />
 <p class="caption">
 Figure 12.10: UMAP (top) for both samples colored by Leiden clusters visualized in a spatial plot (bottom) for the normal prostate (left) and the adenocarcinoma prostate sample (right).
@@ -826,7 +825,7 @@ Figure 12.10: UMAP (top) for both samples colored by Leiden clusters visualized 
 <span id="cb203-3"><a href="working-with-multiple-samples.html#cb203-3" tabindex="-1"></a>              <span class="at">show_image =</span> <span class="cn">TRUE</span>, </span>
 <span id="cb203-4"><a href="working-with-multiple-samples.html#cb203-4" tabindex="-1"></a>              <span class="at">image_name =</span> <span class="fu">c</span>(<span class="st">&quot;NP-image&quot;</span>, <span class="st">&quot;CP-image&quot;</span>),</span>
 <span id="cb203-5"><a href="working-with-multiple-samples.html#cb203-5" tabindex="-1"></a>              <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;ses3_1_tissue_contribution&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-290"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-292"></span>
 <img src="img/03_session1/ses3_1_tissue_contribution.png" alt="Tissue contribution for leiden clustering for the normal prostate (left) and the adenocarcinoma prostate sample (right)." width="100%" />
 <p class="caption">
 Figure 12.11: Tissue contribution for leiden clustering for the normal prostate (left) and the adenocarcinoma prostate sample (right).
@@ -844,7 +843,7 @@ Figure 12.11: Tissue contribution for leiden clustering for the normal prostate 
 <span id="cb204-4"><a href="working-with-multiple-samples.html#cb204-4" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">runGiottoHarmony</span>(combined_pros, </span>
 <span id="cb204-5"><a href="working-with-multiple-samples.html#cb204-5" tabindex="-1"></a>                                  <span class="at">vars_use =</span> <span class="st">&quot;list_ID&quot;</span>)</span></code></pre></div>
 <p>After running the Harmony function successfully we can see that the outputted gobject has a new dim reduction names “harmony”. We can use this for all subsequent spatial steps.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-292"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-294"></span>
 <img src="img/03_session1/harmony_gobject.png" alt="Data structure of the gobject after running Harmony integration." width="40%" />
 <p class="caption">
 Figure 12.12: Data structure of the gobject after running Harmony integration.
@@ -883,7 +882,7 @@ Figure 12.12: Data structure of the gobject after running Harmony integration.
 <span id="cb205-28"><a href="working-with-multiple-samples.html#cb205-28" tabindex="-1"></a>              <span class="at">spat_point_size =</span> <span class="dv">1</span>, </span>
 <span id="cb205-29"><a href="working-with-multiple-samples.html#cb205-29" tabindex="-1"></a>              <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;leiden_clustering_harmony&quot;</span>))</span></code></pre></div>
 <p>We can see a different UMAP and clustering to that seen in the original steps above. We can again map these onto the tissue spots and see where the clusters are spatially.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-294"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-296"></span>
 <img src="img/03_session1/leiden_clustering_harmony.png" alt="Leiden clustering after harmony was performed for the normal prostate (left) and the adenocarcinoma prostate sample (right)." width="100%" />
 <p class="caption">
 Figure 12.13: Leiden clustering after harmony was performed for the normal prostate (left) and the adenocarcinoma prostate sample (right).
@@ -899,7 +898,7 @@ Figure 12.13: Leiden clustering after harmony was performed for the normal prost
 <span id="cb206-4"><a href="working-with-multiple-samples.html#cb206-4" tabindex="-1"></a>              <span class="at">cell_color =</span> <span class="st">&quot;list_ID&quot;</span>, </span>
 <span id="cb206-5"><a href="working-with-multiple-samples.html#cb206-5" tabindex="-1"></a>              <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb206-6"><a href="working-with-multiple-samples.html#cb206-6" tabindex="-1"></a>              <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;leiden_clustering_harmony_contribution&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-296"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-298"></span>
 <img src="img/03_session1/leiden_clustering_harmony_contribution.png" alt="Tissue contribution for leiden clustering after harmony for the normal prostate (left) and the adenocarcinoma prostate sample (right)." width="100%" />
 <p class="caption">
 Figure 12.14: Tissue contribution for leiden clustering after harmony for the normal prostate (left) and the adenocarcinoma prostate sample (right).
