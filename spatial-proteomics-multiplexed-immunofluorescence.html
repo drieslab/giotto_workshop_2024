@@ -400,8 +400,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#examples-of-the-simple-transforms-with-a-giottopolygon"><i class="fa fa-check"></i><b>13.3</b> Examples of the simple transforms with a giottoPolygon</a></li>
 <li class="chapter" data-level="13.4" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#affine-transforms"><i class="fa fa-check"></i><b>13.4</b> Affine transforms</a></li>
 <li class="chapter" data-level="13.5" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#image-transforms"><i class="fa fa-check"></i><b>13.5</b> Image transforms</a></li>
-<li class="chapter" data-level="13.6" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#co-registration-of-datasets"><i class="fa fa-check"></i><b>13.6</b> Co-registration of datasets</a></li>
-<li class="chapter" data-level="13.7" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#examples-in-giotto-suite-manuscript"><i class="fa fa-check"></i><b>13.7</b> Examples in giotto suite manuscript</a></li>
+<li class="chapter" data-level="13.6" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#the-practical-usage-of-multi-modality-co-registration"><i class="fa fa-check"></i><b>13.6</b> The practical usage of multi-modality co-registration</a>
+<ul>
+<li class="chapter" data-level="13.6.1" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#example-dataset-xenium-breast-cancer-pre-release-pack"><i class="fa fa-check"></i><b>13.6.1</b> Example dataset: Xenium Breast Cancer pre-release pack</a></li>
+<li class="chapter" data-level="13.6.2" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#target-coordinate-system"><i class="fa fa-check"></i><b>13.6.2</b> Target Coordinate system</a></li>
+<li class="chapter" data-level="13.6.3" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#visium-to-register"><i class="fa fa-check"></i><b>13.6.3</b> Visium to register</a></li>
+<li class="chapter" data-level="13.6.4" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#register-post-xenium-he-and-if-image"><i class="fa fa-check"></i><b>13.6.4</b> Register post-Xenium H&amp;E and IF image</a></li>
+<li class="chapter" data-level="13.6.5" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#automatic-alignment-via-sift-feature-descriptor-matching-and-affine-transformation"><i class="fa fa-check"></i><b>13.6.5</b> Automatic alignment via SIFT feature descriptor matching and affine transformation</a></li>
+<li class="chapter" data-level="13.6.6" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#final-notes"><i class="fa fa-check"></i><b>13.6.6</b> Final Notes</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html"><i class="fa fa-check"></i><b>14</b> Multi-omics integration</a>
 <ul>
@@ -512,22 +519,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-1" tabindex="-1"></a><span class="co">#Install the Giotto Environment with Cellpose, note that we only need to do it once</span></span>
 <span id="cb166-2"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-2" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">conda_create</span>(<span class="at">envname =</span> <span class="st">&quot;giotto_cellpose&quot;</span>,</span>
 <span id="cb166-3"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-3" tabindex="-1"></a>                         <span class="at">python_version =</span> <span class="fl">3.8</span>)</span>
-<span id="cb166-4"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-4" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">py_install</span>(</span>
-<span id="cb166-5"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-5" tabindex="-1"></a>    <span class="at">pip =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb166-6"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-6" tabindex="-1"></a>    <span class="at">envname =</span> <span class="st">&#39;giotto_cellpose&#39;</span>,</span>
-<span id="cb166-7"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-7" tabindex="-1"></a>    <span class="at">packages =</span> <span class="fu">c</span>(</span>
-<span id="cb166-8"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-8" tabindex="-1"></a>        <span class="st">&quot;pandas&quot;</span>,</span>
-<span id="cb166-9"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-9" tabindex="-1"></a>        <span class="st">&quot;networkx&quot;</span>,</span>
-<span id="cb166-10"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-10" tabindex="-1"></a>        <span class="st">&quot;python-igraph&quot;</span>,</span>
-<span id="cb166-11"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-11" tabindex="-1"></a>        <span class="st">&quot;leidenalg&quot;</span>,</span>
-<span id="cb166-12"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-12" tabindex="-1"></a>        <span class="st">&quot;scikit-learn&quot;</span>,</span>
-<span id="cb166-13"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-13" tabindex="-1"></a>        <span class="st">&quot;cellpose&quot;</span>,</span>
-<span id="cb166-14"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-14" tabindex="-1"></a>        <span class="st">&quot;smfishhmrf&quot;</span>,</span>
-<span id="cb166-15"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-15" tabindex="-1"></a>        <span class="st">&#39;tifffile&#39;</span>,</span>
-<span id="cb166-16"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-16" tabindex="-1"></a>        <span class="st">&#39;scikit-image&#39;</span></span>
-<span id="cb166-17"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-17" tabindex="-1"></a>    )</span>
-<span id="cb166-18"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-18" tabindex="-1"></a>)</span>
-<span id="cb166-19"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-19" tabindex="-1"></a><span class="co">#.rs.restartR()</span></span></code></pre></div>
+<span id="cb166-4"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-4" tabindex="-1"></a><span class="co">#.re.restartR()</span></span>
+<span id="cb166-5"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-5" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">use_condaenv</span>(<span class="st">&#39;giotto_cellpose&#39;</span>)</span>
+<span id="cb166-6"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-6" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">py_install</span>(</span>
+<span id="cb166-7"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-7" tabindex="-1"></a>  <span class="at">pip =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb166-8"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-8" tabindex="-1"></a>  <span class="at">envname =</span> <span class="st">&#39;giotto_cellpose&#39;</span>,</span>
+<span id="cb166-9"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-9" tabindex="-1"></a>  <span class="at">packages =</span> <span class="fu">c</span>(</span>
+<span id="cb166-10"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-10" tabindex="-1"></a>    <span class="st">&quot;pandas&quot;</span>,</span>
+<span id="cb166-11"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-11" tabindex="-1"></a>    <span class="st">&quot;networkx&quot;</span>,</span>
+<span id="cb166-12"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-12" tabindex="-1"></a>    <span class="st">&quot;python-igraph&quot;</span>,</span>
+<span id="cb166-13"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-13" tabindex="-1"></a>    <span class="st">&quot;leidenalg&quot;</span>,</span>
+<span id="cb166-14"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-14" tabindex="-1"></a>    <span class="st">&quot;scikit-learn&quot;</span>,</span>
+<span id="cb166-15"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-15" tabindex="-1"></a>    <span class="st">&quot;cellpose&quot;</span>,</span>
+<span id="cb166-16"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-16" tabindex="-1"></a>    <span class="st">&quot;smfishhmrf&quot;</span>,</span>
+<span id="cb166-17"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-17" tabindex="-1"></a>    <span class="st">&#39;tifffile&#39;</span>,</span>
+<span id="cb166-18"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-18" tabindex="-1"></a>    <span class="st">&#39;scikit-image&#39;</span></span>
+<span id="cb166-19"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-19" tabindex="-1"></a>  )</span>
+<span id="cb166-20"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-20" tabindex="-1"></a>)</span>
+<span id="cb166-21"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb166-21" tabindex="-1"></a><span class="co">#.rs.restartR()</span></span></code></pre></div>
 <p>Now, activate the Giotto python environment.</p>
 <div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb167-1" tabindex="-1"></a><span class="co">#.rs.restartR()</span></span>
 <span id="cb167-2"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb167-2" tabindex="-1"></a><span class="co"># Activate the Giotto python environment of your choice</span></span>
@@ -551,7 +560,7 @@ This is the example Lunaphore dataset from Lunaphore the official <a href="https
 <span id="cb168-3"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb168-3" tabindex="-1"></a>                                  <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb168-4"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb168-4" tabindex="-1"></a>                                  <span class="at">show_plot =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb168-5"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb168-5" tabindex="-1"></a>                                  <span class="at">python_path =</span> <span class="st">&#39;giotto_cellpose&#39;</span>)</span>
-<span id="cb168-6"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb168-6" tabindex="-1"></a></span>
+<span id="cb168-6"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb168-6" tabindex="-1"></a><span class="fu">options</span>(<span class="at">timeout =</span> <span class="dv">9999999</span>)</span>
 <span id="cb168-7"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb168-7" tabindex="-1"></a>download_dir <span class="ot">=</span><span class="fu">file.path</span>(<span class="fu">getwd</span>(),<span class="st">&#39;/data/02_session4/&#39;</span>)</span>
 <span id="cb168-8"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb168-8" tabindex="-1"></a>destfile <span class="ot">=</span> <span class="fu">file.path</span>(download_dir,<span class="st">&#39;Lunaphore.zip&#39;</span>)</span>
 <span id="cb168-9"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb168-9" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(download_dir)) { <span class="fu">dir.create</span>(download_dir, <span class="at">recursive =</span> <span class="cn">TRUE</span>) }</span>

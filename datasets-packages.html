@@ -400,8 +400,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.3" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#examples-of-the-simple-transforms-with-a-giottopolygon"><i class="fa fa-check"></i><b>13.3</b> Examples of the simple transforms with a giottoPolygon</a></li>
 <li class="chapter" data-level="13.4" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#affine-transforms"><i class="fa fa-check"></i><b>13.4</b> Affine transforms</a></li>
 <li class="chapter" data-level="13.5" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#image-transforms"><i class="fa fa-check"></i><b>13.5</b> Image transforms</a></li>
-<li class="chapter" data-level="13.6" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#co-registration-of-datasets"><i class="fa fa-check"></i><b>13.6</b> Co-registration of datasets</a></li>
-<li class="chapter" data-level="13.7" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#examples-in-giotto-suite-manuscript"><i class="fa fa-check"></i><b>13.7</b> Examples in giotto suite manuscript</a></li>
+<li class="chapter" data-level="13.6" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#the-practical-usage-of-multi-modality-co-registration"><i class="fa fa-check"></i><b>13.6</b> The practical usage of multi-modality co-registration</a>
+<ul>
+<li class="chapter" data-level="13.6.1" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#example-dataset-xenium-breast-cancer-pre-release-pack"><i class="fa fa-check"></i><b>13.6.1</b> Example dataset: Xenium Breast Cancer pre-release pack</a></li>
+<li class="chapter" data-level="13.6.2" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#target-coordinate-system"><i class="fa fa-check"></i><b>13.6.2</b> Target Coordinate system</a></li>
+<li class="chapter" data-level="13.6.3" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#visium-to-register"><i class="fa fa-check"></i><b>13.6.3</b> Visium to register</a></li>
+<li class="chapter" data-level="13.6.4" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#register-post-xenium-he-and-if-image"><i class="fa fa-check"></i><b>13.6.4</b> Register post-Xenium H&amp;E and IF image</a></li>
+<li class="chapter" data-level="13.6.5" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#automatic-alignment-via-sift-feature-descriptor-matching-and-affine-transformation"><i class="fa fa-check"></i><b>13.6.5</b> Automatic alignment via SIFT feature descriptor matching and affine transformation</a></li>
+<li class="chapter" data-level="13.6.6" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#final-notes"><i class="fa fa-check"></i><b>13.6.6</b> Final Notes</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html"><i class="fa fa-check"></i><b>14</b> Multi-omics integration</a>
 <ul>
@@ -675,21 +682,23 @@ to copy each code snippet into your R/Rstudio Console using fresh R session.</p>
 <span id="cb11-12"><a href="datasets-packages.html#cb11-12" tabindex="-1"></a><span class="co"># install another environment with py 3.8 for cellpose</span></span>
 <span id="cb11-13"><a href="datasets-packages.html#cb11-13" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">conda_create</span>(<span class="at">envname =</span> <span class="st">&quot;giotto_cellpose&quot;</span>,</span>
 <span id="cb11-14"><a href="datasets-packages.html#cb11-14" tabindex="-1"></a>                         <span class="at">python_version =</span> <span class="fl">3.8</span>)</span>
-<span id="cb11-15"><a href="datasets-packages.html#cb11-15" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">py_install</span>(</span>
-<span id="cb11-16"><a href="datasets-packages.html#cb11-16" tabindex="-1"></a>    <span class="at">pip =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb11-17"><a href="datasets-packages.html#cb11-17" tabindex="-1"></a>    <span class="at">envname =</span> <span class="st">&#39;giotto_cellpose&#39;</span>,</span>
-<span id="cb11-18"><a href="datasets-packages.html#cb11-18" tabindex="-1"></a>    <span class="at">packages =</span> <span class="fu">c</span>(</span>
-<span id="cb11-19"><a href="datasets-packages.html#cb11-19" tabindex="-1"></a>        <span class="st">&quot;pandas&quot;</span>,</span>
-<span id="cb11-20"><a href="datasets-packages.html#cb11-20" tabindex="-1"></a>        <span class="st">&quot;networkx&quot;</span>,</span>
-<span id="cb11-21"><a href="datasets-packages.html#cb11-21" tabindex="-1"></a>        <span class="st">&quot;python-igraph&quot;</span>,</span>
-<span id="cb11-22"><a href="datasets-packages.html#cb11-22" tabindex="-1"></a>        <span class="st">&quot;leidenalg&quot;</span>,</span>
-<span id="cb11-23"><a href="datasets-packages.html#cb11-23" tabindex="-1"></a>        <span class="st">&quot;scikit-learn&quot;</span>,</span>
-<span id="cb11-24"><a href="datasets-packages.html#cb11-24" tabindex="-1"></a>        <span class="st">&quot;cellpose&quot;</span>,</span>
-<span id="cb11-25"><a href="datasets-packages.html#cb11-25" tabindex="-1"></a>        <span class="st">&quot;smfishhmrf&quot;</span>,</span>
-<span id="cb11-26"><a href="datasets-packages.html#cb11-26" tabindex="-1"></a>        <span class="st">&#39;tifffile&#39;</span>,</span>
-<span id="cb11-27"><a href="datasets-packages.html#cb11-27" tabindex="-1"></a>        <span class="st">&#39;scikit-image&#39;</span></span>
-<span id="cb11-28"><a href="datasets-packages.html#cb11-28" tabindex="-1"></a>    )</span>
-<span id="cb11-29"><a href="datasets-packages.html#cb11-29" tabindex="-1"></a>)</span></code></pre></div>
+<span id="cb11-15"><a href="datasets-packages.html#cb11-15" tabindex="-1"></a><span class="co">#.re.restartR()</span></span>
+<span id="cb11-16"><a href="datasets-packages.html#cb11-16" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">use_condaenv</span>(<span class="st">&#39;giotto_cellpose&#39;</span>)</span>
+<span id="cb11-17"><a href="datasets-packages.html#cb11-17" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">py_install</span>(</span>
+<span id="cb11-18"><a href="datasets-packages.html#cb11-18" tabindex="-1"></a>  <span class="at">pip =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb11-19"><a href="datasets-packages.html#cb11-19" tabindex="-1"></a>  <span class="at">envname =</span> <span class="st">&#39;giotto_cellpose&#39;</span>,</span>
+<span id="cb11-20"><a href="datasets-packages.html#cb11-20" tabindex="-1"></a>  <span class="at">packages =</span> <span class="fu">c</span>(</span>
+<span id="cb11-21"><a href="datasets-packages.html#cb11-21" tabindex="-1"></a>    <span class="st">&quot;pandas&quot;</span>,</span>
+<span id="cb11-22"><a href="datasets-packages.html#cb11-22" tabindex="-1"></a>    <span class="st">&quot;networkx&quot;</span>,</span>
+<span id="cb11-23"><a href="datasets-packages.html#cb11-23" tabindex="-1"></a>    <span class="st">&quot;python-igraph&quot;</span>,</span>
+<span id="cb11-24"><a href="datasets-packages.html#cb11-24" tabindex="-1"></a>    <span class="st">&quot;leidenalg&quot;</span>,</span>
+<span id="cb11-25"><a href="datasets-packages.html#cb11-25" tabindex="-1"></a>    <span class="st">&quot;scikit-learn&quot;</span>,</span>
+<span id="cb11-26"><a href="datasets-packages.html#cb11-26" tabindex="-1"></a>    <span class="st">&quot;cellpose&quot;</span>,</span>
+<span id="cb11-27"><a href="datasets-packages.html#cb11-27" tabindex="-1"></a>    <span class="st">&quot;smfishhmrf&quot;</span>,</span>
+<span id="cb11-28"><a href="datasets-packages.html#cb11-28" tabindex="-1"></a>    <span class="st">&#39;tifffile&#39;</span>,</span>
+<span id="cb11-29"><a href="datasets-packages.html#cb11-29" tabindex="-1"></a>    <span class="st">&#39;scikit-image&#39;</span></span>
+<span id="cb11-30"><a href="datasets-packages.html#cb11-30" tabindex="-1"></a>  )</span>
+<span id="cb11-31"><a href="datasets-packages.html#cb11-31" tabindex="-1"></a>)</span></code></pre></div>
 
 </div>
 </div>
