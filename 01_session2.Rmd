@@ -138,6 +138,18 @@ Once an environment is activated, you can check more details and ensure that it 
 reticulate::py_config()
 ```
 
+
+
+
 ## Giotto instructions
+
+Giotto 
+
+
+
+
+
+
+
 
 
