@@ -629,7 +629,7 @@ Dimensional reduction of expression space to visualize expressional differences 
 ```{r, eval=FALSE}
 g <- runPCA(g, feats_to_use = NULL)
 # feats_to_use = NULL since there are no HVFs calculated. Use all genes.
-screePlot(g)
+screePlot(g, ncp = 30)
 ```
 
 ```{r, echo=FALSE, out.width="60%", fig.cap="Plot of variance explained in the first 30 out of 100 principle components calculated"}
@@ -637,7 +637,10 @@ knitr::include_graphics("img/02_session3/screeplot.png")
 ```
 
 ```{r, eval=FALSE}
-g <- runUMAP(g, dimensions_to_use = seq(15))
+g <- runUMAP(g, 
+    dimensions_to_use = seq(15), 
+    n_neighbors = 40 # default
+)
 ```
 
 
@@ -663,8 +666,7 @@ g <- doLeidenCluster(g)
 
 plotPCA_3D(g, 
     cell_color = "leiden_clus", 
-    point_size = 0.1, 
-    point_shape = "no_border"
+    point_size = 1,
 )
 plotUMAP(g, 
     cell_color = "leiden_clus", 
@@ -680,19 +682,14 @@ knitr::include_graphics("img/02_session3/clustered_dimplots.png")
 ```{r, eval=FALSE}
 spatInSituPlotPoints(g,
     polygon_fill = "leiden_clus",
-    polygon_fill_as_factor = TRUE
-)
-
-# with image and poly alpha 0.5 (default when image is added)
-spatInSituPlotPoints(g,
-    polygon_fill = "leiden_clus",
     polygon_fill_as_factor = TRUE,
+    polygon_alpha = 1,
     show_image = TRUE,
     image_name = "HE"
 )
 ```
 
-```{r, echo=FALSE, fig.cap="Spatial plots show leiden clustering annotations. Polygons only on top. With image on bottom"}
+```{r, echo=FALSE, fig.cap="Spatial plot with leiden clustering annotations."}
 knitr::include_graphics("img/02_session3/spat_leiden.png")
 ```
 
@@ -714,6 +711,7 @@ spatPlot2D(g,
     point_shape = "no_border", 
     show_network = TRUE, 
     point_size = 0.1,
+    point_alpha = 0.5,
     network_color = "grey"
 )
 ```
@@ -769,12 +767,25 @@ spatInSituPlotPoints(g,
     show_image = TRUE,
     image_name = "HE",
     polygon_fill = "niche",
+    # polygon_fill_code = getColors("Accent", 8),
+    polygon_alpha = 1,
     polygon_fill_as_factor = TRUE
 )
+
+ggplot2::ggplot(
+    cx, ggplot2::aes(fill = as.character(leiden_clus), 
+                     y = 1, 
+                     x = as.character(niche))) + 
+    ggplot2::geom_bar(position = "fill", stat = "identity") + 
+    ggplot2::scale_fill_manual(values = c(
+        "#E7298A", "#FFED6F", "#80B1D3", "#E41A1C", "#377EB8", "#A65628", 
+        "#4DAF4A", "#D9D9D9", "#FF7F00", "#BC80BD", "#666666", "#B3DE69")
+    )
 ```
 
-```{r, echo=FALSE, fig.cap="Leiden annotation-based spatial niches"}
-knitr::include_graphics("img/02_session3/spat_niches.png")
+```{r, echo=FALSE, fig.cap="Leiden annotation-based spatial niches (top), stacked barplot of leiden annotation composition by niche (bottom)"}
+knitr::include_graphics("img/02_session3/niches_spat.png")
+knitr::include_graphics("img/02_session3/niches_bar.png")
 ```
 
 ## Cell proximity enrichment
@@ -782,6 +793,7 @@ knitr::include_graphics("img/02_session3/spat_niches.png")
 Using a spatial network, determine if there is an enrichment or depletion between annotation types by calculating the observed over the expected frequency of interactions.
 
 ```{r, eval=FALSE}
+# uses a lot of memory
 leiden_prox <- cellProximityEnrichment(g,
     cluster_column = "leiden_clus",
     spatial_network_name = "Delaunay_network",
@@ -800,15 +812,14 @@ cellProximityBarplot(g,
 knitr::include_graphics("img/02_session3/cc_prox.png")
 ```
 
-Most enrichments are self-self interactions, which is expected. However, 6--8, 2--9, and 10--12 stand out as being hetero interactions that are enriched. We can take a closer look by plotting these annotation pairs with colors that stand out.
+Most enrichments are self-self interactions, which is expected. However, 6--8 and 2--9 stand out as being hetero interactions that are enriched with a large number of interactions. We can take a closer look by plotting these annotation pairs with colors that stand out.
 
 ```{r, eval=FALSE}
 # set up colors
 other_cell_color <- rep("grey", 12)
-int_6_8 <- int_2_9 <- int_10_12 <- other_cell_color
+int_6_8 <- int_2_9 <- other_cell_color
 int_6_8[c(6, 8)] <- c("orange", "cornflowerblue")
 int_2_9[c(2, 9)] <- c("orange", "cornflowerblue")
-int_10_12[c(10, 12)] <- c("orange", "cornflowerblue")
 
 spatInSituPlotPoints(g,
     polygon_fill = "leiden_clus",
@@ -828,24 +839,53 @@ spatInSituPlotPoints(g,
     polygon_alpha = 1,
     image_name = "HE"
 )
-spatInSituPlotPoints(g,
-    polygon_fill = "leiden_clus",
-    polygon_fill_as_factor = TRUE,
-    polygon_fill_code = int_10_12,
-    polygon_line_size = 0.1,
-    polygon_alpha = 1,
-    show_image = TRUE,
-    image_name = "HE"
-)
 ```
 
-```{r, echo=FALSE, fig.cap="Spatial plot of enriched leiden annotation interactions. 6 to 8 (top), 2 to 9 (middle), 10 to 12 (bottom)"}
-knitr::include_graphics("img/02_session3/cc_enrich.png")
+```{r, echo=FALSE, fig.cap="Spatial plot of enriched leiden annotation interactions. 6 to 8 (top), 2 to 9 (bottom)"}
+knitr::include_graphics("img/02_session3/cc_enrich1.png")
+knitr::include_graphics("img/02_session3/cc_enrich2.png")
 ```
+
 
 
 ## Interaction changed features
 
+Which features are differentially expressed due to proximity to other cell types?
+
+```{r, eval=FALSE}
+# uses a lot of memory
+icf <- findICF(g,
+    cluster_column = "leiden_clus",
+    selected_feats = featIDs(g),
+    nr_permutations = 1000,
+    adjust_method = "bonferroni"
+)
+
+scran_res <- findScranMarkers(g,
+    expression_values = "normalized",
+    cluster_column = "leiden_clus"
+) |> lapply(function(res) {
+    res[, c("feats", "cluster")]
+}) |> Reduce(f = rbind)
+
+top_scran <- scran_res[, head(.SD, 2), by = "cluster"]
+
+violinPlot(g,
+    expression_values = "normalized",
+    cluster_column = "leiden_clus",
+    feats = unique(top_scran$feats)
+)
+
+
+filterICF(
+    icf,
+)
+
+plotICF(g,
+    icfObject = icf,
+    source_markers
+)
+```
 
 
 
