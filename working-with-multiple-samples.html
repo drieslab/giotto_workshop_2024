@@ -319,12 +319,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.8.2" data-path="xenium-1.html"><a href="xenium-1.html#niche-calculation"><i class="fa fa-check"></i><b>10.8.2</b> Niche calculation</a></li>
 <li class="chapter" data-level="10.8.3" data-path="xenium-1.html"><a href="xenium-1.html#kmeans-clustering-based-on-niche-signature"><i class="fa fa-check"></i><b>10.8.3</b> kmeans clustering based on niche signature</a></li>
 </ul></li>
-<li class="chapter" data-level="10.9" data-path="xenium-1.html"><a href="xenium-1.html#pseudovisium"><i class="fa fa-check"></i><b>10.9</b> Pseudovisium</a>
+<li class="chapter" data-level="10.9" data-path="xenium-1.html"><a href="xenium-1.html#cell-proximity-enrichment"><i class="fa fa-check"></i><b>10.9</b> Cell proximity enrichment</a></li>
+<li class="chapter" data-level="10.10" data-path="xenium-1.html"><a href="xenium-1.html#pseudovisium"><i class="fa fa-check"></i><b>10.10</b> Pseudovisium</a>
 <ul>
-<li class="chapter" data-level="10.9.1" data-path="xenium-1.html"><a href="xenium-1.html#pseudovisium-aggregation-and-workflow"><i class="fa fa-check"></i><b>10.9.1</b> Pseudovisium aggregation and workflow</a></li>
+<li class="chapter" data-level="10.10.1" data-path="xenium-1.html"><a href="xenium-1.html#pseudovisium-aggregation-and-workflow"><i class="fa fa-check"></i><b>10.10.1</b> Pseudovisium aggregation and workflow</a></li>
 </ul></li>
-<li class="chapter" data-level="10.10" data-path="xenium-1.html"><a href="xenium-1.html#transcript-enrichment-gsea"><i class="fa fa-check"></i><b>10.10</b> Transcript enrichment GSEA</a></li>
-<li class="chapter" data-level="10.11" data-path="xenium-1.html"><a href="xenium-1.html#spatial-location-analysis"><i class="fa fa-check"></i><b>10.11</b> Spatial location analysis</a></li>
+<li class="chapter" data-level="10.11" data-path="xenium-1.html"><a href="xenium-1.html#transcript-enrichment-gsea"><i class="fa fa-check"></i><b>10.11</b> Transcript enrichment GSEA</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html"><i class="fa fa-check"></i><b>11</b> Spatial proteomics: Multiplexed Immunofluorescence</a>
 <ul>
@@ -519,7 +519,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="visium-technology" class="section level3 hasAnchor" number="12.2.2">
 <h3><span class="header-section-number">12.2.2</span> Visium technology<a href="working-with-multiple-samples.html#visium-technology" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-256"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-260"></span>
 <img src="img/03_session1/visium_overview.png" alt="Overview of Visium. Source: 10X Genomics." width="80%" />
 <p class="caption">
 Figure 12.1: Overview of Visium. Source: 10X Genomics.
@@ -533,67 +533,67 @@ Figure 12.1: Overview of Visium. Source: 10X Genomics.
 <div id="download-the-data" class="section level3 hasAnchor" number="12.3.1">
 <h3><span class="header-section-number">12.3.1</span> Download the data<a href="working-with-multiple-samples.html#download-the-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You need to download the expression matrix and spatial information by running these commands:</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="working-with-multiple-samples.html#cb187-1" tabindex="-1"></a>data_dir <span class="ot">&lt;-</span> <span class="st">&quot;data/3_session1&quot;</span></span>
-<span id="cb187-2"><a href="working-with-multiple-samples.html#cb187-2" tabindex="-1"></a></span>
-<span id="cb187-3"><a href="working-with-multiple-samples.html#cb187-3" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="fu">file.path</span>(data_dir, <span class="st">&quot;Visium_FFPE_Human_Prostate_Cancer&quot;</span>), </span>
-<span id="cb187-4"><a href="working-with-multiple-samples.html#cb187-4" tabindex="-1"></a>           <span class="at">showWarnings =</span> <span class="cn">TRUE</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb187-5"><a href="working-with-multiple-samples.html#cb187-5" tabindex="-1"></a></span>
-<span id="cb187-6"><a href="working-with-multiple-samples.html#cb187-6" tabindex="-1"></a><span class="co"># Spatial data adenocarcinoma prostate</span></span>
-<span id="cb187-7"><a href="working-with-multiple-samples.html#cb187-7" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">&quot;https://cf.10xgenomics.com/samples/spatial-exp/1.3.0/Visium_FFPE_Human_Prostate_Cancer/Visium_FFPE_Human_Prostate_Cancer_spatial.tar.gz&quot;</span>, </span>
-<span id="cb187-8"><a href="working-with-multiple-samples.html#cb187-8" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="fu">file.path</span>(data_dir, <span class="st">&quot;Visium_FFPE_Human_Prostate_Cancer/Visium_FFPE_Human_Prostate_Cancer_spatial.tar.gz&quot;</span>))</span>
-<span id="cb187-9"><a href="working-with-multiple-samples.html#cb187-9" tabindex="-1"></a></span>
-<span id="cb187-10"><a href="working-with-multiple-samples.html#cb187-10" tabindex="-1"></a><span class="co"># Download matrix adenocarcinoma prostate</span></span>
-<span id="cb187-11"><a href="working-with-multiple-samples.html#cb187-11" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">&quot;https://cf.10xgenomics.com/samples/spatial-exp/1.3.0/Visium_FFPE_Human_Prostate_Cancer/Visium_FFPE_Human_Prostate_Cancer_raw_feature_bc_matrix.tar.gz&quot;</span>, </span>
-<span id="cb187-12"><a href="working-with-multiple-samples.html#cb187-12" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="fu">file.path</span>(data_dir, <span class="st">&quot;Visium_FFPE_Human_Prostate_Cancer/Visium_FFPE_Human_Prostate_Cancer_raw_feature_bc_matrix.tar.gz&quot;</span>))</span>
-<span id="cb187-13"><a href="working-with-multiple-samples.html#cb187-13" tabindex="-1"></a></span>
-<span id="cb187-14"><a href="working-with-multiple-samples.html#cb187-14" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="fu">file.path</span>(data_dir, <span class="st">&quot;Visium_FFPE_Human_Normal_Prostate&quot;</span>), </span>
-<span id="cb187-15"><a href="working-with-multiple-samples.html#cb187-15" tabindex="-1"></a>           <span class="at">showWarnings =</span> <span class="cn">FALSE</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb187-16"><a href="working-with-multiple-samples.html#cb187-16" tabindex="-1"></a></span>
-<span id="cb187-17"><a href="working-with-multiple-samples.html#cb187-17" tabindex="-1"></a><span class="co"># Spatial data normal prostate</span></span>
-<span id="cb187-18"><a href="working-with-multiple-samples.html#cb187-18" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">&quot;https://cf.10xgenomics.com/samples/spatial-exp/1.3.0/Visium_FFPE_Human_Normal_Prostate/Visium_FFPE_Human_Normal_Prostate_spatial.tar.gz&quot;</span>,</span>
-<span id="cb187-19"><a href="working-with-multiple-samples.html#cb187-19" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="fu">file.path</span>(data_dir, <span class="st">&quot;Visium_FFPE_Human_Normal_Prostate/Visium_FFPE_Human_Normal_Prostate_spatial.tar.gz&quot;</span>))</span>
-<span id="cb187-20"><a href="working-with-multiple-samples.html#cb187-20" tabindex="-1"></a></span>
-<span id="cb187-21"><a href="working-with-multiple-samples.html#cb187-21" tabindex="-1"></a><span class="co"># Download matrix normal prostate</span></span>
-<span id="cb187-22"><a href="working-with-multiple-samples.html#cb187-22" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">&quot;https://cf.10xgenomics.com/samples/spatial-exp/1.3.0/Visium_FFPE_Human_Normal_Prostate/Visium_FFPE_Human_Normal_Prostate_raw_feature_bc_matrix.tar.gz&quot;</span>,</span>
-<span id="cb187-23"><a href="working-with-multiple-samples.html#cb187-23" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="fu">file.path</span>(data_dir, <span class="st">&quot;Visium_FFPE_Human_Normal_Prostate/Visium_FFPE_Human_Normal_Prostate_raw_feature_bc_matrix.tar.gz&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="working-with-multiple-samples.html#cb189-1" tabindex="-1"></a>data_dir <span class="ot">&lt;-</span> <span class="st">&quot;data/3_session1&quot;</span></span>
+<span id="cb189-2"><a href="working-with-multiple-samples.html#cb189-2" tabindex="-1"></a></span>
+<span id="cb189-3"><a href="working-with-multiple-samples.html#cb189-3" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="fu">file.path</span>(data_dir, <span class="st">&quot;Visium_FFPE_Human_Prostate_Cancer&quot;</span>), </span>
+<span id="cb189-4"><a href="working-with-multiple-samples.html#cb189-4" tabindex="-1"></a>           <span class="at">showWarnings =</span> <span class="cn">TRUE</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb189-5"><a href="working-with-multiple-samples.html#cb189-5" tabindex="-1"></a></span>
+<span id="cb189-6"><a href="working-with-multiple-samples.html#cb189-6" tabindex="-1"></a><span class="co"># Spatial data adenocarcinoma prostate</span></span>
+<span id="cb189-7"><a href="working-with-multiple-samples.html#cb189-7" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">&quot;https://cf.10xgenomics.com/samples/spatial-exp/1.3.0/Visium_FFPE_Human_Prostate_Cancer/Visium_FFPE_Human_Prostate_Cancer_spatial.tar.gz&quot;</span>, </span>
+<span id="cb189-8"><a href="working-with-multiple-samples.html#cb189-8" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="fu">file.path</span>(data_dir, <span class="st">&quot;Visium_FFPE_Human_Prostate_Cancer/Visium_FFPE_Human_Prostate_Cancer_spatial.tar.gz&quot;</span>))</span>
+<span id="cb189-9"><a href="working-with-multiple-samples.html#cb189-9" tabindex="-1"></a></span>
+<span id="cb189-10"><a href="working-with-multiple-samples.html#cb189-10" tabindex="-1"></a><span class="co"># Download matrix adenocarcinoma prostate</span></span>
+<span id="cb189-11"><a href="working-with-multiple-samples.html#cb189-11" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">&quot;https://cf.10xgenomics.com/samples/spatial-exp/1.3.0/Visium_FFPE_Human_Prostate_Cancer/Visium_FFPE_Human_Prostate_Cancer_raw_feature_bc_matrix.tar.gz&quot;</span>, </span>
+<span id="cb189-12"><a href="working-with-multiple-samples.html#cb189-12" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="fu">file.path</span>(data_dir, <span class="st">&quot;Visium_FFPE_Human_Prostate_Cancer/Visium_FFPE_Human_Prostate_Cancer_raw_feature_bc_matrix.tar.gz&quot;</span>))</span>
+<span id="cb189-13"><a href="working-with-multiple-samples.html#cb189-13" tabindex="-1"></a></span>
+<span id="cb189-14"><a href="working-with-multiple-samples.html#cb189-14" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="fu">file.path</span>(data_dir, <span class="st">&quot;Visium_FFPE_Human_Normal_Prostate&quot;</span>), </span>
+<span id="cb189-15"><a href="working-with-multiple-samples.html#cb189-15" tabindex="-1"></a>           <span class="at">showWarnings =</span> <span class="cn">FALSE</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb189-16"><a href="working-with-multiple-samples.html#cb189-16" tabindex="-1"></a></span>
+<span id="cb189-17"><a href="working-with-multiple-samples.html#cb189-17" tabindex="-1"></a><span class="co"># Spatial data normal prostate</span></span>
+<span id="cb189-18"><a href="working-with-multiple-samples.html#cb189-18" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">&quot;https://cf.10xgenomics.com/samples/spatial-exp/1.3.0/Visium_FFPE_Human_Normal_Prostate/Visium_FFPE_Human_Normal_Prostate_spatial.tar.gz&quot;</span>,</span>
+<span id="cb189-19"><a href="working-with-multiple-samples.html#cb189-19" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="fu">file.path</span>(data_dir, <span class="st">&quot;Visium_FFPE_Human_Normal_Prostate/Visium_FFPE_Human_Normal_Prostate_spatial.tar.gz&quot;</span>))</span>
+<span id="cb189-20"><a href="working-with-multiple-samples.html#cb189-20" tabindex="-1"></a></span>
+<span id="cb189-21"><a href="working-with-multiple-samples.html#cb189-21" tabindex="-1"></a><span class="co"># Download matrix normal prostate</span></span>
+<span id="cb189-22"><a href="working-with-multiple-samples.html#cb189-22" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">&quot;https://cf.10xgenomics.com/samples/spatial-exp/1.3.0/Visium_FFPE_Human_Normal_Prostate/Visium_FFPE_Human_Normal_Prostate_raw_feature_bc_matrix.tar.gz&quot;</span>,</span>
+<span id="cb189-23"><a href="working-with-multiple-samples.html#cb189-23" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="fu">file.path</span>(data_dir, <span class="st">&quot;Visium_FFPE_Human_Normal_Prostate/Visium_FFPE_Human_Normal_Prostate_raw_feature_bc_matrix.tar.gz&quot;</span>))</span></code></pre></div>
 </div>
 <div id="create-giotto-instructions" class="section level3 hasAnchor" number="12.3.2">
 <h3><span class="header-section-number">12.3.2</span> Create giotto instructions<a href="working-with-multiple-samples.html#create-giotto-instructions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We must first create instructions for our Giotto object. This will tell the object where to save outputs, whether to show or return plots, and the python path. Specifying the python path is often not required as Giotto will identify the relevant python environment, but might be required in some instances.</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="working-with-multiple-samples.html#cb188-1" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
-<span id="cb188-2"><a href="working-with-multiple-samples.html#cb188-2" tabindex="-1"></a></span>
-<span id="cb188-3"><a href="working-with-multiple-samples.html#cb188-3" tabindex="-1"></a>save_dir <span class="ot">&lt;-</span> <span class="st">&quot;results/03_session1&quot;</span></span>
-<span id="cb188-4"><a href="working-with-multiple-samples.html#cb188-4" tabindex="-1"></a></span>
-<span id="cb188-5"><a href="working-with-multiple-samples.html#cb188-5" tabindex="-1"></a>instrs <span class="ot">&lt;-</span> <span class="fu">createGiottoInstructions</span>(<span class="at">save_dir =</span> save_dir,</span>
-<span id="cb188-6"><a href="working-with-multiple-samples.html#cb188-6" tabindex="-1"></a>                                   <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb188-7"><a href="working-with-multiple-samples.html#cb188-7" tabindex="-1"></a>                                   <span class="at">show_plot =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb188-8"><a href="working-with-multiple-samples.html#cb188-8" tabindex="-1"></a>                                   <span class="at">python_path =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="working-with-multiple-samples.html#cb190-1" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
+<span id="cb190-2"><a href="working-with-multiple-samples.html#cb190-2" tabindex="-1"></a></span>
+<span id="cb190-3"><a href="working-with-multiple-samples.html#cb190-3" tabindex="-1"></a>save_dir <span class="ot">&lt;-</span> <span class="st">&quot;results/03_session1&quot;</span></span>
+<span id="cb190-4"><a href="working-with-multiple-samples.html#cb190-4" tabindex="-1"></a></span>
+<span id="cb190-5"><a href="working-with-multiple-samples.html#cb190-5" tabindex="-1"></a>instrs <span class="ot">&lt;-</span> <span class="fu">createGiottoInstructions</span>(<span class="at">save_dir =</span> save_dir,</span>
+<span id="cb190-6"><a href="working-with-multiple-samples.html#cb190-6" tabindex="-1"></a>                                   <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb190-7"><a href="working-with-multiple-samples.html#cb190-7" tabindex="-1"></a>                                   <span class="at">show_plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb190-8"><a href="working-with-multiple-samples.html#cb190-8" tabindex="-1"></a>                                   <span class="at">python_path =</span> <span class="cn">NULL</span>)</span></code></pre></div>
 </div>
 <div id="load-visium-data-into-giotto" class="section level3 hasAnchor" number="12.3.3">
 <h3><span class="header-section-number">12.3.3</span> Load visium data into Giotto<a href="working-with-multiple-samples.html#load-visium-data-into-giotto" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We next need to read in the data for the Giotto object. To do this we will use the createGiottoVisiumObject() convenience function. This requires us to specify the directory that contains the visium data output from 10X Genomics’s Spaceranger. We also specify the expression data to use (raw or filtered) as well as the image to align. Spaceranger outputs two images, a low and high resolution image.</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="working-with-multiple-samples.html#cb189-1" tabindex="-1"></a><span class="fu">print</span>(data_dir)</span>
-<span id="cb189-2"><a href="working-with-multiple-samples.html#cb189-2" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">file.path</span>(data_dir, <span class="st">&quot;Visium_FFPE_Human_Normal_Prostate&quot;</span>))</span>
-<span id="cb189-3"><a href="working-with-multiple-samples.html#cb189-3" tabindex="-1"></a></span>
-<span id="cb189-4"><a href="working-with-multiple-samples.html#cb189-4" tabindex="-1"></a><span class="do">## Healthy prostate</span></span>
-<span id="cb189-5"><a href="working-with-multiple-samples.html#cb189-5" tabindex="-1"></a>N_pros <span class="ot">&lt;-</span> <span class="fu">createGiottoVisiumObject</span>(</span>
-<span id="cb189-6"><a href="working-with-multiple-samples.html#cb189-6" tabindex="-1"></a>  <span class="at">visium_dir =</span> <span class="fu">file.path</span>(data_dir, <span class="st">&quot;Visium_FFPE_Human_Normal_Prostate&quot;</span>),</span>
-<span id="cb189-7"><a href="working-with-multiple-samples.html#cb189-7" tabindex="-1"></a>  <span class="at">expr_data =</span> <span class="st">&quot;raw&quot;</span>,</span>
-<span id="cb189-8"><a href="working-with-multiple-samples.html#cb189-8" tabindex="-1"></a>  <span class="at">png_name =</span> <span class="st">&quot;tissue_lowres_image.png&quot;</span>,</span>
-<span id="cb189-9"><a href="working-with-multiple-samples.html#cb189-9" tabindex="-1"></a>  <span class="at">gene_column_index =</span> <span class="dv">2</span>,</span>
-<span id="cb189-10"><a href="working-with-multiple-samples.html#cb189-10" tabindex="-1"></a>  <span class="at">instructions =</span> instrs</span>
-<span id="cb189-11"><a href="working-with-multiple-samples.html#cb189-11" tabindex="-1"></a>)</span>
-<span id="cb189-12"><a href="working-with-multiple-samples.html#cb189-12" tabindex="-1"></a></span>
-<span id="cb189-13"><a href="working-with-multiple-samples.html#cb189-13" tabindex="-1"></a><span class="do">## Adenocarcinoma </span></span>
-<span id="cb189-14"><a href="working-with-multiple-samples.html#cb189-14" tabindex="-1"></a>C_pros <span class="ot">&lt;-</span> <span class="fu">createGiottoVisiumObject</span>(</span>
-<span id="cb189-15"><a href="working-with-multiple-samples.html#cb189-15" tabindex="-1"></a>  <span class="at">visium_dir =</span> <span class="fu">file.path</span>(data_dir, <span class="st">&quot;Visium_FFPE_Human_Prostate_Cancer&quot;</span>),</span>
-<span id="cb189-16"><a href="working-with-multiple-samples.html#cb189-16" tabindex="-1"></a>  <span class="at">expr_data =</span> <span class="st">&quot;raw&quot;</span>,</span>
-<span id="cb189-17"><a href="working-with-multiple-samples.html#cb189-17" tabindex="-1"></a>  <span class="at">png_name =</span> <span class="st">&quot;tissue_lowres_image.png&quot;</span>,</span>
-<span id="cb189-18"><a href="working-with-multiple-samples.html#cb189-18" tabindex="-1"></a>  <span class="at">gene_column_index =</span> <span class="dv">2</span>,</span>
-<span id="cb189-19"><a href="working-with-multiple-samples.html#cb189-19" tabindex="-1"></a>  <span class="at">instructions =</span> instrs</span>
-<span id="cb189-20"><a href="working-with-multiple-samples.html#cb189-20" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="working-with-multiple-samples.html#cb191-1" tabindex="-1"></a><span class="fu">print</span>(data_dir)</span>
+<span id="cb191-2"><a href="working-with-multiple-samples.html#cb191-2" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">file.path</span>(data_dir, <span class="st">&quot;Visium_FFPE_Human_Normal_Prostate&quot;</span>))</span>
+<span id="cb191-3"><a href="working-with-multiple-samples.html#cb191-3" tabindex="-1"></a></span>
+<span id="cb191-4"><a href="working-with-multiple-samples.html#cb191-4" tabindex="-1"></a><span class="do">## Healthy prostate</span></span>
+<span id="cb191-5"><a href="working-with-multiple-samples.html#cb191-5" tabindex="-1"></a>N_pros <span class="ot">&lt;-</span> <span class="fu">createGiottoVisiumObject</span>(</span>
+<span id="cb191-6"><a href="working-with-multiple-samples.html#cb191-6" tabindex="-1"></a>  <span class="at">visium_dir =</span> <span class="fu">file.path</span>(data_dir, <span class="st">&quot;Visium_FFPE_Human_Normal_Prostate&quot;</span>),</span>
+<span id="cb191-7"><a href="working-with-multiple-samples.html#cb191-7" tabindex="-1"></a>  <span class="at">expr_data =</span> <span class="st">&quot;raw&quot;</span>,</span>
+<span id="cb191-8"><a href="working-with-multiple-samples.html#cb191-8" tabindex="-1"></a>  <span class="at">png_name =</span> <span class="st">&quot;tissue_lowres_image.png&quot;</span>,</span>
+<span id="cb191-9"><a href="working-with-multiple-samples.html#cb191-9" tabindex="-1"></a>  <span class="at">gene_column_index =</span> <span class="dv">2</span>,</span>
+<span id="cb191-10"><a href="working-with-multiple-samples.html#cb191-10" tabindex="-1"></a>  <span class="at">instructions =</span> instrs</span>
+<span id="cb191-11"><a href="working-with-multiple-samples.html#cb191-11" tabindex="-1"></a>)</span>
+<span id="cb191-12"><a href="working-with-multiple-samples.html#cb191-12" tabindex="-1"></a></span>
+<span id="cb191-13"><a href="working-with-multiple-samples.html#cb191-13" tabindex="-1"></a><span class="do">## Adenocarcinoma </span></span>
+<span id="cb191-14"><a href="working-with-multiple-samples.html#cb191-14" tabindex="-1"></a>C_pros <span class="ot">&lt;-</span> <span class="fu">createGiottoVisiumObject</span>(</span>
+<span id="cb191-15"><a href="working-with-multiple-samples.html#cb191-15" tabindex="-1"></a>  <span class="at">visium_dir =</span> <span class="fu">file.path</span>(data_dir, <span class="st">&quot;Visium_FFPE_Human_Prostate_Cancer&quot;</span>),</span>
+<span id="cb191-16"><a href="working-with-multiple-samples.html#cb191-16" tabindex="-1"></a>  <span class="at">expr_data =</span> <span class="st">&quot;raw&quot;</span>,</span>
+<span id="cb191-17"><a href="working-with-multiple-samples.html#cb191-17" tabindex="-1"></a>  <span class="at">png_name =</span> <span class="st">&quot;tissue_lowres_image.png&quot;</span>,</span>
+<span id="cb191-18"><a href="working-with-multiple-samples.html#cb191-18" tabindex="-1"></a>  <span class="at">gene_column_index =</span> <span class="dv">2</span>,</span>
+<span id="cb191-19"><a href="working-with-multiple-samples.html#cb191-19" tabindex="-1"></a>  <span class="at">instructions =</span> instrs</span>
+<span id="cb191-20"><a href="working-with-multiple-samples.html#cb191-20" tabindex="-1"></a>)</span></code></pre></div>
 <p>We can see that the gobject contains information for the cells (polygon and spatial units), the RNA express (raw) and the relevant image.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-260"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-264"></span>
 <img src="img/03_session1/03_ses1_single_gobject.png" alt="Structure of Giotto object containing a single dataset." width="40%" />
 <p class="caption">
 Figure 12.2: Structure of Giotto object containing a single dataset.
@@ -603,14 +603,14 @@ Figure 12.2: Structure of Giotto object containing a single dataset.
 <div id="healthy-prostate-tissue-coverage" class="section level3 hasAnchor" number="12.3.4">
 <h3><span class="header-section-number">12.3.4</span> Healthy prostate tissue coverage<a href="working-with-multiple-samples.html#healthy-prostate-tissue-coverage" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Aligning the Visium spots to the tissue using the fiducials that border the capture area enables the identification of spots containing expression data from the tissue. These spots can be visualized using the spatPlot2D function by setting the cell_color parameter to “in_tissue”.</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="working-with-multiple-samples.html#cb190-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> N_pros, </span>
-<span id="cb190-2"><a href="working-with-multiple-samples.html#cb190-2" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;in_tissue&quot;</span>,</span>
-<span id="cb190-3"><a href="working-with-multiple-samples.html#cb190-3" tabindex="-1"></a>           <span class="at">show_image =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb190-4"><a href="working-with-multiple-samples.html#cb190-4" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="fl">2.5</span>,</span>
-<span id="cb190-5"><a href="working-with-multiple-samples.html#cb190-5" tabindex="-1"></a>           <span class="at">cell_color_code =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>),</span>
-<span id="cb190-6"><a href="working-with-multiple-samples.html#cb190-6" tabindex="-1"></a>           <span class="at">point_alpha =</span> <span class="fl">0.5</span>, </span>
-<span id="cb190-7"><a href="working-with-multiple-samples.html#cb190-7" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;03_ses1_normal_prostate_tissue&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-262"></span>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="working-with-multiple-samples.html#cb192-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> N_pros, </span>
+<span id="cb192-2"><a href="working-with-multiple-samples.html#cb192-2" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;in_tissue&quot;</span>,</span>
+<span id="cb192-3"><a href="working-with-multiple-samples.html#cb192-3" tabindex="-1"></a>           <span class="at">show_image =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb192-4"><a href="working-with-multiple-samples.html#cb192-4" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="fl">2.5</span>,</span>
+<span id="cb192-5"><a href="working-with-multiple-samples.html#cb192-5" tabindex="-1"></a>           <span class="at">cell_color_code =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>),</span>
+<span id="cb192-6"><a href="working-with-multiple-samples.html#cb192-6" tabindex="-1"></a>           <span class="at">point_alpha =</span> <span class="fl">0.5</span>, </span>
+<span id="cb192-7"><a href="working-with-multiple-samples.html#cb192-7" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;03_ses1_normal_prostate_tissue&quot;</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-266"></span>
 <img src="img/03_session1/03_ses1_normal_prostate_tissue.png" alt="Tissue coverage for the normal prostate sample." width="70%" />
 <p class="caption">
 Figure 12.3: Tissue coverage for the normal prostate sample.
@@ -619,14 +619,14 @@ Figure 12.3: Tissue coverage for the normal prostate sample.
 </div>
 <div id="adenocarcinoma-prostate-tissue-coverage" class="section level3 hasAnchor" number="12.3.5">
 <h3><span class="header-section-number">12.3.5</span> Adenocarcinoma prostate tissue coverage<a href="working-with-multiple-samples.html#adenocarcinoma-prostate-tissue-coverage" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="working-with-multiple-samples.html#cb191-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> C_pros, </span>
-<span id="cb191-2"><a href="working-with-multiple-samples.html#cb191-2" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;in_tissue&quot;</span>,</span>
-<span id="cb191-3"><a href="working-with-multiple-samples.html#cb191-3" tabindex="-1"></a>           <span class="at">show_image =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb191-4"><a href="working-with-multiple-samples.html#cb191-4" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="fl">2.5</span>,</span>
-<span id="cb191-5"><a href="working-with-multiple-samples.html#cb191-5" tabindex="-1"></a>           <span class="at">cell_color_code =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>), </span>
-<span id="cb191-6"><a href="working-with-multiple-samples.html#cb191-6" tabindex="-1"></a>           <span class="at">point_alpha =</span> <span class="fl">0.5</span>, </span>
-<span id="cb191-7"><a href="working-with-multiple-samples.html#cb191-7" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;03_ses1_adeno_prostate_tissue&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-264"></span>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="working-with-multiple-samples.html#cb193-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> C_pros, </span>
+<span id="cb193-2"><a href="working-with-multiple-samples.html#cb193-2" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;in_tissue&quot;</span>,</span>
+<span id="cb193-3"><a href="working-with-multiple-samples.html#cb193-3" tabindex="-1"></a>           <span class="at">show_image =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb193-4"><a href="working-with-multiple-samples.html#cb193-4" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="fl">2.5</span>,</span>
+<span id="cb193-5"><a href="working-with-multiple-samples.html#cb193-5" tabindex="-1"></a>           <span class="at">cell_color_code =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>), </span>
+<span id="cb193-6"><a href="working-with-multiple-samples.html#cb193-6" tabindex="-1"></a>           <span class="at">point_alpha =</span> <span class="fl">0.5</span>, </span>
+<span id="cb193-7"><a href="working-with-multiple-samples.html#cb193-7" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;03_ses1_adeno_prostate_tissue&quot;</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-268"></span>
 <img src="img/03_session1/03_ses1_adeno_prostate_tissue.png" alt="Tissue coverage for the adenocarcinoma prostate sample." width="70%" />
 <p class="caption">
 Figure 12.4: Tissue coverage for the adenocarcinoma prostate sample.
@@ -635,23 +635,23 @@ Figure 12.4: Tissue coverage for the adenocarcinoma prostate sample.
 </div>
 <div id="showing-the-data-strucutre-for-the-inidividual-objects" class="section level3 hasAnchor" number="12.3.6">
 <h3><span class="header-section-number">12.3.6</span> Showing the data strucutre for the inidividual objects<a href="working-with-multiple-samples.html#showing-the-data-strucutre-for-the-inidividual-objects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="working-with-multiple-samples.html#cb192-1" tabindex="-1"></a><span class="co"># Printing the file structure for the individual datasets</span></span>
-<span id="cb192-2"><a href="working-with-multiple-samples.html#cb192-2" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(<span class="fu">pDataDT</span>(N_pros)))</span>
-<span id="cb192-3"><a href="working-with-multiple-samples.html#cb192-3" tabindex="-1"></a><span class="fu">print</span>(N_pros)</span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="working-with-multiple-samples.html#cb194-1" tabindex="-1"></a><span class="co"># Printing the file structure for the individual datasets</span></span>
+<span id="cb194-2"><a href="working-with-multiple-samples.html#cb194-2" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(<span class="fu">pDataDT</span>(N_pros)))</span>
+<span id="cb194-3"><a href="working-with-multiple-samples.html#cb194-3" tabindex="-1"></a><span class="fu">print</span>(N_pros)</span></code></pre></div>
 </div>
 </div>
 <div id="join-giotto-objects" class="section level2 hasAnchor" number="12.4">
 <h2><span class="header-section-number">12.4</span> Join Giotto Objects<a href="working-with-multiple-samples.html#join-giotto-objects" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To join objects together we can use the joinGittoObjects() function. For this we need to supply a list of objects as well as the names for each of these objects. We can also specify the x and y padding to separate the objects in space or the Z position for 3D datasets. If the x_shift is set to NULL then the total shift will be guessed from the Giotto image.</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="working-with-multiple-samples.html#cb193-1" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">joinGiottoObjects</span>(<span class="at">gobject_list =</span> <span class="fu">list</span>(N_pros, C_pros),</span>
-<span id="cb193-2"><a href="working-with-multiple-samples.html#cb193-2" tabindex="-1"></a>                                   <span class="at">gobject_names =</span> <span class="fu">c</span>(<span class="st">&quot;NP&quot;</span>, <span class="st">&quot;CP&quot;</span>),</span>
-<span id="cb193-3"><a href="working-with-multiple-samples.html#cb193-3" tabindex="-1"></a>                                   <span class="at">join_method =</span> <span class="st">&quot;shift&quot;</span>, <span class="at">x_padding =</span> <span class="dv">1000</span>)</span>
-<span id="cb193-4"><a href="working-with-multiple-samples.html#cb193-4" tabindex="-1"></a></span>
-<span id="cb193-5"><a href="working-with-multiple-samples.html#cb193-5" tabindex="-1"></a><span class="co"># Printing the file structure for the individual datasets</span></span>
-<span id="cb193-6"><a href="working-with-multiple-samples.html#cb193-6" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(<span class="fu">pDataDT</span>(combined_pros)))</span>
-<span id="cb193-7"><a href="working-with-multiple-samples.html#cb193-7" tabindex="-1"></a><span class="fu">print</span>(combined_pros)</span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="working-with-multiple-samples.html#cb195-1" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">joinGiottoObjects</span>(<span class="at">gobject_list =</span> <span class="fu">list</span>(N_pros, C_pros),</span>
+<span id="cb195-2"><a href="working-with-multiple-samples.html#cb195-2" tabindex="-1"></a>                                   <span class="at">gobject_names =</span> <span class="fu">c</span>(<span class="st">&quot;NP&quot;</span>, <span class="st">&quot;CP&quot;</span>),</span>
+<span id="cb195-3"><a href="working-with-multiple-samples.html#cb195-3" tabindex="-1"></a>                                   <span class="at">join_method =</span> <span class="st">&quot;shift&quot;</span>, <span class="at">x_padding =</span> <span class="dv">1000</span>)</span>
+<span id="cb195-4"><a href="working-with-multiple-samples.html#cb195-4" tabindex="-1"></a></span>
+<span id="cb195-5"><a href="working-with-multiple-samples.html#cb195-5" tabindex="-1"></a><span class="co"># Printing the file structure for the individual datasets</span></span>
+<span id="cb195-6"><a href="working-with-multiple-samples.html#cb195-6" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">head</span>(<span class="fu">pDataDT</span>(combined_pros)))</span>
+<span id="cb195-7"><a href="working-with-multiple-samples.html#cb195-7" tabindex="-1"></a><span class="fu">print</span>(combined_pros)</span></code></pre></div>
 <p>From the joined data we can see the same information that was present in the single dataset objects as well as the addition of another image. The images are renamed from “image” to include the object name in the image name e.g. “NP-image”. We can also see in the cell metadata that there is a new column “list_ID” that contains the original object names. The cell_ID column also has the original object name appended to the beginning of each cell ID e.g. “NP-AAACAACGAATAGTTC-1”.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-267"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-271"></span>
 <img src="img/03_session1/03_ses1_combined_data.png" alt="Structure of Giotto object containing two datasets (left) and cell metadata on the left. Note the addition of multiple images and the addition of the list_ID column to define the dataset." width="100%" />
 <p class="caption">
 Figure 12.5: Structure of Giotto object containing two datasets (left) and cell metadata on the left. Note the addition of multiple images and the addition of the list_ID column to define the dataset.
@@ -664,15 +664,15 @@ Figure 12.5: Structure of Giotto object containing two datasets (left) and cell 
 <div id="vizualizing-in-the-same-plot" class="section level3 hasAnchor" number="12.5.1">
 <h3><span class="header-section-number">12.5.1</span> Vizualizing in the same plot<a href="working-with-multiple-samples.html#vizualizing-in-the-same-plot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Due to the x_padding provided when joining the objects each of the datasets can be visualized in the same plotting area. We can see below the normal prostate sample on the left and the healthy prostate on the right. By including the show_image function and supplying both of the image names (“NP-image”, “CP-image”), we can also include the relevant images within the same plot.</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="working-with-multiple-samples.html#cb194-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> combined_pros, </span>
-<span id="cb194-2"><a href="working-with-multiple-samples.html#cb194-2" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;in_tissue&quot;</span>, </span>
-<span id="cb194-3"><a href="working-with-multiple-samples.html#cb194-3" tabindex="-1"></a>           <span class="at">cell_color_code =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>),</span>
-<span id="cb194-4"><a href="working-with-multiple-samples.html#cb194-4" tabindex="-1"></a>           <span class="at">show_image =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb194-5"><a href="working-with-multiple-samples.html#cb194-5" tabindex="-1"></a>           <span class="at">image_name =</span> <span class="fu">c</span>(<span class="st">&quot;NP-image&quot;</span>, <span class="st">&quot;CP-image&quot;</span>), </span>
-<span id="cb194-6"><a href="working-with-multiple-samples.html#cb194-6" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="dv">1</span>, </span>
-<span id="cb194-7"><a href="working-with-multiple-samples.html#cb194-7" tabindex="-1"></a>           <span class="at">point_alpha =</span> <span class="fl">0.5</span>, </span>
-<span id="cb194-8"><a href="working-with-multiple-samples.html#cb194-8" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;03_ses1_combined_tissue&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-269"></span>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="working-with-multiple-samples.html#cb196-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> combined_pros, </span>
+<span id="cb196-2"><a href="working-with-multiple-samples.html#cb196-2" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;in_tissue&quot;</span>, </span>
+<span id="cb196-3"><a href="working-with-multiple-samples.html#cb196-3" tabindex="-1"></a>           <span class="at">cell_color_code =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>),</span>
+<span id="cb196-4"><a href="working-with-multiple-samples.html#cb196-4" tabindex="-1"></a>           <span class="at">show_image =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb196-5"><a href="working-with-multiple-samples.html#cb196-5" tabindex="-1"></a>           <span class="at">image_name =</span> <span class="fu">c</span>(<span class="st">&quot;NP-image&quot;</span>, <span class="st">&quot;CP-image&quot;</span>), </span>
+<span id="cb196-6"><a href="working-with-multiple-samples.html#cb196-6" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="dv">1</span>, </span>
+<span id="cb196-7"><a href="working-with-multiple-samples.html#cb196-7" tabindex="-1"></a>           <span class="at">point_alpha =</span> <span class="fl">0.5</span>, </span>
+<span id="cb196-8"><a href="working-with-multiple-samples.html#cb196-8" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;03_ses1_combined_tissue&quot;</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-273"></span>
 <img src="img/03_session1/03_ses1_combined_tissue.png" alt="Vizualizing the visium spots that overlap tissue in normal prostate (left) and adenocarcinoma samples (right) within the same plot." width="100%" />
 <p class="caption">
 Figure 12.6: Vizualizing the visium spots that overlap tissue in normal prostate (left) and adenocarcinoma samples (right) within the same plot.
@@ -682,17 +682,17 @@ Figure 12.6: Vizualizing the visium spots that overlap tissue in normal prostate
 <div id="vizualizing-on-separate-plots" class="section level3 hasAnchor" number="12.5.2">
 <h3><span class="header-section-number">12.5.2</span> Vizualizing on separate plots<a href="working-with-multiple-samples.html#vizualizing-on-separate-plots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If we want to visualize the datasets in separate plots we can supply the “group_by” variable. Below we group the data by “list_ID”, which corresponds to each dataset. We can specify the number of columns through the “cow_n_col” variable.</p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="working-with-multiple-samples.html#cb195-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> combined_pros, </span>
-<span id="cb195-2"><a href="working-with-multiple-samples.html#cb195-2" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;in_tissue&quot;</span>, </span>
-<span id="cb195-3"><a href="working-with-multiple-samples.html#cb195-3" tabindex="-1"></a>           <span class="at">cell_color_code =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;pink&quot;</span>),</span>
-<span id="cb195-4"><a href="working-with-multiple-samples.html#cb195-4" tabindex="-1"></a>           <span class="at">show_image =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb195-5"><a href="working-with-multiple-samples.html#cb195-5" tabindex="-1"></a>           <span class="at">image_name =</span> <span class="fu">c</span>(<span class="st">&quot;NP-image&quot;</span>, <span class="st">&quot;CP-image&quot;</span>),</span>
-<span id="cb195-6"><a href="working-with-multiple-samples.html#cb195-6" tabindex="-1"></a>           <span class="at">group_by =</span> <span class="st">&quot;list_ID&quot;</span>, </span>
-<span id="cb195-7"><a href="working-with-multiple-samples.html#cb195-7" tabindex="-1"></a>           <span class="at">point_alpha =</span> <span class="fl">0.5</span>, </span>
-<span id="cb195-8"><a href="working-with-multiple-samples.html#cb195-8" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="fl">0.5</span>, </span>
-<span id="cb195-9"><a href="working-with-multiple-samples.html#cb195-9" tabindex="-1"></a>           <span class="at">cow_n_col =</span> <span class="dv">1</span>,</span>
-<span id="cb195-10"><a href="working-with-multiple-samples.html#cb195-10" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;03_ses1_combined_tissue_group&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-271"></span>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="working-with-multiple-samples.html#cb197-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> combined_pros, </span>
+<span id="cb197-2"><a href="working-with-multiple-samples.html#cb197-2" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;in_tissue&quot;</span>, </span>
+<span id="cb197-3"><a href="working-with-multiple-samples.html#cb197-3" tabindex="-1"></a>           <span class="at">cell_color_code =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;pink&quot;</span>),</span>
+<span id="cb197-4"><a href="working-with-multiple-samples.html#cb197-4" tabindex="-1"></a>           <span class="at">show_image =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb197-5"><a href="working-with-multiple-samples.html#cb197-5" tabindex="-1"></a>           <span class="at">image_name =</span> <span class="fu">c</span>(<span class="st">&quot;NP-image&quot;</span>, <span class="st">&quot;CP-image&quot;</span>),</span>
+<span id="cb197-6"><a href="working-with-multiple-samples.html#cb197-6" tabindex="-1"></a>           <span class="at">group_by =</span> <span class="st">&quot;list_ID&quot;</span>, </span>
+<span id="cb197-7"><a href="working-with-multiple-samples.html#cb197-7" tabindex="-1"></a>           <span class="at">point_alpha =</span> <span class="fl">0.5</span>, </span>
+<span id="cb197-8"><a href="working-with-multiple-samples.html#cb197-8" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="fl">0.5</span>, </span>
+<span id="cb197-9"><a href="working-with-multiple-samples.html#cb197-9" tabindex="-1"></a>           <span class="at">cow_n_col =</span> <span class="dv">1</span>,</span>
+<span id="cb197-10"><a href="working-with-multiple-samples.html#cb197-10" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;03_ses1_combined_tissue_group&quot;</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-275"></span>
 <img src="img/03_session1/03_ses1_combined_tissue_group.png" alt="Vizualizing the visium spots that overlap tissue in normal prostate (left) and adenocarcinoma samples (right) in separate plots." width="100%" />
 <p class="caption">
 Figure 12.7: Vizualizing the visium spots that overlap tissue in normal prostate (left) and adenocarcinoma samples (right) in separate plots.
@@ -703,23 +703,23 @@ Figure 12.7: Vizualizing the visium spots that overlap tissue in normal prostate
 <div id="splitting-combined-dataset" class="section level2 hasAnchor" number="12.6">
 <h2><span class="header-section-number">12.6</span> Splitting combined dataset<a href="working-with-multiple-samples.html#splitting-combined-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>If needed it’s possible to split the individual objects into single objects again through subsetting the cell metadata as shown below.</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="working-with-multiple-samples.html#cb196-1" tabindex="-1"></a><span class="co"># Getting the cell information</span></span>
-<span id="cb196-2"><a href="working-with-multiple-samples.html#cb196-2" tabindex="-1"></a>combined_cells <span class="ot">&lt;-</span> <span class="fu">pDataDT</span>(combined_pros)</span>
-<span id="cb196-3"><a href="working-with-multiple-samples.html#cb196-3" tabindex="-1"></a>np_cells <span class="ot">&lt;-</span> combined_cells[list_ID <span class="sc">==</span> <span class="st">&quot;NP&quot;</span>]</span>
-<span id="cb196-4"><a href="working-with-multiple-samples.html#cb196-4" tabindex="-1"></a></span>
-<span id="cb196-5"><a href="working-with-multiple-samples.html#cb196-5" tabindex="-1"></a>np_split <span class="ot">&lt;-</span> <span class="fu">subsetGiotto</span>(combined_pros, </span>
-<span id="cb196-6"><a href="working-with-multiple-samples.html#cb196-6" tabindex="-1"></a>                         <span class="at">cell_ids =</span> np_cells<span class="sc">$</span>cell_ID,</span>
-<span id="cb196-7"><a href="working-with-multiple-samples.html#cb196-7" tabindex="-1"></a>                         <span class="at">poly_info =</span> np_cells<span class="sc">$</span>cell_ID,</span>
-<span id="cb196-8"><a href="working-with-multiple-samples.html#cb196-8" tabindex="-1"></a>                         <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>)</span>
-<span id="cb196-9"><a href="working-with-multiple-samples.html#cb196-9" tabindex="-1"></a></span>
-<span id="cb196-10"><a href="working-with-multiple-samples.html#cb196-10" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> np_split, </span>
-<span id="cb196-11"><a href="working-with-multiple-samples.html#cb196-11" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;in_tissue&quot;</span>, </span>
-<span id="cb196-12"><a href="working-with-multiple-samples.html#cb196-12" tabindex="-1"></a>           <span class="at">cell_color_code =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>),</span>
-<span id="cb196-13"><a href="working-with-multiple-samples.html#cb196-13" tabindex="-1"></a>           <span class="at">show_image =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb196-14"><a href="working-with-multiple-samples.html#cb196-14" tabindex="-1"></a>           <span class="at">point_alpha =</span> <span class="fl">0.5</span>, </span>
-<span id="cb196-15"><a href="working-with-multiple-samples.html#cb196-15" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="fl">0.5</span>, </span>
-<span id="cb196-16"><a href="working-with-multiple-samples.html#cb196-16" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;03_ses1_split_object&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-273"></span>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="working-with-multiple-samples.html#cb198-1" tabindex="-1"></a><span class="co"># Getting the cell information</span></span>
+<span id="cb198-2"><a href="working-with-multiple-samples.html#cb198-2" tabindex="-1"></a>combined_cells <span class="ot">&lt;-</span> <span class="fu">pDataDT</span>(combined_pros)</span>
+<span id="cb198-3"><a href="working-with-multiple-samples.html#cb198-3" tabindex="-1"></a>np_cells <span class="ot">&lt;-</span> combined_cells[list_ID <span class="sc">==</span> <span class="st">&quot;NP&quot;</span>]</span>
+<span id="cb198-4"><a href="working-with-multiple-samples.html#cb198-4" tabindex="-1"></a></span>
+<span id="cb198-5"><a href="working-with-multiple-samples.html#cb198-5" tabindex="-1"></a>np_split <span class="ot">&lt;-</span> <span class="fu">subsetGiotto</span>(combined_pros, </span>
+<span id="cb198-6"><a href="working-with-multiple-samples.html#cb198-6" tabindex="-1"></a>                         <span class="at">cell_ids =</span> np_cells<span class="sc">$</span>cell_ID,</span>
+<span id="cb198-7"><a href="working-with-multiple-samples.html#cb198-7" tabindex="-1"></a>                         <span class="at">poly_info =</span> np_cells<span class="sc">$</span>cell_ID,</span>
+<span id="cb198-8"><a href="working-with-multiple-samples.html#cb198-8" tabindex="-1"></a>                         <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>)</span>
+<span id="cb198-9"><a href="working-with-multiple-samples.html#cb198-9" tabindex="-1"></a></span>
+<span id="cb198-10"><a href="working-with-multiple-samples.html#cb198-10" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> np_split, </span>
+<span id="cb198-11"><a href="working-with-multiple-samples.html#cb198-11" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;in_tissue&quot;</span>, </span>
+<span id="cb198-12"><a href="working-with-multiple-samples.html#cb198-12" tabindex="-1"></a>           <span class="at">cell_color_code =</span> <span class="fu">c</span>(<span class="st">&quot;black&quot;</span>, <span class="st">&quot;red&quot;</span>),</span>
+<span id="cb198-13"><a href="working-with-multiple-samples.html#cb198-13" tabindex="-1"></a>           <span class="at">show_image =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb198-14"><a href="working-with-multiple-samples.html#cb198-14" tabindex="-1"></a>           <span class="at">point_alpha =</span> <span class="fl">0.5</span>, </span>
+<span id="cb198-15"><a href="working-with-multiple-samples.html#cb198-15" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="fl">0.5</span>, </span>
+<span id="cb198-16"><a href="working-with-multiple-samples.html#cb198-16" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;03_ses1_split_object&quot;</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-277"></span>
 <img src="img/03_session1/03_ses1_split_object.png" alt="Structure of Giotto object containing two datasets (left) and cell metadata on the left. Note the addition of multiple images and the addition of the list_ID column to define the dataset." width="100%" />
 <p class="caption">
 Figure 12.8: Structure of Giotto object containing two datasets (left) and cell metadata on the left. Note the addition of multiple images and the addition of the list_ID column to define the dataset.
@@ -731,38 +731,38 @@ Figure 12.8: Structure of Giotto object containing two datasets (left) and cell 
 <div id="normalization-and-adding-statistics" class="section level3 hasAnchor" number="12.7.1">
 <h3><span class="header-section-number">12.7.1</span> Normalization and adding statistics<a href="working-with-multiple-samples.html#normalization-and-adding-statistics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Now that the objects have been joined we can analyze the object as if it was a single object. This means all of the analyses will be performed in parallel. Therefore, all of the filtering and normalization will be identical between datasets.</p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="working-with-multiple-samples.html#cb197-1" tabindex="-1"></a><span class="co"># subset on in-tissue spots</span></span>
-<span id="cb197-2"><a href="working-with-multiple-samples.html#cb197-2" tabindex="-1"></a>metadata <span class="ot">&lt;-</span> <span class="fu">pDataDT</span>(combined_pros)</span>
-<span id="cb197-3"><a href="working-with-multiple-samples.html#cb197-3" tabindex="-1"></a>in_tissue_barcodes <span class="ot">&lt;-</span> metadata[in_tissue <span class="sc">==</span> <span class="dv">1</span>]<span class="sc">$</span>cell_ID</span>
-<span id="cb197-4"><a href="working-with-multiple-samples.html#cb197-4" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">subsetGiotto</span>(combined_pros, </span>
-<span id="cb197-5"><a href="working-with-multiple-samples.html#cb197-5" tabindex="-1"></a>                              <span class="at">cell_ids =</span> in_tissue_barcodes)</span>
-<span id="cb197-6"><a href="working-with-multiple-samples.html#cb197-6" tabindex="-1"></a></span>
-<span id="cb197-7"><a href="working-with-multiple-samples.html#cb197-7" tabindex="-1"></a><span class="do">## filter</span></span>
-<span id="cb197-8"><a href="working-with-multiple-samples.html#cb197-8" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">filterGiotto</span>(<span class="at">gobject =</span> combined_pros,</span>
-<span id="cb197-9"><a href="working-with-multiple-samples.html#cb197-9" tabindex="-1"></a>                              <span class="at">expression_threshold =</span> <span class="dv">1</span>,</span>
-<span id="cb197-10"><a href="working-with-multiple-samples.html#cb197-10" tabindex="-1"></a>                              <span class="at">feat_det_in_min_cells =</span> <span class="dv">50</span>,</span>
-<span id="cb197-11"><a href="working-with-multiple-samples.html#cb197-11" tabindex="-1"></a>                              <span class="at">min_det_feats_per_cell =</span> <span class="dv">500</span>,</span>
-<span id="cb197-12"><a href="working-with-multiple-samples.html#cb197-12" tabindex="-1"></a>                              <span class="at">expression_values =</span> <span class="st">&quot;raw&quot;</span>,</span>
-<span id="cb197-13"><a href="working-with-multiple-samples.html#cb197-13" tabindex="-1"></a>                              <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb197-14"><a href="working-with-multiple-samples.html#cb197-14" tabindex="-1"></a></span>
-<span id="cb197-15"><a href="working-with-multiple-samples.html#cb197-15" tabindex="-1"></a><span class="do">## normalize</span></span>
-<span id="cb197-16"><a href="working-with-multiple-samples.html#cb197-16" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">normalizeGiotto</span>(<span class="at">gobject =</span> combined_pros, </span>
-<span id="cb197-17"><a href="working-with-multiple-samples.html#cb197-17" tabindex="-1"></a>                                 <span class="at">scalefactor =</span> <span class="dv">6000</span>)</span>
-<span id="cb197-18"><a href="working-with-multiple-samples.html#cb197-18" tabindex="-1"></a></span>
-<span id="cb197-19"><a href="working-with-multiple-samples.html#cb197-19" tabindex="-1"></a><span class="do">## add gene &amp; cell statistics</span></span>
-<span id="cb197-20"><a href="working-with-multiple-samples.html#cb197-20" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">addStatistics</span>(<span class="at">gobject =</span> combined_pros, </span>
-<span id="cb197-21"><a href="working-with-multiple-samples.html#cb197-21" tabindex="-1"></a>                               <span class="at">expression_values =</span> <span class="st">&quot;raw&quot;</span>)</span>
-<span id="cb197-22"><a href="working-with-multiple-samples.html#cb197-22" tabindex="-1"></a></span>
-<span id="cb197-23"><a href="working-with-multiple-samples.html#cb197-23" tabindex="-1"></a><span class="do">## visualize</span></span>
-<span id="cb197-24"><a href="working-with-multiple-samples.html#cb197-24" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> combined_pros, </span>
-<span id="cb197-25"><a href="working-with-multiple-samples.html#cb197-25" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;nr_feats&quot;</span>, </span>
-<span id="cb197-26"><a href="working-with-multiple-samples.html#cb197-26" tabindex="-1"></a>           <span class="at">color_as_factor =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb197-27"><a href="working-with-multiple-samples.html#cb197-27" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="dv">1</span>, </span>
-<span id="cb197-28"><a href="working-with-multiple-samples.html#cb197-28" tabindex="-1"></a>           <span class="at">show_image =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb197-29"><a href="working-with-multiple-samples.html#cb197-29" tabindex="-1"></a>           <span class="at">image_name =</span> <span class="fu">c</span>(<span class="st">&quot;NP-image&quot;</span>, <span class="st">&quot;CP-image&quot;</span>),</span>
-<span id="cb197-30"><a href="working-with-multiple-samples.html#cb197-30" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;ses3_1_feat_expression&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="working-with-multiple-samples.html#cb199-1" tabindex="-1"></a><span class="co"># subset on in-tissue spots</span></span>
+<span id="cb199-2"><a href="working-with-multiple-samples.html#cb199-2" tabindex="-1"></a>metadata <span class="ot">&lt;-</span> <span class="fu">pDataDT</span>(combined_pros)</span>
+<span id="cb199-3"><a href="working-with-multiple-samples.html#cb199-3" tabindex="-1"></a>in_tissue_barcodes <span class="ot">&lt;-</span> metadata[in_tissue <span class="sc">==</span> <span class="dv">1</span>]<span class="sc">$</span>cell_ID</span>
+<span id="cb199-4"><a href="working-with-multiple-samples.html#cb199-4" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">subsetGiotto</span>(combined_pros, </span>
+<span id="cb199-5"><a href="working-with-multiple-samples.html#cb199-5" tabindex="-1"></a>                              <span class="at">cell_ids =</span> in_tissue_barcodes)</span>
+<span id="cb199-6"><a href="working-with-multiple-samples.html#cb199-6" tabindex="-1"></a></span>
+<span id="cb199-7"><a href="working-with-multiple-samples.html#cb199-7" tabindex="-1"></a><span class="do">## filter</span></span>
+<span id="cb199-8"><a href="working-with-multiple-samples.html#cb199-8" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">filterGiotto</span>(<span class="at">gobject =</span> combined_pros,</span>
+<span id="cb199-9"><a href="working-with-multiple-samples.html#cb199-9" tabindex="-1"></a>                              <span class="at">expression_threshold =</span> <span class="dv">1</span>,</span>
+<span id="cb199-10"><a href="working-with-multiple-samples.html#cb199-10" tabindex="-1"></a>                              <span class="at">feat_det_in_min_cells =</span> <span class="dv">50</span>,</span>
+<span id="cb199-11"><a href="working-with-multiple-samples.html#cb199-11" tabindex="-1"></a>                              <span class="at">min_det_feats_per_cell =</span> <span class="dv">500</span>,</span>
+<span id="cb199-12"><a href="working-with-multiple-samples.html#cb199-12" tabindex="-1"></a>                              <span class="at">expression_values =</span> <span class="st">&quot;raw&quot;</span>,</span>
+<span id="cb199-13"><a href="working-with-multiple-samples.html#cb199-13" tabindex="-1"></a>                              <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb199-14"><a href="working-with-multiple-samples.html#cb199-14" tabindex="-1"></a></span>
+<span id="cb199-15"><a href="working-with-multiple-samples.html#cb199-15" tabindex="-1"></a><span class="do">## normalize</span></span>
+<span id="cb199-16"><a href="working-with-multiple-samples.html#cb199-16" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">normalizeGiotto</span>(<span class="at">gobject =</span> combined_pros, </span>
+<span id="cb199-17"><a href="working-with-multiple-samples.html#cb199-17" tabindex="-1"></a>                                 <span class="at">scalefactor =</span> <span class="dv">6000</span>)</span>
+<span id="cb199-18"><a href="working-with-multiple-samples.html#cb199-18" tabindex="-1"></a></span>
+<span id="cb199-19"><a href="working-with-multiple-samples.html#cb199-19" tabindex="-1"></a><span class="do">## add gene &amp; cell statistics</span></span>
+<span id="cb199-20"><a href="working-with-multiple-samples.html#cb199-20" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">addStatistics</span>(<span class="at">gobject =</span> combined_pros, </span>
+<span id="cb199-21"><a href="working-with-multiple-samples.html#cb199-21" tabindex="-1"></a>                               <span class="at">expression_values =</span> <span class="st">&quot;raw&quot;</span>)</span>
+<span id="cb199-22"><a href="working-with-multiple-samples.html#cb199-22" tabindex="-1"></a></span>
+<span id="cb199-23"><a href="working-with-multiple-samples.html#cb199-23" tabindex="-1"></a><span class="do">## visualize</span></span>
+<span id="cb199-24"><a href="working-with-multiple-samples.html#cb199-24" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> combined_pros, </span>
+<span id="cb199-25"><a href="working-with-multiple-samples.html#cb199-25" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;nr_feats&quot;</span>, </span>
+<span id="cb199-26"><a href="working-with-multiple-samples.html#cb199-26" tabindex="-1"></a>           <span class="at">color_as_factor =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb199-27"><a href="working-with-multiple-samples.html#cb199-27" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="dv">1</span>, </span>
+<span id="cb199-28"><a href="working-with-multiple-samples.html#cb199-28" tabindex="-1"></a>           <span class="at">show_image =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb199-29"><a href="working-with-multiple-samples.html#cb199-29" tabindex="-1"></a>           <span class="at">image_name =</span> <span class="fu">c</span>(<span class="st">&quot;NP-image&quot;</span>, <span class="st">&quot;CP-image&quot;</span>),</span>
+<span id="cb199-30"><a href="working-with-multiple-samples.html#cb199-30" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;ses3_1_feat_expression&quot;</span>))</span></code></pre></div>
 <p>After performing the addStatistics() function on both the datasets we can see the relative expression for each spot in both samples.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-275"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-279"></span>
 <img src="img/03_session1/ses3_1_feat_expression.png" alt="Unique feat expression for visium spots for both prostate samples." width="100%" />
 <p class="caption">
 Figure 12.9: Unique feat expression for visium spots for both prostate samples.
@@ -772,38 +772,38 @@ Figure 12.9: Unique feat expression for visium spots for both prostate samples.
 <div id="clustering-the-datasets" class="section level3 hasAnchor" number="12.7.2">
 <h3><span class="header-section-number">12.7.2</span> Clustering the datasets<a href="working-with-multiple-samples.html#clustering-the-datasets" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Since we shifted the objects within space the spatial networks for each dataset will remain separate, assuming that the lower limits for neighbors is smaller than the distance of each dataset. However, the individual spot clustering will be performed on all spots from both datasets as if they were a single object, meaning that the same cell types between objects should be clustered together</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="working-with-multiple-samples.html#cb198-1" tabindex="-1"></a><span class="do">## PCA ##</span></span>
-<span id="cb198-2"><a href="working-with-multiple-samples.html#cb198-2" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">calculateHVF</span>(<span class="at">gobject =</span> combined_pros)</span>
-<span id="cb198-3"><a href="working-with-multiple-samples.html#cb198-3" tabindex="-1"></a></span>
-<span id="cb198-4"><a href="working-with-multiple-samples.html#cb198-4" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">runPCA</span>(<span class="at">gobject =</span> combined_pros, </span>
-<span id="cb198-5"><a href="working-with-multiple-samples.html#cb198-5" tabindex="-1"></a>                        <span class="at">center =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb198-6"><a href="working-with-multiple-samples.html#cb198-6" tabindex="-1"></a>                        <span class="at">scale_unit =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb198-7"><a href="working-with-multiple-samples.html#cb198-7" tabindex="-1"></a></span>
-<span id="cb198-8"><a href="working-with-multiple-samples.html#cb198-8" tabindex="-1"></a><span class="do">## cluster and run UMAP ##</span></span>
-<span id="cb198-9"><a href="working-with-multiple-samples.html#cb198-9" tabindex="-1"></a><span class="co"># sNN network (default)</span></span>
-<span id="cb198-10"><a href="working-with-multiple-samples.html#cb198-10" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">createNearestNetwork</span>(<span class="at">gobject =</span> combined_pros,</span>
-<span id="cb198-11"><a href="working-with-multiple-samples.html#cb198-11" tabindex="-1"></a>                                      <span class="at">dim_reduction_to_use =</span> <span class="st">&quot;pca&quot;</span>, </span>
-<span id="cb198-12"><a href="working-with-multiple-samples.html#cb198-12" tabindex="-1"></a>                                      <span class="at">dim_reduction_name =</span> <span class="st">&quot;pca&quot;</span>,</span>
-<span id="cb198-13"><a href="working-with-multiple-samples.html#cb198-13" tabindex="-1"></a>                                      <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, </span>
-<span id="cb198-14"><a href="working-with-multiple-samples.html#cb198-14" tabindex="-1"></a>                                      <span class="at">k =</span> <span class="dv">15</span>)</span>
-<span id="cb198-15"><a href="working-with-multiple-samples.html#cb198-15" tabindex="-1"></a></span>
-<span id="cb198-16"><a href="working-with-multiple-samples.html#cb198-16" tabindex="-1"></a><span class="co"># Leiden clustering</span></span>
-<span id="cb198-17"><a href="working-with-multiple-samples.html#cb198-17" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">doLeidenCluster</span>(<span class="at">gobject =</span> combined_pros, </span>
-<span id="cb198-18"><a href="working-with-multiple-samples.html#cb198-18" tabindex="-1"></a>                                 <span class="at">resolution =</span> <span class="fl">0.2</span>,</span>
-<span id="cb198-19"><a href="working-with-multiple-samples.html#cb198-19" tabindex="-1"></a>                                 <span class="at">n_iterations =</span> <span class="dv">200</span>)</span>
-<span id="cb198-20"><a href="working-with-multiple-samples.html#cb198-20" tabindex="-1"></a></span>
-<span id="cb198-21"><a href="working-with-multiple-samples.html#cb198-21" tabindex="-1"></a><span class="co"># UMAP</span></span>
-<span id="cb198-22"><a href="working-with-multiple-samples.html#cb198-22" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">runUMAP</span>(combined_pros)</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="working-with-multiple-samples.html#cb200-1" tabindex="-1"></a><span class="do">## PCA ##</span></span>
+<span id="cb200-2"><a href="working-with-multiple-samples.html#cb200-2" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">calculateHVF</span>(<span class="at">gobject =</span> combined_pros)</span>
+<span id="cb200-3"><a href="working-with-multiple-samples.html#cb200-3" tabindex="-1"></a></span>
+<span id="cb200-4"><a href="working-with-multiple-samples.html#cb200-4" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">runPCA</span>(<span class="at">gobject =</span> combined_pros, </span>
+<span id="cb200-5"><a href="working-with-multiple-samples.html#cb200-5" tabindex="-1"></a>                        <span class="at">center =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb200-6"><a href="working-with-multiple-samples.html#cb200-6" tabindex="-1"></a>                        <span class="at">scale_unit =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb200-7"><a href="working-with-multiple-samples.html#cb200-7" tabindex="-1"></a></span>
+<span id="cb200-8"><a href="working-with-multiple-samples.html#cb200-8" tabindex="-1"></a><span class="do">## cluster and run UMAP ##</span></span>
+<span id="cb200-9"><a href="working-with-multiple-samples.html#cb200-9" tabindex="-1"></a><span class="co"># sNN network (default)</span></span>
+<span id="cb200-10"><a href="working-with-multiple-samples.html#cb200-10" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">createNearestNetwork</span>(<span class="at">gobject =</span> combined_pros,</span>
+<span id="cb200-11"><a href="working-with-multiple-samples.html#cb200-11" tabindex="-1"></a>                                      <span class="at">dim_reduction_to_use =</span> <span class="st">&quot;pca&quot;</span>, </span>
+<span id="cb200-12"><a href="working-with-multiple-samples.html#cb200-12" tabindex="-1"></a>                                      <span class="at">dim_reduction_name =</span> <span class="st">&quot;pca&quot;</span>,</span>
+<span id="cb200-13"><a href="working-with-multiple-samples.html#cb200-13" tabindex="-1"></a>                                      <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, </span>
+<span id="cb200-14"><a href="working-with-multiple-samples.html#cb200-14" tabindex="-1"></a>                                      <span class="at">k =</span> <span class="dv">15</span>)</span>
+<span id="cb200-15"><a href="working-with-multiple-samples.html#cb200-15" tabindex="-1"></a></span>
+<span id="cb200-16"><a href="working-with-multiple-samples.html#cb200-16" tabindex="-1"></a><span class="co"># Leiden clustering</span></span>
+<span id="cb200-17"><a href="working-with-multiple-samples.html#cb200-17" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">doLeidenCluster</span>(<span class="at">gobject =</span> combined_pros, </span>
+<span id="cb200-18"><a href="working-with-multiple-samples.html#cb200-18" tabindex="-1"></a>                                 <span class="at">resolution =</span> <span class="fl">0.2</span>,</span>
+<span id="cb200-19"><a href="working-with-multiple-samples.html#cb200-19" tabindex="-1"></a>                                 <span class="at">n_iterations =</span> <span class="dv">200</span>)</span>
+<span id="cb200-20"><a href="working-with-multiple-samples.html#cb200-20" tabindex="-1"></a></span>
+<span id="cb200-21"><a href="working-with-multiple-samples.html#cb200-21" tabindex="-1"></a><span class="co"># UMAP</span></span>
+<span id="cb200-22"><a href="working-with-multiple-samples.html#cb200-22" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">runUMAP</span>(combined_pros)</span></code></pre></div>
 </div>
 <div id="vizualizing-spatial-location-of-clusters" class="section level3 hasAnchor" number="12.7.3">
 <h3><span class="header-section-number">12.7.3</span> Vizualizing spatial location of clusters<a href="working-with-multiple-samples.html#vizualizing-spatial-location-of-clusters" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We can visualize the clusters determined through Leiden clustering on both of the datasets within the same plot.</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="working-with-multiple-samples.html#cb199-1" tabindex="-1"></a><span class="fu">spatDimPlot2D</span>(<span class="at">gobject =</span> combined_pros,</span>
-<span id="cb199-2"><a href="working-with-multiple-samples.html#cb199-2" tabindex="-1"></a>              <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>, </span>
-<span id="cb199-3"><a href="working-with-multiple-samples.html#cb199-3" tabindex="-1"></a>              <span class="at">show_image =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb199-4"><a href="working-with-multiple-samples.html#cb199-4" tabindex="-1"></a>              <span class="at">image_name =</span> <span class="fu">c</span>(<span class="st">&quot;NP-image&quot;</span>, <span class="st">&quot;CP-image&quot;</span>),</span>
-<span id="cb199-5"><a href="working-with-multiple-samples.html#cb199-5" tabindex="-1"></a>              <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;ses3_1_leiden_clus&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-278"></span>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="working-with-multiple-samples.html#cb201-1" tabindex="-1"></a><span class="fu">spatDimPlot2D</span>(<span class="at">gobject =</span> combined_pros,</span>
+<span id="cb201-2"><a href="working-with-multiple-samples.html#cb201-2" tabindex="-1"></a>              <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>, </span>
+<span id="cb201-3"><a href="working-with-multiple-samples.html#cb201-3" tabindex="-1"></a>              <span class="at">show_image =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb201-4"><a href="working-with-multiple-samples.html#cb201-4" tabindex="-1"></a>              <span class="at">image_name =</span> <span class="fu">c</span>(<span class="st">&quot;NP-image&quot;</span>, <span class="st">&quot;CP-image&quot;</span>),</span>
+<span id="cb201-5"><a href="working-with-multiple-samples.html#cb201-5" tabindex="-1"></a>              <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;ses3_1_leiden_clus&quot;</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-282"></span>
 <img src="img/03_session1/ses3_1_leiden_clus.png" alt="UMAP (top) for both samples colored by Leiden clusters visualized in a spatial plot (bottom) for the normal prostate (left) and the adenocarcinoma prostate sample (right)." width="100%" />
 <p class="caption">
 Figure 12.10: UMAP (top) for both samples colored by Leiden clusters visualized in a spatial plot (bottom) for the normal prostate (left) and the adenocarcinoma prostate sample (right).
@@ -813,12 +813,12 @@ Figure 12.10: UMAP (top) for both samples colored by Leiden clusters visualized 
 <div id="vizualizing-tissue-contribution-to-clusters" class="section level3 hasAnchor" number="12.7.4">
 <h3><span class="header-section-number">12.7.4</span> Vizualizing tissue contribution to clusters<a href="working-with-multiple-samples.html#vizualizing-tissue-contribution-to-clusters" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We can also color the UMAP to visualize the contribution from each tissue in the UMAP. To do this we color the UMAP by “list_ID” rather than “leiden_clus”. If each of the cell types between both samples cluster together then we would expect that clusters should contain the cell color of both samples. However, we can see that the samples are clustered distinctly within the UMAP. This indicates that the cell types shared between both samples are found within different clusters indicating that more complex integration techniques might be required for these samples.</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="working-with-multiple-samples.html#cb200-1" tabindex="-1"></a><span class="fu">spatDimPlot2D</span>(<span class="at">gobject =</span> combined_pros,</span>
-<span id="cb200-2"><a href="working-with-multiple-samples.html#cb200-2" tabindex="-1"></a>              <span class="at">cell_color =</span> <span class="st">&quot;list_ID&quot;</span>,</span>
-<span id="cb200-3"><a href="working-with-multiple-samples.html#cb200-3" tabindex="-1"></a>              <span class="at">show_image =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb200-4"><a href="working-with-multiple-samples.html#cb200-4" tabindex="-1"></a>              <span class="at">image_name =</span> <span class="fu">c</span>(<span class="st">&quot;NP-image&quot;</span>, <span class="st">&quot;CP-image&quot;</span>),</span>
-<span id="cb200-5"><a href="working-with-multiple-samples.html#cb200-5" tabindex="-1"></a>              <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;ses3_1_tissue_contribution&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-280"></span>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="working-with-multiple-samples.html#cb202-1" tabindex="-1"></a><span class="fu">spatDimPlot2D</span>(<span class="at">gobject =</span> combined_pros,</span>
+<span id="cb202-2"><a href="working-with-multiple-samples.html#cb202-2" tabindex="-1"></a>              <span class="at">cell_color =</span> <span class="st">&quot;list_ID&quot;</span>,</span>
+<span id="cb202-3"><a href="working-with-multiple-samples.html#cb202-3" tabindex="-1"></a>              <span class="at">show_image =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb202-4"><a href="working-with-multiple-samples.html#cb202-4" tabindex="-1"></a>              <span class="at">image_name =</span> <span class="fu">c</span>(<span class="st">&quot;NP-image&quot;</span>, <span class="st">&quot;CP-image&quot;</span>),</span>
+<span id="cb202-5"><a href="working-with-multiple-samples.html#cb202-5" tabindex="-1"></a>              <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;ses3_1_tissue_contribution&quot;</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-284"></span>
 <img src="img/03_session1/ses3_1_tissue_contribution.png" alt="Tissue contribution for leiden clustering for the normal prostate (left) and the adenocarcinoma prostate sample (right)." width="100%" />
 <p class="caption">
 Figure 12.11: Tissue contribution for leiden clustering for the normal prostate (left) and the adenocarcinoma prostate sample (right).
@@ -830,13 +830,13 @@ Figure 12.11: Tissue contribution for leiden clustering for the normal prostate 
 <h2><span class="header-section-number">12.8</span> Perform Harmony and default workflows<a href="working-with-multiple-samples.html#perform-harmony-and-default-workflows" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We can use Harmony to integrate multiple datasets, grouping equivelent cell types between samples. Harmony is an algorithm that iteratively adjusts cell coordinates in a reduced-dimensional space to correct for dataset-specific effects. It uses fuzzy clustering to assign cells to multiple clusters, calculates dataset-specific correction factors, and applies these corrections to each cell, repeating the process until the influence of the dataset diminishes.</p>
 <p>Before running Harmony we need to run the PCA function or set “do_pca” to TRUE. We ran this above so do not need to perform this step. Harmony will default to attempting 10 rounds of integration. Not all samples will need the full 10 and will finish accordingly. The following dataset should converge after 5 iterations.</p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="working-with-multiple-samples.html#cb201-1" tabindex="-1"></a><span class="fu">library</span>(harmony)</span>
-<span id="cb201-2"><a href="working-with-multiple-samples.html#cb201-2" tabindex="-1"></a></span>
-<span id="cb201-3"><a href="working-with-multiple-samples.html#cb201-3" tabindex="-1"></a><span class="do">## run harmony integration</span></span>
-<span id="cb201-4"><a href="working-with-multiple-samples.html#cb201-4" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">runGiottoHarmony</span>(combined_pros, </span>
-<span id="cb201-5"><a href="working-with-multiple-samples.html#cb201-5" tabindex="-1"></a>                                  <span class="at">vars_use =</span> <span class="st">&quot;list_ID&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="working-with-multiple-samples.html#cb203-1" tabindex="-1"></a><span class="fu">library</span>(harmony)</span>
+<span id="cb203-2"><a href="working-with-multiple-samples.html#cb203-2" tabindex="-1"></a></span>
+<span id="cb203-3"><a href="working-with-multiple-samples.html#cb203-3" tabindex="-1"></a><span class="do">## run harmony integration</span></span>
+<span id="cb203-4"><a href="working-with-multiple-samples.html#cb203-4" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">runGiottoHarmony</span>(combined_pros, </span>
+<span id="cb203-5"><a href="working-with-multiple-samples.html#cb203-5" tabindex="-1"></a>                                  <span class="at">vars_use =</span> <span class="st">&quot;list_ID&quot;</span>)</span></code></pre></div>
 <p>After running the Harmony function successfully we can see that the outputted gobject has a new dim reduction names “harmony”. We can use this for all subsequent spatial steps.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-282"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-286"></span>
 <img src="img/03_session1/harmony_gobject.png" alt="Data structure of the gobject after running Harmony integration." width="40%" />
 <p class="caption">
 Figure 12.12: Data structure of the gobject after running Harmony integration.
@@ -845,37 +845,37 @@ Figure 12.12: Data structure of the gobject after running Harmony integration.
 <div id="clustering-harmonized-object" class="section level3 hasAnchor" number="12.8.1">
 <h3><span class="header-section-number">12.8.1</span> Clustering harmonized object<a href="working-with-multiple-samples.html#clustering-harmonized-object" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We can now perform the same clustering steps as before but instead using the “harmony” dim reduction rather than PCA. We will also be creating new UMAP and nearest network data for the gobject that will be named differently to before to preserve the original analyses. If using the same name then this will overwrite the original analysis.</p>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="working-with-multiple-samples.html#cb202-1" tabindex="-1"></a><span class="do">## sNN network (default)</span></span>
-<span id="cb202-2"><a href="working-with-multiple-samples.html#cb202-2" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">createNearestNetwork</span>(<span class="at">gobject =</span> combined_pros,</span>
-<span id="cb202-3"><a href="working-with-multiple-samples.html#cb202-3" tabindex="-1"></a>                                      <span class="at">dim_reduction_to_use =</span> <span class="st">&quot;harmony&quot;</span>,</span>
-<span id="cb202-4"><a href="working-with-multiple-samples.html#cb202-4" tabindex="-1"></a>                                      <span class="at">dim_reduction_name =</span> <span class="st">&quot;harmony&quot;</span>, </span>
-<span id="cb202-5"><a href="working-with-multiple-samples.html#cb202-5" tabindex="-1"></a>                                      <span class="at">name =</span> <span class="st">&quot;NN.harmony&quot;</span>,</span>
-<span id="cb202-6"><a href="working-with-multiple-samples.html#cb202-6" tabindex="-1"></a>                                      <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, </span>
-<span id="cb202-7"><a href="working-with-multiple-samples.html#cb202-7" tabindex="-1"></a>                                      <span class="at">k =</span> <span class="dv">15</span>)</span>
-<span id="cb202-8"><a href="working-with-multiple-samples.html#cb202-8" tabindex="-1"></a></span>
-<span id="cb202-9"><a href="working-with-multiple-samples.html#cb202-9" tabindex="-1"></a><span class="do">## Leiden clustering</span></span>
-<span id="cb202-10"><a href="working-with-multiple-samples.html#cb202-10" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">doLeidenCluster</span>(<span class="at">gobject =</span> combined_pros,</span>
-<span id="cb202-11"><a href="working-with-multiple-samples.html#cb202-11" tabindex="-1"></a>                                 <span class="at">network_name =</span> <span class="st">&quot;NN.harmony&quot;</span>, </span>
-<span id="cb202-12"><a href="working-with-multiple-samples.html#cb202-12" tabindex="-1"></a>                                 <span class="at">resolution =</span> <span class="fl">0.2</span>, </span>
-<span id="cb202-13"><a href="working-with-multiple-samples.html#cb202-13" tabindex="-1"></a>                                 <span class="at">n_iterations =</span> <span class="dv">1000</span>, </span>
-<span id="cb202-14"><a href="working-with-multiple-samples.html#cb202-14" tabindex="-1"></a>                                 <span class="at">name =</span> <span class="st">&quot;leiden_harmony&quot;</span>)</span>
-<span id="cb202-15"><a href="working-with-multiple-samples.html#cb202-15" tabindex="-1"></a></span>
-<span id="cb202-16"><a href="working-with-multiple-samples.html#cb202-16" tabindex="-1"></a><span class="co"># UMAP dimension reduction</span></span>
-<span id="cb202-17"><a href="working-with-multiple-samples.html#cb202-17" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">runUMAP</span>(combined_pros, </span>
-<span id="cb202-18"><a href="working-with-multiple-samples.html#cb202-18" tabindex="-1"></a>                         <span class="at">dim_reduction_name =</span> <span class="st">&quot;harmony&quot;</span>, </span>
-<span id="cb202-19"><a href="working-with-multiple-samples.html#cb202-19" tabindex="-1"></a>                         <span class="at">dim_reduction_to_use =</span> <span class="st">&quot;harmony&quot;</span>, </span>
-<span id="cb202-20"><a href="working-with-multiple-samples.html#cb202-20" tabindex="-1"></a>                         <span class="at">name =</span> <span class="st">&quot;umap_harmony&quot;</span>)</span>
-<span id="cb202-21"><a href="working-with-multiple-samples.html#cb202-21" tabindex="-1"></a></span>
-<span id="cb202-22"><a href="working-with-multiple-samples.html#cb202-22" tabindex="-1"></a><span class="fu">spatDimPlot2D</span>(<span class="at">gobject =</span> combined_pros,</span>
-<span id="cb202-23"><a href="working-with-multiple-samples.html#cb202-23" tabindex="-1"></a>              <span class="at">dim_reduction_to_use =</span> <span class="st">&quot;umap&quot;</span>, </span>
-<span id="cb202-24"><a href="working-with-multiple-samples.html#cb202-24" tabindex="-1"></a>              <span class="at">dim_reduction_name =</span> <span class="st">&quot;umap_harmony&quot;</span>,</span>
-<span id="cb202-25"><a href="working-with-multiple-samples.html#cb202-25" tabindex="-1"></a>              <span class="at">cell_color =</span> <span class="st">&quot;leiden_harmony&quot;</span>, </span>
-<span id="cb202-26"><a href="working-with-multiple-samples.html#cb202-26" tabindex="-1"></a>              <span class="at">show_image =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb202-27"><a href="working-with-multiple-samples.html#cb202-27" tabindex="-1"></a>              <span class="at">image_name =</span> <span class="fu">c</span>(<span class="st">&quot;NP-image&quot;</span>, <span class="st">&quot;CP-image&quot;</span>),</span>
-<span id="cb202-28"><a href="working-with-multiple-samples.html#cb202-28" tabindex="-1"></a>              <span class="at">spat_point_size =</span> <span class="dv">1</span>, </span>
-<span id="cb202-29"><a href="working-with-multiple-samples.html#cb202-29" tabindex="-1"></a>              <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;leiden_clustering_harmony&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="working-with-multiple-samples.html#cb204-1" tabindex="-1"></a><span class="do">## sNN network (default)</span></span>
+<span id="cb204-2"><a href="working-with-multiple-samples.html#cb204-2" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">createNearestNetwork</span>(<span class="at">gobject =</span> combined_pros,</span>
+<span id="cb204-3"><a href="working-with-multiple-samples.html#cb204-3" tabindex="-1"></a>                                      <span class="at">dim_reduction_to_use =</span> <span class="st">&quot;harmony&quot;</span>,</span>
+<span id="cb204-4"><a href="working-with-multiple-samples.html#cb204-4" tabindex="-1"></a>                                      <span class="at">dim_reduction_name =</span> <span class="st">&quot;harmony&quot;</span>, </span>
+<span id="cb204-5"><a href="working-with-multiple-samples.html#cb204-5" tabindex="-1"></a>                                      <span class="at">name =</span> <span class="st">&quot;NN.harmony&quot;</span>,</span>
+<span id="cb204-6"><a href="working-with-multiple-samples.html#cb204-6" tabindex="-1"></a>                                      <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, </span>
+<span id="cb204-7"><a href="working-with-multiple-samples.html#cb204-7" tabindex="-1"></a>                                      <span class="at">k =</span> <span class="dv">15</span>)</span>
+<span id="cb204-8"><a href="working-with-multiple-samples.html#cb204-8" tabindex="-1"></a></span>
+<span id="cb204-9"><a href="working-with-multiple-samples.html#cb204-9" tabindex="-1"></a><span class="do">## Leiden clustering</span></span>
+<span id="cb204-10"><a href="working-with-multiple-samples.html#cb204-10" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">doLeidenCluster</span>(<span class="at">gobject =</span> combined_pros,</span>
+<span id="cb204-11"><a href="working-with-multiple-samples.html#cb204-11" tabindex="-1"></a>                                 <span class="at">network_name =</span> <span class="st">&quot;NN.harmony&quot;</span>, </span>
+<span id="cb204-12"><a href="working-with-multiple-samples.html#cb204-12" tabindex="-1"></a>                                 <span class="at">resolution =</span> <span class="fl">0.2</span>, </span>
+<span id="cb204-13"><a href="working-with-multiple-samples.html#cb204-13" tabindex="-1"></a>                                 <span class="at">n_iterations =</span> <span class="dv">1000</span>, </span>
+<span id="cb204-14"><a href="working-with-multiple-samples.html#cb204-14" tabindex="-1"></a>                                 <span class="at">name =</span> <span class="st">&quot;leiden_harmony&quot;</span>)</span>
+<span id="cb204-15"><a href="working-with-multiple-samples.html#cb204-15" tabindex="-1"></a></span>
+<span id="cb204-16"><a href="working-with-multiple-samples.html#cb204-16" tabindex="-1"></a><span class="co"># UMAP dimension reduction</span></span>
+<span id="cb204-17"><a href="working-with-multiple-samples.html#cb204-17" tabindex="-1"></a>combined_pros <span class="ot">&lt;-</span> <span class="fu">runUMAP</span>(combined_pros, </span>
+<span id="cb204-18"><a href="working-with-multiple-samples.html#cb204-18" tabindex="-1"></a>                         <span class="at">dim_reduction_name =</span> <span class="st">&quot;harmony&quot;</span>, </span>
+<span id="cb204-19"><a href="working-with-multiple-samples.html#cb204-19" tabindex="-1"></a>                         <span class="at">dim_reduction_to_use =</span> <span class="st">&quot;harmony&quot;</span>, </span>
+<span id="cb204-20"><a href="working-with-multiple-samples.html#cb204-20" tabindex="-1"></a>                         <span class="at">name =</span> <span class="st">&quot;umap_harmony&quot;</span>)</span>
+<span id="cb204-21"><a href="working-with-multiple-samples.html#cb204-21" tabindex="-1"></a></span>
+<span id="cb204-22"><a href="working-with-multiple-samples.html#cb204-22" tabindex="-1"></a><span class="fu">spatDimPlot2D</span>(<span class="at">gobject =</span> combined_pros,</span>
+<span id="cb204-23"><a href="working-with-multiple-samples.html#cb204-23" tabindex="-1"></a>              <span class="at">dim_reduction_to_use =</span> <span class="st">&quot;umap&quot;</span>, </span>
+<span id="cb204-24"><a href="working-with-multiple-samples.html#cb204-24" tabindex="-1"></a>              <span class="at">dim_reduction_name =</span> <span class="st">&quot;umap_harmony&quot;</span>,</span>
+<span id="cb204-25"><a href="working-with-multiple-samples.html#cb204-25" tabindex="-1"></a>              <span class="at">cell_color =</span> <span class="st">&quot;leiden_harmony&quot;</span>, </span>
+<span id="cb204-26"><a href="working-with-multiple-samples.html#cb204-26" tabindex="-1"></a>              <span class="at">show_image =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb204-27"><a href="working-with-multiple-samples.html#cb204-27" tabindex="-1"></a>              <span class="at">image_name =</span> <span class="fu">c</span>(<span class="st">&quot;NP-image&quot;</span>, <span class="st">&quot;CP-image&quot;</span>),</span>
+<span id="cb204-28"><a href="working-with-multiple-samples.html#cb204-28" tabindex="-1"></a>              <span class="at">spat_point_size =</span> <span class="dv">1</span>, </span>
+<span id="cb204-29"><a href="working-with-multiple-samples.html#cb204-29" tabindex="-1"></a>              <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;leiden_clustering_harmony&quot;</span>))</span></code></pre></div>
 <p>We can see a different UMAP and clustering to that seen in the original steps above. We can again map these onto the tissue spots and see where the clusters are spatially.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-284"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-288"></span>
 <img src="img/03_session1/leiden_clustering_harmony.png" alt="Leiden clustering after harmony was performed for the normal prostate (left) and the adenocarcinoma prostate sample (right)." width="100%" />
 <p class="caption">
 Figure 12.13: Leiden clustering after harmony was performed for the normal prostate (left) and the adenocarcinoma prostate sample (right).
@@ -885,13 +885,13 @@ Figure 12.13: Leiden clustering after harmony was performed for the normal prost
 <div id="vizualizing-the-tissue-contribution" class="section level3 hasAnchor" number="12.8.2">
 <h3><span class="header-section-number">12.8.2</span> Vizualizing the tissue contribution<a href="working-with-multiple-samples.html#vizualizing-the-tissue-contribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We can see that after performing harmony that the clusters from the two tissue samples are now clustered together. There is still a cluster that is unique to the adenocarcinoma sample, however this is expected as this represents the visium spots that cover the tumor regions of the tissue, which are not found in the normal tissue.</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="working-with-multiple-samples.html#cb203-1" tabindex="-1"></a><span class="fu">spatDimPlot2D</span>(<span class="at">gobject =</span> combined_pros,</span>
-<span id="cb203-2"><a href="working-with-multiple-samples.html#cb203-2" tabindex="-1"></a>              <span class="at">dim_reduction_to_use =</span> <span class="st">&quot;umap&quot;</span>, </span>
-<span id="cb203-3"><a href="working-with-multiple-samples.html#cb203-3" tabindex="-1"></a>              <span class="at">dim_reduction_name =</span> <span class="st">&quot;umap_harmony&quot;</span>,</span>
-<span id="cb203-4"><a href="working-with-multiple-samples.html#cb203-4" tabindex="-1"></a>              <span class="at">cell_color =</span> <span class="st">&quot;list_ID&quot;</span>, </span>
-<span id="cb203-5"><a href="working-with-multiple-samples.html#cb203-5" tabindex="-1"></a>              <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb203-6"><a href="working-with-multiple-samples.html#cb203-6" tabindex="-1"></a>              <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;leiden_clustering_harmony_contribution&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-286"></span>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="working-with-multiple-samples.html#cb205-1" tabindex="-1"></a><span class="fu">spatDimPlot2D</span>(<span class="at">gobject =</span> combined_pros,</span>
+<span id="cb205-2"><a href="working-with-multiple-samples.html#cb205-2" tabindex="-1"></a>              <span class="at">dim_reduction_to_use =</span> <span class="st">&quot;umap&quot;</span>, </span>
+<span id="cb205-3"><a href="working-with-multiple-samples.html#cb205-3" tabindex="-1"></a>              <span class="at">dim_reduction_name =</span> <span class="st">&quot;umap_harmony&quot;</span>,</span>
+<span id="cb205-4"><a href="working-with-multiple-samples.html#cb205-4" tabindex="-1"></a>              <span class="at">cell_color =</span> <span class="st">&quot;list_ID&quot;</span>, </span>
+<span id="cb205-5"><a href="working-with-multiple-samples.html#cb205-5" tabindex="-1"></a>              <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb205-6"><a href="working-with-multiple-samples.html#cb205-6" tabindex="-1"></a>              <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;leiden_clustering_harmony_contribution&quot;</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-290"></span>
 <img src="img/03_session1/leiden_clustering_harmony_contribution.png" alt="Tissue contribution for leiden clustering after harmony for the normal prostate (left) and the adenocarcinoma prostate sample (right)." width="100%" />
 <p class="caption">
 Figure 12.14: Tissue contribution for leiden clustering after harmony for the normal prostate (left) and the adenocarcinoma prostate sample (right).
