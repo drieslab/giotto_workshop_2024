@@ -307,3 +307,8 @@ register-post-xenium-he-and-if-image
 add-registered-image-information-and-compare-rna-vs-protein-expression
 automatic-alignment-via-sift-feature-descriptor-matching-and-affine-transformation
 final-notes
+giotto-installation-1
+python-environment
+default-installation
+custom-installs
+using-a-specific-environment
