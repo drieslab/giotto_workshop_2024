@@ -13,7 +13,7 @@ knitr::include_graphics("img/02_session3/Xenium-General-Workflow-1024x709.png")
 This is the 10X Xenium FFPE Human Lung Cancer dataset. Xenium captures
 individual transcript detections with a spatial resolution of 100s of
 nanometers, providing an extremely highly resolved subcellular spatial
-dataset. This particular dataset also showcases their newly released
+dataset. This particular dataset also showcases their recent
 multimodal cell segmentation outputs.
 
 The Xenium Human Multi-Tissue and Cancer Panel (377) genes was used. The
@@ -22,484 +22,939 @@ exported data is from their Xenium Onboard Analysis v2.0.0 pipeline.
 The full data for this example can be found here:
 [here](https://www.10xgenomics.com/datasets/preview-data-ffpe-human-lung-cancer-with-xenium-multimodal-cell-segmentation-1-standard)
 
--   *Input Files* are additional files that are not part of the output
-    bundles, usually some raw files the pipeline uses or extra info.
--   *Output Files* are the directories that are exported by the Xenium
-    pipeline that can be expected from every run.
+The relevant items are:
 
-## Additional package requirements
-When working with this data, some additional packages must be downloaded.
--   arrow is needed
--   requires ZTSD codec to open these parquets.
+ - Xenium Output Bundle (full)
+ - Supplemental: Post-Xenium H&E image (OME-TIFF)
+ - Supplemental: H&E Image Alignment File (CSV)
+
+**Additional package requirements**
+
+When working with this data and trying to open the parquet files, you will need _arrow_ built with ZTSD support. See the datasets & packages section for specific install instructions.
 
 
-## Introduce mini object
+### Output directory structure
+```
+    ├── analysis.tar.gz
+    ├── analysis.zarr.zip
+    ├── analysis_summary.html
+    ├── aux_outputs.tar.gz
+    ├── transcripts.csv.gz
+    ├── transcripts.parquet
+    ├── transcripts.zarr.zip
+    ├── cell_boundaries.csv.gz
+    ├── cell_boundaries.parquet
+    ├── nucleus_boundaries.csv.gz
+    ├── nucleus_boundaries.parquet
+    ├── cell_feature_matrix.tar.gz
+    ├── cell_feature_matrix
+    │   ├── barcodes.tsv.gz
+    │   ├── features.tsv.gz
+    │   └── matrix.mtx.gz
+    ├── cell_feature_matrix.h5
+    ├── cell_feature_matrix.zarr.zip
+    ├── cells.csv.gz
+    ├── cells.parquet
+    ├── cells.zarr.zip
+    ├── experiment.xenium
+    ├── gene_panel.json
+    ├── metrics_summary.csv
+    ├── morphology.ome.tif
+    ├── morphology_focus
+    │   ├── morphology_focus_0000.ome.tif
+    │   ├── morphology_focus_0001.ome.tif
+    │   ├── morphology_focus_0002.ome.tif
+    │   ├── morphology_focus_0003.ome.tif
+    ├── Xenium_V1_humanLung_Cancer_FFPE_he_image.ome.tif
+    └── Xenium_V1_humanLung_Cancer_FFPE_he_imagealignment.csv
+```
+The above directory structuring and naming is characteristic of Xenium v2.0 pipeline outputs. The only items that may not be exactly the same across all outputs are the morphology focus directory and the naming of the aligned image items.
+
+For the morphology focus images, you may have fewer images if the experiment did not include the multimodal cell segmentation. As for the aligned images, this is usually done after the Xenium experiment concludes and is added on using Xenium Explorer. Naming and location of the aligned image (`he_image.ome.tif`) and associated alignment info `he_imagealignment.csv` are entirely up to the user.
+
+
+
+
+### Mini Xenium Dataset
+
+```{r, eval=FALSE}
+library(Giotto)
+# set up paths
+data_path <- "data/02_session3/"
+save_dir <- "results/02_session3/"
+dir.create(save_dir, recursive = TRUE)
+
+# download the mini dataset and untar
+options("timeout" = Inf)
+download.file(
+    url = "https://zenodo.org/records/13207308/files/workshop_xenium.zip?download=1",
+    destfile = file.path(save_dir, "workshop_xenium.zip")
+)
+untar(tarfile = file.path(save_dir, "workshop_xenium.zip"), 
+      exdir = data_path)
+```
+
+In order to speed up the steps of the workshop and make it locally runnable, we provide a subset of the full dataset.
+```
+- Full: -16.039, 12342.984, -3511.515, -294.455 (xmin, xmax, ymin, ymax)
+- Mini: 6000,    7000,      -2200,     -1400    (xmin, xmax, ymin, ymax)
+```
+
+```{r, echo=FALSE, fig.cap="Shown is the H&E aligned to the Xenium dataset with micron scaling. The blue bounds mark out the area provided as a mini dataset"}
+knitr::include_graphics("img/02_session3/mini_roi.png")
+```
+
+
+
+
+
+## Data prep
+
+### Image conversion (may change)
+
+First is actually dealing with the image formats. Xenium generates `ome.tif` images which Giotto is currently not fully compatible with. So we convert them to normal `tif` images using `ometif_to_tif()` which works through the python _tifffile_ package.
+
+The image files can then be loaded in downstream steps.
+
+_These commented out steps are not needed for today since the mini dataset provides .tif images that have already been spatially aligned and converted. However, the code needed to do this is provided below._
+```{r, eval=FALSE}
+# image_paths <- list.files(
+#   data_path, pattern = "morphology_focus|he_image.ome", 
+#   recursive = TRUE, full.names = TRUE
+# )
+```
+`ometif_to_tif()` `output_dir` can be specified, but by default, it writes to a new subdirectory called `tif_exports` underneath the source image's directory.
+_Keep in mind that where the exported tifs get exported to should be where downstream image reading functions should point to. The code run today is with the filepaths that the mini dataset has._
+```{r, eval=FALSE}
+# lapply(image_paths, function(img) {
+#     GiottoClass::ometif_to_tif(img, overwrite = TRUE)
+# })
+```
+
+We are also working on a method of directly accessing the `ome.tifs` for better compatibility in the future.
+
+
+
+
+
+
+
+
+## Convenience function
+
+Giotto has flexible methods for working with the Xenium outputs. The `createGiottoXeniumObject()` will generate a `giotto` object in a single step when provided the output directory.
+
+The default behavior is to load:
+
+- transcripts information
+- cell and nucleus boundaries
+- feature metadata (gene_panel.json)
+
+For the full dataset (HPC): _time: 1-2min | memory: 24GBC_   
+
+```{r, eval=FALSE}
+?createGiottoXeniumObject
+g <- createGiottoXeniumObject(xenium_dir = data_path)
+# set instructions
+instructions(g, "save_dir") <- save_dir
+instructions(g, "save_plot") <- TRUE
+```
+
+There are a lot of other params for additional or alternative items you can load. The next subsections will explain a couple of them.
+
+### Specific filepaths
+
+```
+    expression_path = ,
+    cell_metadata_path = ,
+    transcript_path = ,
+    bounds_path = ,
+    gene_panel_json_path = , 
+```
+
+The convenience function auto-detects filepaths based on the Xenium directory path and the preferred file formats
+
+- `.parquet` for tabular (vs `.csv`)
+- `.h5` for matrix over other formats when available (vs `.mtx`)
+- `.zarr` is currently not supported.
+
+When you need to use a different file format or something is not in the expected output structure, you can supply a specific filepath to the convenience function using these params.
+
+
+### Quality value
+```
+    qv_threshold = 20 # default
+```
+The _Quality Value_ is a Phred-based 0-40 value that 10X provides for every detection in their transcripts output. Higher values mean higher confidence in the decoded transcript identity. By default 10X uses a cutoff of QV = 20 for transcripts to use downstream.
+
+_*setting a value other than 20 will make the loaded dataset different from the 10X-provided expression matrix and cell metadata._
+
+<details>
+<summary>QV Calculation</summary>
+
+1. Raw Q-score based on how likely it is that an observed code is to be the codeword that it gets mapped to vs less likely codeword.
+2. Adjustment of raw Q-score by binning the transcripts by Q-value then adjusting the exact Q per bin based on proportion of **Negative Control Codewords** detected within.
+
+[further info](https://www.10xgenomics.com/support/software/xenium-onboard-analysis/latest/algorithms-overview/xoa-algorithms#qvs)
+
+</details>
+
+### Transcript type splitting
+```
+    feat_type =  c(
+        "rna",
+        "NegControlProbe",
+        "UnassignedCodeword",
+        "NegControlCodeword"
+    ),
+    split_keyword = list(
+        c("NegControlProbe"),
+        c("UnassignedCodeword"),
+        c("NegControlCodeword)"
+    )
+```
+There are 4 types of transcript detections that 10X reports with their v2.0 pipeline:
+
+- **Gene expression** - This is the rna gene detections
+- **Negative Control Codeword** - (QC) Codewords that do not map to genes, but are in the codebook. Used to determine specificity of decoding algorithm.
+- **Negative Control Probe** - (QC) Probes in panel but target non-biological sequences. Used to determine specificity of assay.
+- **Unassigned Codeword** - (QC) Codewords that should not be used in the current panel
+
+With V3 on their Xenium prime outputs, there is additionally:
+
+- **Genomic Control Codeword** (QC) Probes for intergenic genomic DNA instead of transcripts
+
+<hr>
+
+The main thing to watch out for is that the other probe types should be separated out from the the **Gene expression** or **rna** feature type.
+
+How to deal with these different types of detections is easily adjustable. With the `feat_type` param you declare which categories/`feat_types` you want to split transcript detections into. Then with `split_keyword`, you provide a list of character vectors containing `grep()` terms to search for.
+
+Note that there are 4 `feat_types` declared in this set of defaults, but 3 items passed to `split_keyword`. Any transcripts not matched by items in `split_keyword`, get categorized as the first provided `feat_type` ("rna").
+
+
+### Centroids calculation
+Several Giotto operations require that a set of centroids are calculated for polygon spatial units.
+```{r, eval=FALSE}
+g <- addSpatialCentroidLocations(g, poly_info = "cell")
+g <- addSpatialCentroidLocations(g, poly_info = "nucleus")
+```
+
+
+### Simple visualization
+
+```{r, eval=FALSE}
+spatInSituPlotPoints(g,
+    polygon_feat_type = "cell",
+    feats = list(rna = head(featIDs(g))), 
+    use_overlap = FALSE, 
+    polygon_color = "cyan", 
+    polygon_line_size = 0.1
+)
+```
+
+```{r, echo=FALSE, fig.align="center", out.width="100%", fig.cap="Simple subcellular plotting to check data"}
+knitr::include_graphics("img/02_session3/situ_plot_head.png")
+```
+
+
+
+
+## Piecewise loading
+
+Giotto also provides the `importXenium()` import utility that allows independent creation of compatible Giotto subobjects for more flexibility.
+
+```{r, eval=FALSE}
+x <- importXenium(data_path)
+force(x)
+```
+
+```
+Giotto <XeniumReader>
+dir       : data/02_session3/ 
+qv_cutoff : 20 
+filetype  : transcripts -- parquet
+            boundaries  -- parquet
+            expression  -- h5
+            cell_meta   -- parquet
+funs      : load_transcripts()
+            load_polys()
+            load_cellmeta()
+            load_featmeta()
+            load_expression()
+            load_image()
+            load_aligned_image()
+            create_gobject()
+```
+
+### load giottoPoints transcripts
+
+```{r, eval=FALSE}
+x$qv <- 20 # default
+tx <- x$load_transcripts()
+plot(tx[[1]]$rna, dens = TRUE)
+```
+
+```{r, echo=FALSE, fig.align="center", out.width="80%", fig.cap="plot of Gene expression ('rna') density"}
+knitr::include_graphics("img/02_session3/tx_plot.png")
+```
+
+```{r, eval=FALSE}
+force(tx[[1]]$rna)
+rm(tx) # save space
+```
+
+```
+An object of class giottoPoints
+feat_type : "rna"
+Feature Information:
+ class       : SpatVector 
+ geometry    : points 
+ dimensions  : 479097, 10  (geometries, attributes)
+ extent      : 6000.001, 7000, -2200, -1400.012  (xmin, xmax, ymin, ymax)
+ coord. ref. :  
+ names       : feat_ID   transcript_id    cell_id overlaps_nucleus z_location    qv fov_name
+ type        :   <chr>           <chr>      <chr>            <int>      <num> <num>    <chr>
+ values      :   FBLN1 281487861612869 mcnjadoe-1                0      19.32    40      B11
+                PDGFRB 281487861612872 mcnjbidl-1                1      18.75    40      B11
+                PDGFRB 281487861612873 mcnjbidl-1                1      18.74    40      B11
+ nucleus_distance codeword_index feat_ID_uniq
+            <num>          <int>        <int>
+                0            334            1
+                0            289            2
+                0            289            3
+```
+
+
+### (optional) Loading pre-aggregated data
+
+Giotto can spatially aggregate the transcripts information based on a provided set of boundaries information, however 10X also provides a pre-aggregated set of cell by feature information and metadata. These values may be slightly different from those calculated by Giotto's pipeline, and are not loaded by default.
+
+Some care needs to be taken when loading this information:
+
+- The `feat_type` of the loaded expression information should be matched to the used `feat_type` params passed to the convenience function.
+- The `qv_threshold` used must be 20 since the 10X outputs are based on that cutoff.
 
 
 ```{r, eval=FALSE}
-save_dir <- "~/Documents/GitHub/giotto_workshop_2024/img/02_session3"
+x$filetype$expression <- "mtx" # change to mtx instead of .h5 which is not in the mini dataset
+ex <- x$load_expression()
+featType(ex)
+```
+```
+[1] "rna"                       "Negative Control Probe"    "Negative Control Codeword"
+[4] "Unassigned Codeword"      
 ```
 
-## Read in raw data
+The feature types here do not match what we established for the transcripts, so we can just change them.
+```{r, eval=FALSE}
+force(g)
+```
+```
+An object of class giotto 
+>Active spat_unit:  cell 
+>Active feat_type:  rna 
+[SUBCELLULAR INFO]
+polygons      : cell nucleus 
+features      : rna NegControlProbe UnassignedCodeword NegControlCodeword 
+[AGGREGATE INFO]
+spatial locations ----------------
+  [cell] raw
+  [nucleus] raw
+```
 
-- Transcript coordinates
-- Polygon coordinates
-- Visualizations
+```{r, eval=FALSE}
+featType(ex[[2]]) <- c("NegControlProbe")
+featType(ex[[3]]) <- c("NegControlCodeword")
+featType(ex[[4]]) <- c("UnassignedCodeword")
+```
 
-- affine mapping?
+Then we can just append them to the Giotto object.    
+Here we set up a second object since we will be using Giotto's own aggregation method downstream.
+```{r, eval=FALSE}
+g2 <- g
+# append the expression info
+g2 <- setGiotto(g2, ex)
 
-## Overlap txs & polygons
+# load cell metadata
+cx <- x$load_cellmeta()
+g2 <- setGiotto(g2, cx)
+force(g2)
+```
 
-- Typical aggregated workflow
-- Feature/molecule specific analysis
-- Visualizations
+```
+An object of class giotto 
+>Active spat_unit:  cell 
+>Active feat_type:  rna 
+[SUBCELLULAR INFO]
+polygons      : cell nucleus 
+features      : rna NegControlProbe UnassignedCodeword NegControlCodeword 
+[AGGREGATE INFO]
+expression -----------------------
+  [cell][rna] raw
+  [cell][NegControlProbe] raw
+  [cell][NegControlCodeword] raw
+  [cell][UnassignedCodeword] raw
+spatial locations ----------------
+  [cell] raw
+  [nucleus] raw
+```
 
-
-## Transcript enrichment GSEA
-
-
-text
-
-## Spatial location analysis
-
-- Spatial cell type co-localization analysis
-- Spatial niche analysis
-- Spatial niche trajectory analysis
-
-## Visualizations
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-zarr_exp <- "https://scc-ondemand1.bu.edu/pun/sys/dashboard/files/fs//projectnb/rd-spat/DATA/Public_data/Spatial/Multiplexing_RNA/xenium/v2.0_pipeline/FFPE_LungCancer/cell_features"
-
-datadir <- "/projectnb2/rd-spat/DATA/Public_data/Spatial/Multiplexing_RNA/xenium/v2.0_pipeline/FFPE_LungCancer/"
-
-manifest <- list.files(
-  datadir, full.names = TRUE,
-) |> as.list()
-names(manifest) <- list.files(datadir)
-force(names(manifest))
-  
-tx_path <- manifest$transcripts.csv.gz
-poly_cell_path <- manifest$cell_boundaries.csv.gz
-poly_nuc_path <- manifest$nucleus_boundaries.csv.gz
-    
-image_path <- manifest$Xenium_V1_humanLung_Cancer_FFPE_he_image.ome.tif
-aff_path <- manifest$Xenium_V1_humanLung_Cancer_FFPE_he_imagealignment.csv
-
-cell <- manifest$cells.csv.gz
-
-# ----- exploration
-
-# IMAGE #
-aff <- data.table::fread(aff_path)
-
-reticulate::source_python(file = "/projectnb/rd-spat/HOME/george/scripts/tifffile_convert.py")
-GiottoUtils::package_check("os", repository = "pip:os")
-GiottoUtils::package_check("multiprocessing", repository = "pip:multiprocessing")
-GiottoUtils::package_check("tifffile", repository = "pip:tifffile")
-
-out_tif <- "/projectnb/rd-spat/HOME/george/tmp/tifffile_testing/test.tif"
-
-# ometif_2_tif(image_path, output_file = out_tif, chunk_rows = chunk_rows, overwrite = TRUE)
-
-ometif_2_tif(image_path, output_file = out_tif, overwrite = TRUE)
-test <- createGiottoLargeImage(out_tif)
-
-n_before <- .nr(tx_arrow)
-tx_arrow <- dplyr::filter(tx_arrow, qv > qv_threshold)
-n_after <- .nr(tx_arrow)
-
-out_if_fmt <- "/projectnb/rd-spat/HOME/george/tmp/tifffile_testing/if%d.tif"
-source_if_fmt <- "/projectnb2/rd-spat/DATA/Public_data/Spatial/Multiplexing_RNA/xenium/v2.0_pipeline/FFPE_LungCancer//morphology_focus/morphology_focus_000%d.ome.tif"
-
-ometif_2_tif(sprintf(source_if_fmt, 0), output_file = sprintf(out_if_fmt, 0), overwrite = TRUE)
-ometif_2_tif(sprintf(source_if_fmt, 1), output_file = sprintf(out_if_fmt, 1), overwrite = TRUE)
-ometif_2_tif(sprintf(source_if_fmt, 2), output_file = sprintf(out_if_fmt, 2), overwrite = TRUE)
-ometif_2_tif(sprintf(source_if_fmt, 3), output_file = sprintf(out_if_fmt, 3), overwrite = TRUE)
-
-img_if_list <- lapply(
-  sprintf(out_if_fmt, 0:3),
-  createGiottoLargeImage
+```{r, eval=FALSE}
+spatInSituPlotPoints(g2,
+        # polygon shading params
+    polygon_fill = "cell_area",
+    polygon_fill_as_factor = FALSE,
+    polygon_fill_gradient_style = "sequential",
+    # polygon line params
+    polygon_color = "grey",
+    polygon_line_size = 0.1
 )
 
+spatInSituPlotPoints(g2,
+    # polygon shading params
+    polygon_fill = "transcript_counts",
+    polygon_fill_as_factor = FALSE,
+    polygon_fill_gradient_style = "sequential",
+    # polygon line params
+    polygon_color = "grey",
+    polygon_line_size = 0.1
+)
+```
 
 
 
-# # Example usage
-# input_file = "path/to/input/file.ome.tif"
-# output_file = "path/to/output/file.tif"
-# chunk_size = (1000, 1000)  # Adjust the chunk size as needed
-# num_processes = 4  # Adjust the number of processes based on available CPU cores
-# 
-# ometif_2_tif(input_file, output_file, chunk_size, num_processes)
+```{r, echo=FALSE, fig.cap="Example plot using 10X metadata. Left is 'cell_area', right is 'transcript_counts'"}
+knitr::include_graphics("img/02_session3/cmeta_plots.png")
+```
+
+```{r, eval=FALSE}
+rm(g2) # save space
+```
+
+## Xenium Images
+
+Xenium outputs have several image outputs. For this dataset:
+
+- `morphology.ome.tif` is a z-stacked image of the DAPI staining, with z levels separated as pages within the `ome.tif`. In this dataset, only pages 6 and 7 are really in focus.
+- `morphology_focus` is a folder containing single-channel image(s), but with the original z information collapsed into a single in-focus layer. For all datasets, image 0000 will be DAPI staining, but if you have additional stains, such as the multimodal segmentation, they will also be here. These are the recommended immunofluorescence staining images to import.
+- `Xenium_V1_humanLung_Cancer_FFPE_he_image.ome.tif` is an added on (in this case H&E) image with manual affine registration. 
+
+### Image metadata
+
+The `morphology_focus` directory may contain multiple images, but to know more information, we have to check the `ome.tif` `xml` metadata. With a normal dataset, you can use: 
+```
+`GiottoClass::ometif_metadata([filepath], node = "Channel")`
+```
+on one of the `morphology_focus` images, but since the mini dataset images are pre-processed, there is only an exported `.xml` to explore. The output of the code chunk below is the same as that from calling `ometif_metadata()` and looking for the `Channel` node.
+
+```{r, eval=FALSE}
+img_xml_path <- file.path(data_path, "morphology_focus", "morphology_focus_0000.xml")
+omemeta <- xml2::read_xml(img_xml_path)
+res <- xml2::xml_find_all(omemeta, "//d1:Channel", ns = xml2::xml_ns(omemeta))
+res <- Reduce(rbind, xml2::xml_attrs(res))
+rownames(res) <- NULL
+res <- as.data.frame(res)
+force(res)
+```
+
+```
+         ID                   Name SamplesPerPixel
+1 Channel:0                   DAPI               1
+2 Channel:1                    18S               1
+3 Channel:2 ATP1A1/CD45/E-Cadherin               1
+4 Channel:3      alphaSMA/Vimentin               1
+```
+
+### Image loading
+
+`morphology_focus` images need to be scaled by the micron scaling factor. Aligned images need to first be affine transformed then scaled. The micron scaling factor can be found in the json-like `experiment.xenium` file under `pixel_size` (0.2125 for this dataset).
+
+```{r, echo=FALSE, fig.align="center", out.width="80%", fig.cap="Spatial extent/bounds of transcripts (red), immunofluorescence morphology focus images (blue), H&E aligned image (gold). Lower right shows the affine matrix for aligning the H&E"}
+knitr::include_graphics("img/02_session3/img_orig_ext.png")
+```
+
+These transforms are normally done automatically when using:
+
+```
+# convenience function params
+    load_images = list(
+        img1 = "[img_path1.tif]",
+        img2 = "[img_path2.tif]",
+        img3 = "..."
+    ),
+    load_aligned_images = list(
+        aligned_img = c(
+            "[path to image.tif]",
+            "[path to magealignment.csv]"
+        )
+    )
+
+# importer params
+x$load_image(path = "[img_path1.tif]", name = "img1")
+x$load_image(path = "[img_path2.tif]", name = "img2")
+...
+x$load_aligned_image(
+    path = "[path to image.tif]",
+    imagealignment_path = "[path to magealignment.csv]",
+    name = "aligned_img"
+)
+```
+
+Specifically for the aligned image, there is also `read10xAffineImage()` which has similar params, but also asks for the micron scaling factor.
 
 
-# TRANSCRIPTS #
-
-tx <- data.table::fread(tx_path, colClasses = c(transcript_id = "character"))
-poly_cell_dt <- data.table::fread(poly_cell_path)
-poly_nuc_dt <- data.table::fread(poly_nuc_path)
-
-
-gpoints_list <- GiottoClass::createGiottoPoints(
-  tx,
-  x_colname = "x_location",
-  y_colname = "y_location",
-  feat_ID_colname = "feature_name",
-  feat_type = c("rna", "NegControlProbe", "UnassignedCodeword", "NegControlCodeword"),
-  split_keyword = list("NegControlProbe", "UnassignedCodeword", "NegControlCodeword")
+But for the mini dataset, the images are pre-processed and can be directly added.
+```{r, eval=FALSE}
+img_paths <- c(
+    sprintf("data/02_session3/morphology_focus/morphology_focus_%04d.tif", 0:3),
+    "data/02_session3/he_mini.tif"
+)
+img_list <- createGiottoLargeImageList(
+    img_paths, 
+    # naming is based on the channel metadata above
+    names = c("DAPI", "18S", "ATP1A1/CD45/E-Cadherin", "alphaSMA/Vimentin", "HE"),
+    use_rast_ext = TRUE,
+    verbose = FALSE
 )
 
-gp_filter <- gpoints_list$rna[gpoints_list$rna$qv >= 20]
+# make some images brighter
+img_list[[1]]@max_window <- 5000
+img_list[[2]]@max_window <- 5000
+img_list[[3]]@max_window <- 5000
 
-# where are the issue TX at?
-plot(gp_filter@spatVector, values = gp_filter$qv, type = "continuous", cex = 0.1, col = GiottoVisuals::getColors("magma"))
 
-library(ggplot2)
-type_qv <- data.table::rbindlist(
-  list(
-    data.table::data.table(type = "genes", qv =  gpoints_list$rna$qv),
-    data.table::data.table(type = "NegControlProbe", qv = gpoints_list$NegControlProbe$qv),
-    data.table::data.table(type = "UnassignedCodeword", qv = gpoints_list$UnassignedCodeword$qv),
-    data.table::data.table(type = "NegControlCodeword", qv = gpoints_list$NegControlCodeword$qv)
-  )
+# append images to gobject
+g <- setGiotto(g, img_list)
+
+# example plots
+spatInSituPlotPoints(g,
+    show_image = TRUE,
+    image_name = "HE",
+    polygon_feat_type = "cell",
+    polygon_color = "cyan",
+    polygon_line_size = 0.1,
+    polygon_alpha = 0
 )
-ggplot(data = type_qv, aes(x = type, y = qv, fill = type)) +
-  geom_violin()
+spatInSituPlotPoints(g,
+    show_image = TRUE,
+    image_name = "DAPI",
+    polygon_feat_type = "nucleus",
+    polygon_color = "cyan",
+    polygon_line_size = 0.1,
+    polygon_alpha = 0
+)
+spatInSituPlotPoints(g,
+    show_image = TRUE,
+    image_name = "18S",
+    polygon_feat_type = "cell",
+    polygon_color = "cyan",
+    polygon_line_size = 0.1,
+    polygon_alpha = 0
+)
+spatInSituPlotPoints(g,
+    show_image = TRUE,
+    image_name = "ATP1A1/CD45/E-Cadherin",
+    polygon_feat_type = "nucleus",
+    polygon_color = "cyan",
+    polygon_line_size = 0.1,
+    polygon_alpha = 0
+)
+```
 
 
-# POLYS #
-
-gpoly_cell <- createGiottoPolygon(poly_cell_dt, name = "cell")
-gpoly_nuc <- createGiottoPolygon(poly_nuc_dt, name = "nucleus")
-
-mini_ext <- ext(6500,7500, 1300, 2000)
-
-plot(gpoly_cell, col = "magenta", ext = mini_ext, background = "black")
-plot(gpoly_nuc, add = T, col = "cyan", ext = mini_ext)
-
-plot(gp_filter, add = T, col = "yellow", alpha = 0.3, ext = mini_ext, raster = F)
+```{r, echo=FALSE, fig.cap="H&E and Cell polys (top left), DAPI and nuclear polys (top right), 18S and cell polys (lower left), ATP1A1/CD45/E-Cadherin and nuclear polys (lower right)"}
+knitr::include_graphics("img/02_session3/imgplots.png")
+```
 
 
-# giotto #
+## Spatial aggregation
 
-g <- giotto()
-g <- setGiotto(g, gp_filter)
-g <- setGiotto(g, gpoly_cell)
-g <- setGiotto(g, gpoly_nuc)
+First calculate the `feat_info` 'rna' transcripts overlapped by the `spatial_info` 'cell' polygons with `calculateOverlap()`. Then, the overlaps information (relationships between points and polygons that overlap them) gets converted into a count matrix with `overlapToMatrix()`.
+
+```{r, eval=FALSE}
+g <- calculateOverlap(g,
+    spatial_info = "cell",
+    feat_info = "rna"
+)
+g <- overlapToMatrix(g)
+```
 
 
-g <- calculateOverlap(
-  g,
-  feat_info = "rna",
-  spatial_info = "cell",
-  return_gobject = T
+## Aggregate analyses workflow
+
+### Filtering
+```{r, eval=FALSE}
+# very permissive filtering. Mainly for removing 0 values
+g <- filterGiotto(g,
+    expression_threshold = 1,
+    feat_det_in_min_cells = 1,
+    min_det_feats_per_cell = 5
+)
+```
+
+```
+Feature type:  rna 
+Number of cells removed:  0  out of  7129 
+Number of feats removed:  0  out of  377 
+```
+
+### Normalization
+```{r, eval=FALSE}
+g <- normalizeGiotto(g)
+g <- addStatistics(g)
+
+spatInSituPlotPoints(g,
+    polygon_fill = "nr_feats",
+    polygon_fill_gradient_style = "sequential",
+    polygon_fill_as_factor = FALSE
+)
+spatInSituPlotPoints(g,
+    polygon_fill = "total_expr",
+    polygon_fill_gradient_style = "sequential",
+    polygon_fill_as_factor = FALSE
+)
+```
+
+```{r, echo=FALSE, fig.cap="'nr_feats' - Number of different gene species detected per cell (left), 'total_expr' - total detections per cell (right)"}
+knitr::include_graphics("img/02_session3/stats_plot.png")
+```
+
+When there are a lot of features, we would also select only the interesting highly variable features so that downstream dimension reduction has more meaningful separation. Here we skip HVF detection since there are only 377 genes.
+
+### Dimension Reduction
+
+Dimensional reduction of expression space to visualize expressional differences between cells and help with clustering.
+
+```{r, eval=FALSE}
+g <- runPCA(g, feats_to_use = NULL)
+# feats_to_use = NULL since there are no HVFs calculated. Use all genes.
+screePlot(g, ncp = 30)
+```
+
+```{r, echo=FALSE, out.width="60%", fig.cap="Plot of variance explained in the first 30 out of 100 principle components calculated"}
+knitr::include_graphics("img/02_session3/screeplot.png")
+```
+
+```{r, eval=FALSE}
+g <- runUMAP(g, 
+    dimensions_to_use = seq(15), 
+    n_neighbors = 40 # default
+)
+```
+
+
+```{r, eval=FALSE}
+plotPCA(g)
+plotUMAP(g)
+```
+
+```{r, echo=FALSE, fig.cap="PCA plot showing the first 2 PCs (left), UMAP generated from first 15 PCs (right)"}
+knitr::include_graphics("img/02_session3/dimplots.png")
+```
+
+### Clustering
+
+```{r, eval=FALSE}
+g <- createNearestNetwork(g,
+    dimensions_to_use = seq(15), 
+    k = 40
 )
 
-g <- overlapToMatrix(
-  g,
-  poly_info = "cell",
-  feat_info = "rna",
-  return_gobject = TRUE
+# takes roughly 1 min to run
+g <- doLeidenCluster(g)
+
+plotPCA_3D(g, 
+    cell_color = "leiden_clus", 
+    point_size = 1,
+)
+plotUMAP(g, 
+    cell_color = "leiden_clus", 
+    point_size = 0.1, 
+    point_shape = "no_border"
+)
+```
+
+```{r, echo=FALSE, fig.cap="3D plot showing first PCs with leiden clustering annotations (left), UMAP plot showing leiden clustering results (right)"}
+knitr::include_graphics("img/02_session3/clustered_dimplots.png")
+```
+
+```{r, eval=FALSE}
+spatInSituPlotPoints(g,
+    polygon_fill = "leiden_clus",
+    polygon_fill_as_factor = TRUE,
+    polygon_alpha = 1,
+    show_image = TRUE,
+    image_name = "HE"
+)
+```
+
+```{r, echo=FALSE, fig.cap="Spatial plot with leiden clustering annotations."}
+knitr::include_graphics("img/02_session3/leiden_spat.png")
+```
+
+
+## Niche clustering
+
+Building on top of these leiden annotations, we can define spatial niche signatures based on which leiden types are often found together.
+
+### Spatial network
+
+First a spatial network must be generated so that spatial relationships between cells can be understood.
+
+```{r, eval=FALSE}
+g <- createSpatialNetwork(g,
+    method = "Delaunay"
 )
 
-savedir <- "/projectnb2/rd-spat/HOME/george/projects/xenium_processing/lung_test/"
-instructions(g, "save_dir") <- savedir
-instructions(g, "save_plot") <- TRUE
-instructions(g, "return_plot") <- FALSE
-instructions(g, "show_plot") <- FALSE
+spatPlot2D(g, 
+    point_shape = "no_border", 
+    show_network = TRUE, 
+    point_size = 0.1,
+    point_alpha = 0.5,
+    network_color = "grey"
+)
+```
+
+```{r, echo=FALSE, fig.cap="Delaunay spatial network`"}
+knitr::include_graphics("img/02_session3/spatnet.png")
+```
+
+### Niche calculation
+
+Calculate a proportion table for a cell metadata table for all the spatial neighbors of each cell. This means that with each cell established as the center of its local niche, the enrichment of each leiden cluster label is found for that local niche.
+The results are stored as a new spatial enrichment entry called 'leiden_niche'
+
+```{r, eval=FALSE}
+g <- calculateSpatCellMetadataProportions(g,
+    spat_network = "Delaunay_network",
+    metadata_column = "leiden_clus", 
+    name = "leiden_niche"
+)
+```
 
 
-g <- addStatistics(g, expression_values = "raw")
-spatPlot2D(g, cell_color = "total_expr", color_as_factor = FALSE,
-           point_shape = "no_border", point_size = 0.1, gradient_style = "s",
-           background_color = "black",
-           save_param = list(
-             base_width = 15,
-             base_height = 6
-           ))
+### kmeans clustering based on niche signature
 
-hist(pDataDT(g)$nr_feats)
+```{r, eval=FALSE}
+# retrieve the niche info
+prop_table <- getSpatialEnrichment(g, name = "leiden_niche", output = "data.table")
+# convert to matrix
+prop_matrix <- GiottoUtils::dt_to_matrix(prop_table)
 
-
-filterCombinations(
-  g,
-  feat_det_in_min_cells = c(100, 200, 200),
-  min_det_feats_per_cell = c(10, 20, 30),
-  expression_thresholds = 1
+# perform kmeans clustering
+set.seed(1234) # make kmeans clustering reproducible
+prop_kmeans <- kmeans(
+    x = prop_matrix, 
+    centers = 7, # controls how many clusters will be formed
+    iter.max = 1000,
+    nstart = 100
+)
+prop_kmeansDT = data.table::data.table(
+    cell_ID = names(prop_kmeans$cluster),
+    niche = prop_kmeans$cluster
 )
 
-g <- filterGiotto(
-  g,
-  feat_det_in_min_cells = 100,
-  min_det_feats_per_cell = 10,
-  expression_threshold = 1
+# return kmeans clustering on niche to gobject
+g <- addCellMetadata(g, 
+    new_metadata = prop_kmeansDT, 
+    by_column = TRUE,
+    column_cell_ID = "cell_ID"
+)
+
+# visualize niches
+spatInSituPlotPoints(g,
+    show_image = TRUE,
+    image_name = "HE",
+    polygon_fill = "niche",
+    # polygon_fill_code = getColors("Accent", 8),
+    polygon_alpha = 1,
+    polygon_fill_as_factor = TRUE
+)
+
+ggplot2::ggplot(
+    cx, ggplot2::aes(fill = as.character(leiden_clus), 
+                     y = 1, 
+                     x = as.character(niche))) + 
+    ggplot2::geom_bar(position = "fill", stat = "identity") + 
+    ggplot2::scale_fill_manual(values = c(
+        "#E7298A", "#FFED6F", "#80B1D3", "#E41A1C", "#377EB8", "#A65628", 
+        "#4DAF4A", "#D9D9D9", "#FF7F00", "#BC80BD", "#666666", "#B3DE69")
+    )
+```
+
+```{r, echo=FALSE, fig.cap="Leiden annotation-based spatial niches"}
+knitr::include_graphics("img/02_session3/niches_spat.png")
+```
+
+```{r, echo=FALSE, fig.cap="Stacked barplot of leiden annotation composition by niche"}
+knitr::include_graphics("img/02_session3/niches_bar.png")
+```
+
+## Cell proximity enrichment
+
+Using a spatial network, determine if there is an enrichment or depletion between annotation types by calculating the observed over the expected frequency of interactions.
+
+```{r, eval=FALSE}
+# uses a lot of memory
+leiden_prox <- cellProximityEnrichment(g,
+    cluster_column = "leiden_clus",
+    spatial_network_name = "Delaunay_network",
+    adjust_method = "fdr",
+    number_of_simulations = 2000
+)
+
+cellProximityBarplot(g,
+    CPscore = leiden_prox,
+    min_orig_ints = 5, # minimum original cell-cell interactions
+    min_sim_ints = 5 # minimum simulated cell-cell interactions
+)
+```
+
+```{r, echo=FALSE, fig.cap="Cell-cell interaction enrichments and depletions (left). Number of interactions of each type found (right)"}
+knitr::include_graphics("img/02_session3/cc_prox.png")
+```
+
+Most enrichments are self-self interactions, which is expected. However, 6--8 and 2--9 stand out as being hetero interactions that are enriched with a large number of interactions. We can take a closer look by plotting these annotation pairs with colors that stand out.
+
+```{r, eval=FALSE}
+# set up colors
+other_cell_color <- rep("grey", 12)
+int_6_8 <- int_2_9 <- other_cell_color
+int_6_8[c(6, 8)] <- c("orange", "cornflowerblue")
+int_2_9[c(2, 9)] <- c("orange", "cornflowerblue")
+
+spatInSituPlotPoints(g,
+    polygon_fill = "leiden_clus",
+    polygon_fill_as_factor = TRUE,
+    polygon_fill_code = int_6_8,
+    polygon_line_size = 0.1,
+    polygon_alpha = 1,
+    show_image = TRUE,
+    image_name = "HE"
+)
+spatInSituPlotPoints(g,
+    polygon_fill = "leiden_clus",
+    polygon_fill_as_factor = TRUE,
+    polygon_fill_code = int_2_9,
+    polygon_line_size = 0.1,
+    show_image = TRUE,
+    polygon_alpha = 1,
+    image_name = "HE"
+)
+```
+
+```{r, echo=FALSE, fig.cap="Spatial plot of enriched leiden annotation 6 to 8 interactions"}
+knitr::include_graphics("img/02_session3/cc_enrich1.png")
+```
+
+```{r, echo=FALSE, fig.cap="Spatial plot of enriched leiden annotation 2 to 9 interactions"}
+knitr::include_graphics("img/02_session3/cc_enrich2.png")
+```
+
+
+
+
+
+
+
+## Pseudovisium
+
+Another thing we can do is create a "pseudovisium" dataset by tessellating across this dataset using the same layout and resolution as a Visium capture array.
+
+`makePseudoVisium` generates a Visium array of circular polygons across the spatial extent provided.
+
+Here we use `ext()` with the `prefer` arg pointing to the polygon and points data and `all_data = TRUE`, meaning that the combined spatial extent of those two data types will be returned, giving a good measure of where all the data in the object is at the moment. 
+
+`micron_size = 1` since the Xenium data is already scaled to microns. 
+
+```{r, eval=FALSE}
+pvis <- makePseudoVisium(
+    extent = ext(g,
+        prefer = c("polygon", "points"),
+        all_data = TRUE # this is the default
+    ),
+    micron_size = 1
+)
+g <- setGiotto(g, pvis)
+g <- addSpatialCentroidLocations(g, poly_info = "pseudo_visium")
+
+plot(pvis)
+```
+
+```{r, out.width="60%", echo=FALSE, fig.cap="Pseudovisium spot geometries generated by `makePseudoVisium()`"}
+knitr::include_graphics("img/02_session3/pvis_poly.png")
+```
+
+### Pseudovisium aggregation and workflow
+
+Make 'pseudo_visium' the new default spatial unit then proceed with aggregation and usual aggregate workflow
+```{r, eval=FALSE}
+activeSpatUnit(g) <- "pseudo_visium"
+
+g <- calculateOverlap(g,
+    spatial_info = "pseudo_visium",
+    feat_info = "rna"
+)
+g <- overlapToMatrix(g)
+
+g <- filterGiotto(g,
+    expression_threshold = 1,
+    feat_det_in_min_cells = 1,
+    min_det_feats_per_cell = 100
 )
 
 g <- normalizeGiotto(g)
+g <- addStatistics(g)
 
-# no HVF calc since there are not that many different gene species
+spatInSituPlotPoints(g,
+    show_image = TRUE,
+    image_name = "HE",
+    polygon_feat_type = "pseudo_visium",
+    polygon_fill = "total_expr",
+    polygon_fill_gradient_style = "sequential"
+)
+```
 
+```{r, echo=FALSE, fig.cap="Pseudo visium total detections per spot"}
+knitr::include_graphics("img/02_session3/pvis_total_expr.png")
+```
 
-
-g <- runPCA(gobject = g,
-           spat_unit = 'cell',
-           expression_values = 'scaled',
-           feats_to_use = NULL,
-           scale_unit = F,
-           center = F)
-
-screePlot(g, ncp = 20)
-
-
-my_colors <- c("#6D0C00", "magenta", "#FFBBCE", "#FFDDDF", "#FFEEEE", "#FFFEFE", "white", "white")
-
-
-plotPCA(g,
-        cell_color = "total_expr",
-        color_as_factor = FALSE,
-        cell_color_gradient = my_colors,
-        point_shape = "no_border",
-        gradient_style = "s",
-        background = "black",
-        point_size = 0.1,
-        save_param = list(
-          save_name = "pca_expr"
-        )
+```{r, eval=FALSE}
+g <- runPCA(g, feats_to_use = NULL)
+g <- runUMAP(g, 
+    dimensions_to_use = seq(15), 
+    n_neighbors = 15
 )
 
-
-
-g <- runUMAPprojection(
-  g, dimensions_to_use = 1:15,
-  random_subset = 10000
+g <- createNearestNetwork(g,
+    dimensions_to_use = seq(15), 
+    k = 15
 )
 
-dimPlot2D(
-  g,
-  dim_reduction_name = "umap.projection",
-  dim_reduction_to_use = "umap",
-  cell_color = "total_expr",
-  cell_color_gradient = my_colors,
-  color_as_factor = FALSE,
-  point_shape = "no_border",
-  gradient_style = "s",
-  background = "black",
-  point_size = 0.1,
-  save_param = list(
-    save_name = "umap.projection_expr"
-  )
+g <- doLeidenCluster(g, resolution = 1.5)
+
+# plots
+plotPCA(g, cell_color = "leiden_clus", point_size = 2)
+plotUMAP(g, cell_color = "leiden_clus", point_size = 2)
+spatInSituPlotPoints(g,
+    polygon_feat_type = "pseudo_visium",
+    polygon_fill = "leiden_clus",
+    polygon_fill_as_factor = TRUE
 )
-
-g <- createNearestNetwork(g)
-
-# set seed for reproducibility
-set.seed(123)
-g_mini <- subsetGiotto(g, cell_ids = sample(spatIDs(g), size = 10000))
-
-g_mini <- createNearestNetwork(g_mini)
-
-g_mini <- doLeidenCluster(g_mini, resolution = 1.4)
-
-# dimPlot2D(
-#   g_mini,
-#   spat_unit = "cell",
-#   feat_type = "rna",
-#   cell_color = "leiden_clus", 
-#   dim_reduction_name = "umap.projection", 
-#   dim_reduction_to_use = "umap",
-#   save_param = list(
-#     save_name = "mini_umap_1.2"
-#   )
-# )
-
-clus_color <- getColors("Vivid", n = 17)[]
-clus_color[9] <- "lightgrey"
-clus_color[5] <- "yellow"
-clus_color[3] <- "#00AAFF"
-clus_color[6] <- "darkgreen"
-clus_color <- clus_color[c(2, 5, 1, 7, 6, 3, 4, 9, 8, 10, 12, 11, 14, 13, 15, 16, 17)]
-
-         
-clus_color <- c("#00AAFF", "#E58606", "#B763A7", "#437478", "#87727B",
-                "darkgreen", "#56BC9D", "#5668AF", "yellow", "#B99F3A",
-                "#E5625E", "#448DAE", "#A5AA99", "#D8497A", "#93538D",
-                "#BF5C91", "lightgrey")
-
-
-
-dimPlot2D(
-  g_mini,
-  spat_unit = "cell",
-  feat_type = "rna",
-  cell_color = "leiden_clus", 
-  cell_color_code = clus_color,
-  dim_reduction_name = "umap.projection", 
-  dim_reduction_to_use = "umap",
-  save_param = list(
-    save_name = "mini_umap_1.4"
-  )
+spatInSituPlotPoints(g,
+    polygon_feat_type = "pseudo_visium",
+    polygon_fill = "leiden_clus",
+    polygon_fill_as_factor = TRUE,
+    show_image = TRUE,
+    image_name = "HE"
 )
-
-# 1.4 seems like a good res
-# project values back via kNN classifier (FNN::knn)
+```
 
 
-g <- doClusterProjection(
-  target_gobject = g,
-  target_cluster_label_name = "leiden_clus",
-  source_gobject = g_mini, # res 1.4
-  source_cluster_labels = "leiden_clus"
-)
-
-dimPlot2D(g, cell_color = "leiden_clus",
-          cell_color_code = clus_color[c(1, 10:17, 2:9)],
-          dim_reduction_to_use = "umap",
-          dim_reduction_name = "umap.projection",
-          save_param = list(
-            save_name = "umap.project_1.4"
-          ))
-
-cellmeta <- pDataDT(g)
-cellmeta[, major_clus := leiden_clus]
-cellmeta[major_clus %in% c(1, 7, 6, 8, 3, 5), major_clus := "combined_1"]
-m_clus <- cellmeta[, c("cell_ID", "major_clus")]
-g <- addCellMetadata(g, new_metadata = m_clus, by_column = T)
-
-spatPlot2D(g, cell_color = "leiden_clus",
-           point_size = 0.1,
-           point_shape = "no_border",
-           cell_color_code = clus_color[c(1, 10:17, 2:9)],
-           background = "black",
-           save_param = list(
-             base_width = 15,
-             base_height = 6,
-             save_name = "spat_leiden"
-           ))
-
-# spatPlot2D(g, cell_color = "major_clus",
-#            point_size = 0.1,
-#            point_shape = "no_border",
-#            cell_color_code = clus_color[c(1, 10:17, 2:9)][c(1:3,5:9, 14, 17, 11)],
-#            background = "black",
-#            save_param = list(
-#              base_width = 15,
-#              base_height = 6,
-#              save_name = "spat_major"
-#            ))
-
-spatFeatPlot2D(g, feats = c("MKI67", "CD3E", "CD4", "CD8A", "CD19", "CD79A"),
-               point_size = 0.1,
-               point_shape = "no_border",
-               background = "black",
-               cow_n_col = 1L,
-               gradient_style = "s",
-               save_param = list(
-                 base_width = 15,
-                 base_height = 30
-               ))
-
-spatFeatPlot2D(g, feats = c("CD68", "CD27", "SFTA2", "KRT7", "SERPINB3", "SOX2", "SMOC"),
-               point_size = 0.1,
-               point_shape = "no_border",
-               background = "black",
-               cow_n_col = 1L,
-               gradient_style = "s",
-               save_param = list(
-                 base_width = 15,
-                 base_height = 30
-               ))
-
-
-# niches
-g = createSpatialNetwork(
-  gobject = g,
-  spat_unit = 'cell',
-  method = 'Delaunay'
-)
-
-g = calculateSpatCellMetadataProportions(
-  gobject = g,
-  spat_unit = 'cell',
-  feat_type = 'rna',
-  spat_network = 'Delaunay_network',
-  metadata_column = 'leiden_clus',
-  name = 'proportion'
-)
-
-
-# visualize niche-level enrichment for leiden cluster 3 in spat_unit "cell"
-spatPlot2D(
-  gobject = g,
-  spat_unit = 'cell',
-  point_size = 0.1,
-  spat_enr_names = 'proportion',
-  color_as_factor = FALSE,
-  gradient_style = 'sequential',
-  cell_color = '3',
-  point_shape = "no_border",
-  save_param = list(
-    save_name = "niche_3",
-    base_width = 15,
-    base_height = 6
-  )
-)
-
-
-prop_table = getSpatialEnrichment(
-  g, spat_unit = 'cell', name = 'proportion', output = 'data.table'
-)
-# convert the data.table to a sparse Matrix with row and colnames
-# here we use a utility function to perform the operation
-prop_matrix = GiottoUtils::dt_to_matrix(prop_table)
-
-
-
-# These enrichments are essentially a measure of how many cells of each
-# leiden cluster exist in the local region
-# 
-# Using kmeans, we can classify each cell by its niche leiden cluster proportions
-set.seed(12345) # set seed for kmeans
-prop_kmeans = kmeans(x = prop_matrix, centers = 6, iter.max = 100, nstart = 3)
-prop_kmeansDT = data.table::data.table(
-  cell_ID = names(prop_kmeans$cluster), 
-  niche = prop_kmeans$cluster
-)
-
-# add kmeans clustering of niches to cell metadata
-g = addCellMetadata(
-  g, spat_unit = 'cell' , 
-  new_metadata = prop_kmeansDT, 
-  by_column = TRUE,
-  column_cell_ID = 'cell_ID'
-)
-
-# Spatially visualize the niches
-spatPlot(gobject = g, 
-         show_network = TRUE,
-         network_color = 'lightgray', 
-         spatial_network_name = 'Delaunay_network',
-         cell_color = 'niche',
-         point_size = 0.1,
-         point_shape = "no_border",
-         save_param = list(
-           save_name = "niches",
-           base_width = 15,
-           base_height = 6
-         ))
+```{r, echo=FALSE, fig.cap="Leiden clustering in PCA (top left) and UMAP (top right) spaces, and in spatial plot with no image (bottom left), and with image (bottom right)"}
+knitr::include_graphics("img/02_session3/pvis_clustering.png")
+```
 
 
 
@@ -514,21 +969,10 @@ spatPlot(gobject = g,
 
 
 
-# Gene enrichment
-scran_markers <- findScranMarkers_one_vs_all(
-  g,
-  cluster_column = "leiden_clus",
-  expression_values = "normalized"
-)
 
-topgenes_scran = scran_markers[, head(.SD, 2), by = 'cluster']$feats
 
-# violinplot
-violinPlot(g,
-           feats = unique(topgenes_scran), 
-           cluster_column = 'leiden_clus',
-           strip_text = 10, strip_position = 'right',
-           save_param = list(base_width = 5))
+
+
 
 
 
