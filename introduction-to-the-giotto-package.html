@@ -546,19 +546,58 @@ Figure 4.1: Overview of the modular Giotto Suite ecosystem
 <h3><span class="header-section-number">4.3.1</span> Giotto installation<a href="introduction-to-the-giotto-package.html#giotto-installation-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Giotto Suite is currently available installable only from GitHub, but we are actively working on getting it into a major repository.
 Much of this already covered in Section 2.2, but the highlights are:</p>
-<ol style="list-style-type: decimal">
-<li>Ensure your system</li>
-</ol>
-<p>To install the currently released version of Giotto on R 4.4 in a single step, we recommend using <em>pak</em>.</p>
+<div id="system-prerequisites" class="section level4 hasAnchor" number="4.3.1.1">
+<h4><span class="header-section-number">4.3.1.1</span> System prerequisites<a href="introduction-to-the-giotto-package.html#system-prerequisites" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li>for windows, <em>Rtools</em> needs to be installed</li>
+<li>a major dependency <em>terra</em> needs <code>GDAL (&gt;= 2.2.3), GEOS (&gt;= 3.4.0), PROJ (&gt;= 4.9.3), sqlite3</code> on linux</li>
+</ul>
+</div>
+<div id="installation-of-released-version" class="section level4 hasAnchor" number="4.3.1.2">
+<h4><span class="header-section-number">4.3.1.2</span> Installation of released version<a href="introduction-to-the-giotto-package.html#installation-of-released-version" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>To install the currently released version of Giotto in a single step:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="introduction-to-the-giotto-package.html#cb12-1" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pak</span>(<span class="st">&quot;drieslab/Giotto&quot;</span>)</span></code></pre></div>
+<p>This should automatically install all the Giotto dependencies and other Giotto module packages.</p>
+</div>
+<div id="installation-of-dev-branch-giotto-packages" class="section level4 hasAnchor" number="4.3.1.3">
+<h4><span class="header-section-number">4.3.1.3</span> Installation of dev branch Giotto packages<a href="introduction-to-the-giotto-package.html#installation-of-dev-branch-giotto-packages" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>You can install dev branch versions by using <code>devtools::install_github()</code></p>
+<p>Core module dev branchs:</p>
+<ul>
+<li>“<a href="mailto:drieslab/Giotto@suite" class="email">drieslab/Giotto@suite</a>_dev”</li>
+<li>“<a href="mailto:drieslab/GiottoVisuals@dev" class="email">drieslab/GiottoVisuals@dev</a>”</li>
+<li>“<a href="mailto:drieslab/GiottoClass@dev" class="email">drieslab/GiottoClass@dev</a>”</li>
+<li>“<a href="mailto:drieslab/GiottoUtils@dev" class="email">drieslab/GiottoUtils@dev</a>”</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="introduction-to-the-giotto-package.html#cb13-1" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;drieslab/GiottoClass@dev&quot;</span>)</span></code></pre></div>
+<p><em>pak</em> tends to forcibly install all dependencies, which can have issues when working with multiple dev branch packages.</p>
+</div>
+<div id="common-install-issues" class="section level4 hasAnchor" number="4.3.1.4">
+<h4><span class="header-section-number">4.3.1.4</span> Common install issues<a href="introduction-to-the-giotto-package.html#common-install-issues" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>If installing on an R version earlier than 4.4, pak can throw errors when installing Matrix. To get around this, install <em>Matrix v1.6-5</em> and then installing <em>Giotto</em> with <em>pak</em> should work.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="introduction-to-the-giotto-package.html#cb14-1" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_version</span>(<span class="st">&quot;Matrix&quot;</span>, <span class="at">version =</span> <span class="st">&quot;1.6-5&quot;</span>)</span></code></pre></div>
+<p>If you come across the <code>function 'as_cholmod_sparse' not provided by package 'Matrix'</code> error when running Giotto, reinstalling <em>irlba</em> from source may resolve it.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="introduction-to-the-giotto-package.html#cb15-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;irlba&quot;</span>, <span class="at">type =</span> <span class="st">&quot;source&quot;</span>)</span></code></pre></div>
+<pre><code>## # Downloading packages -------------------------------------------------------
+## - Downloading irlba from CRAN ...               OK [228.2 Kb in 0.36s]
+## Successfully downloaded 1 package in 1.2 seconds.
+## 
+## The following package(s) will be installed:
+## - irlba [2.3.5.1]
+## These packages will be installed into &quot;~/work/giotto_workshop_2024/giotto_workshop_2024/renv/library/linux-ubuntu-jammy/R-4.4/x86_64-pc-linux-gnu&quot;.
+## 
+## # Installing packages --------------------------------------------------------
+## - Installing irlba ...                          OK [built from source and cached in 5.7s]
+## Successfully installed 1 package in 5.7 seconds.</code></pre>
+</div>
 </div>
 <div id="python-environment" class="section level3 hasAnchor" number="4.3.2">
 <h3><span class="header-section-number">4.3.2</span> Python environment<a href="introduction-to-the-giotto-package.html#python-environment" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="default-installation" class="section level4 hasAnchor" number="4.3.2.1">
 <h4><span class="header-section-number">4.3.2.1</span> Default installation<a href="introduction-to-the-giotto-package.html#default-installation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>In order to make use of python packages, the first thing to do after installing Giotto for the first time is to create a giotto python environment. Giotto provides the following as a convenience wrapper around <em>reticulate</em> functions to setup a default environment.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="introduction-to-the-giotto-package.html#cb13-1" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
-<span id="cb13-2"><a href="introduction-to-the-giotto-package.html#cb13-2" tabindex="-1"></a><span class="fu">installGiottoEnvironment</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="introduction-to-the-giotto-package.html#cb17-1" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
+<span id="cb17-2"><a href="introduction-to-the-giotto-package.html#cb17-2" tabindex="-1"></a><span class="fu">installGiottoEnvironment</span>()</span></code></pre></div>
 <p>Two things are needed for python to work:</p>
 <ol style="list-style-type: decimal">
 <li>A conda (e.g. miniconda or anaconda) installation which is the package and environment management system.</li>
@@ -580,17 +619,17 @@ It will contain several default packages that Giotto installs:</p>
 <div id="custom-installs" class="section level4 hasAnchor" number="4.3.2.2">
 <h4><span class="header-section-number">4.3.2.2</span> Custom installs<a href="introduction-to-the-giotto-package.html#custom-installs" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Custom python environments can be made by first setting up a new environment and establishing the name and python version to use.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="introduction-to-the-giotto-package.html#cb14-1" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">conda_create</span>(<span class="at">envname =</span> <span class="st">&quot;[name of env]&quot;</span>, <span class="at">python_version =</span> ???)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="introduction-to-the-giotto-package.html#cb18-1" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">conda_create</span>(<span class="at">envname =</span> <span class="st">&quot;[name of env]&quot;</span>, <span class="at">python_version =</span> ???)</span></code></pre></div>
 <p>Following that, one or more python packages to install can be added to the environment.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="introduction-to-the-giotto-package.html#cb15-1" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">py_install</span>(</span>
-<span id="cb15-2"><a href="introduction-to-the-giotto-package.html#cb15-2" tabindex="-1"></a>  <span class="at">pip =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb15-3"><a href="introduction-to-the-giotto-package.html#cb15-3" tabindex="-1"></a>  <span class="at">envname =</span> <span class="st">&#39;[name of env]&#39;</span>,</span>
-<span id="cb15-4"><a href="introduction-to-the-giotto-package.html#cb15-4" tabindex="-1"></a>  <span class="at">packages =</span> <span class="fu">c</span>(</span>
-<span id="cb15-5"><a href="introduction-to-the-giotto-package.html#cb15-5" tabindex="-1"></a>      <span class="st">&quot;package1&quot;</span>,</span>
-<span id="cb15-6"><a href="introduction-to-the-giotto-package.html#cb15-6" tabindex="-1"></a>      <span class="st">&quot;package2&quot;</span>,</span>
-<span id="cb15-7"><a href="introduction-to-the-giotto-package.html#cb15-7" tabindex="-1"></a>      <span class="st">&quot;...&quot;</span></span>
-<span id="cb15-8"><a href="introduction-to-the-giotto-package.html#cb15-8" tabindex="-1"></a>  )</span>
-<span id="cb15-9"><a href="introduction-to-the-giotto-package.html#cb15-9" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="introduction-to-the-giotto-package.html#cb19-1" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">py_install</span>(</span>
+<span id="cb19-2"><a href="introduction-to-the-giotto-package.html#cb19-2" tabindex="-1"></a>  <span class="at">pip =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb19-3"><a href="introduction-to-the-giotto-package.html#cb19-3" tabindex="-1"></a>  <span class="at">envname =</span> <span class="st">&#39;[name of env]&#39;</span>,</span>
+<span id="cb19-4"><a href="introduction-to-the-giotto-package.html#cb19-4" tabindex="-1"></a>  <span class="at">packages =</span> <span class="fu">c</span>(</span>
+<span id="cb19-5"><a href="introduction-to-the-giotto-package.html#cb19-5" tabindex="-1"></a>      <span class="st">&quot;package1&quot;</span>,</span>
+<span id="cb19-6"><a href="introduction-to-the-giotto-package.html#cb19-6" tabindex="-1"></a>      <span class="st">&quot;package2&quot;</span>,</span>
+<span id="cb19-7"><a href="introduction-to-the-giotto-package.html#cb19-7" tabindex="-1"></a>      <span class="st">&quot;...&quot;</span></span>
+<span id="cb19-8"><a href="introduction-to-the-giotto-package.html#cb19-8" tabindex="-1"></a>  )</span>
+<span id="cb19-9"><a href="introduction-to-the-giotto-package.html#cb19-9" tabindex="-1"></a>)</span></code></pre></div>
 <p>Once an environment has been set up, <em>Giotto</em> can hook into it.</p>
 </div>
 <div id="using-a-specific-environment" class="section level4 hasAnchor" number="4.3.2.3">
@@ -612,17 +651,56 @@ It will contain several default packages that Giotto installs:</p>
 <p>Method 2 is most recommended when there is a non-standard python environment to regularly use with Giotto.</p>
 <p>You would run <code>file.edit("~/.Rprofile")</code> and then add <code>options("giotto.py_path" = "[path to env or envname]")</code> as a line so that it is automatically set at the start of each session.</p>
 <p>If a specific environment should only be used a couple times then method 1 is easiest:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="introduction-to-the-giotto-package.html#cb16-1" tabindex="-1"></a>GiottoClass<span class="sc">::</span><span class="fu">set_giotto_python_path</span>(<span class="at">python_path =</span> <span class="st">&quot;[path to env or envname]&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="introduction-to-the-giotto-package.html#cb20-1" tabindex="-1"></a>GiottoClass<span class="sc">::</span><span class="fu">set_giotto_python_path</span>(<span class="at">python_path =</span> <span class="st">&quot;[path to env or envname]&quot;</span>)</span></code></pre></div>
 <p>To check which conda environments exist on your machine:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="introduction-to-the-giotto-package.html#cb17-1" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">conda_list</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="introduction-to-the-giotto-package.html#cb21-1" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">conda_list</span>()</span></code></pre></div>
 <p>Once an environment is activated, you can check more details and ensure that it is the one you are expecting by running:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="introduction-to-the-giotto-package.html#cb18-1" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">py_config</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="introduction-to-the-giotto-package.html#cb22-1" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">py_config</span>()</span></code></pre></div>
 </div>
 </div>
 </div>
 <div id="giotto-instructions" class="section level2 hasAnchor" number="4.4">
 <h2><span class="header-section-number">4.4</span> Giotto instructions<a href="introduction-to-the-giotto-package.html#giotto-instructions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Giotto</p>
+<p>Giotto uses <code>giottoInstructions</code> in order to set a behavior for a particular <code>giotto</code> object. Most commonly used are:</p>
+<ul>
+<li>python_path - when set, will activate a python environment</li>
+<li>save_dir - save directory to use. Usually for plots generated. This can help speed things up since the viewer no longer has to render.</li>
+<li>save_plot - whether to save plots to the <code>save_dir</code></li>
+<li>return_plot - whether to return the plot objects. When FALSE, only NULL is returned</li>
+<li>show_plot - whether to show the plot in the viewer</li>
+</ul>
+<p>These objects are created with <code>createGiottoInstructions()</code> and the created objects can be edited afterwards using the <code>instructions()</code> generic function.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="introduction-to-the-giotto-package.html#cb23-1" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
+<span id="cb23-2"><a href="introduction-to-the-giotto-package.html#cb23-2" tabindex="-1"></a>save_dir <span class="ot">&lt;-</span> <span class="st">&quot;results/01_session2/&quot;</span></span>
+<span id="cb23-3"><a href="introduction-to-the-giotto-package.html#cb23-3" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="introduction-to-the-giotto-package.html#cb23-4" tabindex="-1"></a><span class="co"># this call will also intialize the python env</span></span>
+<span id="cb23-5"><a href="introduction-to-the-giotto-package.html#cb23-5" tabindex="-1"></a>instrs <span class="ot">&lt;-</span> <span class="fu">createGiottoInstructions</span>(</span>
+<span id="cb23-6"><a href="introduction-to-the-giotto-package.html#cb23-6" tabindex="-1"></a>    <span class="at">save_dir =</span> save_dir, <span class="co"># working directory is the default</span></span>
+<span id="cb23-7"><a href="introduction-to-the-giotto-package.html#cb23-7" tabindex="-1"></a>    <span class="at">show_plot =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb23-8"><a href="introduction-to-the-giotto-package.html#cb23-8" tabindex="-1"></a>    <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb23-9"><a href="introduction-to-the-giotto-package.html#cb23-9" tabindex="-1"></a>    <span class="at">return_plot =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb23-10"><a href="introduction-to-the-giotto-package.html#cb23-10" tabindex="-1"></a>    <span class="at">python_path =</span> <span class="cn">NULL</span> <span class="co"># when NULL, this calls GiottoClass::set_giotto_python_path() to get the default</span></span>
+<span id="cb23-11"><a href="introduction-to-the-giotto-package.html#cb23-11" tabindex="-1"></a>)</span>
+<span id="cb23-12"><a href="introduction-to-the-giotto-package.html#cb23-12" tabindex="-1"></a><span class="fu">force</span>(instrs)</span></code></pre></div>
+<p>Giotto object creation functions all have an <code>instructions</code> param for passing in instructions objects.
+<code>giotto</code> objects will also respond to the <code>instructions()</code> generic.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="introduction-to-the-giotto-package.html#cb24-1" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">giotto</span>(<span class="at">instructions =</span> instrs) <span class="co"># passing NULL instead will also generate a default instructions object</span></span>
+<span id="cb24-2"><a href="introduction-to-the-giotto-package.html#cb24-2" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="introduction-to-the-giotto-package.html#cb24-3" tabindex="-1"></a><span class="co"># example plot</span></span>
+<span id="cb24-4"><a href="introduction-to-the-giotto-package.html#cb24-4" tabindex="-1"></a>g <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadGiottoMini</span>(<span class="st">&quot;visium&quot;</span>)</span>
+<span id="cb24-5"><a href="introduction-to-the-giotto-package.html#cb24-5" tabindex="-1"></a><span class="fu">instructions</span>(g) <span class="ot">&lt;-</span> instrs</span>
+<span id="cb24-6"><a href="introduction-to-the-giotto-package.html#cb24-6" tabindex="-1"></a><span class="fu">instructions</span>(g, <span class="st">&quot;show_plot&quot;</span>) <span class="co"># instructions say not to plot to viewer</span></span>
+<span id="cb24-7"><a href="introduction-to-the-giotto-package.html#cb24-7" tabindex="-1"></a><span class="fu">spatPlot2D</span>(g, <span class="at">show_image =</span> <span class="cn">TRUE</span>, <span class="at">image_name =</span> <span class="st">&quot;image&quot;</span>)</span>
+<span id="cb24-8"><a href="introduction-to-the-giotto-package.html#cb24-8" tabindex="-1"></a><span class="co"># instead it will directly write to the results folder</span></span></code></pre></div>
+<p>As an example, you can also set individual instructions</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="introduction-to-the-giotto-package.html#cb25-1" tabindex="-1"></a><span class="fu">instructions</span>(g, <span class="st">&quot;show_plot&quot;</span>) <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
+<span id="cb25-2"><a href="introduction-to-the-giotto-package.html#cb25-2" tabindex="-1"></a><span class="fu">spatPlot2D</span>(g, <span class="at">show_image =</span> <span class="cn">TRUE</span>, <span class="at">image_name =</span> <span class="st">&quot;image&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-32"></span>
+<img src="img/01_session2/1-example_viewer_img.png" alt="example image output"  />
+<p class="caption">
+Figure 4.2: example image output
+</p>
+</div>
 
 </div>
 </div>

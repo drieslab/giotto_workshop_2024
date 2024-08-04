@@ -520,7 +520,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="used-packages" class="section level3 hasAnchor" number="6.0.1">
 <h3><span class="header-section-number">6.0.1</span> Used packages<a href="creating-a-giotto-object.html#used-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <pre><code>Giotto      GiottoClass     GiottoData      pak</code></pre>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="creating-a-giotto-object.html#cb21-1" tabindex="-1"></a>save_dir <span class="ot">&lt;-</span> <span class="st">&quot;~/Documents/GitHub/giotto_workshop_2024/img/01_session4&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="creating-a-giotto-object.html#cb28-1" tabindex="-1"></a>save_dir <span class="ot">&lt;-</span> <span class="st">&quot;~/Documents/GitHub/giotto_workshop_2024/img/01_session4&quot;</span></span></code></pre></div>
 </div>
 <div id="overview" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> Overview<a href="creating-a-giotto-object.html#overview" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -562,12 +562,12 @@ createGiottoMerscopeObject()</code></pre>
 <p>Giotto has several spatial plotting functions.
 At the lowest level, you directly call <code>plot()</code> on several subobjects in order
 to see what they look like, particularly the ones containing spatial info.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="creating-a-giotto-object.html#cb26-1" tabindex="-1"></a>gpoints <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadSubObjectMini</span>(<span class="st">&quot;giottoPoints&quot;</span>)</span>
-<span id="cb26-2"><a href="creating-a-giotto-object.html#cb26-2" tabindex="-1"></a>gpoly <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadSubObjectMini</span>(<span class="st">&quot;giottoPolygon&quot;</span>)</span>
-<span id="cb26-3"><a href="creating-a-giotto-object.html#cb26-3" tabindex="-1"></a>spatlocs <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadSubObjectMini</span>(<span class="st">&quot;spatLocsObj&quot;</span>)</span>
-<span id="cb26-4"><a href="creating-a-giotto-object.html#cb26-4" tabindex="-1"></a>spatnet <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadSubObjectMini</span>(<span class="st">&quot;spatialNetworkObj&quot;</span>)</span>
-<span id="cb26-5"><a href="creating-a-giotto-object.html#cb26-5" tabindex="-1"></a>pca <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadSubObjectMini</span>(<span class="st">&quot;dimObj&quot;</span>)</span>
-<span id="cb26-6"><a href="creating-a-giotto-object.html#cb26-6" tabindex="-1"></a><span class="fu">plot</span>(pca, <span class="at">dims =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="creating-a-giotto-object.html#cb33-1" tabindex="-1"></a>gpoints <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadSubObjectMini</span>(<span class="st">&quot;giottoPoints&quot;</span>)</span>
+<span id="cb33-2"><a href="creating-a-giotto-object.html#cb33-2" tabindex="-1"></a>gpoly <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadSubObjectMini</span>(<span class="st">&quot;giottoPolygon&quot;</span>)</span>
+<span id="cb33-3"><a href="creating-a-giotto-object.html#cb33-3" tabindex="-1"></a>spatlocs <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadSubObjectMini</span>(<span class="st">&quot;spatLocsObj&quot;</span>)</span>
+<span id="cb33-4"><a href="creating-a-giotto-object.html#cb33-4" tabindex="-1"></a>spatnet <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadSubObjectMini</span>(<span class="st">&quot;spatialNetworkObj&quot;</span>)</span>
+<span id="cb33-5"><a href="creating-a-giotto-object.html#cb33-5" tabindex="-1"></a>pca <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadSubObjectMini</span>(<span class="st">&quot;dimObj&quot;</span>)</span>
+<span id="cb33-6"><a href="creating-a-giotto-object.html#cb33-6" tabindex="-1"></a><span class="fu">plot</span>(pca, <span class="at">dims =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>))</span></code></pre></div>
 </div>
 <div id="subsetting" class="section level2 hasAnchor" number="6.7">
 <h2><span class="header-section-number">6.7</span> Subsetting<a href="creating-a-giotto-object.html#subsetting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -582,7 +582,7 @@ to see what they look like, particularly the ones containing spatial info.</p>
 <p>Giotto makes available several mini objects to allow devs and users to work
 with easily loadable Giotto objects. These are small subsets of a larger
 dataset that often contain some worked through analyses and are fully functional.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="creating-a-giotto-object.html#cb27-1" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pak</span>(<span class="st">&quot;drieslab/GiottoData&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="creating-a-giotto-object.html#cb34-1" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pak</span>(<span class="st">&quot;drieslab/GiottoData&quot;</span>)</span></code></pre></div>
 
 </div>
 </div>
