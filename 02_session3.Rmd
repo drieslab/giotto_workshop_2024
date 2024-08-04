@@ -690,7 +690,7 @@ spatInSituPlotPoints(g,
 ```
 
 ```{r, echo=FALSE, fig.cap="Spatial plot with leiden clustering annotations."}
-knitr::include_graphics("img/02_session3/spat_leiden.png")
+knitr::include_graphics("img/02_session3/leiden_spat.png")
 ```
 
 
@@ -783,8 +783,11 @@ ggplot2::ggplot(
     )
 ```
 
-```{r, echo=FALSE, fig.cap="Leiden annotation-based spatial niches (top), stacked barplot of leiden annotation composition by niche (bottom)"}
+```{r, echo=FALSE, fig.cap="Leiden annotation-based spatial niches"}
 knitr::include_graphics("img/02_session3/niches_spat.png")
+```
+
+```{r, echo=FALSE, fig.cap="Stacked barplot of leiden annotation composition by niche"}
 knitr::include_graphics("img/02_session3/niches_bar.png")
 ```
 
@@ -841,8 +844,11 @@ spatInSituPlotPoints(g,
 )
 ```
 
-```{r, echo=FALSE, fig.cap="Spatial plot of enriched leiden annotation interactions. 6 to 8 (top), 2 to 9 (bottom)"}
+```{r, echo=FALSE, fig.cap="Spatial plot of enriched leiden annotation 6 to 8 interactions"}
 knitr::include_graphics("img/02_session3/cc_enrich1.png")
+```
+
+```{r, echo=FALSE, fig.cap="Spatial plot of enriched leiden annotation 2 to 9 interactions"}
 knitr::include_graphics("img/02_session3/cc_enrich2.png")
 ```
 
@@ -990,17 +996,6 @@ knitr::include_graphics("img/02_session3/pvis_clustering.png")
 
 
 
-
-
-
-
-
-
-## Transcript enrichment GSEA
-
-
-
-- Feature/molecule specific analysis
 
 
 
