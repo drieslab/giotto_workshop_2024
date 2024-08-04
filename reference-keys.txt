@@ -310,7 +310,6 @@ spatial-coexpression
 spatialexperiment
 convert-giotto-object-to-spatialexperiment-object
 identify-top-spatially-variable-genes-with-nnsvg
-run-nnsvg
 conversion-of-spatialexperiment-object-back-to-giotto
 plotting-top-genes-from-nnsvg-in-giotto
 anndata
