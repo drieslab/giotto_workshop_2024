@@ -150,7 +150,7 @@ The default behavior is to load:
 - cell and nucleus boundaries
 - feature metadata (gene_panel.json)
 
-For the full dataset (HPC): _time: /1-2min | memory: 24GBC_   
+For the full dataset (HPC): _time: 1-2min | memory: 24GBC_   
 
 ```{r, eval=FALSE}
 ?createGiottoXeniumObject
@@ -570,35 +570,132 @@ knitr::include_graphics("img/02_session3/imgplots.png")
 
 ## Spatial aggregation
 
-
-
-
-```{r, eval=FALSE}
-
-```
-
-
-
+First calculate the `feat_info` 'rna' transcripts overlapped by the `spatial_info` 'cell' polygons with `calculateOverlap()`. Then, the overlaps information (relationships between points and polygons that overlap them) gets converted into a count matrix with `overlapToMatrix()`.
 
 ```{r, eval=FALSE}
-
+g <- calculateOverlap(g,
+    spatial_info = "cell",
+    feat_info = "rna"
+)
+g <- overlapToMatrix(g)
 ```
-
-
-
-```{r, eval=FALSE}
-
-```
-
-
-
-
-
-## Spatial aggregation
-
 
 
 ## Aggregate analyses workflow
+
+### Filtering
+```{r, eval=FALSE}
+# very permissive filtering. Mainly for removing 0 values
+g <- filterGiotto(g,
+    expression_threshold = 1,
+    feat_det_in_min_cells = 1,
+    min_det_feats_per_cell = 5
+)
+```
+
+```
+Feature type:  rna 
+Number of cells removed:  0  out of  7129 
+Number of feats removed:  0  out of  377 
+```
+
+### Normalization
+```{r, eval=FALSE}
+g <- normalizeGiotto(g)
+g <- addStatistics(g)
+
+spatInSituPlotPoints(g,
+    polygon_fill = "nr_feats",
+    polygon_fill_gradient_style = "sequential",
+    polygon_fill_as_factor = FALSE
+)
+spatInSituPlotPoints(g,
+    polygon_fill = "total_expr",
+    polygon_fill_gradient_style = "sequential",
+    polygon_fill_as_factor = FALSE
+)
+```
+
+```{r, echo=FALSE, fig.cap="'nr_feats' - Number of different gene species detected per cell (left), 'total_expr' - total detections per cell (right)"}
+knitr::include_graphics("img/02_session3/stats_plot.png")
+```
+
+When there are a lot of features, we would also select only the interesting highly variable features so that downstream dimension reduction has more meaningful separation. Here we skip HVF detection since there are only 377 genes.
+
+### Dimension Reduction
+
+Dimensional reduction of expression space to visualize expressional differences between cells and help with clustering.
+
+```{r, eval=FALSE}
+g <- runPCA(g, feats_to_use = NULL)
+# feats_to_use = NULL since there are no HVFs calculated. Use all genes.
+screePlot(g)
+```
+
+```{r, echo=FALSE, out.width="60%", fig.cap="Plot of variance explained in the first 30 out of 100 principle components calculated"}
+knitr::include_graphics("img/02_session3/screeplot.png")
+```
+
+```{r, eval=FALSE}
+g <- runUMAP(g, dimensions_to_use = seq(15))
+```
+
+
+```{r, eval=FALSE}
+plotPCA(g)
+plotUMAP(g)
+```
+
+```{r, echo=FALSE, fig.cap="PCA plot showing the first 2 PCs (left), UMAP generated from first 15 PCs (right)"}
+knitr::include_graphics("img/02_session3/dimplots.png")
+```
+
+### Clustering
+
+```{r, eval=FALSE}
+g <- createNearestNetwork(g,
+    dimensions_to_use = seq(15), 
+    k = 40
+)
+
+# takes roughly 1 min to run
+g <- doLeidenCluster(g)
+
+plotPCA_3D(g, 
+    cell_color = "leiden_clus", 
+    point_size = 0.1, 
+    point_shape = "no_border"
+)
+plotUMAP(g, 
+    cell_color = "leiden_clus", 
+    point_size = 0.1, 
+    point_shape = "no_border"
+)
+```
+
+```{r, echo=FALSE, fig.cap="3D plot showing first PCs with leiden clustering annotations (left), UMAP plot showing leiden clustering results (right)"}
+knitr::include_graphics("img/02_session3/clustered_dimplots.png")
+```
+
+```{r, eval=FALSE}
+spatInSituPlotPoints(g,
+    polygon_fill = "leiden_clus",
+    polygon_fill_as_factor = TRUE
+)
+
+# with image and poly alpha 0.5 (default when image is added)
+spatInSituPlotPoints(g,
+    polygon_fill = "leiden_clus",
+    polygon_fill_as_factor = TRUE,
+    show_image = TRUE,
+    image_name = "HE"
+)
+```
+
+```{r, echo=FALSE, fig.cap="Spatial plots show leiden clustering annotations. Polygons only on left. With image on right"}
+knitr::include_graphics("img/02_session3/spat_leiden.png")
+```
+
 
 ## Niche clustering
 
