@@ -85,7 +85,7 @@ gpoly <- createGiottoPolygon(shp, name = "test")
 plot(gpoly)
 ```
 
-```{r, echo=FALSE, fig.width="80%", fig.cap="`giottoPolygon` from .shp"}
+```{r, echo=FALSE, out.width="80%", fig.cap="Plot of `giottoPolygon` from .shp"}
 knitr::include_graphics("img/01_session3/shp_gpoly.png")
 ```
 
@@ -99,7 +99,7 @@ m <- system.file("extdata/toy_mask_multi.tif", package = "GiottoClass")
 plot(terra::rast(m), col = grDevices::hcl.colors(7))
 ```
 
-```{r, echo=FALSE, fig.width="80%", fig.cap="Example mask image. Integer values are shown as different colors"}
+```{r, echo=FALSE, out.width="80%", fig.cap="Example mask image. Integer values are shown as different colors"}
 knitr::include_graphics("img/01_session3/mask.png")
 ```
 
@@ -132,7 +132,7 @@ Spatial Information:
 plot(gp, col = grDevices::hcl.colors(7))
 ```
 
-```{r, echo=FALSE, fig.width="80%", fig.cap="`giottoPolygon` from mask image. Identical coloring order implies that encoded IDs have been properly imported."}
+```{r, echo=FALSE, out.width="80%", fig.cap="`giottoPolygon` from mask image. Identical coloring order implies that encoded IDs have been properly imported."}
 knitr::include_graphics("img/01_session3/gpoly.png")
 ```
 
@@ -143,7 +143,7 @@ m2 <- system.file("extdata/toy_mask_single.tif", package = "GiottoClass")
 plot(terra::rast(m2), col = grDevices::hcl.colors(7))
 ```
 
-```{r, echo=FALSE, fig.width="80%", fig.cap="Example mask image with only 1 value"}
+```{r, echo=FALSE, out.width="80%", fig.cap="Example mask image with only 1 value"}
 knitr::include_graphics("img/01_session3/mask_s.png")
 ```
 
@@ -158,7 +158,7 @@ gpoly1 <- createGiottoPolygonsFromMask(
 plot(gpoly1, col = grDevices::hcl.colors(7))
 ```
 
-```{r, echo=FALSE, fig.width="80%", fig.cap="`giottoPolygon` from single value mask"}
+```{r, echo=FALSE, out.width="80%", fig.cap="`giottoPolygon` from single value mask"}
 knitr::include_graphics("img/01_session3/gpoly_s.png")
 ```
 
@@ -238,7 +238,7 @@ sl_xy <- createSpatLocsObj(xy)
 plot(sl_xy)
 ```
 
-```{r, echo=FALSE, fig.width="60%", fig.cap="xy `spatLocsObj`"}
+```{r, echo=FALSE, out.width="60%", fig.cap="Plot of `spatLocsObj` created from xy information"}
 knitr::include_graphics("img/01_session3/sl_xy.png")
 ```
 
@@ -254,7 +254,7 @@ sl_xyz <- createSpatLocsObj(xyz)
 plot(sl_xyz)
 ```
 
-```{r, echo=FALSE, fig.width="60%", fig.cap="xyz `spatLocsObj`"}
+```{r, echo=FALSE, out.width="60%", fig.cap="Plot of `spatLocsObj` created from xy and z information"}
 knitr::include_graphics("img/01_session3/sl_xyz.png")
 ```
 
@@ -291,7 +291,7 @@ Feature Information:
                gene_00003 metadata_00003            3
 ```
 
-```{r, echo=FALSE, fig.width="60%", fig.cap="`giottoPoints` plotted without rasterization (left), with rasterization and colored by density (right)"}
+```{r, echo=FALSE, out.width="60%", fig.cap="`giottoPoints` plotted without rasterization (left), with rasterization and colored by density (right)"}
 knitr::include_graphics("img/01_session3/gpoints.png")
 ```
 
@@ -314,7 +314,7 @@ random_hex_poly <- createGiottoPolygon(random_hex)
 plot(random_hex_poly)
 ```
 
-```{r, echo=FALSE, fig.width="60%", fig.cap="`giottoPolygon` created from ID and vertices"}
+```{r, echo=FALSE, out.width="60%", fig.cap="`giottoPolygon` created from ID and vertices"}
 knitr::include_graphics("img/01_session3/vec_gpoly.png")
 ```
 
