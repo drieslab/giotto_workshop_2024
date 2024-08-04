@@ -448,19 +448,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="16" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html"><i class="fa fa-check"></i><b>16</b> Interoperability with isolated tools</a>
 <ul>
-<li class="chapter" data-level="16.1" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#spatial-niche-trajectory-analysis"><i class="fa fa-check"></i><b>16.1</b> Spatial niche trajectory analysis</a>
+<li class="chapter" data-level="16.1" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#spatial-niche-trajectory-analysis-ontrac"><i class="fa fa-check"></i><b>16.1</b> Spatial niche trajectory analysis (ONTraC)</a>
 <ul>
-<li class="chapter" data-level="16.1.1" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#dataset-download"><i class="fa fa-check"></i><b>16.1.1</b> Dataset download</a></li>
-<li class="chapter" data-level="16.1.2" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#create-the-giotto-object-2"><i class="fa fa-check"></i><b>16.1.2</b> Create the Giotto object</a></li>
-<li class="chapter" data-level="16.1.3" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#visualization"><i class="fa fa-check"></i><b>16.1.3</b> visualization</a></li>
+<li class="chapter" data-level="16.1.1" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#introduction-to-ontrac"><i class="fa fa-check"></i><b>16.1.1</b> Introduction to ONTraC</a></li>
+<li class="chapter" data-level="16.1.2" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#introduction-to-merfish"><i class="fa fa-check"></i><b>16.1.2</b> Introduction to MERFISH</a></li>
+<li class="chapter" data-level="16.1.3" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#settings"><i class="fa fa-check"></i><b>16.1.3</b> settings</a></li>
+<li class="chapter" data-level="16.1.4" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#dataset-1"><i class="fa fa-check"></i><b>16.1.4</b> Dataset</a></li>
+<li class="chapter" data-level="16.1.5" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#create-the-giotto-object-2"><i class="fa fa-check"></i><b>16.1.5</b> Create the Giotto object</a></li>
+<li class="chapter" data-level="16.1.6" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#perform-spatial-niche-trajectory-analysis-using-ontrac"><i class="fa fa-check"></i><b>16.1.6</b> Perform spatial niche trajectory analysis using ONTraC</a></li>
+<li class="chapter" data-level="16.1.7" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#visualization"><i class="fa fa-check"></i><b>16.1.7</b> visualization</a></li>
 </ul></li>
+<li class="chapter" data-level="16.2" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#session-info-3"><i class="fa fa-check"></i><b>16.2</b> Session info</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html"><i class="fa fa-check"></i><b>17</b> Interactivity with the R/Spatial ecosystem</a>
 <ul>
 <li class="chapter" data-level="17.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#kriging"><i class="fa fa-check"></i><b>17.1</b> Kriging</a>
 <ul>
 <li class="chapter" data-level="17.1.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#visium-technology-1"><i class="fa fa-check"></i><b>17.1.1</b> Visium technology</a></li>
-<li class="chapter" data-level="17.1.2" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#dataset-1"><i class="fa fa-check"></i><b>17.1.2</b> Dataset</a></li>
+<li class="chapter" data-level="17.1.2" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#dataset-2"><i class="fa fa-check"></i><b>17.1.2</b> Dataset</a></li>
 <li class="chapter" data-level="17.1.3" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#generating-a-geojson-file-of-nuclei-location"><i class="fa fa-check"></i><b>17.1.3</b> Generating a geojson file of nuclei location</a></li>
 </ul></li>
 <li class="chapter" data-level="17.2" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#downloading-the-dataset"><i class="fa fa-check"></i><b>17.2</b> Downloading the dataset</a></li>
@@ -522,7 +527,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Low resolution spatial data typically covers multiple cells making it difficult to delineate the cell contribution to gene expression. Using a process called kriging we can interpolate gene expression at the single cell levels from low resolution datasets. Kriging is a spatial interpolation technique that estimates unknown values at specific locations by weighing nearby known values based on distance and spatial trends. It uses a model to account for both the distance between points and the overall pattern in the data to make accurate predictions. By taking discrete measurement spots, such as those used for visium, we can interpolate gene expression to a finer scale using kriging.</p>
 <div id="visium-technology-1" class="section level3 hasAnchor" number="17.1.1">
 <h3><span class="header-section-number">17.1.1</span> Visium technology<a href="interactivity-with-the-rspatial-ecosystem.html#visium-technology-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-469"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-478"></span>
 <img src="img/03_session1/visium_overview.png" alt="Overview of Visium. Source: 10X Genomics." width="80%" />
 <p class="caption">
 Figure 17.1: Overview of Visium. Source: 10X Genomics.
@@ -530,8 +535,8 @@ Figure 17.1: Overview of Visium. Source: 10X Genomics.
 </div>
 <p>Visium by 10x Genomics is a spatial gene expression platform that allows for the mapping of gene expression to high-resolution histology through RNA sequencing The process involves placing a tissue section on a specially prepared slide with an array of barcoded spots, which are 55 µm in diameter with a spot to spot distance of 100 µm. Each spot contains unique barcodes that capture the mRNA from the tissue section, preserving the spatial information. After the tissue is imaged and RNA is captured, the mRNA is sequenced, and the data is mapped back to the tissue’s spatial coordinates. This technology is particularly useful in understanding complex tissue environments, such as tumors, by providing insights into how gene expression varies across different regions.</p>
 </div>
-<div id="dataset-1" class="section level3 hasAnchor" number="17.1.2">
-<h3><span class="header-section-number">17.1.2</span> Dataset<a href="interactivity-with-the-rspatial-ecosystem.html#dataset-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="dataset-2" class="section level3 hasAnchor" number="17.1.2">
+<h3><span class="header-section-number">17.1.2</span> Dataset<a href="interactivity-with-the-rspatial-ecosystem.html#dataset-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For this tutorial we’ll be using the mouse brain dataset described in section 6. Visium datasets require a high resolution H&amp;E or IF image to align spots to. Using these images we can identify individual nuclei and cells to be used for kriging. Identifying nuclei is outside the scope of the current tutorial but is required to perform kriging.</p>
 </div>
 <div id="generating-a-geojson-file-of-nuclei-location" class="section level3 hasAnchor" number="17.1.3">
@@ -542,94 +547,94 @@ Figure 17.1: Overview of Visium. Source: 10X Genomics.
 <div id="downloading-the-dataset" class="section level2 hasAnchor" number="17.2">
 <h2><span class="header-section-number">17.2</span> Downloading the dataset<a href="interactivity-with-the-rspatial-ecosystem.html#downloading-the-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We first need to import a dataset that we want to perform kriging on.</p>
-<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb327-1" tabindex="-1"></a>data_directory <span class="ot">&lt;-</span> <span class="st">&quot;data&quot;</span></span>
-<span id="cb327-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb327-2" tabindex="-1"></a></span>
-<span id="cb327-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb327-3" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">&quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz&quot;</span>,</span>
-<span id="cb327-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb327-4" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="st">&quot;data/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz&quot;</span>)</span>
-<span id="cb327-5"><a href="interactivity-with-the-rspatial-ecosystem.html#cb327-5" tabindex="-1"></a></span>
-<span id="cb327-6"><a href="interactivity-with-the-rspatial-ecosystem.html#cb327-6" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">&quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_spatial.tar.gz&quot;</span>,</span>
-<span id="cb327-7"><a href="interactivity-with-the-rspatial-ecosystem.html#cb327-7" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="st">&quot;data/V1_Adult_Mouse_Brain_spatial.tar.gz&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb332-1" tabindex="-1"></a>data_directory <span class="ot">&lt;-</span> <span class="st">&quot;data&quot;</span></span>
+<span id="cb332-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb332-2" tabindex="-1"></a></span>
+<span id="cb332-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb332-3" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">&quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz&quot;</span>,</span>
+<span id="cb332-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb332-4" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="st">&quot;data/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz&quot;</span>)</span>
+<span id="cb332-5"><a href="interactivity-with-the-rspatial-ecosystem.html#cb332-5" tabindex="-1"></a></span>
+<span id="cb332-6"><a href="interactivity-with-the-rspatial-ecosystem.html#cb332-6" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">&quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_spatial.tar.gz&quot;</span>,</span>
+<span id="cb332-7"><a href="interactivity-with-the-rspatial-ecosystem.html#cb332-7" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="st">&quot;data/V1_Adult_Mouse_Brain_spatial.tar.gz&quot;</span>)</span></code></pre></div>
 <p>After downloading, unzip the gz files. You should get the “raw_feature_bc_matrix” and “spatial” folders inside “data/”.</p>
 </div>
 <div id="importing-visium-data" class="section level2 hasAnchor" number="17.3">
 <h2><span class="header-section-number">17.3</span> Importing visium data<a href="interactivity-with-the-rspatial-ecosystem.html#importing-visium-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We’re going to begin by creating a Giotto object for the visium mouse brain dataset. This tutorial won’t go into detail about each of these steps as these have been covered for this dataset in section 6. To get the best results when performing gene expression interpolation we need to identify spatially distinct genes. Therefore, we need to perform nearest neighbour to create a spatial network.</p>
-<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-1" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
-<span id="cb328-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-2" tabindex="-1"></a></span>
-<span id="cb328-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-3" tabindex="-1"></a>save_directory <span class="ot">&lt;-</span> <span class="st">&#39;results&#39;</span></span>
-<span id="cb328-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-4" tabindex="-1"></a>visium_save_directory <span class="ot">&lt;-</span> <span class="fu">file.path</span>(save_directory, <span class="st">&#39;visium_mouse_brain&#39;</span>)</span>
-<span id="cb328-5"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-5" tabindex="-1"></a>subcell_save_directory <span class="ot">&lt;-</span> <span class="fu">file.path</span>(save_directory, <span class="st">&#39;pseudo_subcellular/&#39;</span>)</span>
-<span id="cb328-6"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-6" tabindex="-1"></a></span>
-<span id="cb328-7"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-7" tabindex="-1"></a>instrs <span class="ot">&lt;-</span> <span class="fu">createGiottoInstructions</span>(<span class="at">show_plot =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb328-8"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-8" tabindex="-1"></a>                                  <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb328-9"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-9" tabindex="-1"></a>                                  <span class="at">save_dir =</span> visium_save_directory)</span>
-<span id="cb328-10"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-10" tabindex="-1"></a></span>
-<span id="cb328-11"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-11" tabindex="-1"></a>v_brain <span class="ot">&lt;-</span> <span class="fu">createGiottoVisiumObject</span>(data_directory, <span class="at">gene_column_index =</span> <span class="dv">2</span>, <span class="at">instructions =</span> instrs)</span>
-<span id="cb328-12"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-12" tabindex="-1"></a></span>
-<span id="cb328-13"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-13" tabindex="-1"></a><span class="co"># Subset to in tissue only</span></span>
-<span id="cb328-14"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-14" tabindex="-1"></a>cm <span class="ot">=</span> <span class="fu">pDataDT</span>(v_brain)</span>
-<span id="cb328-15"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-15" tabindex="-1"></a>in_tissue_barcodes <span class="ot">=</span> cm[in_tissue <span class="sc">==</span> <span class="dv">1</span>]<span class="sc">$</span>cell_ID</span>
-<span id="cb328-16"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-16" tabindex="-1"></a>v_brain <span class="ot">=</span> <span class="fu">subsetGiotto</span>(v_brain, <span class="at">cell_ids =</span> in_tissue_barcodes)</span>
-<span id="cb328-17"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-17" tabindex="-1"></a></span>
-<span id="cb328-18"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-18" tabindex="-1"></a><span class="co"># Filter</span></span>
-<span id="cb328-19"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-19" tabindex="-1"></a>v_brain <span class="ot">=</span> <span class="fu">filterGiotto</span>(<span class="at">gobject =</span> v_brain,</span>
-<span id="cb328-20"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-20" tabindex="-1"></a>                       <span class="at">expression_threshold =</span> <span class="dv">1</span>,</span>
-<span id="cb328-21"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-21" tabindex="-1"></a>                       <span class="at">feat_det_in_min_cells =</span> <span class="dv">50</span>,</span>
-<span id="cb328-22"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-22" tabindex="-1"></a>                       <span class="at">min_det_feats_per_cell =</span> <span class="dv">1000</span>,</span>
-<span id="cb328-23"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-23" tabindex="-1"></a>                       <span class="at">expression_values =</span> <span class="fu">c</span>(<span class="st">&#39;raw&#39;</span>))</span>
-<span id="cb328-24"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-24" tabindex="-1"></a></span>
-<span id="cb328-25"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-25" tabindex="-1"></a><span class="co"># Normalize</span></span>
-<span id="cb328-26"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-26" tabindex="-1"></a>v_brain <span class="ot">=</span> <span class="fu">normalizeGiotto</span>(<span class="at">gobject =</span> v_brain,</span>
-<span id="cb328-27"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-27" tabindex="-1"></a>                          <span class="at">scalefactor =</span> <span class="dv">6000</span>,</span>
-<span id="cb328-28"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-28" tabindex="-1"></a>                          <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb328-29"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-29" tabindex="-1"></a></span>
-<span id="cb328-30"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-30" tabindex="-1"></a><span class="co"># Add stats</span></span>
-<span id="cb328-31"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-31" tabindex="-1"></a>v_brain <span class="ot">=</span> <span class="fu">addStatistics</span>(<span class="at">gobject =</span> v_brain)</span>
-<span id="cb328-32"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-32" tabindex="-1"></a></span>
-<span id="cb328-33"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-33" tabindex="-1"></a><span class="co"># ID HVF</span></span>
-<span id="cb328-34"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-34" tabindex="-1"></a>v_brain <span class="ot">=</span> <span class="fu">calculateHVF</span>(<span class="at">gobject =</span> v_brain, <span class="at">method =</span> <span class="st">&quot;cov_loess&quot;</span>)</span>
-<span id="cb328-35"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-35" tabindex="-1"></a>fm <span class="ot">=</span> <span class="fu">fDataDT</span>(v_brain)</span>
-<span id="cb328-36"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-36" tabindex="-1"></a>hv_feats <span class="ot">=</span> fm[hvf <span class="sc">==</span> <span class="st">&#39;yes&#39;</span> <span class="sc">&amp;</span> perc_cells <span class="sc">&gt;</span> <span class="dv">3</span> <span class="sc">&amp;</span> mean_expr_det <span class="sc">&gt;</span> <span class="fl">0.4</span>]<span class="sc">$</span>feat_ID</span>
-<span id="cb328-37"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-37" tabindex="-1"></a><span class="fu">length</span>(hv_feats)</span>
-<span id="cb328-38"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-38" tabindex="-1"></a></span>
-<span id="cb328-39"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-39" tabindex="-1"></a><span class="co"># Dimension Reductions</span></span>
-<span id="cb328-40"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-40" tabindex="-1"></a>v_brain <span class="ot">=</span> <span class="fu">runPCA</span>(<span class="at">gobject =</span> v_brain,</span>
-<span id="cb328-41"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-41" tabindex="-1"></a>                 <span class="at">feats_to_use =</span> hv_feats)</span>
-<span id="cb328-42"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-42" tabindex="-1"></a></span>
-<span id="cb328-43"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-43" tabindex="-1"></a>v_brain <span class="ot">=</span> <span class="fu">runUMAP</span>(v_brain,</span>
-<span id="cb328-44"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-44" tabindex="-1"></a>                  <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
-<span id="cb328-45"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-45" tabindex="-1"></a>                  <span class="at">n_neighbors =</span> <span class="dv">15</span>,</span>
-<span id="cb328-46"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-46" tabindex="-1"></a>                  <span class="at">set_seed =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb328-47"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-47" tabindex="-1"></a></span>
-<span id="cb328-48"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-48" tabindex="-1"></a><span class="co"># NN Network</span></span>
-<span id="cb328-49"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-49" tabindex="-1"></a>v_brain <span class="ot">=</span> <span class="fu">createNearestNetwork</span>(<span class="at">gobject =</span> v_brain,</span>
-<span id="cb328-50"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-50" tabindex="-1"></a>                               <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
-<span id="cb328-51"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-51" tabindex="-1"></a>                               <span class="at">k =</span> <span class="dv">15</span>)</span>
-<span id="cb328-52"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-52" tabindex="-1"></a><span class="co"># Leiden Cluster</span></span>
-<span id="cb328-53"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-53" tabindex="-1"></a>v_brain <span class="ot">=</span> <span class="fu">doLeidenCluster</span>(<span class="at">gobject =</span> v_brain,</span>
-<span id="cb328-54"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-54" tabindex="-1"></a>                          <span class="at">resolution =</span> <span class="fl">0.4</span>,</span>
-<span id="cb328-55"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-55" tabindex="-1"></a>                          <span class="at">n_iterations =</span> <span class="dv">1000</span>,</span>
-<span id="cb328-56"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-56" tabindex="-1"></a>                          <span class="at">set_seed =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb328-57"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-57" tabindex="-1"></a></span>
-<span id="cb328-58"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-58" tabindex="-1"></a><span class="co"># Spatial Network (kNN)</span></span>
-<span id="cb328-59"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-59" tabindex="-1"></a>v_brain <span class="ot">&lt;-</span> <span class="fu">createSpatialNetwork</span>(<span class="at">gobject =</span> v_brain,</span>
-<span id="cb328-60"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-60" tabindex="-1"></a>                                <span class="at">method =</span> <span class="st">&#39;kNN&#39;</span>,</span>
-<span id="cb328-61"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-61" tabindex="-1"></a>                                <span class="at">k =</span> <span class="dv">5</span>,</span>
-<span id="cb328-62"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-62" tabindex="-1"></a>                                <span class="at">maximum_distance_knn =</span> <span class="dv">400</span>,</span>
-<span id="cb328-63"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-63" tabindex="-1"></a>                                <span class="at">name =</span> <span class="st">&#39;spatial_network&#39;</span>)</span>
-<span id="cb328-64"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-64" tabindex="-1"></a></span>
-<span id="cb328-65"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-65" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> v_brain,</span>
-<span id="cb328-66"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-66" tabindex="-1"></a>           <span class="at">spat_unit =</span> <span class="st">&#39;cell&#39;</span>,</span>
-<span id="cb328-67"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-67" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&#39;leiden_clus&#39;</span>,</span>
-<span id="cb328-68"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-68" tabindex="-1"></a>           <span class="at">show_image =</span> T,</span>
-<span id="cb328-69"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-69" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="fl">1.5</span>,</span>
-<span id="cb328-70"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-70" tabindex="-1"></a>           <span class="at">point_shape =</span> <span class="st">&#39;no_border&#39;</span>,</span>
-<span id="cb328-71"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-71" tabindex="-1"></a>           <span class="at">background_color =</span> <span class="st">&#39;black&#39;</span>,</span>
-<span id="cb328-72"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-72" tabindex="-1"></a>           <span class="at">show_legend =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb328-73"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-73" tabindex="-1"></a>           <span class="at">save_plot =</span> T,</span>
-<span id="cb328-74"><a href="interactivity-with-the-rspatial-ecosystem.html#cb328-74" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&#39;03_ses6_1_vis_spat&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-1" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
+<span id="cb333-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-2" tabindex="-1"></a></span>
+<span id="cb333-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-3" tabindex="-1"></a>save_directory <span class="ot">&lt;-</span> <span class="st">&#39;results&#39;</span></span>
+<span id="cb333-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-4" tabindex="-1"></a>visium_save_directory <span class="ot">&lt;-</span> <span class="fu">file.path</span>(save_directory, <span class="st">&#39;visium_mouse_brain&#39;</span>)</span>
+<span id="cb333-5"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-5" tabindex="-1"></a>subcell_save_directory <span class="ot">&lt;-</span> <span class="fu">file.path</span>(save_directory, <span class="st">&#39;pseudo_subcellular/&#39;</span>)</span>
+<span id="cb333-6"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-6" tabindex="-1"></a></span>
+<span id="cb333-7"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-7" tabindex="-1"></a>instrs <span class="ot">&lt;-</span> <span class="fu">createGiottoInstructions</span>(<span class="at">show_plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb333-8"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-8" tabindex="-1"></a>                                  <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb333-9"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-9" tabindex="-1"></a>                                  <span class="at">save_dir =</span> visium_save_directory)</span>
+<span id="cb333-10"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-10" tabindex="-1"></a></span>
+<span id="cb333-11"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-11" tabindex="-1"></a>v_brain <span class="ot">&lt;-</span> <span class="fu">createGiottoVisiumObject</span>(data_directory, <span class="at">gene_column_index =</span> <span class="dv">2</span>, <span class="at">instructions =</span> instrs)</span>
+<span id="cb333-12"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-12" tabindex="-1"></a></span>
+<span id="cb333-13"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-13" tabindex="-1"></a><span class="co"># Subset to in tissue only</span></span>
+<span id="cb333-14"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-14" tabindex="-1"></a>cm <span class="ot">=</span> <span class="fu">pDataDT</span>(v_brain)</span>
+<span id="cb333-15"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-15" tabindex="-1"></a>in_tissue_barcodes <span class="ot">=</span> cm[in_tissue <span class="sc">==</span> <span class="dv">1</span>]<span class="sc">$</span>cell_ID</span>
+<span id="cb333-16"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-16" tabindex="-1"></a>v_brain <span class="ot">=</span> <span class="fu">subsetGiotto</span>(v_brain, <span class="at">cell_ids =</span> in_tissue_barcodes)</span>
+<span id="cb333-17"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-17" tabindex="-1"></a></span>
+<span id="cb333-18"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-18" tabindex="-1"></a><span class="co"># Filter</span></span>
+<span id="cb333-19"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-19" tabindex="-1"></a>v_brain <span class="ot">=</span> <span class="fu">filterGiotto</span>(<span class="at">gobject =</span> v_brain,</span>
+<span id="cb333-20"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-20" tabindex="-1"></a>                       <span class="at">expression_threshold =</span> <span class="dv">1</span>,</span>
+<span id="cb333-21"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-21" tabindex="-1"></a>                       <span class="at">feat_det_in_min_cells =</span> <span class="dv">50</span>,</span>
+<span id="cb333-22"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-22" tabindex="-1"></a>                       <span class="at">min_det_feats_per_cell =</span> <span class="dv">1000</span>,</span>
+<span id="cb333-23"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-23" tabindex="-1"></a>                       <span class="at">expression_values =</span> <span class="fu">c</span>(<span class="st">&#39;raw&#39;</span>))</span>
+<span id="cb333-24"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-24" tabindex="-1"></a></span>
+<span id="cb333-25"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-25" tabindex="-1"></a><span class="co"># Normalize</span></span>
+<span id="cb333-26"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-26" tabindex="-1"></a>v_brain <span class="ot">=</span> <span class="fu">normalizeGiotto</span>(<span class="at">gobject =</span> v_brain,</span>
+<span id="cb333-27"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-27" tabindex="-1"></a>                          <span class="at">scalefactor =</span> <span class="dv">6000</span>,</span>
+<span id="cb333-28"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-28" tabindex="-1"></a>                          <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb333-29"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-29" tabindex="-1"></a></span>
+<span id="cb333-30"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-30" tabindex="-1"></a><span class="co"># Add stats</span></span>
+<span id="cb333-31"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-31" tabindex="-1"></a>v_brain <span class="ot">=</span> <span class="fu">addStatistics</span>(<span class="at">gobject =</span> v_brain)</span>
+<span id="cb333-32"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-32" tabindex="-1"></a></span>
+<span id="cb333-33"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-33" tabindex="-1"></a><span class="co"># ID HVF</span></span>
+<span id="cb333-34"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-34" tabindex="-1"></a>v_brain <span class="ot">=</span> <span class="fu">calculateHVF</span>(<span class="at">gobject =</span> v_brain, <span class="at">method =</span> <span class="st">&quot;cov_loess&quot;</span>)</span>
+<span id="cb333-35"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-35" tabindex="-1"></a>fm <span class="ot">=</span> <span class="fu">fDataDT</span>(v_brain)</span>
+<span id="cb333-36"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-36" tabindex="-1"></a>hv_feats <span class="ot">=</span> fm[hvf <span class="sc">==</span> <span class="st">&#39;yes&#39;</span> <span class="sc">&amp;</span> perc_cells <span class="sc">&gt;</span> <span class="dv">3</span> <span class="sc">&amp;</span> mean_expr_det <span class="sc">&gt;</span> <span class="fl">0.4</span>]<span class="sc">$</span>feat_ID</span>
+<span id="cb333-37"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-37" tabindex="-1"></a><span class="fu">length</span>(hv_feats)</span>
+<span id="cb333-38"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-38" tabindex="-1"></a></span>
+<span id="cb333-39"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-39" tabindex="-1"></a><span class="co"># Dimension Reductions</span></span>
+<span id="cb333-40"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-40" tabindex="-1"></a>v_brain <span class="ot">=</span> <span class="fu">runPCA</span>(<span class="at">gobject =</span> v_brain,</span>
+<span id="cb333-41"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-41" tabindex="-1"></a>                 <span class="at">feats_to_use =</span> hv_feats)</span>
+<span id="cb333-42"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-42" tabindex="-1"></a></span>
+<span id="cb333-43"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-43" tabindex="-1"></a>v_brain <span class="ot">=</span> <span class="fu">runUMAP</span>(v_brain,</span>
+<span id="cb333-44"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-44" tabindex="-1"></a>                  <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb333-45"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-45" tabindex="-1"></a>                  <span class="at">n_neighbors =</span> <span class="dv">15</span>,</span>
+<span id="cb333-46"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-46" tabindex="-1"></a>                  <span class="at">set_seed =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb333-47"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-47" tabindex="-1"></a></span>
+<span id="cb333-48"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-48" tabindex="-1"></a><span class="co"># NN Network</span></span>
+<span id="cb333-49"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-49" tabindex="-1"></a>v_brain <span class="ot">=</span> <span class="fu">createNearestNetwork</span>(<span class="at">gobject =</span> v_brain,</span>
+<span id="cb333-50"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-50" tabindex="-1"></a>                               <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb333-51"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-51" tabindex="-1"></a>                               <span class="at">k =</span> <span class="dv">15</span>)</span>
+<span id="cb333-52"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-52" tabindex="-1"></a><span class="co"># Leiden Cluster</span></span>
+<span id="cb333-53"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-53" tabindex="-1"></a>v_brain <span class="ot">=</span> <span class="fu">doLeidenCluster</span>(<span class="at">gobject =</span> v_brain,</span>
+<span id="cb333-54"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-54" tabindex="-1"></a>                          <span class="at">resolution =</span> <span class="fl">0.4</span>,</span>
+<span id="cb333-55"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-55" tabindex="-1"></a>                          <span class="at">n_iterations =</span> <span class="dv">1000</span>,</span>
+<span id="cb333-56"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-56" tabindex="-1"></a>                          <span class="at">set_seed =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb333-57"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-57" tabindex="-1"></a></span>
+<span id="cb333-58"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-58" tabindex="-1"></a><span class="co"># Spatial Network (kNN)</span></span>
+<span id="cb333-59"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-59" tabindex="-1"></a>v_brain <span class="ot">&lt;-</span> <span class="fu">createSpatialNetwork</span>(<span class="at">gobject =</span> v_brain,</span>
+<span id="cb333-60"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-60" tabindex="-1"></a>                                <span class="at">method =</span> <span class="st">&#39;kNN&#39;</span>,</span>
+<span id="cb333-61"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-61" tabindex="-1"></a>                                <span class="at">k =</span> <span class="dv">5</span>,</span>
+<span id="cb333-62"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-62" tabindex="-1"></a>                                <span class="at">maximum_distance_knn =</span> <span class="dv">400</span>,</span>
+<span id="cb333-63"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-63" tabindex="-1"></a>                                <span class="at">name =</span> <span class="st">&#39;spatial_network&#39;</span>)</span>
+<span id="cb333-64"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-64" tabindex="-1"></a></span>
+<span id="cb333-65"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-65" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> v_brain,</span>
+<span id="cb333-66"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-66" tabindex="-1"></a>           <span class="at">spat_unit =</span> <span class="st">&#39;cell&#39;</span>,</span>
+<span id="cb333-67"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-67" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&#39;leiden_clus&#39;</span>,</span>
+<span id="cb333-68"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-68" tabindex="-1"></a>           <span class="at">show_image =</span> T,</span>
+<span id="cb333-69"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-69" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="fl">1.5</span>,</span>
+<span id="cb333-70"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-70" tabindex="-1"></a>           <span class="at">point_shape =</span> <span class="st">&#39;no_border&#39;</span>,</span>
+<span id="cb333-71"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-71" tabindex="-1"></a>           <span class="at">background_color =</span> <span class="st">&#39;black&#39;</span>,</span>
+<span id="cb333-72"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-72" tabindex="-1"></a>           <span class="at">show_legend =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb333-73"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-73" tabindex="-1"></a>           <span class="at">save_plot =</span> T,</span>
+<span id="cb333-74"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-74" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&#39;03_ses6_1_vis_spat&#39;</span>))</span></code></pre></div>
 Here we can see the clustering of the regular visium spots is able to identify distinct regions of the mouse brain.
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-472"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-481"></span>
 <img src="img/03_session6/03_ses6_1_vis_spat.png" alt="Mouse brain spatial plot showing leiden clustering" width="75%" />
 <p class="caption">
 Figure 17.2: Mouse brain spatial plot showing leiden clustering
@@ -638,17 +643,17 @@ Figure 17.2: Mouse brain spatial plot showing leiden clustering
 <div id="identifying-spatially-organized-features" class="section level3 hasAnchor" number="17.3.1">
 <h3><span class="header-section-number">17.3.1</span> Identifying spatially organized features<a href="interactivity-with-the-rspatial-ecosystem.html#identifying-spatially-organized-features" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We need to identify genes to be used for interpolation. This works best with genes that are spatially distinct. To identify these genes we’ll use binSpect(). For this tutorial we’ll only use the top 15 spatially distinct genes. The more genes used for interpolation the longer the analysis will take. When running this for your own datasets you should use more genes. We are only using 15 here to minimize analysis time.</p>
-<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb329-1" tabindex="-1"></a><span class="co"># Spatially Variable Features</span></span>
-<span id="cb329-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb329-2" tabindex="-1"></a>ranktest <span class="ot">=</span> <span class="fu">binSpect</span>(v_brain,</span>
-<span id="cb329-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb329-3" tabindex="-1"></a>                    <span class="at">bin_method =</span> <span class="st">&#39;rank&#39;</span>,</span>
-<span id="cb329-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb329-4" tabindex="-1"></a>                    <span class="at">calc_hub =</span> T,</span>
-<span id="cb329-5"><a href="interactivity-with-the-rspatial-ecosystem.html#cb329-5" tabindex="-1"></a>                    <span class="at">hub_min_int =</span> <span class="dv">5</span>,</span>
-<span id="cb329-6"><a href="interactivity-with-the-rspatial-ecosystem.html#cb329-6" tabindex="-1"></a>                    <span class="at">spatial_network_name =</span> <span class="st">&#39;spatial_network&#39;</span>,</span>
-<span id="cb329-7"><a href="interactivity-with-the-rspatial-ecosystem.html#cb329-7" tabindex="-1"></a>                    <span class="at">do_parallel =</span> T,</span>
-<span id="cb329-8"><a href="interactivity-with-the-rspatial-ecosystem.html#cb329-8" tabindex="-1"></a>                    <span class="at">cores =</span> <span class="dv">8</span>) <span class="co">#not able to provide a seed number, so do not set one</span></span>
-<span id="cb329-9"><a href="interactivity-with-the-rspatial-ecosystem.html#cb329-9" tabindex="-1"></a></span>
-<span id="cb329-10"><a href="interactivity-with-the-rspatial-ecosystem.html#cb329-10" tabindex="-1"></a><span class="co"># Getting the top 15 spatially organized genes</span></span>
-<span id="cb329-11"><a href="interactivity-with-the-rspatial-ecosystem.html#cb329-11" tabindex="-1"></a>ext_spatial_features <span class="ot">=</span> ranktest[<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>,]<span class="sc">$</span>feats</span></code></pre></div>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb334-1" tabindex="-1"></a><span class="co"># Spatially Variable Features</span></span>
+<span id="cb334-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb334-2" tabindex="-1"></a>ranktest <span class="ot">=</span> <span class="fu">binSpect</span>(v_brain,</span>
+<span id="cb334-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb334-3" tabindex="-1"></a>                    <span class="at">bin_method =</span> <span class="st">&#39;rank&#39;</span>,</span>
+<span id="cb334-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb334-4" tabindex="-1"></a>                    <span class="at">calc_hub =</span> T,</span>
+<span id="cb334-5"><a href="interactivity-with-the-rspatial-ecosystem.html#cb334-5" tabindex="-1"></a>                    <span class="at">hub_min_int =</span> <span class="dv">5</span>,</span>
+<span id="cb334-6"><a href="interactivity-with-the-rspatial-ecosystem.html#cb334-6" tabindex="-1"></a>                    <span class="at">spatial_network_name =</span> <span class="st">&#39;spatial_network&#39;</span>,</span>
+<span id="cb334-7"><a href="interactivity-with-the-rspatial-ecosystem.html#cb334-7" tabindex="-1"></a>                    <span class="at">do_parallel =</span> T,</span>
+<span id="cb334-8"><a href="interactivity-with-the-rspatial-ecosystem.html#cb334-8" tabindex="-1"></a>                    <span class="at">cores =</span> <span class="dv">8</span>) <span class="co">#not able to provide a seed number, so do not set one</span></span>
+<span id="cb334-9"><a href="interactivity-with-the-rspatial-ecosystem.html#cb334-9" tabindex="-1"></a></span>
+<span id="cb334-10"><a href="interactivity-with-the-rspatial-ecosystem.html#cb334-10" tabindex="-1"></a><span class="co"># Getting the top 15 spatially organized genes</span></span>
+<span id="cb334-11"><a href="interactivity-with-the-rspatial-ecosystem.html#cb334-11" tabindex="-1"></a>ext_spatial_features <span class="ot">=</span> ranktest[<span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>,]<span class="sc">$</span>feats</span></code></pre></div>
 </div>
 </div>
 <div id="adding-cell-polygons-to-giotto-object" class="section level2 hasAnchor" number="17.4">
@@ -656,27 +661,27 @@ Figure 17.2: Mouse brain spatial plot showing leiden clustering
 <div id="read-in-the-poly-information" class="section level3 hasAnchor" number="17.4.1">
 <h3><span class="header-section-number">17.4.1</span> Read in the poly information<a href="interactivity-with-the-rspatial-ecosystem.html#read-in-the-poly-information" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>First we need to read in the geojson file that contains the cell polygons that we’ll interpolate gene expression onto. These will then be added to the Giotto object as a new polygon object. This won’t affect the visium polygons. Both polygons will be stored within the same Giotto object.</p>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb330-1" tabindex="-1"></a><span class="co"># Read in the data</span></span>
-<span id="cb330-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb330-2" tabindex="-1"></a>stardist_cell_poly_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(data_directory, <span class="st">&quot;segmentations/stardist_only_cell_bounds.geojson&quot;</span>)</span>
-<span id="cb330-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb330-3" tabindex="-1"></a></span>
-<span id="cb330-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb330-4" tabindex="-1"></a>stardist_cell_gpoly <span class="ot">&lt;-</span> <span class="fu">createGiottoPolygonsFromGeoJSON</span>(<span class="at">GeoJSON =</span> stardist_cell_poly_path,</span>
-<span id="cb330-5"><a href="interactivity-with-the-rspatial-ecosystem.html#cb330-5" tabindex="-1"></a>                                                      <span class="at">name =</span> <span class="st">&quot;stardist_cell&quot;</span>,</span>
-<span id="cb330-6"><a href="interactivity-with-the-rspatial-ecosystem.html#cb330-6" tabindex="-1"></a>                                                      <span class="at">calc_centroids =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb330-7"><a href="interactivity-with-the-rspatial-ecosystem.html#cb330-7" tabindex="-1"></a></span>
-<span id="cb330-8"><a href="interactivity-with-the-rspatial-ecosystem.html#cb330-8" tabindex="-1"></a>stardist_cell_gpoly <span class="ot">&lt;-</span> <span class="fu">flip</span>(stardist_cell_gpoly)</span></code></pre></div>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb335-1" tabindex="-1"></a><span class="co"># Read in the data</span></span>
+<span id="cb335-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb335-2" tabindex="-1"></a>stardist_cell_poly_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(data_directory, <span class="st">&quot;segmentations/stardist_only_cell_bounds.geojson&quot;</span>)</span>
+<span id="cb335-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb335-3" tabindex="-1"></a></span>
+<span id="cb335-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb335-4" tabindex="-1"></a>stardist_cell_gpoly <span class="ot">&lt;-</span> <span class="fu">createGiottoPolygonsFromGeoJSON</span>(<span class="at">GeoJSON =</span> stardist_cell_poly_path,</span>
+<span id="cb335-5"><a href="interactivity-with-the-rspatial-ecosystem.html#cb335-5" tabindex="-1"></a>                                                      <span class="at">name =</span> <span class="st">&quot;stardist_cell&quot;</span>,</span>
+<span id="cb335-6"><a href="interactivity-with-the-rspatial-ecosystem.html#cb335-6" tabindex="-1"></a>                                                      <span class="at">calc_centroids =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb335-7"><a href="interactivity-with-the-rspatial-ecosystem.html#cb335-7" tabindex="-1"></a></span>
+<span id="cb335-8"><a href="interactivity-with-the-rspatial-ecosystem.html#cb335-8" tabindex="-1"></a>stardist_cell_gpoly <span class="ot">&lt;-</span> <span class="fu">flip</span>(stardist_cell_gpoly)</span></code></pre></div>
 </div>
 <div id="vizualizing-polygons" class="section level3 hasAnchor" number="17.4.2">
 <h3><span class="header-section-number">17.4.2</span> Vizualizing polygons<a href="interactivity-with-the-rspatial-ecosystem.html#vizualizing-polygons" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Below we can see a vizualization of the polygons for the visium and the nuclei we identified from the H&amp;E image. The visium dataset has 2698 spots compared to teh 36694 nuclei we identified. Just using the visium spots we’re therefore losing a lot of the spatial data for individual cells. With the increased number of spots and them directly correlating with the tissue, through the spots alone we are able to better see the actual sturcture of the mouse brain.</p>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb331-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">getPolygonInfo</span>(v_brain))</span>
-<span id="cb331-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb331-2" tabindex="-1"></a><span class="fu">plot</span>(stardist_cell_gpoly, <span class="at">max_poly =</span> <span class="fl">1e6</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-476"></span>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb336-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">getPolygonInfo</span>(v_brain))</span>
+<span id="cb336-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb336-2" tabindex="-1"></a><span class="fu">plot</span>(stardist_cell_gpoly, <span class="at">max_poly =</span> <span class="fl">1e6</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-485"></span>
 <img src="img/03_session6/visium_polys.png" alt="Mouse brain cell polygons from the visium dataset" width="100%" />
 <p class="caption">
 Figure 17.3: Mouse brain cell polygons from the visium dataset
 </p>
 </div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-477"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-486"></span>
 <img src="img/03_session6/03_ses6_2_cell_poly_flipped.png" alt="Mouse brain cell polygons with artifacts removed and flipped" width="100%" />
 <p class="caption">
 Figure 17.4: Mouse brain cell polygons with artifacts removed and flipped
@@ -686,8 +691,8 @@ Figure 17.4: Mouse brain cell polygons with artifacts removed and flipped
 <div id="showing-giotto-object-prior-to-polygon-addition" class="section level3 hasAnchor" number="17.4.3">
 <h3><span class="header-section-number">17.4.3</span> Showing Giotto object prior to polygon addition<a href="interactivity-with-the-rspatial-ecosystem.html#showing-giotto-object-prior-to-polygon-addition" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Before we add the polygons we’re can see the gobject contains ‘cell’ as a spatial unit and a polygon.</p>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb332-1" tabindex="-1"></a><span class="fu">print</span>(v_brain)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-479"></span>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb337-1" tabindex="-1"></a><span class="fu">print</span>(v_brain)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-488"></span>
 <img src="img/03_session6/visium_gobject.png" alt="Giotto object before adding subcellular polygons." width="40%" />
 <p class="caption">
 Figure 17.5: Giotto object before adding subcellular polygons.
@@ -697,11 +702,11 @@ Figure 17.5: Giotto object before adding subcellular polygons.
 <div id="adding-polygons-to-giotto-object" class="section level3 hasAnchor" number="17.4.4">
 <h3><span class="header-section-number">17.4.4</span> Adding polygons to giotto object<a href="interactivity-with-the-rspatial-ecosystem.html#adding-polygons-to-giotto-object" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>After we add the nuclei polygons we can see that a new polygon name, ‘stardist_cell’ has been added to the gobject.</p>
-<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-1" tabindex="-1"></a>v_brain <span class="ot">&lt;-</span> <span class="fu">addGiottoPolygons</span>(v_brain, </span>
-<span id="cb333-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-2" tabindex="-1"></a>                             <span class="at">gpolygons =</span> <span class="fu">list</span>(<span class="st">&#39;stardist_cell&#39;</span> <span class="ot">=</span> stardist_cell_gpoly))</span>
-<span id="cb333-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-3" tabindex="-1"></a></span>
-<span id="cb333-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb333-4" tabindex="-1"></a><span class="fu">print</span>(v_brain)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-481"></span>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb338-1" tabindex="-1"></a>v_brain <span class="ot">&lt;-</span> <span class="fu">addGiottoPolygons</span>(v_brain, </span>
+<span id="cb338-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb338-2" tabindex="-1"></a>                             <span class="at">gpolygons =</span> <span class="fu">list</span>(<span class="st">&#39;stardist_cell&#39;</span> <span class="ot">=</span> stardist_cell_gpoly))</span>
+<span id="cb338-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb338-3" tabindex="-1"></a></span>
+<span id="cb338-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb338-4" tabindex="-1"></a><span class="fu">print</span>(v_brain)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-490"></span>
 <img src="img/03_session6/03_ses6_gobject_sub.png" alt="Giotto object after to adding subcellular polygons." width="40%" />
 <p class="caption">
 Figure 17.6: Giotto object after to adding subcellular polygons.
@@ -711,9 +716,9 @@ Figure 17.6: Giotto object after to adding subcellular polygons.
 <div id="check-polygon-information" class="section level3 hasAnchor" number="17.4.5">
 <h3><span class="header-section-number">17.4.5</span> Check polygon information<a href="interactivity-with-the-rspatial-ecosystem.html#check-polygon-information" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We can now see the addition of the new polygons under the name ‘stardist_cell’. Each of the new polyons is given a unique poly_ID as shown below. Each polygon is also added into same space as the original visium spots, therefore line up with the same image as the visium spots.</p>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb334-1" tabindex="-1"></a>poly_info <span class="ot">&lt;-</span> <span class="fu">getPolygonInfo</span>(v_brain,<span class="at">polygon_name  =</span> <span class="st">&#39;stardist_cell&#39;</span>)</span>
-<span id="cb334-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb334-2" tabindex="-1"></a><span class="fu">print</span>(poly_info)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-483"></span>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-1" tabindex="-1"></a>poly_info <span class="ot">&lt;-</span> <span class="fu">getPolygonInfo</span>(v_brain,<span class="at">polygon_name  =</span> <span class="st">&#39;stardist_cell&#39;</span>)</span>
+<span id="cb339-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-2" tabindex="-1"></a><span class="fu">print</span>(poly_info)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-492"></span>
 <img src="img/03_session6/stardist_poly_info.png" alt="Polygon information for stardist_cell." width="60%" />
 <p class="caption">
 Figure 17.7: Polygon information for stardist_cell.
@@ -727,23 +732,23 @@ Figure 17.7: Polygon information for stardist_cell.
 <h3><span class="header-section-number">17.5.1</span> Interpolating features<a href="interactivity-with-the-rspatial-ecosystem.html#interpolating-features" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Now we can perform the first step in interpolating expression data onto cell polygons. This involves creating a raster image for the gene expression of each of the selected genes. The steps from here can be time consuming and require large amounts of memory. We will only be
 analyzing 15 genes to show the process of expression interpolation. For clustering and other analyses more genes are required.</p>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb335-1" tabindex="-1"></a>future<span class="sc">::</span><span class="fu">plan</span>(future<span class="sc">::</span><span class="fu">multisession</span>()) <span class="co"># comment out for single threading</span></span>
-<span id="cb335-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb335-2" tabindex="-1"></a>subcell_v_brain <span class="ot">&lt;-</span> <span class="fu">interpolateFeature</span>(v_brain,</span>
-<span id="cb335-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb335-3" tabindex="-1"></a>                                  <span class="at">spat_unit =</span> <span class="st">&#39;cell&#39;</span>,</span>
-<span id="cb335-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb335-4" tabindex="-1"></a>                                  <span class="at">feat_type =</span> <span class="st">&#39;rna&#39;</span>,</span>
-<span id="cb335-5"><a href="interactivity-with-the-rspatial-ecosystem.html#cb335-5" tabindex="-1"></a>                                  <span class="at">ext =</span> <span class="fu">ext</span>(v_brain),</span>
-<span id="cb335-6"><a href="interactivity-with-the-rspatial-ecosystem.html#cb335-6" tabindex="-1"></a>                                  <span class="at">feats =</span> ext_spatial_features,</span>
-<span id="cb335-7"><a href="interactivity-with-the-rspatial-ecosystem.html#cb335-7" tabindex="-1"></a>                                  <span class="at">overwrite =</span> T)</span>
-<span id="cb335-8"><a href="interactivity-with-the-rspatial-ecosystem.html#cb335-8" tabindex="-1"></a></span>
-<span id="cb335-9"><a href="interactivity-with-the-rspatial-ecosystem.html#cb335-9" tabindex="-1"></a><span class="fu">print</span>(subcell_v_brain)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-485"></span>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb340-1" tabindex="-1"></a>future<span class="sc">::</span><span class="fu">plan</span>(future<span class="sc">::</span><span class="fu">multisession</span>()) <span class="co"># comment out for single threading</span></span>
+<span id="cb340-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb340-2" tabindex="-1"></a>subcell_v_brain <span class="ot">&lt;-</span> <span class="fu">interpolateFeature</span>(v_brain,</span>
+<span id="cb340-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb340-3" tabindex="-1"></a>                                  <span class="at">spat_unit =</span> <span class="st">&#39;cell&#39;</span>,</span>
+<span id="cb340-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb340-4" tabindex="-1"></a>                                  <span class="at">feat_type =</span> <span class="st">&#39;rna&#39;</span>,</span>
+<span id="cb340-5"><a href="interactivity-with-the-rspatial-ecosystem.html#cb340-5" tabindex="-1"></a>                                  <span class="at">ext =</span> <span class="fu">ext</span>(v_brain),</span>
+<span id="cb340-6"><a href="interactivity-with-the-rspatial-ecosystem.html#cb340-6" tabindex="-1"></a>                                  <span class="at">feats =</span> ext_spatial_features,</span>
+<span id="cb340-7"><a href="interactivity-with-the-rspatial-ecosystem.html#cb340-7" tabindex="-1"></a>                                  <span class="at">overwrite =</span> T)</span>
+<span id="cb340-8"><a href="interactivity-with-the-rspatial-ecosystem.html#cb340-8" tabindex="-1"></a></span>
+<span id="cb340-9"><a href="interactivity-with-the-rspatial-ecosystem.html#cb340-9" tabindex="-1"></a><span class="fu">print</span>(subcell_v_brain)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-494"></span>
 <img src="img/03_session6/03_ses6_gobject_sub_interpolate.png" alt="Giotto object after to interpolating features. Addition of images for each interoplated feature (left) and an example of rasterized gene expression image (right)." width="100%" />
 <p class="caption">
 Figure 17.8: Giotto object after to interpolating features. Addition of images for each interoplated feature (left) and an example of rasterized gene expression image (right).
 </p>
 </div>
 <p>For each gene that we interpolate a raster image is exported based on the gene expression. Shown below is an example of an output for the gene Pantr1.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-486"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-495"></span>
 <img src="img/03_session6/Pantr1_raster.png" alt="Raster of gene expression interpolation for Pantr1" width="50%" />
 <p class="caption">
 Figure 17.9: Raster of gene expression interpolation for Pantr1
@@ -754,18 +759,18 @@ Figure 17.9: Raster of gene expression interpolation for Pantr1
 <h3><span class="header-section-number">17.5.2</span> Expression overlap<a href="interactivity-with-the-rspatial-ecosystem.html#expression-overlap" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The raster we created above gives the gene expression in a graphical form. We next need to determine how that relates to the nuclei location. To determine that we will calculate the overlap of the rasterized gene expression image to the polygons supplied earlier.</p>
 <p>This step also takes more time the more genes that are provided. For large datasets please allow up to multiple hours for these steps to run.</p>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb336-1" tabindex="-1"></a>subcell_v_brain <span class="ot">&lt;-</span> <span class="fu">calculateOverlapPolygonImages</span>(<span class="at">gobject =</span> subcell_v_brain,</span>
-<span id="cb336-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb336-2" tabindex="-1"></a>                                             <span class="at">name_overlap =</span> <span class="st">&quot;rna&quot;</span>,</span>
-<span id="cb336-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb336-3" tabindex="-1"></a>                                             <span class="at">spatial_info =</span> <span class="st">&quot;stardist_cell&quot;</span>,</span>
-<span id="cb336-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb336-4" tabindex="-1"></a>                                             <span class="at">image_names =</span> ext_spatial_features)</span>
-<span id="cb336-5"><a href="interactivity-with-the-rspatial-ecosystem.html#cb336-5" tabindex="-1"></a></span>
-<span id="cb336-6"><a href="interactivity-with-the-rspatial-ecosystem.html#cb336-6" tabindex="-1"></a>subcell_v_brain <span class="ot">&lt;-</span> Giotto<span class="sc">::</span><span class="fu">overlapToMatrix</span>(<span class="at">x =</span> subcell_v_brain,</span>
-<span id="cb336-7"><a href="interactivity-with-the-rspatial-ecosystem.html#cb336-7" tabindex="-1"></a>                                     <span class="at">poly_info =</span> <span class="st">&quot;stardist_cell&quot;</span>,</span>
-<span id="cb336-8"><a href="interactivity-with-the-rspatial-ecosystem.html#cb336-8" tabindex="-1"></a>                                     <span class="at">feat_info =</span> <span class="st">&quot;rna&quot;</span>,</span>
-<span id="cb336-9"><a href="interactivity-with-the-rspatial-ecosystem.html#cb336-9" tabindex="-1"></a>                                     <span class="at">aggr_function =</span> <span class="st">&quot;sum&quot;</span>,</span>
-<span id="cb336-10"><a href="interactivity-with-the-rspatial-ecosystem.html#cb336-10" tabindex="-1"></a>                                     <span class="at">type=</span><span class="st">&#39;intensity&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-1" tabindex="-1"></a>subcell_v_brain <span class="ot">&lt;-</span> <span class="fu">calculateOverlapPolygonImages</span>(<span class="at">gobject =</span> subcell_v_brain,</span>
+<span id="cb341-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-2" tabindex="-1"></a>                                             <span class="at">name_overlap =</span> <span class="st">&quot;rna&quot;</span>,</span>
+<span id="cb341-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-3" tabindex="-1"></a>                                             <span class="at">spatial_info =</span> <span class="st">&quot;stardist_cell&quot;</span>,</span>
+<span id="cb341-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-4" tabindex="-1"></a>                                             <span class="at">image_names =</span> ext_spatial_features)</span>
+<span id="cb341-5"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-5" tabindex="-1"></a></span>
+<span id="cb341-6"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-6" tabindex="-1"></a>subcell_v_brain <span class="ot">&lt;-</span> Giotto<span class="sc">::</span><span class="fu">overlapToMatrix</span>(<span class="at">x =</span> subcell_v_brain,</span>
+<span id="cb341-7"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-7" tabindex="-1"></a>                                     <span class="at">poly_info =</span> <span class="st">&quot;stardist_cell&quot;</span>,</span>
+<span id="cb341-8"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-8" tabindex="-1"></a>                                     <span class="at">feat_info =</span> <span class="st">&quot;rna&quot;</span>,</span>
+<span id="cb341-9"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-9" tabindex="-1"></a>                                     <span class="at">aggr_function =</span> <span class="st">&quot;sum&quot;</span>,</span>
+<span id="cb341-10"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-10" tabindex="-1"></a>                                     <span class="at">type=</span><span class="st">&#39;intensity&#39;</span>)</span></code></pre></div>
 After performing the overlap we now have expression data for each gene provided. This can be seen below where we see the interpolated gene expression for genes in each of the nuclei we identified.
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-488"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-497"></span>
 <img src="img/03_session6/03_ses6_interpolate_gene_express.png" alt="Gene expression for cells based on interpolation." width="100%" />
 <p class="caption">
 Figure 17.10: Gene expression for cells based on interpolation.
@@ -776,70 +781,70 @@ Figure 17.10: Gene expression for cells based on interpolation.
 <div id="reading-in-larger-dataset" class="section level2 hasAnchor" number="17.6">
 <h2><span class="header-section-number">17.6</span> Reading in larger dataset<a href="interactivity-with-the-rspatial-ecosystem.html#reading-in-larger-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>For better results more genes are required. The above data used only 15 genes. We will now read in a dataset that has 1500 interpolated genes an use this for the remained of the tutorial. If you haven’t downloaded this dataset please download it <a href="https://zenodo.org/records/13144556">here</a>.</p>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb337-1" tabindex="-1"></a>subcell_v_brain <span class="ot">&lt;-</span> <span class="fu">loadGiotto</span>(<span class="fu">file.path</span>(data_directory, <span class="st">&#39;subcellular_gobject&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb342-1" tabindex="-1"></a>subcell_v_brain <span class="ot">&lt;-</span> <span class="fu">loadGiotto</span>(<span class="fu">file.path</span>(data_directory, <span class="st">&#39;subcellular_gobject&#39;</span>))</span></code></pre></div>
 </div>
 <div id="analyzing-interpolated-features" class="section level2 hasAnchor" number="17.7">
 <h2><span class="header-section-number">17.7</span> Analyzing interpolated features<a href="interactivity-with-the-rspatial-ecosystem.html#analyzing-interpolated-features" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="filter-and-normalization" class="section level3 hasAnchor" number="17.7.1">
 <h3><span class="header-section-number">17.7.1</span> Filter and normalization<a href="interactivity-with-the-rspatial-ecosystem.html#filter-and-normalization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Now that we have a valid spat unit and gene expression data for each of the provided genes we can now perform the same analyses we used for the regular visium data. Please note that due to the differences in cell number that the valeus used for the current analysis aren’t identical to the visium analysis.</p>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb338-1" tabindex="-1"></a>subcell_v_brain <span class="ot">&lt;-</span> <span class="fu">filterGiotto</span>(<span class="at">gobject =</span> subcell_v_brain,</span>
-<span id="cb338-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb338-2" tabindex="-1"></a>                               <span class="at">spat_unit =</span> <span class="st">&quot;stardist_cell&quot;</span>,</span>
-<span id="cb338-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb338-3" tabindex="-1"></a>                               <span class="at">expression_values =</span> <span class="st">&quot;raw&quot;</span>,</span>
-<span id="cb338-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb338-4" tabindex="-1"></a>                               <span class="at">expression_threshold =</span> <span class="dv">1</span>,</span>
-<span id="cb338-5"><a href="interactivity-with-the-rspatial-ecosystem.html#cb338-5" tabindex="-1"></a>                               <span class="at">feat_det_in_min_cells =</span> <span class="dv">0</span>,</span>
-<span id="cb338-6"><a href="interactivity-with-the-rspatial-ecosystem.html#cb338-6" tabindex="-1"></a>                               <span class="at">min_det_feats_per_cell =</span> <span class="dv">1</span>)</span>
-<span id="cb338-7"><a href="interactivity-with-the-rspatial-ecosystem.html#cb338-7" tabindex="-1"></a></span>
-<span id="cb338-8"><a href="interactivity-with-the-rspatial-ecosystem.html#cb338-8" tabindex="-1"></a></span>
-<span id="cb338-9"><a href="interactivity-with-the-rspatial-ecosystem.html#cb338-9" tabindex="-1"></a>subcell_v_brain <span class="ot">&lt;-</span> <span class="fu">normalizeGiotto</span>(<span class="at">gobject =</span> subcell_v_brain,</span>
-<span id="cb338-10"><a href="interactivity-with-the-rspatial-ecosystem.html#cb338-10" tabindex="-1"></a>                                  <span class="at">spat_unit =</span> <span class="st">&quot;stardist_cell&quot;</span>,</span>
-<span id="cb338-11"><a href="interactivity-with-the-rspatial-ecosystem.html#cb338-11" tabindex="-1"></a>                                  <span class="at">scalefactor =</span> <span class="dv">6000</span>,</span>
-<span id="cb338-12"><a href="interactivity-with-the-rspatial-ecosystem.html#cb338-12" tabindex="-1"></a>                                  <span class="at">verbose =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-1" tabindex="-1"></a>subcell_v_brain <span class="ot">&lt;-</span> <span class="fu">filterGiotto</span>(<span class="at">gobject =</span> subcell_v_brain,</span>
+<span id="cb343-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-2" tabindex="-1"></a>                               <span class="at">spat_unit =</span> <span class="st">&quot;stardist_cell&quot;</span>,</span>
+<span id="cb343-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-3" tabindex="-1"></a>                               <span class="at">expression_values =</span> <span class="st">&quot;raw&quot;</span>,</span>
+<span id="cb343-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-4" tabindex="-1"></a>                               <span class="at">expression_threshold =</span> <span class="dv">1</span>,</span>
+<span id="cb343-5"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-5" tabindex="-1"></a>                               <span class="at">feat_det_in_min_cells =</span> <span class="dv">0</span>,</span>
+<span id="cb343-6"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-6" tabindex="-1"></a>                               <span class="at">min_det_feats_per_cell =</span> <span class="dv">1</span>)</span>
+<span id="cb343-7"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-7" tabindex="-1"></a></span>
+<span id="cb343-8"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-8" tabindex="-1"></a></span>
+<span id="cb343-9"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-9" tabindex="-1"></a>subcell_v_brain <span class="ot">&lt;-</span> <span class="fu">normalizeGiotto</span>(<span class="at">gobject =</span> subcell_v_brain,</span>
+<span id="cb343-10"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-10" tabindex="-1"></a>                                  <span class="at">spat_unit =</span> <span class="st">&quot;stardist_cell&quot;</span>,</span>
+<span id="cb343-11"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-11" tabindex="-1"></a>                                  <span class="at">scalefactor =</span> <span class="dv">6000</span>,</span>
+<span id="cb343-12"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-12" tabindex="-1"></a>                                  <span class="at">verbose =</span> T)</span></code></pre></div>
 </div>
 <div id="visualizing-gene-expression-from-interpolated-expression" class="section level3 hasAnchor" number="17.7.2">
 <h3><span class="header-section-number">17.7.2</span> Visualizing gene expression from interpolated expression<a href="interactivity-with-the-rspatial-ecosystem.html#visualizing-gene-expression-from-interpolated-expression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Since we have the gene expression information for both the visium and the interpolated gene expression we can vizualize gene expression for both from the same Giotto object. We will look at the expression for two genes ‘Sparc’ and ‘Pantr1’ for both the visium and interpolated data.</p>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-1" tabindex="-1"></a><span class="fu">spatFeatPlot2D</span>(subcell_v_brain,</span>
-<span id="cb339-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-2" tabindex="-1"></a>               <span class="at">spat_unit =</span> <span class="st">&#39;cell&#39;</span>,</span>
-<span id="cb339-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-3" tabindex="-1"></a>               <span class="at">gradient_style =</span> <span class="st">&#39;sequential&#39;</span>,</span>
-<span id="cb339-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-4" tabindex="-1"></a>              <span class="at">cell_color_gradient =</span> <span class="st">&#39;Geyser&#39;</span>,</span>
-<span id="cb339-5"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-5" tabindex="-1"></a>              <span class="at">feats =</span> <span class="st">&#39;Sparc&#39;</span>,</span>
-<span id="cb339-6"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-6" tabindex="-1"></a>              <span class="at">point_size =</span> <span class="dv">2</span>,</span>
-<span id="cb339-7"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-7" tabindex="-1"></a>              <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb339-8"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-8" tabindex="-1"></a>              <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb339-9"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-9" tabindex="-1"></a>              <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&#39;03_ses6_sparc_vis&#39;</span>))</span>
-<span id="cb339-10"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-10" tabindex="-1"></a></span>
-<span id="cb339-11"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-11" tabindex="-1"></a><span class="fu">spatFeatPlot2D</span>(subcell_v_brain,</span>
-<span id="cb339-12"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-12" tabindex="-1"></a>               <span class="at">spat_unit =</span> <span class="st">&#39;stardist_cell&#39;</span>,</span>
-<span id="cb339-13"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-13" tabindex="-1"></a>               <span class="at">gradient_style =</span> <span class="st">&#39;sequential&#39;</span>,</span>
-<span id="cb339-14"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-14" tabindex="-1"></a>               <span class="at">cell_color_gradient =</span> <span class="st">&#39;Geyser&#39;</span>,</span>
-<span id="cb339-15"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-15" tabindex="-1"></a>              <span class="at">feats =</span> <span class="st">&#39;Sparc&#39;</span>,</span>
-<span id="cb339-16"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-16" tabindex="-1"></a>              <span class="at">point_size =</span> <span class="fl">0.6</span>,</span>
-<span id="cb339-17"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-17" tabindex="-1"></a>              <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb339-18"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-18" tabindex="-1"></a>              <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb339-19"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-19" tabindex="-1"></a>              <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&#39;03_ses6_sparc&#39;</span>))</span>
-<span id="cb339-20"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-20" tabindex="-1"></a></span>
-<span id="cb339-21"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-21" tabindex="-1"></a><span class="fu">spatFeatPlot2D</span>(subcell_v_brain,</span>
-<span id="cb339-22"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-22" tabindex="-1"></a>               <span class="at">spat_unit =</span> <span class="st">&#39;cell&#39;</span>,</span>
-<span id="cb339-23"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-23" tabindex="-1"></a>               <span class="at">gradient_style =</span> <span class="st">&#39;sequential&#39;</span>,</span>
-<span id="cb339-24"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-24" tabindex="-1"></a>              <span class="at">feats =</span> <span class="st">&#39;Pantr1&#39;</span>,</span>
-<span id="cb339-25"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-25" tabindex="-1"></a>              <span class="at">cell_color_gradient =</span> <span class="st">&#39;Geyser&#39;</span>,</span>
-<span id="cb339-26"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-26" tabindex="-1"></a>              <span class="at">point_size =</span> <span class="dv">2</span>,</span>
-<span id="cb339-27"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-27" tabindex="-1"></a>              <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb339-28"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-28" tabindex="-1"></a>              <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb339-29"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-29" tabindex="-1"></a>              <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&#39;03_ses6_pantr1_vis&#39;</span>))</span>
-<span id="cb339-30"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-30" tabindex="-1"></a> </span>
-<span id="cb339-31"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-31" tabindex="-1"></a><span class="fu">spatFeatPlot2D</span>(subcell_v_brain,</span>
-<span id="cb339-32"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-32" tabindex="-1"></a>               <span class="at">spat_unit =</span> <span class="st">&#39;stardist_cell&#39;</span>,</span>
-<span id="cb339-33"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-33" tabindex="-1"></a>               <span class="at">gradient_style =</span> <span class="st">&#39;sequential&#39;</span>,</span>
-<span id="cb339-34"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-34" tabindex="-1"></a>               <span class="at">cell_color_gradient =</span> <span class="st">&#39;Geyser&#39;</span>,</span>
-<span id="cb339-35"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-35" tabindex="-1"></a>              <span class="at">feats =</span> <span class="st">&#39;Pantr1&#39;</span>,</span>
-<span id="cb339-36"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-36" tabindex="-1"></a>              <span class="at">point_size =</span> <span class="fl">0.6</span>,</span>
-<span id="cb339-37"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-37" tabindex="-1"></a>              <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb339-38"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-38" tabindex="-1"></a>              <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb339-39"><a href="interactivity-with-the-rspatial-ecosystem.html#cb339-39" tabindex="-1"></a>              <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&#39;03_ses6_pantr1&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-1" tabindex="-1"></a><span class="fu">spatFeatPlot2D</span>(subcell_v_brain,</span>
+<span id="cb344-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-2" tabindex="-1"></a>               <span class="at">spat_unit =</span> <span class="st">&#39;cell&#39;</span>,</span>
+<span id="cb344-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-3" tabindex="-1"></a>               <span class="at">gradient_style =</span> <span class="st">&#39;sequential&#39;</span>,</span>
+<span id="cb344-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-4" tabindex="-1"></a>              <span class="at">cell_color_gradient =</span> <span class="st">&#39;Geyser&#39;</span>,</span>
+<span id="cb344-5"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-5" tabindex="-1"></a>              <span class="at">feats =</span> <span class="st">&#39;Sparc&#39;</span>,</span>
+<span id="cb344-6"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-6" tabindex="-1"></a>              <span class="at">point_size =</span> <span class="dv">2</span>,</span>
+<span id="cb344-7"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-7" tabindex="-1"></a>              <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb344-8"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-8" tabindex="-1"></a>              <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb344-9"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-9" tabindex="-1"></a>              <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&#39;03_ses6_sparc_vis&#39;</span>))</span>
+<span id="cb344-10"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-10" tabindex="-1"></a></span>
+<span id="cb344-11"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-11" tabindex="-1"></a><span class="fu">spatFeatPlot2D</span>(subcell_v_brain,</span>
+<span id="cb344-12"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-12" tabindex="-1"></a>               <span class="at">spat_unit =</span> <span class="st">&#39;stardist_cell&#39;</span>,</span>
+<span id="cb344-13"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-13" tabindex="-1"></a>               <span class="at">gradient_style =</span> <span class="st">&#39;sequential&#39;</span>,</span>
+<span id="cb344-14"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-14" tabindex="-1"></a>               <span class="at">cell_color_gradient =</span> <span class="st">&#39;Geyser&#39;</span>,</span>
+<span id="cb344-15"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-15" tabindex="-1"></a>              <span class="at">feats =</span> <span class="st">&#39;Sparc&#39;</span>,</span>
+<span id="cb344-16"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-16" tabindex="-1"></a>              <span class="at">point_size =</span> <span class="fl">0.6</span>,</span>
+<span id="cb344-17"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-17" tabindex="-1"></a>              <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb344-18"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-18" tabindex="-1"></a>              <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb344-19"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-19" tabindex="-1"></a>              <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&#39;03_ses6_sparc&#39;</span>))</span>
+<span id="cb344-20"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-20" tabindex="-1"></a></span>
+<span id="cb344-21"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-21" tabindex="-1"></a><span class="fu">spatFeatPlot2D</span>(subcell_v_brain,</span>
+<span id="cb344-22"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-22" tabindex="-1"></a>               <span class="at">spat_unit =</span> <span class="st">&#39;cell&#39;</span>,</span>
+<span id="cb344-23"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-23" tabindex="-1"></a>               <span class="at">gradient_style =</span> <span class="st">&#39;sequential&#39;</span>,</span>
+<span id="cb344-24"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-24" tabindex="-1"></a>              <span class="at">feats =</span> <span class="st">&#39;Pantr1&#39;</span>,</span>
+<span id="cb344-25"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-25" tabindex="-1"></a>              <span class="at">cell_color_gradient =</span> <span class="st">&#39;Geyser&#39;</span>,</span>
+<span id="cb344-26"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-26" tabindex="-1"></a>              <span class="at">point_size =</span> <span class="dv">2</span>,</span>
+<span id="cb344-27"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-27" tabindex="-1"></a>              <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb344-28"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-28" tabindex="-1"></a>              <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb344-29"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-29" tabindex="-1"></a>              <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&#39;03_ses6_pantr1_vis&#39;</span>))</span>
+<span id="cb344-30"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-30" tabindex="-1"></a> </span>
+<span id="cb344-31"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-31" tabindex="-1"></a><span class="fu">spatFeatPlot2D</span>(subcell_v_brain,</span>
+<span id="cb344-32"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-32" tabindex="-1"></a>               <span class="at">spat_unit =</span> <span class="st">&#39;stardist_cell&#39;</span>,</span>
+<span id="cb344-33"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-33" tabindex="-1"></a>               <span class="at">gradient_style =</span> <span class="st">&#39;sequential&#39;</span>,</span>
+<span id="cb344-34"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-34" tabindex="-1"></a>               <span class="at">cell_color_gradient =</span> <span class="st">&#39;Geyser&#39;</span>,</span>
+<span id="cb344-35"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-35" tabindex="-1"></a>              <span class="at">feats =</span> <span class="st">&#39;Pantr1&#39;</span>,</span>
+<span id="cb344-36"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-36" tabindex="-1"></a>              <span class="at">point_size =</span> <span class="fl">0.6</span>,</span>
+<span id="cb344-37"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-37" tabindex="-1"></a>              <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb344-38"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-38" tabindex="-1"></a>              <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb344-39"><a href="interactivity-with-the-rspatial-ecosystem.html#cb344-39" tabindex="-1"></a>              <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&#39;03_ses6_pantr1&#39;</span>))</span></code></pre></div>
 <p>Below we can see the gene expression for both datatypes. With the interpolated gene expression we’re able to get a better idea as to the cells that are expressing each of the genes. This is especially clear with Pantr1, which clearly localizes to the pyramidal layer.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-492"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-501"></span>
 <img src="img/03_session6/03_ses6_gene_expression.png" alt="Gene expression for visium (left) and interpolated (right) expression for Sparc (top) and Pantr1 (bottom)." width="100%" />
 <p class="caption">
 Figure 17.11: Gene expression for visium (left) and interpolated (right) expression for Sparc (top) and Pantr1 (bottom).
@@ -848,37 +853,37 @@ Figure 17.11: Gene expression for visium (left) and interpolated (right) express
 </div>
 <div id="run-pca" class="section level3 hasAnchor" number="17.7.3">
 <h3><span class="header-section-number">17.7.3</span> Run PCA<a href="interactivity-with-the-rspatial-ecosystem.html#run-pca" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb340-1" tabindex="-1"></a>subcell_v_brain <span class="ot">&lt;-</span> <span class="fu">runPCA</span>(<span class="at">gobject =</span> subcell_v_brain,</span>
-<span id="cb340-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb340-2" tabindex="-1"></a>                         <span class="at">spat_unit =</span> <span class="st">&quot;stardist_cell&quot;</span>,</span>
-<span id="cb340-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb340-3" tabindex="-1"></a>                         <span class="at">expression_values =</span> <span class="st">&quot;normalized&quot;</span>,</span>
-<span id="cb340-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb340-4" tabindex="-1"></a>                         <span class="at">feats_to_use =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb345-1" tabindex="-1"></a>subcell_v_brain <span class="ot">&lt;-</span> <span class="fu">runPCA</span>(<span class="at">gobject =</span> subcell_v_brain,</span>
+<span id="cb345-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb345-2" tabindex="-1"></a>                         <span class="at">spat_unit =</span> <span class="st">&quot;stardist_cell&quot;</span>,</span>
+<span id="cb345-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb345-3" tabindex="-1"></a>                         <span class="at">expression_values =</span> <span class="st">&quot;normalized&quot;</span>,</span>
+<span id="cb345-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb345-4" tabindex="-1"></a>                         <span class="at">feats_to_use =</span> <span class="cn">NULL</span>)</span></code></pre></div>
 </div>
 <div id="clustering-2" class="section level3 hasAnchor" number="17.7.4">
 <h3><span class="header-section-number">17.7.4</span> Clustering<a href="interactivity-with-the-rspatial-ecosystem.html#clustering-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-1" tabindex="-1"></a><span class="co"># UMAP</span></span>
-<span id="cb341-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-2" tabindex="-1"></a>subcell_v_brain <span class="ot">&lt;-</span> <span class="fu">runUMAP</span>(subcell_v_brain,</span>
-<span id="cb341-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-3" tabindex="-1"></a>                          <span class="at">spat_unit =</span> <span class="st">&quot;stardist_cell&quot;</span>,</span>
-<span id="cb341-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-4" tabindex="-1"></a>                          <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>,</span>
-<span id="cb341-5"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-5" tabindex="-1"></a>                          <span class="at">n_neighbors =</span> <span class="dv">1000</span>,</span>
-<span id="cb341-6"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-6" tabindex="-1"></a>                          <span class="at">min_dist =</span> <span class="fl">0.001</span>,</span>
-<span id="cb341-7"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-7" tabindex="-1"></a>                          <span class="at">spread =</span> <span class="dv">1</span>)</span>
-<span id="cb341-8"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-8" tabindex="-1"></a></span>
-<span id="cb341-9"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-9" tabindex="-1"></a><span class="co"># NN Network</span></span>
-<span id="cb341-10"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-10" tabindex="-1"></a>subcell_v_brain <span class="ot">&lt;-</span> <span class="fu">createNearestNetwork</span>(<span class="at">gobject =</span> subcell_v_brain,</span>
-<span id="cb341-11"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-11" tabindex="-1"></a>                                       <span class="at">spat_unit =</span> <span class="st">&quot;stardist_cell&quot;</span>,</span>
-<span id="cb341-12"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-12" tabindex="-1"></a>                                       <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
-<span id="cb341-13"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-13" tabindex="-1"></a>                                       <span class="at">feats_to_use =</span> hv_feats,</span>
-<span id="cb341-14"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-14" tabindex="-1"></a>                                       <span class="at">expression_values =</span> <span class="st">&#39;normalized&#39;</span>,</span>
-<span id="cb341-15"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-15" tabindex="-1"></a>                                       <span class="at">k =</span> <span class="dv">70</span>)</span>
-<span id="cb341-16"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-16" tabindex="-1"></a></span>
-<span id="cb341-17"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-17" tabindex="-1"></a>subcell_v_brain <span class="ot">&lt;-</span> <span class="fu">doLeidenCluster</span>(<span class="at">gobject =</span> subcell_v_brain,</span>
-<span id="cb341-18"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-18" tabindex="-1"></a>                                  <span class="at">spat_unit =</span> <span class="st">&quot;stardist_cell&quot;</span>,</span>
-<span id="cb341-19"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-19" tabindex="-1"></a>                                  <span class="at">resolution =</span> <span class="fl">0.15</span>,</span>
-<span id="cb341-20"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-20" tabindex="-1"></a>                                  <span class="at">n_iterations =</span> <span class="dv">100</span>,</span>
-<span id="cb341-21"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-21" tabindex="-1"></a>                                  <span class="at">partition_type =</span> <span class="st">&#39;RBConfigurationVertexPartition&#39;</span>)</span>
-<span id="cb341-22"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-22" tabindex="-1"></a></span>
-<span id="cb341-23"><a href="interactivity-with-the-rspatial-ecosystem.html#cb341-23" tabindex="-1"></a><span class="fu">plotUMAP</span>(subcell_v_brain, <span class="at">spat_unit =</span> <span class="st">&#39;stardist_cell&#39;</span>, <span class="at">cell_color =</span> <span class="st">&#39;leiden_clus&#39;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-495"></span>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb346-1" tabindex="-1"></a><span class="co"># UMAP</span></span>
+<span id="cb346-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb346-2" tabindex="-1"></a>subcell_v_brain <span class="ot">&lt;-</span> <span class="fu">runUMAP</span>(subcell_v_brain,</span>
+<span id="cb346-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb346-3" tabindex="-1"></a>                          <span class="at">spat_unit =</span> <span class="st">&quot;stardist_cell&quot;</span>,</span>
+<span id="cb346-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb346-4" tabindex="-1"></a>                          <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>,</span>
+<span id="cb346-5"><a href="interactivity-with-the-rspatial-ecosystem.html#cb346-5" tabindex="-1"></a>                          <span class="at">n_neighbors =</span> <span class="dv">1000</span>,</span>
+<span id="cb346-6"><a href="interactivity-with-the-rspatial-ecosystem.html#cb346-6" tabindex="-1"></a>                          <span class="at">min_dist =</span> <span class="fl">0.001</span>,</span>
+<span id="cb346-7"><a href="interactivity-with-the-rspatial-ecosystem.html#cb346-7" tabindex="-1"></a>                          <span class="at">spread =</span> <span class="dv">1</span>)</span>
+<span id="cb346-8"><a href="interactivity-with-the-rspatial-ecosystem.html#cb346-8" tabindex="-1"></a></span>
+<span id="cb346-9"><a href="interactivity-with-the-rspatial-ecosystem.html#cb346-9" tabindex="-1"></a><span class="co"># NN Network</span></span>
+<span id="cb346-10"><a href="interactivity-with-the-rspatial-ecosystem.html#cb346-10" tabindex="-1"></a>subcell_v_brain <span class="ot">&lt;-</span> <span class="fu">createNearestNetwork</span>(<span class="at">gobject =</span> subcell_v_brain,</span>
+<span id="cb346-11"><a href="interactivity-with-the-rspatial-ecosystem.html#cb346-11" tabindex="-1"></a>                                       <span class="at">spat_unit =</span> <span class="st">&quot;stardist_cell&quot;</span>,</span>
+<span id="cb346-12"><a href="interactivity-with-the-rspatial-ecosystem.html#cb346-12" tabindex="-1"></a>                                       <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb346-13"><a href="interactivity-with-the-rspatial-ecosystem.html#cb346-13" tabindex="-1"></a>                                       <span class="at">feats_to_use =</span> hv_feats,</span>
+<span id="cb346-14"><a href="interactivity-with-the-rspatial-ecosystem.html#cb346-14" tabindex="-1"></a>                                       <span class="at">expression_values =</span> <span class="st">&#39;normalized&#39;</span>,</span>
+<span id="cb346-15"><a href="interactivity-with-the-rspatial-ecosystem.html#cb346-15" tabindex="-1"></a>                                       <span class="at">k =</span> <span class="dv">70</span>)</span>
+<span id="cb346-16"><a href="interactivity-with-the-rspatial-ecosystem.html#cb346-16" tabindex="-1"></a></span>
+<span id="cb346-17"><a href="interactivity-with-the-rspatial-ecosystem.html#cb346-17" tabindex="-1"></a>subcell_v_brain <span class="ot">&lt;-</span> <span class="fu">doLeidenCluster</span>(<span class="at">gobject =</span> subcell_v_brain,</span>
+<span id="cb346-18"><a href="interactivity-with-the-rspatial-ecosystem.html#cb346-18" tabindex="-1"></a>                                  <span class="at">spat_unit =</span> <span class="st">&quot;stardist_cell&quot;</span>,</span>
+<span id="cb346-19"><a href="interactivity-with-the-rspatial-ecosystem.html#cb346-19" tabindex="-1"></a>                                  <span class="at">resolution =</span> <span class="fl">0.15</span>,</span>
+<span id="cb346-20"><a href="interactivity-with-the-rspatial-ecosystem.html#cb346-20" tabindex="-1"></a>                                  <span class="at">n_iterations =</span> <span class="dv">100</span>,</span>
+<span id="cb346-21"><a href="interactivity-with-the-rspatial-ecosystem.html#cb346-21" tabindex="-1"></a>                                  <span class="at">partition_type =</span> <span class="st">&#39;RBConfigurationVertexPartition&#39;</span>)</span>
+<span id="cb346-22"><a href="interactivity-with-the-rspatial-ecosystem.html#cb346-22" tabindex="-1"></a></span>
+<span id="cb346-23"><a href="interactivity-with-the-rspatial-ecosystem.html#cb346-23" tabindex="-1"></a><span class="fu">plotUMAP</span>(subcell_v_brain, <span class="at">spat_unit =</span> <span class="st">&#39;stardist_cell&#39;</span>, <span class="at">cell_color =</span> <span class="st">&#39;leiden_clus&#39;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-504"></span>
 <img src="img/03_session6/03_ses6_subcell_umap.png" alt="UMAP for stardist_cell based on the 1500 interpolated gene expressions. Colored based on leiden clustering." width="100%" />
 <p class="caption">
 Figure 17.12: UMAP for stardist_cell based on the 1500 interpolated gene expressions. Colored based on leiden clustering.
@@ -888,27 +893,27 @@ Figure 17.12: UMAP for stardist_cell based on the 1500 interpolated gene express
 <div id="visualizing-clustering" class="section level3 hasAnchor" number="17.7.5">
 <h3><span class="header-section-number">17.7.5</span> Visualizing clustering<a href="interactivity-with-the-rspatial-ecosystem.html#visualizing-clustering" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Vizualizing the clustering for both the visium dataset and the interpolated dataset we can similar clusters. However, with the interpolated dataset we are able to see finer detail for each cluster.</p>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb342-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> subcell_v_brain,</span>
-<span id="cb342-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb342-2" tabindex="-1"></a>           <span class="at">spat_unit =</span> <span class="st">&#39;cell&#39;</span>,</span>
-<span id="cb342-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb342-3" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&#39;leiden_clus&#39;</span>,</span>
-<span id="cb342-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb342-4" tabindex="-1"></a>           <span class="at">show_image =</span> T,</span>
-<span id="cb342-5"><a href="interactivity-with-the-rspatial-ecosystem.html#cb342-5" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="fl">0.5</span>,</span>
-<span id="cb342-6"><a href="interactivity-with-the-rspatial-ecosystem.html#cb342-6" tabindex="-1"></a>           <span class="at">point_shape =</span> <span class="st">&#39;no_border&#39;</span>,</span>
-<span id="cb342-7"><a href="interactivity-with-the-rspatial-ecosystem.html#cb342-7" tabindex="-1"></a>           <span class="at">background_color =</span> <span class="st">&#39;black&#39;</span>,</span>
-<span id="cb342-8"><a href="interactivity-with-the-rspatial-ecosystem.html#cb342-8" tabindex="-1"></a>           <span class="at">save_plot =</span> F,</span>
-<span id="cb342-9"><a href="interactivity-with-the-rspatial-ecosystem.html#cb342-9" tabindex="-1"></a>           <span class="at">show_legend =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb342-10"><a href="interactivity-with-the-rspatial-ecosystem.html#cb342-10" tabindex="-1"></a></span>
-<span id="cb342-11"><a href="interactivity-with-the-rspatial-ecosystem.html#cb342-11" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> subcell_v_brain,</span>
-<span id="cb342-12"><a href="interactivity-with-the-rspatial-ecosystem.html#cb342-12" tabindex="-1"></a>           <span class="at">spat_unit =</span> <span class="st">&#39;stardist_cell&#39;</span>,</span>
-<span id="cb342-13"><a href="interactivity-with-the-rspatial-ecosystem.html#cb342-13" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&#39;leiden_clus&#39;</span>,</span>
-<span id="cb342-14"><a href="interactivity-with-the-rspatial-ecosystem.html#cb342-14" tabindex="-1"></a>           <span class="at">show_image =</span> T,</span>
-<span id="cb342-15"><a href="interactivity-with-the-rspatial-ecosystem.html#cb342-15" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="fl">0.1</span>,</span>
-<span id="cb342-16"><a href="interactivity-with-the-rspatial-ecosystem.html#cb342-16" tabindex="-1"></a>           <span class="at">point_shape =</span> <span class="st">&#39;no_border&#39;</span>,</span>
-<span id="cb342-17"><a href="interactivity-with-the-rspatial-ecosystem.html#cb342-17" tabindex="-1"></a>           <span class="at">background_color =</span> <span class="st">&#39;black&#39;</span>,</span>
-<span id="cb342-18"><a href="interactivity-with-the-rspatial-ecosystem.html#cb342-18" tabindex="-1"></a>           <span class="at">show_legend =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb342-19"><a href="interactivity-with-the-rspatial-ecosystem.html#cb342-19" tabindex="-1"></a>           <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb342-20"><a href="interactivity-with-the-rspatial-ecosystem.html#cb342-20" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&#39;03_ses6_subcell_spat&#39;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-497"></span>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb347-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> subcell_v_brain,</span>
+<span id="cb347-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb347-2" tabindex="-1"></a>           <span class="at">spat_unit =</span> <span class="st">&#39;cell&#39;</span>,</span>
+<span id="cb347-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb347-3" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&#39;leiden_clus&#39;</span>,</span>
+<span id="cb347-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb347-4" tabindex="-1"></a>           <span class="at">show_image =</span> T,</span>
+<span id="cb347-5"><a href="interactivity-with-the-rspatial-ecosystem.html#cb347-5" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="fl">0.5</span>,</span>
+<span id="cb347-6"><a href="interactivity-with-the-rspatial-ecosystem.html#cb347-6" tabindex="-1"></a>           <span class="at">point_shape =</span> <span class="st">&#39;no_border&#39;</span>,</span>
+<span id="cb347-7"><a href="interactivity-with-the-rspatial-ecosystem.html#cb347-7" tabindex="-1"></a>           <span class="at">background_color =</span> <span class="st">&#39;black&#39;</span>,</span>
+<span id="cb347-8"><a href="interactivity-with-the-rspatial-ecosystem.html#cb347-8" tabindex="-1"></a>           <span class="at">save_plot =</span> F,</span>
+<span id="cb347-9"><a href="interactivity-with-the-rspatial-ecosystem.html#cb347-9" tabindex="-1"></a>           <span class="at">show_legend =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb347-10"><a href="interactivity-with-the-rspatial-ecosystem.html#cb347-10" tabindex="-1"></a></span>
+<span id="cb347-11"><a href="interactivity-with-the-rspatial-ecosystem.html#cb347-11" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> subcell_v_brain,</span>
+<span id="cb347-12"><a href="interactivity-with-the-rspatial-ecosystem.html#cb347-12" tabindex="-1"></a>           <span class="at">spat_unit =</span> <span class="st">&#39;stardist_cell&#39;</span>,</span>
+<span id="cb347-13"><a href="interactivity-with-the-rspatial-ecosystem.html#cb347-13" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&#39;leiden_clus&#39;</span>,</span>
+<span id="cb347-14"><a href="interactivity-with-the-rspatial-ecosystem.html#cb347-14" tabindex="-1"></a>           <span class="at">show_image =</span> T,</span>
+<span id="cb347-15"><a href="interactivity-with-the-rspatial-ecosystem.html#cb347-15" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="fl">0.1</span>,</span>
+<span id="cb347-16"><a href="interactivity-with-the-rspatial-ecosystem.html#cb347-16" tabindex="-1"></a>           <span class="at">point_shape =</span> <span class="st">&#39;no_border&#39;</span>,</span>
+<span id="cb347-17"><a href="interactivity-with-the-rspatial-ecosystem.html#cb347-17" tabindex="-1"></a>           <span class="at">background_color =</span> <span class="st">&#39;black&#39;</span>,</span>
+<span id="cb347-18"><a href="interactivity-with-the-rspatial-ecosystem.html#cb347-18" tabindex="-1"></a>           <span class="at">show_legend =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb347-19"><a href="interactivity-with-the-rspatial-ecosystem.html#cb347-19" tabindex="-1"></a>           <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb347-20"><a href="interactivity-with-the-rspatial-ecosystem.html#cb347-20" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&#39;03_ses6_subcell_spat&#39;</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-506"></span>
 <img src="img/03_session6/03_ses6_spat_plots.png" alt="Spatial plots showing leiden clustering mapped onto the base visium spots (left) and individual nuceli through interpolation (right)" width="100%" />
 <p class="caption">
 Figure 17.13: Spatial plots showing leiden clustering mapped onto the base visium spots (left) and individual nuceli through interpolation (right)
@@ -918,37 +923,37 @@ Figure 17.13: Spatial plots showing leiden clustering mapped onto the base visiu
 <div id="cropping-objects" class="section level3 hasAnchor" number="17.7.6">
 <h3><span class="header-section-number">17.7.6</span> Cropping objects<a href="interactivity-with-the-rspatial-ecosystem.html#cropping-objects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We are also able to crop both spat units simultaneosly to zoom in on specific regions of the tissue such as seen below.</p>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-1" tabindex="-1"></a>subcell_v_brain_crop <span class="ot">&lt;-</span> <span class="fu">subsetGiottoLocs</span>(<span class="at">gobject =</span> subcell_v_brain,</span>
-<span id="cb343-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-2" tabindex="-1"></a>                           <span class="at">spat_unit =</span> <span class="st">&quot;:all:&quot;</span>,</span>
-<span id="cb343-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-3" tabindex="-1"></a>                           <span class="at">x_min =</span> <span class="dv">4000</span>,</span>
-<span id="cb343-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-4" tabindex="-1"></a>                           <span class="at">x_max =</span> <span class="dv">7000</span>,</span>
-<span id="cb343-5"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-5" tabindex="-1"></a>                           <span class="at">y_min =</span> <span class="sc">-</span><span class="dv">6500</span>,</span>
-<span id="cb343-6"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-6" tabindex="-1"></a>                           <span class="at">y_max =</span> <span class="sc">-</span><span class="dv">3500</span>,</span>
-<span id="cb343-7"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-7" tabindex="-1"></a>                           <span class="at">z_max =</span> <span class="cn">NULL</span>,</span>
-<span id="cb343-8"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-8" tabindex="-1"></a>                           <span class="at">z_min =</span> <span class="cn">NULL</span>)</span>
-<span id="cb343-9"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-9" tabindex="-1"></a></span>
-<span id="cb343-10"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-10" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> subcell_v_brain_crop,</span>
-<span id="cb343-11"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-11" tabindex="-1"></a>           <span class="at">spat_unit =</span> <span class="st">&#39;cell&#39;</span>,</span>
-<span id="cb343-12"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-12" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&#39;leiden_clus&#39;</span>,</span>
-<span id="cb343-13"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-13" tabindex="-1"></a>           <span class="at">show_image =</span> T,</span>
-<span id="cb343-14"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-14" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="dv">2</span>,</span>
-<span id="cb343-15"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-15" tabindex="-1"></a>           <span class="at">point_shape =</span> <span class="st">&#39;no_border&#39;</span>,</span>
-<span id="cb343-16"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-16" tabindex="-1"></a>           <span class="at">background_color =</span> <span class="st">&#39;black&#39;</span>,</span>
-<span id="cb343-17"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-17" tabindex="-1"></a>           <span class="at">show_legend =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb343-18"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-18" tabindex="-1"></a>           <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb343-19"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-19" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&#39;03_ses6_vis_spat_crop&#39;</span>))</span>
-<span id="cb343-20"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-20" tabindex="-1"></a></span>
-<span id="cb343-21"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-21" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> subcell_v_brain_crop,</span>
-<span id="cb343-22"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-22" tabindex="-1"></a>           <span class="at">spat_unit =</span> <span class="st">&#39;stardist_cell&#39;</span>,</span>
-<span id="cb343-23"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-23" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&#39;leiden_clus&#39;</span>,</span>
-<span id="cb343-24"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-24" tabindex="-1"></a>           <span class="at">show_image =</span> T,</span>
-<span id="cb343-25"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-25" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="fl">0.1</span>,</span>
-<span id="cb343-26"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-26" tabindex="-1"></a>           <span class="at">point_shape =</span> <span class="st">&#39;no_border&#39;</span>,</span>
-<span id="cb343-27"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-27" tabindex="-1"></a>           <span class="at">background_color =</span> <span class="st">&#39;black&#39;</span>,</span>
-<span id="cb343-28"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-28" tabindex="-1"></a>           <span class="at">show_legend =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb343-29"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-29" tabindex="-1"></a>           <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb343-30"><a href="interactivity-with-the-rspatial-ecosystem.html#cb343-30" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&#39;03_ses6_subcell_spat_crop&#39;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-499"></span>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb348-1" tabindex="-1"></a>subcell_v_brain_crop <span class="ot">&lt;-</span> <span class="fu">subsetGiottoLocs</span>(<span class="at">gobject =</span> subcell_v_brain,</span>
+<span id="cb348-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb348-2" tabindex="-1"></a>                           <span class="at">spat_unit =</span> <span class="st">&quot;:all:&quot;</span>,</span>
+<span id="cb348-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb348-3" tabindex="-1"></a>                           <span class="at">x_min =</span> <span class="dv">4000</span>,</span>
+<span id="cb348-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb348-4" tabindex="-1"></a>                           <span class="at">x_max =</span> <span class="dv">7000</span>,</span>
+<span id="cb348-5"><a href="interactivity-with-the-rspatial-ecosystem.html#cb348-5" tabindex="-1"></a>                           <span class="at">y_min =</span> <span class="sc">-</span><span class="dv">6500</span>,</span>
+<span id="cb348-6"><a href="interactivity-with-the-rspatial-ecosystem.html#cb348-6" tabindex="-1"></a>                           <span class="at">y_max =</span> <span class="sc">-</span><span class="dv">3500</span>,</span>
+<span id="cb348-7"><a href="interactivity-with-the-rspatial-ecosystem.html#cb348-7" tabindex="-1"></a>                           <span class="at">z_max =</span> <span class="cn">NULL</span>,</span>
+<span id="cb348-8"><a href="interactivity-with-the-rspatial-ecosystem.html#cb348-8" tabindex="-1"></a>                           <span class="at">z_min =</span> <span class="cn">NULL</span>)</span>
+<span id="cb348-9"><a href="interactivity-with-the-rspatial-ecosystem.html#cb348-9" tabindex="-1"></a></span>
+<span id="cb348-10"><a href="interactivity-with-the-rspatial-ecosystem.html#cb348-10" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> subcell_v_brain_crop,</span>
+<span id="cb348-11"><a href="interactivity-with-the-rspatial-ecosystem.html#cb348-11" tabindex="-1"></a>           <span class="at">spat_unit =</span> <span class="st">&#39;cell&#39;</span>,</span>
+<span id="cb348-12"><a href="interactivity-with-the-rspatial-ecosystem.html#cb348-12" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&#39;leiden_clus&#39;</span>,</span>
+<span id="cb348-13"><a href="interactivity-with-the-rspatial-ecosystem.html#cb348-13" tabindex="-1"></a>           <span class="at">show_image =</span> T,</span>
+<span id="cb348-14"><a href="interactivity-with-the-rspatial-ecosystem.html#cb348-14" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="dv">2</span>,</span>
+<span id="cb348-15"><a href="interactivity-with-the-rspatial-ecosystem.html#cb348-15" tabindex="-1"></a>           <span class="at">point_shape =</span> <span class="st">&#39;no_border&#39;</span>,</span>
+<span id="cb348-16"><a href="interactivity-with-the-rspatial-ecosystem.html#cb348-16" tabindex="-1"></a>           <span class="at">background_color =</span> <span class="st">&#39;black&#39;</span>,</span>
+<span id="cb348-17"><a href="interactivity-with-the-rspatial-ecosystem.html#cb348-17" tabindex="-1"></a>           <span class="at">show_legend =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb348-18"><a href="interactivity-with-the-rspatial-ecosystem.html#cb348-18" tabindex="-1"></a>           <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb348-19"><a href="interactivity-with-the-rspatial-ecosystem.html#cb348-19" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&#39;03_ses6_vis_spat_crop&#39;</span>))</span>
+<span id="cb348-20"><a href="interactivity-with-the-rspatial-ecosystem.html#cb348-20" tabindex="-1"></a></span>
+<span id="cb348-21"><a href="interactivity-with-the-rspatial-ecosystem.html#cb348-21" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> subcell_v_brain_crop,</span>
+<span id="cb348-22"><a href="interactivity-with-the-rspatial-ecosystem.html#cb348-22" tabindex="-1"></a>           <span class="at">spat_unit =</span> <span class="st">&#39;stardist_cell&#39;</span>,</span>
+<span id="cb348-23"><a href="interactivity-with-the-rspatial-ecosystem.html#cb348-23" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&#39;leiden_clus&#39;</span>,</span>
+<span id="cb348-24"><a href="interactivity-with-the-rspatial-ecosystem.html#cb348-24" tabindex="-1"></a>           <span class="at">show_image =</span> T,</span>
+<span id="cb348-25"><a href="interactivity-with-the-rspatial-ecosystem.html#cb348-25" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="fl">0.1</span>,</span>
+<span id="cb348-26"><a href="interactivity-with-the-rspatial-ecosystem.html#cb348-26" tabindex="-1"></a>           <span class="at">point_shape =</span> <span class="st">&#39;no_border&#39;</span>,</span>
+<span id="cb348-27"><a href="interactivity-with-the-rspatial-ecosystem.html#cb348-27" tabindex="-1"></a>           <span class="at">background_color =</span> <span class="st">&#39;black&#39;</span>,</span>
+<span id="cb348-28"><a href="interactivity-with-the-rspatial-ecosystem.html#cb348-28" tabindex="-1"></a>           <span class="at">show_legend =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb348-29"><a href="interactivity-with-the-rspatial-ecosystem.html#cb348-29" tabindex="-1"></a>           <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb348-30"><a href="interactivity-with-the-rspatial-ecosystem.html#cb348-30" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&#39;03_ses6_subcell_spat_crop&#39;</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-508"></span>
 <img src="img/03_session6/03_ses_spat_crop.png" alt="Spatial plots showing leiden clustering mapped onto the base visium spots (left) and individual nuceli through interpolation (right)" width="100%" />
 <p class="caption">
 Figure 17.14: Spatial plots showing leiden clustering mapped onto the base visium spots (left) and individual nuceli through interpolation (right)
