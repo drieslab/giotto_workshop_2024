@@ -2,7 +2,10 @@
 
 ## Datasets to download
 
-Please download the following datasets to reproduce the examples. You can download them from their original source using the individual links listed below or download all of them from  the following Zenodo repository:
+Here we provide links to the original datasets that were used for this workshop. 
+Some of the datasets were modified (e.g. downsampled or subsetted) for the purpose of this workshop.
+You can download them from their original source or download all of them - including 
+intermediate files - from the following Zenodo repository:
 
 ### Zenodo repository
 
