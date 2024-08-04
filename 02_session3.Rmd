@@ -854,44 +854,6 @@ knitr::include_graphics("img/02_session3/cc_enrich2.png")
 
 
 
-## Interaction changed features
-
-Which features are differentially expressed due to proximity to other cell types?
-
-```{r, eval=FALSE}
-# uses a lot of memory
-icf <- findICF(g,
-    cluster_column = "leiden_clus",
-    selected_feats = featIDs(g),
-    nr_permutations = 1000,
-    adjust_method = "bonferroni"
-)
-
-scran_res <- findScranMarkers(g,
-    expression_values = "normalized",
-    cluster_column = "leiden_clus"
-) |> lapply(function(res) {
-    res[, c("feats", "cluster")]
-}) |> Reduce(f = rbind)
-
-top_scran <- scran_res[, head(.SD, 2), by = "cluster"]
-
-violinPlot(g,
-    expression_values = "normalized",
-    cluster_column = "leiden_clus",
-    feats = unique(top_scran$feats)
-)
-
-
-filterICF(
-    icf,
-)
-
-plotICF(g,
-    icfObject = icf,
-    source_markers
-)
-```
 
 
 
