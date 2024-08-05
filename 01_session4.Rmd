@@ -4,21 +4,20 @@ Jiaji George Chen
 
 August 5th 2024
 
-
 ## Overview
 
 The minimal amount of raw data needed to put together a fully functional `giotto` object are either of the following:
 
-- spatial coordinates (centroids) and expression matrix information
-- spatial feature information (points or image intensity values) and spatial annotations to aggregate that feature information with (polygons/mask).
+-   spatial coordinates (centroids) and expression matrix information
+-   spatial feature information (points or image intensity values) and spatial annotations to aggregate that feature information with (polygons/mask).
 
 You can either use the `create*` style functions introduced in the previous session and build up the object piecewise or you can use the `giotto` object constructor functions `createGiottoObject()` and `createGiottoObjectSubcellular()`
 
 ## GiottoData modular package
 
-We can showcase the construction of objects by pulling some raw data from the _GiottoData_ package. A dataset was loaded from here earlier in the previous section, but to formally introduce it, this package contains mini datasets and also download links to other publicly available datasets. It helps with prototyping and development and also making reproducible examples. 
+We can showcase the construction of objects by pulling some raw data from the *GiottoData* package. A dataset was loaded from here earlier in the previous section, but to formally introduce it, this package contains mini datasets and also download links to other publicly available datasets. It helps with prototyping and development and also making reproducible examples.
 
-The mini examples from popular platform datasets can also help give an understanding of what their data is like and how _Giotto_ represents them.
+The mini examples from popular platform datasets can also help give an understanding of what their data is like and how *Giotto* represents them.
 
 ## From matrix + locations
 
@@ -41,7 +40,7 @@ mini_vis_expr <- mini_vis_raw("visium_DG_expr.txt.gz") |>
 mini_vis_expr[seq(5), seq(5)]
 ```
 
-```
+```         
 5 x 5 sparse Matrix of class "dgCMatrix"
        AAAGGGATGTAGCAAG-1 AAATGGCATGTCTTGT-1 AAATGGTCAATGTGCC-1 AAATTAACGGGTAGCT-1 AACAACTGGTAGTTGC-1
 Gna12                   1                  2                  1                  1                  9
@@ -51,14 +50,13 @@ Sox9                    .                  .                  .                 
 Sez6                    .                  1                  4                  3                  .
 ```
 
-
 ```{r, eval=FALSE}
 mini_vis_slocs <- mini_vis_raw("visium_DG_locs.txt") |>
     data.table::fread()
 head(mini_vis_slocs)
 ```
 
-```
+```         
       V1    V2
    <int> <int>
 1:  5477 -4125
@@ -80,7 +78,6 @@ instructions(mini_vis, "return_plot") <- FALSE
 # set return_plot = FALSE otherwise we will get duplicate outputs in code chunks
 ```
 
-
 For a simple example plot:
 
 ```{r, eval=FALSE}
@@ -97,13 +94,9 @@ spatFeatPlot2D(mini_vis,
 knitr::include_graphics("img/01_session4/example_featplot.png")
 ```
 
-
-
-
 ## From subcellular raw data (transcripts or images) + polygons
 
 You can also make `giotto` objects starting from raw spatial feature information and annotations that give them spatial context.
-
 
 ```{r, eval=FALSE}
 # function to get a filepath from GiottoData
@@ -120,7 +113,7 @@ mini_viz_poly <- createGiottoPolygon(mini_viz_dt)
 force(mini_viz_poly)
 ```
 
-```
+```         
 An object of class giottoPolygon
 spat_unit : "cell"
 Spatial Information:
@@ -146,10 +139,6 @@ plot(mini_viz_poly)
 knitr::include_graphics("img/01_session4/viz_gpoly.png")
 ```
 
-
-
-
-
 ```{r, eval=FALSE}
 mini_viz_tx <- mini_viz_raw("vizgen_transcripts.gz") |>
     data.table::fread()
@@ -159,7 +148,7 @@ viz_gpoints <- createGiottoPoints(mini_viz_tx)
 force(viz_gpoints)
 ```
 
-```
+```         
 An object of class giottoPoints
 feat_type : "rna"
 Feature Information:
@@ -192,7 +181,7 @@ instructions(mini_viz, "return_plot") <- FALSE
 force(mini_viz)
 ```
 
-```
+```         
 An object of class giotto 
 >Active spat_unit:  cell 
 >Active feat_type:  rna 
@@ -227,8 +216,6 @@ spatFeatPlot2D(
 knitr::include_graphics("img/01_session4/example_featplot_sub.png")
 ```
 
-
-
 ## From piece-wise
 
 You can also piece-wise assemble an object independently of one of the 2 previously shown convenience functions.
@@ -240,7 +227,7 @@ g <- setGiotto(g, viz_gpoints)
 force(g)
 ```
 
-```
+```         
 An object of class giotto 
 >Active spat_unit:  cell 
 >Active feat_type:  rna 
@@ -255,24 +242,17 @@ Use objHistory() to see steps and params used
 
 This is essentially the same object as the one created through `createGiottoObjectSubcellular()` earlier.
 
-
-
-
 ## Using convenience functions for popular technologies (Vizgen, Xenium, CosMx, …)
 
 There are also several convenience functions we provide for loading in data from popular platforms. These functions take care of reading the expected output folder structures, auto-detecting where needed data items are, formatting items for ingestion, then object creation. Many of these will be touched on later during other sessions.
-```
+
+```         
 createGiottoVisiumObject()
 createGiottoVisiumHDObject()
 createGiottoXeniumObject()
 createGiottoCosMxObject()
 createGiottoMerscopeObject()
 ```
-
-
-
-
-
 
 ## Plotting
 
@@ -292,8 +272,6 @@ plot(gpoints, feats = c("Grm4", "Gfap"))
 knitr::include_graphics("img/01_session4/gpoint_plots.png")
 ```
 
-
-
 ```{r, eval=FALSE}
 gpoly <- GiottoData::loadSubObjectMini("giottoPolygon")
 plot(gpoly)
@@ -305,7 +283,6 @@ plot(gpoly, max_poly = 10)
 knitr::include_graphics("img/01_session4/gpoly_plots.png")
 ```
 
-
 ```{r, eval=FALSE}
 spatlocs <- GiottoData::loadSubObjectMini("spatLocsObj")
 plot(spatlocs)
@@ -314,7 +291,6 @@ plot(spatlocs)
 ```{r, echo=FALSE, out.width="60%", fig.cap="Plot of spatLocsObj"}
 knitr::include_graphics("img/01_session4/sl_plot.png")
 ```
-
 
 ```{r, eval=FALSE}
 spatnet <- GiottoData::loadSubObjectMini("spatialNetworkObj")
@@ -325,7 +301,6 @@ plot(spatnet)
 knitr::include_graphics("img/01_session4/spatnet_plot.png")
 ```
 
-
 ```{r, eval=FALSE}
 pca <- GiottoData::loadSubObjectMini("dimObj")
 plot(pca, dims = c(3,10))
@@ -334,8 +309,6 @@ plot(pca, dims = c(3,10))
 ```{r, echo=FALSE, out.width="60%", fig.cap="Plot of PCA dimObj showing the 3rd and 10th PCs"}
 knitr::include_graphics("img/01_session4/dimobj_plot.png")
 ```
-
-
 
 ### Additive subobject plotting
 
@@ -352,43 +325,198 @@ plot(gpoly, border = "maroon", lwd = 0.5, add = TRUE)
 knitr::include_graphics("img/01_session4/additive_baseplot.png")
 ```
 
-
-
-
 ### Giotto object plotting
 
-_Giotto_ also has several _ggplot2_-based plotting functions that work on the whole `giotto` object.
-Here we load the vizgen mini dataset from _GiottoData_ which contains a lot of worked through data.
-
+*Giotto* also has several *ggplot2*-based plotting functions that work on the whole `giotto` object. Here we load the vizgen mini dataset from *GiottoData* which contains a lot of worked through data.
 
 #### Giotto spatial plot functions
 
-
-- `spatPlot()` - standard centroid-based plotting geared towards metadata plotting
-- `spatCellPlot()` - centroid-based plotting for spatial enrichment values
-- `spatFeatPlot()` - centroid-based plotting for feature expression plotting
-- `spatInSituPlotPoints()` - subcellular plotting with support for transcript points and polygons
-
-
-#### Giotto expression space plot functions
-
-- `dimPlot()` - dimension reduction plotting
-
-
-#### Giotto common plotting args
-
-- `gradient_style`  - Should the gradient be of 'divergent' or 'sequential' styles?
-- `color_as_factor` - Is annotation value a numerical or factor/categorical based item to plot.
-- `cell_color_code` - What color mapping to provide
-- `cell_color` - What column of information to use when plotting (metadata, expression, etc.)
-- `point_shape` - Either 'border' or 'no_border' to draw on the dog.
-
+`spatPlot()` - standard centroid-based plotting geared towards metadata plotting
 
 ```{r, eval=FALSE}
 g <- GiottoData::loadGiottoMini("vizgen")
 activeSpatUnit(g) <- "aggregate" # set default spat_unit to the one with lots of results
+force(g)
 ```
 
+```         
+An object of class giotto 
+>Active spat_unit:  aggregate 
+>Active feat_type:  rna 
+[SUBCELLULAR INFO]
+polygons      : z0 z1 aggregate 
+features      : rna 
+[AGGREGATE INFO]
+expression -----------------------
+  [z0][rna] raw
+  [z1][rna] raw
+  [aggregate][rna] raw normalized scaled pearson
+spatial locations ----------------
+  [z0] raw
+  [z1] raw
+  [aggregate] raw
+spatial networks -----------------
+  [aggregate] Delaunay_network kNN_network
+spatial enrichments --------------
+  [aggregate][rna] cluster_metagene
+dim reduction --------------------
+  [aggregate][rna] pca umap tsne
+nearest neighbor networks --------
+  [aggregate][rna] sNN.pca
+attached images ------------------
+images      : 4 items...
+
+
+Use objHistory() to see steps and params used
+```
+
+```{r, eval=FALSE}
+spatPlot2D(g)
+```
+
+What metadata do we have in this mini object?
+
+```{r, eval=FALSE}
+pDataDT(g)
+```
+
+```         
+                                     cell_ID nr_feats perc_feats total_expr leiden_clus
+                                      <char>    <int>      <num>      <num>       <num>
+  1: 240649020551054330404932383065726870513        5   1.483680   49.40986           2
+  2: 274176126496863898679934791272921588227       27   8.011869  191.50684           2
+  3: 323754550002953984063006506310071917306       23   6.824926  173.86955           4
+  4:  87260224659312905497866017323180367450       37  10.979228  246.04928           5
+  5:  17817477728742691260808256980746537959       18   5.341246  142.44520           4
+ ---                                                                                   
+458:   6380671372744430258754116433861320161       54  16.023739  339.24383           2
+459:  75286702783716447443887872812098770697       45  13.353116  286.81011           1
+460:   9677424102111816817518421117250891895       30   8.902077  211.71790           2
+461:  17685062374745280598492217386845129350        5   1.483680   48.99550           2
+462:  32422253415776258079819139802733069941       12   3.560831  102.52805           2
+     louvain_clus
+            <num>
+  1:            0
+  2:            3
+  3:            8
+  4:            6
+  5:            7
+ ---             
+458:            0
+459:           23
+460:            3
+461:           14
+462:            0
+```
+
+We have some expression count statistics and clustering annotations already present in the object
+
+```{r, eval=FALSE}
+spatPlot2D(g, cell_color = "leiden_clus")
+
+spatPlot2D(g, cell_color = "leiden_clus", 
+           show_image = TRUE, 
+           image_name = "dapi_z0")
+
+spatPlot2D(g, cell_color = "total_expr",
+           color_as_factor = FALSE, 
+           gradient_style = "sequential")
+
+spatPlot2D(g, cell_color = "leiden_clus", 
+           group_by = "leiden_clus")
+```
+
+```{r, echo=FALSE, fig.cap="Spatial plots"}
+knitr::include_graphics("img/01_session4/spatplot.png")
+```
+
+`spatCellPlot()` - centroid-based plotting for spatial enrichment values
+
+We have a `cluster_metagene` enrichment already made in the object that is a numerical measure of how much each of the cells map to the leiden clusters we have above
+
+```{r, eval=FALSE}
+spatCellPlot2D(g, spat_enr_names = "cluster_metagene",
+               cell_annotation_values = as.character(1:5))
+```
+
+```{r, echo=FALSE, fig.cap="Spatial cell plot of cluster_metagene spatial enrichments"}
+knitr::include_graphics("img/01_session4/spatcellplot.png")
+```
+
+```{r, eval=FALSE}
+spatCellPlot2D(g, spat_enr_names = "cluster_metagene", 
+               cell_annotation_values = as.character(1:5),
+               cell_color_gradient = "magma",
+               background_color = "black")
+```
+
+```{r, echo=FALSE, fig.cap="Spatial cell plot of cluster_metagene spatial enrichments"}
+knitr::include_graphics("img/01_session4/spatcellplot_magmajks.png")
+```
+
+`spatFeatPlot()` - centroid-based plotting for feature expression plotting
+
+```{r, eval=FALSE}
+spatFeatPlot2D(g, feats = c("Flt4", "Mertk"), point_size = 2, expression_values = "scaled")
+```
+
+```{r, echo=FALSE, fig.cap="Spatial feature expression plot of normalized Flt4 (left) and Mertk expression (right)"}
+knitr::include_graphics("img/01_session4/spatfeatplot.png")
+```
+
+`spatInSituPlotPoints()` - subcellular plotting with support for transcript points and polygons
+
+```{r, eval=FALSE}
+spatInSituPlotPoints(g,
+    feats = list(rna = c("Flt4", "Mertk", "Gfap")), # this should be a named list
+    point_size = 0.5,
+    polygon_fill = "total_expr",
+    polygon_fill_as_factor = FALSE,
+    polygon_fill_gradient_style = "sequential",
+    polygon_alpha = 0.5,
+    plot_last = "points",
+    show_image = TRUE
+)
+
+# without overlaps
+spatInSituPlotPoints(g,
+    feats = list(rna = c("Flt4", "Mertk", "Gfap")), # this should be a named list
+    point_size = 0.5,
+    use_overlap = FALSE,
+    polygon_fill = "total_expr",
+    polygon_fill_as_factor = FALSE,
+    polygon_fill_gradient_style = "sequential",
+    polygon_alpha = 0.5,
+    plot_last = "points",
+    show_image = TRUE
+)
+```
+
+```{r, echo=FALSE, fig.cap="Points and polygons subcellular plot with 3 transcript species plotted, polygons colored as number of detected transcripts, and dapi image plotted. Left is with only the points overlapped by polygons, right is with all points"}
+knitr::include_graphics("img/01_session4/insituplots.png")
+```
+
+#### Giotto expression space plot functions
+
+`dimPlot()` - dimension reduction plotting
+
+Also has more specific functions for PCA `plotPCA()`, UMAP `plotUMAP()`, tSNE `plotTSNE()` results.
+
+```{r, eval=FALSE}
+dimPlot(g, dim_reduction_name = "umap", dim_reduction_to_use = "umap", cell_color = "leiden_clus")
+```
+
+```{r, echo=FALSE, fig.cap="UMAP projection with leiden clustering colors"}
+knitr::include_graphics("img/01_session4/dimplot.png")
+```
+
+#### Giotto common plotting args
+
+-   `gradient_style` - Should the gradient be of 'divergent' or 'sequential' styles?
+-   `color_as_factor` - Is annotation value a numerical or factor/categorical based item to plot.
+-   `cell_color_code` - What color mapping to provide
+-   `cell_color` - What column of information to use when plotting (metadata, expression, etc.)
+-   `point_shape` - Either 'border' or 'no_border' to draw on the points.
 
 ## Subsetting
 
@@ -401,7 +529,7 @@ cx <- pDataDT(g)
 nrow(cx)
 ```
 
-```
+```         
 [1] 462
 ```
 
@@ -410,10 +538,9 @@ ex <- getExpression(g)
 dim(ex)
 ```
 
-```
+```         
 [1] 337 462
 ```
-
 
 ```{r, eval=FALSE}
 instructions(g, "cell_color_c_pal") <- "viridis"
@@ -427,7 +554,7 @@ cx_sub <- pDataDT(gsubset)
 nrow(cx_sub)
 ```
 
-```
+```         
 [1] 300
 ```
 
@@ -438,13 +565,12 @@ spatPlot(gsubset, cell_color = "total_expr",
          color_as_factor = FALSE, background_color = "black")
 ```
 
-
 ```{r, echo=FALSE, fig.cap="plot showing starting object (left) and subset object (right)"}
 knitr::include_graphics("img/01_session4/subset_id.png")
 ```
 
-
 ### Coordinate-based subsetting
+
 ```{r, eval=FALSE}
 gsubsetlocs <- subsetGiottoLocs(g, 
     x_min = 6500, x_max = 6700, 
@@ -460,19 +586,6 @@ spatInSituPlotPoints(gsubsetlocs, polygon_fill = "total_expr",
                      polygon_fill_as_factor = FALSE)
 ```
 
-
 ```{r, echo=FALSE, fig.cap="plot showing starting object (left) and subset object (right)"}
 knitr::include_graphics("img/01_session4/subset_locs.png")
 ```
-
-
-
-
-
-
-
-
-
-
-
-
