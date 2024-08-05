@@ -70,7 +70,7 @@ list.files(paste0(download_dir,'/Lunaphore'))
 ```
 We provide a way to extract meta data information directly from ome.tiffs. Please note that different platforms may store the meta data such as channel information in a different format, we will probably need to change the node names of the ome-XML.
 ```{r eval=FALSE}
-img_path <- paste0(download_dir,"Lunaphore/Lunaphore_example.ome.tiff")
+img_path <- paste0(download_dir,"/Lunaphore/Lunaphore_example.ome.tiff")
 img_meta <- ometif_metadata(img_path, node = "Channel", output = "data.frame")
 img_meta
 ```
@@ -78,8 +78,8 @@ img_meta
 However, sometimes a simple ometiff file manipulation like cropping could result in a loss of ome-XML information from the ome.tiff file. That way, we can use a different strategy to parse the xml information seperately and get channel information from it.  
 ```{r eval=FALSE}
 ##Get channel information
-Luna = paste0(download_dir,"Lunaphore/Lunaphore_example.ome.tiff")
-xmldata = xml2::read_xml(paste0(download_dir,"Lunaphore/Lunaphore_sample_metadata.xml"))
+Luna = paste0(download_dir,"/Lunaphore/Lunaphore_example.ome.tiff")
+xmldata = xml2::read_xml(paste0(download_dir,"/Lunaphore/Lunaphore_sample_metadata.xml"))
 node <- xml2::xml_find_all(xmldata, "//d1:Channel", ns = xml2::xml_ns(xmldata))
 channel_df <- as.data.frame(Reduce("rbind", xml2::xml_attrs(node)))
 channel_df
