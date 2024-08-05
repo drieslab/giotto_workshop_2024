@@ -4,52 +4,263 @@ Jiaji George Chen
 
 August 5th 2024
 
-### Used packages
-```
-Giotto      GiottoClass     GiottoData      pak
-```
-
-```{r, eval=FALSE}
-save_dir <- "~/Documents/GitHub/giotto_workshop_2024/img/01_session4"
-```
 
 ## Overview
 
-*Giotto* has representations for both aggregated (cell by count) + xy(z) 
-information and subcellular polygon or mask information and transcript xy(z)
-or image information. A *Giotto* object can be set up from either of the two
-above sets of information.
+The minimal amount of raw data needed to put together a fully functional `giotto` object are either of the following:
+
+- spatial coordinates (centroids) and expression matrix information
+- spatial feature information (points or image intensity values) and spatial annotations to aggregate that feature information with (polygons/mask).
+
+You can either use the `create*` style functions introduced in the previous session and build up the object piecewise or you can use the `giotto` object constructor functions `createGiottoObject()` and `createGiottoObjectSubcellular()`
+
+## GiottoData modular package
+
+We can showcase the construction of objects by pulling some raw data from the _GiottoData_ package. A dataset was loaded from here earlier in the previous section, but to formally introduce it, this package contains mini datasets and also download links to other publicly available datasets. It helps with prototyping and development and also making reproducible examples. 
+
+The mini examples from popular platform datasets can also help give an understanding of what their data is like and how _Giotto_ represents them.
 
 ## From matrix + locations
 
+For this, we will load some visium expression information and spatial locations.
+
+```{r, eval=FALSE}
+library(Giotto)
+
+# function to get a filepath from GiottoData
+mini_vis_raw <- function(x) {
+    system.file(
+        package = "GiottoData", 
+        file.path("Mini_datasets", "Visium", "Raw", x)
+    )
+}
+
+mini_vis_expr <- mini_vis_raw("visium_DG_expr.txt.gz") |>
+    data.table::fread() |>
+    GiottoUtils::dt_to_matrix()
+mini_vis_expr[seq(5), seq(5)]
 ```
-createGiottoObject()
+
 ```
+5 x 5 sparse Matrix of class "dgCMatrix"
+       AAAGGGATGTAGCAAG-1 AAATGGCATGTCTTGT-1 AAATGGTCAATGTGCC-1 AAATTAACGGGTAGCT-1 AACAACTGGTAGTTGC-1
+Gna12                   1                  2                  1                  1                  9
+Ccnd2                   .                  1                  1                  .                  .
+Btbd17                  .                  1                  1                  1                  .
+Sox9                    .                  .                  .                  .                  .
+Sez6                    .                  1                  4                  3                  .
+```
+
+
+```{r, eval=FALSE}
+mini_vis_slocs <- mini_vis_raw("visium_DG_locs.txt") |>
+    data.table::fread()
+head(mini_vis_slocs)
+```
+
+```
+      V1    V2
+   <int> <int>
+1:  5477 -4125
+2:  5959 -2808
+3:  4720 -5202
+4:  5202 -5322
+5:  4101 -4604
+6:  5821 -3047
+```
+
+With these two pieces of data, we can make a fully working `giotto` object. The spatial locations are missing cell_ID names, but they will be detected from the expression information.
+
+```{r, eval=FALSE}
+mini_vis <- createGiottoObject(
+    expression = mini_vis_expr,
+    spatial_locs = mini_vis_slocs
+)
+instructions(mini_vis, "return_plot") <- FALSE
+# set return_plot = FALSE otherwise we will get duplicate outputs in code chunks
+```
+
+
+For a simple example plot:
+
+```{r, eval=FALSE}
+spatFeatPlot2D(mini_vis,
+    feats = c("Gna12", "Gfap"), 
+    expression_values = "raw",
+    point_size = 2.5,
+    gradient_style = "sequential",
+    background_color = "black"
+)
+```
+
+```{r, echo=FALSE, fig.cap="Example spatial feature plot to show functioning object"}
+knitr::include_graphics("img/01_session4/example_featplot.png")
+```
+
+
+
 
 ## From subcellular raw data (transcripts or images) + polygons
 
-```
-createGiottoObjectSubcellular()
+You can also make `giotto` objects starting from raw spatial feature information and annotations that give them spatial context.
+
+
+```{r, eval=FALSE}
+# function to get a filepath from GiottoData
+mini_viz_raw <- function(x) {
+    system.file(
+        package = "GiottoData", 
+        file.path("Mini_datasets", "Vizgen", "Raw", x)
+    )
+}
+
+mini_viz_dt <- mini_viz_raw(file.path("cell_boundaries", "z0_polygons.gz")) |>
+    data.table::fread()
+mini_viz_poly <- createGiottoPolygon(mini_viz_dt)
+force(mini_viz_poly)
 ```
 
-The above two methods accept data, converts them into Giotto's compatible
-formats, and then assembles the final giotto object.
+```
+An object of class giottoPolygon
+spat_unit : "cell"
+Spatial Information:
+ class       : SpatVector 
+ geometry    : polygons 
+ dimensions  : 498, 1  (geometries, attributes)
+ extent      : 6399.244, 6903.243, -5152.39, -4694.868  (xmin, xmax, ymin, ymax)
+ coord. ref. :  
+ names       :                                 poly_ID
+ type        :                                   <chr>
+ values      :  40951783403982682273285375368232495429
+               240649020551054330404932383065726870513
+               274176126496863898679934791272921588227
+ centroids   : NULL
+ overlaps    : NULL
+```
 
-If desired you can also assemble a giotto object piece-wise after creating
-the Giotto subobjects manually.
+```{r, eval=FALSE}
+plot(mini_viz_poly)
+```
+
+```{r, echo=FALSE, out.width="60%", fig.cap="Example MERSCOPE polygons loaded form vertex info"}
+knitr::include_graphics("img/01_session4/viz_gpoly.png")
+```
+
+
+
+
+
+```{r, eval=FALSE}
+mini_viz_tx <- mini_viz_raw("vizgen_transcripts.gz") |>
+    data.table::fread()
+mini_viz_tx[, global_y := -global_y] # flip values to match polys
+
+viz_gpoints <- createGiottoPoints(mini_viz_tx)
+force(viz_gpoints)
+```
+
+```
+An object of class giottoPoints
+feat_type : "rna"
+Feature Information:
+ class       : SpatVector 
+ geometry    : points 
+ dimensions  : 80343, 3  (geometries, attributes)
+ extent      : 6400.037, 6900.032, 4699.979, 5149.983  (xmin, xmax, ymin, ymax)
+ coord. ref. :  
+ names       : feat_ID global_z feat_ID_uniq
+ type        :   <chr>    <int>        <int>
+ values      :    Mlc1        0            1
+                Gprc5b        0            2
+                  Gfap        0            3
+```
+
+```{r, eval=FALSE}
+plot(viz_gpoints)
+```
+
+```{r, echo=FALSE, out.width="60%", fig.cap="Example mini MERSCOPE transcripts data"}
+knitr::include_graphics("img/01_session4/viz_gpoints.png")
+```
+
+```{r, eval=FALSE}
+mini_viz <- createGiottoObjectSubcellular(
+    gpolygons = mini_viz_poly,
+    gpoints = viz_gpoints
+)
+instructions(mini_viz, "return_plot") <- FALSE 
+force(mini_viz)
+```
+
+```
+An object of class giotto 
+>Active spat_unit:  cell 
+>Active feat_type:  rna 
+[SUBCELLULAR INFO]
+polygons      : cell 
+features      : rna 
+[AGGREGATE INFO]
+
+
+Use objHistory() to see steps and params used
+```
+
+```{r, eval=FALSE}
+# calculate centroids
+mini_viz <- addSpatialCentroidLocations(mini_viz)
+
+# create aggregated information
+mini_viz <- calculateOverlap(mini_viz)
+mini_viz <- overlapToMatrix(mini_viz)
+
+spatFeatPlot2D(
+    mini_viz, 
+    feats = c("Grm4", "Gfap"),
+    expression_values = "raw",
+    point_size = 2.5,
+    gradient_style = "sequential",
+    background_color = "black"
+)
+```
+
+```{r, echo=FALSE, out.width="60%", fig.cap="Example mini MERSCOPE aggregated feature counts"}
+knitr::include_graphics("img/01_session4/example_featplot_sub.png")
+```
+
+
 
 ## From piece-wise
 
+You can also piece-wise assemble an object independently of one of the 2 previously shown convenience functions.
+
+```{r, eval=FALSE}
+g <- giotto() # initialize empty gobject
+g <- setGiotto(g, mini_viz_poly)
+g <- setGiotto(g, viz_gpoints)
+force(g)
 ```
-g <- giotto()
-g <- setGiotto(g, ??)
+
 ```
+An object of class giotto 
+>Active spat_unit:  cell 
+>Active feat_type:  rna 
+[SUBCELLULAR INFO]
+polygons      : cell 
+features      : rna 
+[AGGREGATE INFO]
+
+
+Use objHistory() to see steps and params used
+```
+
+This is essentially the same object as the one created through `createGiottoObjectSubcellular()` earlier.
+
+
+
 
 ## Using convenience functions for popular technologies (Vizgen, Xenium, CosMx, …)
 
-There are also several convenience functions we provide for loading in data
-from popular platforms. Many of these will be touched on later during other
-sessions
+There are also several convenience functions we provide for loading in data from popular platforms. These functions take care of reading the expected output folder structures, auto-detecting where needed data items are, formatting items for ingestion, then object creation. Many of these will be touched on later during other sessions.
 ```
 createGiottoVisiumObject()
 createGiottoVisiumHDObject()
@@ -58,20 +269,99 @@ createGiottoCosMxObject()
 createGiottoMerscopeObject()
 ```
 
-## Spatial plots
 
-Giotto has several spatial plotting functions.
-At the lowest level, you directly call `plot()` on several subobjects in order
-to see what they look like, particularly the ones containing spatial info.
+
+
+
+
+## Plotting
+
+### Subobject plotting
+
+Giotto has several spatial plotting functions. At the lowest level, you directly call `plot()` on several subobjects in order to see what they look like, particularly the ones containing spatial info. Here we load several mini subobjects which are taken from the vizgen MERSCOPE mini dataset. To see which mini objects are available for independent loading with `GiottoData::loadSubObjectMini()`, you can run `GiottoData::listSubobjectMini()`
 
 ```{r, eval=FALSE}
 gpoints <- GiottoData::loadSubObjectMini("giottoPoints")
+plot(gpoints)
+plot(gpoints, dens = TRUE, col = getColors("magma", 255))
+plot(gpoints, raster = FALSE)
+plot(gpoints, feats = c("Grm4", "Gfap"))
+```
+
+```{r, echo=FALSE, fig.cap="giottoPoints plots. Rasterized (top left), Rasterized and colored with 'magma' color scale by density (top right), Non-rasterized (bottom left), Plotting specifically 2 features (bottom right)"}
+knitr::include_graphics("img/01_session4/gpoint_plots.png")
+```
+
+
+
+```{r, eval=FALSE}
 gpoly <- GiottoData::loadSubObjectMini("giottoPolygon")
+plot(gpoly)
+plot(gpoly, type = "centroid")
+plot(gpoly, max_poly = 10)
+```
+
+```{r, echo=FALSE, fig.cap="giottoPolygon plots. default (left), plotting "centroids" (middle), auto changing to centroids after there are more polygons to plot than max_poly param (right)"}
+knitr::include_graphics("img/01_session4/gpoly_plots.png")
+```
+
+
+```{r, eval=FALSE}
 spatlocs <- GiottoData::loadSubObjectMini("spatLocsObj")
+plot(spatlocs)
+```
+
+```{r, echo=FALSE, out.width="60%", fig.cap="Plot of spatLocsObj"}
+knitr::include_graphics("img/01_session4/sl_plot.png")
+```
+
+
+```{r, eval=FALSE}
 spatnet <- GiottoData::loadSubObjectMini("spatialNetworkObj")
+plot(spatnet)
+```
+
+```{r, echo=FALSE, out.width="60%", fig.cap="Plot of spatialNetworkObj"}
+knitr::include_graphics("img/01_session4/spatnet_plot.png")
+```
+
+
+```{r, eval=FALSE}
 pca <- GiottoData::loadSubObjectMini("dimObj")
 plot(pca, dims = c(3,10))
 ```
+
+```{r, echo=FALSE, out.width="60%", fig.cap="Plot of PCA dimObj showing the 3rd and 10th PCs"}
+knitr::include_graphics("img/01_session4/dimobj_plot.png")
+```
+
+
+
+### Additive subobject plotting
+
+These base plotting functions inherit from `terra::plot()`. They can be used additively with more than one object.
+
+```{r, eval=FALSE}
+gimg <- GiottoData::loadSubObjectMini("giottoLargeImage")
+
+plot(gimg, col = getMonochromeColors("#5FAFFF"))
+plot(gpoly, border = "maroon", lwd = 0.5, add = TRUE)
+```
+
+```{r, echo=FALSE, fig.cap="Plot image with monochrome color scaling with added polygon borders"}
+knitr::include_graphics("img/01_session4/additive_baseplot.png")
+```
+
+### Giotto object plotting
+
+
+Here we load the vizgen mini dataset from _GiottoData_ which contains a lot of worked out data.
+
+```{r}
+g <- GiottoData::loadGiottoMini("vizgen")
+activeSpatUnit(g) <- "aggregate" # set default spat_unit to the one with lots of results
+```
+
 
 ## Subsetting
 
@@ -80,8 +370,7 @@ plot(pca, dims = c(3,10))
 -   Visualizations
 
 
-
-## Mini objects & GiottoData
+## _GiottoData_ Mini objects
 
 Giotto makes available several mini objects to allow devs and users to work
 with easily loadable Giotto objects. These are small subsets of a larger
