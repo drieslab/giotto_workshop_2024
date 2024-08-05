@@ -577,7 +577,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>August 5th 2024</p>
 <div id="data-formats" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> Data formats<a href="data-formatting-and-pre-processing.html#data-formats" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>There are many kinds of outputs and data formats that are currently being used in the spatial omics field for storage and dissemination of information. The following are some that we commonly work with. For Giotto, much of the data wrangling task is to get the information read in out of these formats into R native formats and wrapped as Giotto subobjects.</p>
+<p>There are many kinds of outputs and data formats that are currently being used in the spatial omics field for storage and dissemination of information. The following are some that we commonly work with. For Giotto, much of the data wrangling task is to get the information read in from these formats into R native formats and wrapped as Giotto subobjects.</p>
 <p>The subobjects then enforce formatting and allow the data types to behave as building blocks of the <code>giotto</code> object</p>
 <div id="general-formats" class="section level3 hasAnchor" number="5.1.1">
 <h3><span class="header-section-number">5.1.1</span> General formats<a href="data-formatting-and-pre-processing.html#general-formats" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -710,7 +710,7 @@ Figure 5.5: <code>giottoPolygon</code> from single value mask
 </div>
 <div id="hierarchical-formats" class="section level3 hasAnchor" number="5.1.8">
 <h3><span class="header-section-number">5.1.8</span> Hierarchical formats<a href="data-formatting-and-pre-processing.html#hierarchical-formats" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>There are many types of data in spatial-omics analysis. Hierarchical formats afford both a way to organize complex multi-type data and also to store and distribute them. In R, these can be opened with either <em>hdf5r</em> on CRAN or <em>rhdf5</em> on BioConductor. The complex nature of these formats and also the fact that they are just a storage format and not an organizational specification means that what data and how it is stored and represented can often be very different. <code>.gef</code> and <code>.bgef</code> which StereoSeq exports are <code>.hdf5</code>-like formats.</p>
+<p>There are many types of data in spatial-omics analysis. Hierarchical formats afford both a way to organize complex multi-type data and also to store and distribute them. In R, these can be opened with either <em>hdf5r</em> on CRAN or <em>rhdf5</em> on BioConductor. The complex nature of these formats and also the fact they are just a storage format and not an organizational specification means that what data and how it is stored and represented can often be very different. <code>.gef</code> and <code>.bgef</code> which StereoSeq exports are <code>.hdf5</code>-like formats.</p>
 <p><code>.h5ad</code> is a specific flavor of these file formats where they follow the <em>AnnData</em> framework so that there is more common structure in how datasets are stored. <em>Giotto</em> provides <code>anndataToGiotto()</code> and <code>giottoToAnnData()</code> interoperability functions for interconverting.</p>
 <p><code>.zarr</code> is another hierarchical storage structure, however currently the R-native support is still being developed.</p>
 </div>
