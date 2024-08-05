@@ -36,6 +36,15 @@ Each package also has its own website:
 
 More information is available at https://drieslab.github.io/Giotto_website/articles/ecosystem.html 
 
+
+
+
+
+
+
+
+
+
 ## Installation + python environment
 
 ### Giotto installation
@@ -56,26 +65,28 @@ To install the currently released version of Giotto in a single step:
 pak::pak("drieslab/Giotto")
 ```
 
-This should automatically install all the Giotto dependencies and other Giotto module packages.
+This should automatically install all the Giotto dependencies and other Giotto module packages (main branch).
 
 
 
 #### Installation of dev branch Giotto packages
 
-You can install dev branch versions by using `devtools::install_github()`
+_pak_ tends to forcibly install all dependencies, which can have issues when working with multiple dev branch packages.
+
+You can install dev branch versions by using `devtools::install_github()` instead
 
 Core module dev branchs:
 
-- "drieslab/Giotto@suite_dev"
-- "drieslab/GiottoVisuals@dev"
-- "drieslab/GiottoClass@dev"
-- "drieslab/GiottoUtils@dev"
+- `"drieslab/Giotto@suite_dev"`
+- `"drieslab/GiottoVisuals@dev"`
+- `"drieslab/GiottoClass@dev"`
+- `"drieslab/GiottoUtils@dev"`
 
 ```{r, eval=FALSE}
 devtools::install_github("drieslab/GiottoClass@dev")
 ```
 
-_pak_ tends to forcibly install all dependencies, which can have issues when working with multiple dev branch packages.
+
 
 
 #### Common install issues
@@ -222,6 +233,7 @@ test <- giotto(instructions = instrs) # passing NULL instead will also generate 
 g <- GiottoData::loadGiottoMini("visium")
 instructions(g) <- instrs
 instructions(g, "show_plot") # instructions say not to plot to viewer
+
 spatPlot2D(g, show_image = TRUE, image_name = "image")
 # instead it will directly write to the results folder
 ```

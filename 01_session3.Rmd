@@ -176,7 +176,7 @@ knitr::include_graphics("img/01_session3/gpoly_s.png")
 
 ### images
 
-Most images are openable using `createGiottoLargeImage()` which wraps `terra::rast()`. This allows compatibility with most common image types. Recent and non-geospatially related image formats are not well supported however. One example is `ome.tif` which 10X uses for large image exports from Xenium. For these, we use `ometif_to_tif()` to convert them into normal `.tif` files using the python _tifffile_ package. `ometif_metadata` can be used to extract and access the associated `ome xml` image metadata.
+Most images are openable using `createGiottoLargeImage()` which wraps `terra::rast()`. This allows compatibility with most common image types. Recent and non-geospatially related image formats are not well supported however. One example is `ome.tif` which 10X uses for large image exports from Xenium. For these, we use `ometif_to_tif()` to convert them into normal `.tif` files using the python _tifffile_ package. `ometif_metadata()` can be used to extract and access the associated `ome xml` image metadata.
 
 
 ### jsonlike formats
@@ -194,7 +194,7 @@ There are many types of data in spatial-omics analysis. Hierarchical formats aff
 
 ## Pre-processing
 
-The most common types of raw data needed for a Giotto object are expression matrices, centroids information, spatial feature points, polygons, and expression information. Evaluation of input data and conversion to compatible formats happens inside the `create*` functions that Giotto exports. There is one of these for each of the subobject classes.
+The most common types of raw data needed for a Giotto object are expression matrices, centroids information, spatial feature points, polygons. Evaluation of input data and conversion to compatible formats happens inside the `create*` functions that Giotto exports. There is one of these for each of the subobject classes.
 
 ### Expression matrix
 
@@ -350,7 +350,7 @@ Most of the subobjects are tagged with metadata information that allow them find
 
 ### IDs
 
-`spatIDs` and `featIDs` are used to find the spatial or feature IDs of an object.
+`spatIDs()` and `featIDs()` are used to find the spatial or feature IDs of an object.
 
 ```{r, eval=FALSE}
 spatIDs(sl_xy)
