@@ -53,7 +53,7 @@ untar(tarfile = file.path(data_directory, "V1_Adult_Mouse_Brain_spatial.tar.gz")
 ## Downloading giotto object and nuclei segmentation
 We will need nuclue/cell segmentations to perform the kirging. Later in the tutorial we'll also be using a premade giotto object. Download them using the following:
 
-```{r}
+```{r, eval=FALSE}
 destfile = file.path(data_directory, 'subcellular_gobject.zip')
 
 options(timeout = 9999999) # Needed to download large files
