@@ -165,7 +165,7 @@ knitr::include_graphics("img/02_session2/6.png")
 
 ```{r, eval=FALSE}
 instrs = createGiottoInstructions(
-  save_dir = results_folder,
+  save_dir = save_dir,
   save_plot = TRUE,
   show_plot = FALSE,
   return_plot = FALSE
