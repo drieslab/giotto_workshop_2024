@@ -375,3 +375,17 @@ plot-spatial-gene-groups
 downloading-giotto-object-and-nuclei-segmentation
 create-giotto-object-at-hexbin-400
 database-backend---work-in-progress-but-coming-soon
+fig:unnamed-chunk-16
+lunaphore-if-dataset
+giottodata-modular-package
+plotting
+subobject-plotting
+additive-subobject-plotting
+giotto-object-plotting
+giotto-spatial-plot-functions
+giotto-expression-space-plot-functions
+giotto-common-plotting-args
+id-subsetting
+coordinate-based-subsetting
+save-the-object-1
+giotto-object-at-hexbin-400

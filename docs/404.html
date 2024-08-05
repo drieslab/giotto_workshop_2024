@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Page not found | Workshop: Spatial multi-omics data analysis with Giotto Suite</title>
   <meta name="description" content="Page not found | Workshop: Spatial multi-omics data analysis with Giotto Suite" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Page not found | Workshop: Spatial multi-omics data analysis with Giotto Suite" />
   <meta property="og:type" content="book" />
@@ -154,6 +154,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.7" data-path="datasets-packages.html"><a href="datasets-packages.html#x-genomics-normal-human-prostate-ffpe"><i class="fa fa-check"></i><b>2.1.7</b> 10X Genomics Normal Human Prostate (FFPE)</a></li>
 <li class="chapter" data-level="2.1.8" data-path="datasets-packages.html"><a href="datasets-packages.html#xenium"><i class="fa fa-check"></i><b>2.1.8</b> Xenium</a></li>
 <li class="chapter" data-level="2.1.9" data-path="datasets-packages.html"><a href="datasets-packages.html#merfish-cortex-dataset"><i class="fa fa-check"></i><b>2.1.9</b> MERFISH cortex dataset</a></li>
+<li class="chapter" data-level="2.1.10" data-path="datasets-packages.html"><a href="datasets-packages.html#lunaphore-if-dataset"><i class="fa fa-check"></i><b>2.1.10</b> Lunaphore IF dataset</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="datasets-packages.html"><a href="datasets-packages.html#needed-packages"><i class="fa fa-check"></i><b>2.2</b> Needed packages</a>
 <ul>
@@ -223,15 +224,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html"><i class="fa fa-check"></i><b>6</b> Creating a Giotto object</a>
 <ul>
-<li class="chapter" data-level="6.0.1" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#used-packages"><i class="fa fa-check"></i><b>6.0.1</b> Used packages</a></li>
 <li class="chapter" data-level="6.1" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#overview"><i class="fa fa-check"></i><b>6.1</b> Overview</a></li>
-<li class="chapter" data-level="6.2" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#from-matrix-locations"><i class="fa fa-check"></i><b>6.2</b> From matrix + locations</a></li>
-<li class="chapter" data-level="6.3" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#from-subcellular-raw-data-transcripts-or-images-polygons"><i class="fa fa-check"></i><b>6.3</b> From subcellular raw data (transcripts or images) + polygons</a></li>
-<li class="chapter" data-level="6.4" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#from-piece-wise"><i class="fa fa-check"></i><b>6.4</b> From piece-wise</a></li>
-<li class="chapter" data-level="6.5" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#using-convenience-functions-for-popular-technologies-vizgen-xenium-cosmx"><i class="fa fa-check"></i><b>6.5</b> Using convenience functions for popular technologies (Vizgen, Xenium, CosMx, …)</a></li>
-<li class="chapter" data-level="6.6" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#spatial-plots"><i class="fa fa-check"></i><b>6.6</b> Spatial plots</a></li>
-<li class="chapter" data-level="6.7" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#subsetting"><i class="fa fa-check"></i><b>6.7</b> Subsetting</a></li>
-<li class="chapter" data-level="6.8" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#mini-objects-giottodata"><i class="fa fa-check"></i><b>6.8</b> Mini objects &amp; GiottoData</a></li>
+<li class="chapter" data-level="6.2" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#giottodata-modular-package"><i class="fa fa-check"></i><b>6.2</b> GiottoData modular package</a></li>
+<li class="chapter" data-level="6.3" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#from-matrix-locations"><i class="fa fa-check"></i><b>6.3</b> From matrix + locations</a></li>
+<li class="chapter" data-level="6.4" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#from-subcellular-raw-data-transcripts-or-images-polygons"><i class="fa fa-check"></i><b>6.4</b> From subcellular raw data (transcripts or images) + polygons</a></li>
+<li class="chapter" data-level="6.5" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#from-piece-wise"><i class="fa fa-check"></i><b>6.5</b> From piece-wise</a></li>
+<li class="chapter" data-level="6.6" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#using-convenience-functions-for-popular-technologies-vizgen-xenium-cosmx"><i class="fa fa-check"></i><b>6.6</b> Using convenience functions for popular technologies (Vizgen, Xenium, CosMx, …)</a></li>
+<li class="chapter" data-level="6.7" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#plotting"><i class="fa fa-check"></i><b>6.7</b> Plotting</a>
+<ul>
+<li class="chapter" data-level="6.7.1" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#subobject-plotting"><i class="fa fa-check"></i><b>6.7.1</b> Subobject plotting</a></li>
+<li class="chapter" data-level="6.7.2" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#additive-subobject-plotting"><i class="fa fa-check"></i><b>6.7.2</b> Additive subobject plotting</a></li>
+<li class="chapter" data-level="6.7.3" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#giotto-object-plotting"><i class="fa fa-check"></i><b>6.7.3</b> Giotto object plotting</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#subsetting"><i class="fa fa-check"></i><b>6.8</b> Subsetting</a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#id-subsetting"><i class="fa fa-check"></i><b>6.8.1</b> ID subsetting</a></li>
+<li class="chapter" data-level="6.8.2" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#coordinate-based-subsetting"><i class="fa fa-check"></i><b>6.8.2</b> Coordinate-based subsetting</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="visium-part-i.html"><a href="visium-part-i.html"><i class="fa fa-check"></i><b>7</b> Visium Part I</a>
 <ul>
@@ -282,7 +291,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.5" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatially-informed-clusters"><i class="fa fa-check"></i><b>8.5</b> Spatially informed clusters</a></li>
 <li class="chapter" data-level="8.6" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatial-domains-hmrf"><i class="fa fa-check"></i><b>8.6</b> Spatial domains HMRF</a></li>
 <li class="chapter" data-level="8.7" data-path="visium-part-ii.html"><a href="visium-part-ii.html#interactive-tools"><i class="fa fa-check"></i><b>8.7</b> Interactive tools</a></li>
-<li class="chapter" data-level="8.8" data-path="visium-part-ii.html"><a href="visium-part-ii.html#session-info-1"><i class="fa fa-check"></i><b>8.8</b> Session info</a></li>
+<li class="chapter" data-level="8.8" data-path="visium-part-ii.html"><a href="visium-part-ii.html#save-the-object-1"><i class="fa fa-check"></i><b>8.8</b> Save the object</a></li>
+<li class="chapter" data-level="8.9" data-path="visium-part-ii.html"><a href="visium-part-ii.html#session-info-1"><i class="fa fa-check"></i><b>8.9</b> Session info</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="visium-hd.html"><a href="visium-hd.html"><i class="fa fa-check"></i><b>9</b> Visium HD</a>
 <ul>
@@ -299,7 +309,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3.3" data-path="visium-hd.html"><a href="visium-hd.html#giotto-visium-hd-convenience-function"><i class="fa fa-check"></i><b>9.3.3</b> Giotto Visium HD convenience function</a></li>
 <li class="chapter" data-level="9.3.4" data-path="visium-hd.html"><a href="visium-hd.html#read-in-data-manually"><i class="fa fa-check"></i><b>9.3.4</b> Read in data manually</a></li>
 </ul></li>
-<li class="chapter" data-level="9.4" data-path="visium-hd.html"><a href="visium-hd.html#create-giotto-object-at-hexbin-400"><i class="fa fa-check"></i><b>9.4</b> Create Giotto object at Hexbin 400</a>
+<li class="chapter" data-level="9.4" data-path="visium-hd.html"><a href="visium-hd.html#giotto-object-at-hexbin-400"><i class="fa fa-check"></i><b>9.4</b> Giotto object at Hexbin 400</a>
 <ul>
 <li class="chapter" data-level="9.4.1" data-path="visium-hd.html"><a href="visium-hd.html#create-giotto-points"><i class="fa fa-check"></i><b>9.4.1</b> create giotto points</a></li>
 <li class="chapter" data-level="9.4.2" data-path="visium-hd.html"><a href="visium-hd.html#create-giotto-polygons"><i class="fa fa-check"></i><b>9.4.2</b> create giotto polygons</a></li>
@@ -493,11 +503,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="16.1.1" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#introduction-to-ontrac"><i class="fa fa-check"></i><b>16.1.1</b> Introduction to ONTraC</a></li>
 <li class="chapter" data-level="16.1.2" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#introduction-to-merfish"><i class="fa fa-check"></i><b>16.1.2</b> Introduction to MERFISH</a></li>
-<li class="chapter" data-level="16.1.3" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#settings"><i class="fa fa-check"></i><b>16.1.3</b> settings</a></li>
+<li class="chapter" data-level="16.1.3" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#settings"><i class="fa fa-check"></i><b>16.1.3</b> Settings</a></li>
 <li class="chapter" data-level="16.1.4" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#dataset-1"><i class="fa fa-check"></i><b>16.1.4</b> Dataset</a></li>
 <li class="chapter" data-level="16.1.5" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#create-the-giotto-object-2"><i class="fa fa-check"></i><b>16.1.5</b> Create the Giotto object</a></li>
 <li class="chapter" data-level="16.1.6" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#perform-spatial-niche-trajectory-analysis-using-ontrac"><i class="fa fa-check"></i><b>16.1.6</b> Perform spatial niche trajectory analysis using ONTraC</a></li>
-<li class="chapter" data-level="16.1.7" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#visualization"><i class="fa fa-check"></i><b>16.1.7</b> visualization</a></li>
+<li class="chapter" data-level="16.1.7" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#visualization"><i class="fa fa-check"></i><b>16.1.7</b> Visualization</a></li>
 </ul></li>
 <li class="chapter" data-level="16.2" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#session-info-3"><i class="fa fa-check"></i><b>16.2</b> Session info</a></li>
 </ul></li>
