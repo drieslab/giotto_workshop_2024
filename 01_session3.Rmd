@@ -80,8 +80,12 @@ Currently, _giotto_ extracts information from these files and then converts them
 `.shp` and `.geojson` are common formats for polygon and point data. They are commonly used as exports from segmentation software such as QuPath. `GiottoClass::createGiottoPolygon()` and the more specific `createGiottoPolygonsFromGeoJSON()` can be used for reading these in.
 
 ```{r, eval=FALSE}
+library(GiottoClass)
+
 shp <- system.file("extdata/toy_poly.shp", package = "GiottoClass")
+
 gpoly <- createGiottoPolygon(shp, name = "test")
+
 plot(gpoly)
 ```
 
@@ -96,6 +100,7 @@ knitr::include_graphics("img/01_session3/shp_gpoly.png")
 
 ```{r, eval=FALSE}
 m <- system.file("extdata/toy_mask_multi.tif", package = "GiottoClass")
+
 plot(terra::rast(m), col = grDevices::hcl.colors(7))
 ```
 
@@ -107,11 +112,14 @@ knitr::include_graphics("img/01_session3/mask.png")
 ```{r, eval=FALSE}
 gp <- createGiottoPolygon(
     m,
-    flip_vertical = FALSE, flip_horizontal = FALSE,
-    shift_horizontal_step = FALSE, shift_vertical_step = FALSE,
+    flip_vertical = FALSE, 
+    flip_horizontal = FALSE,
+    shift_horizontal_step = FALSE, 
+    shift_vertical_step = FALSE,
     ID_fmt = "id_test_%03d",
     name = "test"
 )
+
 force(gp)
 ```
 
@@ -140,6 +148,7 @@ For situations where all pixel values are the same, but not touching indicates d
 
 ```{r, eval=FALSE}
 m2 <- system.file("extdata/toy_mask_single.tif", package = "GiottoClass")
+
 plot(terra::rast(m2), col = grDevices::hcl.colors(7))
 ```
 
@@ -150,11 +159,14 @@ knitr::include_graphics("img/01_session3/mask_s.png")
 ```{r, eval=FALSE}
 gpoly1 <- createGiottoPolygonsFromMask(
     m2,
-    flip_vertical = FALSE, flip_horizontal = FALSE,
-    shift_horizontal_step = FALSE, shift_vertical_step = FALSE,
+    flip_vertical = FALSE, 
+    flip_horizontal = FALSE,
+    shift_horizontal_step = FALSE, 
+    shift_vertical_step = FALSE,
     ID_fmt = "id_test_%03d",
     name = "multi_test"
 )
+
 plot(gpoly1, col = grDevices::hcl.colors(7))
 ```
 
@@ -226,12 +238,15 @@ For _Giotto_ centroid locations, a tabular data.frame-like format is required. T
 
 ```{r, eval=FALSE}
 set.seed(1234)
+
 xy <- data.frame(
     a = as.character(seq(100)), 
     b = rnorm(100),
     c = rnorm(100)
 )
+
 sl_xy <- createSpatLocsObj(xy)
+
 plot(sl_xy)
 ```
 
@@ -241,13 +256,16 @@ knitr::include_graphics("img/01_session3/sl_xy.png")
 
 ```{r, eval=FALSE}
 set.seed(1234)
+
 xyz <- data.frame(
     a = as.character(seq(100)), 
     b = rnorm(100), 
     c = rnorm(100), 
     d = rnorm(100)
 )
+
 sl_xyz <- createSpatLocsObj(xyz)
+
 plot(sl_xyz)
 ```
 
@@ -261,14 +279,18 @@ knitr::include_graphics("img/01_session3/sl_xyz.png")
 
 ```{r, eval=FALSE}
 set.seed(1234)
+
 tx <- data.frame(
     id = sprintf("gene_%05d", seq(1e4)),
     x = rnorm(1e4),
     y = rnorm(1e4),
     meta = sprintf("metadata_%05d", seq(1e4))
 )
+
 gpoints <- createGiottoPoints(tx)
+
 plot(gpoints, raster = FALSE)
+
 plot(gpoints, dens = TRUE)
 ```
 
@@ -301,13 +323,17 @@ Polygon information is often provided as a known spatial format or as image mask
 set.seed(1234)
 
 hex <- hexVertices(radius = 1)
+
 spatlocs <- data.table::data.table(
     sdimx = rnorm(10, mean = 5, sd = 20),
     sdimy = rnorm(10, mean = 5, sd = 20),
     cell_ID = paste0("spot_", seq_len(10))
 )
+
 random_hex <- polyStamp(hex, spatlocs)
+
 random_hex_poly <- createGiottoPolygon(random_hex)
+
 plot(random_hex_poly)
 ```
 
@@ -325,6 +351,7 @@ Most of the subobjects are tagged with metadata information that allow them find
 ### IDs
 
 `spatIDs` and `featIDs` are used to find the spatial or feature IDs of an object.
+
 ```{r, eval=FALSE}
 spatIDs(sl_xy)
 ```
