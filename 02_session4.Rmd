@@ -75,7 +75,7 @@ img_meta <- ometif_metadata(img_path, node = "Channel", output = "data.frame")
 img_meta
 ```
 
-However, sometimes a cropping could result in a loss of ome-XML information from the ome.tiff file. That way, we can use a different strategy to parse the xml information seperately and get channel information from it.  
+However, sometimes a simple ometiff file manipulation like cropping could result in a loss of ome-XML information from the ome.tiff file. That way, we can use a different strategy to parse the xml information seperately and get channel information from it.  
 ```{r eval=FALSE}
 ##Get channel information
 Luna = paste0(download_dir,"Lunaphore/Lunaphore_example.ome.tiff")
@@ -159,6 +159,7 @@ knitr::include_graphics("img/02_session4/mesmer_overlap.png")
 ```
 
 ### Using Giotto wrapper of Cellpose to perform segmentation
+Here, we create a mini example by cropping the image to a smaller area. Note that crop()  is probably easier to use to directly crop image, unless cropping the image when the image is inside of a giotto object.
 ```{r eval = F}
 gimg_cropped <- cropGiottoLargeImage(giottoLargeImage = gimg_DAPI, crop_extent = terra::ext(zoom))
 writeGiottoLargeImage(gimg_cropped, filename = paste0(download_dir,'/Lunaphore/DAPI_forcellpose.tiff'),overwrite =  T)
