@@ -877,11 +877,47 @@ Here we load the vizgen mini dataset from <em>GiottoData</em> which contains a l
 <h2><span class="header-section-number">6.8</span> Subsetting<a href="creating-a-giotto-object.html#subsetting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="id-subsetting" class="section level3 hasAnchor" number="6.8.1">
 <h3><span class="header-section-number">6.8.1</span> ID subsetting<a href="creating-a-giotto-object.html#id-subsetting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="creating-a-giotto-object.html#cb85-1" tabindex="-1"></a>gsubset <span class="ot">&lt;-</span> <span class="fu">subsetGiotto</span>(g, <span class="at">cell_ids =</span> <span class="fu">sample</span>(<span class="fu">spatIDs</span>(g), <span class="dv">300</span>))</span></code></pre></div>
+<p>Subset the <code>giotto</code> object for a random 300 cell IDs</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="creating-a-giotto-object.html#cb85-1" tabindex="-1"></a>cx <span class="ot">&lt;-</span> <span class="fu">pDataDT</span>(g)</span>
+<span id="cb85-2"><a href="creating-a-giotto-object.html#cb85-2" tabindex="-1"></a><span class="fu">nrow</span>(cx)</span></code></pre></div>
+<pre><code>[1] 462</code></pre>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="creating-a-giotto-object.html#cb87-1" tabindex="-1"></a>ex <span class="ot">&lt;-</span> <span class="fu">getExpression</span>(g)</span>
+<span id="cb87-2"><a href="creating-a-giotto-object.html#cb87-2" tabindex="-1"></a><span class="fu">dim</span>(ex)</span></code></pre></div>
+<pre><code>[1] 337 462</code></pre>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="creating-a-giotto-object.html#cb89-1" tabindex="-1"></a><span class="fu">instructions</span>(g, <span class="st">&quot;cell_color_c_pal&quot;</span>) <span class="ot">&lt;-</span> <span class="st">&quot;viridis&quot;</span></span>
+<span id="cb89-2"><a href="creating-a-giotto-object.html#cb89-2" tabindex="-1"></a><span class="fu">instructions</span>(g, <span class="st">&quot;poly_color_c_pal&quot;</span>) <span class="ot">&lt;-</span> <span class="st">&quot;viridis&quot;</span></span>
+<span id="cb89-3"><a href="creating-a-giotto-object.html#cb89-3" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb89-4"><a href="creating-a-giotto-object.html#cb89-4" tabindex="-1"></a>gsubset <span class="ot">&lt;-</span> <span class="fu">subsetGiotto</span>(g, <span class="at">cell_ids =</span> <span class="fu">sample</span>(<span class="fu">spatIDs</span>(g), <span class="dv">300</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="creating-a-giotto-object.html#cb90-1" tabindex="-1"></a>cx_sub <span class="ot">&lt;-</span> <span class="fu">pDataDT</span>(gsubset)</span>
+<span id="cb90-2"><a href="creating-a-giotto-object.html#cb90-2" tabindex="-1"></a><span class="fu">nrow</span>(cx_sub)</span></code></pre></div>
+<pre><code>[1] 300</code></pre>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="creating-a-giotto-object.html#cb92-1" tabindex="-1"></a><span class="fu">spatPlot</span>(g, <span class="at">cell_color =</span> <span class="st">&quot;total_expr&quot;</span>,</span>
+<span id="cb92-2"><a href="creating-a-giotto-object.html#cb92-2" tabindex="-1"></a>         <span class="at">color_as_factor =</span> <span class="cn">FALSE</span>, <span class="at">background_color =</span> <span class="st">&quot;black&quot;</span>)</span>
+<span id="cb92-3"><a href="creating-a-giotto-object.html#cb92-3" tabindex="-1"></a><span class="fu">spatPlot</span>(gsubset, <span class="at">cell_color =</span> <span class="st">&quot;total_expr&quot;</span>,</span>
+<span id="cb92-4"><a href="creating-a-giotto-object.html#cb92-4" tabindex="-1"></a>         <span class="at">color_as_factor =</span> <span class="cn">FALSE</span>, <span class="at">background_color =</span> <span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-95"></span>
+<img src="img/01_session4/subset_id.png" alt="plot showing starting object (left) and subset object (right)"  />
+<p class="caption">
+Figure 6.11: plot showing starting object (left) and subset object (right)
+</p>
+</div>
 </div>
 <div id="coordinate-based-subsetting" class="section level3 hasAnchor" number="6.8.2">
 <h3><span class="header-section-number">6.8.2</span> Coordinate-based subsetting<a href="creating-a-giotto-object.html#coordinate-based-subsetting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="creating-a-giotto-object.html#cb86-1" tabindex="-1"></a>gsubset <span class="ot">&lt;-</span> <span class="fu">subsetGiottoLocs</span>(g, <span class="at">x_min =</span> <span class="dv">6500</span>, <span class="at">x_max =</span> <span class="dv">6700</span>, <span class="at">poly_info =</span> <span class="st">&quot;aggregate&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="creating-a-giotto-object.html#cb93-1" tabindex="-1"></a>gsubsetlocs <span class="ot">&lt;-</span> <span class="fu">subsetGiottoLocs</span>(g, </span>
+<span id="cb93-2"><a href="creating-a-giotto-object.html#cb93-2" tabindex="-1"></a>    <span class="at">x_min =</span> <span class="dv">6500</span>, <span class="at">x_max =</span> <span class="dv">6700</span>, </span>
+<span id="cb93-3"><a href="creating-a-giotto-object.html#cb93-3" tabindex="-1"></a>    <span class="at">poly_info =</span> <span class="st">&quot;aggregate&quot;</span></span>
+<span id="cb93-4"><a href="creating-a-giotto-object.html#cb93-4" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="creating-a-giotto-object.html#cb94-1" tabindex="-1"></a><span class="fu">spatPlot</span>(gsubsetlocs, <span class="at">cell_color =</span> <span class="st">&quot;total_expr&quot;</span>,</span>
+<span id="cb94-2"><a href="creating-a-giotto-object.html#cb94-2" tabindex="-1"></a>         <span class="at">color_as_factor =</span> <span class="cn">FALSE</span>, <span class="at">background_color =</span> <span class="st">&quot;black&quot;</span>)</span>
+<span id="cb94-3"><a href="creating-a-giotto-object.html#cb94-3" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(gsubsetlocs, <span class="at">polygon_fill =</span> <span class="st">&quot;total_expr&quot;</span>,</span>
+<span id="cb94-4"><a href="creating-a-giotto-object.html#cb94-4" tabindex="-1"></a>                     <span class="at">polygon_fill_as_factor =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-98"></span>
+<img src="img/01_session4/subset_locs.png" alt="plot showing starting object (left) and subset object (right)"  />
+<p class="caption">
+Figure 6.12: plot showing starting object (left) and subset object (right)
+</p>
+</div>
 
 </div>
 </div>
