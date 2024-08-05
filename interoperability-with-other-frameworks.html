@@ -327,6 +327,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="9.8.1" data-path="visium-hd.html"><a href="visium-hd.html#subcellular-workflow-and-projection-functions"><i class="fa fa-check"></i><b>9.8.1</b> Subcellular workflow and projection functions</a></li>
 </ul></li>
+<li class="chapter" data-level="9.9" data-path="visium-hd.html"><a href="visium-hd.html#database-backend"><i class="fa fa-check"></i><b>9.9</b> Database backend</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="xenium-1.html"><a href="xenium-1.html"><i class="fa fa-check"></i><b>10</b> Xenium</a>
 <ul>
@@ -579,10 +580,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="load-giotto-object" class="section level2 hasAnchor" number="15.1">
 <h2><span class="header-section-number">15.1</span> Load Giotto object<a href="interoperability-with-other-frameworks.html#load-giotto-object" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To begin demonstrating the interoperability of a Giotto object with other frameworks, we first load the required libraries and a Giotto mini object. We then proceed with the conversion process:</p>
-<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="interoperability-with-other-frameworks.html#cb349-1" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
-<span id="cb349-2"><a href="interoperability-with-other-frameworks.html#cb349-2" tabindex="-1"></a><span class="fu">library</span>(GiottoData)</span></code></pre></div>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="interoperability-with-other-frameworks.html#cb355-1" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
+<span id="cb355-2"><a href="interoperability-with-other-frameworks.html#cb355-2" tabindex="-1"></a><span class="fu">library</span>(GiottoData)</span></code></pre></div>
 <p>Load a Giotto mini Visium object, which will be used for demonstrating interoperability.</p>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="interoperability-with-other-frameworks.html#cb350-1" tabindex="-1"></a>gobject <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadGiottoMini</span>(<span class="st">&quot;visium&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="interoperability-with-other-frameworks.html#cb356-1" tabindex="-1"></a>gobject <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadGiottoMini</span>(<span class="st">&quot;visium&quot;</span>)</span></code></pre></div>
 </div>
 <div id="seurat" class="section level2 hasAnchor" number="15.2">
 <h2><span class="header-section-number">15.2</span> Seurat<a href="interoperability-with-other-frameworks.html#seurat" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -591,99 +592,99 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="conversion-of-giotto-object-to-seurat-object" class="section level3 hasAnchor" number="15.2.1">
 <h3><span class="header-section-number">15.2.1</span> Conversion of Giotto Object to Seurat Object<a href="interoperability-with-other-frameworks.html#conversion-of-giotto-object-to-seurat-object" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To convert Giotto object to Seurat V5 object, we first load required libraries and use the function <code>giottoToSeuratV5()</code> function</p>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="interoperability-with-other-frameworks.html#cb351-1" tabindex="-1"></a><span class="fu">library</span>(Seurat)</span>
-<span id="cb351-2"><a href="interoperability-with-other-frameworks.html#cb351-2" tabindex="-1"></a><span class="fu">library</span>(SeuratData)</span>
-<span id="cb351-3"><a href="interoperability-with-other-frameworks.html#cb351-3" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb351-4"><a href="interoperability-with-other-frameworks.html#cb351-4" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb351-5"><a href="interoperability-with-other-frameworks.html#cb351-5" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="interoperability-with-other-frameworks.html#cb357-1" tabindex="-1"></a><span class="fu">library</span>(Seurat)</span>
+<span id="cb357-2"><a href="interoperability-with-other-frameworks.html#cb357-2" tabindex="-1"></a><span class="fu">library</span>(SeuratData)</span>
+<span id="cb357-3"><a href="interoperability-with-other-frameworks.html#cb357-3" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb357-4"><a href="interoperability-with-other-frameworks.html#cb357-4" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb357-5"><a href="interoperability-with-other-frameworks.html#cb357-5" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
 <p>Now we convert the Giotto object to a Seurat V5 object and create violin and spatial feature plots to visualize the RNA count data.</p>
-<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="interoperability-with-other-frameworks.html#cb352-1" tabindex="-1"></a>gToS <span class="ot">&lt;-</span> <span class="fu">giottoToSeuratV5</span>(<span class="at">gobject =</span> gobject, </span>
-<span id="cb352-2"><a href="interoperability-with-other-frameworks.html#cb352-2" tabindex="-1"></a>                         <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>)</span>
-<span id="cb352-3"><a href="interoperability-with-other-frameworks.html#cb352-3" tabindex="-1"></a></span>
-<span id="cb352-4"><a href="interoperability-with-other-frameworks.html#cb352-4" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> <span class="fu">VlnPlot</span>(gToS, </span>
-<span id="cb352-5"><a href="interoperability-with-other-frameworks.html#cb352-5" tabindex="-1"></a>                 <span class="at">features =</span> <span class="st">&quot;nCount_rna&quot;</span>, </span>
-<span id="cb352-6"><a href="interoperability-with-other-frameworks.html#cb352-6" tabindex="-1"></a>                 <span class="at">pt.size =</span> <span class="fl">0.1</span>) <span class="sc">+</span> </span>
-<span id="cb352-7"><a href="interoperability-with-other-frameworks.html#cb352-7" tabindex="-1"></a>    <span class="fu">NoLegend</span>()</span>
-<span id="cb352-8"><a href="interoperability-with-other-frameworks.html#cb352-8" tabindex="-1"></a></span>
-<span id="cb352-9"><a href="interoperability-with-other-frameworks.html#cb352-9" tabindex="-1"></a>plot2 <span class="ot">&lt;-</span> <span class="fu">SpatialFeaturePlot</span>(gToS, </span>
-<span id="cb352-10"><a href="interoperability-with-other-frameworks.html#cb352-10" tabindex="-1"></a>                            <span class="at">features =</span> <span class="st">&quot;nCount_rna&quot;</span>, </span>
-<span id="cb352-11"><a href="interoperability-with-other-frameworks.html#cb352-11" tabindex="-1"></a>                            <span class="at">pt.size.factor =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
-<span id="cb352-12"><a href="interoperability-with-other-frameworks.html#cb352-12" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>)</span>
-<span id="cb352-13"><a href="interoperability-with-other-frameworks.html#cb352-13" tabindex="-1"></a></span>
-<span id="cb352-14"><a href="interoperability-with-other-frameworks.html#cb352-14" tabindex="-1"></a><span class="fu">wrap_plots</span>(plot1, plot2)</span></code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="interoperability-with-other-frameworks.html#cb358-1" tabindex="-1"></a>gToS <span class="ot">&lt;-</span> <span class="fu">giottoToSeuratV5</span>(<span class="at">gobject =</span> gobject, </span>
+<span id="cb358-2"><a href="interoperability-with-other-frameworks.html#cb358-2" tabindex="-1"></a>                         <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>)</span>
+<span id="cb358-3"><a href="interoperability-with-other-frameworks.html#cb358-3" tabindex="-1"></a></span>
+<span id="cb358-4"><a href="interoperability-with-other-frameworks.html#cb358-4" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> <span class="fu">VlnPlot</span>(gToS, </span>
+<span id="cb358-5"><a href="interoperability-with-other-frameworks.html#cb358-5" tabindex="-1"></a>                 <span class="at">features =</span> <span class="st">&quot;nCount_rna&quot;</span>, </span>
+<span id="cb358-6"><a href="interoperability-with-other-frameworks.html#cb358-6" tabindex="-1"></a>                 <span class="at">pt.size =</span> <span class="fl">0.1</span>) <span class="sc">+</span> </span>
+<span id="cb358-7"><a href="interoperability-with-other-frameworks.html#cb358-7" tabindex="-1"></a>    <span class="fu">NoLegend</span>()</span>
+<span id="cb358-8"><a href="interoperability-with-other-frameworks.html#cb358-8" tabindex="-1"></a></span>
+<span id="cb358-9"><a href="interoperability-with-other-frameworks.html#cb358-9" tabindex="-1"></a>plot2 <span class="ot">&lt;-</span> <span class="fu">SpatialFeaturePlot</span>(gToS, </span>
+<span id="cb358-10"><a href="interoperability-with-other-frameworks.html#cb358-10" tabindex="-1"></a>                            <span class="at">features =</span> <span class="st">&quot;nCount_rna&quot;</span>, </span>
+<span id="cb358-11"><a href="interoperability-with-other-frameworks.html#cb358-11" tabindex="-1"></a>                            <span class="at">pt.size.factor =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb358-12"><a href="interoperability-with-other-frameworks.html#cb358-12" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;right&quot;</span>)</span>
+<span id="cb358-13"><a href="interoperability-with-other-frameworks.html#cb358-13" tabindex="-1"></a></span>
+<span id="cb358-14"><a href="interoperability-with-other-frameworks.html#cb358-14" tabindex="-1"></a><span class="fu">wrap_plots</span>(plot1, plot2)</span></code></pre></div>
 <p><img src="img/03_session4/1.png" width="80%" style="display: block; margin: auto;" /></p>
 <div id="apply-sctransform" class="section level4 hasAnchor" number="15.2.1.1">
 <h4><span class="header-section-number">15.2.1.1</span> Apply SCTransform<a href="interoperability-with-other-frameworks.html#apply-sctransform" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>We apply SCTransform to perform data transformation on the RNA assay: <code>SCTransform()</code> function.</p>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="interoperability-with-other-frameworks.html#cb353-1" tabindex="-1"></a>gToS <span class="ot">&lt;-</span> <span class="fu">SCTransform</span>(gToS, <span class="at">assay =</span> <span class="st">&quot;rna&quot;</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="interoperability-with-other-frameworks.html#cb359-1" tabindex="-1"></a>gToS <span class="ot">&lt;-</span> <span class="fu">SCTransform</span>(gToS, <span class="at">assay =</span> <span class="st">&quot;rna&quot;</span>, <span class="at">verbose =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 </div>
 <div id="dimension-reduction-2" class="section level4 hasAnchor" number="15.2.1.2">
 <h4><span class="header-section-number">15.2.1.2</span> Dimension Reduction<a href="interoperability-with-other-frameworks.html#dimension-reduction-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>We perform Principal Component Analysis (PCA), find neighbors, and run UMAP for dimensionality reduction and clustering on the transformed Seurat object:</p>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="interoperability-with-other-frameworks.html#cb354-1" tabindex="-1"></a>gToS <span class="ot">&lt;-</span> <span class="fu">RunPCA</span>(gToS, <span class="at">assay =</span> <span class="st">&quot;SCT&quot;</span>)</span>
-<span id="cb354-2"><a href="interoperability-with-other-frameworks.html#cb354-2" tabindex="-1"></a></span>
-<span id="cb354-3"><a href="interoperability-with-other-frameworks.html#cb354-3" tabindex="-1"></a>gToS <span class="ot">&lt;-</span> <span class="fu">FindNeighbors</span>(gToS, <span class="at">reduction =</span> <span class="st">&quot;pca&quot;</span>, <span class="at">dims =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>)</span>
-<span id="cb354-4"><a href="interoperability-with-other-frameworks.html#cb354-4" tabindex="-1"></a></span>
-<span id="cb354-5"><a href="interoperability-with-other-frameworks.html#cb354-5" tabindex="-1"></a>gToS <span class="ot">&lt;-</span> <span class="fu">RunUMAP</span>(gToS, <span class="at">reduction =</span> <span class="st">&quot;pca&quot;</span>, <span class="at">dims =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="interoperability-with-other-frameworks.html#cb360-1" tabindex="-1"></a>gToS <span class="ot">&lt;-</span> <span class="fu">RunPCA</span>(gToS, <span class="at">assay =</span> <span class="st">&quot;SCT&quot;</span>)</span>
+<span id="cb360-2"><a href="interoperability-with-other-frameworks.html#cb360-2" tabindex="-1"></a></span>
+<span id="cb360-3"><a href="interoperability-with-other-frameworks.html#cb360-3" tabindex="-1"></a>gToS <span class="ot">&lt;-</span> <span class="fu">FindNeighbors</span>(gToS, <span class="at">reduction =</span> <span class="st">&quot;pca&quot;</span>, <span class="at">dims =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>)</span>
+<span id="cb360-4"><a href="interoperability-with-other-frameworks.html#cb360-4" tabindex="-1"></a></span>
+<span id="cb360-5"><a href="interoperability-with-other-frameworks.html#cb360-5" tabindex="-1"></a>gToS <span class="ot">&lt;-</span> <span class="fu">RunUMAP</span>(gToS, <span class="at">reduction =</span> <span class="st">&quot;pca&quot;</span>, <span class="at">dims =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="conversion-of-seurat-object-back-to-giotto-object" class="section level3 hasAnchor" number="15.2.2">
 <h3><span class="header-section-number">15.2.2</span> Conversion of Seurat object Back to Giotto Object<a href="interoperability-with-other-frameworks.html#conversion-of-seurat-object-back-to-giotto-object" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To Convert the Seurat Object back to Giotto object, we use the funcion <code>seuratToGiottoV5()</code>, specifying the spatial assay, dimensionality reduction techniques, and spatial and nearest neighbor networks.</p>
-<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="interoperability-with-other-frameworks.html#cb355-1" tabindex="-1"></a>giottoFromSeurat <span class="ot">&lt;-</span> <span class="fu">seuratToGiottoV5</span>(<span class="at">sobject =</span> gToS, </span>
-<span id="cb355-2"><a href="interoperability-with-other-frameworks.html#cb355-2" tabindex="-1"></a>                                     <span class="at">spatial_assay =</span> <span class="st">&quot;rna&quot;</span>, </span>
-<span id="cb355-3"><a href="interoperability-with-other-frameworks.html#cb355-3" tabindex="-1"></a>                                     <span class="at">dim_reduction =</span> <span class="fu">c</span>(<span class="st">&quot;pca&quot;</span>, <span class="st">&quot;umap&quot;</span>), </span>
-<span id="cb355-4"><a href="interoperability-with-other-frameworks.html#cb355-4" tabindex="-1"></a>                                     <span class="at">sp_network =</span> <span class="st">&quot;Delaunay_network&quot;</span>, </span>
-<span id="cb355-5"><a href="interoperability-with-other-frameworks.html#cb355-5" tabindex="-1"></a>                                     <span class="at">nn_network =</span> <span class="fu">c</span>(<span class="st">&quot;sNN.pca&quot;</span>, <span class="st">&quot;custom_NN&quot;</span> ))</span></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="interoperability-with-other-frameworks.html#cb361-1" tabindex="-1"></a>giottoFromSeurat <span class="ot">&lt;-</span> <span class="fu">seuratToGiottoV5</span>(<span class="at">sobject =</span> gToS, </span>
+<span id="cb361-2"><a href="interoperability-with-other-frameworks.html#cb361-2" tabindex="-1"></a>                                     <span class="at">spatial_assay =</span> <span class="st">&quot;rna&quot;</span>, </span>
+<span id="cb361-3"><a href="interoperability-with-other-frameworks.html#cb361-3" tabindex="-1"></a>                                     <span class="at">dim_reduction =</span> <span class="fu">c</span>(<span class="st">&quot;pca&quot;</span>, <span class="st">&quot;umap&quot;</span>), </span>
+<span id="cb361-4"><a href="interoperability-with-other-frameworks.html#cb361-4" tabindex="-1"></a>                                     <span class="at">sp_network =</span> <span class="st">&quot;Delaunay_network&quot;</span>, </span>
+<span id="cb361-5"><a href="interoperability-with-other-frameworks.html#cb361-5" tabindex="-1"></a>                                     <span class="at">nn_network =</span> <span class="fu">c</span>(<span class="st">&quot;sNN.pca&quot;</span>, <span class="st">&quot;custom_NN&quot;</span> ))</span></code></pre></div>
 <div id="clustering-and-plotting-umap" class="section level4 hasAnchor" number="15.2.2.1">
 <h4><span class="header-section-number">15.2.2.1</span> Clustering and Plotting UMAP<a href="interoperability-with-other-frameworks.html#clustering-and-plotting-umap" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Here we perform K-means clustering on the UMAP results obtained from the Seurat object:</p>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="interoperability-with-other-frameworks.html#cb356-1" tabindex="-1"></a><span class="do">## k-means clustering</span></span>
-<span id="cb356-2"><a href="interoperability-with-other-frameworks.html#cb356-2" tabindex="-1"></a>giottoFromSeurat <span class="ot">&lt;-</span> <span class="fu">doKmeans</span>(<span class="at">gobject =</span> giottoFromSeurat, </span>
-<span id="cb356-3"><a href="interoperability-with-other-frameworks.html#cb356-3" tabindex="-1"></a>                             <span class="at">dim_reduction_to_use =</span> <span class="st">&quot;pca&quot;</span>)</span>
-<span id="cb356-4"><a href="interoperability-with-other-frameworks.html#cb356-4" tabindex="-1"></a></span>
-<span id="cb356-5"><a href="interoperability-with-other-frameworks.html#cb356-5" tabindex="-1"></a><span class="co">#Plot UMAP post-clustering to visualize kmeans</span></span>
-<span id="cb356-6"><a href="interoperability-with-other-frameworks.html#cb356-6" tabindex="-1"></a>graph2 <span class="ot">&lt;-</span> Giotto<span class="sc">::</span><span class="fu">plotUMAP</span>(</span>
-<span id="cb356-7"><a href="interoperability-with-other-frameworks.html#cb356-7" tabindex="-1"></a>    <span class="at">gobject =</span> giottoFromSeurat,</span>
-<span id="cb356-8"><a href="interoperability-with-other-frameworks.html#cb356-8" tabindex="-1"></a>    <span class="at">cell_color =</span> <span class="st">&quot;kmeans&quot;</span>,</span>
-<span id="cb356-9"><a href="interoperability-with-other-frameworks.html#cb356-9" tabindex="-1"></a>    <span class="at">show_NN_network =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb356-10"><a href="interoperability-with-other-frameworks.html#cb356-10" tabindex="-1"></a>    <span class="at">point_size =</span> <span class="fl">2.5</span></span>
-<span id="cb356-11"><a href="interoperability-with-other-frameworks.html#cb356-11" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="interoperability-with-other-frameworks.html#cb362-1" tabindex="-1"></a><span class="do">## k-means clustering</span></span>
+<span id="cb362-2"><a href="interoperability-with-other-frameworks.html#cb362-2" tabindex="-1"></a>giottoFromSeurat <span class="ot">&lt;-</span> <span class="fu">doKmeans</span>(<span class="at">gobject =</span> giottoFromSeurat, </span>
+<span id="cb362-3"><a href="interoperability-with-other-frameworks.html#cb362-3" tabindex="-1"></a>                             <span class="at">dim_reduction_to_use =</span> <span class="st">&quot;pca&quot;</span>)</span>
+<span id="cb362-4"><a href="interoperability-with-other-frameworks.html#cb362-4" tabindex="-1"></a></span>
+<span id="cb362-5"><a href="interoperability-with-other-frameworks.html#cb362-5" tabindex="-1"></a><span class="co">#Plot UMAP post-clustering to visualize kmeans</span></span>
+<span id="cb362-6"><a href="interoperability-with-other-frameworks.html#cb362-6" tabindex="-1"></a>graph2 <span class="ot">&lt;-</span> Giotto<span class="sc">::</span><span class="fu">plotUMAP</span>(</span>
+<span id="cb362-7"><a href="interoperability-with-other-frameworks.html#cb362-7" tabindex="-1"></a>    <span class="at">gobject =</span> giottoFromSeurat,</span>
+<span id="cb362-8"><a href="interoperability-with-other-frameworks.html#cb362-8" tabindex="-1"></a>    <span class="at">cell_color =</span> <span class="st">&quot;kmeans&quot;</span>,</span>
+<span id="cb362-9"><a href="interoperability-with-other-frameworks.html#cb362-9" tabindex="-1"></a>    <span class="at">show_NN_network =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb362-10"><a href="interoperability-with-other-frameworks.html#cb362-10" tabindex="-1"></a>    <span class="at">point_size =</span> <span class="fl">2.5</span></span>
+<span id="cb362-11"><a href="interoperability-with-other-frameworks.html#cb362-11" tabindex="-1"></a>)</span></code></pre></div>
 <p><img src="img/03_session4/2.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="spatial-coexpression" class="section level4 hasAnchor" number="15.2.2.2">
 <h4><span class="header-section-number">15.2.2.2</span> Spatial CoExpression<a href="interoperability-with-other-frameworks.html#spatial-coexpression" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>We can also use the <code>binSpect</code> function to analyze spatial co-expression using the spatial network <code>Delaunay network</code> from the Seurat object and then visualize the spatial co-expression using the <code>heatmSpatialCorFeat()</code> function:</p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="interoperability-with-other-frameworks.html#cb357-1" tabindex="-1"></a>ranktest <span class="ot">&lt;-</span> <span class="fu">binSpect</span>(giottoFromSeurat, </span>
-<span id="cb357-2"><a href="interoperability-with-other-frameworks.html#cb357-2" tabindex="-1"></a>                     <span class="at">bin_method =</span> <span class="st">&quot;rank&quot;</span>,</span>
-<span id="cb357-3"><a href="interoperability-with-other-frameworks.html#cb357-3" tabindex="-1"></a>                     <span class="at">calc_hub =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb357-4"><a href="interoperability-with-other-frameworks.html#cb357-4" tabindex="-1"></a>                     <span class="at">hub_min_int =</span> <span class="dv">5</span>,</span>
-<span id="cb357-5"><a href="interoperability-with-other-frameworks.html#cb357-5" tabindex="-1"></a>                     <span class="at">spatial_network_name =</span> <span class="st">&quot;Delaunay_network&quot;</span>)</span>
-<span id="cb357-6"><a href="interoperability-with-other-frameworks.html#cb357-6" tabindex="-1"></a></span>
-<span id="cb357-7"><a href="interoperability-with-other-frameworks.html#cb357-7" tabindex="-1"></a>ext_spatial_genes <span class="ot">&lt;-</span> ranktest[<span class="dv">1</span><span class="sc">:</span><span class="dv">300</span>,]<span class="sc">$</span>feats</span>
-<span id="cb357-8"><a href="interoperability-with-other-frameworks.html#cb357-8" tabindex="-1"></a></span>
-<span id="cb357-9"><a href="interoperability-with-other-frameworks.html#cb357-9" tabindex="-1"></a>spat_cor_netw_DT <span class="ot">&lt;-</span> <span class="fu">detectSpatialCorFeats</span>(</span>
-<span id="cb357-10"><a href="interoperability-with-other-frameworks.html#cb357-10" tabindex="-1"></a>    giottoFromSeurat,</span>
-<span id="cb357-11"><a href="interoperability-with-other-frameworks.html#cb357-11" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;network&quot;</span>,</span>
-<span id="cb357-12"><a href="interoperability-with-other-frameworks.html#cb357-12" tabindex="-1"></a>    <span class="at">spatial_network_name =</span> <span class="st">&quot;Delaunay_network&quot;</span>,</span>
-<span id="cb357-13"><a href="interoperability-with-other-frameworks.html#cb357-13" tabindex="-1"></a>    <span class="at">subset_feats =</span> ext_spatial_genes)</span>
-<span id="cb357-14"><a href="interoperability-with-other-frameworks.html#cb357-14" tabindex="-1"></a></span>
-<span id="cb357-15"><a href="interoperability-with-other-frameworks.html#cb357-15" tabindex="-1"></a>top10_genes <span class="ot">&lt;-</span> <span class="fu">showSpatialCorFeats</span>(spat_cor_netw_DT, </span>
-<span id="cb357-16"><a href="interoperability-with-other-frameworks.html#cb357-16" tabindex="-1"></a>                                   <span class="at">feats =</span> <span class="st">&quot;Dsp&quot;</span>, </span>
-<span id="cb357-17"><a href="interoperability-with-other-frameworks.html#cb357-17" tabindex="-1"></a>                                   <span class="at">show_top_feats =</span> <span class="dv">10</span>)</span>
-<span id="cb357-18"><a href="interoperability-with-other-frameworks.html#cb357-18" tabindex="-1"></a></span>
-<span id="cb357-19"><a href="interoperability-with-other-frameworks.html#cb357-19" tabindex="-1"></a>spat_cor_netw_DT <span class="ot">&lt;-</span> <span class="fu">clusterSpatialCorFeats</span>(spat_cor_netw_DT, </span>
-<span id="cb357-20"><a href="interoperability-with-other-frameworks.html#cb357-20" tabindex="-1"></a>                                           <span class="at">name =</span> <span class="st">&quot;spat_netw_clus&quot;</span>, </span>
-<span id="cb357-21"><a href="interoperability-with-other-frameworks.html#cb357-21" tabindex="-1"></a>                                           <span class="at">k =</span> <span class="dv">7</span>)</span>
-<span id="cb357-22"><a href="interoperability-with-other-frameworks.html#cb357-22" tabindex="-1"></a><span class="fu">heatmSpatialCorFeats</span>(</span>
-<span id="cb357-23"><a href="interoperability-with-other-frameworks.html#cb357-23" tabindex="-1"></a>    giottoFromSeurat,</span>
-<span id="cb357-24"><a href="interoperability-with-other-frameworks.html#cb357-24" tabindex="-1"></a>    <span class="at">spatCorObject =</span> spat_cor_netw_DT,</span>
-<span id="cb357-25"><a href="interoperability-with-other-frameworks.html#cb357-25" tabindex="-1"></a>    <span class="at">use_clus_name =</span> <span class="st">&quot;spat_netw_clus&quot;</span>,</span>
-<span id="cb357-26"><a href="interoperability-with-other-frameworks.html#cb357-26" tabindex="-1"></a>    <span class="at">heatmap_legend_param =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="cn">NULL</span>),</span>
-<span id="cb357-27"><a href="interoperability-with-other-frameworks.html#cb357-27" tabindex="-1"></a>    <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb357-28"><a href="interoperability-with-other-frameworks.html#cb357-28" tabindex="-1"></a>    <span class="at">show_plot =</span>  <span class="cn">TRUE</span>,</span>
-<span id="cb357-29"><a href="interoperability-with-other-frameworks.html#cb357-29" tabindex="-1"></a>    <span class="at">return_plot =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb357-30"><a href="interoperability-with-other-frameworks.html#cb357-30" tabindex="-1"></a>    <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">base_height =</span> <span class="dv">6</span>, <span class="at">base_width =</span> <span class="dv">8</span>, <span class="at">units =</span> <span class="st">&#39;cm&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="interoperability-with-other-frameworks.html#cb363-1" tabindex="-1"></a>ranktest <span class="ot">&lt;-</span> <span class="fu">binSpect</span>(giottoFromSeurat, </span>
+<span id="cb363-2"><a href="interoperability-with-other-frameworks.html#cb363-2" tabindex="-1"></a>                     <span class="at">bin_method =</span> <span class="st">&quot;rank&quot;</span>,</span>
+<span id="cb363-3"><a href="interoperability-with-other-frameworks.html#cb363-3" tabindex="-1"></a>                     <span class="at">calc_hub =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb363-4"><a href="interoperability-with-other-frameworks.html#cb363-4" tabindex="-1"></a>                     <span class="at">hub_min_int =</span> <span class="dv">5</span>,</span>
+<span id="cb363-5"><a href="interoperability-with-other-frameworks.html#cb363-5" tabindex="-1"></a>                     <span class="at">spatial_network_name =</span> <span class="st">&quot;Delaunay_network&quot;</span>)</span>
+<span id="cb363-6"><a href="interoperability-with-other-frameworks.html#cb363-6" tabindex="-1"></a></span>
+<span id="cb363-7"><a href="interoperability-with-other-frameworks.html#cb363-7" tabindex="-1"></a>ext_spatial_genes <span class="ot">&lt;-</span> ranktest[<span class="dv">1</span><span class="sc">:</span><span class="dv">300</span>,]<span class="sc">$</span>feats</span>
+<span id="cb363-8"><a href="interoperability-with-other-frameworks.html#cb363-8" tabindex="-1"></a></span>
+<span id="cb363-9"><a href="interoperability-with-other-frameworks.html#cb363-9" tabindex="-1"></a>spat_cor_netw_DT <span class="ot">&lt;-</span> <span class="fu">detectSpatialCorFeats</span>(</span>
+<span id="cb363-10"><a href="interoperability-with-other-frameworks.html#cb363-10" tabindex="-1"></a>    giottoFromSeurat,</span>
+<span id="cb363-11"><a href="interoperability-with-other-frameworks.html#cb363-11" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;network&quot;</span>,</span>
+<span id="cb363-12"><a href="interoperability-with-other-frameworks.html#cb363-12" tabindex="-1"></a>    <span class="at">spatial_network_name =</span> <span class="st">&quot;Delaunay_network&quot;</span>,</span>
+<span id="cb363-13"><a href="interoperability-with-other-frameworks.html#cb363-13" tabindex="-1"></a>    <span class="at">subset_feats =</span> ext_spatial_genes)</span>
+<span id="cb363-14"><a href="interoperability-with-other-frameworks.html#cb363-14" tabindex="-1"></a></span>
+<span id="cb363-15"><a href="interoperability-with-other-frameworks.html#cb363-15" tabindex="-1"></a>top10_genes <span class="ot">&lt;-</span> <span class="fu">showSpatialCorFeats</span>(spat_cor_netw_DT, </span>
+<span id="cb363-16"><a href="interoperability-with-other-frameworks.html#cb363-16" tabindex="-1"></a>                                   <span class="at">feats =</span> <span class="st">&quot;Dsp&quot;</span>, </span>
+<span id="cb363-17"><a href="interoperability-with-other-frameworks.html#cb363-17" tabindex="-1"></a>                                   <span class="at">show_top_feats =</span> <span class="dv">10</span>)</span>
+<span id="cb363-18"><a href="interoperability-with-other-frameworks.html#cb363-18" tabindex="-1"></a></span>
+<span id="cb363-19"><a href="interoperability-with-other-frameworks.html#cb363-19" tabindex="-1"></a>spat_cor_netw_DT <span class="ot">&lt;-</span> <span class="fu">clusterSpatialCorFeats</span>(spat_cor_netw_DT, </span>
+<span id="cb363-20"><a href="interoperability-with-other-frameworks.html#cb363-20" tabindex="-1"></a>                                           <span class="at">name =</span> <span class="st">&quot;spat_netw_clus&quot;</span>, </span>
+<span id="cb363-21"><a href="interoperability-with-other-frameworks.html#cb363-21" tabindex="-1"></a>                                           <span class="at">k =</span> <span class="dv">7</span>)</span>
+<span id="cb363-22"><a href="interoperability-with-other-frameworks.html#cb363-22" tabindex="-1"></a><span class="fu">heatmSpatialCorFeats</span>(</span>
+<span id="cb363-23"><a href="interoperability-with-other-frameworks.html#cb363-23" tabindex="-1"></a>    giottoFromSeurat,</span>
+<span id="cb363-24"><a href="interoperability-with-other-frameworks.html#cb363-24" tabindex="-1"></a>    <span class="at">spatCorObject =</span> spat_cor_netw_DT,</span>
+<span id="cb363-25"><a href="interoperability-with-other-frameworks.html#cb363-25" tabindex="-1"></a>    <span class="at">use_clus_name =</span> <span class="st">&quot;spat_netw_clus&quot;</span>,</span>
+<span id="cb363-26"><a href="interoperability-with-other-frameworks.html#cb363-26" tabindex="-1"></a>    <span class="at">heatmap_legend_param =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="cn">NULL</span>),</span>
+<span id="cb363-27"><a href="interoperability-with-other-frameworks.html#cb363-27" tabindex="-1"></a>    <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb363-28"><a href="interoperability-with-other-frameworks.html#cb363-28" tabindex="-1"></a>    <span class="at">show_plot =</span>  <span class="cn">TRUE</span>,</span>
+<span id="cb363-29"><a href="interoperability-with-other-frameworks.html#cb363-29" tabindex="-1"></a>    <span class="at">return_plot =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb363-30"><a href="interoperability-with-other-frameworks.html#cb363-30" tabindex="-1"></a>    <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">base_height =</span> <span class="dv">6</span>, <span class="at">base_width =</span> <span class="dv">8</span>, <span class="at">units =</span> <span class="st">&#39;cm&#39;</span>))</span></code></pre></div>
 <p><img src="img/03_session4/3.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 </div>
@@ -693,60 +694,60 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For the Bioconductor group of packages, the SpatialExperiment data container handles data from spatial-omics experiments, including spatial coordinates, images, and metadata. Giotto Suite provides <code>giottoToSpatialExperiment()</code> and <code>spatialExperimentToGiotto()</code>, mapping Giotto’s slots to the corresponding SpatialExperiment slots. Since SpatialExperiment can only store one spatial unit at a time, giottoToSpatialExperiment() returns a list of SpatialExperiment objects, each representing a distinct spatial unit.</p>
 <p><img src="img/03_session4/spe.png" width="80%" style="display: block; margin: auto;" /></p>
 <p>To start the conversion of a Giotto mini Visium object to a SpatialExperiment object, we first load the required libraries.</p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="interoperability-with-other-frameworks.html#cb358-1" tabindex="-1"></a><span class="fu">library</span>(SpatialExperiment)</span>
-<span id="cb358-2"><a href="interoperability-with-other-frameworks.html#cb358-2" tabindex="-1"></a><span class="fu">library</span>(ggspavis)</span>
-<span id="cb358-3"><a href="interoperability-with-other-frameworks.html#cb358-3" tabindex="-1"></a><span class="fu">library</span>(pheatmap)</span>
-<span id="cb358-4"><a href="interoperability-with-other-frameworks.html#cb358-4" tabindex="-1"></a><span class="fu">library</span>(scater)</span>
-<span id="cb358-5"><a href="interoperability-with-other-frameworks.html#cb358-5" tabindex="-1"></a><span class="fu">library</span>(scran)</span>
-<span id="cb358-6"><a href="interoperability-with-other-frameworks.html#cb358-6" tabindex="-1"></a><span class="fu">library</span>(nnSVG)</span></code></pre></div>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="interoperability-with-other-frameworks.html#cb364-1" tabindex="-1"></a><span class="fu">library</span>(SpatialExperiment)</span>
+<span id="cb364-2"><a href="interoperability-with-other-frameworks.html#cb364-2" tabindex="-1"></a><span class="fu">library</span>(ggspavis)</span>
+<span id="cb364-3"><a href="interoperability-with-other-frameworks.html#cb364-3" tabindex="-1"></a><span class="fu">library</span>(pheatmap)</span>
+<span id="cb364-4"><a href="interoperability-with-other-frameworks.html#cb364-4" tabindex="-1"></a><span class="fu">library</span>(scater)</span>
+<span id="cb364-5"><a href="interoperability-with-other-frameworks.html#cb364-5" tabindex="-1"></a><span class="fu">library</span>(scran)</span>
+<span id="cb364-6"><a href="interoperability-with-other-frameworks.html#cb364-6" tabindex="-1"></a><span class="fu">library</span>(nnSVG)</span></code></pre></div>
 <div id="convert-giotto-object-to-spatialexperiment-object" class="section level3 hasAnchor" number="15.3.1">
 <h3><span class="header-section-number">15.3.1</span> Convert Giotto Object to SpatialExperiment Object<a href="interoperability-with-other-frameworks.html#convert-giotto-object-to-spatialexperiment-object" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To convert the Giotto object to a SpatialExperiment object, we use the <code>giottoToSpatialExperiment()</code> function.</p>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="interoperability-with-other-frameworks.html#cb359-1" tabindex="-1"></a>gspe <span class="ot">&lt;-</span> <span class="fu">giottoToSpatialExperiment</span>(gobject)</span></code></pre></div>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="interoperability-with-other-frameworks.html#cb365-1" tabindex="-1"></a>gspe <span class="ot">&lt;-</span> <span class="fu">giottoToSpatialExperiment</span>(gobject)</span></code></pre></div>
 <p>The conversion function returns a separate SpatialExperiment object for each spatial unit. We select the first object for downstream use:</p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="interoperability-with-other-frameworks.html#cb360-1" tabindex="-1"></a>spe <span class="ot">&lt;-</span> gspe[[<span class="dv">1</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="interoperability-with-other-frameworks.html#cb366-1" tabindex="-1"></a>spe <span class="ot">&lt;-</span> gspe[[<span class="dv">1</span>]]</span></code></pre></div>
 <div id="identify-top-spatially-variable-genes-with-nnsvg" class="section level4 hasAnchor" number="15.3.1.1">
 <h4><span class="header-section-number">15.3.1.1</span> Identify top spatially variable genes with nnSVG<a href="interoperability-with-other-frameworks.html#identify-top-spatially-variable-genes-with-nnsvg" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>We employ the nnSVG package to identify the top spatially variable genes in our SpatialExperiment object. Covariates can be added to our model; in this example, we use Leiden clustering labels as a covariate:</p>
-<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="interoperability-with-other-frameworks.html#cb361-1" tabindex="-1"></a><span class="co"># One of the assays should be &quot;logcounts&quot;</span></span>
-<span id="cb361-2"><a href="interoperability-with-other-frameworks.html#cb361-2" tabindex="-1"></a><span class="co"># We rename the normalized assay to &quot;logcounts&quot;</span></span>
-<span id="cb361-3"><a href="interoperability-with-other-frameworks.html#cb361-3" tabindex="-1"></a><span class="fu">assayNames</span>(spe)[[<span class="dv">2</span>]] <span class="ot">&lt;-</span> <span class="st">&quot;logcounts&quot;</span></span>
-<span id="cb361-4"><a href="interoperability-with-other-frameworks.html#cb361-4" tabindex="-1"></a></span>
-<span id="cb361-5"><a href="interoperability-with-other-frameworks.html#cb361-5" tabindex="-1"></a><span class="co"># Create model matrix for leiden clustering labels</span></span>
-<span id="cb361-6"><a href="interoperability-with-other-frameworks.html#cb361-6" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(<span class="sc">~</span> <span class="fu">colData</span>(spe)<span class="sc">$</span>leiden_clus)</span>
-<span id="cb361-7"><a href="interoperability-with-other-frameworks.html#cb361-7" tabindex="-1"></a><span class="fu">dim</span>(X)</span></code></pre></div>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="interoperability-with-other-frameworks.html#cb367-1" tabindex="-1"></a><span class="co"># One of the assays should be &quot;logcounts&quot;</span></span>
+<span id="cb367-2"><a href="interoperability-with-other-frameworks.html#cb367-2" tabindex="-1"></a><span class="co"># We rename the normalized assay to &quot;logcounts&quot;</span></span>
+<span id="cb367-3"><a href="interoperability-with-other-frameworks.html#cb367-3" tabindex="-1"></a><span class="fu">assayNames</span>(spe)[[<span class="dv">2</span>]] <span class="ot">&lt;-</span> <span class="st">&quot;logcounts&quot;</span></span>
+<span id="cb367-4"><a href="interoperability-with-other-frameworks.html#cb367-4" tabindex="-1"></a></span>
+<span id="cb367-5"><a href="interoperability-with-other-frameworks.html#cb367-5" tabindex="-1"></a><span class="co"># Create model matrix for leiden clustering labels</span></span>
+<span id="cb367-6"><a href="interoperability-with-other-frameworks.html#cb367-6" tabindex="-1"></a>X <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(<span class="sc">~</span> <span class="fu">colData</span>(spe)<span class="sc">$</span>leiden_clus)</span>
+<span id="cb367-7"><a href="interoperability-with-other-frameworks.html#cb367-7" tabindex="-1"></a><span class="fu">dim</span>(X)</span></code></pre></div>
 <ul>
 <li>Run nnSVG</li>
 </ul>
 <p>This step will take several minutes to run</p>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="interoperability-with-other-frameworks.html#cb362-1" tabindex="-1"></a>spe <span class="ot">&lt;-</span> <span class="fu">nnSVG</span>(spe, <span class="at">X =</span> X)</span>
-<span id="cb362-2"><a href="interoperability-with-other-frameworks.html#cb362-2" tabindex="-1"></a></span>
-<span id="cb362-3"><a href="interoperability-with-other-frameworks.html#cb362-3" tabindex="-1"></a><span class="co"># Show top 10 features</span></span>
-<span id="cb362-4"><a href="interoperability-with-other-frameworks.html#cb362-4" tabindex="-1"></a><span class="fu">rowData</span>(spe)[<span class="fu">order</span>(<span class="fu">rowData</span>(spe)<span class="sc">$</span>rank)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>], ]<span class="sc">$</span>feat_ID</span></code></pre></div>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="interoperability-with-other-frameworks.html#cb368-1" tabindex="-1"></a>spe <span class="ot">&lt;-</span> <span class="fu">nnSVG</span>(spe, <span class="at">X =</span> X)</span>
+<span id="cb368-2"><a href="interoperability-with-other-frameworks.html#cb368-2" tabindex="-1"></a></span>
+<span id="cb368-3"><a href="interoperability-with-other-frameworks.html#cb368-3" tabindex="-1"></a><span class="co"># Show top 10 features</span></span>
+<span id="cb368-4"><a href="interoperability-with-other-frameworks.html#cb368-4" tabindex="-1"></a><span class="fu">rowData</span>(spe)[<span class="fu">order</span>(<span class="fu">rowData</span>(spe)<span class="sc">$</span>rank)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>], ]<span class="sc">$</span>feat_ID</span></code></pre></div>
 </div>
 </div>
 <div id="conversion-of-spatialexperiment-object-back-to-giotto" class="section level3 hasAnchor" number="15.3.2">
 <h3><span class="header-section-number">15.3.2</span> Conversion of SpatialExperiment object back to Giotto<a href="interoperability-with-other-frameworks.html#conversion-of-spatialexperiment-object-back-to-giotto" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We then convert the processed SpatialExperiment object back into a Giotto object for further downstream analysis using the Giotto suite. This is done using the <code>spatialExperimentToGiotto</code> function, where we explicitly specify the spatial network from the SpatialExperiment object.</p>
-<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="interoperability-with-other-frameworks.html#cb363-1" tabindex="-1"></a>giottoFromSPE <span class="ot">&lt;-</span> <span class="fu">spatialExperimentToGiotto</span>(<span class="at">spe =</span> spe, </span>
-<span id="cb363-2"><a href="interoperability-with-other-frameworks.html#cb363-2" tabindex="-1"></a>                                           <span class="at">python_path =</span> <span class="cn">NULL</span>, </span>
-<span id="cb363-3"><a href="interoperability-with-other-frameworks.html#cb363-3" tabindex="-1"></a>                                           <span class="at">sp_network =</span> <span class="st">&quot;Delaunay_network&quot;</span>)</span>
-<span id="cb363-4"><a href="interoperability-with-other-frameworks.html#cb363-4" tabindex="-1"></a></span>
-<span id="cb363-5"><a href="interoperability-with-other-frameworks.html#cb363-5" tabindex="-1"></a>giottoFromSPE <span class="ot">&lt;-</span> <span class="fu">spatialExperimentToGiotto</span>(<span class="at">spe =</span> spe, </span>
-<span id="cb363-6"><a href="interoperability-with-other-frameworks.html#cb363-6" tabindex="-1"></a>                                           <span class="at">python_path =</span> <span class="cn">NULL</span>, </span>
-<span id="cb363-7"><a href="interoperability-with-other-frameworks.html#cb363-7" tabindex="-1"></a>                                           <span class="at">sp_network =</span> <span class="st">&quot;Delaunay_network&quot;</span>)</span>
-<span id="cb363-8"><a href="interoperability-with-other-frameworks.html#cb363-8" tabindex="-1"></a><span class="fu">print</span>(giottoFromSPE)</span></code></pre></div>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="interoperability-with-other-frameworks.html#cb369-1" tabindex="-1"></a>giottoFromSPE <span class="ot">&lt;-</span> <span class="fu">spatialExperimentToGiotto</span>(<span class="at">spe =</span> spe, </span>
+<span id="cb369-2"><a href="interoperability-with-other-frameworks.html#cb369-2" tabindex="-1"></a>                                           <span class="at">python_path =</span> <span class="cn">NULL</span>, </span>
+<span id="cb369-3"><a href="interoperability-with-other-frameworks.html#cb369-3" tabindex="-1"></a>                                           <span class="at">sp_network =</span> <span class="st">&quot;Delaunay_network&quot;</span>)</span>
+<span id="cb369-4"><a href="interoperability-with-other-frameworks.html#cb369-4" tabindex="-1"></a></span>
+<span id="cb369-5"><a href="interoperability-with-other-frameworks.html#cb369-5" tabindex="-1"></a>giottoFromSPE <span class="ot">&lt;-</span> <span class="fu">spatialExperimentToGiotto</span>(<span class="at">spe =</span> spe, </span>
+<span id="cb369-6"><a href="interoperability-with-other-frameworks.html#cb369-6" tabindex="-1"></a>                                           <span class="at">python_path =</span> <span class="cn">NULL</span>, </span>
+<span id="cb369-7"><a href="interoperability-with-other-frameworks.html#cb369-7" tabindex="-1"></a>                                           <span class="at">sp_network =</span> <span class="st">&quot;Delaunay_network&quot;</span>)</span>
+<span id="cb369-8"><a href="interoperability-with-other-frameworks.html#cb369-8" tabindex="-1"></a><span class="fu">print</span>(giottoFromSPE)</span></code></pre></div>
 <div id="plotting-top-genes-from-nnsvg-in-giotto" class="section level4 hasAnchor" number="15.3.2.1">
 <h4><span class="header-section-number">15.3.2.1</span> Plotting top genes from nnSVG in Giotto<a href="interoperability-with-other-frameworks.html#plotting-top-genes-from-nnsvg-in-giotto" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Now, we visualize the genes previously identified in the SpatialExperiment object using the nnSVG package within the Giotto toolkit, leveraging the converted Giotto object.</p>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="interoperability-with-other-frameworks.html#cb364-1" tabindex="-1"></a>ext_spatial_genes <span class="ot">&lt;-</span> <span class="fu">getFeatureMetadata</span>(giottoFromSPE, </span>
-<span id="cb364-2"><a href="interoperability-with-other-frameworks.html#cb364-2" tabindex="-1"></a>                                        <span class="at">output =</span> <span class="st">&quot;data.table&quot;</span>)</span>
-<span id="cb364-3"><a href="interoperability-with-other-frameworks.html#cb364-3" tabindex="-1"></a></span>
-<span id="cb364-4"><a href="interoperability-with-other-frameworks.html#cb364-4" tabindex="-1"></a>ext_spatial_genes <span class="ot">&lt;-</span> ext_spatial_genes[<span class="fu">order</span>(ext_spatial_genes<span class="sc">$</span>rank)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>], ]<span class="sc">$</span>feat_ID</span></code></pre></div>
-<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="interoperability-with-other-frameworks.html#cb365-1" tabindex="-1"></a><span class="fu">spatFeatPlot2D</span>(giottoFromSPE, </span>
-<span id="cb365-2"><a href="interoperability-with-other-frameworks.html#cb365-2" tabindex="-1"></a>               <span class="at">expression_values =</span> <span class="st">&quot;scaled_rna_cell&quot;</span>,</span>
-<span id="cb365-3"><a href="interoperability-with-other-frameworks.html#cb365-3" tabindex="-1"></a>               <span class="at">feats =</span> ext_spatial_genes[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], </span>
-<span id="cb365-4"><a href="interoperability-with-other-frameworks.html#cb365-4" tabindex="-1"></a>               <span class="at">point_size =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="interoperability-with-other-frameworks.html#cb370-1" tabindex="-1"></a>ext_spatial_genes <span class="ot">&lt;-</span> <span class="fu">getFeatureMetadata</span>(giottoFromSPE, </span>
+<span id="cb370-2"><a href="interoperability-with-other-frameworks.html#cb370-2" tabindex="-1"></a>                                        <span class="at">output =</span> <span class="st">&quot;data.table&quot;</span>)</span>
+<span id="cb370-3"><a href="interoperability-with-other-frameworks.html#cb370-3" tabindex="-1"></a></span>
+<span id="cb370-4"><a href="interoperability-with-other-frameworks.html#cb370-4" tabindex="-1"></a>ext_spatial_genes <span class="ot">&lt;-</span> ext_spatial_genes[<span class="fu">order</span>(ext_spatial_genes<span class="sc">$</span>rank)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>], ]<span class="sc">$</span>feat_ID</span></code></pre></div>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="interoperability-with-other-frameworks.html#cb371-1" tabindex="-1"></a><span class="fu">spatFeatPlot2D</span>(giottoFromSPE, </span>
+<span id="cb371-2"><a href="interoperability-with-other-frameworks.html#cb371-2" tabindex="-1"></a>               <span class="at">expression_values =</span> <span class="st">&quot;scaled_rna_cell&quot;</span>,</span>
+<span id="cb371-3"><a href="interoperability-with-other-frameworks.html#cb371-3" tabindex="-1"></a>               <span class="at">feats =</span> ext_spatial_genes[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], </span>
+<span id="cb371-4"><a href="interoperability-with-other-frameworks.html#cb371-4" tabindex="-1"></a>               <span class="at">point_size =</span> <span class="dv">2</span>)</span></code></pre></div>
 <p><img src="img/03_session4/4.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 </div>
@@ -759,97 +760,97 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="load-required-libraries" class="section level3 hasAnchor" number="15.4.1">
 <h3><span class="header-section-number">15.4.1</span> Load Required Libraries<a href="interoperability-with-other-frameworks.html#load-required-libraries" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To start, we need to load the necessary libraries, including <code>reticulate</code> for interfacing with Python.</p>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="interoperability-with-other-frameworks.html#cb366-1" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span></code></pre></div>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="interoperability-with-other-frameworks.html#cb372-1" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span></code></pre></div>
 </div>
 <div id="specify-path-for-results" class="section level3 hasAnchor" number="15.4.2">
 <h3><span class="header-section-number">15.4.2</span> Specify Path for Results<a href="interoperability-with-other-frameworks.html#specify-path-for-results" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>First, we specify the directory where the results will be saved. Additionally, we retrieve and update Giotto instructions.</p>
-<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="interoperability-with-other-frameworks.html#cb367-1" tabindex="-1"></a><span class="co"># Specify path to which results may be saved</span></span>
-<span id="cb367-2"><a href="interoperability-with-other-frameworks.html#cb367-2" tabindex="-1"></a>results_directory <span class="ot">&lt;-</span> <span class="st">&quot;results/03_session4/giotto_anndata_conversion/&quot;</span></span>
-<span id="cb367-3"><a href="interoperability-with-other-frameworks.html#cb367-3" tabindex="-1"></a></span>
-<span id="cb367-4"><a href="interoperability-with-other-frameworks.html#cb367-4" tabindex="-1"></a>instrs <span class="ot">&lt;-</span> <span class="fu">showGiottoInstructions</span>(gobject)</span>
-<span id="cb367-5"><a href="interoperability-with-other-frameworks.html#cb367-5" tabindex="-1"></a></span>
-<span id="cb367-6"><a href="interoperability-with-other-frameworks.html#cb367-6" tabindex="-1"></a>mini_gobject <span class="ot">&lt;-</span> <span class="fu">replaceGiottoInstructions</span>(<span class="at">gobject =</span> gobject,</span>
-<span id="cb367-7"><a href="interoperability-with-other-frameworks.html#cb367-7" tabindex="-1"></a>                                         <span class="at">instructions =</span> instrs)</span></code></pre></div>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="interoperability-with-other-frameworks.html#cb373-1" tabindex="-1"></a><span class="co"># Specify path to which results may be saved</span></span>
+<span id="cb373-2"><a href="interoperability-with-other-frameworks.html#cb373-2" tabindex="-1"></a>results_directory <span class="ot">&lt;-</span> <span class="st">&quot;results/03_session4/giotto_anndata_conversion/&quot;</span></span>
+<span id="cb373-3"><a href="interoperability-with-other-frameworks.html#cb373-3" tabindex="-1"></a></span>
+<span id="cb373-4"><a href="interoperability-with-other-frameworks.html#cb373-4" tabindex="-1"></a>instrs <span class="ot">&lt;-</span> <span class="fu">showGiottoInstructions</span>(gobject)</span>
+<span id="cb373-5"><a href="interoperability-with-other-frameworks.html#cb373-5" tabindex="-1"></a></span>
+<span id="cb373-6"><a href="interoperability-with-other-frameworks.html#cb373-6" tabindex="-1"></a>mini_gobject <span class="ot">&lt;-</span> <span class="fu">replaceGiottoInstructions</span>(<span class="at">gobject =</span> gobject,</span>
+<span id="cb373-7"><a href="interoperability-with-other-frameworks.html#cb373-7" tabindex="-1"></a>                                         <span class="at">instructions =</span> instrs)</span></code></pre></div>
 <div id="create-default-knn-network" class="section level4 hasAnchor" number="15.4.2.1">
 <h4><span class="header-section-number">15.4.2.1</span> Create Default kNN Network<a href="interoperability-with-other-frameworks.html#create-default-knn-network" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>We will create a k-nearest neighbor (kNN) network using mostly default parameters.</p>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="interoperability-with-other-frameworks.html#cb368-1" tabindex="-1"></a>gobject <span class="ot">&lt;-</span> <span class="fu">createNearestNetwork</span>(<span class="at">gobject =</span> gobject,</span>
-<span id="cb368-2"><a href="interoperability-with-other-frameworks.html#cb368-2" tabindex="-1"></a>                                <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
-<span id="cb368-3"><a href="interoperability-with-other-frameworks.html#cb368-3" tabindex="-1"></a>                                <span class="at">feat_type =</span> <span class="st">&quot;rna&quot;</span>,</span>
-<span id="cb368-4"><a href="interoperability-with-other-frameworks.html#cb368-4" tabindex="-1"></a>                                <span class="at">type =</span> <span class="st">&quot;kNN&quot;</span>,</span>
-<span id="cb368-5"><a href="interoperability-with-other-frameworks.html#cb368-5" tabindex="-1"></a>                                <span class="at">dim_reduction_to_use =</span> <span class="st">&quot;umap&quot;</span>,</span>
-<span id="cb368-6"><a href="interoperability-with-other-frameworks.html#cb368-6" tabindex="-1"></a>                                <span class="at">dim_reduction_name =</span> <span class="st">&quot;umap&quot;</span>,</span>
-<span id="cb368-7"><a href="interoperability-with-other-frameworks.html#cb368-7" tabindex="-1"></a>                                <span class="at">k =</span> <span class="dv">15</span>,</span>
-<span id="cb368-8"><a href="interoperability-with-other-frameworks.html#cb368-8" tabindex="-1"></a>                                <span class="at">name =</span> <span class="st">&quot;kNN.umap&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="interoperability-with-other-frameworks.html#cb374-1" tabindex="-1"></a>gobject <span class="ot">&lt;-</span> <span class="fu">createNearestNetwork</span>(<span class="at">gobject =</span> gobject,</span>
+<span id="cb374-2"><a href="interoperability-with-other-frameworks.html#cb374-2" tabindex="-1"></a>                                <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
+<span id="cb374-3"><a href="interoperability-with-other-frameworks.html#cb374-3" tabindex="-1"></a>                                <span class="at">feat_type =</span> <span class="st">&quot;rna&quot;</span>,</span>
+<span id="cb374-4"><a href="interoperability-with-other-frameworks.html#cb374-4" tabindex="-1"></a>                                <span class="at">type =</span> <span class="st">&quot;kNN&quot;</span>,</span>
+<span id="cb374-5"><a href="interoperability-with-other-frameworks.html#cb374-5" tabindex="-1"></a>                                <span class="at">dim_reduction_to_use =</span> <span class="st">&quot;umap&quot;</span>,</span>
+<span id="cb374-6"><a href="interoperability-with-other-frameworks.html#cb374-6" tabindex="-1"></a>                                <span class="at">dim_reduction_name =</span> <span class="st">&quot;umap&quot;</span>,</span>
+<span id="cb374-7"><a href="interoperability-with-other-frameworks.html#cb374-7" tabindex="-1"></a>                                <span class="at">k =</span> <span class="dv">15</span>,</span>
+<span id="cb374-8"><a href="interoperability-with-other-frameworks.html#cb374-8" tabindex="-1"></a>                                <span class="at">name =</span> <span class="st">&quot;kNN.umap&quot;</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="giotto-to-anndata" class="section level3 hasAnchor" number="15.4.3">
 <h3><span class="header-section-number">15.4.3</span> Giotto To AnnData<a href="interoperability-with-other-frameworks.html#giotto-to-anndata" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To convert the giotto object to AnnData, we use the Giotto’s function <code>giottoToAnnData()</code></p>
-<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="interoperability-with-other-frameworks.html#cb369-1" tabindex="-1"></a>gToAnnData <span class="ot">&lt;-</span> <span class="fu">giottoToAnnData</span>(<span class="at">gobject =</span> gobject,</span>
-<span id="cb369-2"><a href="interoperability-with-other-frameworks.html#cb369-2" tabindex="-1"></a>                              <span class="at">save_directory =</span> results_directory)</span></code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="interoperability-with-other-frameworks.html#cb375-1" tabindex="-1"></a>gToAnnData <span class="ot">&lt;-</span> <span class="fu">giottoToAnnData</span>(<span class="at">gobject =</span> gobject,</span>
+<span id="cb375-2"><a href="interoperability-with-other-frameworks.html#cb375-2" tabindex="-1"></a>                              <span class="at">save_directory =</span> results_directory)</span></code></pre></div>
 <p>Next, we import scanpy and perform a series of preprocessing steps on the AnnData object.</p>
-<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="interoperability-with-other-frameworks.html#cb370-1" tabindex="-1"></a>scanpy <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">&quot;scanpy&quot;</span>)</span>
-<span id="cb370-2"><a href="interoperability-with-other-frameworks.html#cb370-2" tabindex="-1"></a></span>
-<span id="cb370-3"><a href="interoperability-with-other-frameworks.html#cb370-3" tabindex="-1"></a>adata <span class="ot">&lt;-</span> scanpy<span class="sc">$</span><span class="fu">read_h5ad</span>(<span class="st">&quot;results/03_session4/giotto_anndata_conversion/cell_rna_converted_gobject.h5ad&quot;</span>)</span>
-<span id="cb370-4"><a href="interoperability-with-other-frameworks.html#cb370-4" tabindex="-1"></a></span>
-<span id="cb370-5"><a href="interoperability-with-other-frameworks.html#cb370-5" tabindex="-1"></a><span class="co"># Normalize total counts per cell</span></span>
-<span id="cb370-6"><a href="interoperability-with-other-frameworks.html#cb370-6" tabindex="-1"></a>scanpy<span class="sc">$</span>pp<span class="sc">$</span><span class="fu">normalize_total</span>(adata, <span class="at">target_sum=</span><span class="fl">1e4</span>)</span>
-<span id="cb370-7"><a href="interoperability-with-other-frameworks.html#cb370-7" tabindex="-1"></a></span>
-<span id="cb370-8"><a href="interoperability-with-other-frameworks.html#cb370-8" tabindex="-1"></a><span class="co"># Log-transform the data</span></span>
-<span id="cb370-9"><a href="interoperability-with-other-frameworks.html#cb370-9" tabindex="-1"></a>scanpy<span class="sc">$</span>pp<span class="sc">$</span><span class="fu">log1p</span>(adata)</span>
-<span id="cb370-10"><a href="interoperability-with-other-frameworks.html#cb370-10" tabindex="-1"></a></span>
-<span id="cb370-11"><a href="interoperability-with-other-frameworks.html#cb370-11" tabindex="-1"></a><span class="co"># Perform PCA</span></span>
-<span id="cb370-12"><a href="interoperability-with-other-frameworks.html#cb370-12" tabindex="-1"></a>scanpy<span class="sc">$</span>pp<span class="sc">$</span><span class="fu">pca</span>(adata, <span class="at">n_comps=</span><span class="dv">40</span><span class="dt">L</span>)</span>
-<span id="cb370-13"><a href="interoperability-with-other-frameworks.html#cb370-13" tabindex="-1"></a></span>
-<span id="cb370-14"><a href="interoperability-with-other-frameworks.html#cb370-14" tabindex="-1"></a><span class="co"># Compute the neighborhood graph</span></span>
-<span id="cb370-15"><a href="interoperability-with-other-frameworks.html#cb370-15" tabindex="-1"></a>scanpy<span class="sc">$</span>pp<span class="sc">$</span><span class="fu">neighbors</span>(adata, <span class="at">n_neighbors=</span><span class="dv">10</span><span class="dt">L</span>, <span class="at">n_pcs=</span><span class="dv">40</span><span class="dt">L</span>)</span>
-<span id="cb370-16"><a href="interoperability-with-other-frameworks.html#cb370-16" tabindex="-1"></a></span>
-<span id="cb370-17"><a href="interoperability-with-other-frameworks.html#cb370-17" tabindex="-1"></a><span class="co"># Run UMAP</span></span>
-<span id="cb370-18"><a href="interoperability-with-other-frameworks.html#cb370-18" tabindex="-1"></a>scanpy<span class="sc">$</span>tl<span class="sc">$</span><span class="fu">umap</span>(adata)</span>
-<span id="cb370-19"><a href="interoperability-with-other-frameworks.html#cb370-19" tabindex="-1"></a></span>
-<span id="cb370-20"><a href="interoperability-with-other-frameworks.html#cb370-20" tabindex="-1"></a><span class="co"># Save the processed AnnData object</span></span>
-<span id="cb370-21"><a href="interoperability-with-other-frameworks.html#cb370-21" tabindex="-1"></a>adata<span class="sc">$</span><span class="fu">write</span>(<span class="st">&quot;results/03_session4/cell_rna_converted_gobject2.h5ad&quot;</span>)</span>
-<span id="cb370-22"><a href="interoperability-with-other-frameworks.html#cb370-22" tabindex="-1"></a></span>
-<span id="cb370-23"><a href="interoperability-with-other-frameworks.html#cb370-23" tabindex="-1"></a>processed_file_path <span class="ot">&lt;-</span> <span class="st">&quot;results/03_session4/cell_rna_converted_gobject2.h5ad&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="interoperability-with-other-frameworks.html#cb376-1" tabindex="-1"></a>scanpy <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">&quot;scanpy&quot;</span>)</span>
+<span id="cb376-2"><a href="interoperability-with-other-frameworks.html#cb376-2" tabindex="-1"></a></span>
+<span id="cb376-3"><a href="interoperability-with-other-frameworks.html#cb376-3" tabindex="-1"></a>adata <span class="ot">&lt;-</span> scanpy<span class="sc">$</span><span class="fu">read_h5ad</span>(<span class="st">&quot;results/03_session4/giotto_anndata_conversion/cell_rna_converted_gobject.h5ad&quot;</span>)</span>
+<span id="cb376-4"><a href="interoperability-with-other-frameworks.html#cb376-4" tabindex="-1"></a></span>
+<span id="cb376-5"><a href="interoperability-with-other-frameworks.html#cb376-5" tabindex="-1"></a><span class="co"># Normalize total counts per cell</span></span>
+<span id="cb376-6"><a href="interoperability-with-other-frameworks.html#cb376-6" tabindex="-1"></a>scanpy<span class="sc">$</span>pp<span class="sc">$</span><span class="fu">normalize_total</span>(adata, <span class="at">target_sum=</span><span class="fl">1e4</span>)</span>
+<span id="cb376-7"><a href="interoperability-with-other-frameworks.html#cb376-7" tabindex="-1"></a></span>
+<span id="cb376-8"><a href="interoperability-with-other-frameworks.html#cb376-8" tabindex="-1"></a><span class="co"># Log-transform the data</span></span>
+<span id="cb376-9"><a href="interoperability-with-other-frameworks.html#cb376-9" tabindex="-1"></a>scanpy<span class="sc">$</span>pp<span class="sc">$</span><span class="fu">log1p</span>(adata)</span>
+<span id="cb376-10"><a href="interoperability-with-other-frameworks.html#cb376-10" tabindex="-1"></a></span>
+<span id="cb376-11"><a href="interoperability-with-other-frameworks.html#cb376-11" tabindex="-1"></a><span class="co"># Perform PCA</span></span>
+<span id="cb376-12"><a href="interoperability-with-other-frameworks.html#cb376-12" tabindex="-1"></a>scanpy<span class="sc">$</span>pp<span class="sc">$</span><span class="fu">pca</span>(adata, <span class="at">n_comps=</span><span class="dv">40</span><span class="dt">L</span>)</span>
+<span id="cb376-13"><a href="interoperability-with-other-frameworks.html#cb376-13" tabindex="-1"></a></span>
+<span id="cb376-14"><a href="interoperability-with-other-frameworks.html#cb376-14" tabindex="-1"></a><span class="co"># Compute the neighborhood graph</span></span>
+<span id="cb376-15"><a href="interoperability-with-other-frameworks.html#cb376-15" tabindex="-1"></a>scanpy<span class="sc">$</span>pp<span class="sc">$</span><span class="fu">neighbors</span>(adata, <span class="at">n_neighbors=</span><span class="dv">10</span><span class="dt">L</span>, <span class="at">n_pcs=</span><span class="dv">40</span><span class="dt">L</span>)</span>
+<span id="cb376-16"><a href="interoperability-with-other-frameworks.html#cb376-16" tabindex="-1"></a></span>
+<span id="cb376-17"><a href="interoperability-with-other-frameworks.html#cb376-17" tabindex="-1"></a><span class="co"># Run UMAP</span></span>
+<span id="cb376-18"><a href="interoperability-with-other-frameworks.html#cb376-18" tabindex="-1"></a>scanpy<span class="sc">$</span>tl<span class="sc">$</span><span class="fu">umap</span>(adata)</span>
+<span id="cb376-19"><a href="interoperability-with-other-frameworks.html#cb376-19" tabindex="-1"></a></span>
+<span id="cb376-20"><a href="interoperability-with-other-frameworks.html#cb376-20" tabindex="-1"></a><span class="co"># Save the processed AnnData object</span></span>
+<span id="cb376-21"><a href="interoperability-with-other-frameworks.html#cb376-21" tabindex="-1"></a>adata<span class="sc">$</span><span class="fu">write</span>(<span class="st">&quot;results/03_session4/cell_rna_converted_gobject2.h5ad&quot;</span>)</span>
+<span id="cb376-22"><a href="interoperability-with-other-frameworks.html#cb376-22" tabindex="-1"></a></span>
+<span id="cb376-23"><a href="interoperability-with-other-frameworks.html#cb376-23" tabindex="-1"></a>processed_file_path <span class="ot">&lt;-</span> <span class="st">&quot;results/03_session4/cell_rna_converted_gobject2.h5ad&quot;</span></span></code></pre></div>
 </div>
 <div id="convert-anndata-to-giotto" class="section level3 hasAnchor" number="15.4.4">
 <h3><span class="header-section-number">15.4.4</span> Convert AnnData to Giotto<a href="interoperability-with-other-frameworks.html#convert-anndata-to-giotto" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Finally, we convert the processed AnnData object back into a Giotto object for further analysis using Giotto.</p>
-<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb371-1"><a href="interoperability-with-other-frameworks.html#cb371-1" tabindex="-1"></a>giottoFromAnndata <span class="ot">&lt;-</span> <span class="fu">anndataToGiotto</span>(<span class="at">anndata_path =</span> processed_file_path)</span></code></pre></div>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="interoperability-with-other-frameworks.html#cb377-1" tabindex="-1"></a>giottoFromAnndata <span class="ot">&lt;-</span> <span class="fu">anndataToGiotto</span>(<span class="at">anndata_path =</span> processed_file_path)</span></code></pre></div>
 <div id="umap-visualization" class="section level4 hasAnchor" number="15.4.4.1">
 <h4><span class="header-section-number">15.4.4.1</span> UMAP Visualization<a href="interoperability-with-other-frameworks.html#umap-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Now we plot the UMAP using the <code>GiottoVisuals::plotUMAP()</code> function that was calculated using Scanpy on the AnnData object.</p>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="interoperability-with-other-frameworks.html#cb372-1" tabindex="-1"></a>Giotto<span class="sc">::</span><span class="fu">plotUMAP</span>(</span>
-<span id="cb372-2"><a href="interoperability-with-other-frameworks.html#cb372-2" tabindex="-1"></a>    <span class="at">gobject =</span> giottoFromAnndata,</span>
-<span id="cb372-3"><a href="interoperability-with-other-frameworks.html#cb372-3" tabindex="-1"></a>    <span class="at">dim_reduction_name =</span> <span class="st">&quot;umap.ad&quot;</span>,</span>
-<span id="cb372-4"><a href="interoperability-with-other-frameworks.html#cb372-4" tabindex="-1"></a>    <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
-<span id="cb372-5"><a href="interoperability-with-other-frameworks.html#cb372-5" tabindex="-1"></a>    <span class="at">point_size =</span> <span class="dv">3</span></span>
-<span id="cb372-6"><a href="interoperability-with-other-frameworks.html#cb372-6" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="interoperability-with-other-frameworks.html#cb378-1" tabindex="-1"></a>Giotto<span class="sc">::</span><span class="fu">plotUMAP</span>(</span>
+<span id="cb378-2"><a href="interoperability-with-other-frameworks.html#cb378-2" tabindex="-1"></a>    <span class="at">gobject =</span> giottoFromAnndata,</span>
+<span id="cb378-3"><a href="interoperability-with-other-frameworks.html#cb378-3" tabindex="-1"></a>    <span class="at">dim_reduction_name =</span> <span class="st">&quot;umap.ad&quot;</span>,</span>
+<span id="cb378-4"><a href="interoperability-with-other-frameworks.html#cb378-4" tabindex="-1"></a>    <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
+<span id="cb378-5"><a href="interoperability-with-other-frameworks.html#cb378-5" tabindex="-1"></a>    <span class="at">point_size =</span> <span class="dv">3</span></span>
+<span id="cb378-6"><a href="interoperability-with-other-frameworks.html#cb378-6" tabindex="-1"></a>)</span></code></pre></div>
 <p><img src="img/03_session4/5.png" width="80%" style="display: block; margin: auto;" /></p>
 </div>
 </div>
 </div>
 <div id="create-mini-vizgen-object" class="section level2 hasAnchor" number="15.5">
 <h2><span class="header-section-number">15.5</span> Create mini Vizgen object<a href="interoperability-with-other-frameworks.html#create-mini-vizgen-object" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="interoperability-with-other-frameworks.html#cb373-1" tabindex="-1"></a>mini_gobject <span class="ot">&lt;-</span> <span class="fu">loadGiottoMini</span>(<span class="at">dataset =</span> <span class="st">&quot;vizgen&quot;</span>, </span>
-<span id="cb373-2"><a href="interoperability-with-other-frameworks.html#cb373-2" tabindex="-1"></a>                               <span class="at">python_path =</span> <span class="cn">NULL</span>)</span>
-<span id="cb373-3"><a href="interoperability-with-other-frameworks.html#cb373-3" tabindex="-1"></a></span>
-<span id="cb373-4"><a href="interoperability-with-other-frameworks.html#cb373-4" tabindex="-1"></a>mini_gobject <span class="ot">&lt;-</span> <span class="fu">replaceGiottoInstructions</span>(<span class="at">gobject =</span> mini_gobject,</span>
-<span id="cb373-5"><a href="interoperability-with-other-frameworks.html#cb373-5" tabindex="-1"></a>                                          <span class="at">instructions =</span> instrs)</span></code></pre></div>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="interoperability-with-other-frameworks.html#cb374-1" tabindex="-1"></a>mini_gobject <span class="ot">&lt;-</span> <span class="fu">createNearestNetwork</span>(<span class="at">gobject =</span> mini_gobject,</span>
-<span id="cb374-2"><a href="interoperability-with-other-frameworks.html#cb374-2" tabindex="-1"></a>                                     <span class="at">spat_unit =</span> <span class="st">&quot;aggregate&quot;</span>,</span>
-<span id="cb374-3"><a href="interoperability-with-other-frameworks.html#cb374-3" tabindex="-1"></a>                                     <span class="at">feat_type =</span> <span class="st">&quot;rna&quot;</span>,</span>
-<span id="cb374-4"><a href="interoperability-with-other-frameworks.html#cb374-4" tabindex="-1"></a>                                     <span class="at">type =</span> <span class="st">&quot;kNN&quot;</span>,</span>
-<span id="cb374-5"><a href="interoperability-with-other-frameworks.html#cb374-5" tabindex="-1"></a>                                     <span class="at">dim_reduction_to_use =</span> <span class="st">&quot;umap&quot;</span>,</span>
-<span id="cb374-6"><a href="interoperability-with-other-frameworks.html#cb374-6" tabindex="-1"></a>                                     <span class="at">dim_reduction_name =</span> <span class="st">&quot;umap&quot;</span>,</span>
-<span id="cb374-7"><a href="interoperability-with-other-frameworks.html#cb374-7" tabindex="-1"></a>                                     <span class="at">k =</span> <span class="dv">6</span>,</span>
-<span id="cb374-8"><a href="interoperability-with-other-frameworks.html#cb374-8" tabindex="-1"></a>                                     <span class="at">name =</span> <span class="st">&quot;new_network&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="interoperability-with-other-frameworks.html#cb379-1" tabindex="-1"></a>mini_gobject <span class="ot">&lt;-</span> <span class="fu">loadGiottoMini</span>(<span class="at">dataset =</span> <span class="st">&quot;vizgen&quot;</span>, </span>
+<span id="cb379-2"><a href="interoperability-with-other-frameworks.html#cb379-2" tabindex="-1"></a>                               <span class="at">python_path =</span> <span class="cn">NULL</span>)</span>
+<span id="cb379-3"><a href="interoperability-with-other-frameworks.html#cb379-3" tabindex="-1"></a></span>
+<span id="cb379-4"><a href="interoperability-with-other-frameworks.html#cb379-4" tabindex="-1"></a>mini_gobject <span class="ot">&lt;-</span> <span class="fu">replaceGiottoInstructions</span>(<span class="at">gobject =</span> mini_gobject,</span>
+<span id="cb379-5"><a href="interoperability-with-other-frameworks.html#cb379-5" tabindex="-1"></a>                                          <span class="at">instructions =</span> instrs)</span></code></pre></div>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb380-1"><a href="interoperability-with-other-frameworks.html#cb380-1" tabindex="-1"></a>mini_gobject <span class="ot">&lt;-</span> <span class="fu">createNearestNetwork</span>(<span class="at">gobject =</span> mini_gobject,</span>
+<span id="cb380-2"><a href="interoperability-with-other-frameworks.html#cb380-2" tabindex="-1"></a>                                     <span class="at">spat_unit =</span> <span class="st">&quot;aggregate&quot;</span>,</span>
+<span id="cb380-3"><a href="interoperability-with-other-frameworks.html#cb380-3" tabindex="-1"></a>                                     <span class="at">feat_type =</span> <span class="st">&quot;rna&quot;</span>,</span>
+<span id="cb380-4"><a href="interoperability-with-other-frameworks.html#cb380-4" tabindex="-1"></a>                                     <span class="at">type =</span> <span class="st">&quot;kNN&quot;</span>,</span>
+<span id="cb380-5"><a href="interoperability-with-other-frameworks.html#cb380-5" tabindex="-1"></a>                                     <span class="at">dim_reduction_to_use =</span> <span class="st">&quot;umap&quot;</span>,</span>
+<span id="cb380-6"><a href="interoperability-with-other-frameworks.html#cb380-6" tabindex="-1"></a>                                     <span class="at">dim_reduction_name =</span> <span class="st">&quot;umap&quot;</span>,</span>
+<span id="cb380-7"><a href="interoperability-with-other-frameworks.html#cb380-7" tabindex="-1"></a>                                     <span class="at">k =</span> <span class="dv">6</span>,</span>
+<span id="cb380-8"><a href="interoperability-with-other-frameworks.html#cb380-8" tabindex="-1"></a>                                     <span class="at">name =</span> <span class="st">&quot;new_network&quot;</span>)</span></code></pre></div>
 <p>Since we have multiple <code>spat_unit</code> and <code>feat_type</code> pairs, this function will create multiple <code>.h5ad</code> files, with their names returned. Non-default nearest or spatial network names will have their <code>key_added</code> terms recorded and saved in corresponding <code>.txt</code> files; refer to the documentation for details.</p>
-<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb375-1"><a href="interoperability-with-other-frameworks.html#cb375-1" tabindex="-1"></a>anndata_conversions <span class="ot">&lt;-</span> <span class="fu">giottoToAnnData</span>(<span class="at">gobject =</span> mini_gobject,</span>
-<span id="cb375-2"><a href="interoperability-with-other-frameworks.html#cb375-2" tabindex="-1"></a>                                       <span class="at">save_directory =</span> results_directory,</span>
-<span id="cb375-3"><a href="interoperability-with-other-frameworks.html#cb375-3" tabindex="-1"></a>                                       <span class="at">python_path =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="interoperability-with-other-frameworks.html#cb381-1" tabindex="-1"></a>anndata_conversions <span class="ot">&lt;-</span> <span class="fu">giottoToAnnData</span>(<span class="at">gobject =</span> mini_gobject,</span>
+<span id="cb381-2"><a href="interoperability-with-other-frameworks.html#cb381-2" tabindex="-1"></a>                                       <span class="at">save_directory =</span> results_directory,</span>
+<span id="cb381-3"><a href="interoperability-with-other-frameworks.html#cb381-3" tabindex="-1"></a>                                       <span class="at">python_path =</span> <span class="cn">NULL</span>)</span></code></pre></div>
 
 </div>
 </div>
