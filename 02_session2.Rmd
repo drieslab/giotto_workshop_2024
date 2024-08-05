@@ -13,8 +13,6 @@ This tutorial demonstrates how to process Visium HD data at the highest 2 micron
 
 The resulting datasets from all these technologies can be very large since they provide both a high spatial resolution and genome-wide capture of *all* transcripts.
 
-
-
 ## Background
 
 ### Visium HD Technology
@@ -37,8 +35,6 @@ For this tutorial we will be using the publicly available Colorectal Cancer Visi
 
 Details about this dataset and a link to download the raw data can be found at the [10X Genomics website](https://www.10xgenomics.com/datasets/visium-hd-cytassist-gene-expression-libraries-of-human-crc).
 
-
-
 ## Data Ingestion
 
 ### Visium HD output data format
@@ -49,8 +45,8 @@ knitr::include_graphics("img/02_session2/3.png")
 
 Visium HD data processed with the spaceranger pipeline is organized in this format containing various files associated with the sample. The files highlighted in yellow are what we will be using to read in these datasets.
 
-
 ### Mini Visium HD dataset
+
 ```{r, eval = FALSE}
 
 library(Giotto)
@@ -63,14 +59,12 @@ dir.create(save_dir, recursive = TRUE)
 # download the mini dataset and untar
 options("timeout" = Inf)
 download.file(
-    url = "https://zenodo.org/records/13212855/files/workshop_VisiumHD.zip?download=1",
-    destfile = file.path(save_dir, "workshop_visiumHD.zip")
+  url = "https://zenodo.org/records/13226158/files/workshop_VisiumHD.zip?download=1",
+  destfile = file.path(save_dir, "workshop_visiumHD.zip")
 )
 untar(tarfile = file.path(save_dir, "workshop_visiumHD.zip"), 
       exdir = data_path)
 ```
-
-
 
 ### Giotto Visium HD convenience function
 
@@ -80,28 +74,27 @@ The easiest way to read in Visium HD data in Giotto is through our convenience f
 # importVisiumHD()
 ```
 
-
-
 ### Read in data manually
 
 However, for this tutorial we will illustrate how to create your own Giotto object in a step-by-step manner, which can also be applied to other similar technologies as discussed in the [Objective](#Objective) section.
 
 #### Raw expression data
+
 ```{r, eval = FALSE}
-expression_path <- file.path(data_path, 'workshop_visiumHD/Human_Colorectal_Cancer_workshop/square_002um/raw_feature_bc_matrix')
+expression_path <- file.path(data_path, '/Human_Colorectal_Cancer_workshop/square_002um/raw_feature_bc_matrix')
 expr_results <- get10Xmatrix(path_to_data = expression_path, 
                              gene_column_index = 1)
 ```
 
-
 #### Tissue positions data
+
 ```{r, eval = FALSE}
-tissue_positions_path <- file.path(data_path, 'workshop_visiumHD/Human_Colorectal_Cancer_workshop/square_002um/spatial/tissue_positions.parquet')
+tissue_positions_path <- file.path(data_path, '/Human_Colorectal_Cancer_workshop/square_002um/spatial/tissue_positions.parquet')
 tissue_positions <- data.table::as.data.table(arrow::read_parquet(tissue_positions_path))
 ```
 
-
 #### Merge expression and 2 micron position data
+
 ```{r, eval = FALSE}
 # convert expression matrix to minimal data.frame or data.table object
 matrix_tile_dt <- data.table::as.data.table(Matrix::summary(expr_results))
@@ -114,7 +107,6 @@ matrix_tile_dt[, pixel := samples[j]]
 ```{r, echo=FALSE, out.width="80%", fig.align="center", fig.cap="Genes expressed for each 2 µm pixel."}
 knitr::include_graphics("img/02_session2/4.png")
 ```
-
 
 ```{r, eval = FALSE}
 # merge data.table matrix and spatial coordinates to create input for Giotto Polygons
@@ -133,15 +125,13 @@ knitr::include_graphics("img/02_session2/5.png")
 
 ## Giotto object at Hexbin 400
 
-### create giotto points 
+### create giotto points
 
 ```{r, eval = FALSE}
 giotto_points = createGiottoPoints(x = expr_pos_data[,.(x, y, gene, pixel, count)])
 ```
 
-
-
-### create giotto polygons 
+### create giotto polygons
 
 #### Tiling and aggregation
 
@@ -159,7 +149,6 @@ plot(hexbin400)
 ```{r, echo=FALSE, out.width="80%", fig.align="center", fig.cap="Giotto polygon in a hexagon shape for overlapping visium HD expression data."}
 knitr::include_graphics("img/02_session2/6.png")
 ```
-
 
 ### combine Giotto points and polygons to create Giotto object
 
@@ -179,9 +168,8 @@ visiumHD = addSpatialCentroidLocations(gobject = visiumHD,
                                        poly_info = 'hex400')
 ```
 
-Visualize the Giotto object. Make sure to set `expand_counts = TRUE` to expand the counts
-column. Each spatial bin can have multiple transcripts/UMIs. This is different 
-compared to in situ technologies like seqFISH, MERFISH, Nanostring CosMx or Xenium.
+Visualize the Giotto object. Make sure to set `expand_counts = TRUE` to expand the counts column. Each spatial bin can have multiple transcripts/UMIs. This is different compared to in situ technologies like seqFISH, MERFISH, Nanostring CosMx or Xenium.
+
 ```{r, eval=FALSE}
 feature_data = fDataDT(visiumHD)
 
@@ -206,8 +194,8 @@ spatInSituPlotPoints(visiumHD,
 knitr::include_graphics("img/02_session2/0-spatInSituPlotPoints.png")
 ```
 
-You can set `plot_method = scattermore` or `scattermost` to convert high-resolution
-images to low(er) resolution rasterized images. It's usually faster and will save on disk space.
+You can set `plot_method = scattermore` or `scattermost` to convert high-resolution images to low(er) resolution rasterized images. It's usually faster and will save on disk space.
+
 ```{r, eval=FALSE}
 spatInSituPlotPoints(visiumHD,
                      show_image = F,
@@ -234,8 +222,8 @@ knitr::include_graphics("img/02_session2/1-spatInSituPlotPoints.png")
 
 ### Process Giotto object
 
-
 #### calculate overlap between points and polygons
+
 ```{r, eval=FALSE}
 
 # calculate overlap between points and polygons
@@ -247,6 +235,7 @@ showGiottoSpatialInfo(visiumHD)
 ```
 
 #### convert overlap results to a bin-by-gene matrix
+
 ```{r, eval=FALSE}
 # convert overlap results to bin by gene matrix
 visiumHD = overlapToMatrix(visiumHD,
@@ -257,8 +246,8 @@ visiumHD = overlapToMatrix(visiumHD,
 activeSpatUnit(visiumHD)
 ```
 
-
 #### default processing steps
+
 ```{r, eval=FALSE}
 visiumHD <- filterGiotto(visiumHD,
                          expression_threshold = 1,
@@ -274,10 +263,10 @@ visiumHD <- normalizeGiotto(visiumHD,
 visiumHD <- addStatistics(visiumHD)
 ```
 
-
 #### visualize number of features
 
 At the centroid level.
+
 ```{r, eval=FALSE}
 # each dot here represents a 200x200 aggregation of spatial barcodes (bin size 200)
 spatPlot2D(gobject = visiumHD,
@@ -286,13 +275,12 @@ spatPlot2D(gobject = visiumHD,
            point_size = 2.5)
 ```
 
-
 ```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Number of features detected in each of the centroids."}
 knitr::include_graphics("img/02_session2/2-spatPlot2D.png")
 ```
 
-
 Using the spatial polygon (hexagon) tiles
+
 ```{r, eval=FALSE}
 spatInSituPlotPoints(visiumHD,
                      show_image = F,
@@ -319,6 +307,7 @@ knitr::include_graphics("img/02_session2/3-spatInSituPlotPoints.png")
 ### Dimension reduction + clustering
 
 #### Highly variable features + PCA
+
 ```{r, eval=FALSE}
 visiumHD <- calculateHVF(visiumHD, 
                          zscore_threshold = 1)
@@ -332,7 +321,6 @@ screePlot(visiumHD, ncp = 30)
 knitr::include_graphics("img/02_session2/4-screePlot.png")
 ```
 
-
 ```{r, eval=FALSE}
 plotPCA(visiumHD)
 ```
@@ -341,9 +329,8 @@ plotPCA(visiumHD)
 knitr::include_graphics("img/02_session2/5-PCA.png")
 ```
 
-
-
 #### UMAP reduction for visualization
+
 ```{r, eval=FALSE}
 visiumHD <- runUMAP(visiumHD, 
                     dimensions_to_use = 1:14, 
@@ -357,8 +344,8 @@ plotUMAP(gobject = visiumHD,
 knitr::include_graphics("img/02_session2/6-UMAP.png")
 ```
 
-
 #### Create network based on expression similarity + graph partition cluster
+
 ```{r, eval=FALSE}
 # sNN network (default)
 visiumHD <- createNearestNetwork(visiumHD, 
@@ -382,8 +369,6 @@ plotUMAP(gobject = visiumHD,
 knitr::include_graphics("img/02_session2/7-UMAP.png")
 ```
 
-
-
 ```{r, eval=FALSE}
 spatInSituPlotPoints(visiumHD,
                      show_image = F,
@@ -405,13 +390,12 @@ spatInSituPlotPoints(visiumHD,
 knitr::include_graphics("img/02_session2/8-spatInSituPlotPoints.png")
 ```
 
-
 ## Hexbin 100
 
 Goal is to create a higher resolution bin (hex100) and add to the Giotto object.
 
-
 ### Standard subcellular pipeline
+
 ```{r, eval=FALSE}
 
 
@@ -430,11 +414,10 @@ visiumHD = addSpatialCentroidLocations(gobject = visiumHD,
 ```
 
 Set active spatial unit. This can also be set manually.
+
 ```{r, eval=FALSE}
 activeSpatUnit(visiumHD) <- 'hex100'
 ```
-
-
 
 ```{r, eval=FALSE}
 spatInSituPlotPoints(visiumHD,
@@ -458,8 +441,6 @@ spatInSituPlotPoints(visiumHD,
 knitr::include_graphics("img/02_session2/9-spatInSituPlotPoints.png")
 ```
 
-
-
 ```{r, eval=FALSE}
 visiumHD = calculateOverlap(visiumHD,
                             spatial_info = 'hex100',
@@ -479,7 +460,6 @@ visiumHD <- normalizeGiotto(visiumHD, scalefactor = 1000, verbose = T)
 
 visiumHD <- addStatistics(visiumHD)
 ```
-
 
 ```{r, eval=FALSE}
 pDataDT(visiumHD, spat_unit = 'hex100')
@@ -512,7 +492,6 @@ plotUMAP(gobject = visiumHD,
 knitr::include_graphics("img/02_session2/11-UMAP.png")
 ```
 
-
 ```{r, eval=FALSE}
 # sNN network (default)
 visiumHD <- createNearestNetwork(visiumHD, 
@@ -532,8 +511,6 @@ plotUMAP(gobject = visiumHD,
 ```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="UMAP for the hex100 bin colored by ledien clusters."}
 knitr::include_graphics("img/02_session2/12-UMAP.png")
 ```
-
-
 
 ```{r, eval=FALSE}
 spatInSituPlotPoints(visiumHD,
@@ -556,10 +533,10 @@ spatInSituPlotPoints(visiumHD,
 knitr::include_graphics("img/02_session2/13-spatInSituPlotPoints.png")
 ```
 
-
 ### Spatial expression patterns
 
 #### Identify single genes
+
 ```{r, eval=FALSE}
 featData = fDataDT(visiumHD)
 hvf_genes = featData[hvf == 'yes']$feat_ID
@@ -580,7 +557,8 @@ ranktest = binSpect(visiumHD,
 
 ```
 
-Visualize top 2 ranked spatial genes per expression bin:  
+Visualize top 2 ranked spatial genes per expression bin:
+
 ```{r, eval=FALSE}
 set0 = ranktest[high_expr < 50][1:2]$feats
 set1 = ranktest[high_expr > 50 & high_expr < 100][1:2]$feats
@@ -601,8 +579,6 @@ spatFeatPlot2D(visiumHD,
 knitr::include_graphics("img/02_session2/14-spatFeatPlot2D.png")
 ```
 
-
-
 ```{r, eval=FALSE}
 
 spatFeatPlot2D(visiumHD,
@@ -613,15 +589,11 @@ spatFeatPlot2D(visiumHD,
                cow_n_col = 2, point_size = 1)
 ```
 
-
 ```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Spat feature plot showing gene expression for the top 2 ranked spatial genes per expression bin (>200, >400 and >1000) across the hex100 bin."}
 knitr::include_graphics("img/02_session2/15-spatFeatPlot2D.png")
 ```
 
-
-
 #### Spatial co-expression modules
-
 
 ```{r, eval=FALSE}
 ext_spatial_genes = ranktest[adj.p.value < 0.001]$feats
@@ -647,8 +619,6 @@ heatmSpatialCorFeats(visiumHD,
 knitr::include_graphics("img/02_session2/16-heatmSpatialCorFeats.png")
 ```
 
-
-
 ```{r, eval=FALSE}
 # create metagene enrichment score for clusters
 cluster_genes_DT = showSpatialCorFeats(spat_cor_netw_DT, 
@@ -664,7 +634,6 @@ visiumHD = createMetafeats(visiumHD,
 showGiottoSpatEnrichments(visiumHD)
 ```
 
-
 ```{r, eval=FALSE}
 spatCellPlot(visiumHD,
              spat_enr_names = 'cluster_metagene',
@@ -674,11 +643,9 @@ spatCellPlot(visiumHD,
              point_size = 1, cow_n_col = 2)
 ```
 
-
 ```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Spat plot vizualizing metagenes (1-4) based on spatially correlated genes vizualized on the hex100 bin"}
 knitr::include_graphics("img/02_session2/17-spatCellPlot2D.png")
 ```
-
 
 ```{r, eval=FALSE}
 spatCellPlot(visiumHD,
@@ -689,11 +656,9 @@ spatCellPlot(visiumHD,
              point_size = 1, cow_n_col = 2)
 ```
 
-
 ```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Spat plot vizualizing metagenes (5-8) based on spatially correlated genes vizualized on the hex100 bin"}
 knitr::include_graphics("img/02_session2/18-spatCellPlot2D.png")
 ```
-
 
 ```{r, eval=FALSE}
 spatCellPlot(visiumHD,
@@ -703,7 +668,6 @@ spatCellPlot(visiumHD,
              cell_annotation_values = as.character(c(9:12)),
              point_size = 1, cow_n_col = 2)
 ```
-
 
 ```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Spat plot vizualizing metagenes (9-12) based on spatially correlated genes vizualized on the hex100 bin"}
 knitr::include_graphics("img/02_session2/19-spatCellPlot2D.png")
@@ -718,12 +682,9 @@ spatCellPlot(visiumHD,
              point_size = 1, cow_n_col = 2)
 ```
 
-
 ```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Spat plot vizualizing metagenes (13-16) based on spatially correlated genes vizualized on the hex100 bin"}
 knitr::include_graphics("img/02_session2/20-spatCellPlot2D.png")
 ```
-
-
 
 #### Plot spatial gene groups
 
@@ -762,14 +723,9 @@ spatInSituPlotPoints(visiumHD,
 knitr::include_graphics("img/02_session2/21-spatInSituPlotPoints.png")
 ```
 
-
-
-
 ## Hexbin 25
 
-Goal is to create a higher resolution bin (hex25) and add to the Giotto object. 
-We will aim to identify individual cell types and local neighborhood niches.
-
+Goal is to create a higher resolution bin (hex25) and add to the Giotto object. We will aim to identify individual cell types and local neighborhood niches.
 
 ### Subcellular workflow and projection functions
 
@@ -783,7 +739,6 @@ visiumHD_subset = subsetGiottoLocs(gobject = visiumHD,
                                    y_min = 44250,
                                    y_max = 45500)
 ```
-
 
 ```{r, eval=FALSE}
 hexbin25 <- tessellate(extent = ext(visiumHD_subset@feat_info$rna), 
@@ -801,8 +756,6 @@ visiumHD_subset = addSpatialCentroidLocations(gobject = visiumHD_subset,
 
 activeSpatUnit(visiumHD_subset) <- 'hex25'
 ```
-
-
 
 ```{r, eval=FALSE}
 visiumHD_subset = calculateOverlap(visiumHD_subset,
@@ -827,11 +780,4 @@ visiumHD_subset <- normalizeGiotto(visiumHD_subset, scalefactor = 1000, verbose 
 visiumHD_subset <- addStatistics(visiumHD_subset)
 ```
 
-
-
 ## Database backend - Work in progress, but coming soon!
-
-
-
-
-
