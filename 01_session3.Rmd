@@ -6,7 +6,7 @@ August 5th 2024
 
 ## Data formats
 
-There are many kinds of outputs and data formats that are currently being used in the spatial omics field for storage and dissemination of information. The following are some that we commonly work with. For Giotto, much of the data wrangling task is to get the information read in out of these formats into R native formats and wrapped as Giotto subobjects. 
+There are many kinds of outputs and data formats that are currently being used in the spatial omics field for storage and dissemination of information. The following are some that we commonly work with. For Giotto, much of the data wrangling task is to get the information read in from these formats into R native formats and wrapped as Giotto subobjects. 
 
 The subobjects then enforce formatting and allow the data types to behave as building blocks of the `giotto` object
 
@@ -171,12 +171,9 @@ Most images are openable using `createGiottoLargeImage()` which wraps `terra::ra
 
 jsonlike formats are ones that can be read in with `jsonlite::read_json()` and then coerced into list-like or tabular structures. 10X uses these `.json` to report the scalefactors information in Visium datasets. The `.xenium` file format is also openable as a json-like.
 
-
-
-
 ### Hierarchical formats
 
-There are many types of data in spatial-omics analysis. Hierarchical formats afford both a way to organize complex multi-type data and also to store and distribute them. In R, these can be opened with either _hdf5r_ on CRAN or _rhdf5_ on BioConductor. The complex nature of these formats and also the fact that they are just a storage format and not an organizational specification means that what data and how it is stored and represented can often be very different. `.gef` and `.bgef` which StereoSeq exports are `.hdf5`-like formats.
+There are many types of data in spatial-omics analysis. Hierarchical formats afford both a way to organize complex multi-type data and also to store and distribute them. In R, these can be opened with either _hdf5r_ on CRAN or _rhdf5_ on BioConductor. The complex nature of these formats and also the fact they are just a storage format and not an organizational specification means that what data and how it is stored and represented can often be very different. `.gef` and `.bgef` which StereoSeq exports are `.hdf5`-like formats.
 
 `.h5ad` is a specific flavor of these file formats where they follow the _AnnData_ framework so that there is more common structure in how datasets are stored. _Giotto_ provides `anndataToGiotto()` and `giottoToAnnData()` interoperability functions for interconverting.
 
