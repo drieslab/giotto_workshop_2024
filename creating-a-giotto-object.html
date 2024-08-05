@@ -236,8 +236,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.7.2" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#additive-subobject-plotting"><i class="fa fa-check"></i><b>6.7.2</b> Additive subobject plotting</a></li>
 <li class="chapter" data-level="6.7.3" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#giotto-object-plotting"><i class="fa fa-check"></i><b>6.7.3</b> Giotto object plotting</a></li>
 </ul></li>
-<li class="chapter" data-level="6.8" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#subsetting"><i class="fa fa-check"></i><b>6.8</b> Subsetting</a></li>
-<li class="chapter" data-level="6.9" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#giottodata-mini-objects"><i class="fa fa-check"></i><b>6.9</b> <em>GiottoData</em> Mini objects</a></li>
+<li class="chapter" data-level="6.8" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#subsetting"><i class="fa fa-check"></i><b>6.8</b> Subsetting</a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#id-subsetting"><i class="fa fa-check"></i><b>6.8.1</b> ID subsetting</a></li>
+<li class="chapter" data-level="6.8.2" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#coordinate-based-subsetting"><i class="fa fa-check"></i><b>6.8.2</b> Coordinate-based subsetting</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="visium-part-i.html"><a href="visium-part-i.html"><i class="fa fa-check"></i><b>7</b> Visium Part I</a>
 <ul>
@@ -738,7 +741,7 @@ Use objHistory() to see steps and params used</code></pre>
 <span id="cb74-14"><a href="creating-a-giotto-object.html#cb74-14" tabindex="-1"></a>    <span class="at">background_color =</span> <span class="st">&quot;black&quot;</span></span>
 <span id="cb74-15"><a href="creating-a-giotto-object.html#cb74-15" tabindex="-1"></a>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-75"></span>
-<img src="img/01_session4/example_featplot_sub.png" alt="Example mini MERSCOPE aggregated feature counts" width="60%" />
+<img src="img/01_session4/example_featplot_sub.png" alt="Example mini MERSCOPE aggregated feature counts"  />
 <p class="caption">
 Figure 6.4: Example mini MERSCOPE aggregated feature counts
 </p>
@@ -840,26 +843,47 @@ Figure 6.10: Plot image with monochrome color scaling with added polygon borders
 <div id="giotto-object-plotting" class="section level3 hasAnchor" number="6.7.3">
 <h3><span class="header-section-number">6.7.3</span> Giotto object plotting<a href="creating-a-giotto-object.html#giotto-object-plotting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><em>Giotto</em> also has several <em>ggplot2</em>-based plotting functions that work on the whole <code>giotto</code> object.
-Here we load the vizgen mini dataset from <em>GiottoData</em> which contains a lot of worked out data.</p>
+Here we load the vizgen mini dataset from <em>GiottoData</em> which contains a lot of worked through data.</p>
+<div id="giotto-spatial-plot-functions" class="section level4 hasAnchor" number="6.7.3.1">
+<h4><span class="header-section-number">6.7.3.1</span> Giotto spatial plot functions<a href="creating-a-giotto-object.html#giotto-spatial-plot-functions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><code>spatPlot()</code> - standard centroid-based plotting geared towards metadata plotting</li>
+<li><code>spatCellPlot()</code> - centroid-based plotting for spatial enrichment values</li>
+<li><code>spatFeatPlot()</code> - centroid-based plotting for feature expression plotting</li>
+<li><code>spatInSituPlotPoints()</code> - subcellular plotting with support for transcript points and polygons</li>
+</ul>
+</div>
+<div id="giotto-expression-space-plot-functions" class="section level4 hasAnchor" number="6.7.3.2">
+<h4><span class="header-section-number">6.7.3.2</span> Giotto expression space plot functions<a href="creating-a-giotto-object.html#giotto-expression-space-plot-functions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><code>dimPlot()</code> - dimension reduction plotting</li>
+</ul>
+</div>
+<div id="giotto-common-plotting-args" class="section level4 hasAnchor" number="6.7.3.3">
+<h4><span class="header-section-number">6.7.3.3</span> Giotto common plotting args<a href="creating-a-giotto-object.html#giotto-common-plotting-args" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><code>gradient_style</code> - Should the gradient be of ‘divergent’ or ‘sequential’ styles?</li>
+<li><code>color_as_factor</code> - Is annotation value a numerical or factor/categorical based item to plot.</li>
+<li><code>cell_color_code</code> - What color mapping to provide</li>
+<li><code>cell_color</code> - What column of information to use when plotting (metadata, expression, etc.)</li>
+<li><code>point_shape</code> - Either ‘border’ or ‘no_border’ to draw on the dog.</li>
+</ul>
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="creating-a-giotto-object.html#cb84-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadGiottoMini</span>(<span class="st">&quot;vizgen&quot;</span>)</span>
 <span id="cb84-2"><a href="creating-a-giotto-object.html#cb84-2" tabindex="-1"></a><span class="fu">activeSpatUnit</span>(g) <span class="ot">&lt;-</span> <span class="st">&quot;aggregate&quot;</span> <span class="co"># set default spat_unit to the one with lots of results</span></span></code></pre></div>
 </div>
 </div>
+</div>
 <div id="subsetting" class="section level2 hasAnchor" number="6.8">
 <h2><span class="header-section-number">6.8</span> Subsetting<a href="creating-a-giotto-object.html#subsetting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>Based on IDs</li>
-<li>Based on locations</li>
-<li>Visualizations</li>
-</ul>
+<div id="id-subsetting" class="section level3 hasAnchor" number="6.8.1">
+<h3><span class="header-section-number">6.8.1</span> ID subsetting<a href="creating-a-giotto-object.html#id-subsetting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="creating-a-giotto-object.html#cb85-1" tabindex="-1"></a>gsubset <span class="ot">&lt;-</span> <span class="fu">subsetGiotto</span>(g, <span class="at">cell_ids =</span> <span class="fu">sample</span>(<span class="fu">spatIDs</span>(g), <span class="dv">300</span>))</span></code></pre></div>
 </div>
-<div id="giottodata-mini-objects" class="section level2 hasAnchor" number="6.9">
-<h2><span class="header-section-number">6.9</span> <em>GiottoData</em> Mini objects<a href="creating-a-giotto-object.html#giottodata-mini-objects" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Giotto makes available several mini objects to allow devs and users to work
-with easily loadable Giotto objects. These are small subsets of a larger
-dataset that often contain some worked through analyses and are fully functional.</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="creating-a-giotto-object.html#cb85-1" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pak</span>(<span class="st">&quot;drieslab/GiottoData&quot;</span>)</span></code></pre></div>
+<div id="coordinate-based-subsetting" class="section level3 hasAnchor" number="6.8.2">
+<h3><span class="header-section-number">6.8.2</span> Coordinate-based subsetting<a href="creating-a-giotto-object.html#coordinate-based-subsetting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="creating-a-giotto-object.html#cb86-1" tabindex="-1"></a>gsubset <span class="ot">&lt;-</span> <span class="fu">subsetGiottoLocs</span>(g, <span class="at">x_min =</span> <span class="dv">6500</span>, <span class="at">x_max =</span> <span class="dv">6700</span>, <span class="at">poly_info =</span> <span class="st">&quot;aggregate&quot;</span>)</span></code></pre></div>
 
+</div>
 </div>
 </div>
             </section>
