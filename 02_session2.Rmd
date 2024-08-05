@@ -723,6 +723,9 @@ spatInSituPlotPoints(visiumHD,
 knitr::include_graphics("img/02_session2/21-spatInSituPlotPoints.png")
 ```
 
+
+
+
 ## Hexbin 25
 
 Goal is to create a higher resolution bin (hex25) and add to the Giotto object. We will aim to identify individual cell types and local neighborhood niches.
@@ -740,6 +743,50 @@ visiumHD_subset = subsetGiottoLocs(gobject = visiumHD,
                                    y_max = 45500)
 ```
 
+
+```{r, eval=FALSE}
+spatInSituPlotPoints(visiumHD_subset,
+                     show_image = F,
+                     feats = NULL,
+                     show_legend = F,
+                     spat_unit = 'hex100',
+                     point_size = 0.5,
+                     show_polygon = TRUE,
+                     use_overlap = FALSE,
+                     polygon_feat_type = 'hex100',
+                     polygon_fill_as_factor = TRUE,
+                     polygon_fill = 'leiden_clus',
+                     polygon_color = 'black',
+                     polygon_line_size = 0.3)
+```
+
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="xxx"}
+knitr::include_graphics("img/02_session2/22-spatInSituPlotPoints.png")
+```
+
+```{r, eval=FALSE}
+spatInSituPlotPoints(visiumHD_subset,
+                     show_image = F,
+                     feats = list('rna' = selected_feats), 
+                     feats_color_code = my_colors,
+                     show_legend = F,
+                     spat_unit = 'hex100',
+                     point_size = 0.40,
+                     show_polygon = TRUE,
+                     use_overlap = FALSE,
+                     polygon_feat_type = 'hex100',
+                     polygon_bg_color = NA,
+                     polygon_color = 'white',
+                     polygon_line_size = 0.05,
+                     jitter = c(25,25))
+
+```
+
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="xxx"}
+knitr::include_graphics("img/02_session2/23-spatInSituPlotPoints.png")
+```
+
+
 ```{r, eval=FALSE}
 hexbin25 <- tessellate(extent = ext(visiumHD_subset@feat_info$rna), 
                        shape = 'hexagon', 
@@ -751,16 +798,43 @@ visiumHD_subset = setPolygonInfo(gobject = visiumHD_subset,
                                  name = 'hex25',
                                  initialize = T)
 
+showGiottoSpatialInfo(visiumHD_subset)
+
 visiumHD_subset = addSpatialCentroidLocations(gobject = visiumHD_subset,
                                               poly_info = 'hex25')
 
 activeSpatUnit(visiumHD_subset) <- 'hex25'
+
+spatInSituPlotPoints(visiumHD_subset,
+                     show_image = F,
+                     feats = list('rna' = selected_feats), 
+                     feats_color_code = my_colors,
+                     show_legend = F,
+                     spat_unit = 'hex25',
+                     point_size = 0.40,
+                     show_polygon = TRUE,
+                     use_overlap = FALSE,
+                     polygon_feat_type = 'hex25',
+                     polygon_bg_color = NA,
+                     polygon_color = 'white',
+                     polygon_line_size = 0.05,
+                     jitter = c(25,25))
 ```
+
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="xxx"}
+knitr::include_graphics("img/02_session2/24-spatInSituPlotPoints.png")
+```
+
+
+
 
 ```{r, eval=FALSE}
 visiumHD_subset = calculateOverlap(visiumHD_subset,
                                    spatial_info = 'hex25',
                                    feat_info = 'rna')
+
+showGiottoSpatialInfo(visiumHD_subset)
+
 
 # convert overlap results to bin by gene matrix
 visiumHD_subset = overlapToMatrix(visiumHD_subset,
@@ -770,14 +844,234 @@ visiumHD_subset = overlapToMatrix(visiumHD_subset,
 
 visiumHD_subset <- filterGiotto(visiumHD_subset,
                                 expression_threshold = 1,
-                                feat_det_in_min_cells = 25,
-                                min_det_feats_per_cell = 25)
+                                feat_det_in_min_cells = 3,
+                                min_det_feats_per_cell = 5)
+
+activeSpatUnit(visiumHD_subset)
+
 
 # normalize
 visiumHD_subset <- normalizeGiotto(visiumHD_subset, scalefactor = 1000, verbose = T)
 
 # add statistics
 visiumHD_subset <- addStatistics(visiumHD_subset)
+
+feature_data = fDataDT(visiumHD_subset)
+
+visiumHD_subset <- calculateHVF(visiumHD_subset, zscore_threshold = 1)
+
 ```
 
+### projections
+
+#### dimension reduction with projections
+```{r, eval=FALSE}
+
+n_25_percent <- round(length(spatIDs(visiumHD_subset, 'hex25')) * 0.25)
+
+# pca projection on subset
+visiumHD_subset <- runPCAprojection(
+  gobject = visiumHD_subset,
+  spat_unit = "hex25",
+  feats_to_use = 'hvf',
+  name = 'pca.projection',
+  set_seed = TRUE,
+  seed_number = 12345,
+  random_subset = n_25_percent
+)
+
+showGiottoDimRed(visiumHD_subset)
+plotPCA(visiumHD_subset, dim_reduction_name = 'pca.projection')
+```
+
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="xxx"}
+knitr::include_graphics("img/02_session2/25-PCA.png")
+```
+
+
+```{r, eval=FALSE}
+# umap projection on subset
+visiumHD_subset <- runUMAPprojection(
+  gobject = visiumHD_subset,
+  spat_unit = "hex25",
+  dim_reduction_to_use = 'pca',
+  dim_reduction_name = "pca.projection",
+  dimensions_to_use = 1:10,
+  name = "umap.projection",
+  random_subset = n_25_percent, 
+  n_neighbors = 10,
+  min_dist = 0.005,
+  n_threads = 4
+)
+
+showGiottoDimRed(visiumHD_subset)
+
+# plot UMAP, coloring cells/points based on nr_feats
+plotUMAP(gobject = visiumHD_subset,
+         point_size = 1, 
+         dim_reduction_name = 'umap.projection')
+
+```
+
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="xxx"}
+knitr::include_graphics("img/02_session2/26-UMAP.png")
+```
+
+
+
+#### clustering with projection
+
+```{r, eval=FALSE}
+
+# subset to smaller giotto object
+set.seed(1234)
+subset_IDs = sample(x = spatIDs(visiumHD_subset, 'hex25'), size = n_25_percent)
+
+temp_gobject = subsetGiotto(
+  gobject = visiumHD_subset,
+  spat_unit = 'hex25',
+  cell_ids = subset_IDs
+)
+
+
+# hierarchical clustering
+temp_gobject = doHclust(gobject = temp_gobject, 
+                        spat_unit = 'hex25', 
+                        k = 8, name = 'sub_hclust', 
+                        dim_reduction_to_use = 'pca', 
+                        dim_reduction_name = 'pca.projection', 
+                        dimensions_to_use = 1:10)
+
+
+# show umap
+dimPlot2D(
+  gobject = temp_gobject,
+  point_size = 2.5,
+  spat_unit = 'hex25',
+  dim_reduction_to_use = 'umap',
+  dim_reduction_name = 'umap.projection',
+  cell_color = 'sub_hclust'
+)
+
+```
+
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="xxx"}
+knitr::include_graphics("img/02_session2/27-dimPlot2D.png")
+```
+
+
+
+```{r, eval=FALSE}
+# project clusterings back to full dataset
+visiumHD_subset <- doClusterProjection(
+  target_gobject = visiumHD_subset,
+  source_gobject = temp_gobject,
+  spat_unit = "hex25",
+  source_cluster_labels = "sub_hclust",
+  reduction_method = 'pca',
+  reduction_name = 'pca.projection',
+  prob = FALSE,
+  knn_k = 5,
+  dimensions_to_use = 1:10
+)
+
+pDataDT(visiumHD_subset)
+
+dimPlot2D(
+  gobject = visiumHD_subset,
+  point_size = 1.5,
+  spat_unit = 'hex25',
+  dim_reduction_to_use = 'umap',
+  dim_reduction_name = 'umap.projection',
+  cell_color = 'knn_labels'
+)
+
+```
+
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="xxx"}
+knitr::include_graphics("img/02_session2/28-dimPlot2D.png")
+```
+
+
+
+```{r, eval=FALSE}
+spatInSituPlotPoints(visiumHD_subset,
+                     show_image = F,
+                     feats = NULL,
+                     show_legend = F,
+                     spat_unit = 'hex25',
+                     point_size = 0.5,
+                     show_polygon = TRUE,
+                     use_overlap = FALSE,
+                     polygon_feat_type = 'hex25',
+                     polygon_fill_as_factor = TRUE,
+                     polygon_fill = 'knn_labels',
+                     polygon_color = 'black',
+                     polygon_line_size = 0.3)
+```
+
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="xxx"}
+knitr::include_graphics("img/02_session2/29-spatInSituPlotPoints.png")
+```
+
+### niche clusters
+
+
+```{r, eval=FALSE}
+visiumHD_subset = createSpatialNetwork(visiumHD_subset,
+                                name = 'kNN_network',
+                                spat_unit = 'hex25', 
+                                method = 'kNN',
+                                k = 6)
+
+pDataDT(visiumHD_subset)
+visiumHD_subset = calculateSpatCellMetadataProportions(gobject = visiumHD_subset,
+                                                       spat_unit = 'hex25',
+                                                       feat_type = 'rna',
+                                                       metadata_column = 'knn_labels',
+                                                       spat_network = 'kNN_network')
+
+prop_table = getSpatialEnrichment(visiumHD_subset, name = 'proportion', output = 'data.table')
+prop_matrix = GiottoUtils:::dt_to_matrix(prop_table)
+
+set.seed(1234)
+prop_kmeans = kmeans(x = prop_matrix, centers = 10, iter.max = 1000, nstart = 100)
+prop_kmeansDT = data.table::data.table(cell_ID = names(prop_kmeans$cluster), niche = prop_kmeans$cluster)
+
+visiumHD_subset = addCellMetadata(visiumHD_subset, 
+                                  new_metadata = prop_kmeansDT, 
+                                  by_column = T, 
+                                  column_cell_ID = 'cell_ID')
+pDataDT(visiumHD_subset)
+
+spatInSituPlotPoints(visiumHD_subset,
+                     show_image = F,
+                     feats = NULL,
+                     show_legend = F,
+                     spat_unit = 'hex25',
+                     point_size = 0.5,
+                     show_polygon = TRUE,
+                     use_overlap = FALSE,
+                     polygon_feat_type = 'hex25',
+                     polygon_fill_as_factor = TRUE,
+                     polygon_fill = 'niche',
+                     polygon_color = 'black',
+                     polygon_line_size = 0.3)
+
+```
+
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="xxx"}
+knitr::include_graphics("img/02_session2/30-spatInSituPlotPoints.png")
+```
+
+
+
 ## Database backend - Work in progress, but coming soon!
+
+Memory problems:  
+- data ingestion  
+- spatial operations  
+- matrix operations  
+- matrix and spatial geometry object sizes  
+
+

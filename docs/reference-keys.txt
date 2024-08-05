@@ -506,3 +506,15 @@ fig:unnamed-chunk-61
 fig:unnamed-chunk-63
 fig:unnamed-chunk-65
 fig:unnamed-chunk-67
+fig:unnamed-chunk-74
+fig:unnamed-chunk-76
+fig:unnamed-chunk-79
+fig:unnamed-chunk-81
+fig:unnamed-chunk-83
+fig:unnamed-chunk-85
+fig:unnamed-chunk-87
+fig:unnamed-chunk-89
+projections
+dimension-reduction-with-projections
+clustering-with-projection
+niche-clusters
