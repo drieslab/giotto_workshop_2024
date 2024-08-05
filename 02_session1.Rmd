@@ -9,7 +9,7 @@ August 6th 2024
 ```{r, eval=FALSE}
 library(Giotto)
 
-visium_brain <- loadGiotto("visium_brain_object")
+visium_brain <- loadGiotto("results/01_session5/visium_brain_object")
 ```
 
 
@@ -149,13 +149,13 @@ Visium spatial transcriptomics does not provide single-cell resolution, making c
 
 ```{r, eval=FALSE}
 GiottoData::getSpatialDataset(dataset = "scRNA_mouse_brain", 
-                              directory = "data/02_session1/")
+                              directory = "data/02_session1")
 ```
 
 - Create the single-cell object and run the normalization step
 
 ```{r, eval=FALSE}
-results_folder <- "results/02_session1/"
+results_folder <- "results/02_session1"
 
 python_path <- NULL
 
@@ -734,6 +734,12 @@ plotPolygons(visium_brain,
 
 ```{r, echo=FALSE, out.width="60%", fig.align="center", fig.cap="Spatial location of selected polygons."}
 knitr::include_graphics("img/02_session1/26-spatPlot2D.png")
+```
+
+## Save the object
+
+```{r, eval=FALSE}
+saveGiotto(visium_brain, "results/02_session1/visium_brain_object")
 ```
 
 ## Session info

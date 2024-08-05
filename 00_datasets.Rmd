@@ -9,7 +9,7 @@ intermediate files - from the following Zenodo repository:
 
 ### Zenodo repository
 
-https://zenodo.org/communities/gw2024/records?q=&l=list&p=1&s=10&sort=newest
+https://zenodo.org/communities/gw2024/
 
 
 ### 10X Genomics Visium Mouse Brain Section (Coronal) dataset
@@ -44,4 +44,7 @@ https://www.10xgenomics.com/datasets/preview-data-ffpe-human-lung-cancer-with-xe
 
 https://doi.brainimagelibrary.org/doi/10.35077/g.21 
 
+### Lunaphore IF dataset
+
+https://zenodo.org/records/13175721
 

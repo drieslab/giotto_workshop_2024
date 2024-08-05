@@ -25,7 +25,7 @@ You can find more information about his sample [here](https://support.10xgenomic
 You need to download the expression matrix and spatial information by running these commands:
 
 ```{r, eval = FALSE}
-dir.create("data/01_session5/")
+dir.create("data/01_session5")
 
 download.file(url = "https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz",
               destfile = "data/01_session5/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz")
@@ -53,7 +53,7 @@ createGiottoVisiumObject() will look for the standardized files organization fro
 library(Giotto)
 
 ## Set instructions
-results_folder <- "results/01_session5/"
+results_folder <- "results/01_session5"
 
 python_path <- NULL
 
@@ -66,7 +66,7 @@ instructions <- createGiottoInstructions(
 )
 
 ## Provide the path to the visium folder
-data_path <- "data/01_session5/"
+data_path <- "data/01_session5"
 
 ## Create object directly from the visium folder
 visium_brain <- createGiottoVisiumObject(
@@ -486,7 +486,7 @@ You can find more information about the differences between the Leiden and Louva
 ## Save the object
 
 ```{r, eval=FALSE}
-saveGiotto(visium_brain, "visium_brain_object")
+saveGiotto(visium_brain, "results/01_session5/visium_brain_object")
 ```
 
 ## Session info
