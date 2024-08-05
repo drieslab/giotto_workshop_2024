@@ -88,34 +88,47 @@ However, for this tutorial we will illustrate how to create your own Giotto obje
 
 #### Raw expression data
 ```{r, eval = FALSE}
-expression_path = file.path(data_path, 'raw_feature_bc_matrix')
+expression_path <- file.path(data_path, 'workshop_visiumHD/Human_Colorectal_Cancer_workshop/square_002um/raw_feature_bc_matrix')
 expr_results <- get10Xmatrix(path_to_data = expression_path, 
                              gene_column_index = 1)
 ```
 
+
 #### Tissue positions data
 ```{r, eval = FALSE}
-tissue_positions_path = file.path(data_path, 'spatial', 'tissue_positions.parquet')
-tissue_positions = data.table::as.data.table(arrow::read_parquet(tissue_positions_path))
+tissue_positions_path <- file.path(data_path, 'workshop_visiumHD/Human_Colorectal_Cancer_workshop/square_002um/spatial/tissue_positions.parquet')
+tissue_positions <- data.table::as.data.table(arrow::read_parquet(tissue_positions_path))
 ```
+
 
 #### Merge expression and 2 micron position data
 ```{r, eval = FALSE}
 # convert expression matrix to minimal data.frame or data.table object
-matrix_tile_dt = data.table::as.data.table(Matrix::summary(expr_results))
-genes = expr_results@Dimnames[[1]]
-samples = expr_results@Dimnames[[2]]
+matrix_tile_dt <- data.table::as.data.table(Matrix::summary(expr_results))
+genes   <- expr_results@Dimnames[[1]]
+samples <- expr_results@Dimnames[[2]]
 matrix_tile_dt[, gene := genes[i]]
 matrix_tile_dt[, pixel := samples[j]]
+```
 
+```{r, echo=FALSE, out.width="80%", fig.align="center"}
+knitr::include_graphics("img/02_session2/4.png")
+```
+
+
+```{r, eval = FALSE}
 # merge data.table matrix and spatial coordinates to create input for Giotto Polygons
-expr_pos_data = data.table::merge.data.table(matrix_tile_dt, 
+expr_pos_data <- data.table::merge.data.table(matrix_tile_dt, 
                                              tissue_positions, 
                                              by.x = 'pixel', 
                                              by.y = 'barcode')
 
-expr_pos_data = expr_pos_data[,.(pixel, pxl_row_in_fullres, pxl_col_in_fullres, gene, x)]
-colnames(expr_pos_data) = c('pixel', 'x', 'y', 'gene', 'counts')
+expr_pos_data <- expr_pos_data[,.(pixel, pxl_row_in_fullres, pxl_col_in_fullres, gene, x)]
+colnames(expr_pos_data) = c('pixel', 'x', 'y', 'gene', 'count')
+```
+
+```{r, echo=FALSE, out.width="80%", fig.align="center"}
+knitr::include_graphics("img/02_session2/5.png")
 ```
 
 ## Create Giotto object
@@ -123,7 +136,7 @@ colnames(expr_pos_data) = c('pixel', 'x', 'y', 'gene', 'counts')
 ### create giotto points 
 
 ```{r, eval = FALSE}
-giotto_points = createGiottoPoints(x = expr_pos_data[,.(x, y, gene, pixel, counts)])
+giotto_points = createGiottoPoints(x = expr_pos_data[,.(x, y, gene, pixel, count)])
 ```
 
 
@@ -143,7 +156,9 @@ hexbin400 <- tessellate(extent = ext(giotto_points),
 plot(hexbin400)
 ```
 
-
+```{r, echo=FALSE, out.width="80%", fig.align="center"}
+knitr::include_graphics("img/02_session2/6.png")
+```
 
 
 ### combine Giotto points and polygons to create Giotto object
@@ -164,6 +179,9 @@ visiumHD = addSpatialCentroidLocations(gobject = visiumHD,
                                        poly_info = 'hex400')
 ```
 
+Visualize the Giotto object. Make sure to set `expand_counts = TRUE` to expand the counts
+column. Each spatial bin can have multiple transcripts/UMIs. This is different 
+compared to in situ technologies like seqFISH, MERFISH, Nanostring CosMx or Xenium.
 ```{r, eval=FALSE}
 feature_data = fDataDT(visiumHD)
 
@@ -184,8 +202,12 @@ spatInSituPlotPoints(visiumHD,
                      jitter = c(25,25))
 ```
 
+```{r, echo=FALSE, out.width="80%", fig.align="center"}
+knitr::include_graphics("img/02_session2/0-spatInSituPlotPoints.png")
+```
 
-
+You can set `plot_method = scattermore` or `scattermost` to convert high-resolution
+images to low(er) resolution rasterized images. It's usually faster and will save on disk space.
 ```{r, eval=FALSE}
 spatInSituPlotPoints(visiumHD,
                      show_image = F,
@@ -206,6 +228,9 @@ spatInSituPlotPoints(visiumHD,
 
 ```
 
+```{r, echo=FALSE, out.width="80%", fig.align="center"}
+knitr::include_graphics("img/02_session2/1-spatInSituPlotPoints.png")
+```
 
 ## Process Giotto object
 
@@ -241,7 +266,9 @@ visiumHD <- filterGiotto(visiumHD,
                          min_det_feats_per_cell = 25)
 
 # normalize
-visiumHD <- normalizeGiotto(visiumHD, scalefactor = 1000, verbose = T)
+visiumHD <- normalizeGiotto(visiumHD, 
+                            scalefactor = 1000, 
+                            verbose = T)
 
 # add statistics
 visiumHD <- addStatistics(visiumHD)
@@ -257,6 +284,11 @@ spatPlot2D(gobject = visiumHD,
            cell_color = "nr_feats",
            color_as_factor = F,
            point_size = 2.5)
+```
+
+
+```{r, echo=FALSE, out.width="100%", fig.align="center"}
+knitr::include_graphics("img/02_session2/2-spatPlot2D.png")
 ```
 
 
@@ -280,20 +312,36 @@ spatInSituPlotPoints(visiumHD,
 
 ```
 
+```{r, echo=FALSE, out.width="100%", fig.align="center"}
+knitr::include_graphics("img/02_session2/3-spatInSituPlotPoints.png")
+```
 
 ## Dimension reduction + clustering
 
 ### Highly variable features + PCA
 ```{r, eval=FALSE}
-visiumHD <- calculateHVF(visiumHD, zscore_threshold = 1)
-visiumHD <- runPCA(visiumHD, expression_values = 'normalized', feats_to_use = 'hvf')
+visiumHD <- calculateHVF(visiumHD, 
+                         zscore_threshold = 1)
+visiumHD <- runPCA(visiumHD, 
+                   expression_values = 'normalized', 
+                   feats_to_use = 'hvf')
 screePlot(visiumHD, ncp = 30)
+```
+
+```{r, echo=FALSE, out.width="100%", fig.align="center"}
+knitr::include_graphics("img/02_session2/4-screePlot.png")
 ```
 
 
 ```{r, eval=FALSE}
 plotPCA(visiumHD)
 ```
+
+```{r, echo=FALSE, out.width="100%", fig.align="center"}
+knitr::include_graphics("img/02_session2/5-PCA.png")
+```
+
+
 
 ### UMAP reduction for visualization
 ```{r, eval=FALSE}
@@ -305,11 +353,17 @@ plotUMAP(gobject = visiumHD,
          point_size = 1)
 ```
 
+```{r, echo=FALSE, out.width="100%", fig.align="center"}
+knitr::include_graphics("img/02_session2/6-UMAP.png")
+```
+
+
 ### Create network based on expression similarity + graph partition cluster
 ```{r, eval=FALSE}
 # sNN network (default)
 visiumHD <- createNearestNetwork(visiumHD, 
-                                 dimensions_to_use = 1:14, k = 5)
+                                 dimensions_to_use = 1:14, 
+                                 k = 5)
 
 
 ## leiden clustering ####
@@ -323,6 +377,11 @@ plotUMAP(gobject = visiumHD,
          show_NN_network = F, 
          edge_alpha = 0.05)
 ```
+
+```{r, echo=FALSE, out.width="100%", fig.align="center"}
+knitr::include_graphics("img/02_session2/7-UMAP.png")
+```
+
 
 
 ```{r, eval=FALSE}
@@ -342,6 +401,9 @@ spatInSituPlotPoints(visiumHD,
 
 ```
 
+```{r, echo=FALSE, out.width="100%", fig.align="center"}
+knitr::include_graphics("img/02_session2/8-spatInSituPlotPoints.png")
+```
 
 
 ## Hexbin 100
@@ -357,7 +419,6 @@ hexbin100 <- tessellate(extent = ext(visiumHD),
                         shape = 'hexagon', 
                         shape_size = 100, 
                         name = 'hex100') 
-plot(hexbin100)
 
 visiumHD = setPolygonInfo(gobject = visiumHD,
                           x = hexbin100,
@@ -393,6 +454,10 @@ spatInSituPlotPoints(visiumHD,
                      jitter = c(25,25))
 ```
 
+```{r, echo=FALSE, out.width="100%", fig.align="center"}
+knitr::include_graphics("img/02_session2/9-spatInSituPlotPoints.png")
+```
+
 
 
 ```{r, eval=FALSE}
@@ -416,7 +481,6 @@ visiumHD <- addStatistics(visiumHD)
 ```
 
 
-
 ```{r, eval=FALSE}
 pDataDT(visiumHD, spat_unit = 'hex100')
 pDataDT(visiumHD, spat_unit = 'hex400')
@@ -430,13 +494,26 @@ visiumHD <- calculateHVF(visiumHD, zscore_threshold = 1)
 visiumHD <- runPCA(visiumHD, expression_values = 'normalized', feats_to_use = 'hvf')
 
 plotPCA(visiumHD)
+```
 
+```{r, echo=FALSE, out.width="100%", fig.align="center"}
+knitr::include_graphics("img/02_session2/10-PCA.png")
+```
+
+```{r, eval=FALSE}
 visiumHD <- runUMAP(visiumHD, dimensions_to_use = 1:14, n_threads = 10)
 
 # plot UMAP, coloring cells/points based on nr_feats
 plotUMAP(gobject = visiumHD,
          point_size = 2)
+```
 
+```{r, echo=FALSE, out.width="100%", fig.align="center"}
+knitr::include_graphics("img/02_session2/11-UMAP.png")
+```
+
+
+```{r, eval=FALSE}
 # sNN network (default)
 visiumHD <- createNearestNetwork(visiumHD, 
                                  dimensions_to_use = 1:14, 
@@ -450,7 +527,15 @@ plotUMAP(gobject = visiumHD,
          point_size = 1.5,
          show_NN_network = F, 
          edge_alpha = 0.05)
+```
 
+```{r, echo=FALSE, out.width="100%", fig.align="center"}
+knitr::include_graphics("img/02_session2/12-UMAP.png")
+```
+
+
+
+```{r, eval=FALSE}
 spatInSituPlotPoints(visiumHD,
                      show_image = F,
                      feats = NULL,
@@ -467,6 +552,9 @@ spatInSituPlotPoints(visiumHD,
 
 ```
 
+```{r, echo=FALSE, out.width="100%", fig.align="center"}
+knitr::include_graphics("img/02_session2/13-spatInSituPlotPoints.png")
+```
 
 
 ### Spatial expression patterns
@@ -494,35 +582,49 @@ ranktest = binSpect(visiumHD,
 
 Visualize top 2 ranked spatial genes per expression bin:  
 ```{r, eval=FALSE}
+set0 = ranktest[high_expr < 50][1:2]$feats
 set1 = ranktest[high_expr > 50 & high_expr < 100][1:2]$feats
 set2 = ranktest[high_expr > 100 & high_expr < 200][1:2]$feats
 set3 = ranktest[high_expr > 200 & high_expr < 400][1:2]$feats
 set4 = ranktest[high_expr > 400 & high_expr < 1000][1:2]$feats
 set5 = ranktest[high_expr > 1000][1:2]$feats
 
-# set 1 and 2
 spatFeatPlot2D(visiumHD,
                expression_values = 'scaled',
-               feats = c(set1, set2),
+               feats = c(set0, set1, set2),
+               gradient_style = "sequential",
+               cell_color_gradient = c('blue', 'white', 'yellow', 'orange', 'red', 'darkred'),
                cow_n_col = 2, point_size = 1)
 ```
+
+```{r, echo=FALSE, out.width="100%", fig.align="center"}
+knitr::include_graphics("img/02_session2/14-spatFeatPlot2D.png")
+```
+
 
 
 ```{r, eval=FALSE}
 
-# set 3 to 5
 spatFeatPlot2D(visiumHD,
                expression_values = 'scaled',
                feats = c(set3, set4, set5),
+               gradient_style = "sequential",
+               cell_color_gradient = c('blue', 'white', 'yellow', 'orange', 'red', 'darkred'),
                cow_n_col = 2, point_size = 1)
-
 ```
+
+
+```{r, echo=FALSE, out.width="100%", fig.align="center"}
+knitr::include_graphics("img/02_session2/15-spatFeatPlot2D.png")
+```
+
+
 
 #### Spatial co-expression modules
 
 
 ```{r, eval=FALSE}
-ext_spatial_genes = ranktest[adj.p.value < 0.05]$feats
+ext_spatial_genes = ranktest[adj.p.value < 0.001]$feats
 
 spat_cor_netw_DT = detectSpatialCorFeats(visiumHD,
                                          method = 'network',
@@ -530,13 +632,19 @@ spat_cor_netw_DT = detectSpatialCorFeats(visiumHD,
                                          subset_feats = ext_spatial_genes)
 
 # cluster spatial genes
-spat_cor_netw_DT = clusterSpatialCorFeats(spat_cor_netw_DT, name = 'spat_netw_clus', k = 20)
+spat_cor_netw_DT = clusterSpatialCorFeats(spat_cor_netw_DT, 
+                                          name = 'spat_netw_clus', 
+                                          k = 16)
 
 # visualize clusters
 heatmSpatialCorFeats(visiumHD,
                      spatCorObject = spat_cor_netw_DT,
                      use_clus_name = 'spat_netw_clus',
                      heatmap_legend_param = list(title = NULL))
+```
+
+```{r, echo=FALSE, out.width="100%", fig.align="center"}
+knitr::include_graphics("img/02_session2/16-heatmSpatialCorFeats.png")
 ```
 
 
@@ -553,28 +661,71 @@ visiumHD = createMetafeats(visiumHD,
                            feat_clusters = cluster_genes,
                            name = 'cluster_metagene')
 
+showGiottoSpatEnrichments(visiumHD)
+```
+
+
+```{r, eval=FALSE}
 spatCellPlot(visiumHD,
              spat_enr_names = 'cluster_metagene',
+             gradient_style = "sequential",
+             cell_color_gradient = c('blue', 'white', 'yellow', 'orange', 'red', 'darkred'),
              cell_annotation_values = as.character(c(1:4)),
              point_size = 1, cow_n_col = 2)
 ```
 
 
+```{r, echo=FALSE, out.width="100%", fig.align="center"}
+knitr::include_graphics("img/02_session2/17-spatCellPlot2D.png")
+```
+
+
 ```{r, eval=FALSE}
 spatCellPlot(visiumHD,
              spat_enr_names = 'cluster_metagene',
+             gradient_style = "sequential",
+             cell_color_gradient = c('blue', 'white', 'yellow', 'orange', 'red', 'darkred'),
              cell_annotation_values = as.character(c(5:8)),
              point_size = 1, cow_n_col = 2)
 ```
 
 
+```{r, echo=FALSE, out.width="100%", fig.align="center"}
+knitr::include_graphics("img/02_session2/18-spatCellPlot2D.png")
+```
+
+
 ```{r, eval=FALSE}
 spatCellPlot(visiumHD,
              spat_enr_names = 'cluster_metagene',
-             cell_annotation_values = as.character(c(9:10)),
+             gradient_style = "sequential",
+             cell_color_gradient = c('blue', 'white', 'yellow', 'orange', 'red', 'darkred'),
+             cell_annotation_values = as.character(c(9:12)),
              point_size = 1, cow_n_col = 2)
 ```
 
+
+```{r, echo=FALSE, out.width="100%", fig.align="center"}
+knitr::include_graphics("img/02_session2/19-spatCellPlot2D.png")
+```
+
+```{r, eval=FALSE}
+spatCellPlot(visiumHD,
+             spat_enr_names = 'cluster_metagene',
+             gradient_style = "sequential",
+             cell_color_gradient = c('blue', 'white', 'yellow', 'orange', 'red', 'darkred'),
+             cell_annotation_values = as.character(c(13:16)),
+             point_size = 1, cow_n_col = 2)
+```
+
+
+```{r, echo=FALSE, out.width="100%", fig.align="center"}
+knitr::include_graphics("img/02_session2/20-spatCellPlot2D.png")
+```
+
+
+
+#### Plot spatial gene groups
 
 ```{r, eval=FALSE}
 balanced_genes = getBalancedSpatCoexpressionFeats(spatCorObject = spat_cor_netw_DT, 
@@ -595,16 +746,21 @@ spatInSituPlotPoints(visiumHD,
                      show_legend = F,
                      spat_unit = 'hex100',
                      point_size = 0.20,
-                     show_polygon = TRUE,
+                     show_polygon = FALSE,
                      use_overlap = FALSE,
                      polygon_feat_type = 'hex100',
                      polygon_bg_color = NA,
                      polygon_color = 'white',
-                     polygon_line_size = 0.05,
+                     polygon_line_size = 0.01,
+                     expand_counts = TRUE, 
+                     count_info_column = 'count',
                      jitter = c(25,25))
 
 ```
 
+```{r, echo=FALSE, out.width="100%", fig.align="center"}
+knitr::include_graphics("img/02_session2/21-spatInSituPlotPoints.png")
+```
 
 
 
@@ -670,5 +826,10 @@ visiumHD_subset <- normalizeGiotto(visiumHD_subset, scalefactor = 1000, verbose 
 # add statistics
 visiumHD_subset <- addStatistics(visiumHD_subset)
 ```
+
+
+
+## Database backend
+
 
 
