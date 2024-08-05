@@ -282,7 +282,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.5" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatially-informed-clusters"><i class="fa fa-check"></i><b>8.5</b> Spatially informed clusters</a></li>
 <li class="chapter" data-level="8.6" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatial-domains-hmrf"><i class="fa fa-check"></i><b>8.6</b> Spatial domains HMRF</a></li>
 <li class="chapter" data-level="8.7" data-path="visium-part-ii.html"><a href="visium-part-ii.html#interactive-tools"><i class="fa fa-check"></i><b>8.7</b> Interactive tools</a></li>
-<li class="chapter" data-level="8.8" data-path="visium-part-ii.html"><a href="visium-part-ii.html#session-info-1"><i class="fa fa-check"></i><b>8.8</b> Session info</a></li>
+<li class="chapter" data-level="8.8" data-path="visium-part-ii.html"><a href="visium-part-ii.html#save-the-object-1"><i class="fa fa-check"></i><b>8.8</b> Save the object</a></li>
+<li class="chapter" data-level="8.9" data-path="visium-part-ii.html"><a href="visium-part-ii.html#session-info-1"><i class="fa fa-check"></i><b>8.9</b> Session info</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="visium-hd.html"><a href="visium-hd.html"><i class="fa fa-check"></i><b>9</b> Visium HD</a>
 <ul>
@@ -584,7 +585,7 @@ Figure 7.1: Visum workflow. Source: 10X Genomics
 <div id="download-dataset" class="section level2 hasAnchor" number="7.3">
 <h2><span class="header-section-number">7.3</span> Download dataset<a href="visium-part-i.html#download-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You need to download the expression matrix and spatial information by running these commands:</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="visium-part-i.html#cb68-1" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&quot;data/01_session5/&quot;</span>)</span>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="visium-part-i.html#cb68-1" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&quot;data/01_session5&quot;</span>)</span>
 <span id="cb68-2"><a href="visium-part-i.html#cb68-2" tabindex="-1"></a></span>
 <span id="cb68-3"><a href="visium-part-i.html#cb68-3" tabindex="-1"></a><span class="fu">download.file</span>(<span class="at">url =</span> <span class="st">&quot;https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz&quot;</span>,</span>
 <span id="cb68-4"><a href="visium-part-i.html#cb68-4" tabindex="-1"></a>              <span class="at">destfile =</span> <span class="st">&quot;data/01_session5/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz&quot;</span>)</span>
@@ -604,7 +605,7 @@ Figure 7.1: Visum workflow. Source: 10X Genomics
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="visium-part-i.html#cb70-1" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
 <span id="cb70-2"><a href="visium-part-i.html#cb70-2" tabindex="-1"></a></span>
 <span id="cb70-3"><a href="visium-part-i.html#cb70-3" tabindex="-1"></a><span class="do">## Set instructions</span></span>
-<span id="cb70-4"><a href="visium-part-i.html#cb70-4" tabindex="-1"></a>results_folder <span class="ot">&lt;-</span> <span class="st">&quot;results/01_session5/&quot;</span></span>
+<span id="cb70-4"><a href="visium-part-i.html#cb70-4" tabindex="-1"></a>results_folder <span class="ot">&lt;-</span> <span class="st">&quot;results/01_session5&quot;</span></span>
 <span id="cb70-5"><a href="visium-part-i.html#cb70-5" tabindex="-1"></a></span>
 <span id="cb70-6"><a href="visium-part-i.html#cb70-6" tabindex="-1"></a>python_path <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
 <span id="cb70-7"><a href="visium-part-i.html#cb70-7" tabindex="-1"></a></span>
@@ -617,7 +618,7 @@ Figure 7.1: Visum workflow. Source: 10X Genomics
 <span id="cb70-14"><a href="visium-part-i.html#cb70-14" tabindex="-1"></a>)</span>
 <span id="cb70-15"><a href="visium-part-i.html#cb70-15" tabindex="-1"></a></span>
 <span id="cb70-16"><a href="visium-part-i.html#cb70-16" tabindex="-1"></a><span class="do">## Provide the path to the visium folder</span></span>
-<span id="cb70-17"><a href="visium-part-i.html#cb70-17" tabindex="-1"></a>data_path <span class="ot">&lt;-</span> <span class="st">&quot;data/01_session5/&quot;</span></span>
+<span id="cb70-17"><a href="visium-part-i.html#cb70-17" tabindex="-1"></a>data_path <span class="ot">&lt;-</span> <span class="st">&quot;data/01_session5&quot;</span></span>
 <span id="cb70-18"><a href="visium-part-i.html#cb70-18" tabindex="-1"></a></span>
 <span id="cb70-19"><a href="visium-part-i.html#cb70-19" tabindex="-1"></a><span class="do">## Create object directly from the visium folder</span></span>
 <span id="cb70-20"><a href="visium-part-i.html#cb70-20" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">createGiottoVisiumObject</span>(</span>
@@ -968,7 +969,7 @@ Figure 7.22: Spatial plot, colors indicate the Louvain clusters.
 </div>
 <div id="save-the-object" class="section level2 hasAnchor" number="7.12">
 <h2><span class="header-section-number">7.12</span> Save the object<a href="visium-part-i.html#save-the-object" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="visium-part-i.html#cb104-1" tabindex="-1"></a><span class="fu">saveGiotto</span>(visium_brain, <span class="st">&quot;visium_brain_object&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="visium-part-i.html#cb104-1" tabindex="-1"></a><span class="fu">saveGiotto</span>(visium_brain, <span class="st">&quot;results/01_session5/visium_brain_object&quot;</span>)</span></code></pre></div>
 </div>
 <div id="session-info" class="section level2 hasAnchor" number="7.13">
 <h2><span class="header-section-number">7.13</span> Session info<a href="visium-part-i.html#session-info" class="anchor-section" aria-label="Anchor link to header"></a></h2>
