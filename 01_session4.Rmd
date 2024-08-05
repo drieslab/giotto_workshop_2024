@@ -28,21 +28,22 @@ library(Giotto)
 
 # function to get a filepath from GiottoData
 mini_vis_raw <- function(x) {
-    system.file(
-        package = "GiottoData", 
-        file.path("Mini_datasets", "Visium", "Raw", x)
-    )
+  system.file(
+    package = "GiottoData", 
+    file.path("Mini_datasets", "Visium", "Raw", x)
+  )
 }
 
 mini_vis_expr <- mini_vis_raw("visium_DG_expr.txt.gz") |>
-    data.table::fread() |>
-    GiottoUtils::dt_to_matrix()
+  data.table::fread() |>
+  GiottoUtils::dt_to_matrix()
+
 mini_vis_expr[seq(5), seq(5)]
 ```
 
 ```         
 5 x 5 sparse Matrix of class "dgCMatrix"
-       AAAGGGATGTAGCAAG-1 AAATGGCATGTCTTGT-1 AAATGGTCAATGTGCC-1 AAATTAACGGGTAGCT-1 AACAACTGGTAGTTGC-1
+AAAGGGATGTAGCAAG-1 AAATGGCATGTCTTGT-1 AAATGGTCAATGTGCC-1 AAATTAACGGGTAGCT-1 AACAACTGGTAGTTGC-1
 Gna12                   1                  2                  1                  1                  9
 Ccnd2                   .                  1                  1                  .                  .
 Btbd17                  .                  1                  1                  1                  .
@@ -52,13 +53,14 @@ Sez6                    .                  1                  4                 
 
 ```{r, eval=FALSE}
 mini_vis_slocs <- mini_vis_raw("visium_DG_locs.txt") |>
-    data.table::fread()
+  data.table::fread()
+
 head(mini_vis_slocs)
 ```
 
 ```         
-      V1    V2
-   <int> <int>
+V1    V2
+<int> <int>
 1:  5477 -4125
 2:  5959 -2808
 3:  4720 -5202
@@ -71,9 +73,10 @@ With these two pieces of data, we can make a fully working `giotto` object. The 
 
 ```{r, eval=FALSE}
 mini_vis <- createGiottoObject(
-    expression = mini_vis_expr,
-    spatial_locs = mini_vis_slocs
+  expression = mini_vis_expr,
+  spatial_locs = mini_vis_slocs
 )
+
 instructions(mini_vis, "return_plot") <- FALSE
 # set return_plot = FALSE otherwise we will get duplicate outputs in code chunks
 ```
@@ -82,11 +85,11 @@ For a simple example plot:
 
 ```{r, eval=FALSE}
 spatFeatPlot2D(mini_vis,
-    feats = c("Gna12", "Gfap"), 
-    expression_values = "raw",
-    point_size = 2.5,
-    gradient_style = "sequential",
-    background_color = "black"
+               feats = c("Gna12", "Gfap"), 
+               expression_values = "raw",
+               point_size = 2.5,
+               gradient_style = "sequential",
+               background_color = "black"
 )
 ```
 
@@ -101,15 +104,17 @@ You can also make `giotto` objects starting from raw spatial feature information
 ```{r, eval=FALSE}
 # function to get a filepath from GiottoData
 mini_viz_raw <- function(x) {
-    system.file(
-        package = "GiottoData", 
-        file.path("Mini_datasets", "Vizgen", "Raw", x)
-    )
+  system.file(
+    package = "GiottoData", 
+    file.path("Mini_datasets", "Vizgen", "Raw", x)
+  )
 }
 
 mini_viz_dt <- mini_viz_raw(file.path("cell_boundaries", "z0_polygons.gz")) |>
-    data.table::fread()
+  data.table::fread()
+
 mini_viz_poly <- createGiottoPolygon(mini_viz_dt)
+
 force(mini_viz_poly)
 ```
 
@@ -117,18 +122,18 @@ force(mini_viz_poly)
 An object of class giottoPolygon
 spat_unit : "cell"
 Spatial Information:
- class       : SpatVector 
- geometry    : polygons 
- dimensions  : 498, 1  (geometries, attributes)
- extent      : 6399.244, 6903.243, -5152.39, -4694.868  (xmin, xmax, ymin, ymax)
- coord. ref. :  
- names       :                                 poly_ID
- type        :                                   <chr>
- values      :  40951783403982682273285375368232495429
-               240649020551054330404932383065726870513
-               274176126496863898679934791272921588227
- centroids   : NULL
- overlaps    : NULL
+class       : SpatVector 
+geometry    : polygons 
+dimensions  : 498, 1  (geometries, attributes)
+extent      : 6399.244, 6903.243, -5152.39, -4694.868  (xmin, xmax, ymin, ymax)
+coord. ref. :  
+names       :                                 poly_ID
+type        :                                   <chr>
+values      :  40951783403982682273285375368232495429
+240649020551054330404932383065726870513
+274176126496863898679934791272921588227
+centroids   : NULL
+overlaps    : NULL
 ```
 
 ```{r, eval=FALSE}
@@ -141,10 +146,12 @@ knitr::include_graphics("img/01_session4/viz_gpoly.png")
 
 ```{r, eval=FALSE}
 mini_viz_tx <- mini_viz_raw("vizgen_transcripts.gz") |>
-    data.table::fread()
+  data.table::fread()
+
 mini_viz_tx[, global_y := -global_y] # flip values to match polys
 
 viz_gpoints <- createGiottoPoints(mini_viz_tx)
+
 force(viz_gpoints)
 ```
 
@@ -152,16 +159,16 @@ force(viz_gpoints)
 An object of class giottoPoints
 feat_type : "rna"
 Feature Information:
- class       : SpatVector 
- geometry    : points 
- dimensions  : 80343, 3  (geometries, attributes)
- extent      : 6400.037, 6900.032, 4699.979, 5149.983  (xmin, xmax, ymin, ymax)
- coord. ref. :  
- names       : feat_ID global_z feat_ID_uniq
- type        :   <chr>    <int>        <int>
- values      :    Mlc1        0            1
-                Gprc5b        0            2
-                  Gfap        0            3
+class       : SpatVector 
+geometry    : points 
+dimensions  : 80343, 3  (geometries, attributes)
+extent      : 6400.037, 6900.032, 4699.979, 5149.983  (xmin, xmax, ymin, ymax)
+coord. ref. :  
+names       : feat_ID global_z feat_ID_uniq
+type        :   <chr>    <int>        <int>
+values      :    Mlc1        0            1
+Gprc5b        0            2
+Gfap        0            3
 ```
 
 ```{r, eval=FALSE}
@@ -174,10 +181,12 @@ knitr::include_graphics("img/01_session4/viz_gpoints.png")
 
 ```{r, eval=FALSE}
 mini_viz <- createGiottoObjectSubcellular(
-    gpolygons = mini_viz_poly,
-    gpoints = viz_gpoints
+  gpolygons = mini_viz_poly,
+  gpoints = viz_gpoints
 )
+
 instructions(mini_viz, "return_plot") <- FALSE 
+
 force(mini_viz)
 ```
 
@@ -200,15 +209,16 @@ mini_viz <- addSpatialCentroidLocations(mini_viz)
 
 # create aggregated information
 mini_viz <- calculateOverlap(mini_viz)
+
 mini_viz <- overlapToMatrix(mini_viz)
 
 spatFeatPlot2D(
-    mini_viz, 
-    feats = c("Grm4", "Gfap"),
-    expression_values = "raw",
-    point_size = 2.5,
-    gradient_style = "sequential",
-    background_color = "black"
+  mini_viz, 
+  feats = c("Grm4", "Gfap"),
+  expression_values = "raw",
+  point_size = 2.5,
+  gradient_style = "sequential",
+  background_color = "black"
 )
 ```
 
@@ -222,8 +232,11 @@ You can also piece-wise assemble an object independently of one of the 2 previou
 
 ```{r, eval=FALSE}
 g <- giotto() # initialize empty gobject
+
 g <- setGiotto(g, mini_viz_poly)
+
 g <- setGiotto(g, viz_gpoints)
+
 force(g)
 ```
 
@@ -262,9 +275,13 @@ Giotto has several spatial plotting functions. At the lowest level, you directly
 
 ```{r, eval=FALSE}
 gpoints <- GiottoData::loadSubObjectMini("giottoPoints")
+
 plot(gpoints)
+
 plot(gpoints, dens = TRUE, col = getColors("magma", 255))
+
 plot(gpoints, raster = FALSE)
+
 plot(gpoints, feats = c("Grm4", "Gfap"))
 ```
 
@@ -274,8 +291,11 @@ knitr::include_graphics("img/01_session4/gpoint_plots.png")
 
 ```{r, eval=FALSE}
 gpoly <- GiottoData::loadSubObjectMini("giottoPolygon")
+
 plot(gpoly)
+
 plot(gpoly, type = "centroid")
+
 plot(gpoly, max_poly = 10)
 ```
 
@@ -285,6 +305,7 @@ knitr::include_graphics("img/01_session4/gpoly_plots.png")
 
 ```{r, eval=FALSE}
 spatlocs <- GiottoData::loadSubObjectMini("spatLocsObj")
+
 plot(spatlocs)
 ```
 
@@ -294,6 +315,7 @@ knitr::include_graphics("img/01_session4/sl_plot.png")
 
 ```{r, eval=FALSE}
 spatnet <- GiottoData::loadSubObjectMini("spatialNetworkObj")
+
 plot(spatnet)
 ```
 
@@ -303,6 +325,7 @@ knitr::include_graphics("img/01_session4/spatnet_plot.png")
 
 ```{r, eval=FALSE}
 pca <- GiottoData::loadSubObjectMini("dimObj")
+
 plot(pca, dims = c(3,10))
 ```
 
@@ -318,6 +341,7 @@ These base plotting functions inherit from `terra::plot()`. They can be used add
 gimg <- GiottoData::loadSubObjectMini("giottoLargeImage")
 
 plot(gimg, col = getMonochromeColors("#5FAFFF"))
+
 plot(gpoly, border = "maroon", lwd = 0.5, add = TRUE)
 ```
 
@@ -335,7 +359,9 @@ knitr::include_graphics("img/01_session4/additive_baseplot.png")
 
 ```{r, eval=FALSE}
 g <- GiottoData::loadGiottoMini("vizgen")
+
 activeSpatUnit(g) <- "aggregate" # set default spat_unit to the one with lots of results
+
 force(g)
 ```
 
@@ -348,21 +374,21 @@ polygons      : z0 z1 aggregate
 features      : rna 
 [AGGREGATE INFO]
 expression -----------------------
-  [z0][rna] raw
-  [z1][rna] raw
-  [aggregate][rna] raw normalized scaled pearson
+[z0][rna] raw
+[z1][rna] raw
+[aggregate][rna] raw normalized scaled pearson
 spatial locations ----------------
-  [z0] raw
-  [z1] raw
-  [aggregate] raw
+[z0] raw
+[z1] raw
+[aggregate] raw
 spatial networks -----------------
-  [aggregate] Delaunay_network kNN_network
+[aggregate] Delaunay_network kNN_network
 spatial enrichments --------------
-  [aggregate][rna] cluster_metagene
+[aggregate][rna] cluster_metagene
 dim reduction --------------------
-  [aggregate][rna] pca umap tsne
+[aggregate][rna] pca umap tsne
 nearest neighbor networks --------
-  [aggregate][rna] sNN.pca
+[aggregate][rna] sNN.pca
 attached images ------------------
 images      : 4 items...
 
@@ -381,27 +407,27 @@ pDataDT(g)
 ```
 
 ```         
-                                     cell_ID nr_feats perc_feats total_expr leiden_clus
-                                      <char>    <int>      <num>      <num>       <num>
-  1: 240649020551054330404932383065726870513        5   1.483680   49.40986           2
-  2: 274176126496863898679934791272921588227       27   8.011869  191.50684           2
-  3: 323754550002953984063006506310071917306       23   6.824926  173.86955           4
-  4:  87260224659312905497866017323180367450       37  10.979228  246.04928           5
-  5:  17817477728742691260808256980746537959       18   5.341246  142.44520           4
- ---                                                                                   
+cell_ID nr_feats perc_feats total_expr leiden_clus
+<char>    <int>      <num>      <num>       <num>
+1: 240649020551054330404932383065726870513        5   1.483680   49.40986           2
+2: 274176126496863898679934791272921588227       27   8.011869  191.50684           2
+3: 323754550002953984063006506310071917306       23   6.824926  173.86955           4
+4:  87260224659312905497866017323180367450       37  10.979228  246.04928           5
+5:  17817477728742691260808256980746537959       18   5.341246  142.44520           4
+---                                                                                   
 458:   6380671372744430258754116433861320161       54  16.023739  339.24383           2
 459:  75286702783716447443887872812098770697       45  13.353116  286.81011           1
 460:   9677424102111816817518421117250891895       30   8.902077  211.71790           2
 461:  17685062374745280598492217386845129350        5   1.483680   48.99550           2
 462:  32422253415776258079819139802733069941       12   3.560831  102.52805           2
-     louvain_clus
-            <num>
-  1:            0
-  2:            3
-  3:            8
-  4:            6
-  5:            7
- ---             
+louvain_clus
+<num>
+1:            0
+2:            3
+3:            8
+4:            6
+5:            7
+---             
 458:            0
 459:           23
 460:            3
@@ -412,17 +438,21 @@ pDataDT(g)
 We have some expression count statistics and clustering annotations already present in the object
 
 ```{r, eval=FALSE}
-spatPlot2D(g, cell_color = "leiden_clus")
+spatPlot2D(g, 
+           cell_color = "leiden_clus")
 
-spatPlot2D(g, cell_color = "leiden_clus", 
+spatPlot2D(g, 
+           cell_color = "leiden_clus", 
            show_image = TRUE, 
            image_name = "dapi_z0")
 
-spatPlot2D(g, cell_color = "total_expr",
+spatPlot2D(g, 
+           cell_color = "total_expr",
            color_as_factor = FALSE, 
            gradient_style = "sequential")
 
-spatPlot2D(g, cell_color = "leiden_clus", 
+spatPlot2D(g, 
+           cell_color = "leiden_clus", 
            group_by = "leiden_clus")
 ```
 
@@ -435,7 +465,8 @@ knitr::include_graphics("img/01_session4/spatplot.png")
 We have a `cluster_metagene` enrichment already made in the object that is a numerical measure of how much each of the cells map to the leiden clusters we have above
 
 ```{r, eval=FALSE}
-spatCellPlot2D(g, spat_enr_names = "cluster_metagene",
+spatCellPlot2D(g, 
+               spat_enr_names = "cluster_metagene",
                cell_annotation_values = as.character(1:5))
 ```
 
@@ -444,7 +475,8 @@ knitr::include_graphics("img/01_session4/spatcellplot.png")
 ```
 
 ```{r, eval=FALSE}
-spatCellPlot2D(g, spat_enr_names = "cluster_metagene", 
+spatCellPlot2D(g, 
+               spat_enr_names = "cluster_metagene", 
                cell_annotation_values = as.character(1:5),
                cell_color_gradient = "magma",
                background_color = "black")
@@ -457,7 +489,10 @@ knitr::include_graphics("img/01_session4/spatcellplot_magmajks.png")
 `spatFeatPlot()` - centroid-based plotting for feature expression plotting
 
 ```{r, eval=FALSE}
-spatFeatPlot2D(g, feats = c("Flt4", "Mertk"), point_size = 2, expression_values = "scaled")
+spatFeatPlot2D(g, 
+               feats = c("Flt4", "Mertk"), 
+               point_size = 2, 
+               expression_values = "scaled")
 ```
 
 ```{r, echo=FALSE, fig.cap="Spatial feature expression plot of normalized Flt4 (left) and Mertk expression (right)"}
@@ -468,27 +503,27 @@ knitr::include_graphics("img/01_session4/spatfeatplot.png")
 
 ```{r, eval=FALSE}
 spatInSituPlotPoints(g,
-    feats = list(rna = c("Flt4", "Mertk", "Gfap")), # this should be a named list
-    point_size = 0.5,
-    polygon_fill = "total_expr",
-    polygon_fill_as_factor = FALSE,
-    polygon_fill_gradient_style = "sequential",
-    polygon_alpha = 0.5,
-    plot_last = "points",
-    show_image = TRUE
+                     feats = list(rna = c("Flt4", "Mertk", "Gfap")), # this should be a named list
+                     point_size = 0.5,
+                     polygon_fill = "total_expr",
+                     polygon_fill_as_factor = FALSE,
+                     polygon_fill_gradient_style = "sequential",
+                     polygon_alpha = 0.5,
+                     plot_last = "points",
+                     show_image = TRUE
 )
 
 # without overlaps
 spatInSituPlotPoints(g,
-    feats = list(rna = c("Flt4", "Mertk", "Gfap")), # this should be a named list
-    point_size = 0.5,
-    use_overlap = FALSE,
-    polygon_fill = "total_expr",
-    polygon_fill_as_factor = FALSE,
-    polygon_fill_gradient_style = "sequential",
-    polygon_alpha = 0.5,
-    plot_last = "points",
-    show_image = TRUE
+                     feats = list(rna = c("Flt4", "Mertk", "Gfap")), # this should be a named list
+                     point_size = 0.5,
+                     use_overlap = FALSE,
+                     polygon_fill = "total_expr",
+                     polygon_fill_as_factor = FALSE,
+                     polygon_fill_gradient_style = "sequential",
+                     polygon_alpha = 0.5,
+                     plot_last = "points",
+                     show_image = TRUE
 )
 ```
 
@@ -503,7 +538,10 @@ knitr::include_graphics("img/01_session4/insituplots.png")
 Also has more specific functions for PCA `plotPCA()`, UMAP `plotUMAP()`, tSNE `plotTSNE()` results.
 
 ```{r, eval=FALSE}
-dimPlot(g, dim_reduction_name = "umap", dim_reduction_to_use = "umap", cell_color = "leiden_clus")
+dimPlot(g, 
+        dim_reduction_name = "umap", 
+        dim_reduction_to_use = "umap", 
+        cell_color = "leiden_clus")
 ```
 
 ```{r, echo=FALSE, fig.cap="UMAP projection with leiden clustering colors"}
@@ -526,6 +564,7 @@ Subset the `giotto` object for a random 300 cell IDs
 
 ```{r, eval=FALSE}
 cx <- pDataDT(g)
+
 nrow(cx)
 ```
 
@@ -535,6 +574,7 @@ nrow(cx)
 
 ```{r, eval=FALSE}
 ex <- getExpression(g)
+
 dim(ex)
 ```
 
@@ -544,13 +584,18 @@ dim(ex)
 
 ```{r, eval=FALSE}
 instructions(g, "cell_color_c_pal") <- "viridis"
+
 instructions(g, "poly_color_c_pal") <- "viridis"
+
 set.seed(1234)
-gsubset <- subsetGiotto(g, cell_ids = sample(spatIDs(g), 300))
+
+gsubset <- subsetGiotto(g, 
+                        cell_ids = sample(spatIDs(g), 300))
 ```
 
 ```{r, eval=FALSE}
 cx_sub <- pDataDT(gsubset)
+
 nrow(cx_sub)
 ```
 
@@ -559,10 +604,15 @@ nrow(cx_sub)
 ```
 
 ```{r, eval=FALSE}
-spatPlot(g, cell_color = "total_expr",
-         color_as_factor = FALSE, background_color = "black")
-spatPlot(gsubset, cell_color = "total_expr",
-         color_as_factor = FALSE, background_color = "black")
+spatPlot(g, 
+         cell_color = "total_expr",
+         color_as_factor = FALSE, 
+         background_color = "black")
+
+spatPlot(gsubset, 
+         cell_color = "total_expr",
+         color_as_factor = FALSE, 
+         background_color = "black")
 ```
 
 ```{r, echo=FALSE, fig.cap="plot showing starting object (left) and subset object (right)"}
@@ -573,16 +623,19 @@ knitr::include_graphics("img/01_session4/subset_id.png")
 
 ```{r, eval=FALSE}
 gsubsetlocs <- subsetGiottoLocs(g, 
-    x_min = 6500, x_max = 6700, 
-    poly_info = "aggregate"
+                                x_min = 6500, x_max = 6700, 
+                                poly_info = "aggregate"
 )
 ```
 
 ```{r, eval=FALSE}
+spatPlot(gsubsetlocs, 
+         cell_color = "total_expr",
+         color_as_factor = FALSE, 
+         background_color = "black")
 
-spatPlot(gsubsetlocs, cell_color = "total_expr",
-         color_as_factor = FALSE, background_color = "black")
-spatInSituPlotPoints(gsubsetlocs, polygon_fill = "total_expr",
+spatInSituPlotPoints(gsubsetlocs, 
+                     polygon_fill = "total_expr",
                      polygon_fill_as_factor = FALSE)
 ```
 
