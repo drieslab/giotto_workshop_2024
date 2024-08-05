@@ -30,20 +30,31 @@ For the following sections we will need to create a geojson that contains polygo
 We first need to import a dataset that we want to perform kriging on.
 ```{r, eval=FALSE}
 
-data_directory <- "data"
+data_directory <- "data/03_session6"
+dir.create(data_directory)
 
 download.file(url = "https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz",
-              destfile = "data/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz")
+              destfile = file.path(data_directory, "V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz"))
 
 download.file(url = "https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_spatial.tar.gz",
-              destfile = "data/V1_Adult_Mouse_Brain_spatial.tar.gz")
+              destfile = file.path(data_directory, "V1_Adult_Mouse_Brain_spatial.tar.gz"))
 ```
 
-After downloading, unzip the gz files. You should get the “raw_feature_bc_matrix” and “spatial” folders inside “data/”.
+## Extracting the files
+```{r, eval=FALSE}
+
+untar(tarfile = file.path(data_directory, "V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz"), 
+      exdir = data_directory)
+
+untar(tarfile = file.path(data_directory, "V1_Adult_Mouse_Brain_spatial.tar.gz"), 
+      exdir = data_directory)
+```
 
 ## Importing visium data
 
 We're going to begin by creating a Giotto object for the visium mouse brain dataset. This tutorial won't go into detail about each of these steps as these have been covered for this dataset in section 6. To get the best results when performing gene expression interpolation we need to identify spatially distinct genes. Therefore, we need to perform nearest neighbour to create a spatial network.
+
+If you have a Giotto object from day 1 session 5, feel free to load that in and skip this first step.
 
 ```{r, eval=FALSE}
 library(Giotto)
