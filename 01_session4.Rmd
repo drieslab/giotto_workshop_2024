@@ -354,12 +354,12 @@ knitr::include_graphics("img/01_session4/additive_baseplot.png")
 
 ### Giotto object plotting
 
-Giotot
+_Giotto_ also has several _ggplot2_-based plotting functions that work on the whole `giotto` object.
 Here we load the vizgen mini dataset from _GiottoData_ which contains a lot of worked out data.
 
 
 
-```{r}
+```{r, eval=FALSE}
 g <- GiottoData::loadGiottoMini("vizgen")
 activeSpatUnit(g) <- "aggregate" # set default spat_unit to the one with lots of results
 ```
