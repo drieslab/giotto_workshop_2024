@@ -304,7 +304,7 @@ tx <- x$load_transcripts()
 plot(tx[[1]]$rna, dens = TRUE)
 ```
 
-```{r, echo=FALSE, fig.align="center", out.width="80%", fig.cap="plot of Gene expression ("rna") density"}
+```{r, echo=FALSE, fig.align="center", out.width="80%", fig.cap="plot of Gene expression (rna) density"}
 knitr::include_graphics("img/02_session3/tx_plot.png")
 ```
 
@@ -442,7 +442,7 @@ spatInSituPlotPoints(g2,
 )
 ```
 
-```{r, echo=FALSE, fig.cap="Example plot using 10X metadata. Left is "cell_area", right is "transcript_counts""}
+```{r, echo=FALSE, fig.cap="Example plot using 10X metadata. Left is cell_area, right is transcript_counts"}
 knitr::include_graphics("img/02_session3/cmeta_plots.png")
 ```
 
@@ -649,7 +649,7 @@ spatInSituPlotPoints(g,
 )
 ```
 
-```{r, echo=FALSE, fig.cap=""nr_feats" - Number of different gene species detected per cell (left), "total_expr" - total detections per cell (right)"}
+```{r, echo=FALSE, fig.cap="nr_feats - Number of different gene species detected per cell (left), total_expr - total detections per cell (right)"}
 knitr::include_graphics("img/02_session3/stats_plot.png")
 ```
 
