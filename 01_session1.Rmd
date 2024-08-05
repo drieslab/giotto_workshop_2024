@@ -7,7 +7,7 @@ August 5th 2024
 ## Presentation
 
 [
-```{r out.height = "460px", out.width='800px', echo=F, fig.cap="Spatial omics overview slides"}
+```{r out.height = "460px", out.width='800px', echo=F}
 knitr::include_graphics("https://drieslab.github.io/giotto_workshop_2024/spatial_omics_technologies_GS_workshop.pdf")
 ```
 ](https://drieslab.github.io/giotto_workshop_2024/spatial_omics_technologies_GS_workshop.pdf)
