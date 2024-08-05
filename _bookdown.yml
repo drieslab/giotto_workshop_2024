@@ -1,1 +1,3 @@
 output_dir: "docs"
+copy_resources:
+  - "pdf"

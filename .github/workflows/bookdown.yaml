@@ -30,6 +30,9 @@ jobs:
           use-public-rspm: true
 
       - uses: r-lib/actions/setup-renv@v2
+        with:
+          extra-packages: |
+            any::pdftools
 
       - name: Cache bookdown results
         uses: actions/cache@v4
@@ -37,6 +40,12 @@ jobs:
           path: _bookdown_files
           key: bookdown-${{ hashFiles('**/*Rmd') }}
           restore-keys: bookdown-
+
+      - name: Copy PDF files
+        run: |
+          mkdir -p docs/pdf
+          cp -R pdf/* docs/pdf/
+        shell: bash
 
       - name: Build site
         run: bookdown::render_book("index.Rmd", quiet = TRUE)
