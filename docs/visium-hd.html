@@ -325,6 +325,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.6" data-path="visium-hd.html"><a href="visium-hd.html#hexbin-25"><i class="fa fa-check"></i><b>9.6</b> Hexbin 25</a>
 <ul>
 <li class="chapter" data-level="9.6.1" data-path="visium-hd.html"><a href="visium-hd.html#subcellular-workflow-and-projection-functions"><i class="fa fa-check"></i><b>9.6.1</b> Subcellular workflow and projection functions</a></li>
+<li class="chapter" data-level="9.6.2" data-path="visium-hd.html"><a href="visium-hd.html#projections"><i class="fa fa-check"></i><b>9.6.2</b> projections</a></li>
+<li class="chapter" data-level="9.6.3" data-path="visium-hd.html"><a href="visium-hd.html#niche-clusters"><i class="fa fa-check"></i><b>9.6.3</b> niche clusters</a></li>
 </ul></li>
 <li class="chapter" data-level="9.7" data-path="visium-hd.html"><a href="visium-hd.html#database-backend---work-in-progress-but-coming-soon"><i class="fa fa-check"></i><b>9.7</b> Database backend - Work in progress, but coming soon!</a></li>
 </ul></li>
@@ -632,8 +634,8 @@ Figure 9.3: File structure of Visium HD data processed with spaceranger pipeline
 <span id="cb1-8"><a href="visium-hd.html#cb1-8" tabindex="-1"></a><span class="co"># download the mini dataset and untar</span></span>
 <span id="cb1-9"><a href="visium-hd.html#cb1-9" tabindex="-1"></a><span class="fu">options</span>(<span class="st">&quot;timeout&quot;</span> <span class="ot">=</span> <span class="cn">Inf</span>)</span>
 <span id="cb1-10"><a href="visium-hd.html#cb1-10" tabindex="-1"></a><span class="fu">download.file</span>(</span>
-<span id="cb1-11"><a href="visium-hd.html#cb1-11" tabindex="-1"></a>    <span class="at">url =</span> <span class="st">&quot;https://zenodo.org/records/13212855/files/workshop_VisiumHD.zip?download=1&quot;</span>,</span>
-<span id="cb1-12"><a href="visium-hd.html#cb1-12" tabindex="-1"></a>    <span class="at">destfile =</span> <span class="fu">file.path</span>(save_dir, <span class="st">&quot;workshop_visiumHD.zip&quot;</span>)</span>
+<span id="cb1-11"><a href="visium-hd.html#cb1-11" tabindex="-1"></a>  <span class="at">url =</span> <span class="st">&quot;https://zenodo.org/records/13226158/files/workshop_VisiumHD.zip?download=1&quot;</span>,</span>
+<span id="cb1-12"><a href="visium-hd.html#cb1-12" tabindex="-1"></a>  <span class="at">destfile =</span> <span class="fu">file.path</span>(save_dir, <span class="st">&quot;workshop_visiumHD.zip&quot;</span>)</span>
 <span id="cb1-13"><a href="visium-hd.html#cb1-13" tabindex="-1"></a>)</span>
 <span id="cb1-14"><a href="visium-hd.html#cb1-14" tabindex="-1"></a><span class="fu">untar</span>(<span class="at">tarfile =</span> <span class="fu">file.path</span>(save_dir, <span class="st">&quot;workshop_visiumHD.zip&quot;</span>), </span>
 <span id="cb1-15"><a href="visium-hd.html#cb1-15" tabindex="-1"></a>      <span class="at">exdir =</span> data_path)</span></code></pre></div>
@@ -648,13 +650,13 @@ Figure 9.3: File structure of Visium HD data processed with spaceranger pipeline
 <p>However, for this tutorial we will illustrate how to create your own Giotto object in a step-by-step manner, which can also be applied to other similar technologies as discussed in the <a href="#Objective">Objective</a> section.</p>
 <div id="raw-expression-data" class="section level4 hasAnchor" number="9.3.4.1">
 <h4><span class="header-section-number">9.3.4.1</span> Raw expression data<a href="visium-hd.html#raw-expression-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="visium-hd.html#cb3-1" tabindex="-1"></a>expression_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(data_path, <span class="st">&#39;workshop_visiumHD/Human_Colorectal_Cancer_workshop/square_002um/raw_feature_bc_matrix&#39;</span>)</span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="visium-hd.html#cb3-1" tabindex="-1"></a>expression_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(data_path, <span class="st">&#39;/Human_Colorectal_Cancer_workshop/square_002um/raw_feature_bc_matrix&#39;</span>)</span>
 <span id="cb3-2"><a href="visium-hd.html#cb3-2" tabindex="-1"></a>expr_results <span class="ot">&lt;-</span> <span class="fu">get10Xmatrix</span>(<span class="at">path_to_data =</span> expression_path, </span>
 <span id="cb3-3"><a href="visium-hd.html#cb3-3" tabindex="-1"></a>                             <span class="at">gene_column_index =</span> <span class="dv">1</span>)</span></code></pre></div>
 </div>
 <div id="tissue-positions-data" class="section level4 hasAnchor" number="9.3.4.2">
 <h4><span class="header-section-number">9.3.4.2</span> Tissue positions data<a href="visium-hd.html#tissue-positions-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="visium-hd.html#cb4-1" tabindex="-1"></a>tissue_positions_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(data_path, <span class="st">&#39;workshop_visiumHD/Human_Colorectal_Cancer_workshop/square_002um/spatial/tissue_positions.parquet&#39;</span>)</span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="visium-hd.html#cb4-1" tabindex="-1"></a>tissue_positions_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(data_path, <span class="st">&#39;/Human_Colorectal_Cancer_workshop/square_002um/spatial/tissue_positions.parquet&#39;</span>)</span>
 <span id="cb4-2"><a href="visium-hd.html#cb4-2" tabindex="-1"></a>tissue_positions <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">as.data.table</span>(arrow<span class="sc">::</span><span class="fu">read_parquet</span>(tissue_positions_path))</span></code></pre></div>
 </div>
 <div id="merge-expression-and-2-micron-position-data" class="section level4 hasAnchor" number="9.3.4.3">
@@ -728,9 +730,7 @@ Figure 9.6: Giotto polygon in a hexagon shape for overlapping visium HD expressi
 <span id="cb9-11"><a href="visium-hd.html#cb9-11" tabindex="-1"></a></span>
 <span id="cb9-12"><a href="visium-hd.html#cb9-12" tabindex="-1"></a>visiumHD <span class="ot">=</span> <span class="fu">addSpatialCentroidLocations</span>(<span class="at">gobject =</span> visiumHD,</span>
 <span id="cb9-13"><a href="visium-hd.html#cb9-13" tabindex="-1"></a>                                       <span class="at">poly_info =</span> <span class="st">&#39;hex400&#39;</span>)</span></code></pre></div>
-<p>Visualize the Giotto object. Make sure to set <code>expand_counts = TRUE</code> to expand the counts
-column. Each spatial bin can have multiple transcripts/UMIs. This is different
-compared to in situ technologies like seqFISH, MERFISH, Nanostring CosMx or Xenium.</p>
+<p>Visualize the Giotto object. Make sure to set <code>expand_counts = TRUE</code> to expand the counts column. Each spatial bin can have multiple transcripts/UMIs. This is different compared to in situ technologies like seqFISH, MERFISH, Nanostring CosMx or Xenium.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="visium-hd.html#cb10-1" tabindex="-1"></a>feature_data <span class="ot">=</span> <span class="fu">fDataDT</span>(visiumHD)</span>
 <span id="cb10-2"><a href="visium-hd.html#cb10-2" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="visium-hd.html#cb10-3" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(visiumHD,</span>
@@ -754,8 +754,7 @@ compared to in situ technologies like seqFISH, MERFISH, Nanostring CosMx or Xeni
 Figure 9.7: Overlap of gene expression with the hex400 polygons. Each dot represents a single gene. Jitter used to better vizualize individual genes.
 </p>
 </div>
-<p>You can set <code>plot_method = scattermore</code> or <code>scattermost</code> to convert high-resolution
-images to low(er) resolution rasterized images. It’s usually faster and will save on disk space.</p>
+<p>You can set <code>plot_method = scattermore</code> or <code>scattermost</code> to convert high-resolution images to low(er) resolution rasterized images. It’s usually faster and will save on disk space.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="visium-hd.html#cb11-1" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(visiumHD,</span>
 <span id="cb11-2"><a href="visium-hd.html#cb11-2" tabindex="-1"></a>                     <span class="at">show_image =</span> F,</span>
 <span id="cb11-3"><a href="visium-hd.html#cb11-3" tabindex="-1"></a>                     <span class="at">feats =</span> <span class="fu">list</span>(<span class="st">&#39;rna&#39;</span> <span class="ot">=</span> feature_data<span class="sc">$</span>feat_ID[<span class="dv">10</span><span class="sc">:</span><span class="dv">20</span>]),</span>
@@ -1210,8 +1209,7 @@ Figure 9.23: Coloring individual features based on the spatially correlated gene
 </div>
 <div id="hexbin-25" class="section level2 hasAnchor" number="9.6">
 <h2><span class="header-section-number">9.6</span> Hexbin 25<a href="visium-hd.html#hexbin-25" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Goal is to create a higher resolution bin (hex25) and add to the Giotto object.
-We will aim to identify individual cell types and local neighborhood niches.</p>
+<p>Goal is to create a higher resolution bin (hex25) and add to the Giotto object. We will aim to identify individual cell types and local neighborhood niches.</p>
 <div id="subcellular-workflow-and-projection-functions" class="section level3 hasAnchor" number="9.6.1">
 <h3><span class="header-section-number">9.6.1</span> Subcellular workflow and projection functions<a href="visium-hd.html#subcellular-workflow-and-projection-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
@@ -1223,44 +1221,308 @@ We will aim to identify individual cell types and local neighborhood niches.</p>
 <span id="cb42-3"><a href="visium-hd.html#cb42-3" tabindex="-1"></a>                                   <span class="at">x_max =</span> <span class="dv">20000</span>, </span>
 <span id="cb42-4"><a href="visium-hd.html#cb42-4" tabindex="-1"></a>                                   <span class="at">y_min =</span> <span class="dv">44250</span>,</span>
 <span id="cb42-5"><a href="visium-hd.html#cb42-5" tabindex="-1"></a>                                   <span class="at">y_max =</span> <span class="dv">45500</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="visium-hd.html#cb43-1" tabindex="-1"></a>hexbin25 <span class="ot">&lt;-</span> <span class="fu">tessellate</span>(<span class="at">extent =</span> <span class="fu">ext</span>(visiumHD_subset<span class="sc">@</span>feat_info<span class="sc">$</span>rna), </span>
-<span id="cb43-2"><a href="visium-hd.html#cb43-2" tabindex="-1"></a>                       <span class="at">shape =</span> <span class="st">&#39;hexagon&#39;</span>, </span>
-<span id="cb43-3"><a href="visium-hd.html#cb43-3" tabindex="-1"></a>                       <span class="at">shape_size =</span> <span class="dv">25</span>, </span>
-<span id="cb43-4"><a href="visium-hd.html#cb43-4" tabindex="-1"></a>                       <span class="at">name =</span> <span class="st">&#39;hex25&#39;</span>) </span>
-<span id="cb43-5"><a href="visium-hd.html#cb43-5" tabindex="-1"></a></span>
-<span id="cb43-6"><a href="visium-hd.html#cb43-6" tabindex="-1"></a>visiumHD_subset <span class="ot">=</span> <span class="fu">setPolygonInfo</span>(<span class="at">gobject =</span> visiumHD_subset,</span>
-<span id="cb43-7"><a href="visium-hd.html#cb43-7" tabindex="-1"></a>                                 <span class="at">x =</span> hexbin25,</span>
-<span id="cb43-8"><a href="visium-hd.html#cb43-8" tabindex="-1"></a>                                 <span class="at">name =</span> <span class="st">&#39;hex25&#39;</span>,</span>
-<span id="cb43-9"><a href="visium-hd.html#cb43-9" tabindex="-1"></a>                                 <span class="at">initialize =</span> T)</span>
-<span id="cb43-10"><a href="visium-hd.html#cb43-10" tabindex="-1"></a></span>
-<span id="cb43-11"><a href="visium-hd.html#cb43-11" tabindex="-1"></a>visiumHD_subset <span class="ot">=</span> <span class="fu">addSpatialCentroidLocations</span>(<span class="at">gobject =</span> visiumHD_subset,</span>
-<span id="cb43-12"><a href="visium-hd.html#cb43-12" tabindex="-1"></a>                                              <span class="at">poly_info =</span> <span class="st">&#39;hex25&#39;</span>)</span>
-<span id="cb43-13"><a href="visium-hd.html#cb43-13" tabindex="-1"></a></span>
-<span id="cb43-14"><a href="visium-hd.html#cb43-14" tabindex="-1"></a><span class="fu">activeSpatUnit</span>(visiumHD_subset) <span class="ot">&lt;-</span> <span class="st">&#39;hex25&#39;</span></span></code></pre></div>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="visium-hd.html#cb44-1" tabindex="-1"></a>visiumHD_subset <span class="ot">=</span> <span class="fu">calculateOverlap</span>(visiumHD_subset,</span>
-<span id="cb44-2"><a href="visium-hd.html#cb44-2" tabindex="-1"></a>                                   <span class="at">spatial_info =</span> <span class="st">&#39;hex25&#39;</span>,</span>
-<span id="cb44-3"><a href="visium-hd.html#cb44-3" tabindex="-1"></a>                                   <span class="at">feat_info =</span> <span class="st">&#39;rna&#39;</span>)</span>
-<span id="cb44-4"><a href="visium-hd.html#cb44-4" tabindex="-1"></a></span>
-<span id="cb44-5"><a href="visium-hd.html#cb44-5" tabindex="-1"></a><span class="co"># convert overlap results to bin by gene matrix</span></span>
-<span id="cb44-6"><a href="visium-hd.html#cb44-6" tabindex="-1"></a>visiumHD_subset <span class="ot">=</span> <span class="fu">overlapToMatrix</span>(visiumHD_subset,</span>
-<span id="cb44-7"><a href="visium-hd.html#cb44-7" tabindex="-1"></a>                                  <span class="at">poly_info =</span> <span class="st">&#39;hex25&#39;</span>,</span>
-<span id="cb44-8"><a href="visium-hd.html#cb44-8" tabindex="-1"></a>                                  <span class="at">feat_info =</span> <span class="st">&#39;rna&#39;</span>,</span>
-<span id="cb44-9"><a href="visium-hd.html#cb44-9" tabindex="-1"></a>                                  <span class="at">name =</span> <span class="st">&#39;raw&#39;</span>)</span>
-<span id="cb44-10"><a href="visium-hd.html#cb44-10" tabindex="-1"></a></span>
-<span id="cb44-11"><a href="visium-hd.html#cb44-11" tabindex="-1"></a>visiumHD_subset <span class="ot">&lt;-</span> <span class="fu">filterGiotto</span>(visiumHD_subset,</span>
-<span id="cb44-12"><a href="visium-hd.html#cb44-12" tabindex="-1"></a>                                <span class="at">expression_threshold =</span> <span class="dv">1</span>,</span>
-<span id="cb44-13"><a href="visium-hd.html#cb44-13" tabindex="-1"></a>                                <span class="at">feat_det_in_min_cells =</span> <span class="dv">25</span>,</span>
-<span id="cb44-14"><a href="visium-hd.html#cb44-14" tabindex="-1"></a>                                <span class="at">min_det_feats_per_cell =</span> <span class="dv">25</span>)</span>
-<span id="cb44-15"><a href="visium-hd.html#cb44-15" tabindex="-1"></a></span>
-<span id="cb44-16"><a href="visium-hd.html#cb44-16" tabindex="-1"></a><span class="co"># normalize</span></span>
-<span id="cb44-17"><a href="visium-hd.html#cb44-17" tabindex="-1"></a>visiumHD_subset <span class="ot">&lt;-</span> <span class="fu">normalizeGiotto</span>(visiumHD_subset, <span class="at">scalefactor =</span> <span class="dv">1000</span>, <span class="at">verbose =</span> T)</span>
-<span id="cb44-18"><a href="visium-hd.html#cb44-18" tabindex="-1"></a></span>
-<span id="cb44-19"><a href="visium-hd.html#cb44-19" tabindex="-1"></a><span class="co"># add statistics</span></span>
-<span id="cb44-20"><a href="visium-hd.html#cb44-20" tabindex="-1"></a>visiumHD_subset <span class="ot">&lt;-</span> <span class="fu">addStatistics</span>(visiumHD_subset)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="visium-hd.html#cb43-1" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(visiumHD_subset,</span>
+<span id="cb43-2"><a href="visium-hd.html#cb43-2" tabindex="-1"></a>                     <span class="at">show_image =</span> F,</span>
+<span id="cb43-3"><a href="visium-hd.html#cb43-3" tabindex="-1"></a>                     <span class="at">feats =</span> <span class="cn">NULL</span>,</span>
+<span id="cb43-4"><a href="visium-hd.html#cb43-4" tabindex="-1"></a>                     <span class="at">show_legend =</span> F,</span>
+<span id="cb43-5"><a href="visium-hd.html#cb43-5" tabindex="-1"></a>                     <span class="at">spat_unit =</span> <span class="st">&#39;hex100&#39;</span>,</span>
+<span id="cb43-6"><a href="visium-hd.html#cb43-6" tabindex="-1"></a>                     <span class="at">point_size =</span> <span class="fl">0.5</span>,</span>
+<span id="cb43-7"><a href="visium-hd.html#cb43-7" tabindex="-1"></a>                     <span class="at">show_polygon =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb43-8"><a href="visium-hd.html#cb43-8" tabindex="-1"></a>                     <span class="at">use_overlap =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb43-9"><a href="visium-hd.html#cb43-9" tabindex="-1"></a>                     <span class="at">polygon_feat_type =</span> <span class="st">&#39;hex100&#39;</span>,</span>
+<span id="cb43-10"><a href="visium-hd.html#cb43-10" tabindex="-1"></a>                     <span class="at">polygon_fill_as_factor =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb43-11"><a href="visium-hd.html#cb43-11" tabindex="-1"></a>                     <span class="at">polygon_fill =</span> <span class="st">&#39;leiden_clus&#39;</span>,</span>
+<span id="cb43-12"><a href="visium-hd.html#cb43-12" tabindex="-1"></a>                     <span class="at">polygon_color =</span> <span class="st">&#39;black&#39;</span>,</span>
+<span id="cb43-13"><a href="visium-hd.html#cb43-13" tabindex="-1"></a>                     <span class="at">polygon_line_size =</span> <span class="fl">0.3</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-72"></span>
+<img src="img/02_session2/22-spatInSituPlotPoints.png" alt="xxx" width="100%" />
+<p class="caption">
+Figure 9.24: xxx
+</p>
+</div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="visium-hd.html#cb44-1" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(visiumHD_subset,</span>
+<span id="cb44-2"><a href="visium-hd.html#cb44-2" tabindex="-1"></a>                     <span class="at">show_image =</span> F,</span>
+<span id="cb44-3"><a href="visium-hd.html#cb44-3" tabindex="-1"></a>                     <span class="at">feats =</span> <span class="fu">list</span>(<span class="st">&#39;rna&#39;</span> <span class="ot">=</span> selected_feats), </span>
+<span id="cb44-4"><a href="visium-hd.html#cb44-4" tabindex="-1"></a>                     <span class="at">feats_color_code =</span> my_colors,</span>
+<span id="cb44-5"><a href="visium-hd.html#cb44-5" tabindex="-1"></a>                     <span class="at">show_legend =</span> F,</span>
+<span id="cb44-6"><a href="visium-hd.html#cb44-6" tabindex="-1"></a>                     <span class="at">spat_unit =</span> <span class="st">&#39;hex100&#39;</span>,</span>
+<span id="cb44-7"><a href="visium-hd.html#cb44-7" tabindex="-1"></a>                     <span class="at">point_size =</span> <span class="fl">0.40</span>,</span>
+<span id="cb44-8"><a href="visium-hd.html#cb44-8" tabindex="-1"></a>                     <span class="at">show_polygon =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb44-9"><a href="visium-hd.html#cb44-9" tabindex="-1"></a>                     <span class="at">use_overlap =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb44-10"><a href="visium-hd.html#cb44-10" tabindex="-1"></a>                     <span class="at">polygon_feat_type =</span> <span class="st">&#39;hex100&#39;</span>,</span>
+<span id="cb44-11"><a href="visium-hd.html#cb44-11" tabindex="-1"></a>                     <span class="at">polygon_bg_color =</span> <span class="cn">NA</span>,</span>
+<span id="cb44-12"><a href="visium-hd.html#cb44-12" tabindex="-1"></a>                     <span class="at">polygon_color =</span> <span class="st">&#39;white&#39;</span>,</span>
+<span id="cb44-13"><a href="visium-hd.html#cb44-13" tabindex="-1"></a>                     <span class="at">polygon_line_size =</span> <span class="fl">0.05</span>,</span>
+<span id="cb44-14"><a href="visium-hd.html#cb44-14" tabindex="-1"></a>                     <span class="at">jitter =</span> <span class="fu">c</span>(<span class="dv">25</span>,<span class="dv">25</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-74"></span>
+<img src="img/02_session2/23-spatInSituPlotPoints.png" alt="xxx" width="100%" />
+<p class="caption">
+Figure 9.25: xxx
+</p>
+</div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="visium-hd.html#cb45-1" tabindex="-1"></a>hexbin25 <span class="ot">&lt;-</span> <span class="fu">tessellate</span>(<span class="at">extent =</span> <span class="fu">ext</span>(visiumHD_subset<span class="sc">@</span>feat_info<span class="sc">$</span>rna), </span>
+<span id="cb45-2"><a href="visium-hd.html#cb45-2" tabindex="-1"></a>                       <span class="at">shape =</span> <span class="st">&#39;hexagon&#39;</span>, </span>
+<span id="cb45-3"><a href="visium-hd.html#cb45-3" tabindex="-1"></a>                       <span class="at">shape_size =</span> <span class="dv">25</span>, </span>
+<span id="cb45-4"><a href="visium-hd.html#cb45-4" tabindex="-1"></a>                       <span class="at">name =</span> <span class="st">&#39;hex25&#39;</span>) </span>
+<span id="cb45-5"><a href="visium-hd.html#cb45-5" tabindex="-1"></a></span>
+<span id="cb45-6"><a href="visium-hd.html#cb45-6" tabindex="-1"></a>visiumHD_subset <span class="ot">=</span> <span class="fu">setPolygonInfo</span>(<span class="at">gobject =</span> visiumHD_subset,</span>
+<span id="cb45-7"><a href="visium-hd.html#cb45-7" tabindex="-1"></a>                                 <span class="at">x =</span> hexbin25,</span>
+<span id="cb45-8"><a href="visium-hd.html#cb45-8" tabindex="-1"></a>                                 <span class="at">name =</span> <span class="st">&#39;hex25&#39;</span>,</span>
+<span id="cb45-9"><a href="visium-hd.html#cb45-9" tabindex="-1"></a>                                 <span class="at">initialize =</span> T)</span>
+<span id="cb45-10"><a href="visium-hd.html#cb45-10" tabindex="-1"></a></span>
+<span id="cb45-11"><a href="visium-hd.html#cb45-11" tabindex="-1"></a><span class="fu">showGiottoSpatialInfo</span>(visiumHD_subset)</span>
+<span id="cb45-12"><a href="visium-hd.html#cb45-12" tabindex="-1"></a></span>
+<span id="cb45-13"><a href="visium-hd.html#cb45-13" tabindex="-1"></a>visiumHD_subset <span class="ot">=</span> <span class="fu">addSpatialCentroidLocations</span>(<span class="at">gobject =</span> visiumHD_subset,</span>
+<span id="cb45-14"><a href="visium-hd.html#cb45-14" tabindex="-1"></a>                                              <span class="at">poly_info =</span> <span class="st">&#39;hex25&#39;</span>)</span>
+<span id="cb45-15"><a href="visium-hd.html#cb45-15" tabindex="-1"></a></span>
+<span id="cb45-16"><a href="visium-hd.html#cb45-16" tabindex="-1"></a><span class="fu">activeSpatUnit</span>(visiumHD_subset) <span class="ot">&lt;-</span> <span class="st">&#39;hex25&#39;</span></span>
+<span id="cb45-17"><a href="visium-hd.html#cb45-17" tabindex="-1"></a></span>
+<span id="cb45-18"><a href="visium-hd.html#cb45-18" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(visiumHD_subset,</span>
+<span id="cb45-19"><a href="visium-hd.html#cb45-19" tabindex="-1"></a>                     <span class="at">show_image =</span> F,</span>
+<span id="cb45-20"><a href="visium-hd.html#cb45-20" tabindex="-1"></a>                     <span class="at">feats =</span> <span class="fu">list</span>(<span class="st">&#39;rna&#39;</span> <span class="ot">=</span> selected_feats), </span>
+<span id="cb45-21"><a href="visium-hd.html#cb45-21" tabindex="-1"></a>                     <span class="at">feats_color_code =</span> my_colors,</span>
+<span id="cb45-22"><a href="visium-hd.html#cb45-22" tabindex="-1"></a>                     <span class="at">show_legend =</span> F,</span>
+<span id="cb45-23"><a href="visium-hd.html#cb45-23" tabindex="-1"></a>                     <span class="at">spat_unit =</span> <span class="st">&#39;hex25&#39;</span>,</span>
+<span id="cb45-24"><a href="visium-hd.html#cb45-24" tabindex="-1"></a>                     <span class="at">point_size =</span> <span class="fl">0.40</span>,</span>
+<span id="cb45-25"><a href="visium-hd.html#cb45-25" tabindex="-1"></a>                     <span class="at">show_polygon =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb45-26"><a href="visium-hd.html#cb45-26" tabindex="-1"></a>                     <span class="at">use_overlap =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb45-27"><a href="visium-hd.html#cb45-27" tabindex="-1"></a>                     <span class="at">polygon_feat_type =</span> <span class="st">&#39;hex25&#39;</span>,</span>
+<span id="cb45-28"><a href="visium-hd.html#cb45-28" tabindex="-1"></a>                     <span class="at">polygon_bg_color =</span> <span class="cn">NA</span>,</span>
+<span id="cb45-29"><a href="visium-hd.html#cb45-29" tabindex="-1"></a>                     <span class="at">polygon_color =</span> <span class="st">&#39;white&#39;</span>,</span>
+<span id="cb45-30"><a href="visium-hd.html#cb45-30" tabindex="-1"></a>                     <span class="at">polygon_line_size =</span> <span class="fl">0.05</span>,</span>
+<span id="cb45-31"><a href="visium-hd.html#cb45-31" tabindex="-1"></a>                     <span class="at">jitter =</span> <span class="fu">c</span>(<span class="dv">25</span>,<span class="dv">25</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-76"></span>
+<img src="img/02_session2/24-spatInSituPlotPoints.png" alt="xxx" width="100%" />
+<p class="caption">
+Figure 9.26: xxx
+</p>
+</div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="visium-hd.html#cb46-1" tabindex="-1"></a>visiumHD_subset <span class="ot">=</span> <span class="fu">calculateOverlap</span>(visiumHD_subset,</span>
+<span id="cb46-2"><a href="visium-hd.html#cb46-2" tabindex="-1"></a>                                   <span class="at">spatial_info =</span> <span class="st">&#39;hex25&#39;</span>,</span>
+<span id="cb46-3"><a href="visium-hd.html#cb46-3" tabindex="-1"></a>                                   <span class="at">feat_info =</span> <span class="st">&#39;rna&#39;</span>)</span>
+<span id="cb46-4"><a href="visium-hd.html#cb46-4" tabindex="-1"></a></span>
+<span id="cb46-5"><a href="visium-hd.html#cb46-5" tabindex="-1"></a><span class="fu">showGiottoSpatialInfo</span>(visiumHD_subset)</span>
+<span id="cb46-6"><a href="visium-hd.html#cb46-6" tabindex="-1"></a></span>
+<span id="cb46-7"><a href="visium-hd.html#cb46-7" tabindex="-1"></a></span>
+<span id="cb46-8"><a href="visium-hd.html#cb46-8" tabindex="-1"></a><span class="co"># convert overlap results to bin by gene matrix</span></span>
+<span id="cb46-9"><a href="visium-hd.html#cb46-9" tabindex="-1"></a>visiumHD_subset <span class="ot">=</span> <span class="fu">overlapToMatrix</span>(visiumHD_subset,</span>
+<span id="cb46-10"><a href="visium-hd.html#cb46-10" tabindex="-1"></a>                                  <span class="at">poly_info =</span> <span class="st">&#39;hex25&#39;</span>,</span>
+<span id="cb46-11"><a href="visium-hd.html#cb46-11" tabindex="-1"></a>                                  <span class="at">feat_info =</span> <span class="st">&#39;rna&#39;</span>,</span>
+<span id="cb46-12"><a href="visium-hd.html#cb46-12" tabindex="-1"></a>                                  <span class="at">name =</span> <span class="st">&#39;raw&#39;</span>)</span>
+<span id="cb46-13"><a href="visium-hd.html#cb46-13" tabindex="-1"></a></span>
+<span id="cb46-14"><a href="visium-hd.html#cb46-14" tabindex="-1"></a>visiumHD_subset <span class="ot">&lt;-</span> <span class="fu">filterGiotto</span>(visiumHD_subset,</span>
+<span id="cb46-15"><a href="visium-hd.html#cb46-15" tabindex="-1"></a>                                <span class="at">expression_threshold =</span> <span class="dv">1</span>,</span>
+<span id="cb46-16"><a href="visium-hd.html#cb46-16" tabindex="-1"></a>                                <span class="at">feat_det_in_min_cells =</span> <span class="dv">3</span>,</span>
+<span id="cb46-17"><a href="visium-hd.html#cb46-17" tabindex="-1"></a>                                <span class="at">min_det_feats_per_cell =</span> <span class="dv">5</span>)</span>
+<span id="cb46-18"><a href="visium-hd.html#cb46-18" tabindex="-1"></a></span>
+<span id="cb46-19"><a href="visium-hd.html#cb46-19" tabindex="-1"></a><span class="fu">activeSpatUnit</span>(visiumHD_subset)</span>
+<span id="cb46-20"><a href="visium-hd.html#cb46-20" tabindex="-1"></a></span>
+<span id="cb46-21"><a href="visium-hd.html#cb46-21" tabindex="-1"></a></span>
+<span id="cb46-22"><a href="visium-hd.html#cb46-22" tabindex="-1"></a><span class="co"># normalize</span></span>
+<span id="cb46-23"><a href="visium-hd.html#cb46-23" tabindex="-1"></a>visiumHD_subset <span class="ot">&lt;-</span> <span class="fu">normalizeGiotto</span>(visiumHD_subset, <span class="at">scalefactor =</span> <span class="dv">1000</span>, <span class="at">verbose =</span> T)</span>
+<span id="cb46-24"><a href="visium-hd.html#cb46-24" tabindex="-1"></a></span>
+<span id="cb46-25"><a href="visium-hd.html#cb46-25" tabindex="-1"></a><span class="co"># add statistics</span></span>
+<span id="cb46-26"><a href="visium-hd.html#cb46-26" tabindex="-1"></a>visiumHD_subset <span class="ot">&lt;-</span> <span class="fu">addStatistics</span>(visiumHD_subset)</span>
+<span id="cb46-27"><a href="visium-hd.html#cb46-27" tabindex="-1"></a></span>
+<span id="cb46-28"><a href="visium-hd.html#cb46-28" tabindex="-1"></a>feature_data <span class="ot">=</span> <span class="fu">fDataDT</span>(visiumHD_subset)</span>
+<span id="cb46-29"><a href="visium-hd.html#cb46-29" tabindex="-1"></a></span>
+<span id="cb46-30"><a href="visium-hd.html#cb46-30" tabindex="-1"></a>visiumHD_subset <span class="ot">&lt;-</span> <span class="fu">calculateHVF</span>(visiumHD_subset, <span class="at">zscore_threshold =</span> <span class="dv">1</span>)</span></code></pre></div>
+</div>
+<div id="projections" class="section level3 hasAnchor" number="9.6.2">
+<h3><span class="header-section-number">9.6.2</span> projections<a href="visium-hd.html#projections" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="dimension-reduction-with-projections" class="section level4 hasAnchor" number="9.6.2.1">
+<h4><span class="header-section-number">9.6.2.1</span> dimension reduction with projections<a href="visium-hd.html#dimension-reduction-with-projections" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="visium-hd.html#cb47-1" tabindex="-1"></a>n_25_percent <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">length</span>(<span class="fu">spatIDs</span>(visiumHD_subset, <span class="st">&#39;hex25&#39;</span>)) <span class="sc">*</span> <span class="fl">0.25</span>)</span>
+<span id="cb47-2"><a href="visium-hd.html#cb47-2" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="visium-hd.html#cb47-3" tabindex="-1"></a><span class="co"># pca projection on subset</span></span>
+<span id="cb47-4"><a href="visium-hd.html#cb47-4" tabindex="-1"></a>visiumHD_subset <span class="ot">&lt;-</span> <span class="fu">runPCAprojection</span>(</span>
+<span id="cb47-5"><a href="visium-hd.html#cb47-5" tabindex="-1"></a>  <span class="at">gobject =</span> visiumHD_subset,</span>
+<span id="cb47-6"><a href="visium-hd.html#cb47-6" tabindex="-1"></a>  <span class="at">spat_unit =</span> <span class="st">&quot;hex25&quot;</span>,</span>
+<span id="cb47-7"><a href="visium-hd.html#cb47-7" tabindex="-1"></a>  <span class="at">feats_to_use =</span> <span class="st">&#39;hvf&#39;</span>,</span>
+<span id="cb47-8"><a href="visium-hd.html#cb47-8" tabindex="-1"></a>  <span class="at">name =</span> <span class="st">&#39;pca.projection&#39;</span>,</span>
+<span id="cb47-9"><a href="visium-hd.html#cb47-9" tabindex="-1"></a>  <span class="at">set_seed =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb47-10"><a href="visium-hd.html#cb47-10" tabindex="-1"></a>  <span class="at">seed_number =</span> <span class="dv">12345</span>,</span>
+<span id="cb47-11"><a href="visium-hd.html#cb47-11" tabindex="-1"></a>  <span class="at">random_subset =</span> n_25_percent</span>
+<span id="cb47-12"><a href="visium-hd.html#cb47-12" tabindex="-1"></a>)</span>
+<span id="cb47-13"><a href="visium-hd.html#cb47-13" tabindex="-1"></a></span>
+<span id="cb47-14"><a href="visium-hd.html#cb47-14" tabindex="-1"></a><span class="fu">showGiottoDimRed</span>(visiumHD_subset)</span>
+<span id="cb47-15"><a href="visium-hd.html#cb47-15" tabindex="-1"></a><span class="fu">plotPCA</span>(visiumHD_subset, <span class="at">dim_reduction_name =</span> <span class="st">&#39;pca.projection&#39;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-79"></span>
+<img src="img/02_session2/25-PCA.png" alt="xxx" width="100%" />
+<p class="caption">
+Figure 9.27: xxx
+</p>
+</div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="visium-hd.html#cb48-1" tabindex="-1"></a><span class="co"># umap projection on subset</span></span>
+<span id="cb48-2"><a href="visium-hd.html#cb48-2" tabindex="-1"></a>visiumHD_subset <span class="ot">&lt;-</span> <span class="fu">runUMAPprojection</span>(</span>
+<span id="cb48-3"><a href="visium-hd.html#cb48-3" tabindex="-1"></a>  <span class="at">gobject =</span> visiumHD_subset,</span>
+<span id="cb48-4"><a href="visium-hd.html#cb48-4" tabindex="-1"></a>  <span class="at">spat_unit =</span> <span class="st">&quot;hex25&quot;</span>,</span>
+<span id="cb48-5"><a href="visium-hd.html#cb48-5" tabindex="-1"></a>  <span class="at">dim_reduction_to_use =</span> <span class="st">&#39;pca&#39;</span>,</span>
+<span id="cb48-6"><a href="visium-hd.html#cb48-6" tabindex="-1"></a>  <span class="at">dim_reduction_name =</span> <span class="st">&quot;pca.projection&quot;</span>,</span>
+<span id="cb48-7"><a href="visium-hd.html#cb48-7" tabindex="-1"></a>  <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb48-8"><a href="visium-hd.html#cb48-8" tabindex="-1"></a>  <span class="at">name =</span> <span class="st">&quot;umap.projection&quot;</span>,</span>
+<span id="cb48-9"><a href="visium-hd.html#cb48-9" tabindex="-1"></a>  <span class="at">random_subset =</span> n_25_percent, </span>
+<span id="cb48-10"><a href="visium-hd.html#cb48-10" tabindex="-1"></a>  <span class="at">n_neighbors =</span> <span class="dv">10</span>,</span>
+<span id="cb48-11"><a href="visium-hd.html#cb48-11" tabindex="-1"></a>  <span class="at">min_dist =</span> <span class="fl">0.005</span>,</span>
+<span id="cb48-12"><a href="visium-hd.html#cb48-12" tabindex="-1"></a>  <span class="at">n_threads =</span> <span class="dv">4</span></span>
+<span id="cb48-13"><a href="visium-hd.html#cb48-13" tabindex="-1"></a>)</span>
+<span id="cb48-14"><a href="visium-hd.html#cb48-14" tabindex="-1"></a></span>
+<span id="cb48-15"><a href="visium-hd.html#cb48-15" tabindex="-1"></a><span class="fu">showGiottoDimRed</span>(visiumHD_subset)</span>
+<span id="cb48-16"><a href="visium-hd.html#cb48-16" tabindex="-1"></a></span>
+<span id="cb48-17"><a href="visium-hd.html#cb48-17" tabindex="-1"></a><span class="co"># plot UMAP, coloring cells/points based on nr_feats</span></span>
+<span id="cb48-18"><a href="visium-hd.html#cb48-18" tabindex="-1"></a><span class="fu">plotUMAP</span>(<span class="at">gobject =</span> visiumHD_subset,</span>
+<span id="cb48-19"><a href="visium-hd.html#cb48-19" tabindex="-1"></a>         <span class="at">point_size =</span> <span class="dv">1</span>, </span>
+<span id="cb48-20"><a href="visium-hd.html#cb48-20" tabindex="-1"></a>         <span class="at">dim_reduction_name =</span> <span class="st">&#39;umap.projection&#39;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-81"></span>
+<img src="img/02_session2/26-UMAP.png" alt="xxx" width="100%" />
+<p class="caption">
+Figure 9.28: xxx
+</p>
+</div>
+</div>
+<div id="clustering-with-projection" class="section level4 hasAnchor" number="9.6.2.2">
+<h4><span class="header-section-number">9.6.2.2</span> clustering with projection<a href="visium-hd.html#clustering-with-projection" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="visium-hd.html#cb49-1" tabindex="-1"></a><span class="co"># subset to smaller giotto object</span></span>
+<span id="cb49-2"><a href="visium-hd.html#cb49-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb49-3"><a href="visium-hd.html#cb49-3" tabindex="-1"></a>subset_IDs <span class="ot">=</span> <span class="fu">sample</span>(<span class="at">x =</span> <span class="fu">spatIDs</span>(visiumHD_subset, <span class="st">&#39;hex25&#39;</span>), <span class="at">size =</span> n_25_percent)</span>
+<span id="cb49-4"><a href="visium-hd.html#cb49-4" tabindex="-1"></a></span>
+<span id="cb49-5"><a href="visium-hd.html#cb49-5" tabindex="-1"></a>temp_gobject <span class="ot">=</span> <span class="fu">subsetGiotto</span>(</span>
+<span id="cb49-6"><a href="visium-hd.html#cb49-6" tabindex="-1"></a>  <span class="at">gobject =</span> visiumHD_subset,</span>
+<span id="cb49-7"><a href="visium-hd.html#cb49-7" tabindex="-1"></a>  <span class="at">spat_unit =</span> <span class="st">&#39;hex25&#39;</span>,</span>
+<span id="cb49-8"><a href="visium-hd.html#cb49-8" tabindex="-1"></a>  <span class="at">cell_ids =</span> subset_IDs</span>
+<span id="cb49-9"><a href="visium-hd.html#cb49-9" tabindex="-1"></a>)</span>
+<span id="cb49-10"><a href="visium-hd.html#cb49-10" tabindex="-1"></a></span>
+<span id="cb49-11"><a href="visium-hd.html#cb49-11" tabindex="-1"></a></span>
+<span id="cb49-12"><a href="visium-hd.html#cb49-12" tabindex="-1"></a><span class="co"># hierarchical clustering</span></span>
+<span id="cb49-13"><a href="visium-hd.html#cb49-13" tabindex="-1"></a>temp_gobject <span class="ot">=</span> <span class="fu">doHclust</span>(<span class="at">gobject =</span> temp_gobject, </span>
+<span id="cb49-14"><a href="visium-hd.html#cb49-14" tabindex="-1"></a>                        <span class="at">spat_unit =</span> <span class="st">&#39;hex25&#39;</span>, </span>
+<span id="cb49-15"><a href="visium-hd.html#cb49-15" tabindex="-1"></a>                        <span class="at">k =</span> <span class="dv">8</span>, <span class="at">name =</span> <span class="st">&#39;sub_hclust&#39;</span>, </span>
+<span id="cb49-16"><a href="visium-hd.html#cb49-16" tabindex="-1"></a>                        <span class="at">dim_reduction_to_use =</span> <span class="st">&#39;pca&#39;</span>, </span>
+<span id="cb49-17"><a href="visium-hd.html#cb49-17" tabindex="-1"></a>                        <span class="at">dim_reduction_name =</span> <span class="st">&#39;pca.projection&#39;</span>, </span>
+<span id="cb49-18"><a href="visium-hd.html#cb49-18" tabindex="-1"></a>                        <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb49-19"><a href="visium-hd.html#cb49-19" tabindex="-1"></a></span>
+<span id="cb49-20"><a href="visium-hd.html#cb49-20" tabindex="-1"></a></span>
+<span id="cb49-21"><a href="visium-hd.html#cb49-21" tabindex="-1"></a><span class="co"># show umap</span></span>
+<span id="cb49-22"><a href="visium-hd.html#cb49-22" tabindex="-1"></a><span class="fu">dimPlot2D</span>(</span>
+<span id="cb49-23"><a href="visium-hd.html#cb49-23" tabindex="-1"></a>  <span class="at">gobject =</span> temp_gobject,</span>
+<span id="cb49-24"><a href="visium-hd.html#cb49-24" tabindex="-1"></a>  <span class="at">point_size =</span> <span class="fl">2.5</span>,</span>
+<span id="cb49-25"><a href="visium-hd.html#cb49-25" tabindex="-1"></a>  <span class="at">spat_unit =</span> <span class="st">&#39;hex25&#39;</span>,</span>
+<span id="cb49-26"><a href="visium-hd.html#cb49-26" tabindex="-1"></a>  <span class="at">dim_reduction_to_use =</span> <span class="st">&#39;umap&#39;</span>,</span>
+<span id="cb49-27"><a href="visium-hd.html#cb49-27" tabindex="-1"></a>  <span class="at">dim_reduction_name =</span> <span class="st">&#39;umap.projection&#39;</span>,</span>
+<span id="cb49-28"><a href="visium-hd.html#cb49-28" tabindex="-1"></a>  <span class="at">cell_color =</span> <span class="st">&#39;sub_hclust&#39;</span></span>
+<span id="cb49-29"><a href="visium-hd.html#cb49-29" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-83"></span>
+<img src="img/02_session2/27-dimPlot2D.png" alt="xxx" width="100%" />
+<p class="caption">
+Figure 9.29: xxx
+</p>
+</div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="visium-hd.html#cb50-1" tabindex="-1"></a><span class="co"># project clusterings back to full dataset</span></span>
+<span id="cb50-2"><a href="visium-hd.html#cb50-2" tabindex="-1"></a>visiumHD_subset <span class="ot">&lt;-</span> <span class="fu">doClusterProjection</span>(</span>
+<span id="cb50-3"><a href="visium-hd.html#cb50-3" tabindex="-1"></a>  <span class="at">target_gobject =</span> visiumHD_subset,</span>
+<span id="cb50-4"><a href="visium-hd.html#cb50-4" tabindex="-1"></a>  <span class="at">source_gobject =</span> temp_gobject,</span>
+<span id="cb50-5"><a href="visium-hd.html#cb50-5" tabindex="-1"></a>  <span class="at">spat_unit =</span> <span class="st">&quot;hex25&quot;</span>,</span>
+<span id="cb50-6"><a href="visium-hd.html#cb50-6" tabindex="-1"></a>  <span class="at">source_cluster_labels =</span> <span class="st">&quot;sub_hclust&quot;</span>,</span>
+<span id="cb50-7"><a href="visium-hd.html#cb50-7" tabindex="-1"></a>  <span class="at">reduction_method =</span> <span class="st">&#39;pca&#39;</span>,</span>
+<span id="cb50-8"><a href="visium-hd.html#cb50-8" tabindex="-1"></a>  <span class="at">reduction_name =</span> <span class="st">&#39;pca.projection&#39;</span>,</span>
+<span id="cb50-9"><a href="visium-hd.html#cb50-9" tabindex="-1"></a>  <span class="at">prob =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb50-10"><a href="visium-hd.html#cb50-10" tabindex="-1"></a>  <span class="at">knn_k =</span> <span class="dv">5</span>,</span>
+<span id="cb50-11"><a href="visium-hd.html#cb50-11" tabindex="-1"></a>  <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb50-12"><a href="visium-hd.html#cb50-12" tabindex="-1"></a>)</span>
+<span id="cb50-13"><a href="visium-hd.html#cb50-13" tabindex="-1"></a></span>
+<span id="cb50-14"><a href="visium-hd.html#cb50-14" tabindex="-1"></a><span class="fu">pDataDT</span>(visiumHD_subset)</span>
+<span id="cb50-15"><a href="visium-hd.html#cb50-15" tabindex="-1"></a></span>
+<span id="cb50-16"><a href="visium-hd.html#cb50-16" tabindex="-1"></a><span class="fu">dimPlot2D</span>(</span>
+<span id="cb50-17"><a href="visium-hd.html#cb50-17" tabindex="-1"></a>  <span class="at">gobject =</span> visiumHD_subset,</span>
+<span id="cb50-18"><a href="visium-hd.html#cb50-18" tabindex="-1"></a>  <span class="at">point_size =</span> <span class="fl">1.5</span>,</span>
+<span id="cb50-19"><a href="visium-hd.html#cb50-19" tabindex="-1"></a>  <span class="at">spat_unit =</span> <span class="st">&#39;hex25&#39;</span>,</span>
+<span id="cb50-20"><a href="visium-hd.html#cb50-20" tabindex="-1"></a>  <span class="at">dim_reduction_to_use =</span> <span class="st">&#39;umap&#39;</span>,</span>
+<span id="cb50-21"><a href="visium-hd.html#cb50-21" tabindex="-1"></a>  <span class="at">dim_reduction_name =</span> <span class="st">&#39;umap.projection&#39;</span>,</span>
+<span id="cb50-22"><a href="visium-hd.html#cb50-22" tabindex="-1"></a>  <span class="at">cell_color =</span> <span class="st">&#39;knn_labels&#39;</span></span>
+<span id="cb50-23"><a href="visium-hd.html#cb50-23" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-85"></span>
+<img src="img/02_session2/28-dimPlot2D.png" alt="xxx" width="100%" />
+<p class="caption">
+Figure 9.30: xxx
+</p>
+</div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="visium-hd.html#cb51-1" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(visiumHD_subset,</span>
+<span id="cb51-2"><a href="visium-hd.html#cb51-2" tabindex="-1"></a>                     <span class="at">show_image =</span> F,</span>
+<span id="cb51-3"><a href="visium-hd.html#cb51-3" tabindex="-1"></a>                     <span class="at">feats =</span> <span class="cn">NULL</span>,</span>
+<span id="cb51-4"><a href="visium-hd.html#cb51-4" tabindex="-1"></a>                     <span class="at">show_legend =</span> F,</span>
+<span id="cb51-5"><a href="visium-hd.html#cb51-5" tabindex="-1"></a>                     <span class="at">spat_unit =</span> <span class="st">&#39;hex25&#39;</span>,</span>
+<span id="cb51-6"><a href="visium-hd.html#cb51-6" tabindex="-1"></a>                     <span class="at">point_size =</span> <span class="fl">0.5</span>,</span>
+<span id="cb51-7"><a href="visium-hd.html#cb51-7" tabindex="-1"></a>                     <span class="at">show_polygon =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb51-8"><a href="visium-hd.html#cb51-8" tabindex="-1"></a>                     <span class="at">use_overlap =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb51-9"><a href="visium-hd.html#cb51-9" tabindex="-1"></a>                     <span class="at">polygon_feat_type =</span> <span class="st">&#39;hex25&#39;</span>,</span>
+<span id="cb51-10"><a href="visium-hd.html#cb51-10" tabindex="-1"></a>                     <span class="at">polygon_fill_as_factor =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb51-11"><a href="visium-hd.html#cb51-11" tabindex="-1"></a>                     <span class="at">polygon_fill =</span> <span class="st">&#39;knn_labels&#39;</span>,</span>
+<span id="cb51-12"><a href="visium-hd.html#cb51-12" tabindex="-1"></a>                     <span class="at">polygon_color =</span> <span class="st">&#39;black&#39;</span>,</span>
+<span id="cb51-13"><a href="visium-hd.html#cb51-13" tabindex="-1"></a>                     <span class="at">polygon_line_size =</span> <span class="fl">0.3</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-87"></span>
+<img src="img/02_session2/29-spatInSituPlotPoints.png" alt="xxx" width="100%" />
+<p class="caption">
+Figure 9.31: xxx
+</p>
+</div>
+</div>
+</div>
+<div id="niche-clusters" class="section level3 hasAnchor" number="9.6.3">
+<h3><span class="header-section-number">9.6.3</span> niche clusters<a href="visium-hd.html#niche-clusters" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="visium-hd.html#cb52-1" tabindex="-1"></a>visiumHD_subset <span class="ot">=</span> <span class="fu">createSpatialNetwork</span>(visiumHD_subset,</span>
+<span id="cb52-2"><a href="visium-hd.html#cb52-2" tabindex="-1"></a>                                <span class="at">name =</span> <span class="st">&#39;kNN_network&#39;</span>,</span>
+<span id="cb52-3"><a href="visium-hd.html#cb52-3" tabindex="-1"></a>                                <span class="at">spat_unit =</span> <span class="st">&#39;hex25&#39;</span>, </span>
+<span id="cb52-4"><a href="visium-hd.html#cb52-4" tabindex="-1"></a>                                <span class="at">method =</span> <span class="st">&#39;kNN&#39;</span>,</span>
+<span id="cb52-5"><a href="visium-hd.html#cb52-5" tabindex="-1"></a>                                <span class="at">k =</span> <span class="dv">6</span>)</span>
+<span id="cb52-6"><a href="visium-hd.html#cb52-6" tabindex="-1"></a></span>
+<span id="cb52-7"><a href="visium-hd.html#cb52-7" tabindex="-1"></a><span class="fu">pDataDT</span>(visiumHD_subset)</span>
+<span id="cb52-8"><a href="visium-hd.html#cb52-8" tabindex="-1"></a>visiumHD_subset <span class="ot">=</span> <span class="fu">calculateSpatCellMetadataProportions</span>(<span class="at">gobject =</span> visiumHD_subset,</span>
+<span id="cb52-9"><a href="visium-hd.html#cb52-9" tabindex="-1"></a>                                                       <span class="at">spat_unit =</span> <span class="st">&#39;hex25&#39;</span>,</span>
+<span id="cb52-10"><a href="visium-hd.html#cb52-10" tabindex="-1"></a>                                                       <span class="at">feat_type =</span> <span class="st">&#39;rna&#39;</span>,</span>
+<span id="cb52-11"><a href="visium-hd.html#cb52-11" tabindex="-1"></a>                                                       <span class="at">metadata_column =</span> <span class="st">&#39;knn_labels&#39;</span>,</span>
+<span id="cb52-12"><a href="visium-hd.html#cb52-12" tabindex="-1"></a>                                                       <span class="at">spat_network =</span> <span class="st">&#39;kNN_network&#39;</span>)</span>
+<span id="cb52-13"><a href="visium-hd.html#cb52-13" tabindex="-1"></a></span>
+<span id="cb52-14"><a href="visium-hd.html#cb52-14" tabindex="-1"></a>prop_table <span class="ot">=</span> <span class="fu">getSpatialEnrichment</span>(visiumHD_subset, <span class="at">name =</span> <span class="st">&#39;proportion&#39;</span>, <span class="at">output =</span> <span class="st">&#39;data.table&#39;</span>)</span>
+<span id="cb52-15"><a href="visium-hd.html#cb52-15" tabindex="-1"></a>prop_matrix <span class="ot">=</span> GiottoUtils<span class="sc">:::</span><span class="fu">dt_to_matrix</span>(prop_table)</span>
+<span id="cb52-16"><a href="visium-hd.html#cb52-16" tabindex="-1"></a></span>
+<span id="cb52-17"><a href="visium-hd.html#cb52-17" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb52-18"><a href="visium-hd.html#cb52-18" tabindex="-1"></a>prop_kmeans <span class="ot">=</span> <span class="fu">kmeans</span>(<span class="at">x =</span> prop_matrix, <span class="at">centers =</span> <span class="dv">10</span>, <span class="at">iter.max =</span> <span class="dv">1000</span>, <span class="at">nstart =</span> <span class="dv">100</span>)</span>
+<span id="cb52-19"><a href="visium-hd.html#cb52-19" tabindex="-1"></a>prop_kmeansDT <span class="ot">=</span> data.table<span class="sc">::</span><span class="fu">data.table</span>(<span class="at">cell_ID =</span> <span class="fu">names</span>(prop_kmeans<span class="sc">$</span>cluster), <span class="at">niche =</span> prop_kmeans<span class="sc">$</span>cluster)</span>
+<span id="cb52-20"><a href="visium-hd.html#cb52-20" tabindex="-1"></a></span>
+<span id="cb52-21"><a href="visium-hd.html#cb52-21" tabindex="-1"></a>visiumHD_subset <span class="ot">=</span> <span class="fu">addCellMetadata</span>(visiumHD_subset, </span>
+<span id="cb52-22"><a href="visium-hd.html#cb52-22" tabindex="-1"></a>                                  <span class="at">new_metadata =</span> prop_kmeansDT, </span>
+<span id="cb52-23"><a href="visium-hd.html#cb52-23" tabindex="-1"></a>                                  <span class="at">by_column =</span> T, </span>
+<span id="cb52-24"><a href="visium-hd.html#cb52-24" tabindex="-1"></a>                                  <span class="at">column_cell_ID =</span> <span class="st">&#39;cell_ID&#39;</span>)</span>
+<span id="cb52-25"><a href="visium-hd.html#cb52-25" tabindex="-1"></a><span class="fu">pDataDT</span>(visiumHD_subset)</span>
+<span id="cb52-26"><a href="visium-hd.html#cb52-26" tabindex="-1"></a></span>
+<span id="cb52-27"><a href="visium-hd.html#cb52-27" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(visiumHD_subset,</span>
+<span id="cb52-28"><a href="visium-hd.html#cb52-28" tabindex="-1"></a>                     <span class="at">show_image =</span> F,</span>
+<span id="cb52-29"><a href="visium-hd.html#cb52-29" tabindex="-1"></a>                     <span class="at">feats =</span> <span class="cn">NULL</span>,</span>
+<span id="cb52-30"><a href="visium-hd.html#cb52-30" tabindex="-1"></a>                     <span class="at">show_legend =</span> F,</span>
+<span id="cb52-31"><a href="visium-hd.html#cb52-31" tabindex="-1"></a>                     <span class="at">spat_unit =</span> <span class="st">&#39;hex25&#39;</span>,</span>
+<span id="cb52-32"><a href="visium-hd.html#cb52-32" tabindex="-1"></a>                     <span class="at">point_size =</span> <span class="fl">0.5</span>,</span>
+<span id="cb52-33"><a href="visium-hd.html#cb52-33" tabindex="-1"></a>                     <span class="at">show_polygon =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb52-34"><a href="visium-hd.html#cb52-34" tabindex="-1"></a>                     <span class="at">use_overlap =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb52-35"><a href="visium-hd.html#cb52-35" tabindex="-1"></a>                     <span class="at">polygon_feat_type =</span> <span class="st">&#39;hex25&#39;</span>,</span>
+<span id="cb52-36"><a href="visium-hd.html#cb52-36" tabindex="-1"></a>                     <span class="at">polygon_fill_as_factor =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb52-37"><a href="visium-hd.html#cb52-37" tabindex="-1"></a>                     <span class="at">polygon_fill =</span> <span class="st">&#39;niche&#39;</span>,</span>
+<span id="cb52-38"><a href="visium-hd.html#cb52-38" tabindex="-1"></a>                     <span class="at">polygon_color =</span> <span class="st">&#39;black&#39;</span>,</span>
+<span id="cb52-39"><a href="visium-hd.html#cb52-39" tabindex="-1"></a>                     <span class="at">polygon_line_size =</span> <span class="fl">0.3</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-89"></span>
+<img src="img/02_session2/30-spatInSituPlotPoints.png" alt="xxx" width="100%" />
+<p class="caption">
+Figure 9.32: xxx
+</p>
+</div>
 </div>
 </div>
 <div id="database-backend---work-in-progress-but-coming-soon" class="section level2 hasAnchor" number="9.7">
 <h2><span class="header-section-number">9.7</span> Database backend - Work in progress, but coming soon!<a href="visium-hd.html#database-backend---work-in-progress-but-coming-soon" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Memory problems:<br />
+- data ingestion<br />
+- spatial operations<br />
+- matrix operations<br />
+- matrix and spatial geometry object sizes</p>
 
 </div>
 </div>
