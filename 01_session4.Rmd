@@ -223,7 +223,7 @@ spatFeatPlot2D(
 )
 ```
 
-```{r, echo=FALSE, out.width="60%", fig.cap="Example mini MERSCOPE aggregated feature counts"}
+```{r, echo=FALSE, fig.cap="Example mini MERSCOPE aggregated feature counts"}
 knitr::include_graphics("img/01_session4/example_featplot_sub.png")
 ```
 
@@ -352,11 +352,36 @@ plot(gpoly, border = "maroon", lwd = 0.5, add = TRUE)
 knitr::include_graphics("img/01_session4/additive_baseplot.png")
 ```
 
+
+
+
 ### Giotto object plotting
 
 _Giotto_ also has several _ggplot2_-based plotting functions that work on the whole `giotto` object.
-Here we load the vizgen mini dataset from _GiottoData_ which contains a lot of worked out data.
+Here we load the vizgen mini dataset from _GiottoData_ which contains a lot of worked through data.
 
+
+#### Giotto spatial plot functions
+
+
+- `spatPlot()` - standard centroid-based plotting geared towards metadata plotting
+- `spatCellPlot()` - centroid-based plotting for spatial enrichment values
+- `spatFeatPlot()` - centroid-based plotting for feature expression plotting
+- `spatInSituPlotPoints()` - subcellular plotting with support for transcript points and polygons
+
+
+#### Giotto expression space plot functions
+
+- `dimPlot()` - dimension reduction plotting
+
+
+#### Giotto common plotting args
+
+- `gradient_style`  - Should the gradient be of 'divergent' or 'sequential' styles?
+- `color_as_factor` - Is annotation value a numerical or factor/categorical based item to plot.
+- `cell_color_code` - What color mapping to provide
+- `cell_color` - What column of information to use when plotting (metadata, expression, etc.)
+- `point_shape` - Either 'border' or 'no_border' to draw on the dog.
 
 
 ```{r, eval=FALSE}
@@ -367,18 +392,17 @@ activeSpatUnit(g) <- "aggregate" # set default spat_unit to the one with lots of
 
 ## Subsetting
 
--   Based on IDs
--   Based on locations
--   Visualizations
+### ID subsetting
 
-
-## _GiottoData_ Mini objects
-
-Giotto makes available several mini objects to allow devs and users to work
-with easily loadable Giotto objects. These are small subsets of a larger
-dataset that often contain some worked through analyses and are fully functional.
 ```{r, eval=FALSE}
-pak::pak("drieslab/GiottoData")
+gsubset <- subsetGiotto(g, cell_ids = sample(spatIDs(g), 300))
 ```
 
+
+
+
+### Coordinate-based subsetting
+```{r, eval=FALSE}
+gsubset <- subsetGiottoLocs(g, x_min = 6500, x_max = 6700, poly_info = "aggregate")
+```
 
