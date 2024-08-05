@@ -368,3 +368,8 @@ binarized-niche-cluster-for-each-cell
 nt-niche-trajectory-score
 session-info-3
 dataset-2
+database-backend
+extracting-the-downloaded-files
+extracting-the-files
+plot-spatial-gene-groups
+downloading-giotto-object-and-nuclei-segmentation
