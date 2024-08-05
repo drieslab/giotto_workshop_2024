@@ -772,8 +772,10 @@ spatInSituPlotPoints(g,
     polygon_fill_as_factor = TRUE
 )
 
+# visualize niche makeup
+cellmeta <- pDataDT(g)
 ggplot2::ggplot(
-    cx, ggplot2::aes(fill = as.character(leiden_clus), 
+    cellmeta, ggplot2::aes(fill = as.character(leiden_clus), 
                      y = 1, 
                      x = as.character(niche))) + 
     ggplot2::geom_bar(position = "fill", stat = "identity") + 
