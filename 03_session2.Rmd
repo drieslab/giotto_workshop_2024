@@ -636,7 +636,6 @@ transformed <- affine(IF, mtx)
 To_see_overlay <- transformed@funs$realize_magick(size = 2e6)
 plot(HE)
 plot(To_see_overlay@raster_object[[2]], add=TRUE, alpha=0.5)
-SIFT_registration_overlay
 ```
 
 ```{r, echo=FALSE, out.width="80%", fig.align='center'}
