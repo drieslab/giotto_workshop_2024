@@ -40,7 +40,7 @@ More information is available at https://drieslab.github.io/Giotto_website/artic
 
 ### Giotto installation
 
-Giotto Suite is currently available installable only from GitHub, but we are actively working on getting it into a major repository. 
+Giotto Suite is currently installable only from GitHub, but we are actively working on getting it into a major repository. 
 Much of this already covered in Section 2.2, but the highlights are:
 
 #### System prerequisites
