@@ -373,3 +373,5 @@ extracting-the-downloaded-files
 extracting-the-files
 plot-spatial-gene-groups
 downloading-giotto-object-and-nuclei-segmentation
+create-giotto-object-at-hexbin-400
+database-backend---work-in-progress-but-coming-soon
