@@ -325,6 +325,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.6" data-path="visium-hd.html"><a href="visium-hd.html#hexbin-25"><i class="fa fa-check"></i><b>9.6</b> Hexbin 25</a>
 <ul>
 <li class="chapter" data-level="9.6.1" data-path="visium-hd.html"><a href="visium-hd.html#subcellular-workflow-and-projection-functions"><i class="fa fa-check"></i><b>9.6.1</b> Subcellular workflow and projection functions</a></li>
+<li class="chapter" data-level="9.6.2" data-path="visium-hd.html"><a href="visium-hd.html#projections"><i class="fa fa-check"></i><b>9.6.2</b> projections</a></li>
+<li class="chapter" data-level="9.6.3" data-path="visium-hd.html"><a href="visium-hd.html#niche-clusters"><i class="fa fa-check"></i><b>9.6.3</b> niche clusters</a></li>
 </ul></li>
 <li class="chapter" data-level="9.7" data-path="visium-hd.html"><a href="visium-hd.html#database-backend---work-in-progress-but-coming-soon"><i class="fa fa-check"></i><b>9.7</b> Database backend - Work in progress, but coming soon!</a></li>
 </ul></li>
@@ -335,7 +337,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.1.1" data-path="xenium-1.html"><a href="xenium-1.html#output-directory-structure"><i class="fa fa-check"></i><b>10.1.1</b> Output directory structure</a></li>
 <li class="chapter" data-level="10.1.2" data-path="xenium-1.html"><a href="xenium-1.html#mini-xenium-dataset"><i class="fa fa-check"></i><b>10.1.2</b> Mini Xenium Dataset</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="xenium-1.html"><a href="xenium-1.html#data-prep"><i class="fa fa-check"></i><b>10.2</b> Data prep</a>
+<li class="chapter" data-level="10.2" data-path="xenium-1.html"><a href="xenium-1.html#data-preparation"><i class="fa fa-check"></i><b>10.2</b> Data preparation</a>
 <ul>
 <li class="chapter" data-level="10.2.1" data-path="xenium-1.html"><a href="xenium-1.html#image-conversion-may-change"><i class="fa fa-check"></i><b>10.2.1</b> Image conversion (may change)</a></li>
 </ul></li>
@@ -349,7 +351,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="10.4" data-path="xenium-1.html"><a href="xenium-1.html#piecewise-loading"><i class="fa fa-check"></i><b>10.4</b> Piecewise loading</a>
 <ul>
-<li class="chapter" data-level="10.4.1" data-path="xenium-1.html"><a href="xenium-1.html#load-giottopoints-transcripts"><i class="fa fa-check"></i><b>10.4.1</b> load giottoPoints transcripts</a></li>
+<li class="chapter" data-level="10.4.1" data-path="xenium-1.html"><a href="xenium-1.html#load-giottopoints-transcripts"><i class="fa fa-check"></i><b>10.4.1</b> Load giottoPoints transcripts</a></li>
 <li class="chapter" data-level="10.4.2" data-path="xenium-1.html"><a href="xenium-1.html#optional-loading-pre-aggregated-data"><i class="fa fa-check"></i><b>10.4.2</b> (optional) Loading pre-aggregated data</a></li>
 </ul></li>
 <li class="chapter" data-level="10.5" data-path="xenium-1.html"><a href="xenium-1.html#xenium-images"><i class="fa fa-check"></i><b>10.5</b> Xenium Images</a>
@@ -369,7 +371,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="10.8.1" data-path="xenium-1.html"><a href="xenium-1.html#spatial-network"><i class="fa fa-check"></i><b>10.8.1</b> Spatial network</a></li>
 <li class="chapter" data-level="10.8.2" data-path="xenium-1.html"><a href="xenium-1.html#niche-calculation"><i class="fa fa-check"></i><b>10.8.2</b> Niche calculation</a></li>
-<li class="chapter" data-level="10.8.3" data-path="xenium-1.html"><a href="xenium-1.html#kmeans-clustering-based-on-niche-signature"><i class="fa fa-check"></i><b>10.8.3</b> kmeans clustering based on niche signature</a></li>
+<li class="chapter" data-level="10.8.3" data-path="xenium-1.html"><a href="xenium-1.html#k-means-clustering-based-on-niche-signature"><i class="fa fa-check"></i><b>10.8.3</b> k-means clustering based on niche signature</a></li>
 </ul></li>
 <li class="chapter" data-level="10.9" data-path="xenium-1.html"><a href="xenium-1.html#cell-proximity-enrichment"><i class="fa fa-check"></i><b>10.9</b> Cell proximity enrichment</a></li>
 <li class="chapter" data-level="10.10" data-path="xenium-1.html"><a href="xenium-1.html#pseudovisium"><i class="fa fa-check"></i><b>10.10</b> Pseudovisium</a>
@@ -577,9 +579,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>August 6th 2024</p>
 <div id="load-the-object" class="section level2 hasAnchor" number="8.1">
 <h2><span class="header-section-number">8.1</span> Load the object<a href="visium-part-ii.html#load-the-object" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="visium-part-ii.html#cb134-1" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
-<span id="cb134-2"><a href="visium-part-ii.html#cb134-2" tabindex="-1"></a></span>
-<span id="cb134-3"><a href="visium-part-ii.html#cb134-3" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">loadGiotto</span>(<span class="st">&quot;results/01_session5/visium_brain_object&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="visium-part-ii.html#cb144-1" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
+<span id="cb144-2"><a href="visium-part-ii.html#cb144-2" tabindex="-1"></a></span>
+<span id="cb144-3"><a href="visium-part-ii.html#cb144-3" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">loadGiotto</span>(<span class="st">&quot;results/01_session5/visium_brain_object&quot;</span>)</span></code></pre></div>
 </div>
 <div id="differential-expression" class="section level2 hasAnchor" number="8.2">
 <h2><span class="header-section-number">8.2</span> Differential expression<a href="visium-part-ii.html#differential-expression" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -589,48 +591,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Calculate the top marker genes per cluster using the gini method.</li>
 </ul>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="visium-part-ii.html#cb135-1" tabindex="-1"></a>gini_markers <span class="ot">&lt;-</span> <span class="fu">findMarkers_one_vs_all</span>(<span class="at">gobject =</span> visium_brain,</span>
-<span id="cb135-2"><a href="visium-part-ii.html#cb135-2" tabindex="-1"></a>                                       <span class="at">method =</span> <span class="st">&quot;gini&quot;</span>,</span>
-<span id="cb135-3"><a href="visium-part-ii.html#cb135-3" tabindex="-1"></a>                                       <span class="at">expression_values =</span> <span class="st">&quot;normalized&quot;</span>,</span>
-<span id="cb135-4"><a href="visium-part-ii.html#cb135-4" tabindex="-1"></a>                                       <span class="at">cluster_column =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
-<span id="cb135-5"><a href="visium-part-ii.html#cb135-5" tabindex="-1"></a>                                       <span class="at">min_feats =</span> <span class="dv">10</span>)</span>
-<span id="cb135-6"><a href="visium-part-ii.html#cb135-6" tabindex="-1"></a></span>
-<span id="cb135-7"><a href="visium-part-ii.html#cb135-7" tabindex="-1"></a>topgenes_gini <span class="ot">&lt;-</span> gini_markers[, <span class="fu">head</span>(.SD, <span class="dv">2</span>), by <span class="ot">=</span> <span class="st">&quot;cluster&quot;</span>]<span class="sc">$</span>feats</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="visium-part-ii.html#cb145-1" tabindex="-1"></a>gini_markers <span class="ot">&lt;-</span> <span class="fu">findMarkers_one_vs_all</span>(<span class="at">gobject =</span> visium_brain,</span>
+<span id="cb145-2"><a href="visium-part-ii.html#cb145-2" tabindex="-1"></a>                                       <span class="at">method =</span> <span class="st">&quot;gini&quot;</span>,</span>
+<span id="cb145-3"><a href="visium-part-ii.html#cb145-3" tabindex="-1"></a>                                       <span class="at">expression_values =</span> <span class="st">&quot;normalized&quot;</span>,</span>
+<span id="cb145-4"><a href="visium-part-ii.html#cb145-4" tabindex="-1"></a>                                       <span class="at">cluster_column =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
+<span id="cb145-5"><a href="visium-part-ii.html#cb145-5" tabindex="-1"></a>                                       <span class="at">min_feats =</span> <span class="dv">10</span>)</span>
+<span id="cb145-6"><a href="visium-part-ii.html#cb145-6" tabindex="-1"></a></span>
+<span id="cb145-7"><a href="visium-part-ii.html#cb145-7" tabindex="-1"></a>topgenes_gini <span class="ot">&lt;-</span> gini_markers[, <span class="fu">head</span>(.SD, <span class="dv">2</span>), by <span class="ot">=</span> <span class="st">&quot;cluster&quot;</span>]<span class="sc">$</span>feats</span></code></pre></div>
 <ul>
 <li>Visualize</li>
 </ul>
 <p>Plot the normalized expression distribution of the top expressed genes.</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="visium-part-ii.html#cb136-1" tabindex="-1"></a><span class="fu">violinPlot</span>(visium_brain, </span>
-<span id="cb136-2"><a href="visium-part-ii.html#cb136-2" tabindex="-1"></a>           <span class="at">feats =</span> <span class="fu">unique</span>(topgenes_gini), </span>
-<span id="cb136-3"><a href="visium-part-ii.html#cb136-3" tabindex="-1"></a>           <span class="at">cluster_column =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
-<span id="cb136-4"><a href="visium-part-ii.html#cb136-4" tabindex="-1"></a>           <span class="at">strip_text =</span> <span class="dv">6</span>, </span>
-<span id="cb136-5"><a href="visium-part-ii.html#cb136-5" tabindex="-1"></a>           <span class="at">strip_position =</span> <span class="st">&quot;right&quot;</span>,</span>
-<span id="cb136-6"><a href="visium-part-ii.html#cb136-6" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">base_width =</span> <span class="dv">5</span>, <span class="at">base_height =</span> <span class="dv">30</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-163"></span>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="visium-part-ii.html#cb146-1" tabindex="-1"></a><span class="fu">violinPlot</span>(visium_brain, </span>
+<span id="cb146-2"><a href="visium-part-ii.html#cb146-2" tabindex="-1"></a>           <span class="at">feats =</span> <span class="fu">unique</span>(topgenes_gini), </span>
+<span id="cb146-3"><a href="visium-part-ii.html#cb146-3" tabindex="-1"></a>           <span class="at">cluster_column =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
+<span id="cb146-4"><a href="visium-part-ii.html#cb146-4" tabindex="-1"></a>           <span class="at">strip_text =</span> <span class="dv">6</span>, </span>
+<span id="cb146-5"><a href="visium-part-ii.html#cb146-5" tabindex="-1"></a>           <span class="at">strip_position =</span> <span class="st">&quot;right&quot;</span>,</span>
+<span id="cb146-6"><a href="visium-part-ii.html#cb146-6" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">base_width =</span> <span class="dv">5</span>, <span class="at">base_height =</span> <span class="dv">30</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-177"></span>
 <img src="img/02_session1/0-violinPlot.png" alt="Violin plot showing the top gini genes normalized expression." width="50%" />
 <p class="caption">
 Figure 8.1: Violin plot showing the top gini genes normalized expression.
 </p>
 </div>
 <p>Use the cluster IDs to create a heatmap with the normalized expression of the top expressed genes per cluster.</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="visium-part-ii.html#cb137-1" tabindex="-1"></a><span class="fu">plotMetaDataHeatmap</span>(visium_brain, </span>
-<span id="cb137-2"><a href="visium-part-ii.html#cb137-2" tabindex="-1"></a>                    <span class="at">selected_feats =</span> <span class="fu">unique</span>(topgenes_gini),</span>
-<span id="cb137-3"><a href="visium-part-ii.html#cb137-3" tabindex="-1"></a>                    <span class="at">metadata_cols =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
-<span id="cb137-4"><a href="visium-part-ii.html#cb137-4" tabindex="-1"></a>                    <span class="at">x_text_size =</span> <span class="dv">10</span>, <span class="at">y_text_size =</span> <span class="dv">10</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-165"></span>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="visium-part-ii.html#cb147-1" tabindex="-1"></a><span class="fu">plotMetaDataHeatmap</span>(visium_brain, </span>
+<span id="cb147-2"><a href="visium-part-ii.html#cb147-2" tabindex="-1"></a>                    <span class="at">selected_feats =</span> <span class="fu">unique</span>(topgenes_gini),</span>
+<span id="cb147-3"><a href="visium-part-ii.html#cb147-3" tabindex="-1"></a>                    <span class="at">metadata_cols =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
+<span id="cb147-4"><a href="visium-part-ii.html#cb147-4" tabindex="-1"></a>                    <span class="at">x_text_size =</span> <span class="dv">10</span>, <span class="at">y_text_size =</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-179"></span>
 <img src="img/02_session1/1-plotMetaDataHeatmap.png" alt="Heatmap showing the top gini genes normalized expression per Leiden cluster." width="80%" />
 <p class="caption">
 Figure 8.2: Heatmap showing the top gini genes normalized expression per Leiden cluster.
 </p>
 </div>
 <p>Visualize the scaled expression spatial distribution of the top expressed genes across the sample.</p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="visium-part-ii.html#cb138-1" tabindex="-1"></a><span class="fu">dimFeatPlot2D</span>(visium_brain, </span>
-<span id="cb138-2"><a href="visium-part-ii.html#cb138-2" tabindex="-1"></a>              <span class="at">expression_values =</span> <span class="st">&quot;scaled&quot;</span>,</span>
-<span id="cb138-3"><a href="visium-part-ii.html#cb138-3" tabindex="-1"></a>              <span class="at">feats =</span> <span class="fu">sort</span>(<span class="fu">unique</span>(topgenes_gini)),</span>
-<span id="cb138-4"><a href="visium-part-ii.html#cb138-4" tabindex="-1"></a>              <span class="at">cow_n_col =</span> <span class="dv">5</span>, </span>
-<span id="cb138-5"><a href="visium-part-ii.html#cb138-5" tabindex="-1"></a>              <span class="at">point_size =</span> <span class="dv">1</span>,</span>
-<span id="cb138-6"><a href="visium-part-ii.html#cb138-6" tabindex="-1"></a>              <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">base_width =</span> <span class="dv">15</span>, <span class="at">base_height =</span> <span class="dv">20</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-167"></span>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="visium-part-ii.html#cb148-1" tabindex="-1"></a><span class="fu">dimFeatPlot2D</span>(visium_brain, </span>
+<span id="cb148-2"><a href="visium-part-ii.html#cb148-2" tabindex="-1"></a>              <span class="at">expression_values =</span> <span class="st">&quot;scaled&quot;</span>,</span>
+<span id="cb148-3"><a href="visium-part-ii.html#cb148-3" tabindex="-1"></a>              <span class="at">feats =</span> <span class="fu">sort</span>(<span class="fu">unique</span>(topgenes_gini)),</span>
+<span id="cb148-4"><a href="visium-part-ii.html#cb148-4" tabindex="-1"></a>              <span class="at">cow_n_col =</span> <span class="dv">5</span>, </span>
+<span id="cb148-5"><a href="visium-part-ii.html#cb148-5" tabindex="-1"></a>              <span class="at">point_size =</span> <span class="dv">1</span>,</span>
+<span id="cb148-6"><a href="visium-part-ii.html#cb148-6" tabindex="-1"></a>              <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">base_width =</span> <span class="dv">15</span>, <span class="at">base_height =</span> <span class="dv">20</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-181"></span>
 <img src="img/02_session1/2-dimFeatPlot2D.png" alt="Spatial distribution of the top gini genes scaled expression." width="100%" />
 <p class="caption">
 Figure 8.3: Spatial distribution of the top gini genes scaled expression.
@@ -643,48 +645,48 @@ Figure 8.3: Spatial distribution of the top gini genes scaled expression.
 <ul>
 <li>Calculate the top marker genes per cluster using the scran method</li>
 </ul>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="visium-part-ii.html#cb139-1" tabindex="-1"></a>scran_markers <span class="ot">&lt;-</span> <span class="fu">findMarkers_one_vs_all</span>(<span class="at">gobject =</span> visium_brain,</span>
-<span id="cb139-2"><a href="visium-part-ii.html#cb139-2" tabindex="-1"></a>                                       <span class="at">method =</span> <span class="st">&quot;scran&quot;</span>,</span>
-<span id="cb139-3"><a href="visium-part-ii.html#cb139-3" tabindex="-1"></a>                                       <span class="at">expression_values =</span> <span class="st">&quot;normalized&quot;</span>,</span>
-<span id="cb139-4"><a href="visium-part-ii.html#cb139-4" tabindex="-1"></a>                                       <span class="at">cluster_column =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
-<span id="cb139-5"><a href="visium-part-ii.html#cb139-5" tabindex="-1"></a>                                       <span class="at">min_feats =</span> <span class="dv">10</span>)</span>
-<span id="cb139-6"><a href="visium-part-ii.html#cb139-6" tabindex="-1"></a></span>
-<span id="cb139-7"><a href="visium-part-ii.html#cb139-7" tabindex="-1"></a>topgenes_scran <span class="ot">&lt;-</span> scran_markers[, <span class="fu">head</span>(.SD, <span class="dv">2</span>), by <span class="ot">=</span> <span class="st">&quot;cluster&quot;</span>]<span class="sc">$</span>feats</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="visium-part-ii.html#cb149-1" tabindex="-1"></a>scran_markers <span class="ot">&lt;-</span> <span class="fu">findMarkers_one_vs_all</span>(<span class="at">gobject =</span> visium_brain,</span>
+<span id="cb149-2"><a href="visium-part-ii.html#cb149-2" tabindex="-1"></a>                                       <span class="at">method =</span> <span class="st">&quot;scran&quot;</span>,</span>
+<span id="cb149-3"><a href="visium-part-ii.html#cb149-3" tabindex="-1"></a>                                       <span class="at">expression_values =</span> <span class="st">&quot;normalized&quot;</span>,</span>
+<span id="cb149-4"><a href="visium-part-ii.html#cb149-4" tabindex="-1"></a>                                       <span class="at">cluster_column =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
+<span id="cb149-5"><a href="visium-part-ii.html#cb149-5" tabindex="-1"></a>                                       <span class="at">min_feats =</span> <span class="dv">10</span>)</span>
+<span id="cb149-6"><a href="visium-part-ii.html#cb149-6" tabindex="-1"></a></span>
+<span id="cb149-7"><a href="visium-part-ii.html#cb149-7" tabindex="-1"></a>topgenes_scran <span class="ot">&lt;-</span> scran_markers[, <span class="fu">head</span>(.SD, <span class="dv">2</span>), by <span class="ot">=</span> <span class="st">&quot;cluster&quot;</span>]<span class="sc">$</span>feats</span></code></pre></div>
 <ul>
 <li>Visualize</li>
 </ul>
 <p>Plot the normalized expression distribution of the top expressed genes.</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="visium-part-ii.html#cb140-1" tabindex="-1"></a><span class="fu">violinPlot</span>(visium_brain, </span>
-<span id="cb140-2"><a href="visium-part-ii.html#cb140-2" tabindex="-1"></a>           <span class="at">feats =</span> <span class="fu">unique</span>(topgenes_scran), </span>
-<span id="cb140-3"><a href="visium-part-ii.html#cb140-3" tabindex="-1"></a>           <span class="at">cluster_column =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
-<span id="cb140-4"><a href="visium-part-ii.html#cb140-4" tabindex="-1"></a>           <span class="at">strip_text =</span> <span class="dv">6</span>, </span>
-<span id="cb140-5"><a href="visium-part-ii.html#cb140-5" tabindex="-1"></a>           <span class="at">strip_position =</span> <span class="st">&quot;right&quot;</span>,</span>
-<span id="cb140-6"><a href="visium-part-ii.html#cb140-6" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">base_width =</span> <span class="dv">5</span>, <span class="at">base_height =</span> <span class="dv">30</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-170"></span>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="visium-part-ii.html#cb150-1" tabindex="-1"></a><span class="fu">violinPlot</span>(visium_brain, </span>
+<span id="cb150-2"><a href="visium-part-ii.html#cb150-2" tabindex="-1"></a>           <span class="at">feats =</span> <span class="fu">unique</span>(topgenes_scran), </span>
+<span id="cb150-3"><a href="visium-part-ii.html#cb150-3" tabindex="-1"></a>           <span class="at">cluster_column =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
+<span id="cb150-4"><a href="visium-part-ii.html#cb150-4" tabindex="-1"></a>           <span class="at">strip_text =</span> <span class="dv">6</span>, </span>
+<span id="cb150-5"><a href="visium-part-ii.html#cb150-5" tabindex="-1"></a>           <span class="at">strip_position =</span> <span class="st">&quot;right&quot;</span>,</span>
+<span id="cb150-6"><a href="visium-part-ii.html#cb150-6" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">base_width =</span> <span class="dv">5</span>, <span class="at">base_height =</span> <span class="dv">30</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-184"></span>
 <img src="img/02_session1/3-violinPlot.png" alt="Violin plot of the top scran genes normalized expression." width="50%" />
 <p class="caption">
 Figure 8.4: Violin plot of the top scran genes normalized expression.
 </p>
 </div>
 <p>Use the cluster IDs to create a heatmap with the normalized expression of the top expressed genes per cluster.</p>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="visium-part-ii.html#cb141-1" tabindex="-1"></a><span class="fu">plotMetaDataHeatmap</span>(visium_brain, </span>
-<span id="cb141-2"><a href="visium-part-ii.html#cb141-2" tabindex="-1"></a>                    <span class="at">selected_feats =</span> <span class="fu">unique</span>(topgenes_scran),</span>
-<span id="cb141-3"><a href="visium-part-ii.html#cb141-3" tabindex="-1"></a>                    <span class="at">metadata_cols =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
-<span id="cb141-4"><a href="visium-part-ii.html#cb141-4" tabindex="-1"></a>                    <span class="at">x_text_size =</span> <span class="dv">10</span>, <span class="at">y_text_size =</span> <span class="dv">10</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-172"></span>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="visium-part-ii.html#cb151-1" tabindex="-1"></a><span class="fu">plotMetaDataHeatmap</span>(visium_brain, </span>
+<span id="cb151-2"><a href="visium-part-ii.html#cb151-2" tabindex="-1"></a>                    <span class="at">selected_feats =</span> <span class="fu">unique</span>(topgenes_scran),</span>
+<span id="cb151-3"><a href="visium-part-ii.html#cb151-3" tabindex="-1"></a>                    <span class="at">metadata_cols =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
+<span id="cb151-4"><a href="visium-part-ii.html#cb151-4" tabindex="-1"></a>                    <span class="at">x_text_size =</span> <span class="dv">10</span>, <span class="at">y_text_size =</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-186"></span>
 <img src="img/02_session1/4-plotMetaDataHeatmap.png" alt="Heatmap showing the top scran genes normalized expression per Leiden cluster." width="100%" />
 <p class="caption">
 Figure 8.5: Heatmap showing the top scran genes normalized expression per Leiden cluster.
 </p>
 </div>
 <p>Visualize the scaled expression spatial distribution of the top expressed genes across the sample.</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="visium-part-ii.html#cb142-1" tabindex="-1"></a><span class="fu">dimFeatPlot2D</span>(visium_brain, </span>
-<span id="cb142-2"><a href="visium-part-ii.html#cb142-2" tabindex="-1"></a>              <span class="at">expression_values =</span> <span class="st">&quot;scaled&quot;</span>,</span>
-<span id="cb142-3"><a href="visium-part-ii.html#cb142-3" tabindex="-1"></a>              <span class="at">feats =</span> <span class="fu">sort</span>(<span class="fu">unique</span>(topgenes_scran)),</span>
-<span id="cb142-4"><a href="visium-part-ii.html#cb142-4" tabindex="-1"></a>              <span class="at">cow_n_col =</span> <span class="dv">5</span>, </span>
-<span id="cb142-5"><a href="visium-part-ii.html#cb142-5" tabindex="-1"></a>              <span class="at">point_size =</span> <span class="dv">1</span>,</span>
-<span id="cb142-6"><a href="visium-part-ii.html#cb142-6" tabindex="-1"></a>              <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">base_width =</span> <span class="dv">20</span>, <span class="at">base_height =</span> <span class="dv">20</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-174"></span>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="visium-part-ii.html#cb152-1" tabindex="-1"></a><span class="fu">dimFeatPlot2D</span>(visium_brain, </span>
+<span id="cb152-2"><a href="visium-part-ii.html#cb152-2" tabindex="-1"></a>              <span class="at">expression_values =</span> <span class="st">&quot;scaled&quot;</span>,</span>
+<span id="cb152-3"><a href="visium-part-ii.html#cb152-3" tabindex="-1"></a>              <span class="at">feats =</span> <span class="fu">sort</span>(<span class="fu">unique</span>(topgenes_scran)),</span>
+<span id="cb152-4"><a href="visium-part-ii.html#cb152-4" tabindex="-1"></a>              <span class="at">cow_n_col =</span> <span class="dv">5</span>, </span>
+<span id="cb152-5"><a href="visium-part-ii.html#cb152-5" tabindex="-1"></a>              <span class="at">point_size =</span> <span class="dv">1</span>,</span>
+<span id="cb152-6"><a href="visium-part-ii.html#cb152-6" tabindex="-1"></a>              <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">base_width =</span> <span class="dv">20</span>, <span class="at">base_height =</span> <span class="dv">20</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-188"></span>
 <img src="img/02_session1/5-dimFeatPlot2D.png" alt="Spatial distribution of the top scran genes scaled expression." width="100%" />
 <p class="caption">
 Figure 8.6: Spatial distribution of the top scran genes scaled expression.
@@ -699,89 +701,89 @@ Figure 8.6: Spatial distribution of the top scran genes scaled expression.
 <ul>
 <li>Download the single-cell dataset</li>
 </ul>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="visium-part-ii.html#cb143-1" tabindex="-1"></a>GiottoData<span class="sc">::</span><span class="fu">getSpatialDataset</span>(<span class="at">dataset =</span> <span class="st">&quot;scRNA_mouse_brain&quot;</span>, </span>
-<span id="cb143-2"><a href="visium-part-ii.html#cb143-2" tabindex="-1"></a>                              <span class="at">directory =</span> <span class="st">&quot;data/02_session1&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="visium-part-ii.html#cb153-1" tabindex="-1"></a>GiottoData<span class="sc">::</span><span class="fu">getSpatialDataset</span>(<span class="at">dataset =</span> <span class="st">&quot;scRNA_mouse_brain&quot;</span>, </span>
+<span id="cb153-2"><a href="visium-part-ii.html#cb153-2" tabindex="-1"></a>                              <span class="at">directory =</span> <span class="st">&quot;data/02_session1&quot;</span>)</span></code></pre></div>
 <ul>
 <li>Create the single-cell object and run the normalization step</li>
 </ul>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="visium-part-ii.html#cb144-1" tabindex="-1"></a>results_folder <span class="ot">&lt;-</span> <span class="st">&quot;results/02_session1&quot;</span></span>
-<span id="cb144-2"><a href="visium-part-ii.html#cb144-2" tabindex="-1"></a></span>
-<span id="cb144-3"><a href="visium-part-ii.html#cb144-3" tabindex="-1"></a>python_path <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb144-4"><a href="visium-part-ii.html#cb144-4" tabindex="-1"></a></span>
-<span id="cb144-5"><a href="visium-part-ii.html#cb144-5" tabindex="-1"></a>instructions <span class="ot">&lt;-</span> <span class="fu">createGiottoInstructions</span>(</span>
-<span id="cb144-6"><a href="visium-part-ii.html#cb144-6" tabindex="-1"></a>    <span class="at">save_dir =</span> results_folder,</span>
-<span id="cb144-7"><a href="visium-part-ii.html#cb144-7" tabindex="-1"></a>    <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb144-8"><a href="visium-part-ii.html#cb144-8" tabindex="-1"></a>    <span class="at">show_plot =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb144-9"><a href="visium-part-ii.html#cb144-9" tabindex="-1"></a>    <span class="at">python_path =</span> python_path</span>
-<span id="cb144-10"><a href="visium-part-ii.html#cb144-10" tabindex="-1"></a>)</span>
-<span id="cb144-11"><a href="visium-part-ii.html#cb144-11" tabindex="-1"></a></span>
-<span id="cb144-12"><a href="visium-part-ii.html#cb144-12" tabindex="-1"></a>sc_expression <span class="ot">&lt;-</span> <span class="st">&quot;data/02_session1/brain_sc_expression_matrix.txt.gz&quot;</span></span>
-<span id="cb144-13"><a href="visium-part-ii.html#cb144-13" tabindex="-1"></a>sc_metadata <span class="ot">&lt;-</span> <span class="st">&quot;data/02_session1/brain_sc_metadata.csv&quot;</span></span>
-<span id="cb144-14"><a href="visium-part-ii.html#cb144-14" tabindex="-1"></a></span>
-<span id="cb144-15"><a href="visium-part-ii.html#cb144-15" tabindex="-1"></a>giotto_SC <span class="ot">&lt;-</span> <span class="fu">createGiottoObject</span>(<span class="at">expression =</span> sc_expression,</span>
-<span id="cb144-16"><a href="visium-part-ii.html#cb144-16" tabindex="-1"></a>                                <span class="at">instructions =</span> instructions)</span>
-<span id="cb144-17"><a href="visium-part-ii.html#cb144-17" tabindex="-1"></a></span>
-<span id="cb144-18"><a href="visium-part-ii.html#cb144-18" tabindex="-1"></a>giotto_SC <span class="ot">&lt;-</span> <span class="fu">addCellMetadata</span>(giotto_SC, </span>
-<span id="cb144-19"><a href="visium-part-ii.html#cb144-19" tabindex="-1"></a>                             <span class="at">new_metadata =</span> data.table<span class="sc">::</span><span class="fu">fread</span>(sc_metadata))</span>
-<span id="cb144-20"><a href="visium-part-ii.html#cb144-20" tabindex="-1"></a></span>
-<span id="cb144-21"><a href="visium-part-ii.html#cb144-21" tabindex="-1"></a>giotto_SC <span class="ot">&lt;-</span> <span class="fu">normalizeGiotto</span>(giotto_SC)</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="visium-part-ii.html#cb154-1" tabindex="-1"></a>results_folder <span class="ot">&lt;-</span> <span class="st">&quot;results/02_session1&quot;</span></span>
+<span id="cb154-2"><a href="visium-part-ii.html#cb154-2" tabindex="-1"></a></span>
+<span id="cb154-3"><a href="visium-part-ii.html#cb154-3" tabindex="-1"></a>python_path <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb154-4"><a href="visium-part-ii.html#cb154-4" tabindex="-1"></a></span>
+<span id="cb154-5"><a href="visium-part-ii.html#cb154-5" tabindex="-1"></a>instructions <span class="ot">&lt;-</span> <span class="fu">createGiottoInstructions</span>(</span>
+<span id="cb154-6"><a href="visium-part-ii.html#cb154-6" tabindex="-1"></a>    <span class="at">save_dir =</span> results_folder,</span>
+<span id="cb154-7"><a href="visium-part-ii.html#cb154-7" tabindex="-1"></a>    <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb154-8"><a href="visium-part-ii.html#cb154-8" tabindex="-1"></a>    <span class="at">show_plot =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb154-9"><a href="visium-part-ii.html#cb154-9" tabindex="-1"></a>    <span class="at">python_path =</span> python_path</span>
+<span id="cb154-10"><a href="visium-part-ii.html#cb154-10" tabindex="-1"></a>)</span>
+<span id="cb154-11"><a href="visium-part-ii.html#cb154-11" tabindex="-1"></a></span>
+<span id="cb154-12"><a href="visium-part-ii.html#cb154-12" tabindex="-1"></a>sc_expression <span class="ot">&lt;-</span> <span class="st">&quot;data/02_session1/brain_sc_expression_matrix.txt.gz&quot;</span></span>
+<span id="cb154-13"><a href="visium-part-ii.html#cb154-13" tabindex="-1"></a>sc_metadata <span class="ot">&lt;-</span> <span class="st">&quot;data/02_session1/brain_sc_metadata.csv&quot;</span></span>
+<span id="cb154-14"><a href="visium-part-ii.html#cb154-14" tabindex="-1"></a></span>
+<span id="cb154-15"><a href="visium-part-ii.html#cb154-15" tabindex="-1"></a>giotto_SC <span class="ot">&lt;-</span> <span class="fu">createGiottoObject</span>(<span class="at">expression =</span> sc_expression,</span>
+<span id="cb154-16"><a href="visium-part-ii.html#cb154-16" tabindex="-1"></a>                                <span class="at">instructions =</span> instructions)</span>
+<span id="cb154-17"><a href="visium-part-ii.html#cb154-17" tabindex="-1"></a></span>
+<span id="cb154-18"><a href="visium-part-ii.html#cb154-18" tabindex="-1"></a>giotto_SC <span class="ot">&lt;-</span> <span class="fu">addCellMetadata</span>(giotto_SC, </span>
+<span id="cb154-19"><a href="visium-part-ii.html#cb154-19" tabindex="-1"></a>                             <span class="at">new_metadata =</span> data.table<span class="sc">::</span><span class="fu">fread</span>(sc_metadata))</span>
+<span id="cb154-20"><a href="visium-part-ii.html#cb154-20" tabindex="-1"></a></span>
+<span id="cb154-21"><a href="visium-part-ii.html#cb154-21" tabindex="-1"></a>giotto_SC <span class="ot">&lt;-</span> <span class="fu">normalizeGiotto</span>(giotto_SC)</span></code></pre></div>
 <div id="pagerank" class="section level3 hasAnchor" number="8.3.1">
 <h3><span class="header-section-number">8.3.1</span> PAGE/Rank<a href="visium-part-ii.html#pagerank" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Parametric Analysis of Gene Set Enrichment (PAGE) and Rank enrichment both aim to determine whether a predefined set of genes show statistically significant differences in expression compared to other genes in the dataset.</p>
 <ul>
 <li>Calculate the cell type markers</li>
 </ul>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="visium-part-ii.html#cb145-1" tabindex="-1"></a>markers_scran <span class="ot">&lt;-</span> <span class="fu">findMarkers_one_vs_all</span>(<span class="at">gobject =</span> giotto_SC, </span>
-<span id="cb145-2"><a href="visium-part-ii.html#cb145-2" tabindex="-1"></a>                                        <span class="at">method =</span> <span class="st">&quot;scran&quot;</span>,</span>
-<span id="cb145-3"><a href="visium-part-ii.html#cb145-3" tabindex="-1"></a>                                        <span class="at">expression_values =</span> <span class="st">&quot;normalized&quot;</span>,</span>
-<span id="cb145-4"><a href="visium-part-ii.html#cb145-4" tabindex="-1"></a>                                        <span class="at">cluster_column =</span> <span class="st">&quot;Class&quot;</span>, </span>
-<span id="cb145-5"><a href="visium-part-ii.html#cb145-5" tabindex="-1"></a>                                        <span class="at">min_feats =</span> <span class="dv">3</span>)</span>
-<span id="cb145-6"><a href="visium-part-ii.html#cb145-6" tabindex="-1"></a></span>
-<span id="cb145-7"><a href="visium-part-ii.html#cb145-7" tabindex="-1"></a>top_markers <span class="ot">&lt;-</span> markers_scran[, <span class="fu">head</span>(.SD, <span class="dv">10</span>), by <span class="ot">=</span> <span class="st">&quot;cluster&quot;</span>]</span>
-<span id="cb145-8"><a href="visium-part-ii.html#cb145-8" tabindex="-1"></a>celltypes <span class="ot">&lt;-</span> <span class="fu">levels</span>(<span class="fu">factor</span>(markers_scran<span class="sc">$</span>cluster)) </span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="visium-part-ii.html#cb155-1" tabindex="-1"></a>markers_scran <span class="ot">&lt;-</span> <span class="fu">findMarkers_one_vs_all</span>(<span class="at">gobject =</span> giotto_SC, </span>
+<span id="cb155-2"><a href="visium-part-ii.html#cb155-2" tabindex="-1"></a>                                        <span class="at">method =</span> <span class="st">&quot;scran&quot;</span>,</span>
+<span id="cb155-3"><a href="visium-part-ii.html#cb155-3" tabindex="-1"></a>                                        <span class="at">expression_values =</span> <span class="st">&quot;normalized&quot;</span>,</span>
+<span id="cb155-4"><a href="visium-part-ii.html#cb155-4" tabindex="-1"></a>                                        <span class="at">cluster_column =</span> <span class="st">&quot;Class&quot;</span>, </span>
+<span id="cb155-5"><a href="visium-part-ii.html#cb155-5" tabindex="-1"></a>                                        <span class="at">min_feats =</span> <span class="dv">3</span>)</span>
+<span id="cb155-6"><a href="visium-part-ii.html#cb155-6" tabindex="-1"></a></span>
+<span id="cb155-7"><a href="visium-part-ii.html#cb155-7" tabindex="-1"></a>top_markers <span class="ot">&lt;-</span> markers_scran[, <span class="fu">head</span>(.SD, <span class="dv">10</span>), by <span class="ot">=</span> <span class="st">&quot;cluster&quot;</span>]</span>
+<span id="cb155-8"><a href="visium-part-ii.html#cb155-8" tabindex="-1"></a>celltypes <span class="ot">&lt;-</span> <span class="fu">levels</span>(<span class="fu">factor</span>(markers_scran<span class="sc">$</span>cluster)) </span></code></pre></div>
 <ul>
 <li>Create the signature matrix</li>
 </ul>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="visium-part-ii.html#cb146-1" tabindex="-1"></a>sign_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb146-2"><a href="visium-part-ii.html#cb146-2" tabindex="-1"></a></span>
-<span id="cb146-3"><a href="visium-part-ii.html#cb146-3" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(celltypes)){</span>
-<span id="cb146-4"><a href="visium-part-ii.html#cb146-4" tabindex="-1"></a>  sign_list[[i]] <span class="ot">=</span> top_markers[<span class="fu">which</span>(top_markers<span class="sc">$</span>cluster <span class="sc">==</span> celltypes[i]),]<span class="sc">$</span>feats</span>
-<span id="cb146-5"><a href="visium-part-ii.html#cb146-5" tabindex="-1"></a>}</span>
-<span id="cb146-6"><a href="visium-part-ii.html#cb146-6" tabindex="-1"></a></span>
-<span id="cb146-7"><a href="visium-part-ii.html#cb146-7" tabindex="-1"></a>sign_matrix <span class="ot">&lt;-</span> <span class="fu">makeSignMatrixPAGE</span>(<span class="at">sign_names =</span> celltypes,</span>
-<span id="cb146-8"><a href="visium-part-ii.html#cb146-8" tabindex="-1"></a>                                  <span class="at">sign_list =</span> sign_list)</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="visium-part-ii.html#cb156-1" tabindex="-1"></a>sign_list <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb156-2"><a href="visium-part-ii.html#cb156-2" tabindex="-1"></a></span>
+<span id="cb156-3"><a href="visium-part-ii.html#cb156-3" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(celltypes)){</span>
+<span id="cb156-4"><a href="visium-part-ii.html#cb156-4" tabindex="-1"></a>  sign_list[[i]] <span class="ot">=</span> top_markers[<span class="fu">which</span>(top_markers<span class="sc">$</span>cluster <span class="sc">==</span> celltypes[i]),]<span class="sc">$</span>feats</span>
+<span id="cb156-5"><a href="visium-part-ii.html#cb156-5" tabindex="-1"></a>}</span>
+<span id="cb156-6"><a href="visium-part-ii.html#cb156-6" tabindex="-1"></a></span>
+<span id="cb156-7"><a href="visium-part-ii.html#cb156-7" tabindex="-1"></a>sign_matrix <span class="ot">&lt;-</span> <span class="fu">makeSignMatrixPAGE</span>(<span class="at">sign_names =</span> celltypes,</span>
+<span id="cb156-8"><a href="visium-part-ii.html#cb156-8" tabindex="-1"></a>                                  <span class="at">sign_list =</span> sign_list)</span></code></pre></div>
 <ul>
 <li>Run the enrichment test with PAGE</li>
 </ul>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="visium-part-ii.html#cb147-1" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">runPAGEEnrich</span>(<span class="at">gobject =</span> visium_brain, </span>
-<span id="cb147-2"><a href="visium-part-ii.html#cb147-2" tabindex="-1"></a>                              <span class="at">sign_matrix =</span> sign_matrix)</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="visium-part-ii.html#cb157-1" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">runPAGEEnrich</span>(<span class="at">gobject =</span> visium_brain, </span>
+<span id="cb157-2"><a href="visium-part-ii.html#cb157-2" tabindex="-1"></a>                              <span class="at">sign_matrix =</span> sign_matrix)</span></code></pre></div>
 <ul>
 <li>Visualize</li>
 </ul>
 <p>Create a heatmap showing the enrichment of cell types (from the single-cell data annotation) in the spatial dataset clusters.</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="visium-part-ii.html#cb148-1" tabindex="-1"></a>cell_types_PAGE <span class="ot">&lt;-</span> <span class="fu">colnames</span>(sign_matrix)</span>
-<span id="cb148-2"><a href="visium-part-ii.html#cb148-2" tabindex="-1"></a></span>
-<span id="cb148-3"><a href="visium-part-ii.html#cb148-3" tabindex="-1"></a><span class="fu">plotMetaDataCellsHeatmap</span>(<span class="at">gobject =</span> visium_brain,</span>
-<span id="cb148-4"><a href="visium-part-ii.html#cb148-4" tabindex="-1"></a>                         <span class="at">metadata_cols =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
-<span id="cb148-5"><a href="visium-part-ii.html#cb148-5" tabindex="-1"></a>                         <span class="at">value_cols =</span> cell_types_PAGE,</span>
-<span id="cb148-6"><a href="visium-part-ii.html#cb148-6" tabindex="-1"></a>                         <span class="at">spat_enr_names =</span> <span class="st">&quot;PAGE&quot;</span>,</span>
-<span id="cb148-7"><a href="visium-part-ii.html#cb148-7" tabindex="-1"></a>                         <span class="at">x_text_size =</span> <span class="dv">8</span>,</span>
-<span id="cb148-8"><a href="visium-part-ii.html#cb148-8" tabindex="-1"></a>                         <span class="at">y_text_size =</span> <span class="dv">8</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-181"></span>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="visium-part-ii.html#cb158-1" tabindex="-1"></a>cell_types_PAGE <span class="ot">&lt;-</span> <span class="fu">colnames</span>(sign_matrix)</span>
+<span id="cb158-2"><a href="visium-part-ii.html#cb158-2" tabindex="-1"></a></span>
+<span id="cb158-3"><a href="visium-part-ii.html#cb158-3" tabindex="-1"></a><span class="fu">plotMetaDataCellsHeatmap</span>(<span class="at">gobject =</span> visium_brain,</span>
+<span id="cb158-4"><a href="visium-part-ii.html#cb158-4" tabindex="-1"></a>                         <span class="at">metadata_cols =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
+<span id="cb158-5"><a href="visium-part-ii.html#cb158-5" tabindex="-1"></a>                         <span class="at">value_cols =</span> cell_types_PAGE,</span>
+<span id="cb158-6"><a href="visium-part-ii.html#cb158-6" tabindex="-1"></a>                         <span class="at">spat_enr_names =</span> <span class="st">&quot;PAGE&quot;</span>,</span>
+<span id="cb158-7"><a href="visium-part-ii.html#cb158-7" tabindex="-1"></a>                         <span class="at">x_text_size =</span> <span class="dv">8</span>,</span>
+<span id="cb158-8"><a href="visium-part-ii.html#cb158-8" tabindex="-1"></a>                         <span class="at">y_text_size =</span> <span class="dv">8</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-195"></span>
 <img src="img/02_session1/6-plotMetaDataCellsHeatmap.png" alt="Cell types enrichment per Leiden cluster, identified using the PAGE method." width="100%" />
 <p class="caption">
 Figure 8.7: Cell types enrichment per Leiden cluster, identified using the PAGE method.
 </p>
 </div>
 <p>Plot the spatial distribution of the cell types.</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="visium-part-ii.html#cb149-1" tabindex="-1"></a><span class="fu">spatCellPlot2D</span>(<span class="at">gobject =</span> visium_brain,</span>
-<span id="cb149-2"><a href="visium-part-ii.html#cb149-2" tabindex="-1"></a>               <span class="at">spat_enr_names =</span> <span class="st">&quot;PAGE&quot;</span>,</span>
-<span id="cb149-3"><a href="visium-part-ii.html#cb149-3" tabindex="-1"></a>               <span class="at">cell_annotation_values =</span> cell_types_PAGE,</span>
-<span id="cb149-4"><a href="visium-part-ii.html#cb149-4" tabindex="-1"></a>               <span class="at">cow_n_col =</span> <span class="dv">3</span>,</span>
-<span id="cb149-5"><a href="visium-part-ii.html#cb149-5" tabindex="-1"></a>               <span class="at">coord_fix_ratio =</span> <span class="dv">1</span>, </span>
-<span id="cb149-6"><a href="visium-part-ii.html#cb149-6" tabindex="-1"></a>               <span class="at">point_size =</span> <span class="dv">1</span>, </span>
-<span id="cb149-7"><a href="visium-part-ii.html#cb149-7" tabindex="-1"></a>               <span class="at">show_legend =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-183"></span>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="visium-part-ii.html#cb159-1" tabindex="-1"></a><span class="fu">spatCellPlot2D</span>(<span class="at">gobject =</span> visium_brain,</span>
+<span id="cb159-2"><a href="visium-part-ii.html#cb159-2" tabindex="-1"></a>               <span class="at">spat_enr_names =</span> <span class="st">&quot;PAGE&quot;</span>,</span>
+<span id="cb159-3"><a href="visium-part-ii.html#cb159-3" tabindex="-1"></a>               <span class="at">cell_annotation_values =</span> cell_types_PAGE,</span>
+<span id="cb159-4"><a href="visium-part-ii.html#cb159-4" tabindex="-1"></a>               <span class="at">cow_n_col =</span> <span class="dv">3</span>,</span>
+<span id="cb159-5"><a href="visium-part-ii.html#cb159-5" tabindex="-1"></a>               <span class="at">coord_fix_ratio =</span> <span class="dv">1</span>, </span>
+<span id="cb159-6"><a href="visium-part-ii.html#cb159-6" tabindex="-1"></a>               <span class="at">point_size =</span> <span class="dv">1</span>, </span>
+<span id="cb159-7"><a href="visium-part-ii.html#cb159-7" tabindex="-1"></a>               <span class="at">show_legend =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-197"></span>
 <img src="img/02_session1/7-spatCellPlot2D.png" alt="Spatial distribution of cell types identified using the PAGE method." width="100%" />
 <p class="caption">
 Figure 8.8: Spatial distribution of cell types identified using the PAGE method.
@@ -794,27 +796,27 @@ Figure 8.8: Spatial distribution of cell types identified using the PAGE method.
 <ul>
 <li>Create the signature matrix</li>
 </ul>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="visium-part-ii.html#cb150-1" tabindex="-1"></a>sign_matrix <span class="ot">&lt;-</span> <span class="fu">makeSignMatrixDWLSfromMatrix</span>(</span>
-<span id="cb150-2"><a href="visium-part-ii.html#cb150-2" tabindex="-1"></a>    <span class="at">matrix =</span> <span class="fu">getExpression</span>(giotto_SC,</span>
-<span id="cb150-3"><a href="visium-part-ii.html#cb150-3" tabindex="-1"></a>                           <span class="at">values =</span> <span class="st">&quot;normalized&quot;</span>,</span>
-<span id="cb150-4"><a href="visium-part-ii.html#cb150-4" tabindex="-1"></a>                           <span class="at">output =</span> <span class="st">&quot;matrix&quot;</span>),</span>
-<span id="cb150-5"><a href="visium-part-ii.html#cb150-5" tabindex="-1"></a>    <span class="at">cell_type =</span> <span class="fu">pDataDT</span>(giotto_SC)<span class="sc">$</span>Class,</span>
-<span id="cb150-6"><a href="visium-part-ii.html#cb150-6" tabindex="-1"></a>    <span class="at">sign_gene =</span> top_markers<span class="sc">$</span>feats)</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="visium-part-ii.html#cb160-1" tabindex="-1"></a>sign_matrix <span class="ot">&lt;-</span> <span class="fu">makeSignMatrixDWLSfromMatrix</span>(</span>
+<span id="cb160-2"><a href="visium-part-ii.html#cb160-2" tabindex="-1"></a>    <span class="at">matrix =</span> <span class="fu">getExpression</span>(giotto_SC,</span>
+<span id="cb160-3"><a href="visium-part-ii.html#cb160-3" tabindex="-1"></a>                           <span class="at">values =</span> <span class="st">&quot;normalized&quot;</span>,</span>
+<span id="cb160-4"><a href="visium-part-ii.html#cb160-4" tabindex="-1"></a>                           <span class="at">output =</span> <span class="st">&quot;matrix&quot;</span>),</span>
+<span id="cb160-5"><a href="visium-part-ii.html#cb160-5" tabindex="-1"></a>    <span class="at">cell_type =</span> <span class="fu">pDataDT</span>(giotto_SC)<span class="sc">$</span>Class,</span>
+<span id="cb160-6"><a href="visium-part-ii.html#cb160-6" tabindex="-1"></a>    <span class="at">sign_gene =</span> top_markers<span class="sc">$</span>feats)</span></code></pre></div>
 <ul>
 <li>Run the DWLS Deconvolution</li>
 </ul>
 <p>This step may take a couple of minutes to run.</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="visium-part-ii.html#cb151-1" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">runDWLSDeconv</span>(<span class="at">gobject =</span> visium_brain, </span>
-<span id="cb151-2"><a href="visium-part-ii.html#cb151-2" tabindex="-1"></a>                              <span class="at">sign_matrix =</span> sign_matrix)</span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="visium-part-ii.html#cb161-1" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">runDWLSDeconv</span>(<span class="at">gobject =</span> visium_brain, </span>
+<span id="cb161-2"><a href="visium-part-ii.html#cb161-2" tabindex="-1"></a>                              <span class="at">sign_matrix =</span> sign_matrix)</span></code></pre></div>
 <ul>
 <li>Visualize</li>
 </ul>
 <p>Plot the DWLS deconvolution result creating with pie plots showing the proportion of each cell type per spot.</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="visium-part-ii.html#cb152-1" tabindex="-1"></a><span class="fu">spatDeconvPlot</span>(visium_brain, </span>
-<span id="cb152-2"><a href="visium-part-ii.html#cb152-2" tabindex="-1"></a>               <span class="at">show_image =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb152-3"><a href="visium-part-ii.html#cb152-3" tabindex="-1"></a>               <span class="at">radius =</span> <span class="dv">50</span>,</span>
-<span id="cb152-4"><a href="visium-part-ii.html#cb152-4" tabindex="-1"></a>               <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;8_spat_DWLS_pie_plot&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-187"></span>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="visium-part-ii.html#cb162-1" tabindex="-1"></a><span class="fu">spatDeconvPlot</span>(visium_brain, </span>
+<span id="cb162-2"><a href="visium-part-ii.html#cb162-2" tabindex="-1"></a>               <span class="at">show_image =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb162-3"><a href="visium-part-ii.html#cb162-3" tabindex="-1"></a>               <span class="at">radius =</span> <span class="dv">50</span>,</span>
+<span id="cb162-4"><a href="visium-part-ii.html#cb162-4" tabindex="-1"></a>               <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;8_spat_DWLS_pie_plot&quot;</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-201"></span>
 <img src="img/02_session1/8_spat_DWLS_pie_plot.png" alt="Spatial deconvolution plot showing the proportion of cell types per spot, identified using the DWLS method." width="100%" />
 <p class="caption">
 Figure 8.9: Spatial deconvolution plot showing the proportion of cell types per spot, identified using the DWLS method.
@@ -829,17 +831,17 @@ Figure 8.9: Spatial deconvolution plot showing the proportion of cell types per 
 <ul>
 <li>Create a spatial network</li>
 </ul>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="visium-part-ii.html#cb153-1" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">createSpatialNetwork</span>(<span class="at">gobject =</span> visium_brain,</span>
-<span id="cb153-2"><a href="visium-part-ii.html#cb153-2" tabindex="-1"></a>                                     <span class="at">method =</span> <span class="st">&quot;kNN&quot;</span>, </span>
-<span id="cb153-3"><a href="visium-part-ii.html#cb153-3" tabindex="-1"></a>                                     <span class="at">k =</span> <span class="dv">6</span>,</span>
-<span id="cb153-4"><a href="visium-part-ii.html#cb153-4" tabindex="-1"></a>                                     <span class="at">maximum_distance_knn =</span> <span class="dv">400</span>,</span>
-<span id="cb153-5"><a href="visium-part-ii.html#cb153-5" tabindex="-1"></a>                                     <span class="at">name =</span> <span class="st">&quot;spatial_network&quot;</span>)</span>
-<span id="cb153-6"><a href="visium-part-ii.html#cb153-6" tabindex="-1"></a></span>
-<span id="cb153-7"><a href="visium-part-ii.html#cb153-7" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> visium_brain,  </span>
-<span id="cb153-8"><a href="visium-part-ii.html#cb153-8" tabindex="-1"></a>           <span class="at">show_network=</span> <span class="cn">TRUE</span>,</span>
-<span id="cb153-9"><a href="visium-part-ii.html#cb153-9" tabindex="-1"></a>           <span class="at">network_color =</span> <span class="st">&quot;blue&quot;</span>, </span>
-<span id="cb153-10"><a href="visium-part-ii.html#cb153-10" tabindex="-1"></a>           <span class="at">spatial_network_name =</span> <span class="st">&quot;spatial_network&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-189"></span>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="visium-part-ii.html#cb163-1" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">createSpatialNetwork</span>(<span class="at">gobject =</span> visium_brain,</span>
+<span id="cb163-2"><a href="visium-part-ii.html#cb163-2" tabindex="-1"></a>                                     <span class="at">method =</span> <span class="st">&quot;kNN&quot;</span>, </span>
+<span id="cb163-3"><a href="visium-part-ii.html#cb163-3" tabindex="-1"></a>                                     <span class="at">k =</span> <span class="dv">6</span>,</span>
+<span id="cb163-4"><a href="visium-part-ii.html#cb163-4" tabindex="-1"></a>                                     <span class="at">maximum_distance_knn =</span> <span class="dv">400</span>,</span>
+<span id="cb163-5"><a href="visium-part-ii.html#cb163-5" tabindex="-1"></a>                                     <span class="at">name =</span> <span class="st">&quot;spatial_network&quot;</span>)</span>
+<span id="cb163-6"><a href="visium-part-ii.html#cb163-6" tabindex="-1"></a></span>
+<span id="cb163-7"><a href="visium-part-ii.html#cb163-7" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> visium_brain,  </span>
+<span id="cb163-8"><a href="visium-part-ii.html#cb163-8" tabindex="-1"></a>           <span class="at">show_network=</span> <span class="cn">TRUE</span>,</span>
+<span id="cb163-9"><a href="visium-part-ii.html#cb163-9" tabindex="-1"></a>           <span class="at">network_color =</span> <span class="st">&quot;blue&quot;</span>, </span>
+<span id="cb163-10"><a href="visium-part-ii.html#cb163-10" tabindex="-1"></a>           <span class="at">spatial_network_name =</span> <span class="st">&quot;spatial_network&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-203"></span>
 <img src="img/02_session1/9-spatPlot2D.png" alt="Spatial network across spots in the Visium mouse sample." width="100%" />
 <p class="caption">
 Figure 8.10: Spatial network across spots in the Visium mouse sample.
@@ -850,21 +852,21 @@ Figure 8.10: Spatial network across spots in the Visium mouse sample.
 </ul>
 <p>Rank the genes on the spatial dataset depending on whether they exhibit a spatial pattern location or not.</p>
 <p>This step may take a few minutes to run.</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="visium-part-ii.html#cb154-1" tabindex="-1"></a>ranktest <span class="ot">&lt;-</span> <span class="fu">binSpect</span>(visium_brain, </span>
-<span id="cb154-2"><a href="visium-part-ii.html#cb154-2" tabindex="-1"></a>                     <span class="at">bin_method =</span> <span class="st">&quot;rank&quot;</span>,</span>
-<span id="cb154-3"><a href="visium-part-ii.html#cb154-3" tabindex="-1"></a>                     <span class="at">calc_hub =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb154-4"><a href="visium-part-ii.html#cb154-4" tabindex="-1"></a>                     <span class="at">hub_min_int =</span> <span class="dv">5</span>,</span>
-<span id="cb154-5"><a href="visium-part-ii.html#cb154-5" tabindex="-1"></a>                     <span class="at">spatial_network_name =</span> <span class="st">&quot;spatial_network&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="visium-part-ii.html#cb164-1" tabindex="-1"></a>ranktest <span class="ot">&lt;-</span> <span class="fu">binSpect</span>(visium_brain, </span>
+<span id="cb164-2"><a href="visium-part-ii.html#cb164-2" tabindex="-1"></a>                     <span class="at">bin_method =</span> <span class="st">&quot;rank&quot;</span>,</span>
+<span id="cb164-3"><a href="visium-part-ii.html#cb164-3" tabindex="-1"></a>                     <span class="at">calc_hub =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb164-4"><a href="visium-part-ii.html#cb164-4" tabindex="-1"></a>                     <span class="at">hub_min_int =</span> <span class="dv">5</span>,</span>
+<span id="cb164-5"><a href="visium-part-ii.html#cb164-5" tabindex="-1"></a>                     <span class="at">spatial_network_name =</span> <span class="st">&quot;spatial_network&quot;</span>)</span></code></pre></div>
 <ul>
 <li>Visualize top results</li>
 </ul>
 <p>Plot the scaled expression of genes with the highest probability of being spatial genes.</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="visium-part-ii.html#cb155-1" tabindex="-1"></a><span class="fu">spatFeatPlot2D</span>(visium_brain, </span>
-<span id="cb155-2"><a href="visium-part-ii.html#cb155-2" tabindex="-1"></a>               <span class="at">expression_values =</span> <span class="st">&quot;scaled&quot;</span>,</span>
-<span id="cb155-3"><a href="visium-part-ii.html#cb155-3" tabindex="-1"></a>               <span class="at">feats =</span> ranktest<span class="sc">$</span>feats[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>], </span>
-<span id="cb155-4"><a href="visium-part-ii.html#cb155-4" tabindex="-1"></a>               <span class="at">cow_n_col =</span> <span class="dv">2</span>, </span>
-<span id="cb155-5"><a href="visium-part-ii.html#cb155-5" tabindex="-1"></a>               <span class="at">point_size =</span> <span class="dv">1</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-192"></span>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="visium-part-ii.html#cb165-1" tabindex="-1"></a><span class="fu">spatFeatPlot2D</span>(visium_brain, </span>
+<span id="cb165-2"><a href="visium-part-ii.html#cb165-2" tabindex="-1"></a>               <span class="at">expression_values =</span> <span class="st">&quot;scaled&quot;</span>,</span>
+<span id="cb165-3"><a href="visium-part-ii.html#cb165-3" tabindex="-1"></a>               <span class="at">feats =</span> ranktest<span class="sc">$</span>feats[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>], </span>
+<span id="cb165-4"><a href="visium-part-ii.html#cb165-4" tabindex="-1"></a>               <span class="at">cow_n_col =</span> <span class="dv">2</span>, </span>
+<span id="cb165-5"><a href="visium-part-ii.html#cb165-5" tabindex="-1"></a>               <span class="at">point_size =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-206"></span>
 <img src="img/02_session1/10-spatFeatPlot2D.png" alt="Spatial distribution of the top spatial genes scaled expression." width="100%" />
 <p class="caption">
 Figure 8.11: Spatial distribution of the top spatial genes scaled expression.
@@ -876,30 +878,30 @@ Figure 8.11: Spatial distribution of the top spatial genes scaled expression.
 <ul>
 <li>Cluster the top 500 spatial genes into 20 clusters</li>
 </ul>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="visium-part-ii.html#cb156-1" tabindex="-1"></a>ext_spatial_genes <span class="ot">&lt;-</span> ranktest[<span class="dv">1</span><span class="sc">:</span><span class="dv">500</span>,]<span class="sc">$</span>feats</span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="visium-part-ii.html#cb166-1" tabindex="-1"></a>ext_spatial_genes <span class="ot">&lt;-</span> ranktest[<span class="dv">1</span><span class="sc">:</span><span class="dv">500</span>,]<span class="sc">$</span>feats</span></code></pre></div>
 <ul>
 <li>Use detectSpatialCorGenes function to calculate pairwise distances between genes.</li>
 </ul>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="visium-part-ii.html#cb157-1" tabindex="-1"></a>spat_cor_netw_DT <span class="ot">&lt;-</span> <span class="fu">detectSpatialCorFeats</span>(</span>
-<span id="cb157-2"><a href="visium-part-ii.html#cb157-2" tabindex="-1"></a>    visium_brain,</span>
-<span id="cb157-3"><a href="visium-part-ii.html#cb157-3" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;network&quot;</span>,</span>
-<span id="cb157-4"><a href="visium-part-ii.html#cb157-4" tabindex="-1"></a>    <span class="at">spatial_network_name =</span> <span class="st">&quot;spatial_network&quot;</span>,</span>
-<span id="cb157-5"><a href="visium-part-ii.html#cb157-5" tabindex="-1"></a>    <span class="at">subset_feats =</span> ext_spatial_genes)</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="visium-part-ii.html#cb167-1" tabindex="-1"></a>spat_cor_netw_DT <span class="ot">&lt;-</span> <span class="fu">detectSpatialCorFeats</span>(</span>
+<span id="cb167-2"><a href="visium-part-ii.html#cb167-2" tabindex="-1"></a>    visium_brain,</span>
+<span id="cb167-3"><a href="visium-part-ii.html#cb167-3" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;network&quot;</span>,</span>
+<span id="cb167-4"><a href="visium-part-ii.html#cb167-4" tabindex="-1"></a>    <span class="at">spatial_network_name =</span> <span class="st">&quot;spatial_network&quot;</span>,</span>
+<span id="cb167-5"><a href="visium-part-ii.html#cb167-5" tabindex="-1"></a>    <span class="at">subset_feats =</span> ext_spatial_genes)</span></code></pre></div>
 <ul>
 <li>Identify most similar spatially correlated genes for one gene</li>
 </ul>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="visium-part-ii.html#cb158-1" tabindex="-1"></a>top10_genes <span class="ot">&lt;-</span> <span class="fu">showSpatialCorFeats</span>(spat_cor_netw_DT, </span>
-<span id="cb158-2"><a href="visium-part-ii.html#cb158-2" tabindex="-1"></a>                                  <span class="at">feats =</span> <span class="st">&quot;Mbp&quot;</span>, </span>
-<span id="cb158-3"><a href="visium-part-ii.html#cb158-3" tabindex="-1"></a>                                  <span class="at">show_top_feats =</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="visium-part-ii.html#cb168-1" tabindex="-1"></a>top10_genes <span class="ot">&lt;-</span> <span class="fu">showSpatialCorFeats</span>(spat_cor_netw_DT, </span>
+<span id="cb168-2"><a href="visium-part-ii.html#cb168-2" tabindex="-1"></a>                                  <span class="at">feats =</span> <span class="st">&quot;Mbp&quot;</span>, </span>
+<span id="cb168-3"><a href="visium-part-ii.html#cb168-3" tabindex="-1"></a>                                  <span class="at">show_top_feats =</span> <span class="dv">10</span>)</span></code></pre></div>
 <ul>
 <li>Visualize</li>
 </ul>
 <p>Plot the scaled expression of the 3 genes with most similar spatial patterns to Mbp.</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="visium-part-ii.html#cb159-1" tabindex="-1"></a><span class="fu">spatFeatPlot2D</span>(visium_brain, </span>
-<span id="cb159-2"><a href="visium-part-ii.html#cb159-2" tabindex="-1"></a>               <span class="at">expression_values =</span> <span class="st">&quot;scaled&quot;</span>,</span>
-<span id="cb159-3"><a href="visium-part-ii.html#cb159-3" tabindex="-1"></a>               <span class="at">feats =</span> top10_genes<span class="sc">$</span>variable[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], </span>
-<span id="cb159-4"><a href="visium-part-ii.html#cb159-4" tabindex="-1"></a>               <span class="at">point_size =</span> <span class="fl">1.5</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-197"></span>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="visium-part-ii.html#cb169-1" tabindex="-1"></a><span class="fu">spatFeatPlot2D</span>(visium_brain, </span>
+<span id="cb169-2"><a href="visium-part-ii.html#cb169-2" tabindex="-1"></a>               <span class="at">expression_values =</span> <span class="st">&quot;scaled&quot;</span>,</span>
+<span id="cb169-3"><a href="visium-part-ii.html#cb169-3" tabindex="-1"></a>               <span class="at">feats =</span> top10_genes<span class="sc">$</span>variable[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], </span>
+<span id="cb169-4"><a href="visium-part-ii.html#cb169-4" tabindex="-1"></a>               <span class="at">point_size =</span> <span class="fl">1.5</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-211"></span>
 <img src="img/02_session1/11-spatFeatPlot2D.png" alt="Spatial distribution of the scaled expression of 3 genes with similar spatial pattern to Mbp." width="100%" />
 <p class="caption">
 Figure 8.12: Spatial distribution of the scaled expression of 3 genes with similar spatial pattern to Mbp.
@@ -908,18 +910,18 @@ Figure 8.12: Spatial distribution of the scaled expression of 3 genes with simil
 <ul>
 <li>Cluster spatial genes</li>
 </ul>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="visium-part-ii.html#cb160-1" tabindex="-1"></a>spat_cor_netw_DT <span class="ot">&lt;-</span> <span class="fu">clusterSpatialCorFeats</span>(spat_cor_netw_DT, </span>
-<span id="cb160-2"><a href="visium-part-ii.html#cb160-2" tabindex="-1"></a>                                           <span class="at">name =</span> <span class="st">&quot;spat_netw_clus&quot;</span>, </span>
-<span id="cb160-3"><a href="visium-part-ii.html#cb160-3" tabindex="-1"></a>                                           <span class="at">k =</span> <span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="visium-part-ii.html#cb170-1" tabindex="-1"></a>spat_cor_netw_DT <span class="ot">&lt;-</span> <span class="fu">clusterSpatialCorFeats</span>(spat_cor_netw_DT, </span>
+<span id="cb170-2"><a href="visium-part-ii.html#cb170-2" tabindex="-1"></a>                                           <span class="at">name =</span> <span class="st">&quot;spat_netw_clus&quot;</span>, </span>
+<span id="cb170-3"><a href="visium-part-ii.html#cb170-3" tabindex="-1"></a>                                           <span class="at">k =</span> <span class="dv">20</span>)</span></code></pre></div>
 <ul>
 <li>Visualize clusters</li>
 </ul>
 <p>Plot the correlation of the top 500 spatial genes with their assigned cluster.</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="visium-part-ii.html#cb161-1" tabindex="-1"></a><span class="fu">heatmSpatialCorFeats</span>(visium_brain,</span>
-<span id="cb161-2"><a href="visium-part-ii.html#cb161-2" tabindex="-1"></a>                     <span class="at">spatCorObject =</span> spat_cor_netw_DT,</span>
-<span id="cb161-3"><a href="visium-part-ii.html#cb161-3" tabindex="-1"></a>                     <span class="at">use_clus_name =</span> <span class="st">&quot;spat_netw_clus&quot;</span>,</span>
-<span id="cb161-4"><a href="visium-part-ii.html#cb161-4" tabindex="-1"></a>                     <span class="at">heatmap_legend_param =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="cn">NULL</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-200"></span>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="visium-part-ii.html#cb171-1" tabindex="-1"></a><span class="fu">heatmSpatialCorFeats</span>(visium_brain,</span>
+<span id="cb171-2"><a href="visium-part-ii.html#cb171-2" tabindex="-1"></a>                     <span class="at">spatCorObject =</span> spat_cor_netw_DT,</span>
+<span id="cb171-3"><a href="visium-part-ii.html#cb171-3" tabindex="-1"></a>                     <span class="at">use_clus_name =</span> <span class="st">&quot;spat_netw_clus&quot;</span>,</span>
+<span id="cb171-4"><a href="visium-part-ii.html#cb171-4" tabindex="-1"></a>                     <span class="at">heatmap_legend_param =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="cn">NULL</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-214"></span>
 <img src="img/02_session1/12-heatmSpatialCorFeats.png" alt="Correlations heatmap between spatial genes and correlated clusters." width="100%" />
 <p class="caption">
 Figure 8.13: Correlations heatmap between spatial genes and correlated clusters.
@@ -928,16 +930,16 @@ Figure 8.13: Correlations heatmap between spatial genes and correlated clusters.
 <ul>
 <li>Rank spatial correlated clusters and show genes for selected clusters</li>
 </ul>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="visium-part-ii.html#cb162-1" tabindex="-1"></a>netw_ranks <span class="ot">&lt;-</span> <span class="fu">rankSpatialCorGroups</span>(</span>
-<span id="cb162-2"><a href="visium-part-ii.html#cb162-2" tabindex="-1"></a>  visium_brain,</span>
-<span id="cb162-3"><a href="visium-part-ii.html#cb162-3" tabindex="-1"></a>  <span class="at">spatCorObject =</span> spat_cor_netw_DT, </span>
-<span id="cb162-4"><a href="visium-part-ii.html#cb162-4" tabindex="-1"></a>  <span class="at">use_clus_name =</span> <span class="st">&quot;spat_netw_clus&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="visium-part-ii.html#cb172-1" tabindex="-1"></a>netw_ranks <span class="ot">&lt;-</span> <span class="fu">rankSpatialCorGroups</span>(</span>
+<span id="cb172-2"><a href="visium-part-ii.html#cb172-2" tabindex="-1"></a>  visium_brain,</span>
+<span id="cb172-3"><a href="visium-part-ii.html#cb172-3" tabindex="-1"></a>  <span class="at">spatCorObject =</span> spat_cor_netw_DT, </span>
+<span id="cb172-4"><a href="visium-part-ii.html#cb172-4" tabindex="-1"></a>  <span class="at">use_clus_name =</span> <span class="st">&quot;spat_netw_clus&quot;</span>)</span></code></pre></div>
 <p>Plot the correlation and number of spatial genes in each cluster.</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="visium-part-ii.html#cb163-1" tabindex="-1"></a>top_netw_spat_cluster <span class="ot">&lt;-</span> <span class="fu">showSpatialCorFeats</span>(spat_cor_netw_DT, </span>
-<span id="cb163-2"><a href="visium-part-ii.html#cb163-2" tabindex="-1"></a>                                            <span class="at">use_clus_name =</span> <span class="st">&quot;spat_netw_clus&quot;</span>,</span>
-<span id="cb163-3"><a href="visium-part-ii.html#cb163-3" tabindex="-1"></a>                                            <span class="at">selected_clusters =</span> <span class="dv">6</span>, </span>
-<span id="cb163-4"><a href="visium-part-ii.html#cb163-4" tabindex="-1"></a>                                            <span class="at">show_top_feats =</span> <span class="dv">1</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-203"></span>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="visium-part-ii.html#cb173-1" tabindex="-1"></a>top_netw_spat_cluster <span class="ot">&lt;-</span> <span class="fu">showSpatialCorFeats</span>(spat_cor_netw_DT, </span>
+<span id="cb173-2"><a href="visium-part-ii.html#cb173-2" tabindex="-1"></a>                                            <span class="at">use_clus_name =</span> <span class="st">&quot;spat_netw_clus&quot;</span>,</span>
+<span id="cb173-3"><a href="visium-part-ii.html#cb173-3" tabindex="-1"></a>                                            <span class="at">selected_clusters =</span> <span class="dv">6</span>, </span>
+<span id="cb173-4"><a href="visium-part-ii.html#cb173-4" tabindex="-1"></a>                                            <span class="at">show_top_feats =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-217"></span>
 <img src="img/02_session1/13-rankSpatialCorGroups.png" alt="Ranking of spatial correlated groups. Size indicates the number spatial genes per group." width="100%" />
 <p class="caption">
 Figure 8.14: Ranking of spatial correlated groups. Size indicates the number spatial genes per group.
@@ -946,23 +948,23 @@ Figure 8.14: Ranking of spatial correlated groups. Size indicates the number spa
 <ul>
 <li>Create the metagene enrichment score per co-expression cluster</li>
 </ul>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="visium-part-ii.html#cb164-1" tabindex="-1"></a>cluster_genes_DT <span class="ot">&lt;-</span> <span class="fu">showSpatialCorFeats</span>(spat_cor_netw_DT, </span>
-<span id="cb164-2"><a href="visium-part-ii.html#cb164-2" tabindex="-1"></a>                                        <span class="at">use_clus_name =</span> <span class="st">&quot;spat_netw_clus&quot;</span>, </span>
-<span id="cb164-3"><a href="visium-part-ii.html#cb164-3" tabindex="-1"></a>                                        <span class="at">show_top_feats =</span> <span class="dv">1</span>)</span>
-<span id="cb164-4"><a href="visium-part-ii.html#cb164-4" tabindex="-1"></a></span>
-<span id="cb164-5"><a href="visium-part-ii.html#cb164-5" tabindex="-1"></a>cluster_genes <span class="ot">&lt;-</span> cluster_genes_DT<span class="sc">$</span>clus </span>
-<span id="cb164-6"><a href="visium-part-ii.html#cb164-6" tabindex="-1"></a><span class="fu">names</span>(cluster_genes) <span class="ot">&lt;-</span> cluster_genes_DT<span class="sc">$</span>feat_ID</span>
-<span id="cb164-7"><a href="visium-part-ii.html#cb164-7" tabindex="-1"></a></span>
-<span id="cb164-8"><a href="visium-part-ii.html#cb164-8" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">createMetafeats</span>(visium_brain, </span>
-<span id="cb164-9"><a href="visium-part-ii.html#cb164-9" tabindex="-1"></a>                                <span class="at">feat_clusters =</span> cluster_genes, </span>
-<span id="cb164-10"><a href="visium-part-ii.html#cb164-10" tabindex="-1"></a>                                <span class="at">name =</span> <span class="st">&quot;cluster_metagene&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="visium-part-ii.html#cb174-1" tabindex="-1"></a>cluster_genes_DT <span class="ot">&lt;-</span> <span class="fu">showSpatialCorFeats</span>(spat_cor_netw_DT, </span>
+<span id="cb174-2"><a href="visium-part-ii.html#cb174-2" tabindex="-1"></a>                                        <span class="at">use_clus_name =</span> <span class="st">&quot;spat_netw_clus&quot;</span>, </span>
+<span id="cb174-3"><a href="visium-part-ii.html#cb174-3" tabindex="-1"></a>                                        <span class="at">show_top_feats =</span> <span class="dv">1</span>)</span>
+<span id="cb174-4"><a href="visium-part-ii.html#cb174-4" tabindex="-1"></a></span>
+<span id="cb174-5"><a href="visium-part-ii.html#cb174-5" tabindex="-1"></a>cluster_genes <span class="ot">&lt;-</span> cluster_genes_DT<span class="sc">$</span>clus </span>
+<span id="cb174-6"><a href="visium-part-ii.html#cb174-6" tabindex="-1"></a><span class="fu">names</span>(cluster_genes) <span class="ot">&lt;-</span> cluster_genes_DT<span class="sc">$</span>feat_ID</span>
+<span id="cb174-7"><a href="visium-part-ii.html#cb174-7" tabindex="-1"></a></span>
+<span id="cb174-8"><a href="visium-part-ii.html#cb174-8" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">createMetafeats</span>(visium_brain, </span>
+<span id="cb174-9"><a href="visium-part-ii.html#cb174-9" tabindex="-1"></a>                                <span class="at">feat_clusters =</span> cluster_genes, </span>
+<span id="cb174-10"><a href="visium-part-ii.html#cb174-10" tabindex="-1"></a>                                <span class="at">name =</span> <span class="st">&quot;cluster_metagene&quot;</span>)</span></code></pre></div>
 <p>Plot the spatial distribution of the metagene enrichment scores of each spatial co-expression cluster.</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="visium-part-ii.html#cb165-1" tabindex="-1"></a><span class="fu">spatCellPlot</span>(visium_brain,</span>
-<span id="cb165-2"><a href="visium-part-ii.html#cb165-2" tabindex="-1"></a>             <span class="at">spat_enr_names =</span> <span class="st">&quot;cluster_metagene&quot;</span>,</span>
-<span id="cb165-3"><a href="visium-part-ii.html#cb165-3" tabindex="-1"></a>             <span class="at">cell_annotation_values =</span> netw_ranks<span class="sc">$</span>clusters,</span>
-<span id="cb165-4"><a href="visium-part-ii.html#cb165-4" tabindex="-1"></a>             <span class="at">point_size =</span> <span class="dv">1</span>, </span>
-<span id="cb165-5"><a href="visium-part-ii.html#cb165-5" tabindex="-1"></a>             <span class="at">cow_n_col =</span> <span class="dv">5</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-206"></span>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="visium-part-ii.html#cb175-1" tabindex="-1"></a><span class="fu">spatCellPlot</span>(visium_brain,</span>
+<span id="cb175-2"><a href="visium-part-ii.html#cb175-2" tabindex="-1"></a>             <span class="at">spat_enr_names =</span> <span class="st">&quot;cluster_metagene&quot;</span>,</span>
+<span id="cb175-3"><a href="visium-part-ii.html#cb175-3" tabindex="-1"></a>             <span class="at">cell_annotation_values =</span> netw_ranks<span class="sc">$</span>clusters,</span>
+<span id="cb175-4"><a href="visium-part-ii.html#cb175-4" tabindex="-1"></a>             <span class="at">point_size =</span> <span class="dv">1</span>, </span>
+<span id="cb175-5"><a href="visium-part-ii.html#cb175-5" tabindex="-1"></a>             <span class="at">cow_n_col =</span> <span class="dv">5</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-220"></span>
 <img src="img/02_session1/14-spatCellPlot2D.png" alt="Spatial distribution of metagene enrichment scores per co-expression cluster." width="100%" />
 <p class="caption">
 Figure 8.15: Spatial distribution of metagene enrichment scores per co-expression cluster.
@@ -975,56 +977,56 @@ Figure 8.15: Spatial distribution of metagene enrichment scores per co-expressio
 <ul>
 <li>Get the top 30 genes per spatial co-expression cluster</li>
 </ul>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="visium-part-ii.html#cb166-1" tabindex="-1"></a>coexpr_dt <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">data.table</span>(</span>
-<span id="cb166-2"><a href="visium-part-ii.html#cb166-2" tabindex="-1"></a>  <span class="at">genes =</span> <span class="fu">names</span>(spat_cor_netw_DT<span class="sc">$</span>cor_clusters<span class="sc">$</span>spat_netw_clus),</span>
-<span id="cb166-3"><a href="visium-part-ii.html#cb166-3" tabindex="-1"></a>  <span class="at">cluster =</span> spat_cor_netw_DT<span class="sc">$</span>cor_clusters<span class="sc">$</span>spat_netw_clus)</span>
-<span id="cb166-4"><a href="visium-part-ii.html#cb166-4" tabindex="-1"></a></span>
-<span id="cb166-5"><a href="visium-part-ii.html#cb166-5" tabindex="-1"></a>data.table<span class="sc">::</span><span class="fu">setorder</span>(coexpr_dt, cluster)</span>
-<span id="cb166-6"><a href="visium-part-ii.html#cb166-6" tabindex="-1"></a></span>
-<span id="cb166-7"><a href="visium-part-ii.html#cb166-7" tabindex="-1"></a>top30_coexpr_dt <span class="ot">&lt;-</span> coexpr_dt[, <span class="fu">head</span>(.SD, <span class="dv">30</span>) , by <span class="ot">=</span> cluster]</span>
-<span id="cb166-8"><a href="visium-part-ii.html#cb166-8" tabindex="-1"></a></span>
-<span id="cb166-9"><a href="visium-part-ii.html#cb166-9" tabindex="-1"></a>spatial_genes <span class="ot">&lt;-</span> top30_coexpr_dt<span class="sc">$</span>genes</span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="visium-part-ii.html#cb176-1" tabindex="-1"></a>coexpr_dt <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">data.table</span>(</span>
+<span id="cb176-2"><a href="visium-part-ii.html#cb176-2" tabindex="-1"></a>  <span class="at">genes =</span> <span class="fu">names</span>(spat_cor_netw_DT<span class="sc">$</span>cor_clusters<span class="sc">$</span>spat_netw_clus),</span>
+<span id="cb176-3"><a href="visium-part-ii.html#cb176-3" tabindex="-1"></a>  <span class="at">cluster =</span> spat_cor_netw_DT<span class="sc">$</span>cor_clusters<span class="sc">$</span>spat_netw_clus)</span>
+<span id="cb176-4"><a href="visium-part-ii.html#cb176-4" tabindex="-1"></a></span>
+<span id="cb176-5"><a href="visium-part-ii.html#cb176-5" tabindex="-1"></a>data.table<span class="sc">::</span><span class="fu">setorder</span>(coexpr_dt, cluster)</span>
+<span id="cb176-6"><a href="visium-part-ii.html#cb176-6" tabindex="-1"></a></span>
+<span id="cb176-7"><a href="visium-part-ii.html#cb176-7" tabindex="-1"></a>top30_coexpr_dt <span class="ot">&lt;-</span> coexpr_dt[, <span class="fu">head</span>(.SD, <span class="dv">30</span>) , by <span class="ot">=</span> cluster]</span>
+<span id="cb176-8"><a href="visium-part-ii.html#cb176-8" tabindex="-1"></a></span>
+<span id="cb176-9"><a href="visium-part-ii.html#cb176-9" tabindex="-1"></a>spatial_genes <span class="ot">&lt;-</span> top30_coexpr_dt<span class="sc">$</span>genes</span></code></pre></div>
 <ul>
 <li>Re-calculate the clustering</li>
 </ul>
 <p>Use the spatial genes to calculate again the principal components, umap, network and clustering</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="visium-part-ii.html#cb167-1" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">runPCA</span>(<span class="at">gobject =</span> visium_brain,</span>
-<span id="cb167-2"><a href="visium-part-ii.html#cb167-2" tabindex="-1"></a>                       <span class="at">feats_to_use =</span> spatial_genes,</span>
-<span id="cb167-3"><a href="visium-part-ii.html#cb167-3" tabindex="-1"></a>                       <span class="at">name =</span> <span class="st">&quot;custom_pca&quot;</span>)</span>
-<span id="cb167-4"><a href="visium-part-ii.html#cb167-4" tabindex="-1"></a></span>
-<span id="cb167-5"><a href="visium-part-ii.html#cb167-5" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">runUMAP</span>(visium_brain, </span>
-<span id="cb167-6"><a href="visium-part-ii.html#cb167-6" tabindex="-1"></a>                        <span class="at">dim_reduction_name =</span> <span class="st">&quot;custom_pca&quot;</span>, </span>
-<span id="cb167-7"><a href="visium-part-ii.html#cb167-7" tabindex="-1"></a>                        <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,</span>
-<span id="cb167-8"><a href="visium-part-ii.html#cb167-8" tabindex="-1"></a>                        <span class="at">name =</span> <span class="st">&quot;custom_umap&quot;</span>)</span>
-<span id="cb167-9"><a href="visium-part-ii.html#cb167-9" tabindex="-1"></a></span>
-<span id="cb167-10"><a href="visium-part-ii.html#cb167-10" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">createNearestNetwork</span>(<span class="at">gobject =</span> visium_brain,</span>
-<span id="cb167-11"><a href="visium-part-ii.html#cb167-11" tabindex="-1"></a>                                     <span class="at">dim_reduction_name =</span> <span class="st">&quot;custom_pca&quot;</span>,</span>
-<span id="cb167-12"><a href="visium-part-ii.html#cb167-12" tabindex="-1"></a>                                     <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, </span>
-<span id="cb167-13"><a href="visium-part-ii.html#cb167-13" tabindex="-1"></a>                                     <span class="at">k =</span> <span class="dv">5</span>,</span>
-<span id="cb167-14"><a href="visium-part-ii.html#cb167-14" tabindex="-1"></a>                                     <span class="at">name =</span> <span class="st">&quot;custom_NN&quot;</span>)</span>
-<span id="cb167-15"><a href="visium-part-ii.html#cb167-15" tabindex="-1"></a></span>
-<span id="cb167-16"><a href="visium-part-ii.html#cb167-16" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">doLeidenCluster</span>(<span class="at">gobject =</span> visium_brain, </span>
-<span id="cb167-17"><a href="visium-part-ii.html#cb167-17" tabindex="-1"></a>                                <span class="at">network_name =</span> <span class="st">&quot;custom_NN&quot;</span>,</span>
-<span id="cb167-18"><a href="visium-part-ii.html#cb167-18" tabindex="-1"></a>                                <span class="at">resolution =</span> <span class="fl">0.15</span>, </span>
-<span id="cb167-19"><a href="visium-part-ii.html#cb167-19" tabindex="-1"></a>                                <span class="at">n_iterations =</span> <span class="dv">1000</span>,</span>
-<span id="cb167-20"><a href="visium-part-ii.html#cb167-20" tabindex="-1"></a>                                <span class="at">name =</span> <span class="st">&quot;custom_leiden&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="visium-part-ii.html#cb177-1" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">runPCA</span>(<span class="at">gobject =</span> visium_brain,</span>
+<span id="cb177-2"><a href="visium-part-ii.html#cb177-2" tabindex="-1"></a>                       <span class="at">feats_to_use =</span> spatial_genes,</span>
+<span id="cb177-3"><a href="visium-part-ii.html#cb177-3" tabindex="-1"></a>                       <span class="at">name =</span> <span class="st">&quot;custom_pca&quot;</span>)</span>
+<span id="cb177-4"><a href="visium-part-ii.html#cb177-4" tabindex="-1"></a></span>
+<span id="cb177-5"><a href="visium-part-ii.html#cb177-5" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">runUMAP</span>(visium_brain, </span>
+<span id="cb177-6"><a href="visium-part-ii.html#cb177-6" tabindex="-1"></a>                        <span class="at">dim_reduction_name =</span> <span class="st">&quot;custom_pca&quot;</span>, </span>
+<span id="cb177-7"><a href="visium-part-ii.html#cb177-7" tabindex="-1"></a>                        <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,</span>
+<span id="cb177-8"><a href="visium-part-ii.html#cb177-8" tabindex="-1"></a>                        <span class="at">name =</span> <span class="st">&quot;custom_umap&quot;</span>)</span>
+<span id="cb177-9"><a href="visium-part-ii.html#cb177-9" tabindex="-1"></a></span>
+<span id="cb177-10"><a href="visium-part-ii.html#cb177-10" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">createNearestNetwork</span>(<span class="at">gobject =</span> visium_brain,</span>
+<span id="cb177-11"><a href="visium-part-ii.html#cb177-11" tabindex="-1"></a>                                     <span class="at">dim_reduction_name =</span> <span class="st">&quot;custom_pca&quot;</span>,</span>
+<span id="cb177-12"><a href="visium-part-ii.html#cb177-12" tabindex="-1"></a>                                     <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>, </span>
+<span id="cb177-13"><a href="visium-part-ii.html#cb177-13" tabindex="-1"></a>                                     <span class="at">k =</span> <span class="dv">5</span>,</span>
+<span id="cb177-14"><a href="visium-part-ii.html#cb177-14" tabindex="-1"></a>                                     <span class="at">name =</span> <span class="st">&quot;custom_NN&quot;</span>)</span>
+<span id="cb177-15"><a href="visium-part-ii.html#cb177-15" tabindex="-1"></a></span>
+<span id="cb177-16"><a href="visium-part-ii.html#cb177-16" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">doLeidenCluster</span>(<span class="at">gobject =</span> visium_brain, </span>
+<span id="cb177-17"><a href="visium-part-ii.html#cb177-17" tabindex="-1"></a>                                <span class="at">network_name =</span> <span class="st">&quot;custom_NN&quot;</span>,</span>
+<span id="cb177-18"><a href="visium-part-ii.html#cb177-18" tabindex="-1"></a>                                <span class="at">resolution =</span> <span class="fl">0.15</span>, </span>
+<span id="cb177-19"><a href="visium-part-ii.html#cb177-19" tabindex="-1"></a>                                <span class="at">n_iterations =</span> <span class="dv">1000</span>,</span>
+<span id="cb177-20"><a href="visium-part-ii.html#cb177-20" tabindex="-1"></a>                                <span class="at">name =</span> <span class="st">&quot;custom_leiden&quot;</span>)</span></code></pre></div>
 <ul>
 <li>Visualize</li>
 </ul>
 <p>Plot the spatial distribution of the Leiden clusters calculated based on the spatial genes.</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="visium-part-ii.html#cb168-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(visium_brain, </span>
-<span id="cb168-2"><a href="visium-part-ii.html#cb168-2" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;custom_leiden&quot;</span>,</span>
-<span id="cb168-3"><a href="visium-part-ii.html#cb168-3" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="dv">3</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-210"></span>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="visium-part-ii.html#cb178-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(visium_brain, </span>
+<span id="cb178-2"><a href="visium-part-ii.html#cb178-2" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;custom_leiden&quot;</span>,</span>
+<span id="cb178-3"><a href="visium-part-ii.html#cb178-3" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-224"></span>
 <img src="img/02_session1/15-spatPlot2D.png" alt="Spatial distribution of Leiden clusters calculated using spatial genes." width="100%" />
 <p class="caption">
 Figure 8.16: Spatial distribution of Leiden clusters calculated using spatial genes.
 </p>
 </div>
 <p>Plot the UMAP and color the spots using the Leiden clusters calculated based on the spatial genes.</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="visium-part-ii.html#cb169-1" tabindex="-1"></a><span class="fu">plotUMAP</span>(<span class="at">gobject =</span> visium_brain, </span>
-<span id="cb169-2"><a href="visium-part-ii.html#cb169-2" tabindex="-1"></a>         <span class="at">cell_color =</span> <span class="st">&quot;custom_leiden&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-212"></span>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="visium-part-ii.html#cb179-1" tabindex="-1"></a><span class="fu">plotUMAP</span>(<span class="at">gobject =</span> visium_brain, </span>
+<span id="cb179-2"><a href="visium-part-ii.html#cb179-2" tabindex="-1"></a>         <span class="at">cell_color =</span> <span class="st">&quot;custom_leiden&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-226"></span>
 <img src="img/02_session1/16-UMAP.png" alt="UMAP plot, colors indicate the Leiden clusters calculated using spatial genes." width="100%" />
 <p class="caption">
 Figure 8.17: UMAP plot, colors indicate the Leiden clusters calculated using spatial genes.
@@ -1038,26 +1040,26 @@ Figure 8.17: UMAP plot, colors indicate the Leiden clusters calculated using spa
 <li>Do HMRF with different betas on top 30 genes per spatial co-expression module</li>
 </ul>
 <p>This step may take several minutes to run.</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="visium-part-ii.html#cb170-1" tabindex="-1"></a>HMRF_spatial_genes <span class="ot">&lt;-</span> <span class="fu">doHMRF</span>(<span class="at">gobject =</span> visium_brain,</span>
-<span id="cb170-2"><a href="visium-part-ii.html#cb170-2" tabindex="-1"></a>                            <span class="at">expression_values =</span> <span class="st">&quot;scaled&quot;</span>,</span>
-<span id="cb170-3"><a href="visium-part-ii.html#cb170-3" tabindex="-1"></a>                            <span class="at">spatial_genes =</span> spatial_genes, </span>
-<span id="cb170-4"><a href="visium-part-ii.html#cb170-4" tabindex="-1"></a>                            <span class="at">k =</span> <span class="dv">20</span>,</span>
-<span id="cb170-5"><a href="visium-part-ii.html#cb170-5" tabindex="-1"></a>                            <span class="at">spatial_network_name =</span> <span class="st">&quot;spatial_network&quot;</span>,</span>
-<span id="cb170-6"><a href="visium-part-ii.html#cb170-6" tabindex="-1"></a>                            <span class="at">betas =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">5</span>),</span>
-<span id="cb170-7"><a href="visium-part-ii.html#cb170-7" tabindex="-1"></a>                            <span class="at">output_folder =</span> <span class="st">&quot;11_HMRF/&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="visium-part-ii.html#cb180-1" tabindex="-1"></a>HMRF_spatial_genes <span class="ot">&lt;-</span> <span class="fu">doHMRF</span>(<span class="at">gobject =</span> visium_brain,</span>
+<span id="cb180-2"><a href="visium-part-ii.html#cb180-2" tabindex="-1"></a>                            <span class="at">expression_values =</span> <span class="st">&quot;scaled&quot;</span>,</span>
+<span id="cb180-3"><a href="visium-part-ii.html#cb180-3" tabindex="-1"></a>                            <span class="at">spatial_genes =</span> spatial_genes, </span>
+<span id="cb180-4"><a href="visium-part-ii.html#cb180-4" tabindex="-1"></a>                            <span class="at">k =</span> <span class="dv">20</span>,</span>
+<span id="cb180-5"><a href="visium-part-ii.html#cb180-5" tabindex="-1"></a>                            <span class="at">spatial_network_name =</span> <span class="st">&quot;spatial_network&quot;</span>,</span>
+<span id="cb180-6"><a href="visium-part-ii.html#cb180-6" tabindex="-1"></a>                            <span class="at">betas =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">5</span>),</span>
+<span id="cb180-7"><a href="visium-part-ii.html#cb180-7" tabindex="-1"></a>                            <span class="at">output_folder =</span> <span class="st">&quot;11_HMRF/&quot;</span>)</span></code></pre></div>
 <p>Add the HMRF results to the giotto object</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="visium-part-ii.html#cb171-1" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">addHMRF</span>(<span class="at">gobject =</span> visium_brain, </span>
-<span id="cb171-2"><a href="visium-part-ii.html#cb171-2" tabindex="-1"></a>                        <span class="at">HMRFoutput =</span> HMRF_spatial_genes,</span>
-<span id="cb171-3"><a href="visium-part-ii.html#cb171-3" tabindex="-1"></a>                        <span class="at">k =</span> <span class="dv">20</span>, </span>
-<span id="cb171-4"><a href="visium-part-ii.html#cb171-4" tabindex="-1"></a>                        <span class="at">betas_to_add =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>),</span>
-<span id="cb171-5"><a href="visium-part-ii.html#cb171-5" tabindex="-1"></a>                        <span class="at">hmrf_name =</span> <span class="st">&quot;HMRF&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="visium-part-ii.html#cb181-1" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">addHMRF</span>(<span class="at">gobject =</span> visium_brain, </span>
+<span id="cb181-2"><a href="visium-part-ii.html#cb181-2" tabindex="-1"></a>                        <span class="at">HMRFoutput =</span> HMRF_spatial_genes,</span>
+<span id="cb181-3"><a href="visium-part-ii.html#cb181-3" tabindex="-1"></a>                        <span class="at">k =</span> <span class="dv">20</span>, </span>
+<span id="cb181-4"><a href="visium-part-ii.html#cb181-4" tabindex="-1"></a>                        <span class="at">betas_to_add =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>),</span>
+<span id="cb181-5"><a href="visium-part-ii.html#cb181-5" tabindex="-1"></a>                        <span class="at">hmrf_name =</span> <span class="st">&quot;HMRF&quot;</span>)</span></code></pre></div>
 <ul>
 <li>Visualize</li>
 </ul>
 <p>Plot the spatial distribution of the HMRF domains.</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="visium-part-ii.html#cb172-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> visium_brain, </span>
-<span id="cb172-2"><a href="visium-part-ii.html#cb172-2" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;HMRF_k20_b.40&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-216"></span>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="visium-part-ii.html#cb182-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> visium_brain, </span>
+<span id="cb182-2"><a href="visium-part-ii.html#cb182-2" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;HMRF_k20_b.40&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-230"></span>
 <img src="img/02_session1/17-spatPlot2D.png" alt="Spatial distribution of HMRF domains." width="100%" />
 <p class="caption">
 Figure 8.18: Spatial distribution of HMRF domains.
@@ -1070,18 +1072,18 @@ Figure 8.18: Spatial distribution of HMRF domains.
 <ul>
 <li>Create a spatial plot</li>
 </ul>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="visium-part-ii.html#cb173-1" tabindex="-1"></a>brain_spatPlot <span class="ot">&lt;-</span> <span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> visium_brain,</span>
-<span id="cb173-2"><a href="visium-part-ii.html#cb173-2" tabindex="-1"></a>                          <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
-<span id="cb173-3"><a href="visium-part-ii.html#cb173-3" tabindex="-1"></a>                          <span class="at">show_image =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb173-4"><a href="visium-part-ii.html#cb173-4" tabindex="-1"></a>                          <span class="at">return_plot =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb173-5"><a href="visium-part-ii.html#cb173-5" tabindex="-1"></a>                          <span class="at">point_size =</span> <span class="dv">1</span>)</span>
-<span id="cb173-6"><a href="visium-part-ii.html#cb173-6" tabindex="-1"></a></span>
-<span id="cb173-7"><a href="visium-part-ii.html#cb173-7" tabindex="-1"></a>brain_spatPlot</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="visium-part-ii.html#cb183-1" tabindex="-1"></a>brain_spatPlot <span class="ot">&lt;-</span> <span class="fu">spatPlot2D</span>(<span class="at">gobject =</span> visium_brain,</span>
+<span id="cb183-2"><a href="visium-part-ii.html#cb183-2" tabindex="-1"></a>                          <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
+<span id="cb183-3"><a href="visium-part-ii.html#cb183-3" tabindex="-1"></a>                          <span class="at">show_image =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb183-4"><a href="visium-part-ii.html#cb183-4" tabindex="-1"></a>                          <span class="at">return_plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb183-5"><a href="visium-part-ii.html#cb183-5" tabindex="-1"></a>                          <span class="at">point_size =</span> <span class="dv">1</span>)</span>
+<span id="cb183-6"><a href="visium-part-ii.html#cb183-6" tabindex="-1"></a></span>
+<span id="cb183-7"><a href="visium-part-ii.html#cb183-7" tabindex="-1"></a>brain_spatPlot</span></code></pre></div>
 <ul>
 <li>Run the Shiny app</li>
 </ul>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="visium-part-ii.html#cb174-1" tabindex="-1"></a><span class="fu">plotInteractivePolygons</span>(brain_spatPlot)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-219"></span>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="visium-part-ii.html#cb184-1" tabindex="-1"></a><span class="fu">plotInteractivePolygons</span>(brain_spatPlot)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-233"></span>
 <img src="img/02_session1/18-spatPlot2D.png" alt="Shiny app using the visium brain sample." width="100%" />
 <p class="caption">
 Figure 8.19: Shiny app using the visium brain sample.
@@ -1090,8 +1092,8 @@ Figure 8.19: Shiny app using the visium brain sample.
 <ul>
 <li>Select the regions of interest and save the coordinates</li>
 </ul>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="visium-part-ii.html#cb175-1" tabindex="-1"></a>polygon_coordinates <span class="ot">&lt;-</span> <span class="fu">plotInteractivePolygons</span>(brain_spatPlot)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-221"></span>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="visium-part-ii.html#cb185-1" tabindex="-1"></a>polygon_coordinates <span class="ot">&lt;-</span> <span class="fu">plotInteractivePolygons</span>(brain_spatPlot)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-235"></span>
 <img src="img/02_session1/19-spatPlot2D.png" alt="Polygons selected using the interactive Shiny app." width="60%" />
 <p class="caption">
 Figure 8.20: Polygons selected using the interactive Shiny app.
@@ -1100,34 +1102,34 @@ Figure 8.20: Polygons selected using the interactive Shiny app.
 <ul>
 <li>Transform the data.table or data.frame with coordinates into a Giotto polygon object</li>
 </ul>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="visium-part-ii.html#cb176-1" tabindex="-1"></a>giotto_polygons <span class="ot">&lt;-</span> <span class="fu">createGiottoPolygonsFromDfr</span>(polygon_coordinates, </span>
-<span id="cb176-2"><a href="visium-part-ii.html#cb176-2" tabindex="-1"></a>                                               <span class="at">name =</span> <span class="st">&quot;selections&quot;</span>,</span>
-<span id="cb176-3"><a href="visium-part-ii.html#cb176-3" tabindex="-1"></a>                                               <span class="at">calc_centroids =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="visium-part-ii.html#cb186-1" tabindex="-1"></a>giotto_polygons <span class="ot">&lt;-</span> <span class="fu">createGiottoPolygonsFromDfr</span>(polygon_coordinates, </span>
+<span id="cb186-2"><a href="visium-part-ii.html#cb186-2" tabindex="-1"></a>                                               <span class="at">name =</span> <span class="st">&quot;selections&quot;</span>,</span>
+<span id="cb186-3"><a href="visium-part-ii.html#cb186-3" tabindex="-1"></a>                                               <span class="at">calc_centroids =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <ul>
 <li>Add the polygons to the Giotto object</li>
 </ul>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="visium-part-ii.html#cb177-1" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">addGiottoPolygons</span>(<span class="at">gobject =</span> visium_brain,</span>
-<span id="cb177-2"><a href="visium-part-ii.html#cb177-2" tabindex="-1"></a>                                  <span class="at">gpolygons =</span> <span class="fu">list</span>(giotto_polygons))</span></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="visium-part-ii.html#cb187-1" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">addGiottoPolygons</span>(<span class="at">gobject =</span> visium_brain,</span>
+<span id="cb187-2"><a href="visium-part-ii.html#cb187-2" tabindex="-1"></a>                                  <span class="at">gpolygons =</span> <span class="fu">list</span>(giotto_polygons))</span></code></pre></div>
 <ul>
 <li>Add the corresponding polygon IDs to the cell metadata</li>
 </ul>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="visium-part-ii.html#cb178-1" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">addPolygonCells</span>(visium_brain,</span>
-<span id="cb178-2"><a href="visium-part-ii.html#cb178-2" tabindex="-1"></a>                                <span class="at">polygon_name =</span> <span class="st">&quot;selections&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="visium-part-ii.html#cb188-1" tabindex="-1"></a>visium_brain <span class="ot">&lt;-</span> <span class="fu">addPolygonCells</span>(visium_brain,</span>
+<span id="cb188-2"><a href="visium-part-ii.html#cb188-2" tabindex="-1"></a>                                <span class="at">polygon_name =</span> <span class="st">&quot;selections&quot;</span>)</span></code></pre></div>
 <ul>
 <li>Extract the coordinates and IDs from cells located within one or multiple regions of interest.</li>
 </ul>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="visium-part-ii.html#cb179-1" tabindex="-1"></a><span class="fu">getCellsFromPolygon</span>(visium_brain,</span>
-<span id="cb179-2"><a href="visium-part-ii.html#cb179-2" tabindex="-1"></a>                    <span class="at">polygon_name =</span> <span class="st">&quot;selections&quot;</span>,</span>
-<span id="cb179-3"><a href="visium-part-ii.html#cb179-3" tabindex="-1"></a>                    <span class="at">polygons =</span> <span class="st">&quot;polygon 1&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="visium-part-ii.html#cb189-1" tabindex="-1"></a><span class="fu">getCellsFromPolygon</span>(visium_brain,</span>
+<span id="cb189-2"><a href="visium-part-ii.html#cb189-2" tabindex="-1"></a>                    <span class="at">polygon_name =</span> <span class="st">&quot;selections&quot;</span>,</span>
+<span id="cb189-3"><a href="visium-part-ii.html#cb189-3" tabindex="-1"></a>                    <span class="at">polygons =</span> <span class="st">&quot;polygon 1&quot;</span>)</span></code></pre></div>
 <p>If no polygon name is provided, the function will retrieve cells located within all polygons</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="visium-part-ii.html#cb180-1" tabindex="-1"></a><span class="fu">getCellsFromPolygon</span>(visium_brain,</span>
-<span id="cb180-2"><a href="visium-part-ii.html#cb180-2" tabindex="-1"></a>                    <span class="at">polygon_name =</span> <span class="st">&quot;selections&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="visium-part-ii.html#cb190-1" tabindex="-1"></a><span class="fu">getCellsFromPolygon</span>(visium_brain,</span>
+<span id="cb190-2"><a href="visium-part-ii.html#cb190-2" tabindex="-1"></a>                    <span class="at">polygon_name =</span> <span class="st">&quot;selections&quot;</span>)</span></code></pre></div>
 <ul>
 <li>Compare the expression levels of some genes of interest between the selected regions</li>
 </ul>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="visium-part-ii.html#cb181-1" tabindex="-1"></a><span class="fu">comparePolygonExpression</span>(visium_brain,</span>
-<span id="cb181-2"><a href="visium-part-ii.html#cb181-2" tabindex="-1"></a>                         <span class="at">selected_feats =</span> <span class="fu">c</span>(<span class="st">&quot;Stmn1&quot;</span>, <span class="st">&quot;Psd&quot;</span>, <span class="st">&quot;Ly6h&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-228"></span>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="visium-part-ii.html#cb191-1" tabindex="-1"></a><span class="fu">comparePolygonExpression</span>(visium_brain,</span>
+<span id="cb191-2"><a href="visium-part-ii.html#cb191-2" tabindex="-1"></a>                         <span class="at">selected_feats =</span> <span class="fu">c</span>(<span class="st">&quot;Stmn1&quot;</span>, <span class="st">&quot;Psd&quot;</span>, <span class="st">&quot;Ly6h&quot;</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-242"></span>
 <img src="img/02_session1/20-heatmap.png" alt="Heatmap showing the z-scores of three genes per selected polygon." width="60%" />
 <p class="caption">
 Figure 8.21: Heatmap showing the z-scores of three genes per selected polygon.
@@ -1136,20 +1138,20 @@ Figure 8.21: Heatmap showing the z-scores of three genes per selected polygon.
 <ul>
 <li>Calculate the top genes expressed within each region, then provide the result to compare polygons</li>
 </ul>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="visium-part-ii.html#cb182-1" tabindex="-1"></a>scran_results <span class="ot">&lt;-</span> <span class="fu">findMarkers_one_vs_all</span>(</span>
-<span id="cb182-2"><a href="visium-part-ii.html#cb182-2" tabindex="-1"></a>  visium_brain,</span>
-<span id="cb182-3"><a href="visium-part-ii.html#cb182-3" tabindex="-1"></a>  <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
-<span id="cb182-4"><a href="visium-part-ii.html#cb182-4" tabindex="-1"></a>  <span class="at">feat_type =</span> <span class="st">&quot;rna&quot;</span>,</span>
-<span id="cb182-5"><a href="visium-part-ii.html#cb182-5" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;scran&quot;</span>,</span>
-<span id="cb182-6"><a href="visium-part-ii.html#cb182-6" tabindex="-1"></a>  <span class="at">expression_values =</span> <span class="st">&quot;normalized&quot;</span>,</span>
-<span id="cb182-7"><a href="visium-part-ii.html#cb182-7" tabindex="-1"></a>  <span class="at">cluster_column =</span> <span class="st">&quot;selections&quot;</span>,</span>
-<span id="cb182-8"><a href="visium-part-ii.html#cb182-8" tabindex="-1"></a>  <span class="at">min_feats =</span> <span class="dv">2</span>)</span>
-<span id="cb182-9"><a href="visium-part-ii.html#cb182-9" tabindex="-1"></a></span>
-<span id="cb182-10"><a href="visium-part-ii.html#cb182-10" tabindex="-1"></a>top_genes <span class="ot">&lt;-</span> scran_results[, <span class="fu">head</span>(.SD, <span class="dv">2</span>), by <span class="ot">=</span> <span class="st">&quot;cluster&quot;</span>]<span class="sc">$</span>feats</span>
-<span id="cb182-11"><a href="visium-part-ii.html#cb182-11" tabindex="-1"></a></span>
-<span id="cb182-12"><a href="visium-part-ii.html#cb182-12" tabindex="-1"></a><span class="fu">comparePolygonExpression</span>(visium_brain,</span>
-<span id="cb182-13"><a href="visium-part-ii.html#cb182-13" tabindex="-1"></a>                         <span class="at">selected_feats =</span> top_genes)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-230"></span>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="visium-part-ii.html#cb192-1" tabindex="-1"></a>scran_results <span class="ot">&lt;-</span> <span class="fu">findMarkers_one_vs_all</span>(</span>
+<span id="cb192-2"><a href="visium-part-ii.html#cb192-2" tabindex="-1"></a>  visium_brain,</span>
+<span id="cb192-3"><a href="visium-part-ii.html#cb192-3" tabindex="-1"></a>  <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
+<span id="cb192-4"><a href="visium-part-ii.html#cb192-4" tabindex="-1"></a>  <span class="at">feat_type =</span> <span class="st">&quot;rna&quot;</span>,</span>
+<span id="cb192-5"><a href="visium-part-ii.html#cb192-5" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;scran&quot;</span>,</span>
+<span id="cb192-6"><a href="visium-part-ii.html#cb192-6" tabindex="-1"></a>  <span class="at">expression_values =</span> <span class="st">&quot;normalized&quot;</span>,</span>
+<span id="cb192-7"><a href="visium-part-ii.html#cb192-7" tabindex="-1"></a>  <span class="at">cluster_column =</span> <span class="st">&quot;selections&quot;</span>,</span>
+<span id="cb192-8"><a href="visium-part-ii.html#cb192-8" tabindex="-1"></a>  <span class="at">min_feats =</span> <span class="dv">2</span>)</span>
+<span id="cb192-9"><a href="visium-part-ii.html#cb192-9" tabindex="-1"></a></span>
+<span id="cb192-10"><a href="visium-part-ii.html#cb192-10" tabindex="-1"></a>top_genes <span class="ot">&lt;-</span> scran_results[, <span class="fu">head</span>(.SD, <span class="dv">2</span>), by <span class="ot">=</span> <span class="st">&quot;cluster&quot;</span>]<span class="sc">$</span>feats</span>
+<span id="cb192-11"><a href="visium-part-ii.html#cb192-11" tabindex="-1"></a></span>
+<span id="cb192-12"><a href="visium-part-ii.html#cb192-12" tabindex="-1"></a><span class="fu">comparePolygonExpression</span>(visium_brain,</span>
+<span id="cb192-13"><a href="visium-part-ii.html#cb192-13" tabindex="-1"></a>                         <span class="at">selected_feats =</span> top_genes)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-244"></span>
 <img src="img/02_session1/21-heatmap.png" alt="Heatmap showing the z-scores of top scran genes per selected polygon." width="60%" />
 <p class="caption">
 Figure 8.22: Heatmap showing the z-scores of top scran genes per selected polygon.
@@ -1158,8 +1160,8 @@ Figure 8.22: Heatmap showing the z-scores of top scran genes per selected polygo
 <ul>
 <li>Compare the abundance of cell types between the selected regions</li>
 </ul>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="visium-part-ii.html#cb183-1" tabindex="-1"></a><span class="fu">compareCellAbundance</span>(visium_brain)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-232"></span>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="visium-part-ii.html#cb193-1" tabindex="-1"></a><span class="fu">compareCellAbundance</span>(visium_brain)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-246"></span>
 <img src="img/02_session1/22-heatmap.png" alt="Heatmap showing the cell abundance per selected polygon." width="60%" />
 <p class="caption">
 Figure 8.23: Heatmap showing the cell abundance per selected polygon.
@@ -1168,9 +1170,9 @@ Figure 8.23: Heatmap showing the cell abundance per selected polygon.
 <ul>
 <li>Use other columns within the cell metadata table to compare the cell type abundances</li>
 </ul>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="visium-part-ii.html#cb184-1" tabindex="-1"></a><span class="fu">compareCellAbundance</span>(visium_brain, </span>
-<span id="cb184-2"><a href="visium-part-ii.html#cb184-2" tabindex="-1"></a>                     <span class="at">cell_type_column =</span> <span class="st">&quot;custom_leiden&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-234"></span>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="visium-part-ii.html#cb194-1" tabindex="-1"></a><span class="fu">compareCellAbundance</span>(visium_brain, </span>
+<span id="cb194-2"><a href="visium-part-ii.html#cb194-2" tabindex="-1"></a>                     <span class="at">cell_type_column =</span> <span class="st">&quot;custom_leiden&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-248"></span>
 <img src="img/02_session1/23-heatmap.png" alt="Heatmap showing the Leiden clusters abundance per selected polygon." width="60%" />
 <p class="caption">
 Figure 8.24: Heatmap showing the Leiden clusters abundance per selected polygon.
@@ -1179,13 +1181,13 @@ Figure 8.24: Heatmap showing the Leiden clusters abundance per selected polygon.
 <ul>
 <li>Use the spatPlot arguments to isolate and plot each region.</li>
 </ul>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="visium-part-ii.html#cb185-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(visium_brain,</span>
-<span id="cb185-2"><a href="visium-part-ii.html#cb185-2" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
-<span id="cb185-3"><a href="visium-part-ii.html#cb185-3" tabindex="-1"></a>           <span class="at">group_by =</span> <span class="st">&quot;selections&quot;</span>,</span>
-<span id="cb185-4"><a href="visium-part-ii.html#cb185-4" tabindex="-1"></a>           <span class="at">cow_n_col =</span> <span class="dv">3</span>,</span>
-<span id="cb185-5"><a href="visium-part-ii.html#cb185-5" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="dv">2</span>,</span>
-<span id="cb185-6"><a href="visium-part-ii.html#cb185-6" tabindex="-1"></a>           <span class="at">show_legend =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-236"></span>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="visium-part-ii.html#cb195-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(visium_brain,</span>
+<span id="cb195-2"><a href="visium-part-ii.html#cb195-2" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
+<span id="cb195-3"><a href="visium-part-ii.html#cb195-3" tabindex="-1"></a>           <span class="at">group_by =</span> <span class="st">&quot;selections&quot;</span>,</span>
+<span id="cb195-4"><a href="visium-part-ii.html#cb195-4" tabindex="-1"></a>           <span class="at">cow_n_col =</span> <span class="dv">3</span>,</span>
+<span id="cb195-5"><a href="visium-part-ii.html#cb195-5" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="dv">2</span>,</span>
+<span id="cb195-6"><a href="visium-part-ii.html#cb195-6" tabindex="-1"></a>           <span class="at">show_legend =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-250"></span>
 <img src="img/02_session1/24-spatPlot2D.png" alt="Spatial distribution of Leiden clusters across the selected polygons." width="80%" />
 <p class="caption">
 Figure 8.25: Spatial distribution of Leiden clusters across the selected polygons.
@@ -1194,12 +1196,12 @@ Figure 8.25: Spatial distribution of Leiden clusters across the selected polygon
 <ul>
 <li>Color each cell by cluster, cell type or expression level.</li>
 </ul>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="visium-part-ii.html#cb186-1" tabindex="-1"></a><span class="fu">spatFeatPlot2D</span>(visium_brain,</span>
-<span id="cb186-2"><a href="visium-part-ii.html#cb186-2" tabindex="-1"></a>               <span class="at">expression_values =</span> <span class="st">&quot;scaled&quot;</span>,</span>
-<span id="cb186-3"><a href="visium-part-ii.html#cb186-3" tabindex="-1"></a>               <span class="at">group_by =</span> <span class="st">&quot;selections&quot;</span>,</span>
-<span id="cb186-4"><a href="visium-part-ii.html#cb186-4" tabindex="-1"></a>               <span class="at">feats =</span> <span class="st">&quot;Psd&quot;</span>,</span>
-<span id="cb186-5"><a href="visium-part-ii.html#cb186-5" tabindex="-1"></a>               <span class="at">point_size =</span> <span class="dv">2</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-238"></span>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="visium-part-ii.html#cb196-1" tabindex="-1"></a><span class="fu">spatFeatPlot2D</span>(visium_brain,</span>
+<span id="cb196-2"><a href="visium-part-ii.html#cb196-2" tabindex="-1"></a>               <span class="at">expression_values =</span> <span class="st">&quot;scaled&quot;</span>,</span>
+<span id="cb196-3"><a href="visium-part-ii.html#cb196-3" tabindex="-1"></a>               <span class="at">group_by =</span> <span class="st">&quot;selections&quot;</span>,</span>
+<span id="cb196-4"><a href="visium-part-ii.html#cb196-4" tabindex="-1"></a>               <span class="at">feats =</span> <span class="st">&quot;Psd&quot;</span>,</span>
+<span id="cb196-5"><a href="visium-part-ii.html#cb196-5" tabindex="-1"></a>               <span class="at">point_size =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-252"></span>
 <img src="img/02_session1/25-spatFeatPlot2D.png" alt="Spatial distribution of Psd scaled expression across the selected polygons." width="80%" />
 <p class="caption">
 Figure 8.26: Spatial distribution of Psd scaled expression across the selected polygons.
@@ -1208,10 +1210,10 @@ Figure 8.26: Spatial distribution of Psd scaled expression across the selected p
 <ul>
 <li>Plot again the polygons</li>
 </ul>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="visium-part-ii.html#cb187-1" tabindex="-1"></a><span class="fu">plotPolygons</span>(visium_brain,</span>
-<span id="cb187-2"><a href="visium-part-ii.html#cb187-2" tabindex="-1"></a>             <span class="at">polygon_name =</span> <span class="st">&quot;selections&quot;</span>,</span>
-<span id="cb187-3"><a href="visium-part-ii.html#cb187-3" tabindex="-1"></a>             <span class="at">x =</span> brain_spatPlot)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-240"></span>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="visium-part-ii.html#cb197-1" tabindex="-1"></a><span class="fu">plotPolygons</span>(visium_brain,</span>
+<span id="cb197-2"><a href="visium-part-ii.html#cb197-2" tabindex="-1"></a>             <span class="at">polygon_name =</span> <span class="st">&quot;selections&quot;</span>,</span>
+<span id="cb197-3"><a href="visium-part-ii.html#cb197-3" tabindex="-1"></a>             <span class="at">x =</span> brain_spatPlot)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-254"></span>
 <img src="img/02_session1/26-spatPlot2D.png" alt="Spatial location of selected polygons." width="60%" />
 <p class="caption">
 Figure 8.27: Spatial location of selected polygons.
@@ -1220,109 +1222,109 @@ Figure 8.27: Spatial location of selected polygons.
 </div>
 <div id="save-the-object-1" class="section level2 hasAnchor" number="8.8">
 <h2><span class="header-section-number">8.8</span> Save the object<a href="visium-part-ii.html#save-the-object-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="visium-part-ii.html#cb188-1" tabindex="-1"></a><span class="fu">saveGiotto</span>(visium_brain, <span class="st">&quot;results/02_session1/visium_brain_object&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="visium-part-ii.html#cb198-1" tabindex="-1"></a><span class="fu">saveGiotto</span>(visium_brain, <span class="st">&quot;results/02_session1/visium_brain_object&quot;</span>)</span></code></pre></div>
 </div>
 <div id="session-info-1" class="section level2 hasAnchor" number="8.9">
 <h2><span class="header-section-number">8.9</span> Session info<a href="visium-part-ii.html#session-info-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="visium-part-ii.html#cb189-1" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="visium-part-ii.html#cb190-1" tabindex="-1"></a>R version <span class="dv">4</span>.<span class="fl">4.1</span> (<span class="dv">2024-06-14</span>)</span>
-<span id="cb190-2"><a href="visium-part-ii.html#cb190-2" tabindex="-1"></a>Platform<span class="sc">:</span> aarch64<span class="sc">-</span>apple<span class="sc">-</span>darwin20</span>
-<span id="cb190-3"><a href="visium-part-ii.html#cb190-3" tabindex="-1"></a>Running under<span class="sc">:</span> macOS Sonoma <span class="fl">14.5</span></span>
-<span id="cb190-4"><a href="visium-part-ii.html#cb190-4" tabindex="-1"></a></span>
-<span id="cb190-5"><a href="visium-part-ii.html#cb190-5" tabindex="-1"></a>Matrix products<span class="sc">:</span> default</span>
-<span id="cb190-6"><a href="visium-part-ii.html#cb190-6" tabindex="-1"></a>BLAS<span class="sc">:</span>   <span class="er">/</span>System<span class="sc">/</span>Library<span class="sc">/</span>Frameworks<span class="sc">/</span>Accelerate.framework<span class="sc">/</span>Versions<span class="sc">/</span>A<span class="sc">/</span>Frameworks<span class="sc">/</span>vecLib.framework<span class="sc">/</span>Versions<span class="sc">/</span>A<span class="sc">/</span>libBLAS.dylib </span>
-<span id="cb190-7"><a href="visium-part-ii.html#cb190-7" tabindex="-1"></a>LAPACK<span class="sc">:</span> <span class="er">/</span>Library<span class="sc">/</span>Frameworks<span class="sc">/</span>R.framework<span class="sc">/</span>Versions<span class="sc">/</span><span class="fl">4.4</span><span class="sc">-</span>arm64<span class="sc">/</span>Resources<span class="sc">/</span>lib<span class="sc">/</span>libRlapack.dylib;  LAPACK version <span class="dv">3</span>.<span class="fl">12.0</span></span>
-<span id="cb190-8"><a href="visium-part-ii.html#cb190-8" tabindex="-1"></a></span>
-<span id="cb190-9"><a href="visium-part-ii.html#cb190-9" tabindex="-1"></a>locale<span class="sc">:</span></span>
-<span id="cb190-10"><a href="visium-part-ii.html#cb190-10" tabindex="-1"></a>[<span class="dv">1</span>] en_US.UTF<span class="dv">-8</span><span class="sc">/</span>en_US.UTF<span class="dv">-8</span><span class="sc">/</span>en_US.UTF<span class="dv">-8</span><span class="sc">/</span>C<span class="sc">/</span>en_US.UTF<span class="dv">-8</span><span class="sc">/</span>en_US.UTF<span class="dv">-8</span></span>
-<span id="cb190-11"><a href="visium-part-ii.html#cb190-11" tabindex="-1"></a></span>
-<span id="cb190-12"><a href="visium-part-ii.html#cb190-12" tabindex="-1"></a>time zone<span class="sc">:</span> America<span class="sc">/</span>New_York</span>
-<span id="cb190-13"><a href="visium-part-ii.html#cb190-13" tabindex="-1"></a>tzcode source<span class="sc">:</span> internal</span>
-<span id="cb190-14"><a href="visium-part-ii.html#cb190-14" tabindex="-1"></a></span>
-<span id="cb190-15"><a href="visium-part-ii.html#cb190-15" tabindex="-1"></a>attached base packages<span class="sc">:</span></span>
-<span id="cb190-16"><a href="visium-part-ii.html#cb190-16" tabindex="-1"></a>[<span class="dv">1</span>] stats     graphics  grDevices utils     datasets  methods   base     </span>
-<span id="cb190-17"><a href="visium-part-ii.html#cb190-17" tabindex="-1"></a></span>
-<span id="cb190-18"><a href="visium-part-ii.html#cb190-18" tabindex="-1"></a>other attached packages<span class="sc">:</span></span>
-<span id="cb190-19"><a href="visium-part-ii.html#cb190-19" tabindex="-1"></a>[<span class="dv">1</span>] shiny_1.<span class="dv">8</span>.<span class="fl">1.1</span>     Giotto_4.<span class="fl">1.0</span>      GiottoClass_0.<span class="fl">3.3</span></span>
-<span id="cb190-20"><a href="visium-part-ii.html#cb190-20" tabindex="-1"></a></span>
-<span id="cb190-21"><a href="visium-part-ii.html#cb190-21" tabindex="-1"></a>loaded via a <span class="fu">namespace</span> (and not attached)<span class="sc">:</span></span>
-<span id="cb190-22"><a href="visium-part-ii.html#cb190-22" tabindex="-1"></a>  [<span class="dv">1</span>] later_1.<span class="fl">3.2</span>                 tibble_3.<span class="fl">2.1</span>               </span>
-<span id="cb190-23"><a href="visium-part-ii.html#cb190-23" tabindex="-1"></a>  [<span class="dv">3</span>] R.oo_1.<span class="fl">26.0</span>                 polyclip_1<span class="fl">.10</span><span class="dv">-7</span>            </span>
-<span id="cb190-24"><a href="visium-part-ii.html#cb190-24" tabindex="-1"></a>  [<span class="dv">5</span>] lifecycle_1.<span class="fl">0.4</span>             edgeR_4.<span class="fl">2.1</span>                </span>
-<span id="cb190-25"><a href="visium-part-ii.html#cb190-25" tabindex="-1"></a>  [<span class="dv">7</span>] doParallel_1.<span class="fl">0.17</span>           lattice_0<span class="fl">.22</span><span class="dv">-6</span>             </span>
-<span id="cb190-26"><a href="visium-part-ii.html#cb190-26" tabindex="-1"></a>  [<span class="dv">9</span>] MASS_7<span class="fl">.3</span><span class="dv">-61</span>                 backports_1.<span class="fl">5.0</span>            </span>
-<span id="cb190-27"><a href="visium-part-ii.html#cb190-27" tabindex="-1"></a> [<span class="dv">11</span>] magrittr_2.<span class="fl">0.3</span>              sass_0.<span class="fl">4.9</span>                 </span>
-<span id="cb190-28"><a href="visium-part-ii.html#cb190-28" tabindex="-1"></a> [<span class="dv">13</span>] limma_3.<span class="fl">60.4</span>                plotly_4.<span class="fl">10.4</span>              </span>
-<span id="cb190-29"><a href="visium-part-ii.html#cb190-29" tabindex="-1"></a> [<span class="dv">15</span>] rmarkdown_2<span class="fl">.27</span>              jquerylib_0.<span class="fl">1.4</span>            </span>
-<span id="cb190-30"><a href="visium-part-ii.html#cb190-30" tabindex="-1"></a> [<span class="dv">17</span>] yaml_2.<span class="fl">3.9</span>                  metapod_1.<span class="fl">12.0</span>             </span>
-<span id="cb190-31"><a href="visium-part-ii.html#cb190-31" tabindex="-1"></a> [<span class="dv">19</span>] httpuv_1.<span class="fl">6.15</span>               sp_2<span class="fl">.1</span><span class="dv">-4</span>                   </span>
-<span id="cb190-32"><a href="visium-part-ii.html#cb190-32" tabindex="-1"></a> [<span class="dv">21</span>] reticulate_1.<span class="fl">38.0</span>           cowplot_1.<span class="fl">1.3</span>              </span>
-<span id="cb190-33"><a href="visium-part-ii.html#cb190-33" tabindex="-1"></a> [<span class="dv">23</span>] RColorBrewer_1<span class="fl">.1</span><span class="dv">-3</span>          abind_1<span class="fl">.4</span><span class="dv">-5</span>                </span>
-<span id="cb190-34"><a href="visium-part-ii.html#cb190-34" tabindex="-1"></a> [<span class="dv">25</span>] zlibbioc_1.<span class="fl">50.0</span>             quadprog_1<span class="fl">.5</span><span class="dv">-8</span>             </span>
-<span id="cb190-35"><a href="visium-part-ii.html#cb190-35" tabindex="-1"></a> [<span class="dv">27</span>] GenomicRanges_1.<span class="fl">56.1</span>        purrr_1.<span class="fl">0.2</span>                </span>
-<span id="cb190-36"><a href="visium-part-ii.html#cb190-36" tabindex="-1"></a> [<span class="dv">29</span>] R.utils_2.<span class="fl">12.3</span>              BiocGenerics_0.<span class="fl">50.0</span>        </span>
-<span id="cb190-37"><a href="visium-part-ii.html#cb190-37" tabindex="-1"></a> [<span class="dv">31</span>] tweenr_2.<span class="fl">0.3</span>                circlize_0.<span class="fl">4.16</span>            </span>
-<span id="cb190-38"><a href="visium-part-ii.html#cb190-38" tabindex="-1"></a> [<span class="dv">33</span>] GenomeInfoDbData_1.<span class="fl">2.12</span>     IRanges_2.<span class="fl">38.1</span>             </span>
-<span id="cb190-39"><a href="visium-part-ii.html#cb190-39" tabindex="-1"></a> [<span class="dv">35</span>] S4Vectors_0.<span class="fl">42.1</span>            ggrepel_0.<span class="fl">9.5</span>              </span>
-<span id="cb190-40"><a href="visium-part-ii.html#cb190-40" tabindex="-1"></a> [<span class="dv">37</span>] irlba_2.<span class="dv">3</span>.<span class="fl">5.1</span>               terra_1<span class="fl">.7</span><span class="dv">-78</span>               </span>
-<span id="cb190-41"><a href="visium-part-ii.html#cb190-41" tabindex="-1"></a> [<span class="dv">39</span>] dqrng_0.<span class="fl">4.1</span>                 DelayedMatrixStats_1.<span class="fl">26.0</span>  </span>
-<span id="cb190-42"><a href="visium-part-ii.html#cb190-42" tabindex="-1"></a> [<span class="dv">41</span>] colorRamp2_0.<span class="fl">1.0</span>            codetools_0<span class="fl">.2</span><span class="dv">-20</span>           </span>
-<span id="cb190-43"><a href="visium-part-ii.html#cb190-43" tabindex="-1"></a> [<span class="dv">43</span>] DelayedArray_0.<span class="fl">30.1</span>         scuttle_1.<span class="fl">14.0</span>             </span>
-<span id="cb190-44"><a href="visium-part-ii.html#cb190-44" tabindex="-1"></a> [<span class="dv">45</span>] ggforce_0.<span class="fl">4.2</span>               tidyselect_1.<span class="fl">2.1</span>           </span>
-<span id="cb190-45"><a href="visium-part-ii.html#cb190-45" tabindex="-1"></a> [<span class="dv">47</span>] shape_1.<span class="dv">4</span>.<span class="fl">6.1</span>               UCSC.utils_1.<span class="fl">0.0</span>           </span>
-<span id="cb190-46"><a href="visium-part-ii.html#cb190-46" tabindex="-1"></a> [<span class="dv">49</span>] farver_2.<span class="fl">1.2</span>                ScaledMatrix_1.<span class="fl">12.0</span>        </span>
-<span id="cb190-47"><a href="visium-part-ii.html#cb190-47" tabindex="-1"></a> [<span class="dv">51</span>] matrixStats_1.<span class="fl">3.0</span>           stats4_4.<span class="fl">4.1</span>               </span>
-<span id="cb190-48"><a href="visium-part-ii.html#cb190-48" tabindex="-1"></a> [<span class="dv">53</span>] GiottoData_0.<span class="dv">2</span>.<span class="fl">12.0</span>         jsonlite_1.<span class="fl">8.8</span>             </span>
-<span id="cb190-49"><a href="visium-part-ii.html#cb190-49" tabindex="-1"></a> [<span class="dv">55</span>] GetoptLong_1.<span class="fl">0.5</span>            BiocNeighbors_1.<span class="fl">22.0</span>       </span>
-<span id="cb190-50"><a href="visium-part-ii.html#cb190-50" tabindex="-1"></a> [<span class="dv">57</span>] progressr_0.<span class="fl">14.0</span>            iterators_1.<span class="fl">0.14</span>           </span>
-<span id="cb190-51"><a href="visium-part-ii.html#cb190-51" tabindex="-1"></a> [<span class="dv">59</span>] systemfonts_1.<span class="fl">1.0</span>           foreach_1.<span class="fl">5.2</span>              </span>
-<span id="cb190-52"><a href="visium-part-ii.html#cb190-52" tabindex="-1"></a> [<span class="dv">61</span>] dbscan_1<span class="fl">.2</span><span class="dv">-0</span>                tools_4.<span class="fl">4.1</span>                </span>
-<span id="cb190-53"><a href="visium-part-ii.html#cb190-53" tabindex="-1"></a> [<span class="dv">63</span>] ragg_1.<span class="fl">3.2</span>                  Rcpp_1.<span class="fl">0.13</span>                </span>
-<span id="cb190-54"><a href="visium-part-ii.html#cb190-54" tabindex="-1"></a> [<span class="dv">65</span>] glue_1.<span class="fl">7.0</span>                  SparseArray_1.<span class="fl">4.8</span>          </span>
-<span id="cb190-55"><a href="visium-part-ii.html#cb190-55" tabindex="-1"></a> [<span class="dv">67</span>] xfun_0<span class="fl">.46</span>                   MatrixGenerics_1.<span class="fl">16.0</span>      </span>
-<span id="cb190-56"><a href="visium-part-ii.html#cb190-56" tabindex="-1"></a> [<span class="dv">69</span>] GenomeInfoDb_1.<span class="fl">40.1</span>         dplyr_1.<span class="fl">1.4</span>                </span>
-<span id="cb190-57"><a href="visium-part-ii.html#cb190-57" tabindex="-1"></a> [<span class="dv">71</span>] withr_3.<span class="fl">0.0</span>                 fastmap_1.<span class="fl">2.0</span>              </span>
-<span id="cb190-58"><a href="visium-part-ii.html#cb190-58" tabindex="-1"></a> [<span class="dv">73</span>] bluster_1.<span class="fl">14.0</span>              fansi_1.<span class="fl">0.6</span>                </span>
-<span id="cb190-59"><a href="visium-part-ii.html#cb190-59" tabindex="-1"></a> [<span class="dv">75</span>] digest_0.<span class="fl">6.36</span>               rsvd_1.<span class="fl">0.5</span>                 </span>
-<span id="cb190-60"><a href="visium-part-ii.html#cb190-60" tabindex="-1"></a> [<span class="dv">77</span>] R6_2.<span class="fl">5.1</span>                    mime_0<span class="fl">.12</span>                  </span>
-<span id="cb190-61"><a href="visium-part-ii.html#cb190-61" tabindex="-1"></a> [<span class="dv">79</span>] textshaping_0.<span class="fl">4.0</span>           colorspace_2<span class="fl">.1</span><span class="dv">-0</span>           </span>
-<span id="cb190-62"><a href="visium-part-ii.html#cb190-62" tabindex="-1"></a> [<span class="dv">81</span>] scattermore_1<span class="fl">.2</span>             Cairo_1<span class="fl">.6</span><span class="dv">-2</span>                </span>
-<span id="cb190-63"><a href="visium-part-ii.html#cb190-63" tabindex="-1"></a> [<span class="dv">83</span>] gtools_3.<span class="fl">9.5</span>                R.methodsS3_1.<span class="fl">8.2</span>          </span>
-<span id="cb190-64"><a href="visium-part-ii.html#cb190-64" tabindex="-1"></a> [<span class="dv">85</span>] utf8_1.<span class="fl">2.4</span>                  tidyr_1.<span class="fl">3.1</span>                </span>
-<span id="cb190-65"><a href="visium-part-ii.html#cb190-65" tabindex="-1"></a> [<span class="dv">87</span>] generics_0.<span class="fl">1.3</span>              data.table_1.<span class="fl">15.4</span>          </span>
-<span id="cb190-66"><a href="visium-part-ii.html#cb190-66" tabindex="-1"></a> [<span class="dv">89</span>] FNN_1.<span class="fl">1.4</span>                   httr_1.<span class="fl">4.7</span>                 </span>
-<span id="cb190-67"><a href="visium-part-ii.html#cb190-67" tabindex="-1"></a> [<span class="dv">91</span>] htmlwidgets_1.<span class="fl">6.4</span>           S4Arrays_1.<span class="fl">4.1</span>             </span>
-<span id="cb190-68"><a href="visium-part-ii.html#cb190-68" tabindex="-1"></a> [<span class="dv">93</span>] scatterpie_0.<span class="fl">2.3</span>            uwot_0.<span class="fl">2.2</span>                 </span>
-<span id="cb190-69"><a href="visium-part-ii.html#cb190-69" tabindex="-1"></a> [<span class="dv">95</span>] pkgconfig_2.<span class="fl">0.3</span>             gtable_0.<span class="fl">3.5</span>               </span>
-<span id="cb190-70"><a href="visium-part-ii.html#cb190-70" tabindex="-1"></a> [<span class="dv">97</span>] ComplexHeatmap_2.<span class="fl">20.0</span>       GiottoVisuals_0.<span class="fl">2.4</span>        </span>
-<span id="cb190-71"><a href="visium-part-ii.html#cb190-71" tabindex="-1"></a> [<span class="dv">99</span>] SingleCellExperiment_1.<span class="fl">26.0</span> XVector_0.<span class="fl">44.0</span>             </span>
-<span id="cb190-72"><a href="visium-part-ii.html#cb190-72" tabindex="-1"></a>[<span class="dv">101</span>] htmltools_0.<span class="dv">5</span>.<span class="fl">8.1</span>           bookdown_0<span class="fl">.40</span>              </span>
-<span id="cb190-73"><a href="visium-part-ii.html#cb190-73" tabindex="-1"></a>[<span class="dv">103</span>] clue_0<span class="fl">.3</span><span class="dv">-65</span>                 scales_1.<span class="fl">3.0</span>               </span>
-<span id="cb190-74"><a href="visium-part-ii.html#cb190-74" tabindex="-1"></a>[<span class="dv">105</span>] Biobase_2.<span class="fl">64.0</span>              GiottoUtils_0.<span class="fl">1.10</span>         </span>
-<span id="cb190-75"><a href="visium-part-ii.html#cb190-75" tabindex="-1"></a>[<span class="dv">107</span>] png_0<span class="fl">.1</span><span class="dv">-8</span>                   SpatialExperiment_1.<span class="fl">14.0</span>   </span>
-<span id="cb190-76"><a href="visium-part-ii.html#cb190-76" tabindex="-1"></a>[<span class="dv">109</span>] scran_1.<span class="fl">32.0</span>                ggfun_0.<span class="fl">1.5</span>                </span>
-<span id="cb190-77"><a href="visium-part-ii.html#cb190-77" tabindex="-1"></a>[<span class="dv">111</span>] knitr_1<span class="fl">.48</span>                  rstudioapi_0.<span class="fl">16.0</span>          </span>
-<span id="cb190-78"><a href="visium-part-ii.html#cb190-78" tabindex="-1"></a>[<span class="dv">113</span>] reshape2_1.<span class="fl">4.4</span>              rjson_0.<span class="fl">2.21</span>               </span>
-<span id="cb190-79"><a href="visium-part-ii.html#cb190-79" tabindex="-1"></a>[<span class="dv">115</span>] checkmate_2.<span class="fl">3.1</span>             cachem_1.<span class="fl">1.0</span>               </span>
-<span id="cb190-80"><a href="visium-part-ii.html#cb190-80" tabindex="-1"></a>[<span class="dv">117</span>] GlobalOptions_0.<span class="fl">1.2</span>         stringr_1.<span class="fl">5.1</span>              </span>
-<span id="cb190-81"><a href="visium-part-ii.html#cb190-81" tabindex="-1"></a>[<span class="dv">119</span>] parallel_4.<span class="fl">4.1</span>              miniUI_0.<span class="dv">1</span>.<span class="fl">1.1</span>             </span>
-<span id="cb190-82"><a href="visium-part-ii.html#cb190-82" tabindex="-1"></a>[<span class="dv">121</span>] RcppZiggurat_0.<span class="fl">1.6</span>          pillar_1.<span class="fl">9.0</span>               </span>
-<span id="cb190-83"><a href="visium-part-ii.html#cb190-83" tabindex="-1"></a>[<span class="dv">123</span>] grid_4.<span class="fl">4.1</span>                  vctrs_0.<span class="fl">6.5</span>                </span>
-<span id="cb190-84"><a href="visium-part-ii.html#cb190-84" tabindex="-1"></a>[<span class="dv">125</span>] promises_1.<span class="fl">3.0</span>              BiocSingular_1.<span class="fl">20.0</span>        </span>
-<span id="cb190-85"><a href="visium-part-ii.html#cb190-85" tabindex="-1"></a>[<span class="dv">127</span>] beachmat_2.<span class="fl">20.0</span>             xtable_1<span class="fl">.8</span><span class="dv">-4</span>               </span>
-<span id="cb190-86"><a href="visium-part-ii.html#cb190-86" tabindex="-1"></a>[<span class="dv">129</span>] cluster_2.<span class="fl">1.6</span>               evaluate_0.<span class="fl">24.0</span>            </span>
-<span id="cb190-87"><a href="visium-part-ii.html#cb190-87" tabindex="-1"></a>[<span class="dv">131</span>] magick_2.<span class="fl">8.4</span>                cli_3.<span class="fl">6.3</span>                  </span>
-<span id="cb190-88"><a href="visium-part-ii.html#cb190-88" tabindex="-1"></a>[<span class="dv">133</span>] locfit_1<span class="fl">.5-9.10</span>             compiler_4.<span class="fl">4.1</span>             </span>
-<span id="cb190-89"><a href="visium-part-ii.html#cb190-89" tabindex="-1"></a>[<span class="dv">135</span>] rlang_1.<span class="fl">1.4</span>                 crayon_1.<span class="fl">5.3</span>               </span>
-<span id="cb190-90"><a href="visium-part-ii.html#cb190-90" tabindex="-1"></a>[<span class="dv">137</span>] labeling_0.<span class="fl">4.3</span>              plyr_1.<span class="fl">8.9</span>                 </span>
-<span id="cb190-91"><a href="visium-part-ii.html#cb190-91" tabindex="-1"></a>[<span class="dv">139</span>] stringi_1.<span class="fl">8.4</span>               viridisLite_0.<span class="fl">4.2</span>          </span>
-<span id="cb190-92"><a href="visium-part-ii.html#cb190-92" tabindex="-1"></a>[<span class="dv">141</span>] deldir_2<span class="fl">.0</span><span class="dv">-4</span>                BiocParallel_1.<span class="fl">38.0</span>        </span>
-<span id="cb190-93"><a href="visium-part-ii.html#cb190-93" tabindex="-1"></a>[<span class="dv">143</span>] munsell_0.<span class="fl">5.1</span>               lazyeval_0.<span class="fl">2.2</span>             </span>
-<span id="cb190-94"><a href="visium-part-ii.html#cb190-94" tabindex="-1"></a>[<span class="dv">145</span>] Matrix_1<span class="fl">.7</span><span class="dv">-0</span>                sparseMatrixStats_1.<span class="fl">16.0</span>   </span>
-<span id="cb190-95"><a href="visium-part-ii.html#cb190-95" tabindex="-1"></a>[<span class="dv">147</span>] ggplot2_3.<span class="fl">5.1</span>               statmod_1.<span class="fl">5.0</span>              </span>
-<span id="cb190-96"><a href="visium-part-ii.html#cb190-96" tabindex="-1"></a>[<span class="dv">149</span>] SummarizedExperiment_1.<span class="fl">34.0</span> Rfast_2.<span class="fl">1.0</span>                </span>
-<span id="cb190-97"><a href="visium-part-ii.html#cb190-97" tabindex="-1"></a>[<span class="dv">151</span>] memoise_2.<span class="fl">0.1</span>               igraph_2.<span class="fl">0.3</span>               </span>
-<span id="cb190-98"><a href="visium-part-ii.html#cb190-98" tabindex="-1"></a>[<span class="dv">153</span>] bslib_0.<span class="fl">7.0</span>                 RcppParallel_5.<span class="fl">1.8</span>  </span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="visium-part-ii.html#cb199-1" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="visium-part-ii.html#cb200-1" tabindex="-1"></a>R version <span class="dv">4</span>.<span class="fl">4.1</span> (<span class="dv">2024-06-14</span>)</span>
+<span id="cb200-2"><a href="visium-part-ii.html#cb200-2" tabindex="-1"></a>Platform<span class="sc">:</span> aarch64<span class="sc">-</span>apple<span class="sc">-</span>darwin20</span>
+<span id="cb200-3"><a href="visium-part-ii.html#cb200-3" tabindex="-1"></a>Running under<span class="sc">:</span> macOS Sonoma <span class="fl">14.5</span></span>
+<span id="cb200-4"><a href="visium-part-ii.html#cb200-4" tabindex="-1"></a></span>
+<span id="cb200-5"><a href="visium-part-ii.html#cb200-5" tabindex="-1"></a>Matrix products<span class="sc">:</span> default</span>
+<span id="cb200-6"><a href="visium-part-ii.html#cb200-6" tabindex="-1"></a>BLAS<span class="sc">:</span>   <span class="er">/</span>System<span class="sc">/</span>Library<span class="sc">/</span>Frameworks<span class="sc">/</span>Accelerate.framework<span class="sc">/</span>Versions<span class="sc">/</span>A<span class="sc">/</span>Frameworks<span class="sc">/</span>vecLib.framework<span class="sc">/</span>Versions<span class="sc">/</span>A<span class="sc">/</span>libBLAS.dylib </span>
+<span id="cb200-7"><a href="visium-part-ii.html#cb200-7" tabindex="-1"></a>LAPACK<span class="sc">:</span> <span class="er">/</span>Library<span class="sc">/</span>Frameworks<span class="sc">/</span>R.framework<span class="sc">/</span>Versions<span class="sc">/</span><span class="fl">4.4</span><span class="sc">-</span>arm64<span class="sc">/</span>Resources<span class="sc">/</span>lib<span class="sc">/</span>libRlapack.dylib;  LAPACK version <span class="dv">3</span>.<span class="fl">12.0</span></span>
+<span id="cb200-8"><a href="visium-part-ii.html#cb200-8" tabindex="-1"></a></span>
+<span id="cb200-9"><a href="visium-part-ii.html#cb200-9" tabindex="-1"></a>locale<span class="sc">:</span></span>
+<span id="cb200-10"><a href="visium-part-ii.html#cb200-10" tabindex="-1"></a>[<span class="dv">1</span>] en_US.UTF<span class="dv">-8</span><span class="sc">/</span>en_US.UTF<span class="dv">-8</span><span class="sc">/</span>en_US.UTF<span class="dv">-8</span><span class="sc">/</span>C<span class="sc">/</span>en_US.UTF<span class="dv">-8</span><span class="sc">/</span>en_US.UTF<span class="dv">-8</span></span>
+<span id="cb200-11"><a href="visium-part-ii.html#cb200-11" tabindex="-1"></a></span>
+<span id="cb200-12"><a href="visium-part-ii.html#cb200-12" tabindex="-1"></a>time zone<span class="sc">:</span> America<span class="sc">/</span>New_York</span>
+<span id="cb200-13"><a href="visium-part-ii.html#cb200-13" tabindex="-1"></a>tzcode source<span class="sc">:</span> internal</span>
+<span id="cb200-14"><a href="visium-part-ii.html#cb200-14" tabindex="-1"></a></span>
+<span id="cb200-15"><a href="visium-part-ii.html#cb200-15" tabindex="-1"></a>attached base packages<span class="sc">:</span></span>
+<span id="cb200-16"><a href="visium-part-ii.html#cb200-16" tabindex="-1"></a>[<span class="dv">1</span>] stats     graphics  grDevices utils     datasets  methods   base     </span>
+<span id="cb200-17"><a href="visium-part-ii.html#cb200-17" tabindex="-1"></a></span>
+<span id="cb200-18"><a href="visium-part-ii.html#cb200-18" tabindex="-1"></a>other attached packages<span class="sc">:</span></span>
+<span id="cb200-19"><a href="visium-part-ii.html#cb200-19" tabindex="-1"></a>[<span class="dv">1</span>] shiny_1.<span class="dv">8</span>.<span class="fl">1.1</span>     Giotto_4.<span class="fl">1.0</span>      GiottoClass_0.<span class="fl">3.3</span></span>
+<span id="cb200-20"><a href="visium-part-ii.html#cb200-20" tabindex="-1"></a></span>
+<span id="cb200-21"><a href="visium-part-ii.html#cb200-21" tabindex="-1"></a>loaded via a <span class="fu">namespace</span> (and not attached)<span class="sc">:</span></span>
+<span id="cb200-22"><a href="visium-part-ii.html#cb200-22" tabindex="-1"></a>  [<span class="dv">1</span>] later_1.<span class="fl">3.2</span>                 tibble_3.<span class="fl">2.1</span>               </span>
+<span id="cb200-23"><a href="visium-part-ii.html#cb200-23" tabindex="-1"></a>  [<span class="dv">3</span>] R.oo_1.<span class="fl">26.0</span>                 polyclip_1<span class="fl">.10</span><span class="dv">-7</span>            </span>
+<span id="cb200-24"><a href="visium-part-ii.html#cb200-24" tabindex="-1"></a>  [<span class="dv">5</span>] lifecycle_1.<span class="fl">0.4</span>             edgeR_4.<span class="fl">2.1</span>                </span>
+<span id="cb200-25"><a href="visium-part-ii.html#cb200-25" tabindex="-1"></a>  [<span class="dv">7</span>] doParallel_1.<span class="fl">0.17</span>           lattice_0<span class="fl">.22</span><span class="dv">-6</span>             </span>
+<span id="cb200-26"><a href="visium-part-ii.html#cb200-26" tabindex="-1"></a>  [<span class="dv">9</span>] MASS_7<span class="fl">.3</span><span class="dv">-61</span>                 backports_1.<span class="fl">5.0</span>            </span>
+<span id="cb200-27"><a href="visium-part-ii.html#cb200-27" tabindex="-1"></a> [<span class="dv">11</span>] magrittr_2.<span class="fl">0.3</span>              sass_0.<span class="fl">4.9</span>                 </span>
+<span id="cb200-28"><a href="visium-part-ii.html#cb200-28" tabindex="-1"></a> [<span class="dv">13</span>] limma_3.<span class="fl">60.4</span>                plotly_4.<span class="fl">10.4</span>              </span>
+<span id="cb200-29"><a href="visium-part-ii.html#cb200-29" tabindex="-1"></a> [<span class="dv">15</span>] rmarkdown_2<span class="fl">.27</span>              jquerylib_0.<span class="fl">1.4</span>            </span>
+<span id="cb200-30"><a href="visium-part-ii.html#cb200-30" tabindex="-1"></a> [<span class="dv">17</span>] yaml_2.<span class="fl">3.9</span>                  metapod_1.<span class="fl">12.0</span>             </span>
+<span id="cb200-31"><a href="visium-part-ii.html#cb200-31" tabindex="-1"></a> [<span class="dv">19</span>] httpuv_1.<span class="fl">6.15</span>               sp_2<span class="fl">.1</span><span class="dv">-4</span>                   </span>
+<span id="cb200-32"><a href="visium-part-ii.html#cb200-32" tabindex="-1"></a> [<span class="dv">21</span>] reticulate_1.<span class="fl">38.0</span>           cowplot_1.<span class="fl">1.3</span>              </span>
+<span id="cb200-33"><a href="visium-part-ii.html#cb200-33" tabindex="-1"></a> [<span class="dv">23</span>] RColorBrewer_1<span class="fl">.1</span><span class="dv">-3</span>          abind_1<span class="fl">.4</span><span class="dv">-5</span>                </span>
+<span id="cb200-34"><a href="visium-part-ii.html#cb200-34" tabindex="-1"></a> [<span class="dv">25</span>] zlibbioc_1.<span class="fl">50.0</span>             quadprog_1<span class="fl">.5</span><span class="dv">-8</span>             </span>
+<span id="cb200-35"><a href="visium-part-ii.html#cb200-35" tabindex="-1"></a> [<span class="dv">27</span>] GenomicRanges_1.<span class="fl">56.1</span>        purrr_1.<span class="fl">0.2</span>                </span>
+<span id="cb200-36"><a href="visium-part-ii.html#cb200-36" tabindex="-1"></a> [<span class="dv">29</span>] R.utils_2.<span class="fl">12.3</span>              BiocGenerics_0.<span class="fl">50.0</span>        </span>
+<span id="cb200-37"><a href="visium-part-ii.html#cb200-37" tabindex="-1"></a> [<span class="dv">31</span>] tweenr_2.<span class="fl">0.3</span>                circlize_0.<span class="fl">4.16</span>            </span>
+<span id="cb200-38"><a href="visium-part-ii.html#cb200-38" tabindex="-1"></a> [<span class="dv">33</span>] GenomeInfoDbData_1.<span class="fl">2.12</span>     IRanges_2.<span class="fl">38.1</span>             </span>
+<span id="cb200-39"><a href="visium-part-ii.html#cb200-39" tabindex="-1"></a> [<span class="dv">35</span>] S4Vectors_0.<span class="fl">42.1</span>            ggrepel_0.<span class="fl">9.5</span>              </span>
+<span id="cb200-40"><a href="visium-part-ii.html#cb200-40" tabindex="-1"></a> [<span class="dv">37</span>] irlba_2.<span class="dv">3</span>.<span class="fl">5.1</span>               terra_1<span class="fl">.7</span><span class="dv">-78</span>               </span>
+<span id="cb200-41"><a href="visium-part-ii.html#cb200-41" tabindex="-1"></a> [<span class="dv">39</span>] dqrng_0.<span class="fl">4.1</span>                 DelayedMatrixStats_1.<span class="fl">26.0</span>  </span>
+<span id="cb200-42"><a href="visium-part-ii.html#cb200-42" tabindex="-1"></a> [<span class="dv">41</span>] colorRamp2_0.<span class="fl">1.0</span>            codetools_0<span class="fl">.2</span><span class="dv">-20</span>           </span>
+<span id="cb200-43"><a href="visium-part-ii.html#cb200-43" tabindex="-1"></a> [<span class="dv">43</span>] DelayedArray_0.<span class="fl">30.1</span>         scuttle_1.<span class="fl">14.0</span>             </span>
+<span id="cb200-44"><a href="visium-part-ii.html#cb200-44" tabindex="-1"></a> [<span class="dv">45</span>] ggforce_0.<span class="fl">4.2</span>               tidyselect_1.<span class="fl">2.1</span>           </span>
+<span id="cb200-45"><a href="visium-part-ii.html#cb200-45" tabindex="-1"></a> [<span class="dv">47</span>] shape_1.<span class="dv">4</span>.<span class="fl">6.1</span>               UCSC.utils_1.<span class="fl">0.0</span>           </span>
+<span id="cb200-46"><a href="visium-part-ii.html#cb200-46" tabindex="-1"></a> [<span class="dv">49</span>] farver_2.<span class="fl">1.2</span>                ScaledMatrix_1.<span class="fl">12.0</span>        </span>
+<span id="cb200-47"><a href="visium-part-ii.html#cb200-47" tabindex="-1"></a> [<span class="dv">51</span>] matrixStats_1.<span class="fl">3.0</span>           stats4_4.<span class="fl">4.1</span>               </span>
+<span id="cb200-48"><a href="visium-part-ii.html#cb200-48" tabindex="-1"></a> [<span class="dv">53</span>] GiottoData_0.<span class="dv">2</span>.<span class="fl">12.0</span>         jsonlite_1.<span class="fl">8.8</span>             </span>
+<span id="cb200-49"><a href="visium-part-ii.html#cb200-49" tabindex="-1"></a> [<span class="dv">55</span>] GetoptLong_1.<span class="fl">0.5</span>            BiocNeighbors_1.<span class="fl">22.0</span>       </span>
+<span id="cb200-50"><a href="visium-part-ii.html#cb200-50" tabindex="-1"></a> [<span class="dv">57</span>] progressr_0.<span class="fl">14.0</span>            iterators_1.<span class="fl">0.14</span>           </span>
+<span id="cb200-51"><a href="visium-part-ii.html#cb200-51" tabindex="-1"></a> [<span class="dv">59</span>] systemfonts_1.<span class="fl">1.0</span>           foreach_1.<span class="fl">5.2</span>              </span>
+<span id="cb200-52"><a href="visium-part-ii.html#cb200-52" tabindex="-1"></a> [<span class="dv">61</span>] dbscan_1<span class="fl">.2</span><span class="dv">-0</span>                tools_4.<span class="fl">4.1</span>                </span>
+<span id="cb200-53"><a href="visium-part-ii.html#cb200-53" tabindex="-1"></a> [<span class="dv">63</span>] ragg_1.<span class="fl">3.2</span>                  Rcpp_1.<span class="fl">0.13</span>                </span>
+<span id="cb200-54"><a href="visium-part-ii.html#cb200-54" tabindex="-1"></a> [<span class="dv">65</span>] glue_1.<span class="fl">7.0</span>                  SparseArray_1.<span class="fl">4.8</span>          </span>
+<span id="cb200-55"><a href="visium-part-ii.html#cb200-55" tabindex="-1"></a> [<span class="dv">67</span>] xfun_0<span class="fl">.46</span>                   MatrixGenerics_1.<span class="fl">16.0</span>      </span>
+<span id="cb200-56"><a href="visium-part-ii.html#cb200-56" tabindex="-1"></a> [<span class="dv">69</span>] GenomeInfoDb_1.<span class="fl">40.1</span>         dplyr_1.<span class="fl">1.4</span>                </span>
+<span id="cb200-57"><a href="visium-part-ii.html#cb200-57" tabindex="-1"></a> [<span class="dv">71</span>] withr_3.<span class="fl">0.0</span>                 fastmap_1.<span class="fl">2.0</span>              </span>
+<span id="cb200-58"><a href="visium-part-ii.html#cb200-58" tabindex="-1"></a> [<span class="dv">73</span>] bluster_1.<span class="fl">14.0</span>              fansi_1.<span class="fl">0.6</span>                </span>
+<span id="cb200-59"><a href="visium-part-ii.html#cb200-59" tabindex="-1"></a> [<span class="dv">75</span>] digest_0.<span class="fl">6.36</span>               rsvd_1.<span class="fl">0.5</span>                 </span>
+<span id="cb200-60"><a href="visium-part-ii.html#cb200-60" tabindex="-1"></a> [<span class="dv">77</span>] R6_2.<span class="fl">5.1</span>                    mime_0<span class="fl">.12</span>                  </span>
+<span id="cb200-61"><a href="visium-part-ii.html#cb200-61" tabindex="-1"></a> [<span class="dv">79</span>] textshaping_0.<span class="fl">4.0</span>           colorspace_2<span class="fl">.1</span><span class="dv">-0</span>           </span>
+<span id="cb200-62"><a href="visium-part-ii.html#cb200-62" tabindex="-1"></a> [<span class="dv">81</span>] scattermore_1<span class="fl">.2</span>             Cairo_1<span class="fl">.6</span><span class="dv">-2</span>                </span>
+<span id="cb200-63"><a href="visium-part-ii.html#cb200-63" tabindex="-1"></a> [<span class="dv">83</span>] gtools_3.<span class="fl">9.5</span>                R.methodsS3_1.<span class="fl">8.2</span>          </span>
+<span id="cb200-64"><a href="visium-part-ii.html#cb200-64" tabindex="-1"></a> [<span class="dv">85</span>] utf8_1.<span class="fl">2.4</span>                  tidyr_1.<span class="fl">3.1</span>                </span>
+<span id="cb200-65"><a href="visium-part-ii.html#cb200-65" tabindex="-1"></a> [<span class="dv">87</span>] generics_0.<span class="fl">1.3</span>              data.table_1.<span class="fl">15.4</span>          </span>
+<span id="cb200-66"><a href="visium-part-ii.html#cb200-66" tabindex="-1"></a> [<span class="dv">89</span>] FNN_1.<span class="fl">1.4</span>                   httr_1.<span class="fl">4.7</span>                 </span>
+<span id="cb200-67"><a href="visium-part-ii.html#cb200-67" tabindex="-1"></a> [<span class="dv">91</span>] htmlwidgets_1.<span class="fl">6.4</span>           S4Arrays_1.<span class="fl">4.1</span>             </span>
+<span id="cb200-68"><a href="visium-part-ii.html#cb200-68" tabindex="-1"></a> [<span class="dv">93</span>] scatterpie_0.<span class="fl">2.3</span>            uwot_0.<span class="fl">2.2</span>                 </span>
+<span id="cb200-69"><a href="visium-part-ii.html#cb200-69" tabindex="-1"></a> [<span class="dv">95</span>] pkgconfig_2.<span class="fl">0.3</span>             gtable_0.<span class="fl">3.5</span>               </span>
+<span id="cb200-70"><a href="visium-part-ii.html#cb200-70" tabindex="-1"></a> [<span class="dv">97</span>] ComplexHeatmap_2.<span class="fl">20.0</span>       GiottoVisuals_0.<span class="fl">2.4</span>        </span>
+<span id="cb200-71"><a href="visium-part-ii.html#cb200-71" tabindex="-1"></a> [<span class="dv">99</span>] SingleCellExperiment_1.<span class="fl">26.0</span> XVector_0.<span class="fl">44.0</span>             </span>
+<span id="cb200-72"><a href="visium-part-ii.html#cb200-72" tabindex="-1"></a>[<span class="dv">101</span>] htmltools_0.<span class="dv">5</span>.<span class="fl">8.1</span>           bookdown_0<span class="fl">.40</span>              </span>
+<span id="cb200-73"><a href="visium-part-ii.html#cb200-73" tabindex="-1"></a>[<span class="dv">103</span>] clue_0<span class="fl">.3</span><span class="dv">-65</span>                 scales_1.<span class="fl">3.0</span>               </span>
+<span id="cb200-74"><a href="visium-part-ii.html#cb200-74" tabindex="-1"></a>[<span class="dv">105</span>] Biobase_2.<span class="fl">64.0</span>              GiottoUtils_0.<span class="fl">1.10</span>         </span>
+<span id="cb200-75"><a href="visium-part-ii.html#cb200-75" tabindex="-1"></a>[<span class="dv">107</span>] png_0<span class="fl">.1</span><span class="dv">-8</span>                   SpatialExperiment_1.<span class="fl">14.0</span>   </span>
+<span id="cb200-76"><a href="visium-part-ii.html#cb200-76" tabindex="-1"></a>[<span class="dv">109</span>] scran_1.<span class="fl">32.0</span>                ggfun_0.<span class="fl">1.5</span>                </span>
+<span id="cb200-77"><a href="visium-part-ii.html#cb200-77" tabindex="-1"></a>[<span class="dv">111</span>] knitr_1<span class="fl">.48</span>                  rstudioapi_0.<span class="fl">16.0</span>          </span>
+<span id="cb200-78"><a href="visium-part-ii.html#cb200-78" tabindex="-1"></a>[<span class="dv">113</span>] reshape2_1.<span class="fl">4.4</span>              rjson_0.<span class="fl">2.21</span>               </span>
+<span id="cb200-79"><a href="visium-part-ii.html#cb200-79" tabindex="-1"></a>[<span class="dv">115</span>] checkmate_2.<span class="fl">3.1</span>             cachem_1.<span class="fl">1.0</span>               </span>
+<span id="cb200-80"><a href="visium-part-ii.html#cb200-80" tabindex="-1"></a>[<span class="dv">117</span>] GlobalOptions_0.<span class="fl">1.2</span>         stringr_1.<span class="fl">5.1</span>              </span>
+<span id="cb200-81"><a href="visium-part-ii.html#cb200-81" tabindex="-1"></a>[<span class="dv">119</span>] parallel_4.<span class="fl">4.1</span>              miniUI_0.<span class="dv">1</span>.<span class="fl">1.1</span>             </span>
+<span id="cb200-82"><a href="visium-part-ii.html#cb200-82" tabindex="-1"></a>[<span class="dv">121</span>] RcppZiggurat_0.<span class="fl">1.6</span>          pillar_1.<span class="fl">9.0</span>               </span>
+<span id="cb200-83"><a href="visium-part-ii.html#cb200-83" tabindex="-1"></a>[<span class="dv">123</span>] grid_4.<span class="fl">4.1</span>                  vctrs_0.<span class="fl">6.5</span>                </span>
+<span id="cb200-84"><a href="visium-part-ii.html#cb200-84" tabindex="-1"></a>[<span class="dv">125</span>] promises_1.<span class="fl">3.0</span>              BiocSingular_1.<span class="fl">20.0</span>        </span>
+<span id="cb200-85"><a href="visium-part-ii.html#cb200-85" tabindex="-1"></a>[<span class="dv">127</span>] beachmat_2.<span class="fl">20.0</span>             xtable_1<span class="fl">.8</span><span class="dv">-4</span>               </span>
+<span id="cb200-86"><a href="visium-part-ii.html#cb200-86" tabindex="-1"></a>[<span class="dv">129</span>] cluster_2.<span class="fl">1.6</span>               evaluate_0.<span class="fl">24.0</span>            </span>
+<span id="cb200-87"><a href="visium-part-ii.html#cb200-87" tabindex="-1"></a>[<span class="dv">131</span>] magick_2.<span class="fl">8.4</span>                cli_3.<span class="fl">6.3</span>                  </span>
+<span id="cb200-88"><a href="visium-part-ii.html#cb200-88" tabindex="-1"></a>[<span class="dv">133</span>] locfit_1<span class="fl">.5-9.10</span>             compiler_4.<span class="fl">4.1</span>             </span>
+<span id="cb200-89"><a href="visium-part-ii.html#cb200-89" tabindex="-1"></a>[<span class="dv">135</span>] rlang_1.<span class="fl">1.4</span>                 crayon_1.<span class="fl">5.3</span>               </span>
+<span id="cb200-90"><a href="visium-part-ii.html#cb200-90" tabindex="-1"></a>[<span class="dv">137</span>] labeling_0.<span class="fl">4.3</span>              plyr_1.<span class="fl">8.9</span>                 </span>
+<span id="cb200-91"><a href="visium-part-ii.html#cb200-91" tabindex="-1"></a>[<span class="dv">139</span>] stringi_1.<span class="fl">8.4</span>               viridisLite_0.<span class="fl">4.2</span>          </span>
+<span id="cb200-92"><a href="visium-part-ii.html#cb200-92" tabindex="-1"></a>[<span class="dv">141</span>] deldir_2<span class="fl">.0</span><span class="dv">-4</span>                BiocParallel_1.<span class="fl">38.0</span>        </span>
+<span id="cb200-93"><a href="visium-part-ii.html#cb200-93" tabindex="-1"></a>[<span class="dv">143</span>] munsell_0.<span class="fl">5.1</span>               lazyeval_0.<span class="fl">2.2</span>             </span>
+<span id="cb200-94"><a href="visium-part-ii.html#cb200-94" tabindex="-1"></a>[<span class="dv">145</span>] Matrix_1<span class="fl">.7</span><span class="dv">-0</span>                sparseMatrixStats_1.<span class="fl">16.0</span>   </span>
+<span id="cb200-95"><a href="visium-part-ii.html#cb200-95" tabindex="-1"></a>[<span class="dv">147</span>] ggplot2_3.<span class="fl">5.1</span>               statmod_1.<span class="fl">5.0</span>              </span>
+<span id="cb200-96"><a href="visium-part-ii.html#cb200-96" tabindex="-1"></a>[<span class="dv">149</span>] SummarizedExperiment_1.<span class="fl">34.0</span> Rfast_2.<span class="fl">1.0</span>                </span>
+<span id="cb200-97"><a href="visium-part-ii.html#cb200-97" tabindex="-1"></a>[<span class="dv">151</span>] memoise_2.<span class="fl">0.1</span>               igraph_2.<span class="fl">0.3</span>               </span>
+<span id="cb200-98"><a href="visium-part-ii.html#cb200-98" tabindex="-1"></a>[<span class="dv">153</span>] bslib_0.<span class="fl">7.0</span>                 RcppParallel_5.<span class="fl">1.8</span>  </span></code></pre></div>
 
 </div>
 </div>

@@ -325,6 +325,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.6" data-path="visium-hd.html"><a href="visium-hd.html#hexbin-25"><i class="fa fa-check"></i><b>9.6</b> Hexbin 25</a>
 <ul>
 <li class="chapter" data-level="9.6.1" data-path="visium-hd.html"><a href="visium-hd.html#subcellular-workflow-and-projection-functions"><i class="fa fa-check"></i><b>9.6.1</b> Subcellular workflow and projection functions</a></li>
+<li class="chapter" data-level="9.6.2" data-path="visium-hd.html"><a href="visium-hd.html#projections"><i class="fa fa-check"></i><b>9.6.2</b> projections</a></li>
+<li class="chapter" data-level="9.6.3" data-path="visium-hd.html"><a href="visium-hd.html#niche-clusters"><i class="fa fa-check"></i><b>9.6.3</b> niche clusters</a></li>
 </ul></li>
 <li class="chapter" data-level="9.7" data-path="visium-hd.html"><a href="visium-hd.html#database-backend---work-in-progress-but-coming-soon"><i class="fa fa-check"></i><b>9.7</b> Database backend - Work in progress, but coming soon!</a></li>
 </ul></li>
@@ -335,7 +337,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.1.1" data-path="xenium-1.html"><a href="xenium-1.html#output-directory-structure"><i class="fa fa-check"></i><b>10.1.1</b> Output directory structure</a></li>
 <li class="chapter" data-level="10.1.2" data-path="xenium-1.html"><a href="xenium-1.html#mini-xenium-dataset"><i class="fa fa-check"></i><b>10.1.2</b> Mini Xenium Dataset</a></li>
 </ul></li>
-<li class="chapter" data-level="10.2" data-path="xenium-1.html"><a href="xenium-1.html#data-prep"><i class="fa fa-check"></i><b>10.2</b> Data prep</a>
+<li class="chapter" data-level="10.2" data-path="xenium-1.html"><a href="xenium-1.html#data-preparation"><i class="fa fa-check"></i><b>10.2</b> Data preparation</a>
 <ul>
 <li class="chapter" data-level="10.2.1" data-path="xenium-1.html"><a href="xenium-1.html#image-conversion-may-change"><i class="fa fa-check"></i><b>10.2.1</b> Image conversion (may change)</a></li>
 </ul></li>
@@ -349,7 +351,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="10.4" data-path="xenium-1.html"><a href="xenium-1.html#piecewise-loading"><i class="fa fa-check"></i><b>10.4</b> Piecewise loading</a>
 <ul>
-<li class="chapter" data-level="10.4.1" data-path="xenium-1.html"><a href="xenium-1.html#load-giottopoints-transcripts"><i class="fa fa-check"></i><b>10.4.1</b> load giottoPoints transcripts</a></li>
+<li class="chapter" data-level="10.4.1" data-path="xenium-1.html"><a href="xenium-1.html#load-giottopoints-transcripts"><i class="fa fa-check"></i><b>10.4.1</b> Load giottoPoints transcripts</a></li>
 <li class="chapter" data-level="10.4.2" data-path="xenium-1.html"><a href="xenium-1.html#optional-loading-pre-aggregated-data"><i class="fa fa-check"></i><b>10.4.2</b> (optional) Loading pre-aggregated data</a></li>
 </ul></li>
 <li class="chapter" data-level="10.5" data-path="xenium-1.html"><a href="xenium-1.html#xenium-images"><i class="fa fa-check"></i><b>10.5</b> Xenium Images</a>
@@ -369,7 +371,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="10.8.1" data-path="xenium-1.html"><a href="xenium-1.html#spatial-network"><i class="fa fa-check"></i><b>10.8.1</b> Spatial network</a></li>
 <li class="chapter" data-level="10.8.2" data-path="xenium-1.html"><a href="xenium-1.html#niche-calculation"><i class="fa fa-check"></i><b>10.8.2</b> Niche calculation</a></li>
-<li class="chapter" data-level="10.8.3" data-path="xenium-1.html"><a href="xenium-1.html#kmeans-clustering-based-on-niche-signature"><i class="fa fa-check"></i><b>10.8.3</b> kmeans clustering based on niche signature</a></li>
+<li class="chapter" data-level="10.8.3" data-path="xenium-1.html"><a href="xenium-1.html#k-means-clustering-based-on-niche-signature"><i class="fa fa-check"></i><b>10.8.3</b> k-means clustering based on niche signature</a></li>
 </ul></li>
 <li class="chapter" data-level="10.9" data-path="xenium-1.html"><a href="xenium-1.html#cell-proximity-enrichment"><i class="fa fa-check"></i><b>10.9</b> Cell proximity enrichment</a></li>
 <li class="chapter" data-level="10.10" data-path="xenium-1.html"><a href="xenium-1.html#pseudovisium"><i class="fa fa-check"></i><b>10.10</b> Pseudovisium</a>
@@ -615,20 +617,20 @@ Much of this already covered in Section 2.2, but the highlights are:</p>
 <h4><span class="header-section-number">4.3.1.2</span> Installation of released version<a href="introduction-to-the-giotto-package.html#installation-of-released-version" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>To install the currently released version of Giotto in a single step:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="introduction-to-the-giotto-package.html#cb12-1" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pak</span>(<span class="st">&quot;drieslab/Giotto&quot;</span>)</span></code></pre></div>
-<p>This should automatically install all the Giotto dependencies and other Giotto module packages.</p>
+<p>This should automatically install all the Giotto dependencies and other Giotto module packages (main branch).</p>
 </div>
 <div id="installation-of-dev-branch-giotto-packages" class="section level4 hasAnchor" number="4.3.1.3">
 <h4><span class="header-section-number">4.3.1.3</span> Installation of dev branch Giotto packages<a href="introduction-to-the-giotto-package.html#installation-of-dev-branch-giotto-packages" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>You can install dev branch versions by using <code>devtools::install_github()</code></p>
+<p><em>pak</em> tends to forcibly install all dependencies, which can have issues when working with multiple dev branch packages.</p>
+<p>You can install dev branch versions by using <code>devtools::install_github()</code> instead</p>
 <p>Core module dev branchs:</p>
 <ul>
-<li>“<a href="mailto:drieslab/Giotto@suite" class="email">drieslab/Giotto@suite</a>_dev”</li>
-<li>“<a href="mailto:drieslab/GiottoVisuals@dev" class="email">drieslab/GiottoVisuals@dev</a>”</li>
-<li>“<a href="mailto:drieslab/GiottoClass@dev" class="email">drieslab/GiottoClass@dev</a>”</li>
-<li>“<a href="mailto:drieslab/GiottoUtils@dev" class="email">drieslab/GiottoUtils@dev</a>”</li>
+<li><code>"drieslab/Giotto@suite_dev"</code></li>
+<li><code>"drieslab/GiottoVisuals@dev"</code></li>
+<li><code>"drieslab/GiottoClass@dev"</code></li>
+<li><code>"drieslab/GiottoUtils@dev"</code></li>
 </ul>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="introduction-to-the-giotto-package.html#cb13-1" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;drieslab/GiottoClass@dev&quot;</span>)</span></code></pre></div>
-<p><em>pak</em> tends to forcibly install all dependencies, which can have issues when working with multiple dev branch packages.</p>
 </div>
 <div id="common-install-issues" class="section level4 hasAnchor" number="4.3.1.4">
 <h4><span class="header-section-number">4.3.1.4</span> Common install issues<a href="introduction-to-the-giotto-package.html#common-install-issues" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -737,8 +739,9 @@ It will contain several default packages that Giotto installs:</p>
 <span id="cb23-4"><a href="introduction-to-the-giotto-package.html#cb23-4" tabindex="-1"></a>g <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadGiottoMini</span>(<span class="st">&quot;visium&quot;</span>)</span>
 <span id="cb23-5"><a href="introduction-to-the-giotto-package.html#cb23-5" tabindex="-1"></a><span class="fu">instructions</span>(g) <span class="ot">&lt;-</span> instrs</span>
 <span id="cb23-6"><a href="introduction-to-the-giotto-package.html#cb23-6" tabindex="-1"></a><span class="fu">instructions</span>(g, <span class="st">&quot;show_plot&quot;</span>) <span class="co"># instructions say not to plot to viewer</span></span>
-<span id="cb23-7"><a href="introduction-to-the-giotto-package.html#cb23-7" tabindex="-1"></a><span class="fu">spatPlot2D</span>(g, <span class="at">show_image =</span> <span class="cn">TRUE</span>, <span class="at">image_name =</span> <span class="st">&quot;image&quot;</span>)</span>
-<span id="cb23-8"><a href="introduction-to-the-giotto-package.html#cb23-8" tabindex="-1"></a><span class="co"># instead it will directly write to the results folder</span></span></code></pre></div>
+<span id="cb23-7"><a href="introduction-to-the-giotto-package.html#cb23-7" tabindex="-1"></a></span>
+<span id="cb23-8"><a href="introduction-to-the-giotto-package.html#cb23-8" tabindex="-1"></a><span class="fu">spatPlot2D</span>(g, <span class="at">show_image =</span> <span class="cn">TRUE</span>, <span class="at">image_name =</span> <span class="st">&quot;image&quot;</span>)</span>
+<span id="cb23-9"><a href="introduction-to-the-giotto-package.html#cb23-9" tabindex="-1"></a><span class="co"># instead it will directly write to the results folder</span></span></code></pre></div>
 <p>As an example, you can also set individual instructions</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="introduction-to-the-giotto-package.html#cb24-1" tabindex="-1"></a><span class="fu">instructions</span>(g, <span class="st">&quot;show_plot&quot;</span>) <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span>
 <span id="cb24-2"><a href="introduction-to-the-giotto-package.html#cb24-2" tabindex="-1"></a><span class="fu">spatPlot2D</span>(g, <span class="at">show_image =</span> <span class="cn">TRUE</span>, <span class="at">image_name =</span> <span class="st">&quot;image&quot;</span>)</span></code></pre></div>
