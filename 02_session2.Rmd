@@ -111,7 +111,7 @@ matrix_tile_dt[, gene := genes[i]]
 matrix_tile_dt[, pixel := samples[j]]
 ```
 
-```{r, echo=FALSE, out.width="80%", fig.align="center"}
+```{r, echo=FALSE, out.width="80%", fig.align="center", fig.cap="Genes expressed for each 2 µm pixel."}
 knitr::include_graphics("img/02_session2/4.png")
 ```
 
@@ -127,7 +127,7 @@ expr_pos_data <- expr_pos_data[,.(pixel, pxl_row_in_fullres, pxl_col_in_fullres,
 colnames(expr_pos_data) = c('pixel', 'x', 'y', 'gene', 'count')
 ```
 
-```{r, echo=FALSE, out.width="80%", fig.align="center"}
+```{r, echo=FALSE, out.width="80%", fig.align="center", fig.cap="Genes expressed with count for each 2 µm pixel."}
 knitr::include_graphics("img/02_session2/5.png")
 ```
 
@@ -156,7 +156,7 @@ hexbin400 <- tessellate(extent = ext(giotto_points),
 plot(hexbin400)
 ```
 
-```{r, echo=FALSE, out.width="80%", fig.align="center"}
+```{r, echo=FALSE, out.width="80%", fig.align="center", fig.cap="Giotto polygon in a hexagon shape for overlapping visium HD expression data."}
 knitr::include_graphics("img/02_session2/6.png")
 ```
 
@@ -202,7 +202,7 @@ spatInSituPlotPoints(visiumHD,
                      jitter = c(25,25))
 ```
 
-```{r, echo=FALSE, out.width="80%", fig.align="center"}
+```{r, echo=FALSE, out.width="80%", fig.align="center", fig.cap="Overlap of gene expression with the hex400 polygons. Each dot represents a single gene. Jitter used to better vizualize individual genes."}
 knitr::include_graphics("img/02_session2/0-spatInSituPlotPoints.png")
 ```
 
@@ -287,7 +287,7 @@ spatPlot2D(gobject = visiumHD,
 ```
 
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Number of features detected in each of the centroids."}
 knitr::include_graphics("img/02_session2/2-spatPlot2D.png")
 ```
 
@@ -312,7 +312,7 @@ spatInSituPlotPoints(visiumHD,
 
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Number of features detected in each of the hex400 polygons."}
 knitr::include_graphics("img/02_session2/3-spatInSituPlotPoints.png")
 ```
 
@@ -378,7 +378,7 @@ plotUMAP(gobject = visiumHD,
          edge_alpha = 0.05)
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Leiden clustering for the hex400 bins."}
 knitr::include_graphics("img/02_session2/7-UMAP.png")
 ```
 
@@ -401,7 +401,7 @@ spatInSituPlotPoints(visiumHD,
 
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Spat plot for hex400 bin colored by leiden clusters."}
 knitr::include_graphics("img/02_session2/8-spatInSituPlotPoints.png")
 ```
 
@@ -454,7 +454,7 @@ spatInSituPlotPoints(visiumHD,
                      jitter = c(25,25))
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Polygon overlay of hex100 bins over 2 µm pixel. Jitter applied to vizualize individual features."}
 knitr::include_graphics("img/02_session2/9-spatInSituPlotPoints.png")
 ```
 
@@ -496,7 +496,7 @@ visiumHD <- runPCA(visiumHD, expression_values = 'normalized', feats_to_use = 'h
 plotPCA(visiumHD)
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap=""}
 knitr::include_graphics("img/02_session2/10-PCA.png")
 ```
 
@@ -508,7 +508,7 @@ plotUMAP(gobject = visiumHD,
          point_size = 2)
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="UMAP for the hex100 bin."}
 knitr::include_graphics("img/02_session2/11-UMAP.png")
 ```
 
@@ -529,7 +529,7 @@ plotUMAP(gobject = visiumHD,
          edge_alpha = 0.05)
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="UMAP for the hex100 bin colored by ledien clusters."}
 knitr::include_graphics("img/02_session2/12-UMAP.png")
 ```
 
@@ -552,7 +552,7 @@ spatInSituPlotPoints(visiumHD,
 
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Spat plot for the hex100 bin colored by leiden clusters."}
 knitr::include_graphics("img/02_session2/13-spatInSituPlotPoints.png")
 ```
 
@@ -597,7 +597,7 @@ spatFeatPlot2D(visiumHD,
                cow_n_col = 2, point_size = 1)
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Spat feature plot showing gene expression for the top 2 ranked spatial genes per expression bin (<50, >50 and >100) across the hex100 bin."}
 knitr::include_graphics("img/02_session2/14-spatFeatPlot2D.png")
 ```
 
@@ -614,7 +614,7 @@ spatFeatPlot2D(visiumHD,
 ```
 
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Spat feature plot showing gene expression for the top 2 ranked spatial genes per expression bin (>200, >400 and >1000) across the hex100 bin."}
 knitr::include_graphics("img/02_session2/15-spatFeatPlot2D.png")
 ```
 
@@ -643,7 +643,7 @@ heatmSpatialCorFeats(visiumHD,
                      heatmap_legend_param = list(title = NULL))
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Heatmap showing spatially correlated genes split into 16 clusters."}
 knitr::include_graphics("img/02_session2/16-heatmSpatialCorFeats.png")
 ```
 
@@ -675,7 +675,7 @@ spatCellPlot(visiumHD,
 ```
 
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Spat plot vizualizing metagenes (1-4) based on spatially correlated genes vizualized on the hex100 bin"}
 knitr::include_graphics("img/02_session2/17-spatCellPlot2D.png")
 ```
 
@@ -690,7 +690,7 @@ spatCellPlot(visiumHD,
 ```
 
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Spat plot vizualizing metagenes (5-8) based on spatially correlated genes vizualized on the hex100 bin"}
 knitr::include_graphics("img/02_session2/18-spatCellPlot2D.png")
 ```
 
@@ -705,7 +705,7 @@ spatCellPlot(visiumHD,
 ```
 
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Spat plot vizualizing metagenes (9-12) based on spatially correlated genes vizualized on the hex100 bin"}
 knitr::include_graphics("img/02_session2/19-spatCellPlot2D.png")
 ```
 
@@ -719,7 +719,7 @@ spatCellPlot(visiumHD,
 ```
 
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Spat plot vizualizing metagenes (13-16) based on spatially correlated genes vizualized on the hex100 bin"}
 knitr::include_graphics("img/02_session2/20-spatCellPlot2D.png")
 ```
 
@@ -758,7 +758,7 @@ spatInSituPlotPoints(visiumHD,
 
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.align="center"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Coloring individual features based on the spatially correlated gene clusters."}
 knitr::include_graphics("img/02_session2/21-spatInSituPlotPoints.png")
 ```
 
