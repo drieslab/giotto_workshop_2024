@@ -301,7 +301,7 @@ plot(gpoly, type = "centroid")
 plot(gpoly, max_poly = 10)
 ```
 
-```{r, echo=FALSE, fig.cap="giottoPolygon plots. default (left), plotting "centroids" (middle), auto changing to centroids after there are more polygons to plot than max_poly param (right)"}
+```{r, echo=FALSE, fig.cap="giottoPolygon plots. default (left), plotting centroids (middle), auto changing to centroids after there are more polygons to plot than max_poly param (right)"}
 knitr::include_graphics("img/01_session4/gpoly_plots.png")
 ```
 
@@ -354,8 +354,10 @@ knitr::include_graphics("img/01_session4/additive_baseplot.png")
 
 ### Giotto object plotting
 
-
+Giotot
 Here we load the vizgen mini dataset from _GiottoData_ which contains a lot of worked out data.
+
+
 
 ```{r}
 g <- GiottoData::loadGiottoMini("vizgen")
