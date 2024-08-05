@@ -1,6 +1,7 @@
 # Spatial multi-modal analysis
 
 George Chen
+
 Junxiang Xu
 
 August 7th 2024
@@ -227,13 +228,13 @@ Currently _giotto_ image objects are not fully compatible with .ome.tif files. _
 10X Genomics Released a comprehensive dataset on 2022. To capture spatial structure by complementing different spatial resolutions and modalities across different assays, they provided a dataset with Xenium in situ transcriptomics data, together with Visium on closely adjacent sections. Additional IF staining was also performed on the Xenium slides. For more information, please refer to the pre-release dataset [page](https://www.10xgenomics.com/products/xenium-in-situ/preview-dataset-human-breast) as well as the [publication](https://www.nature.com/articles/s41467-023-43458-x).
 
 - Visium 
-  -- H&E Histology
-  -- 55um spot level expression with transcriptome coverage
+  - H&E Histology
+  - 55um spot level expression with transcriptome coverage
 - Xenium
-  -- H&E Histology
-  -- IF image staining DAPI, HER2 and CD20
-  -- in situ transcripts
-  -- cooresponding centroid locations
+  - H&E Histology
+  - IF image staining DAPI, HER2 and CD20
+  - in situ transcripts
+  - cooresponding centroid locations
 
 The goal of creating this multi-modal dataset is to register all the modalities listed above to the same coordinate system as Xenium in situ transcripts as the coordinate represents a certain micron distance.
 ```{r eval=FALSE}
@@ -247,8 +248,8 @@ destfile <- file.path(download_dir,'Multimodal_registration.zip')
 if (!dir.exists(download_dir)) { dir.create(download_dir, recursive = TRUE) }
 download.file('https://zenodo.org/records/13208139/files/Multimodal_registration.zip?download=1', destfile = destfile)
 unzip(paste0(download_dir,'/Multimodal_registration.zip'), exdir = download_dir)
-Xenium_dir <- paste0(download_dir,'/Multimodal_registration/Xenium/')
-Visium_dir <- paste0(download_dir,'/Multimodal_registration/Visium/')
+Xenium_dir <- paste0(download_dir,'/Xenium/')
+Visium_dir <- paste0(download_dir,'/Visium/')
 ```
 
 ### Target Coordinate system
@@ -329,7 +330,7 @@ knitr::include_graphics("img/03_session2/Visium_resgister_check.png")
 #### Create Pseudo Visium dataset for comparison
 Giotto provides a way to create different shapes on certain locations, we can use that to create a pseudo-visium polygons to aggregate transcripts or image intensities. To do that, we will need the centroid locations, which can be get using getSpatialLocations(). and also the radius information to create circles. We know that Visium certer to center distance is 100um and spot diameter is 55um, thus we can estimate the radius from certer to center distance. And we can use a spatial network created by nearest neighbor = 2 to capture the distance.
 ```{r eval=FALSE}
-V_final <- createSpatialNetwork(V_final, k = 1,method = 'kNN')
+V_final <- createSpatialNetwork(V_final, k = 1)
 spat_network <- getSpatialNetwork(V_final,output = 'networkDT')
 spatPlot2D(V_final, 
            show_network = T,
