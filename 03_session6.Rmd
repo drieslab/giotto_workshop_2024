@@ -59,7 +59,7 @@ If you have a Giotto object from day 1 session 5, feel free to load that in and 
 ```{r, eval=FALSE}
 library(Giotto)
 
-save_directory <- 'results'
+save_directory <- 'results/03_session6'
 visium_save_directory <- file.path(save_directory, 'visium_mouse_brain')
 subcell_save_directory <- file.path(save_directory, 'pseudo_subcellular/')
 
