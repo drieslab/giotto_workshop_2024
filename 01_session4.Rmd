@@ -394,15 +394,85 @@ activeSpatUnit(g) <- "aggregate" # set default spat_unit to the one with lots of
 
 ### ID subsetting
 
+Subset the `giotto` object for a random 300 cell IDs
+
 ```{r, eval=FALSE}
-gsubset <- subsetGiotto(g, cell_ids = sample(spatIDs(g), 300))
+cx <- pDataDT(g)
+nrow(cx)
+```
+
+```
+[1] 462
+```
+
+```{r, eval=FALSE}
+ex <- getExpression(g)
+dim(ex)
+```
+
+```
+[1] 337 462
 ```
 
 
+```{r, eval=FALSE}
+instructions(g, "cell_color_c_pal") <- "viridis"
+instructions(g, "poly_color_c_pal") <- "viridis"
+set.seed(1234)
+gsubset <- subsetGiotto(g, cell_ids = sample(spatIDs(g), 300))
+```
+
+```{r, eval=FALSE}
+cx_sub <- pDataDT(gsubset)
+nrow(cx_sub)
+```
+
+```
+[1] 300
+```
+
+```{r, eval=FALSE}
+spatPlot(g, cell_color = "total_expr",
+         color_as_factor = FALSE, background_color = "black")
+spatPlot(gsubset, cell_color = "total_expr",
+         color_as_factor = FALSE, background_color = "black")
+```
+
+
+```{r, echo=FALSE, fig.cap="plot showing starting object (left) and subset object (right)"}
+knitr::include_graphics("img/01_session4/subset_id.png")
+```
 
 
 ### Coordinate-based subsetting
 ```{r, eval=FALSE}
-gsubset <- subsetGiottoLocs(g, x_min = 6500, x_max = 6700, poly_info = "aggregate")
+gsubsetlocs <- subsetGiottoLocs(g, 
+    x_min = 6500, x_max = 6700, 
+    poly_info = "aggregate"
+)
 ```
+
+```{r, eval=FALSE}
+
+spatPlot(gsubsetlocs, cell_color = "total_expr",
+         color_as_factor = FALSE, background_color = "black")
+spatInSituPlotPoints(gsubsetlocs, polygon_fill = "total_expr",
+                     polygon_fill_as_factor = FALSE)
+```
+
+
+```{r, echo=FALSE, fig.cap="plot showing starting object (left) and subset object (right)"}
+knitr::include_graphics("img/01_session4/subset_locs.png")
+```
+
+
+
+
+
+
+
+
+
+
+
 
