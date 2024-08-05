@@ -250,7 +250,7 @@ read-in-data-manually
 raw-expression-data
 tissue-positions-data
 merge-expression-and-2-micron-position-data
-create-giotto-object
+giotto-object-at-hexbin-400
 create-giotto-points
 create-giotto-polygons
 tiling-and-aggregation
@@ -272,7 +272,7 @@ spatial-co-expression-modules-1
 plot-spatial-gene-groups
 hexbin-25
 subcellular-workflow-and-projection-functions
-database-backend
+database-backend---work-in-progress-but-coming-soon
 xenium-1
 introduction-to-spatial-dataset
 output-directory-structure
