@@ -131,7 +131,7 @@ colnames(expr_pos_data) = c('pixel', 'x', 'y', 'gene', 'count')
 knitr::include_graphics("img/02_session2/5.png")
 ```
 
-## Create Giotto object
+## Giotto object at Hexbin 400
 
 ### create giotto points 
 
@@ -232,10 +232,10 @@ spatInSituPlotPoints(visiumHD,
 knitr::include_graphics("img/02_session2/1-spatInSituPlotPoints.png")
 ```
 
-## Process Giotto object
+### Process Giotto object
 
 
-### calculate overlap between points and polygons
+#### calculate overlap between points and polygons
 ```{r, eval=FALSE}
 
 # calculate overlap between points and polygons
@@ -246,7 +246,7 @@ visiumHD = calculateOverlap(visiumHD,
 showGiottoSpatialInfo(visiumHD)
 ```
 
-### convert overlap results to a bin-by-gene matrix
+#### convert overlap results to a bin-by-gene matrix
 ```{r, eval=FALSE}
 # convert overlap results to bin by gene matrix
 visiumHD = overlapToMatrix(visiumHD,
@@ -258,7 +258,7 @@ activeSpatUnit(visiumHD)
 ```
 
 
-### default processing steps
+#### default processing steps
 ```{r, eval=FALSE}
 visiumHD <- filterGiotto(visiumHD,
                          expression_threshold = 1,
@@ -275,7 +275,7 @@ visiumHD <- addStatistics(visiumHD)
 ```
 
 
-### visualize number of features
+#### visualize number of features
 
 At the centroid level.
 ```{r, eval=FALSE}
@@ -316,9 +316,9 @@ spatInSituPlotPoints(visiumHD,
 knitr::include_graphics("img/02_session2/3-spatInSituPlotPoints.png")
 ```
 
-## Dimension reduction + clustering
+### Dimension reduction + clustering
 
-### Highly variable features + PCA
+#### Highly variable features + PCA
 ```{r, eval=FALSE}
 visiumHD <- calculateHVF(visiumHD, 
                          zscore_threshold = 1)
@@ -343,7 +343,7 @@ knitr::include_graphics("img/02_session2/5-PCA.png")
 
 
 
-### UMAP reduction for visualization
+#### UMAP reduction for visualization
 ```{r, eval=FALSE}
 visiumHD <- runUMAP(visiumHD, 
                     dimensions_to_use = 1:14, 
@@ -358,7 +358,7 @@ knitr::include_graphics("img/02_session2/6-UMAP.png")
 ```
 
 
-### Create network based on expression similarity + graph partition cluster
+#### Create network based on expression similarity + graph partition cluster
 ```{r, eval=FALSE}
 # sNN network (default)
 visiumHD <- createNearestNetwork(visiumHD, 
@@ -829,7 +829,9 @@ visiumHD_subset <- addStatistics(visiumHD_subset)
 
 
 
-## Database backend
+## Database backend - Work in progress, but coming soon!
+
+
 
 
 
