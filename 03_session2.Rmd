@@ -255,7 +255,7 @@ Visium_dir <- paste0(download_dir,'/Visium/')
 ### Target Coordinate system
 Xenium transcripts, polygon information and corresponding centroids are output from the Xenium instrument and are in the same coordinate system from the raw output. We can start with checking the centroid information as a representation of the target coordinate system.
 ```{r eval=FALSE}
-xen_cell_df <- read.csv(paste0(Xenium_dir,"cells.csv.gz"))
+xen_cell_df <- read.csv(paste0(Xenium_dir,"/cells.csv.gz"))
 xen_cell_pl <- ggplot2::ggplot() + ggplot2::geom_point(data = xen_cell_df, ggplot2::aes(x = x_centroid , y = y_centroid),size = 1e-150,,color = 'orange') + ggplot2::theme_classic()
 xen_cell_pl
 ```
@@ -359,7 +359,7 @@ knitr::include_graphics("img/03_session2/Visium_polygon.png")
 
 Create Xenium object with pseudo Visium polygon. To save run time, example shown here only have MS4A1 and ERBB2 genes to create Giotto points
 ```{r eval = FALSE}
-xen_transcripts <- data.table::fread(paste0(Xenium_dir,'Xen_2_genes.csv.gz'))
+xen_transcripts <- data.table::fread(paste0(Xenium_dir,'/Xen_2_genes.csv.gz'))
 gpoints <- createGiottoPoints(xen_transcripts)
 Xen_obj <-createGiottoObjectSubcellular(gpoints = list('rna' = gpoints),
                                         gpolygons = list('visium' = pseudo_visium_poly))
@@ -433,8 +433,8 @@ knitr::include_graphics("img/03_session2/Visium_spatfeatplot.png")
 ### Register post-Xenium H&E and IF image
 For Xenium instrument output, Giotto provide a convenience function to load the output from the Xenium ranger output. Note that 10X created the affine image alignment file by applying rotation, scale at (0,0) of the top left corner and translation last. Thus, it will look different than the affine matrix created from landmarks above. In this example, we used a 0.05X compressed ometiff and the alignment file is also create by first rescale at 20X, then apply the affine matrix provided by 10X Genomics.
 ```{r eval = F}
-HE_xen <- read10xAffineImage(file = paste0(Xenium_dir, "HE_ome_compressed.tiff"),
-                           imagealignment_path = paste0(Xenium_dir,"Xenium_he_imagealignment.csv"),
+HE_xen <- read10xAffineImage(file = paste0(Xenium_dir, "/HE_ome_compressed.tiff"),
+                           imagealignment_path = paste0(Xenium_dir,"/Xenium_he_imagealignment.csv"),
                            micron = 0.2125)
 plot(HE_xen)
 ```
@@ -480,7 +480,7 @@ Xen_obj <- addGiottoLargeImage(gobject = Xen_obj,
 
 Get the cell polygons, as Xenium and IF are both subcellular resolution
 ```{r eval=FALSE}
-cellpoly_dt <- data.table::fread(paste0(Xenium_dir,'cell_boundaries.csv.gz'))
+cellpoly_dt <- data.table::fread(paste0(Xenium_dir,'/cell_boundaries.csv.gz'))
 colnames(cellpoly_dt) <- c('poly_ID','x','y')
 cellpoly <- createGiottoPolygonsFromDfr(cellpoly_dt)
 Xen_obj <- addGiottoPolygons(Xen_obj,gpolygons = list('cell' = cellpoly))
@@ -596,7 +596,7 @@ Pin landmarks or use compounded affine transforms to register image usually prov
 
 Here, we provide an example of two compressed images to show the automatic alignment pipeline.
 ```{r eval = F}
-HE <- createGiottoLargeImage(paste0(Xenium_dir,'mini_HE.png'),negative_y = F)
+HE <- createGiottoLargeImage(paste0(Xenium_dir,'/mini_HE.png'),negative_y = F)
 plot(HE)
 ```
 
@@ -605,7 +605,7 @@ knitr::include_graphics("img/03_session2/mini_HE.png")
 ```
 
 ```{r eval = F}
-IF <- createGiottoLargeImage(paste0(Xenium_dir,'mini_IF.tif'),negative_y = F,flip_horizontal = T)
+IF <- createGiottoLargeImage(paste0(Xenium_dir,'/mini_IF.tif'),negative_y = F,flip_horizontal = T)
 terra::plotRGB(IF@raster_object,r=1, g=2, b=3,, stretch="lin")
 ```
 
@@ -615,11 +615,11 @@ knitr::include_graphics("img/03_session2/mini_IF.png")
 
 Now, we can use the automated transformation pipeline. Note that we will start with a path to the images, run the preprocessImageToMatrix() first to meet the requirement of estimateAutomatedImageRegistrationWithSIFT() function. The images will be preprocessed to gray scale. And for that purpose, we use the DAPI channel from the miniIF, and set invert = T for mini HE as HE image so that grayscle HE will have higher value for high intensity pixels. The function will output an estimation of the transform.
 ```{r eval = F}
-estimation <- estimateAutomatedImageRegistrationWithSIFT(x = preprocessImageToMatrix(paste0(Xenium_dir,'mini_IF.tif'),
+estimation <- estimateAutomatedImageRegistrationWithSIFT(x = preprocessImageToMatrix(paste0(Xenium_dir,'/mini_IF.tif'),
                                                                                      flip_horizontal = T,
                                                                                      use_single_channel = T,
                                                                                      single_channel_number = 3),
-                                                         y = preprocessImageToMatrix(paste0(Xenium_dir,'mini_HE.png'),
+                                                         y = preprocessImageToMatrix(paste0(Xenium_dir,'/mini_HE.png'),
                                                                                      invert = T),
                                                          plot_match = T,
                                                          max_ratio = 0.5,estimate_fun = 'Projective')
