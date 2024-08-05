@@ -138,6 +138,7 @@ x-genomics-human-prostate-cancer-adenocarcinoma-with-invasive-carcinoma-ffpe
 x-genomics-normal-human-prostate-ffpe
 xenium
 merfish-cortex-dataset
+lunaphore-if-dataset
 needed-packages
 cran-dependencies
 terra-installation

@@ -154,6 +154,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.7" data-path="datasets-packages.html"><a href="datasets-packages.html#x-genomics-normal-human-prostate-ffpe"><i class="fa fa-check"></i><b>2.1.7</b> 10X Genomics Normal Human Prostate (FFPE)</a></li>
 <li class="chapter" data-level="2.1.8" data-path="datasets-packages.html"><a href="datasets-packages.html#xenium"><i class="fa fa-check"></i><b>2.1.8</b> Xenium</a></li>
 <li class="chapter" data-level="2.1.9" data-path="datasets-packages.html"><a href="datasets-packages.html#merfish-cortex-dataset"><i class="fa fa-check"></i><b>2.1.9</b> MERFISH cortex dataset</a></li>
+<li class="chapter" data-level="2.1.10" data-path="datasets-packages.html"><a href="datasets-packages.html#lunaphore-if-dataset"><i class="fa fa-check"></i><b>2.1.10</b> Lunaphore IF dataset</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="datasets-packages.html"><a href="datasets-packages.html#needed-packages"><i class="fa fa-check"></i><b>2.2</b> Needed packages</a>
 <ul>
@@ -621,9 +622,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="spatial-formats" class="section level3 hasAnchor" number="5.1.4">
 <h3><span class="header-section-number">5.1.4</span> Spatial formats<a href="data-formatting-and-pre-processing.html#spatial-formats" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>.shp</code> and <code>.geojson</code> are common formats for polygon and point data. They are commonly used as exports from segmentation software such as QuPath. <code>GiottoClass::createGiottoPolygon()</code> and the more specific <code>createGiottoPolygonsFromGeoJSON()</code> can be used for reading these in.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="data-formatting-and-pre-processing.html#cb28-1" tabindex="-1"></a>shp <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata/toy_poly.shp&quot;</span>, <span class="at">package =</span> <span class="st">&quot;GiottoClass&quot;</span>)</span>
-<span id="cb28-2"><a href="data-formatting-and-pre-processing.html#cb28-2" tabindex="-1"></a>gpoly <span class="ot">&lt;-</span> <span class="fu">createGiottoPolygon</span>(shp, <span class="at">name =</span> <span class="st">&quot;test&quot;</span>)</span>
-<span id="cb28-3"><a href="data-formatting-and-pre-processing.html#cb28-3" tabindex="-1"></a><span class="fu">plot</span>(gpoly)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="data-formatting-and-pre-processing.html#cb28-1" tabindex="-1"></a><span class="fu">library</span>(GiottoClass)</span>
+<span id="cb28-2"><a href="data-formatting-and-pre-processing.html#cb28-2" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="data-formatting-and-pre-processing.html#cb28-3" tabindex="-1"></a>shp <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata/toy_poly.shp&quot;</span>, <span class="at">package =</span> <span class="st">&quot;GiottoClass&quot;</span>)</span>
+<span id="cb28-4"><a href="data-formatting-and-pre-processing.html#cb28-4" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="data-formatting-and-pre-processing.html#cb28-5" tabindex="-1"></a>gpoly <span class="ot">&lt;-</span> <span class="fu">createGiottoPolygon</span>(shp, <span class="at">name =</span> <span class="st">&quot;test&quot;</span>)</span>
+<span id="cb28-6"><a href="data-formatting-and-pre-processing.html#cb28-6" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="data-formatting-and-pre-processing.html#cb28-7" tabindex="-1"></a><span class="fu">plot</span>(gpoly)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-34"></span>
 <img src="img/01_session3/shp_gpoly.png" alt="Plot of `giottoPolygon` from .shp" width="80%" />
 <p class="caption">
@@ -635,7 +640,8 @@ Figure 5.1: Plot of <code>giottoPolygon</code> from .shp
 <h3><span class="header-section-number">5.1.5</span> Mask files<a href="data-formatting-and-pre-processing.html#mask-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>.tif</code> files can be used as mask files where the integer values of the image encode where an annotation is. <code>createGiottoPolygonsFromMask()</code> guesses whether the image is single value or multi value mask. NanoString CosMx is one example of a platform that distributes the polygon information through a series of mask files.</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="data-formatting-and-pre-processing.html#cb29-1" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata/toy_mask_multi.tif&quot;</span>, <span class="at">package =</span> <span class="st">&quot;GiottoClass&quot;</span>)</span>
-<span id="cb29-2"><a href="data-formatting-and-pre-processing.html#cb29-2" tabindex="-1"></a><span class="fu">plot</span>(terra<span class="sc">::</span><span class="fu">rast</span>(m), <span class="at">col =</span> grDevices<span class="sc">::</span><span class="fu">hcl.colors</span>(<span class="dv">7</span>))</span></code></pre></div>
+<span id="cb29-2"><a href="data-formatting-and-pre-processing.html#cb29-2" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="data-formatting-and-pre-processing.html#cb29-3" tabindex="-1"></a><span class="fu">plot</span>(terra<span class="sc">::</span><span class="fu">rast</span>(m), <span class="at">col =</span> grDevices<span class="sc">::</span><span class="fu">hcl.colors</span>(<span class="dv">7</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-36"></span>
 <img src="img/01_session3/mask.png" alt="Example mask image. Integer values are shown as different colors" width="80%" />
 <p class="caption">
@@ -644,12 +650,15 @@ Figure 5.2: Example mask image. Integer values are shown as different colors
 </div>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="data-formatting-and-pre-processing.html#cb30-1" tabindex="-1"></a>gp <span class="ot">&lt;-</span> <span class="fu">createGiottoPolygon</span>(</span>
 <span id="cb30-2"><a href="data-formatting-and-pre-processing.html#cb30-2" tabindex="-1"></a>    m,</span>
-<span id="cb30-3"><a href="data-formatting-and-pre-processing.html#cb30-3" tabindex="-1"></a>    <span class="at">flip_vertical =</span> <span class="cn">FALSE</span>, <span class="at">flip_horizontal =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb30-4"><a href="data-formatting-and-pre-processing.html#cb30-4" tabindex="-1"></a>    <span class="at">shift_horizontal_step =</span> <span class="cn">FALSE</span>, <span class="at">shift_vertical_step =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb30-5"><a href="data-formatting-and-pre-processing.html#cb30-5" tabindex="-1"></a>    <span class="at">ID_fmt =</span> <span class="st">&quot;id_test_%03d&quot;</span>,</span>
-<span id="cb30-6"><a href="data-formatting-and-pre-processing.html#cb30-6" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;test&quot;</span></span>
-<span id="cb30-7"><a href="data-formatting-and-pre-processing.html#cb30-7" tabindex="-1"></a>)</span>
-<span id="cb30-8"><a href="data-formatting-and-pre-processing.html#cb30-8" tabindex="-1"></a><span class="fu">force</span>(gp)</span></code></pre></div>
+<span id="cb30-3"><a href="data-formatting-and-pre-processing.html#cb30-3" tabindex="-1"></a>    <span class="at">flip_vertical =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb30-4"><a href="data-formatting-and-pre-processing.html#cb30-4" tabindex="-1"></a>    <span class="at">flip_horizontal =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb30-5"><a href="data-formatting-and-pre-processing.html#cb30-5" tabindex="-1"></a>    <span class="at">shift_horizontal_step =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb30-6"><a href="data-formatting-and-pre-processing.html#cb30-6" tabindex="-1"></a>    <span class="at">shift_vertical_step =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb30-7"><a href="data-formatting-and-pre-processing.html#cb30-7" tabindex="-1"></a>    <span class="at">ID_fmt =</span> <span class="st">&quot;id_test_%03d&quot;</span>,</span>
+<span id="cb30-8"><a href="data-formatting-and-pre-processing.html#cb30-8" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;test&quot;</span></span>
+<span id="cb30-9"><a href="data-formatting-and-pre-processing.html#cb30-9" tabindex="-1"></a>)</span>
+<span id="cb30-10"><a href="data-formatting-and-pre-processing.html#cb30-10" tabindex="-1"></a></span>
+<span id="cb30-11"><a href="data-formatting-and-pre-processing.html#cb30-11" tabindex="-1"></a><span class="fu">force</span>(gp)</span></code></pre></div>
 <pre><code>An object of class giottoPolygon
 spat_unit : &quot;test&quot;
 Spatial Information:
@@ -669,7 +678,8 @@ Figure 5.3: <code>giottoPolygon</code> from mask image. Identical coloring order
 </div>
 <p>For situations where all pixel values are the same, but not touching indicates different annotations:</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="data-formatting-and-pre-processing.html#cb33-1" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata/toy_mask_single.tif&quot;</span>, <span class="at">package =</span> <span class="st">&quot;GiottoClass&quot;</span>)</span>
-<span id="cb33-2"><a href="data-formatting-and-pre-processing.html#cb33-2" tabindex="-1"></a><span class="fu">plot</span>(terra<span class="sc">::</span><span class="fu">rast</span>(m2), <span class="at">col =</span> grDevices<span class="sc">::</span><span class="fu">hcl.colors</span>(<span class="dv">7</span>))</span></code></pre></div>
+<span id="cb33-2"><a href="data-formatting-and-pre-processing.html#cb33-2" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="data-formatting-and-pre-processing.html#cb33-3" tabindex="-1"></a><span class="fu">plot</span>(terra<span class="sc">::</span><span class="fu">rast</span>(m2), <span class="at">col =</span> grDevices<span class="sc">::</span><span class="fu">hcl.colors</span>(<span class="dv">7</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-41"></span>
 <img src="img/01_session3/mask_s.png" alt="Example mask image with only 1 value" width="80%" />
 <p class="caption">
@@ -678,12 +688,15 @@ Figure 5.4: Example mask image with only 1 value
 </div>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="data-formatting-and-pre-processing.html#cb34-1" tabindex="-1"></a>gpoly1 <span class="ot">&lt;-</span> <span class="fu">createGiottoPolygonsFromMask</span>(</span>
 <span id="cb34-2"><a href="data-formatting-and-pre-processing.html#cb34-2" tabindex="-1"></a>    m2,</span>
-<span id="cb34-3"><a href="data-formatting-and-pre-processing.html#cb34-3" tabindex="-1"></a>    <span class="at">flip_vertical =</span> <span class="cn">FALSE</span>, <span class="at">flip_horizontal =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb34-4"><a href="data-formatting-and-pre-processing.html#cb34-4" tabindex="-1"></a>    <span class="at">shift_horizontal_step =</span> <span class="cn">FALSE</span>, <span class="at">shift_vertical_step =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb34-5"><a href="data-formatting-and-pre-processing.html#cb34-5" tabindex="-1"></a>    <span class="at">ID_fmt =</span> <span class="st">&quot;id_test_%03d&quot;</span>,</span>
-<span id="cb34-6"><a href="data-formatting-and-pre-processing.html#cb34-6" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;multi_test&quot;</span></span>
-<span id="cb34-7"><a href="data-formatting-and-pre-processing.html#cb34-7" tabindex="-1"></a>)</span>
-<span id="cb34-8"><a href="data-formatting-and-pre-processing.html#cb34-8" tabindex="-1"></a><span class="fu">plot</span>(gpoly1, <span class="at">col =</span> grDevices<span class="sc">::</span><span class="fu">hcl.colors</span>(<span class="dv">7</span>))</span></code></pre></div>
+<span id="cb34-3"><a href="data-formatting-and-pre-processing.html#cb34-3" tabindex="-1"></a>    <span class="at">flip_vertical =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb34-4"><a href="data-formatting-and-pre-processing.html#cb34-4" tabindex="-1"></a>    <span class="at">flip_horizontal =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb34-5"><a href="data-formatting-and-pre-processing.html#cb34-5" tabindex="-1"></a>    <span class="at">shift_horizontal_step =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb34-6"><a href="data-formatting-and-pre-processing.html#cb34-6" tabindex="-1"></a>    <span class="at">shift_vertical_step =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb34-7"><a href="data-formatting-and-pre-processing.html#cb34-7" tabindex="-1"></a>    <span class="at">ID_fmt =</span> <span class="st">&quot;id_test_%03d&quot;</span>,</span>
+<span id="cb34-8"><a href="data-formatting-and-pre-processing.html#cb34-8" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;multi_test&quot;</span></span>
+<span id="cb34-9"><a href="data-formatting-and-pre-processing.html#cb34-9" tabindex="-1"></a>)</span>
+<span id="cb34-10"><a href="data-formatting-and-pre-processing.html#cb34-10" tabindex="-1"></a></span>
+<span id="cb34-11"><a href="data-formatting-and-pre-processing.html#cb34-11" tabindex="-1"></a><span class="fu">plot</span>(gpoly1, <span class="at">col =</span> grDevices<span class="sc">::</span><span class="fu">hcl.colors</span>(<span class="dv">7</span>))</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-43"></span>
 <img src="img/01_session3/gpoly_s.png" alt="`giottoPolygon` from single value mask" width="80%" />
 <p class="caption">
@@ -742,13 +755,16 @@ feat_10 . . . . . . . . . .
 <h3><span class="header-section-number">5.2.2</span> Spatial locations<a href="data-formatting-and-pre-processing.html#spatial-locations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For <em>Giotto</em> centroid locations, a tabular data.frame-like format is required. The first non-numeric column found will be set as the cell_ID. The numeric columns will then be kept as coordinates information.</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="data-formatting-and-pre-processing.html#cb37-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb37-2"><a href="data-formatting-and-pre-processing.html#cb37-2" tabindex="-1"></a>xy <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb37-3"><a href="data-formatting-and-pre-processing.html#cb37-3" tabindex="-1"></a>    <span class="at">a =</span> <span class="fu">as.character</span>(<span class="fu">seq</span>(<span class="dv">100</span>)), </span>
-<span id="cb37-4"><a href="data-formatting-and-pre-processing.html#cb37-4" tabindex="-1"></a>    <span class="at">b =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>),</span>
-<span id="cb37-5"><a href="data-formatting-and-pre-processing.html#cb37-5" tabindex="-1"></a>    <span class="at">c =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb37-6"><a href="data-formatting-and-pre-processing.html#cb37-6" tabindex="-1"></a>)</span>
-<span id="cb37-7"><a href="data-formatting-and-pre-processing.html#cb37-7" tabindex="-1"></a>sl_xy <span class="ot">&lt;-</span> <span class="fu">createSpatLocsObj</span>(xy)</span>
-<span id="cb37-8"><a href="data-formatting-and-pre-processing.html#cb37-8" tabindex="-1"></a><span class="fu">plot</span>(sl_xy)</span></code></pre></div>
+<span id="cb37-2"><a href="data-formatting-and-pre-processing.html#cb37-2" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="data-formatting-and-pre-processing.html#cb37-3" tabindex="-1"></a>xy <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb37-4"><a href="data-formatting-and-pre-processing.html#cb37-4" tabindex="-1"></a>    <span class="at">a =</span> <span class="fu">as.character</span>(<span class="fu">seq</span>(<span class="dv">100</span>)), </span>
+<span id="cb37-5"><a href="data-formatting-and-pre-processing.html#cb37-5" tabindex="-1"></a>    <span class="at">b =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>),</span>
+<span id="cb37-6"><a href="data-formatting-and-pre-processing.html#cb37-6" tabindex="-1"></a>    <span class="at">c =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb37-7"><a href="data-formatting-and-pre-processing.html#cb37-7" tabindex="-1"></a>)</span>
+<span id="cb37-8"><a href="data-formatting-and-pre-processing.html#cb37-8" tabindex="-1"></a></span>
+<span id="cb37-9"><a href="data-formatting-and-pre-processing.html#cb37-9" tabindex="-1"></a>sl_xy <span class="ot">&lt;-</span> <span class="fu">createSpatLocsObj</span>(xy)</span>
+<span id="cb37-10"><a href="data-formatting-and-pre-processing.html#cb37-10" tabindex="-1"></a></span>
+<span id="cb37-11"><a href="data-formatting-and-pre-processing.html#cb37-11" tabindex="-1"></a><span class="fu">plot</span>(sl_xy)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-46"></span>
 <img src="img/01_session3/sl_xy.png" alt="Plot of `spatLocsObj` created from xy information" width="60%" />
 <p class="caption">
@@ -756,14 +772,17 @@ Figure 5.6: Plot of <code>spatLocsObj</code> created from xy information
 </p>
 </div>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="data-formatting-and-pre-processing.html#cb38-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb38-2"><a href="data-formatting-and-pre-processing.html#cb38-2" tabindex="-1"></a>xyz <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb38-3"><a href="data-formatting-and-pre-processing.html#cb38-3" tabindex="-1"></a>    <span class="at">a =</span> <span class="fu">as.character</span>(<span class="fu">seq</span>(<span class="dv">100</span>)), </span>
-<span id="cb38-4"><a href="data-formatting-and-pre-processing.html#cb38-4" tabindex="-1"></a>    <span class="at">b =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>), </span>
-<span id="cb38-5"><a href="data-formatting-and-pre-processing.html#cb38-5" tabindex="-1"></a>    <span class="at">c =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>), </span>
-<span id="cb38-6"><a href="data-formatting-and-pre-processing.html#cb38-6" tabindex="-1"></a>    <span class="at">d =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb38-7"><a href="data-formatting-and-pre-processing.html#cb38-7" tabindex="-1"></a>)</span>
-<span id="cb38-8"><a href="data-formatting-and-pre-processing.html#cb38-8" tabindex="-1"></a>sl_xyz <span class="ot">&lt;-</span> <span class="fu">createSpatLocsObj</span>(xyz)</span>
-<span id="cb38-9"><a href="data-formatting-and-pre-processing.html#cb38-9" tabindex="-1"></a><span class="fu">plot</span>(sl_xyz)</span></code></pre></div>
+<span id="cb38-2"><a href="data-formatting-and-pre-processing.html#cb38-2" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="data-formatting-and-pre-processing.html#cb38-3" tabindex="-1"></a>xyz <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb38-4"><a href="data-formatting-and-pre-processing.html#cb38-4" tabindex="-1"></a>    <span class="at">a =</span> <span class="fu">as.character</span>(<span class="fu">seq</span>(<span class="dv">100</span>)), </span>
+<span id="cb38-5"><a href="data-formatting-and-pre-processing.html#cb38-5" tabindex="-1"></a>    <span class="at">b =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>), </span>
+<span id="cb38-6"><a href="data-formatting-and-pre-processing.html#cb38-6" tabindex="-1"></a>    <span class="at">c =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>), </span>
+<span id="cb38-7"><a href="data-formatting-and-pre-processing.html#cb38-7" tabindex="-1"></a>    <span class="at">d =</span> <span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb38-8"><a href="data-formatting-and-pre-processing.html#cb38-8" tabindex="-1"></a>)</span>
+<span id="cb38-9"><a href="data-formatting-and-pre-processing.html#cb38-9" tabindex="-1"></a></span>
+<span id="cb38-10"><a href="data-formatting-and-pre-processing.html#cb38-10" tabindex="-1"></a>sl_xyz <span class="ot">&lt;-</span> <span class="fu">createSpatLocsObj</span>(xyz)</span>
+<span id="cb38-11"><a href="data-formatting-and-pre-processing.html#cb38-11" tabindex="-1"></a></span>
+<span id="cb38-12"><a href="data-formatting-and-pre-processing.html#cb38-12" tabindex="-1"></a><span class="fu">plot</span>(sl_xyz)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-48"></span>
 <img src="img/01_session3/sl_xyz.png" alt="Plot of `spatLocsObj` created from xy and z information" width="60%" />
 <p class="caption">
@@ -775,15 +794,19 @@ Figure 5.7: Plot of <code>spatLocsObj</code> created from xy and z information
 <h3><span class="header-section-number">5.2.3</span> giottoPoints<a href="data-formatting-and-pre-processing.html#giottopoints" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><code>giottoPoints</code> are very similar. These subobjects wrap a <em>terra</em> <code>SpatVector</code> object and if tabular data is provided, what is needed are x, y, and feature ID. Additional columns are kept as metadata information.</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="data-formatting-and-pre-processing.html#cb39-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
-<span id="cb39-2"><a href="data-formatting-and-pre-processing.html#cb39-2" tabindex="-1"></a>tx <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb39-3"><a href="data-formatting-and-pre-processing.html#cb39-3" tabindex="-1"></a>    <span class="at">id =</span> <span class="fu">sprintf</span>(<span class="st">&quot;gene_%05d&quot;</span>, <span class="fu">seq</span>(<span class="fl">1e4</span>)),</span>
-<span id="cb39-4"><a href="data-formatting-and-pre-processing.html#cb39-4" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">rnorm</span>(<span class="fl">1e4</span>),</span>
-<span id="cb39-5"><a href="data-formatting-and-pre-processing.html#cb39-5" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="fl">1e4</span>),</span>
-<span id="cb39-6"><a href="data-formatting-and-pre-processing.html#cb39-6" tabindex="-1"></a>    <span class="at">meta =</span> <span class="fu">sprintf</span>(<span class="st">&quot;metadata_%05d&quot;</span>, <span class="fu">seq</span>(<span class="fl">1e4</span>))</span>
-<span id="cb39-7"><a href="data-formatting-and-pre-processing.html#cb39-7" tabindex="-1"></a>)</span>
-<span id="cb39-8"><a href="data-formatting-and-pre-processing.html#cb39-8" tabindex="-1"></a>gpoints <span class="ot">&lt;-</span> <span class="fu">createGiottoPoints</span>(tx)</span>
-<span id="cb39-9"><a href="data-formatting-and-pre-processing.html#cb39-9" tabindex="-1"></a><span class="fu">plot</span>(gpoints, <span class="at">raster =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb39-10"><a href="data-formatting-and-pre-processing.html#cb39-10" tabindex="-1"></a><span class="fu">plot</span>(gpoints, <span class="at">dens =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<span id="cb39-2"><a href="data-formatting-and-pre-processing.html#cb39-2" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="data-formatting-and-pre-processing.html#cb39-3" tabindex="-1"></a>tx <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb39-4"><a href="data-formatting-and-pre-processing.html#cb39-4" tabindex="-1"></a>    <span class="at">id =</span> <span class="fu">sprintf</span>(<span class="st">&quot;gene_%05d&quot;</span>, <span class="fu">seq</span>(<span class="fl">1e4</span>)),</span>
+<span id="cb39-5"><a href="data-formatting-and-pre-processing.html#cb39-5" tabindex="-1"></a>    <span class="at">x =</span> <span class="fu">rnorm</span>(<span class="fl">1e4</span>),</span>
+<span id="cb39-6"><a href="data-formatting-and-pre-processing.html#cb39-6" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">rnorm</span>(<span class="fl">1e4</span>),</span>
+<span id="cb39-7"><a href="data-formatting-and-pre-processing.html#cb39-7" tabindex="-1"></a>    <span class="at">meta =</span> <span class="fu">sprintf</span>(<span class="st">&quot;metadata_%05d&quot;</span>, <span class="fu">seq</span>(<span class="fl">1e4</span>))</span>
+<span id="cb39-8"><a href="data-formatting-and-pre-processing.html#cb39-8" tabindex="-1"></a>)</span>
+<span id="cb39-9"><a href="data-formatting-and-pre-processing.html#cb39-9" tabindex="-1"></a></span>
+<span id="cb39-10"><a href="data-formatting-and-pre-processing.html#cb39-10" tabindex="-1"></a>gpoints <span class="ot">&lt;-</span> <span class="fu">createGiottoPoints</span>(tx)</span>
+<span id="cb39-11"><a href="data-formatting-and-pre-processing.html#cb39-11" tabindex="-1"></a></span>
+<span id="cb39-12"><a href="data-formatting-and-pre-processing.html#cb39-12" tabindex="-1"></a><span class="fu">plot</span>(gpoints, <span class="at">raster =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb39-13"><a href="data-formatting-and-pre-processing.html#cb39-13" tabindex="-1"></a></span>
+<span id="cb39-14"><a href="data-formatting-and-pre-processing.html#cb39-14" tabindex="-1"></a><span class="fu">plot</span>(gpoints, <span class="at">dens =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>An object of class giottoPoints
 feat_type : &quot;rna&quot;
 Feature Information:
@@ -810,14 +833,18 @@ Figure 5.8: <code>giottoPoints</code> plotted without rasterization (left), with
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="data-formatting-and-pre-processing.html#cb41-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
 <span id="cb41-2"><a href="data-formatting-and-pre-processing.html#cb41-2" tabindex="-1"></a></span>
 <span id="cb41-3"><a href="data-formatting-and-pre-processing.html#cb41-3" tabindex="-1"></a>hex <span class="ot">&lt;-</span> <span class="fu">hexVertices</span>(<span class="at">radius =</span> <span class="dv">1</span>)</span>
-<span id="cb41-4"><a href="data-formatting-and-pre-processing.html#cb41-4" tabindex="-1"></a>spatlocs <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">data.table</span>(</span>
-<span id="cb41-5"><a href="data-formatting-and-pre-processing.html#cb41-5" tabindex="-1"></a>    <span class="at">sdimx =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">20</span>),</span>
-<span id="cb41-6"><a href="data-formatting-and-pre-processing.html#cb41-6" tabindex="-1"></a>    <span class="at">sdimy =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">20</span>),</span>
-<span id="cb41-7"><a href="data-formatting-and-pre-processing.html#cb41-7" tabindex="-1"></a>    <span class="at">cell_ID =</span> <span class="fu">paste0</span>(<span class="st">&quot;spot_&quot;</span>, <span class="fu">seq_len</span>(<span class="dv">10</span>))</span>
-<span id="cb41-8"><a href="data-formatting-and-pre-processing.html#cb41-8" tabindex="-1"></a>)</span>
-<span id="cb41-9"><a href="data-formatting-and-pre-processing.html#cb41-9" tabindex="-1"></a>random_hex <span class="ot">&lt;-</span> <span class="fu">polyStamp</span>(hex, spatlocs)</span>
-<span id="cb41-10"><a href="data-formatting-and-pre-processing.html#cb41-10" tabindex="-1"></a>random_hex_poly <span class="ot">&lt;-</span> <span class="fu">createGiottoPolygon</span>(random_hex)</span>
-<span id="cb41-11"><a href="data-formatting-and-pre-processing.html#cb41-11" tabindex="-1"></a><span class="fu">plot</span>(random_hex_poly)</span></code></pre></div>
+<span id="cb41-4"><a href="data-formatting-and-pre-processing.html#cb41-4" tabindex="-1"></a></span>
+<span id="cb41-5"><a href="data-formatting-and-pre-processing.html#cb41-5" tabindex="-1"></a>spatlocs <span class="ot">&lt;-</span> data.table<span class="sc">::</span><span class="fu">data.table</span>(</span>
+<span id="cb41-6"><a href="data-formatting-and-pre-processing.html#cb41-6" tabindex="-1"></a>    <span class="at">sdimx =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">20</span>),</span>
+<span id="cb41-7"><a href="data-formatting-and-pre-processing.html#cb41-7" tabindex="-1"></a>    <span class="at">sdimy =</span> <span class="fu">rnorm</span>(<span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">5</span>, <span class="at">sd =</span> <span class="dv">20</span>),</span>
+<span id="cb41-8"><a href="data-formatting-and-pre-processing.html#cb41-8" tabindex="-1"></a>    <span class="at">cell_ID =</span> <span class="fu">paste0</span>(<span class="st">&quot;spot_&quot;</span>, <span class="fu">seq_len</span>(<span class="dv">10</span>))</span>
+<span id="cb41-9"><a href="data-formatting-and-pre-processing.html#cb41-9" tabindex="-1"></a>)</span>
+<span id="cb41-10"><a href="data-formatting-and-pre-processing.html#cb41-10" tabindex="-1"></a></span>
+<span id="cb41-11"><a href="data-formatting-and-pre-processing.html#cb41-11" tabindex="-1"></a>random_hex <span class="ot">&lt;-</span> <span class="fu">polyStamp</span>(hex, spatlocs)</span>
+<span id="cb41-12"><a href="data-formatting-and-pre-processing.html#cb41-12" tabindex="-1"></a></span>
+<span id="cb41-13"><a href="data-formatting-and-pre-processing.html#cb41-13" tabindex="-1"></a>random_hex_poly <span class="ot">&lt;-</span> <span class="fu">createGiottoPolygon</span>(random_hex)</span>
+<span id="cb41-14"><a href="data-formatting-and-pre-processing.html#cb41-14" tabindex="-1"></a></span>
+<span id="cb41-15"><a href="data-formatting-and-pre-processing.html#cb41-15" tabindex="-1"></a><span class="fu">plot</span>(random_hex_poly)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-52"></span>
 <img src="img/01_session3/vec_gpoly.png" alt="`giottoPolygon` created from ID and vertices" width="60%" />
 <p class="caption">
