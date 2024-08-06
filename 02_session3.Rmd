@@ -36,38 +36,38 @@ When working with this data and trying to open the parquet files, you will need 
 ### Output directory structure
 
 ```
-├── analysis.tar.gz
-├── analysis.zarr.zip
-├── analysis_summary.html
-├── aux_outputs.tar.gz
-├── transcripts.csv.gz
-├── transcripts.parquet
-├── transcripts.zarr.zip
-├── cell_boundaries.csv.gz
-├── cell_boundaries.parquet
-├── nucleus_boundaries.csv.gz
-├── nucleus_boundaries.parquet
-├── cell_feature_matrix.tar.gz
-├── cell_feature_matrix
-│   ├── barcodes.tsv.gz
-│   ├── features.tsv.gz
-│   └── matrix.mtx.gz
-├── cell_feature_matrix.h5
-├── cell_feature_matrix.zarr.zip
-├── cells.csv.gz
-├── cells.parquet
-├── cells.zarr.zip
-├── experiment.xenium
-├── gene_panel.json
-├── metrics_summary.csv
-├── morphology.ome.tif
-├── morphology_focus
-│   ├── morphology_focus_0000.ome.tif
-│   ├── morphology_focus_0001.ome.tif
-│   ├── morphology_focus_0002.ome.tif
-│   ├── morphology_focus_0003.ome.tif
-├── Xenium_V1_humanLung_Cancer_FFPE_he_image.ome.tif
-└── Xenium_V1_humanLung_Cancer_FFPE_he_imagealignment.csv
+    ├── analysis.tar.gz
+    ├── analysis.zarr.zip
+    ├── analysis_summary.html
+    ├── aux_outputs.tar.gz
+    ├── transcripts.csv.gz
+    ├── transcripts.parquet
+    ├── transcripts.zarr.zip
+    ├── cell_boundaries.csv.gz
+    ├── cell_boundaries.parquet
+    ├── nucleus_boundaries.csv.gz
+    ├── nucleus_boundaries.parquet
+    ├── cell_feature_matrix.tar.gz
+    ├── cell_feature_matrix
+    │   ├── barcodes.tsv.gz
+    │   ├── features.tsv.gz
+    │   └── matrix.mtx.gz
+    ├── cell_feature_matrix.h5
+    ├── cell_feature_matrix.zarr.zip
+    ├── cells.csv.gz
+    ├── cells.parquet
+    ├── cells.zarr.zip
+    ├── experiment.xenium
+    ├── gene_panel.json
+    ├── metrics_summary.csv
+    ├── morphology.ome.tif
+    ├── morphology_focus
+    │   ├── morphology_focus_0000.ome.tif
+    │   ├── morphology_focus_0001.ome.tif
+    │   ├── morphology_focus_0002.ome.tif
+    │   ├── morphology_focus_0003.ome.tif
+    ├── Xenium_V1_humanLung_Cancer_FFPE_he_image.ome.tif
+    └── Xenium_V1_humanLung_Cancer_FFPE_he_imagealignment.csv
 ```
 
 The above directory structuring and naming is characteristic of Xenium v2.0 pipeline outputs. The only items that may not be exactly the same across all outputs are the morphology focus directory and the naming of the aligned image items.
@@ -204,15 +204,15 @@ _*setting a value other than 20 will make the loaded dataset different from the 
 
 ```
 feat_type =  c(
-"rna",
-"NegControlProbe",
-"UnassignedCodeword",
-"NegControlCodeword"
+    "rna",
+    "NegControlProbe",
+    "UnassignedCodeword",
+    "NegControlCodeword"
 ),
 split_keyword = list(
-c("NegControlProbe"),
-c("UnassignedCodeword"),
-c("NegControlCodeword)"
+    c("NegControlProbe"),
+    c("UnassignedCodeword"),
+    c("NegControlCodeword)"
 )
 ```
 
