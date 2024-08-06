@@ -6,21 +6,14 @@ August 6th 2024
 
 ## Objective {#objective}
 
-This tutorial demonstrates how to process Visium HD data at the highest 2 micron 
-bin resolution by using flexible tiling and aggregation steps that are available in [Giotto Suite](https://drieslab.github.io/Giotto_website/). Notably, a similar strategy can 
-be used for other spatial sequencing methods that operate at the subcellular level, including:\
+This tutorial demonstrates how to process Visium HD data at the highest 2 micron bin resolution by using flexible tiling and aggregation steps that are available in [Giotto Suite](https://drieslab.github.io/Giotto_website/). Notably, a similar strategy can be used for other spatial sequencing methods that operate at the subcellular level, including:\
 - Stereo-seq\
 - [Seq-Scope](https://drieslab.github.io/Giotto_website/articles/seqscope_mouse_liver.html)\
 - Open-ST
 
-The resulting datasets from all these technologies can be very large since they
-provide both a high spatial resolution and genome-wide capture of *all* transcripts.
-We will also discuss how data projection strategies can be used to alleviate heavy
-computational tasks such as PCA, UMAP, or clustering.  
+The resulting datasets from all these technologies can be very large since they provide both a high spatial resolution and genome-wide capture of *all* transcripts. We will also discuss how data projection strategies can be used to alleviate heavy computational tasks such as PCA, UMAP, or clustering.
 
-This tutorial expects a general knowledge of common spatial analysis technologies
-that are available in Giotto Suite, such as those that have been discussed in 
-the standard Visium tutorials ([part I](#Visium Part I) and [part II](Visium Part II)).
+This tutorial expects a general knowledge of common spatial analysis technologies that are available in Giotto Suite, such as those that have been discussed in the standard Visium tutorials ([part I](#Visium%20Part%20I) and [part II](Visium%20Part%20II)).
 
 ## Background
 
@@ -32,9 +25,7 @@ knitr::include_graphics("img/02_session2/1.png")
 
 Visium HD is a spatial transcriptomics technology recently developed by 10X Genomics. Details about this platform are discussed on the official [10X Genomics Visium HD website](https://www.10xgenomics.com/products/visium-hd-spatial-gene-expression) and the preprint by [Oliveira *et al.* 2024](https://doi.org/10.1101/2024.06.04.597233) on *bioRxiv*.
 
-Visium HD has a 2 micron bin size resolution. The default SpaceRanger pipeline from 10X Genomics also returns aggregated data at the 8 and 16 micron bin size.  
-
-
+Visium HD has a 2 micron bin size resolution. The default SpaceRanger pipeline from 10X Genomics also returns aggregated data at the 8 and 16 micron bin size.
 
 ### Colorectal Cancer Sample
 
@@ -46,8 +37,6 @@ For this tutorial we will be using the publicly available Colorectal Cancer Visi
 
 Details about this dataset and a link to download the raw data can be found at the [10X Genomics website](https://www.10xgenomics.com/datasets/visium-hd-cytassist-gene-expression-libraries-of-human-crc).
 
-
-
 ## Data Ingestion
 
 ### Visium HD output data format
@@ -56,18 +45,13 @@ Details about this dataset and a link to download the raw data can be found at t
 knitr::include_graphics("img/02_session2/3.png")
 ```
 
-Visium HD data processed with the spaceranger pipeline is organized in this format containing various files associated with the sample. The files highlighted in yellow are what we will be using to read in these datasets.  
+Visium HD data processed with the spaceranger pipeline is organized in this format containing various files associated with the sample. The files highlighted in yellow are what we will be using to read in these datasets.
 
-**Warning**: the VisiumHD folder structure has very recently been updated and might
-be slightly different.
-
-
+**Warning**: the VisiumHD folder structure has very recently been updated and might be slightly different.
 
 ### Mini Visium HD dataset
 
-For this workshop we will use a spatial subset and downsampled version of the original datasets. 
-A VisiumHD folder similar to the original can be downloaded using the Zenodo link. Using this
-dataset will ensure that we will not run into major memory issues.
+For this workshop we will use a spatial subset and downsampled version of the original datasets. A VisiumHD folder similar to the original can be downloaded using the Zenodo link. Using this dataset will ensure that we will not run into major memory issues.
 
 ```{r, eval = FALSE}
 
@@ -88,23 +72,17 @@ untar(tarfile = file.path(save_dir, "workshop_visiumHD.zip"),
       exdir = data_path)
 ```
 
-
-
 ### Giotto Visium HD convenience function
 
-The easiest way to read in Visium HD data in Giotto is through our convenience function. 
-This function will automatically read in the data at your desired resolution, align the images, 
-and finally create a Giotto Object.
+The easiest way to read in Visium HD data in Giotto is through our convenience function. This function will automatically read in the data at your desired resolution, align the images, and finally create a Giotto Object.
 
 ```{r, eval = FALSE}
 # importVisiumHD()
 ```
 
-
 ### Read in data manually
 
 However, for this tutorial we will illustrate how to create your own Giotto object in a step-by-step manner, which can also be applied to other similar technologies as discussed in the [Objective](#Objective) section.
-
 
 #### Raw expression data
 
@@ -151,15 +129,12 @@ colnames(expr_pos_data) = c('pixel', 'x', 'y', 'gene', 'count')
 knitr::include_graphics("img/02_session2/5.png")
 ```
 
-
 ## Hexbin 400 Giotto object
 
 ### create giotto points
 
-The giottoPoints object represents the spatial expression information for each transcript:
-- gene id
-- count or UMI  
-- spatial pixel location (x, y)  
+The giottoPoints object represents the spatial expression information for each transcript: - gene id - count or UMI\
+- spatial pixel location (x, y)
 
 ```{r, eval = FALSE}
 giotto_points = createGiottoPoints(x = expr_pos_data[,.(x, y, gene, pixel, count)])
@@ -169,11 +144,7 @@ giotto_points = createGiottoPoints(x = expr_pos_data[,.(x, y, gene, pixel, count
 
 #### Tiling and aggregation
 
-The Visium HD data is organized in a grid format. We can aggregate the data into 
-larger bins to reduce the resolution of the data. Giotto Suite can work with any 
-type of polygon information and already provides ready-to-use options for binning
-data with squares, triangles, and hexagons. Here we will use a hexagon tesselation
-to aggregate the data into arbitrary bins.
+The Visium HD data is organized in a grid format. We can aggregate the data into larger bins to reduce the resolution of the data. Giotto Suite can work with any type of polygon information and already provides ready-to-use options for binning data with squares, triangles, and hexagons. Here we will use a hexagon tesselation to aggregate the data into arbitrary bins.
 
 ```{r, echo=FALSE, out.width="80%", fig.align="center", fig.cap="Hexagon properties"}
 knitr::include_graphics("img/02_session2/6.png")
@@ -191,7 +162,6 @@ plot(hexbin400)
 ```{r, echo=FALSE, out.width="80%", fig.align="center", fig.cap="Giotto polygon in a hexagon shape for overlapping visium HD expression data."}
 knitr::include_graphics("img/02_session2/7.png")
 ```
-
 
 ### combine Giotto points and polygons to create Giotto object
 
@@ -214,17 +184,14 @@ visiumHD = addSpatialCentroidLocations(gobject = visiumHD,
                                        poly_info = 'hex400')
 ```
 
-Visualize the Giotto object. Make sure to set `expand_counts = TRUE` to expand 
-the counts column. Each spatial bin can have multiple transcripts/UMIs. This is 
-different compared to in situ technologies like seqFISH, MERFISH, Nanostring CosMx or Xenium.
-
+Visualize the Giotto object. Make sure to set `expand_counts = TRUE` to expand the counts column. Each spatial bin can have multiple transcripts/UMIs. This is different compared to in situ technologies like seqFISH, MERFISH, Nanostring CosMx or Xenium.
 
 ```{r, echo=FALSE, out.width="80%", fig.align="center", fig.cap="Schematic showing effect of expand counts and jitter."}
 knitr::include_graphics("img/02_session2/8.png")
 ```
 
+Show the giotto points (transcripts) and polygons (hexagons) together using `spatInSituPlotPoints`:
 
-Show the giotto points (transcripts) and polygons (hexagons) together using `spatInSituPlotPoints`:  
 ```{r, eval=FALSE}
 feature_data = fDataDT(visiumHD)
 
@@ -275,17 +242,11 @@ spatInSituPlotPoints(visiumHD,
 knitr::include_graphics("img/02_session2/1-spatInSituPlotPoints.png")
 ```
 
-
-
 ### Process Giotto object
 
 #### calculate overlap between points and polygons
 
-At the moment the giotto points (transcripts) and polygons (hexagons) are two separate
-layers of information. Here we will determine which transcripts overlap with which
-hexagons so that we can aggregate the gene expression information and convert this
-into a gene expression matrix (genes-by-hexagons) that can be used in default spatial
-pipelines.
+At the moment the giotto points (transcripts) and polygons (hexagons) are two separate layers of information. Here we will determine which transcripts overlap with which hexagons so that we can aggregate the gene expression information and convert this into a gene expression matrix (genes-by-hexagons) that can be used in default spatial pipelines.
 
 ```{r, eval=FALSE}
 
@@ -310,11 +271,9 @@ visiumHD = overlapToMatrix(visiumHD,
 activeSpatUnit(visiumHD)
 ```
 
-
 #### default processing steps
 
-This part is similar to that described in the Visium tutorials ([Part I](#Visium Part I) 
-and [Part II](#Visium Part II)).
+This part is similar to that described in the Visium tutorials ([Part I](#Visium%20Part%20I) and [Part II](#Visium%20Part%20II)).
 
 ```{r, eval=FALSE}
 # filter on gene expression matrix
@@ -372,7 +331,6 @@ spatInSituPlotPoints(visiumHD,
 ```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Number of features detected in each of the hex400 polygons."}
 knitr::include_graphics("img/02_session2/3-spatInSituPlotPoints.png")
 ```
-
 
 #### Dimension reduction + clustering
 
@@ -459,23 +417,19 @@ spatInSituPlotPoints(visiumHD,
 knitr::include_graphics("img/02_session2/8-spatInSituPlotPoints.png")
 ```
 
-
-
 ## Hexbin 100
 
-Observation: Hexbin 400 results in very coarse information about the tissue.  
+Observation: Hexbin 400 results in very coarse information about the tissue.
 
-Goal is to create a higher resolution bin (hex100), then add this to the 
-Giotto object to compare difference in resolution.
-
+Goal is to create a higher resolution bin (hex100), then add this to the Giotto object to compare difference in resolution.
 
 ### Standard subcellular pipeline
 
-1. Create new spatial unit layer, e.g. with tessellate function  
-2. Add spatial units to Giottoo object  
-3. Calculate centroids (optional)  
-4. Compute overlap between transcript and polygon (hexagon) locations.  
-5. Convert overlap data into a gene-by-polygon matrix  
+1.  Create new spatial unit layer, e.g. with tessellate function\
+2.  Add spatial units to Giottoo object\
+3.  Calculate centroids (optional)\
+4.  Compute overlap between transcript and polygon (hexagon) locations.\
+5.  Convert overlap data into a gene-by-polygon matrix
 
 ```{r, eval=FALSE}
 hexbin100 <- tessellate(extent = ext(visiumHD), 
@@ -498,7 +452,7 @@ Set active spatial unit. This can also be set manually in each function.
 activeSpatUnit(visiumHD) <- 'hex100'
 ```
 
-Let's visualize the higher resolution hexagons.  
+Let's visualize the higher resolution hexagons.
 
 ```{r, eval=FALSE}
 spatInSituPlotPoints(visiumHD,
@@ -543,6 +497,7 @@ visiumHD <- addStatistics(visiumHD)
 ```
 
 Your Giotto object will have metadata for each spatial unit.
+
 ```{r, eval=FALSE}
 pDataDT(visiumHD, spat_unit = 'hex100')
 pDataDT(visiumHD, spat_unit = 'hex400')
@@ -615,14 +570,13 @@ spatInSituPlotPoints(visiumHD,
 knitr::include_graphics("img/02_session2/13-spatInSituPlotPoints.png")
 ```
 
-This resolution definitely shows more promise to identify interesting spatial patterns.  
+This resolution definitely shows more promise to identify interesting spatial patterns.
 
 ### Spatial expression patterns
 
 #### Identify single genes
 
-Here we will use binSpect as a quick method to rank genes with high potential for
-spatial coherent expression patterns.  
+Here we will use binSpect as a quick method to rank genes with high potential for spatial coherent expression patterns.
 
 ```{r, eval=FALSE}
 featData = fDataDT(visiumHD)
@@ -680,12 +634,9 @@ spatFeatPlot2D(visiumHD,
 knitr::include_graphics("img/02_session2/15-spatFeatPlot2D.png")
 ```
 
-
 #### Spatial co-expression modules
 
-Investigating individual genes is a good start, but here we would like to identify
-recurrent spatial expression patterns that are shared by spatial co-expression modules
-that might represent spatially organized biological processes.  
+Investigating individual genes is a good start, but here we would like to identify recurrent spatial expression patterns that are shared by spatial co-expression modules that might represent spatially organized biological processes.
 
 ```{r, eval=FALSE}
 ext_spatial_genes = ranktest[adj.p.value < 0.001]$feats
@@ -778,17 +729,11 @@ spatCellPlot(visiumHD,
 knitr::include_graphics("img/02_session2/20-spatCellPlot2D.png")
 ```
 
-
-A simple follow up analysis could be to perform gene set enrichment analysis on each spatial
-co-expression module.  
-
+A simple follow up analysis could be to perform gene set enrichment analysis on each spatial co-expression module.
 
 #### Plot spatial gene groups
 
-Hack! Vendors of spatial technologies typically like to show very interesting spatial 
-gene expression patterns. Here we will follow a similar strategy by selecting a 
-balanced set of genes for each spatial co-expression module and then to simply 
-give them the same color in the `spatInSituPlotPoints` function. 
+Hack! Vendors of spatial technologies typically like to show very interesting spatial gene expression patterns. Here we will follow a similar strategy by selecting a balanced set of genes for each spatial co-expression module and then to simply give them the same color in the `spatInSituPlotPoints` function.
 
 ```{r, eval=FALSE}
 balanced_genes = getBalancedSpatCoexpressionFeats(spatCorObject = spat_cor_netw_DT, 
@@ -825,9 +770,6 @@ spatInSituPlotPoints(visiumHD,
 knitr::include_graphics("img/02_session2/21-spatInSituPlotPoints.png")
 ```
 
-
-
-
 ## Hexbin 25
 
 Goal is to create a higher resolution bin (hex25) and add to the Giotto object. We will aim to identify individual cell types and local neighborhood niches.
@@ -848,8 +790,8 @@ visiumHD_subset = subsetGiottoLocs(gobject = visiumHD,
 knitr::include_graphics("img/02_session2/9.png")
 ```
 
-
 Plot visiumHD subset with hexbin100 polygons:
+
 ```{r, eval=FALSE}
 spatInSituPlotPoints(visiumHD_subset,
                      show_image = F,
@@ -871,6 +813,7 @@ knitr::include_graphics("img/02_session2/22-spatInSituPlotPoints.png")
 ```
 
 Plot visiumHD subset with selected gene features:
+
 ```{r, eval=FALSE}
 spatInSituPlotPoints(visiumHD_subset,
                      show_image = F,
@@ -893,8 +836,8 @@ spatInSituPlotPoints(visiumHD_subset,
 knitr::include_graphics("img/02_session2/23-spatInSituPlotPoints.png")
 ```
 
+Create smaller hexbin25 tessellations:
 
-Create smaller hexbin25 tessellations:  
 ```{r, eval=FALSE}
 hexbin25 <- tessellate(extent = ext(visiumHD_subset@feat_info$rna), 
                        shape = 'hexagon', 
@@ -933,9 +876,6 @@ spatInSituPlotPoints(visiumHD_subset,
 knitr::include_graphics("img/02_session2/24-spatInSituPlotPoints.png")
 ```
 
-
-
-
 ```{r, eval=FALSE}
 visiumHD_subset = calculateOverlap(visiumHD_subset,
                                    spatial_info = 'hex25',
@@ -970,15 +910,14 @@ visiumHD_subset <- calculateHVF(visiumHD_subset, zscore_threshold = 1)
 
 ```
 
-
-
 ### Projections
 
-- PCA projection from random subset.  
-- UMAP projection from random subset.
-- cluster result projection from subsampled Giotto object + kNN voting
+-   PCA projection from random subset.\
+-   UMAP projection from random subset.
+-   cluster result projection from subsampled Giotto object + kNN voting
 
 #### PCA with projection
+
 ```{r, eval=FALSE}
 
 n_25_percent <- round(length(spatIDs(visiumHD_subset, 'hex25')) * 0.25)
@@ -1002,8 +941,8 @@ plotPCA(visiumHD_subset, dim_reduction_name = 'pca.projection')
 knitr::include_graphics("img/02_session2/25-PCA.png")
 ```
 
-
 #### UMAP with projection
+
 ```{r, eval=FALSE}
 # umap projection on subset
 visiumHD_subset <- runUMAPprojection(
@@ -1032,15 +971,11 @@ plotUMAP(gobject = visiumHD_subset,
 knitr::include_graphics("img/02_session2/26-UMAP.png")
 ```
 
-
-
 #### clustering with projection
 
-1. subsample Giotto object  
-2. perform clustering (e.g. hierarchical clustering)  
-3. project cluster results to full Giotto object using a kNN voting approach
-and a shared dimension reduction space (e.g. PCA) 
-
+1.  subsample Giotto object\
+2.  perform clustering (e.g. hierarchical clustering)\
+3.  project cluster results to full Giotto object using a kNN voting approach and a shared dimension reduction space (e.g. PCA)
 
 ```{r, eval=FALSE}
 
@@ -1080,8 +1015,6 @@ dimPlot2D(
 knitr::include_graphics("img/02_session2/27-dimPlot2D.png")
 ```
 
-
-
 ```{r, eval=FALSE}
 # project clusterings back to full dataset
 visiumHD_subset <- doClusterProjection(
@@ -1113,8 +1046,6 @@ dimPlot2D(
 knitr::include_graphics("img/02_session2/28-dimPlot2D.png")
 ```
 
-
-
 ```{r, eval=FALSE}
 spatInSituPlotPoints(visiumHD_subset,
                      show_image = F,
@@ -1135,19 +1066,16 @@ spatInSituPlotPoints(visiumHD_subset,
 knitr::include_graphics("img/02_session2/29-spatInSituPlotPoints.png")
 ```
 
-
-
 ### Niche clustering
 
-Each cell will be clustered based on its neighboring cell type composition.  
-
+Each cell will be clustered based on its neighboring cell type composition.
 
 ```{r, echo=FALSE, out.width="50%", fig.align="center", fig.cap="Schematic for niche clustering. Originally from CODEX."}
 knitr::include_graphics("img/02_session2/10.png")
 ```
 
-
 Size of cellular niche is important and defines the tissue organization resolution.
+
 ```{r, eval=FALSE}
 visiumHD_subset = createSpatialNetwork(visiumHD_subset,
                                 name = 'kNN_network',
@@ -1195,14 +1123,10 @@ spatInSituPlotPoints(visiumHD_subset,
 knitr::include_graphics("img/02_session2/30-spatInSituPlotPoints.png")
 ```
 
-
-
 ## Database backend - Work in progress, but coming soon!
 
-Memory problems:  
-- data ingestion  
-- spatial operations  
-- matrix operations  
-- matrix and spatial geometry object sizes  
-
-
+Memory problems:\
+- data ingestion\
+- spatial operations\
+- matrix operations\
+- matrix and spatial geometry object sizes
