@@ -41,12 +41,6 @@ jobs:
           key: bookdown-${{ hashFiles('**/*Rmd') }}
           restore-keys: bookdown-
 
-      - name: Copy PDF files
-        run: |
-          mkdir -p docs/pdf
-          cp -R pdf/* docs/pdf/
-        shell: bash
-
       - name: Build site
         run: bookdown::render_book("index.Rmd", quiet = TRUE)
         shell: Rscript {0}
