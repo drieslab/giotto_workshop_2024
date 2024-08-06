@@ -491,5 +491,77 @@ cellProximityNetwork(gobject = Lunaphore_giotto,
 knitr::include_graphics("img/02_session4/5-cellProximityNetwork.png")
 ```
 
+## Session info
 
+```{r, eval=FALSE}
+sessionInfo()
+```
+
+```{r, eval=FALSE}
+R version 4.4.1 (2024-06-14)
+Platform: aarch64-apple-darwin20
+Running under: macOS Sonoma 14.5
+
+Matrix products: default
+BLAS:   /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib 
+LAPACK: /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/lib/libRlapack.dylib;  LAPACK version 3.12.0
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+time zone: America/New_York
+tzcode source: internal
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] Giotto_4.1.0      GiottoClass_0.3.4
+
+loaded via a namespace (and not attached):
+  [1] RColorBrewer_1.1-3          rstudioapi_0.16.0           jsonlite_1.8.8             
+  [4] magrittr_2.0.3              magick_2.8.4                farver_2.1.2               
+  [7] rmarkdown_2.27              zlibbioc_1.50.0             ragg_1.3.2                 
+ [10] vctrs_0.6.5                 memoise_2.0.1               GiottoUtils_0.1.10         
+ [13] terra_1.7-78                htmltools_0.5.8.1           S4Arrays_1.4.1             
+ [16] raster_3.6-26               SparseArray_1.4.8           sass_0.4.9                 
+ [19] bslib_0.8.0                 KernSmooth_2.23-24          htmlwidgets_1.6.4          
+ [22] plyr_1.8.9                  plotly_4.10.4               cachem_1.1.0               
+ [25] igraph_2.0.3                lifecycle_1.0.4             pkgconfig_2.0.3            
+ [28] rsvd_1.0.5                  Matrix_1.7-0                R6_2.5.1                   
+ [31] fastmap_1.2.0               GenomeInfoDbData_1.2.12     MatrixGenerics_1.16.0      
+ [34] digest_0.6.36               colorspace_2.1-1            S4Vectors_0.42.1           
+ [37] irlba_2.3.5.1               textshaping_0.4.0           GenomicRanges_1.56.1       
+ [40] beachmat_2.20.0             labeling_0.4.3              fansi_1.0.6                
+ [43] httr_1.4.7                  polyclip_1.10-7             abind_1.4-5                
+ [46] compiler_4.4.1              proxy_0.4-27                withr_3.0.1                
+ [49] backports_1.5.0             BiocParallel_1.38.0         viridis_0.6.5              
+ [52] DBI_1.2.3                   highr_0.11                  ggforce_0.4.2              
+ [55] MASS_7.3-61                 DelayedArray_0.30.1         rjson_0.2.21               
+ [58] classInt_0.4-10             gtools_3.9.5                GiottoVisuals_0.2.4        
+ [61] tools_4.4.1                 units_0.8-5                 glue_1.7.0                 
+ [64] dbscan_1.2-0                grid_4.4.1                  sf_1.0-16                  
+ [67] checkmate_2.3.2             reshape2_1.4.4              generics_0.1.3             
+ [70] gtable_0.3.5                class_7.3-22                tidyr_1.3.1                
+ [73] data.table_1.15.4           BiocSingular_1.20.0         tidygraph_1.3.1            
+ [76] ScaledMatrix_1.12.0         sp_2.1-4                    xml2_1.3.6                 
+ [79] utf8_1.2.4                  XVector_0.44.0              BiocGenerics_0.50.0        
+ [82] RcppAnnoy_0.0.22            ggrepel_0.9.5               pillar_1.9.0               
+ [85] stringr_1.5.1               dplyr_1.1.4                 tweenr_2.0.3               
+ [88] lattice_0.22-6              deldir_2.0-4                tidyselect_1.2.1           
+ [91] SingleCellExperiment_1.26.0 knitr_1.48                  gridExtra_2.3              
+ [94] bookdown_0.40               IRanges_2.38.1              SummarizedExperiment_1.34.0
+ [97] scattermore_1.2             stats4_4.4.1                xfun_0.46                  
+[100] graphlayouts_1.1.1          Biobase_2.64.0              matrixStats_1.3.0          
+[103] stringi_1.8.4               UCSC.utils_1.0.0            lazyeval_0.2.2             
+[106] yaml_2.3.10                 evaluate_0.24.0             codetools_0.2-20           
+[109] ggraph_2.2.1                tibble_3.2.1                BiocManager_1.30.23        
+[112] colorRamp2_0.1.0            cli_3.6.3                   uwot_0.2.2                 
+[115] reticulate_1.38.0           systemfonts_1.1.0           jquerylib_0.1.4            
+[118] munsell_0.5.1               Rcpp_1.0.13                 GenomeInfoDb_1.40.1        
+[121] png_0.1-8                   parallel_4.4.1              ggplot2_3.5.1              
+[124] exactextractr_0.10.0        SpatialExperiment_1.14.0    viridisLite_0.4.2          
+[127] scales_1.3.0                e1071_1.7-14                purrr_1.0.2                
+[130] crayon_1.5.3                rlang_1.1.4                 cowplot_1.1.3  
+```
 
