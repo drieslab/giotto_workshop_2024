@@ -832,10 +832,9 @@ knitr::include_graphics("img/02_session2/21-spatInSituPlotPoints.png")
 
 Goal is to create a higher resolution bin (hex25) and add to the Giotto object. We will aim to identify individual cell types and local neighborhood niches.
 
-### Subcellular workflow and projection functions
+### Subcellular workflow
 
 -   filter and normalization workflow
--   PCA projection
 
 ```{r, eval=FALSE}
 visiumHD_subset = subsetGiottoLocs(gobject = visiumHD,
@@ -845,7 +844,12 @@ visiumHD_subset = subsetGiottoLocs(gobject = visiumHD,
                                    y_max = 45500)
 ```
 
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Coloring individual features based on the spatially correlated gene clusters + subset rectangle."}
+knitr::include_graphics("img/02_session2/9.png")
+```
 
+
+Plot visiumHD subset with hexbin100 polygons:
 ```{r, eval=FALSE}
 spatInSituPlotPoints(visiumHD_subset,
                      show_image = F,
@@ -862,10 +866,11 @@ spatInSituPlotPoints(visiumHD_subset,
                      polygon_line_size = 0.3)
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="xxx"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Hexbin100 colored by leiden clustering results"}
 knitr::include_graphics("img/02_session2/22-spatInSituPlotPoints.png")
 ```
 
+Plot visiumHD subset with selected gene features:
 ```{r, eval=FALSE}
 spatInSituPlotPoints(visiumHD_subset,
                      show_image = F,
@@ -884,11 +889,12 @@ spatInSituPlotPoints(visiumHD_subset,
 
 ```
 
-```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="xxx"}
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Coloring individual features based on the spatially correlated gene clusters"}
 knitr::include_graphics("img/02_session2/23-spatInSituPlotPoints.png")
 ```
 
 
+Create smaller hexbin25 tessellations:  
 ```{r, eval=FALSE}
 hexbin25 <- tessellate(extent = ext(visiumHD_subset@feat_info$rna), 
                        shape = 'hexagon', 
@@ -964,9 +970,15 @@ visiumHD_subset <- calculateHVF(visiumHD_subset, zscore_threshold = 1)
 
 ```
 
-### projections
 
-#### dimension reduction with projections
+
+### Projections
+
+- PCA projection from random subset.  
+- UMAP projection from random subset.
+- cluster result projection from subsampled Giotto object + kNN voting
+
+#### PCA with projection
 ```{r, eval=FALSE}
 
 n_25_percent <- round(length(spatIDs(visiumHD_subset, 'hex25')) * 0.25)
@@ -991,6 +1003,7 @@ knitr::include_graphics("img/02_session2/25-PCA.png")
 ```
 
 
+#### UMAP with projection
 ```{r, eval=FALSE}
 # umap projection on subset
 visiumHD_subset <- runUMAPprojection(
@@ -1022,6 +1035,12 @@ knitr::include_graphics("img/02_session2/26-UMAP.png")
 
 
 #### clustering with projection
+
+1. subsample Giotto object  
+2. perform clustering (e.g. hierarchical clustering)  
+3. project cluster results to full Giotto object using a kNN voting approach
+and a shared dimension reduction space (e.g. PCA) 
+
 
 ```{r, eval=FALSE}
 
@@ -1116,9 +1135,19 @@ spatInSituPlotPoints(visiumHD_subset,
 knitr::include_graphics("img/02_session2/29-spatInSituPlotPoints.png")
 ```
 
-### niche clusters
 
 
+### Niche clustering
+
+Each cell will be clustered based on its neighboring cell type composition.  
+
+
+```{r, echo=FALSE, out.width="50%", fig.align="center", fig.cap="Schematic for niche clustering. Originally from CODEX."}
+knitr::include_graphics("img/02_session2/10.png")
+```
+
+
+Size of cellular niche is important and defines the tissue organization resolution.
 ```{r, eval=FALSE}
 visiumHD_subset = createSpatialNetwork(visiumHD_subset,
                                 name = 'kNN_network',
