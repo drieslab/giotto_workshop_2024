@@ -309,13 +309,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.3.3" data-path="visium-hd.html"><a href="visium-hd.html#giotto-visium-hd-convenience-function"><i class="fa fa-check"></i><b>9.3.3</b> Giotto Visium HD convenience function</a></li>
 <li class="chapter" data-level="9.3.4" data-path="visium-hd.html"><a href="visium-hd.html#read-in-data-manually"><i class="fa fa-check"></i><b>9.3.4</b> Read in data manually</a></li>
 </ul></li>
-<li class="chapter" data-level="9.4" data-path="visium-hd.html"><a href="visium-hd.html#giotto-object-at-hexbin-400"><i class="fa fa-check"></i><b>9.4</b> Giotto object at Hexbin 400</a>
+<li class="chapter" data-level="9.4" data-path="visium-hd.html"><a href="visium-hd.html#hexbin-400-giotto-object"><i class="fa fa-check"></i><b>9.4</b> Hexbin 400 Giotto object</a>
 <ul>
 <li class="chapter" data-level="9.4.1" data-path="visium-hd.html"><a href="visium-hd.html#create-giotto-points"><i class="fa fa-check"></i><b>9.4.1</b> create giotto points</a></li>
 <li class="chapter" data-level="9.4.2" data-path="visium-hd.html"><a href="visium-hd.html#create-giotto-polygons"><i class="fa fa-check"></i><b>9.4.2</b> create giotto polygons</a></li>
 <li class="chapter" data-level="9.4.3" data-path="visium-hd.html"><a href="visium-hd.html#combine-giotto-points-and-polygons-to-create-giotto-object"><i class="fa fa-check"></i><b>9.4.3</b> combine Giotto points and polygons to create Giotto object</a></li>
 <li class="chapter" data-level="9.4.4" data-path="visium-hd.html"><a href="visium-hd.html#process-giotto-object"><i class="fa fa-check"></i><b>9.4.4</b> Process Giotto object</a></li>
-<li class="chapter" data-level="9.4.5" data-path="visium-hd.html"><a href="visium-hd.html#dimension-reduction-clustering"><i class="fa fa-check"></i><b>9.4.5</b> Dimension reduction + clustering</a></li>
 </ul></li>
 <li class="chapter" data-level="9.5" data-path="visium-hd.html"><a href="visium-hd.html#hexbin-100"><i class="fa fa-check"></i><b>9.5</b> Hexbin 100</a>
 <ul>
@@ -399,7 +398,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.4.3" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#rescale-polygons"><i class="fa fa-check"></i><b>11.4.3</b> Rescale polygons</a></li>
 <li class="chapter" data-level="11.4.4" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#perform-clustering-and-differential-expression"><i class="fa fa-check"></i><b>11.4.4</b> Perform clustering and differential expression</a></li>
 <li class="chapter" data-level="11.4.5" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#give-the-cluster-an-annotation-based-on-expression-values"><i class="fa fa-check"></i><b>11.4.5</b> Give the cluster an annotation based on expression values</a></li>
-<li class="chapter" data-level="11.4.6" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#spatial-network-1"><i class="fa fa-check"></i><b>11.4.6</b> spatial network</a></li>
+<li class="chapter" data-level="11.4.6" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#spatial-network-1"><i class="fa fa-check"></i><b>11.4.6</b> Spatial network</a></li>
 <li class="chapter" data-level="11.4.7" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cell-neighborhood-cell-typecell-type-interactions"><i class="fa fa-check"></i><b>11.4.7</b> Cell Neighborhood: Cell-Type/Cell-Type Interactions</a></li>
 </ul></li>
 </ul></li>
@@ -582,7 +581,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Low resolution spatial data typically covers multiple cells making it difficult to delineate the cell contribution to gene expression. Using a process called kriging we can interpolate gene expression at the single cell levels from low resolution datasets. Kriging is a spatial interpolation technique that estimates unknown values at specific locations by weighing nearby known values based on distance and spatial trends. It uses a model to account for both the distance between points and the overall pattern in the data to make accurate predictions. By taking discrete measurement spots, such as those used for visium, we can interpolate gene expression to a finer scale using kriging.</p>
 <div id="visium-technology-1" class="section level3 hasAnchor" number="17.1.1">
 <h3><span class="header-section-number">17.1.1</span> Visium technology<a href="interactivity-with-the-rspatial-ecosystem.html#visium-technology-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-636"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-638"></span>
 <img src="img/03_session1/visium_overview.png" alt="Overview of Visium. Source: 10X Genomics." width="80%" />
 <p class="caption">
 Figure 17.1: Overview of Visium. Source: 10X Genomics.
@@ -714,7 +713,7 @@ Figure 17.1: Overview of Visium. Source: 10X Genomics.
 <span id="cb456-78"><a href="interactivity-with-the-rspatial-ecosystem.html#cb456-78" tabindex="-1"></a>           <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb456-79"><a href="interactivity-with-the-rspatial-ecosystem.html#cb456-79" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;03_ses6_1_vis_spat&quot;</span>))</span></code></pre></div>
 <p>Here we can see the clustering of the regular visium spots is able to identify distinct regions of the mouse brain.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-641"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-643"></span>
 <img src="img/03_session6/03_ses6_1_vis_spat.png" alt="Mouse brain spatial plot showing leiden clustering" width="75%" />
 <p class="caption">
 Figure 17.2: Mouse brain spatial plot showing leiden clustering
@@ -756,13 +755,13 @@ Figure 17.2: Mouse brain spatial plot showing leiden clustering
 <div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb459-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb459-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">getPolygonInfo</span>(v_brain))</span>
 <span id="cb459-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb459-2" tabindex="-1"></a></span>
 <span id="cb459-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb459-3" tabindex="-1"></a><span class="fu">plot</span>(stardist_cell_gpoly, <span class="at">max_poly =</span> <span class="fl">1e6</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-645"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-647"></span>
 <img src="img/03_session6/visium_polys.png" alt="Mouse brain cell polygons from the visium dataset" width="100%" />
 <p class="caption">
 Figure 17.3: Mouse brain cell polygons from the visium dataset
 </p>
 </div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-646"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-648"></span>
 <img src="img/03_session6/03_ses6_2_cell_poly_flipped.png" alt="Mouse brain cell polygons with artifacts removed and flipped" width="100%" />
 <p class="caption">
 Figure 17.4: Mouse brain cell polygons with artifacts removed and flipped
@@ -773,7 +772,7 @@ Figure 17.4: Mouse brain cell polygons with artifacts removed and flipped
 <h3><span class="header-section-number">17.6.3</span> Showing Giotto object prior to polygon addition<a href="interactivity-with-the-rspatial-ecosystem.html#showing-giotto-object-prior-to-polygon-addition" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Before we add the polygons we can see the gobject contains “cell” as a spatial unit and a polygon.</p>
 <div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb460-1"><a href="interactivity-with-the-rspatial-ecosystem.html#cb460-1" tabindex="-1"></a><span class="fu">print</span>(v_brain)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-648"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-650"></span>
 <img src="img/03_session6/visium_gobject.png" alt="Giotto object before adding subcellular polygons." width="40%" />
 <p class="caption">
 Figure 17.5: Giotto object before adding subcellular polygons.
@@ -787,7 +786,7 @@ Figure 17.5: Giotto object before adding subcellular polygons.
 <span id="cb461-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb461-2" tabindex="-1"></a>                             <span class="at">gpolygons =</span> <span class="fu">list</span>(<span class="st">&quot;stardist_cell&quot;</span> <span class="ot">=</span> stardist_cell_gpoly))</span>
 <span id="cb461-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb461-3" tabindex="-1"></a></span>
 <span id="cb461-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb461-4" tabindex="-1"></a><span class="fu">print</span>(v_brain)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-650"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-652"></span>
 <img src="img/03_session6/03_ses6_gobject_sub.png" alt="Giotto object after to adding subcellular polygons." width="40%" />
 <p class="caption">
 Figure 17.6: Giotto object after to adding subcellular polygons.
@@ -801,7 +800,7 @@ Figure 17.6: Giotto object after to adding subcellular polygons.
 <span id="cb462-2"><a href="interactivity-with-the-rspatial-ecosystem.html#cb462-2" tabindex="-1"></a>                            <span class="at">polygon_name =</span> <span class="st">&quot;stardist_cell&quot;</span>)</span>
 <span id="cb462-3"><a href="interactivity-with-the-rspatial-ecosystem.html#cb462-3" tabindex="-1"></a></span>
 <span id="cb462-4"><a href="interactivity-with-the-rspatial-ecosystem.html#cb462-4" tabindex="-1"></a><span class="fu">print</span>(poly_info)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-652"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-654"></span>
 <img src="img/03_session6/stardist_poly_info.png" alt="Polygon information for stardist_cell." width="60%" />
 <p class="caption">
 Figure 17.7: Polygon information for stardist_cell.
@@ -825,14 +824,14 @@ Figure 17.7: Polygon information for stardist_cell.
 <span id="cb463-8"><a href="interactivity-with-the-rspatial-ecosystem.html#cb463-8" tabindex="-1"></a>                                      <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb463-9"><a href="interactivity-with-the-rspatial-ecosystem.html#cb463-9" tabindex="-1"></a></span>
 <span id="cb463-10"><a href="interactivity-with-the-rspatial-ecosystem.html#cb463-10" tabindex="-1"></a><span class="fu">print</span>(subcell_v_brain)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-654"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-656"></span>
 <img src="img/03_session6/03_ses6_gobject_sub_interpolate.png" alt="Giotto object after to interpolating features. Addition of images for each interoplated feature (left) and an example of rasterized gene expression image (right)." width="100%" />
 <p class="caption">
 Figure 17.8: Giotto object after to interpolating features. Addition of images for each interoplated feature (left) and an example of rasterized gene expression image (right).
 </p>
 </div>
 <p>For each gene that we interpolate a raster image is exported based on the gene expression. Shown below is an example of an output for the gene Pantr1.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-655"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-657"></span>
 <img src="img/03_session6/Pantr1_raster.png" alt="Raster of gene expression interpolation for Pantr1" width="50%" />
 <p class="caption">
 Figure 17.9: Raster of gene expression interpolation for Pantr1
@@ -854,7 +853,7 @@ Figure 17.9: Raster of gene expression interpolation for Pantr1
 <span id="cb464-9"><a href="interactivity-with-the-rspatial-ecosystem.html#cb464-9" tabindex="-1"></a>                                           <span class="at">aggr_function =</span> <span class="st">&quot;sum&quot;</span>,</span>
 <span id="cb464-10"><a href="interactivity-with-the-rspatial-ecosystem.html#cb464-10" tabindex="-1"></a>                                           <span class="at">type=</span><span class="st">&quot;intensity&quot;</span>)</span></code></pre></div>
 <p>After performing the overlap we now have expression data for each gene provided. This can be seen below where we see the interpolated gene expression for genes in each of the nuclei we identified.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-657"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-659"></span>
 <img src="img/03_session6/03_ses6_interpolate_gene_express.png" alt="Gene expression for cells based on interpolation." width="100%" />
 <p class="caption">
 Figure 17.10: Gene expression for cells based on interpolation.
@@ -927,7 +926,7 @@ Figure 17.10: Gene expression for cells based on interpolation.
 <span id="cb467-38"><a href="interactivity-with-the-rspatial-ecosystem.html#cb467-38" tabindex="-1"></a>               <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb467-39"><a href="interactivity-with-the-rspatial-ecosystem.html#cb467-39" tabindex="-1"></a>               <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;03_ses6_pantr1&quot;</span>))</span></code></pre></div>
 <p>Below we can see the gene expression for both datatypes. With the interpolated gene expression we’re able to get a better idea as to the cells that are expressing each of the genes. This is especially clear with Pantr1, which clearly localizes to the pyramidal layer.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-661"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-663"></span>
 <img src="img/03_session6/03_ses6_gene_expression.png" alt="Gene expression for visium (left) and interpolated (right) expression for Sparc (top) and Pantr1 (bottom)." width="100%" />
 <p class="caption">
 Figure 17.11: Gene expression for visium (left) and interpolated (right) expression for Sparc (top) and Pantr1 (bottom).
@@ -968,7 +967,7 @@ Figure 17.11: Gene expression for visium (left) and interpolated (right) express
 <span id="cb469-23"><a href="interactivity-with-the-rspatial-ecosystem.html#cb469-23" tabindex="-1"></a><span class="fu">plotUMAP</span>(subcell_v_brain, </span>
 <span id="cb469-24"><a href="interactivity-with-the-rspatial-ecosystem.html#cb469-24" tabindex="-1"></a>         <span class="at">spat_unit =</span> <span class="st">&quot;stardist_cell&quot;</span>, </span>
 <span id="cb469-25"><a href="interactivity-with-the-rspatial-ecosystem.html#cb469-25" tabindex="-1"></a>         <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-664"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-666"></span>
 <img src="img/03_session6/03_ses6_subcell_umap.png" alt="UMAP for stardist_cell based on the 1500 interpolated gene expressions. Colored based on leiden clustering." width="100%" />
 <p class="caption">
 Figure 17.12: UMAP for stardist_cell based on the 1500 interpolated gene expressions. Colored based on leiden clustering.
@@ -998,7 +997,7 @@ Figure 17.12: UMAP for stardist_cell based on the 1500 interpolated gene express
 <span id="cb470-18"><a href="interactivity-with-the-rspatial-ecosystem.html#cb470-18" tabindex="-1"></a>           <span class="at">show_legend =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb470-19"><a href="interactivity-with-the-rspatial-ecosystem.html#cb470-19" tabindex="-1"></a>           <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb470-20"><a href="interactivity-with-the-rspatial-ecosystem.html#cb470-20" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;03_ses6_subcell_spat&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-666"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-668"></span>
 <img src="img/03_session6/03_ses6_spat_plots.png" alt="Spatial plots showing leiden clustering mapped onto the base visium spots (left) and individual nuceli through interpolation (right)" width="100%" />
 <p class="caption">
 Figure 17.13: Spatial plots showing leiden clustering mapped onto the base visium spots (left) and individual nuceli through interpolation (right)
@@ -1038,7 +1037,7 @@ Figure 17.13: Spatial plots showing leiden clustering mapped onto the base visiu
 <span id="cb471-28"><a href="interactivity-with-the-rspatial-ecosystem.html#cb471-28" tabindex="-1"></a>           <span class="at">show_legend =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb471-29"><a href="interactivity-with-the-rspatial-ecosystem.html#cb471-29" tabindex="-1"></a>           <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb471-30"><a href="interactivity-with-the-rspatial-ecosystem.html#cb471-30" tabindex="-1"></a>           <span class="at">save_param =</span> <span class="fu">list</span>(<span class="at">save_name =</span> <span class="st">&quot;03_ses6_subcell_spat_crop&quot;</span>))</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-668"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-670"></span>
 <img src="img/03_session6/03_ses_spat_crop.png" alt="Spatial plots showing leiden clustering mapped onto the base visium spots (left) and individual nuceli through interpolation (right)" width="100%" />
 <p class="caption">
 Figure 17.14: Spatial plots showing leiden clustering mapped onto the base visium spots (left) and individual nuceli through interpolation (right)
