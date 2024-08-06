@@ -380,7 +380,8 @@ combined_pros <- runGiottoHarmony(combined_pros,
                                   vars_use = "list_ID",
                                   sigma = 0.1,
                                   theta = 2,
-                                  lambda = 1)
+                                  lambda = 1,
+                                  nclust = NULL )
 ```
 
 After running the Harmony function successfully we can see that the outputted gobject has a new dim reduction names "harmony". We can use this for all subsequent spatial steps.
