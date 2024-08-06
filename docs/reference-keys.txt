@@ -557,3 +557,8 @@ fig:unnamed-chunk-53
 fig:unnamed-chunk-60
 fig:unnamed-chunk-71
 fig:unnamed-chunk-91
+fig:unnamed-chunk-92
+subcellular-workflow
+pca-with-projection
+umap-with-projection
+niche-clustering-1
