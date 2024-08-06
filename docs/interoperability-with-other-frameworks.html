@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>15 Interoperability with other frameworks | Workshop: Spatial multi-omics data analysis with Giotto Suite</title>
   <meta name="description" content="15 Interoperability with other frameworks | Workshop: Spatial multi-omics data analysis with Giotto Suite" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
   <meta property="og:title" content="15 Interoperability with other frameworks | Workshop: Spatial multi-omics data analysis with Giotto Suite" />
   <meta property="og:type" content="book" />
@@ -55,7 +55,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -803,10 +803,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb424-9"><a href="interoperability-with-other-frameworks.html#cb424-9" tabindex="-1"></a>scanpy<span class="sc">$</span>pp<span class="sc">$</span><span class="fu">log1p</span>(adata)</span>
 <span id="cb424-10"><a href="interoperability-with-other-frameworks.html#cb424-10" tabindex="-1"></a></span>
 <span id="cb424-11"><a href="interoperability-with-other-frameworks.html#cb424-11" tabindex="-1"></a><span class="co"># Perform PCA</span></span>
-<span id="cb424-12"><a href="interoperability-with-other-frameworks.html#cb424-12" tabindex="-1"></a>scanpy<span class="sc">$</span>pp<span class="sc">$</span><span class="fu">pca</span>(adata, <span class="at">n_comps=</span>40L)</span>
+<span id="cb424-12"><a href="interoperability-with-other-frameworks.html#cb424-12" tabindex="-1"></a>scanpy<span class="sc">$</span>pp<span class="sc">$</span><span class="fu">pca</span>(adata, <span class="at">n_comps=</span><span class="dv">40</span><span class="dt">L</span>)</span>
 <span id="cb424-13"><a href="interoperability-with-other-frameworks.html#cb424-13" tabindex="-1"></a></span>
 <span id="cb424-14"><a href="interoperability-with-other-frameworks.html#cb424-14" tabindex="-1"></a><span class="co"># Compute the neighborhood graph</span></span>
-<span id="cb424-15"><a href="interoperability-with-other-frameworks.html#cb424-15" tabindex="-1"></a>scanpy<span class="sc">$</span>pp<span class="sc">$</span><span class="fu">neighbors</span>(adata, <span class="at">n_neighbors=</span>10L, <span class="at">n_pcs=</span>40L)</span>
+<span id="cb424-15"><a href="interoperability-with-other-frameworks.html#cb424-15" tabindex="-1"></a>scanpy<span class="sc">$</span>pp<span class="sc">$</span><span class="fu">neighbors</span>(adata, <span class="at">n_neighbors=</span><span class="dv">10</span><span class="dt">L</span>, <span class="at">n_pcs=</span><span class="dv">40</span><span class="dt">L</span>)</span>
 <span id="cb424-16"><a href="interoperability-with-other-frameworks.html#cb424-16" tabindex="-1"></a></span>
 <span id="cb424-17"><a href="interoperability-with-other-frameworks.html#cb424-17" tabindex="-1"></a><span class="co"># Run UMAP</span></span>
 <span id="cb424-18"><a href="interoperability-with-other-frameworks.html#cb424-18" tabindex="-1"></a>scanpy<span class="sc">$</span>tl<span class="sc">$</span><span class="fu">umap</span>(adata)</span>
