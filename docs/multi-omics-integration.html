@@ -55,7 +55,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -323,9 +323,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9.6" data-path="visium-hd.html"><a href="visium-hd.html#hexbin-25"><i class="fa fa-check"></i><b>9.6</b> Hexbin 25</a>
 <ul>
-<li class="chapter" data-level="9.6.1" data-path="visium-hd.html"><a href="visium-hd.html#subcellular-workflow-and-projection-functions"><i class="fa fa-check"></i><b>9.6.1</b> Subcellular workflow and projection functions</a></li>
-<li class="chapter" data-level="9.6.2" data-path="visium-hd.html"><a href="visium-hd.html#projections"><i class="fa fa-check"></i><b>9.6.2</b> projections</a></li>
-<li class="chapter" data-level="9.6.3" data-path="visium-hd.html"><a href="visium-hd.html#niche-clusters"><i class="fa fa-check"></i><b>9.6.3</b> niche clusters</a></li>
+<li class="chapter" data-level="9.6.1" data-path="visium-hd.html"><a href="visium-hd.html#subcellular-workflow"><i class="fa fa-check"></i><b>9.6.1</b> Subcellular workflow</a></li>
+<li class="chapter" data-level="9.6.2" data-path="visium-hd.html"><a href="visium-hd.html#projections"><i class="fa fa-check"></i><b>9.6.2</b> Projections</a></li>
+<li class="chapter" data-level="9.6.3" data-path="visium-hd.html"><a href="visium-hd.html#niche-clustering"><i class="fa fa-check"></i><b>9.6.3</b> Niche clustering</a></li>
 </ul></li>
 <li class="chapter" data-level="9.7" data-path="visium-hd.html"><a href="visium-hd.html#database-backend---work-in-progress-but-coming-soon"><i class="fa fa-check"></i><b>9.7</b> Database backend - Work in progress, but coming soon!</a></li>
 </ul></li>
@@ -366,7 +366,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.7.3" data-path="xenium-1.html"><a href="xenium-1.html#dimension-reduction-1"><i class="fa fa-check"></i><b>10.7.3</b> Dimension Reduction</a></li>
 <li class="chapter" data-level="10.7.4" data-path="xenium-1.html"><a href="xenium-1.html#clustering-1"><i class="fa fa-check"></i><b>10.7.4</b> Clustering</a></li>
 </ul></li>
-<li class="chapter" data-level="10.8" data-path="xenium-1.html"><a href="xenium-1.html#niche-clustering"><i class="fa fa-check"></i><b>10.8</b> Niche clustering</a>
+<li class="chapter" data-level="10.8" data-path="xenium-1.html"><a href="xenium-1.html#niche-clustering-1"><i class="fa fa-check"></i><b>10.8</b> Niche clustering</a>
 <ul>
 <li class="chapter" data-level="10.8.1" data-path="xenium-1.html"><a href="xenium-1.html#spatial-network"><i class="fa fa-check"></i><b>10.8.1</b> Spatial network</a></li>
 <li class="chapter" data-level="10.8.2" data-path="xenium-1.html"><a href="xenium-1.html#niche-calculation"><i class="fa fa-check"></i><b>10.8.2</b> Niche calculation</a></li>
@@ -580,14 +580,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="the-cytassist-technology" class="section level2 hasAnchor" number="14.1">
 <h2><span class="header-section-number">14.1</span> The CytAssist technology<a href="multi-omics-integration.html#the-cytassist-technology" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The Visium CytAssist Spatial Gene and Protein Expression assay is designed to introduce simultaneous Gene Expression and Protein Expression analysis to FFPE samples processed with Visium CytAssist. The assay uses NGS to measure the abundance of oligo-tagged antibodies with spatial resolution, in addition to the whole transcriptome and a morphological image.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-534"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-537"></span>
 <img src="img/03_session3/cytassist.png" alt="CystAssits multi-omics diagram. Source: 10X genomics." width="80%" />
 <p class="caption">
 Figure 14.1: CystAssits multi-omics diagram. Source: 10X genomics.
 </p>
 </div>
 <p>The 10X human immune cell profiling panel features 35 antibodies from Abcam and Biolegend, and includes cell surface and intracellular targets. The rna probes hybridize to ~18,000 genes, or RNA targets, within the tissue section to achieve whole transcriptome gene expression profiling. The remaining steps, starting with probe extension, follow the standard Visium workflow outside of the instrument.</p>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-535"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-538"></span>
 <img src="img/03_session3/workflow.png" alt="CytAssist workflow. Source: 10X genomics." width="100%" />
 <p class="caption">
 Figure 14.2: CytAssist workflow. Source: 10X genomics.
@@ -665,7 +665,7 @@ Figure 14.2: CytAssist workflow. Source: 10X genomics.
 <span id="cb381-6"><a href="multi-omics-integration.html#cb381-6" tabindex="-1"></a>  <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb381-7"><a href="multi-omics-integration.html#cb381-7" tabindex="-1"></a>  <span class="at">image_name =</span> <span class="st">&quot;image&quot;</span></span>
 <span id="cb381-8"><a href="multi-omics-integration.html#cb381-8" tabindex="-1"></a>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-541"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-544"></span>
 <img src="img/03_session3/0-spatPlot2D.png" alt="Spatial plot of the CytAssist human tonsil sample, color indicates wheter the spot is in tissue (1) or not (0)." width="80%" />
 <p class="caption">
 Figure 14.3: Spatial plot of the CytAssist human tonsil sample, color indicates wheter the spot is in tissue (1) or not (0).
@@ -730,7 +730,7 @@ Figure 14.3: Spatial plot of the CytAssist human tonsil sample, color indicates 
 <span id="cb387-2"><a href="multi-omics-integration.html#cb387-2" tabindex="-1"></a>         <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
 <span id="cb387-3"><a href="multi-omics-integration.html#cb387-3" tabindex="-1"></a>         <span class="at">show_NN_network =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb387-4"><a href="multi-omics-integration.html#cb387-4" tabindex="-1"></a>         <span class="at">point_size =</span> <span class="dv">2</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-548"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-551"></span>
 <img src="img/03_session3/1-UMAP.png" alt="RNA UMAP, color indicates the RNA-based Leiden clusters." width="80%" />
 <p class="caption">
 Figure 14.4: RNA UMAP, color indicates the RNA-based Leiden clusters.
@@ -741,7 +741,7 @@ Figure 14.4: RNA UMAP, color indicates the RNA-based Leiden clusters.
 <span id="cb388-2"><a href="multi-omics-integration.html#cb388-2" tabindex="-1"></a>           <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb388-3"><a href="multi-omics-integration.html#cb388-3" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
 <span id="cb388-4"><a href="multi-omics-integration.html#cb388-4" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="dv">3</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-550"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-553"></span>
 <img src="img/03_session3/2-spatPlot2D.png" alt="Spatial distribution of RNA-based Leiden clusters." width="80%" />
 <p class="caption">
 Figure 14.5: Spatial distribution of RNA-based Leiden clusters.
@@ -813,7 +813,7 @@ Figure 14.5: Spatial distribution of RNA-based Leiden clusters.
 <span id="cb393-4"><a href="multi-omics-integration.html#cb393-4" tabindex="-1"></a>         <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>, </span>
 <span id="cb393-5"><a href="multi-omics-integration.html#cb393-5" tabindex="-1"></a>         <span class="at">show_NN_network =</span> <span class="cn">TRUE</span>, </span>
 <span id="cb393-6"><a href="multi-omics-integration.html#cb393-6" tabindex="-1"></a>         <span class="at">point_size =</span> <span class="dv">2</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-556"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-559"></span>
 <img src="img/03_session3/3-UMAP.png" alt="Protein UMAP, color indicates the Protein-based Leiden clusters." width="80%" />
 <p class="caption">
 Figure 14.6: Protein UMAP, color indicates the Protein-based Leiden clusters.
@@ -826,7 +826,7 @@ Figure 14.6: Protein UMAP, color indicates the Protein-based Leiden clusters.
 <span id="cb394-4"><a href="multi-omics-integration.html#cb394-4" tabindex="-1"></a>           <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb394-5"><a href="multi-omics-integration.html#cb394-5" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
 <span id="cb394-6"><a href="multi-omics-integration.html#cb394-6" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="dv">3</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-558"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-561"></span>
 <img src="img/03_session3/4-spatPlot2D.png" alt="Spatial distribution of Protein-based Leiden clusters." width="80%" />
 <p class="caption">
 Figure 14.7: Spatial distribution of Protein-based Leiden clusters.
@@ -900,7 +900,7 @@ Figure 14.7: Spatial distribution of Protein-based Leiden clusters.
 <span id="cb399-5"><a href="multi-omics-integration.html#cb399-5" tabindex="-1"></a>         <span class="at">dim_reduction_name =</span> <span class="st">&quot;integrated.umap&quot;</span>,</span>
 <span id="cb399-6"><a href="multi-omics-integration.html#cb399-6" tabindex="-1"></a>         <span class="at">point_size =</span> <span class="dv">2</span>,</span>
 <span id="cb399-7"><a href="multi-omics-integration.html#cb399-7" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">&quot;Integrated UMAP using Integrated Leiden clusters&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-564"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-567"></span>
 <img src="img/03_session3/5-UMAP.png" alt="Integrated UMAP. Color represents the integrated Leiden clusters." width="80%" />
 <p class="caption">
 Figure 14.8: Integrated UMAP. Color represents the integrated Leiden clusters.
@@ -917,7 +917,7 @@ Figure 14.8: Integrated UMAP. Color represents the integrated Leiden clusters.
 <span id="cb400-5"><a href="multi-omics-integration.html#cb400-5" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="dv">3</span>,</span>
 <span id="cb400-6"><a href="multi-omics-integration.html#cb400-6" tabindex="-1"></a>           <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb400-7"><a href="multi-omics-integration.html#cb400-7" tabindex="-1"></a>           <span class="at">title =</span> <span class="st">&quot;Integrated Leiden clustering&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-566"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-569"></span>
 <img src="img/03_session3/6-spatPlot2D.png" alt="Spatial distribution of the integrated Leiden clusters." width="80%" />
 <p class="caption">
 Figure 14.9: Spatial distribution of the integrated Leiden clusters.

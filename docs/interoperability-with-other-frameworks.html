@@ -55,7 +55,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -323,9 +323,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9.6" data-path="visium-hd.html"><a href="visium-hd.html#hexbin-25"><i class="fa fa-check"></i><b>9.6</b> Hexbin 25</a>
 <ul>
-<li class="chapter" data-level="9.6.1" data-path="visium-hd.html"><a href="visium-hd.html#subcellular-workflow-and-projection-functions"><i class="fa fa-check"></i><b>9.6.1</b> Subcellular workflow and projection functions</a></li>
-<li class="chapter" data-level="9.6.2" data-path="visium-hd.html"><a href="visium-hd.html#projections"><i class="fa fa-check"></i><b>9.6.2</b> projections</a></li>
-<li class="chapter" data-level="9.6.3" data-path="visium-hd.html"><a href="visium-hd.html#niche-clusters"><i class="fa fa-check"></i><b>9.6.3</b> niche clusters</a></li>
+<li class="chapter" data-level="9.6.1" data-path="visium-hd.html"><a href="visium-hd.html#subcellular-workflow"><i class="fa fa-check"></i><b>9.6.1</b> Subcellular workflow</a></li>
+<li class="chapter" data-level="9.6.2" data-path="visium-hd.html"><a href="visium-hd.html#projections"><i class="fa fa-check"></i><b>9.6.2</b> Projections</a></li>
+<li class="chapter" data-level="9.6.3" data-path="visium-hd.html"><a href="visium-hd.html#niche-clustering"><i class="fa fa-check"></i><b>9.6.3</b> Niche clustering</a></li>
 </ul></li>
 <li class="chapter" data-level="9.7" data-path="visium-hd.html"><a href="visium-hd.html#database-backend---work-in-progress-but-coming-soon"><i class="fa fa-check"></i><b>9.7</b> Database backend - Work in progress, but coming soon!</a></li>
 </ul></li>
@@ -366,7 +366,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.7.3" data-path="xenium-1.html"><a href="xenium-1.html#dimension-reduction-1"><i class="fa fa-check"></i><b>10.7.3</b> Dimension Reduction</a></li>
 <li class="chapter" data-level="10.7.4" data-path="xenium-1.html"><a href="xenium-1.html#clustering-1"><i class="fa fa-check"></i><b>10.7.4</b> Clustering</a></li>
 </ul></li>
-<li class="chapter" data-level="10.8" data-path="xenium-1.html"><a href="xenium-1.html#niche-clustering"><i class="fa fa-check"></i><b>10.8</b> Niche clustering</a>
+<li class="chapter" data-level="10.8" data-path="xenium-1.html"><a href="xenium-1.html#niche-clustering-1"><i class="fa fa-check"></i><b>10.8</b> Niche clustering</a>
 <ul>
 <li class="chapter" data-level="10.8.1" data-path="xenium-1.html"><a href="xenium-1.html#spatial-network"><i class="fa fa-check"></i><b>10.8.1</b> Spatial network</a></li>
 <li class="chapter" data-level="10.8.2" data-path="xenium-1.html"><a href="xenium-1.html#niche-calculation"><i class="fa fa-check"></i><b>10.8.2</b> Niche calculation</a></li>
@@ -803,10 +803,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb424-9"><a href="interoperability-with-other-frameworks.html#cb424-9" tabindex="-1"></a>scanpy<span class="sc">$</span>pp<span class="sc">$</span><span class="fu">log1p</span>(adata)</span>
 <span id="cb424-10"><a href="interoperability-with-other-frameworks.html#cb424-10" tabindex="-1"></a></span>
 <span id="cb424-11"><a href="interoperability-with-other-frameworks.html#cb424-11" tabindex="-1"></a><span class="co"># Perform PCA</span></span>
-<span id="cb424-12"><a href="interoperability-with-other-frameworks.html#cb424-12" tabindex="-1"></a>scanpy<span class="sc">$</span>pp<span class="sc">$</span><span class="fu">pca</span>(adata, <span class="at">n_comps=</span><span class="dv">40</span><span class="dt">L</span>)</span>
+<span id="cb424-12"><a href="interoperability-with-other-frameworks.html#cb424-12" tabindex="-1"></a>scanpy<span class="sc">$</span>pp<span class="sc">$</span><span class="fu">pca</span>(adata, <span class="at">n_comps=</span>40L)</span>
 <span id="cb424-13"><a href="interoperability-with-other-frameworks.html#cb424-13" tabindex="-1"></a></span>
 <span id="cb424-14"><a href="interoperability-with-other-frameworks.html#cb424-14" tabindex="-1"></a><span class="co"># Compute the neighborhood graph</span></span>
-<span id="cb424-15"><a href="interoperability-with-other-frameworks.html#cb424-15" tabindex="-1"></a>scanpy<span class="sc">$</span>pp<span class="sc">$</span><span class="fu">neighbors</span>(adata, <span class="at">n_neighbors=</span><span class="dv">10</span><span class="dt">L</span>, <span class="at">n_pcs=</span><span class="dv">40</span><span class="dt">L</span>)</span>
+<span id="cb424-15"><a href="interoperability-with-other-frameworks.html#cb424-15" tabindex="-1"></a>scanpy<span class="sc">$</span>pp<span class="sc">$</span><span class="fu">neighbors</span>(adata, <span class="at">n_neighbors=</span>10L, <span class="at">n_pcs=</span>40L)</span>
 <span id="cb424-16"><a href="interoperability-with-other-frameworks.html#cb424-16" tabindex="-1"></a></span>
 <span id="cb424-17"><a href="interoperability-with-other-frameworks.html#cb424-17" tabindex="-1"></a><span class="co"># Run UMAP</span></span>
 <span id="cb424-18"><a href="interoperability-with-other-frameworks.html#cb424-18" tabindex="-1"></a>scanpy<span class="sc">$</span>tl<span class="sc">$</span><span class="fu">umap</span>(adata)</span>
