@@ -32,7 +32,7 @@ You need to download the expression matrix and spatial information by running th
 data_dir <- "data/03_session1"
 
 dir.create(file.path(data_dir, "Visium_FFPE_Human_Prostate_Cancer"), 
-           showWarnings = TRUE, recursive = TRUE)
+           showWarnings = FALSE, recursive = TRUE)
 
 # Spatial data adenocarcinoma prostate
 download.file(url = "https://cf.10xgenomics.com/samples/spatial-exp/1.3.0/Visium_FFPE_Human_Prostate_Cancer/Visium_FFPE_Human_Prostate_Cancer_spatial.tar.gz", 
@@ -92,9 +92,6 @@ instrs <- createGiottoInstructions(save_dir = save_dir,
 We next need to read in the data for the Giotto object. To do this we will use the createGiottoVisiumObject() convenience function. This requires us to specify the directory that contains the visium data output from 10X Genomics's Spaceranger. We also specify the expression data to use (raw or filtered) as well as the image to align. Spaceranger outputs two images, a low and high resolution image.
 
 ```{r, eval=FALSE}
-print(data_dir)
-print(file.path(data_dir, "Visium_FFPE_Human_Normal_Prostate"))
-
 ## Healthy prostate
 N_pros <- createGiottoVisiumObject(
   visium_dir = file.path(data_dir, "Visium_FFPE_Human_Normal_Prostate"),
@@ -166,7 +163,7 @@ print(N_pros)
 
 ## Join Giotto Objects
 
-To join objects together we can use the joinGittoObjects() function. For this we need to supply a list of objects as well as the names for each of these objects. We can also specify the x and y padding to separate the objects in space or the Z position for 3D datasets. If the x_shift is set to NULL then the total shift will be guessed from the Giotto image.
+To join objects together we can use the `joinGittoObjects()` function. For this we need to supply a list of objects as well as the names for each of these objects. We can also specify the x and y padding to separate the objects in space or the Z position for 3D datasets. If the x_shift is set to NULL then the total shift will be guessed from the Giotto image.
 
 
 ```{r, eval=FALSE}
@@ -367,6 +364,10 @@ knitr::include_graphics("img/03_session1/ses3_1_tissue_contribution.png")
 
 ## Perform Harmony and default workflows
 
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Overview of how Harmony aligns multiple datasets. First cluster cells, then get the centroids and apply a dataset correction factor then move cells based on the soft cluster membership. (Korsunsky et al. 2019)"}
+knitr::include_graphics("img/03_session1/harmony_overview.png")
+```
+
 We can use Harmony to integrate multiple datasets, grouping equivelent cell types between samples. Harmony is an algorithm that iteratively adjusts cell coordinates in a reduced-dimensional space to correct for dataset-specific effects. It uses fuzzy clustering to assign cells to multiple clusters, calculates dataset-specific correction factors, and applies these corrections to each cell, repeating the process until the influence of the dataset diminishes. 
 
 Before running Harmony we need to run the PCA function or set "do_pca" to TRUE. We ran this above so do not need to perform this step. Harmony will default to attempting 10 rounds of integration. Not all samples will need the full 10 and will finish accordingly. The following dataset should converge after 5 iterations.
@@ -376,7 +377,10 @@ library(harmony)
 
 ## run harmony integration
 combined_pros <- runGiottoHarmony(combined_pros, 
-                                  vars_use = "list_ID")
+                                  vars_use = "list_ID",
+                                  sigma = 0.1,
+                                  theta = 2,
+                                  lambda = 1)
 ```
 
 After running the Harmony function successfully we can see that the outputted gobject has a new dim reduction names "harmony". We can use this for all subsequent spatial steps.
