@@ -36,38 +36,38 @@ When working with this data and trying to open the parquet files, you will need 
 ### Output directory structure
 
 ```
-├── analysis.tar.gz
-├── analysis.zarr.zip
-├── analysis_summary.html
-├── aux_outputs.tar.gz
-├── transcripts.csv.gz
-├── transcripts.parquet
-├── transcripts.zarr.zip
-├── cell_boundaries.csv.gz
-├── cell_boundaries.parquet
-├── nucleus_boundaries.csv.gz
-├── nucleus_boundaries.parquet
-├── cell_feature_matrix.tar.gz
-├── cell_feature_matrix
-│   ├── barcodes.tsv.gz
-│   ├── features.tsv.gz
-│   └── matrix.mtx.gz
-├── cell_feature_matrix.h5
-├── cell_feature_matrix.zarr.zip
-├── cells.csv.gz
-├── cells.parquet
-├── cells.zarr.zip
-├── experiment.xenium
-├── gene_panel.json
-├── metrics_summary.csv
-├── morphology.ome.tif
-├── morphology_focus
-│   ├── morphology_focus_0000.ome.tif
-│   ├── morphology_focus_0001.ome.tif
-│   ├── morphology_focus_0002.ome.tif
-│   ├── morphology_focus_0003.ome.tif
-├── Xenium_V1_humanLung_Cancer_FFPE_he_image.ome.tif
-└── Xenium_V1_humanLung_Cancer_FFPE_he_imagealignment.csv
+    ├── analysis.tar.gz
+    ├── analysis.zarr.zip
+    ├── analysis_summary.html
+    ├── aux_outputs.tar.gz
+    ├── transcripts.csv.gz
+    ├── transcripts.parquet
+    ├── transcripts.zarr.zip
+    ├── cell_boundaries.csv.gz
+    ├── cell_boundaries.parquet
+    ├── nucleus_boundaries.csv.gz
+    ├── nucleus_boundaries.parquet
+    ├── cell_feature_matrix.tar.gz
+    ├── cell_feature_matrix
+    │   ├── barcodes.tsv.gz
+    │   ├── features.tsv.gz
+    │   └── matrix.mtx.gz
+    ├── cell_feature_matrix.h5
+    ├── cell_feature_matrix.zarr.zip
+    ├── cells.csv.gz
+    ├── cells.parquet
+    ├── cells.zarr.zip
+    ├── experiment.xenium
+    ├── gene_panel.json
+    ├── metrics_summary.csv
+    ├── morphology.ome.tif
+    ├── morphology_focus
+    │   ├── morphology_focus_0000.ome.tif
+    │   ├── morphology_focus_0001.ome.tif
+    │   ├── morphology_focus_0002.ome.tif
+    │   ├── morphology_focus_0003.ome.tif
+    ├── Xenium_V1_humanLung_Cancer_FFPE_he_image.ome.tif
+    └── Xenium_V1_humanLung_Cancer_FFPE_he_imagealignment.csv
 ```
 
 The above directory structuring and naming is characteristic of Xenium v2.0 pipeline outputs. The only items that may not be exactly the same across all outputs are the morphology focus directory and the naming of the aligned image items.
@@ -86,12 +86,11 @@ dir.create(save_dir, recursive = TRUE)
 
 # download the mini dataset and untar
 options("timeout" = Inf)
-
 download.file(
-  url = "https://zenodo.org/records/13207308/files/workshop_xenium.zip?download=1",
-  destfile = file.path(save_dir, "workshop_xenium.zip")
+    url = "https://zenodo.org/records/13207308/files/workshop_xenium.zip?download=1",
+    destfile = file.path(save_dir, "workshop_xenium.zip")
 )
-
+# untar the downloaded data
 untar(tarfile = file.path(save_dir, "workshop_xenium.zip"), 
       exdir = data_path)
 ```
@@ -154,9 +153,8 @@ For the full dataset (HPC): _time: 1-2min | memory: 24GBC_
 
 g <- createGiottoXeniumObject(xenium_dir = data_path)
 
-# set instructions
+# set instructions for save directory and to save the plots to disk
 instructions(g, "save_dir") <- save_dir
-
 instructions(g, "save_plot") <- TRUE
 ```
 
@@ -205,15 +203,15 @@ _*setting a value other than 20 will make the loaded dataset different from the 
 
 ```
 feat_type =  c(
-"rna",
-"NegControlProbe",
-"UnassignedCodeword",
-"NegControlCodeword"
+    "rna",
+    "NegControlProbe",
+    "UnassignedCodeword",
+    "NegControlCodeword"
 ),
 split_keyword = list(
-c("NegControlProbe"),
-c("UnassignedCodeword"),
-c("NegControlCodeword)"
+    c("NegControlProbe"),
+    c("UnassignedCodeword"),
+    c("NegControlCodeword)"
 )
 ```
 
@@ -242,11 +240,8 @@ Note that there are 4 `feat_types` declared in this set of defaults, but 3 items
 Several Giotto operations require that a set of centroids are calculated for polygon spatial units.
 
 ```{r, eval=FALSE}
-g <- addSpatialCentroidLocations(g, 
-                                 poly_info = "cell")
-
-g <- addSpatialCentroidLocations(g, 
-                                 poly_info = "nucleus")
+g <- addSpatialCentroidLocations(g, poly_info = "cell")
+g <- addSpatialCentroidLocations(g, poly_info = "nucleus")
 ```
 
 
@@ -254,11 +249,11 @@ g <- addSpatialCentroidLocations(g,
 
 ```{r, eval=FALSE}
 spatInSituPlotPoints(g,
-                     polygon_feat_type = "cell",
-                     feats = list(rna = head(featIDs(g))), 
-                     use_overlap = FALSE, 
-                     polygon_color = "cyan", 
-                     polygon_line_size = 0.1
+    polygon_feat_type = "cell",
+    feats = list(rna = head(featIDs(g))), # must be named list
+    use_overlap = FALSE, 
+    polygon_color = "cyan", 
+    polygon_line_size = 0.1
 )
 ```
 
@@ -298,7 +293,6 @@ create_gobject()
 
 ```{r, eval=FALSE}
 x$qv <- 20 # default
-
 tx <- x$load_transcripts()
 
 plot(tx[[1]]$rna, dens = TRUE)
@@ -310,8 +304,6 @@ knitr::include_graphics("img/02_session3/tx_plot.png")
 
 ```{r, eval=FALSE}
 force(tx[[1]]$rna)
-
-rm(tx) # save space
 ```
 
 ```
@@ -335,6 +327,10 @@ nucleus_distance codeword_index feat_ID_uniq
 0            289            3
 ```
 
+```{r, eval=FALSE}
+rm(tx) # remove to save space
+```
+
 ### (optional) Loading pre-aggregated data
 
 Giotto can spatially aggregate the transcripts information based on a provided set of boundaries information, however 10X also provides a pre-aggregated set of cell by feature information and metadata. These values may be slightly different from those calculated by Giotto"s pipeline, and are not loaded by default.
@@ -349,7 +345,6 @@ Some care needs to be taken when loading this information:
 x$filetype$expression <- "mtx" # change to mtx instead of .h5 which is not in the mini dataset
 
 ex <- x$load_expression()
-
 featType(ex)
 ```
 
@@ -358,7 +353,9 @@ featType(ex)
 [4] "Unassigned Codeword"      
 ```
 
-The feature types here do not match what we established for the transcripts, so we can just change them.
+The feature types here do not match what we established for the transcripts, so we can just change them. 
+
+Another reason for changing them here is just because the default names have ' ' characters which are difficult to work with.
 
 ```{r, eval=FALSE}
 force(g)
@@ -379,24 +376,21 @@ spatial locations ----------------
 
 ```{r, eval=FALSE}
 featType(ex[[2]]) <- c("NegControlProbe")
-
 featType(ex[[3]]) <- c("NegControlCodeword")
-
 featType(ex[[4]]) <- c("UnassignedCodeword")
 ```
 
 Then we can just append them to the Giotto object.    
-Here we set up a second object since we will be using Giotto's own aggregation method downstream.
+
+Here we set up a second object called `g2` since we will be using Giotto's own aggregation method to generate the expression matrix later.
 
 ```{r, eval=FALSE}
 g2 <- g
-
 # append the expression info
 g2 <- setGiotto(g2, ex)
 
 # load cell metadata
 cx <- x$load_cellmeta()
-
 g2 <- setGiotto(g2, cx)
 
 force(g2)
@@ -422,23 +416,23 @@ spatial locations ----------------
 
 ```{r, eval=FALSE}
 spatInSituPlotPoints(g2,
-                     # polygon shading params
-                     polygon_fill = "cell_area",
-                     polygon_fill_as_factor = FALSE,
-                     polygon_fill_gradient_style = "sequential",
-                     # polygon line params
-                     polygon_color = "grey",
-                     polygon_line_size = 0.1
+    # polygon shading params
+    polygon_fill = "cell_area",
+    polygon_fill_as_factor = FALSE,
+    polygon_fill_gradient_style = "sequential",
+    # polygon line params
+    polygon_color = "grey",
+    polygon_line_size = 0.1
 )
 
 spatInSituPlotPoints(g2,
-                     # polygon shading params
-                     polygon_fill = "transcript_counts",
-                     polygon_fill_as_factor = FALSE,
-                     polygon_fill_gradient_style = "sequential",
-                     # polygon line params
-                     polygon_color = "grey",
-                     polygon_line_size = 0.1
+    # polygon shading params
+    polygon_fill = "transcript_counts",
+    polygon_fill_as_factor = FALSE,
+    polygon_fill_gradient_style = "sequential",
+    # polygon line params
+    polygon_color = "grey",
+    polygon_line_size = 0.1
 )
 ```
 
@@ -469,17 +463,11 @@ on one of the `morphology_focus` images, but since the mini dataset images are p
 
 ```{r, eval=FALSE}
 img_xml_path <- file.path(data_path, "morphology_focus", "morphology_focus_0000.xml")
-
 omemeta <- xml2::read_xml(img_xml_path)
-
 res <- xml2::xml_find_all(omemeta, "//d1:Channel", ns = xml2::xml_ns(omemeta))
-
 res <- Reduce(rbind, xml2::xml_attrs(res))
-
 rownames(res) <- NULL
-
 res <- as.data.frame(res)
-
 force(res)
 ```
 
@@ -533,16 +521,16 @@ But for the mini dataset, the images are pre-processed and can be directly added
 
 ```{r, eval=FALSE}
 img_paths <- c(
-  sprintf("data/02_session3/morphology_focus/morphology_focus_%04d.tif", 0:3),
-  "data/02_session3/he_mini.tif"
+    sprintf("data/02_session3/morphology_focus/morphology_focus_%04d.tif", 0:3),
+    "data/02_session3/he_mini.tif"
 )
 
 img_list <- createGiottoLargeImageList(
-  img_paths, 
-  # naming is based on the channel metadata above
-  names = c("DAPI", "18S", "ATP1A1/CD45/E-Cadherin", "alphaSMA/Vimentin", "HE"),
-  use_rast_ext = TRUE,
-  verbose = FALSE
+    img_paths, 
+    # naming is based on the channel metadata above
+    names = c("DAPI", "18S", "ATP1A1/CD45/E-Cadherin", "alphaSMA/Vimentin", "HE"),
+    use_rast_ext = TRUE,
+    verbose = FALSE
 )
 
 # make some images brighter
@@ -552,42 +540,54 @@ img_list[[3]]@max_window <- 5000
 
 # append images to gobject
 g <- setGiotto(g, img_list)
+```
 
+
+```{r, eval=FALSE}
 # example plots
 spatInSituPlotPoints(g,
-                     show_image = TRUE,
-                     image_name = "HE",
-                     polygon_feat_type = "cell",
-                     polygon_color = "cyan",
-                     polygon_line_size = 0.1,
-                     polygon_alpha = 0
+    show_image = TRUE,
+    image_name = "HE",
+    polygon_feat_type = "cell",
+    polygon_color = "cyan",
+    polygon_line_size = 0.1,
+    polygon_alpha = 0
 )
+```
 
+
+```{r, eval=FALSE}
 spatInSituPlotPoints(g,
-                     show_image = TRUE,
-                     image_name = "DAPI",
-                     polygon_feat_type = "nucleus",
-                     polygon_color = "cyan",
-                     polygon_line_size = 0.1,
-                     polygon_alpha = 0
+    show_image = TRUE,
+    image_name = "DAPI",
+    polygon_feat_type = "nucleus",
+    polygon_color = "cyan",
+    polygon_line_size = 0.1,
+    polygon_alpha = 0
 )
+```
 
+
+```{r, eval=FALSE}
 spatInSituPlotPoints(g,
-                     show_image = TRUE,
-                     image_name = "18S",
-                     polygon_feat_type = "cell",
-                     polygon_color = "cyan",
-                     polygon_line_size = 0.1,
-                     polygon_alpha = 0
+    show_image = TRUE,
+    image_name = "18S",
+    polygon_feat_type = "cell",
+    polygon_color = "cyan",
+    polygon_line_size = 0.1,
+    polygon_alpha = 0
 )
+```
 
+
+```{r, eval=FALSE}
 spatInSituPlotPoints(g,
-                     show_image = TRUE,
-                     image_name = "ATP1A1/CD45/E-Cadherin",
-                     polygon_feat_type = "nucleus",
-                     polygon_color = "cyan",
-                     polygon_line_size = 0.1,
-                     polygon_alpha = 0
+    show_image = TRUE,
+    image_name = "ATP1A1/CD45/E-Cadherin",
+    polygon_feat_type = "nucleus",
+    polygon_color = "cyan",
+    polygon_line_size = 0.1,
+    polygon_alpha = 0
 )
 ```
 
@@ -603,8 +603,8 @@ First calculate the `feat_info` "rna" transcripts overlapped by the `spatial_inf
 
 ```{r, eval=FALSE}
 g <- calculateOverlap(g,
-                      spatial_info = "cell",
-                      feat_info = "rna"
+    spatial_info = "cell",
+    feat_info = "rna"
 )
 
 g <- overlapToMatrix(g)
@@ -613,20 +613,40 @@ g <- overlapToMatrix(g)
 
 ## Aggregate analyses workflow
 
+### Transcripts per cell
+
+```{r, eval=FALSE}
+g <- addStatistics(g) # this is going to fail because it looks for normalized
+
+g <- addStatistics(g, expression_values = "raw")
+```
+
+```{r, eval=FALSE}
+cell_stats <- pDataDT(g)
+ggplot2::ggplot(cell_stats, ggplot2::aes(total_expr)) +
+    ggplot2::geom_histogram(binwidth = 5)
+```
+
+```{r, echo=FALSE, out.width="80%", fig.cap="Histogram of detections per cell"}
+knitr::include_graphics("img/02_session3/count_hist.png")
+```
+
+
+
 ### Filtering
 
 ```{r, eval=FALSE}
 # very permissive filtering. Mainly for removing 0 values
 g <- filterGiotto(g,
-                  expression_threshold = 1,
-                  feat_det_in_min_cells = 1,
-                  min_det_feats_per_cell = 5
+    expression_threshold = 1,
+    feat_det_in_min_cells = 1,
+    min_det_feats_per_cell = 5
 )
 ```
 
 ```
 Feature type:  rna 
-Number of cells removed:  0  out of  7129 
+Number of cells removed:  143  out of  7655 
 Number of feats removed:  0  out of  377 
 ```
 
@@ -634,18 +654,25 @@ Number of feats removed:  0  out of  377
 
 ```{r, eval=FALSE}
 g <- normalizeGiotto(g)
+# overwrite original results with those for normalized values
 g <- addStatistics(g)
+```
 
+
+```{r, eval=FALSE}
 spatInSituPlotPoints(g,
-                     polygon_fill = "nr_feats",
-                     polygon_fill_gradient_style = "sequential",
-                     polygon_fill_as_factor = FALSE
+    polygon_fill = "nr_feats",
+    polygon_fill_gradient_style = "sequential",
+    polygon_fill_as_factor = FALSE
 )
+```
 
+
+```{r, eval=FALSE}
 spatInSituPlotPoints(g,
-                     polygon_fill = "total_expr",
-                     polygon_fill_gradient_style = "sequential",
-                     polygon_fill_as_factor = FALSE
+    polygon_fill = "total_expr",
+    polygon_fill_gradient_style = "sequential",
+    polygon_fill_as_factor = FALSE
 )
 ```
 
@@ -660,8 +687,7 @@ When there are a lot of features, we would also select only the interesting high
 Dimensional reduction of expression space to visualize expressional differences between cells and help with clustering.
 
 ```{r, eval=FALSE}
-g <- runPCA(g, 
-            feats_to_use = NULL)
+g <- runPCA(g, feats_to_use = NULL)
 # feats_to_use = NULL since there are no HVFs calculated. Use all genes.
 
 screePlot(g, ncp = 30)
@@ -673,15 +699,18 @@ knitr::include_graphics("img/02_session3/screeplot.png")
 
 ```{r, eval=FALSE}
 g <- runUMAP(g, 
-             dimensions_to_use = seq(15), 
-             n_neighbors = 40 # default
+    dimensions_to_use = seq(15), 
+    n_neighbors = 40 # default
 )
 ```
 
 
 ```{r, eval=FALSE}
 plotPCA(g)
+```
 
+
+```{r, eval=FALSE}
 plotUMAP(g)
 ```
 
@@ -693,22 +722,28 @@ knitr::include_graphics("img/02_session3/dimplots.png")
 
 ```{r, eval=FALSE}
 g <- createNearestNetwork(g,
-                          dimensions_to_use = seq(15), 
-                          k = 40
+    dimensions_to_use = seq(15), 
+    k = 40
 )
 
 # takes roughly 1 min to run
 g <- doLeidenCluster(g)
+```
 
+
+```{r, eval=FALSE}
 plotPCA_3D(g, 
-           cell_color = "leiden_clus", 
-           point_size = 1,
+    cell_color = "leiden_clus", 
+    point_size = 1
 )
+```
 
+
+```{r, eval=FALSE}
 plotUMAP(g, 
-         cell_color = "leiden_clus", 
-         point_size = 0.1, 
-         point_shape = "no_border"
+    cell_color = "leiden_clus", 
+    point_size = 0.1, 
+    point_shape = "no_border"
 )
 ```
 
@@ -718,11 +753,11 @@ knitr::include_graphics("img/02_session3/clustered_dimplots.png")
 
 ```{r, eval=FALSE}
 spatInSituPlotPoints(g,
-                     polygon_fill = "leiden_clus",
-                     polygon_fill_as_factor = TRUE,
-                     polygon_alpha = 1,
-                     show_image = TRUE,
-                     image_name = "HE"
+    polygon_fill = "leiden_clus",
+    polygon_fill_as_factor = TRUE,
+    polygon_alpha = 1,
+    show_image = TRUE,
+    image_name = "HE"
 )
 ```
 
@@ -741,15 +776,15 @@ First a spatial network must be generated so that spatial relationships between 
 
 ```{r, eval=FALSE}
 g <- createSpatialNetwork(g,
-                          method = "Delaunay"
+    method = "Delaunay"
 )
 
 spatPlot2D(g, 
-           point_shape = "no_border", 
-           show_network = TRUE, 
-           point_size = 0.1,
-           point_alpha = 0.5,
-           network_color = "grey"
+    point_shape = "no_border", 
+    show_network = TRUE, 
+    point_size = 0.1,
+    point_alpha = 0.5,
+    network_color = "grey"
 )
 ```
 
@@ -764,9 +799,9 @@ The results are stored as a new spatial enrichment entry called "leiden_niche"
 
 ```{r, eval=FALSE}
 g <- calculateSpatCellMetadataProportions(g,
-                                          spat_network = "Delaunay_network",
-                                          metadata_column = "leiden_clus", 
-                                          name = "leiden_niche"
+    spat_network = "Delaunay_network",
+    metadata_column = "leiden_clus", 
+    name = "leiden_niche"
 )
 ```
 
@@ -776,8 +811,8 @@ g <- calculateSpatCellMetadataProportions(g,
 ```{r, eval=FALSE}
 # retrieve the niche info
 prop_table <- getSpatialEnrichment(g, 
-                                   name = "leiden_niche", 
-                                   output = "data.table")
+    name = "leiden_niche", 
+    output = "data.table")
 
 # convert to matrix
 prop_matrix <- GiottoUtils::dt_to_matrix(prop_table)
@@ -786,34 +821,37 @@ prop_matrix <- GiottoUtils::dt_to_matrix(prop_table)
 set.seed(1234) # make kmeans clustering reproducible
 
 prop_kmeans <- kmeans(
-  x = prop_matrix, 
-  centers = 7, # controls how many clusters will be formed
-  iter.max = 1000,
-  nstart = 100
+    x = prop_matrix, 
+    centers = 7, # controls how many clusters will be formed
+    iter.max = 1000,
+    nstart = 100
 )
 
 prop_kmeansDT = data.table::data.table(
-  cell_ID = names(prop_kmeans$cluster),
-  niche = prop_kmeans$cluster
+    cell_ID = names(prop_kmeans$cluster),
+    niche = prop_kmeans$cluster
 )
 
 # return kmeans clustering on niche to gobject
 g <- addCellMetadata(g, 
-                     new_metadata = prop_kmeansDT, 
-                     by_column = TRUE,
-                     column_cell_ID = "cell_ID"
+    new_metadata = prop_kmeansDT, 
+    by_column = TRUE,
+    column_cell_ID = "cell_ID"
 )
 
 # visualize niches
 spatInSituPlotPoints(g,
-                     show_image = TRUE,
-                     image_name = "HE",
-                     polygon_fill = "niche",
-                     # polygon_fill_code = getColors("Accent", 8),
-                     polygon_alpha = 1,
-                     polygon_fill_as_factor = TRUE
+    show_image = TRUE,
+    image_name = "HE",
+    polygon_fill = "niche",
+    # polygon_fill_code = getColors("Accent", 8),
+    polygon_alpha = 1,
+    polygon_fill_as_factor = TRUE
 )
+```
 
+
+```{r, eval=FALSE}
 # visualize niche makeup
 cellmeta <- pDataDT(g)
 
@@ -832,7 +870,7 @@ ggplot2::ggplot(
 knitr::include_graphics("img/02_session3/niches_spat.png")
 ```
 
-```{r, echo=FALSE, fig.cap="Stacked barplot of leiden annotation composition by niche"}
+```{r, echo=FALSE, fig.cap="Stacked barplot of leiden annotation composition by niche. Coloring is matched to that of the previous spatial plot with leiden clustering annotations"}
 knitr::include_graphics("img/02_session3/niches_bar.png")
 ```
 
@@ -843,16 +881,16 @@ Using a spatial network, determine if there is an enrichment or depletion betwee
 ```{r, eval=FALSE}
 # uses a lot of memory
 leiden_prox <- cellProximityEnrichment(g,
-                                       cluster_column = "leiden_clus",
-                                       spatial_network_name = "Delaunay_network",
-                                       adjust_method = "fdr",
-                                       number_of_simulations = 2000
+    cluster_column = "leiden_clus",
+    spatial_network_name = "Delaunay_network",
+    adjust_method = "fdr",
+    number_of_simulations = 2000
 )
 
 cellProximityBarplot(g,
-                     CPscore = leiden_prox,
-                     min_orig_ints = 5, # minimum original cell-cell interactions
-                     min_sim_ints = 5 # minimum simulated cell-cell interactions
+    CPscore = leiden_prox,
+    min_orig_ints = 5, # minimum original cell-cell interactions
+    min_sim_ints = 5 # minimum simulated cell-cell interactions
 )
 ```
 
@@ -868,25 +906,31 @@ other_cell_color <- rep("grey", 12)
 int_6_8 <- int_2_9 <- other_cell_color
 int_6_8[c(6, 8)] <- c("orange", "cornflowerblue")
 int_2_9[c(2, 9)] <- c("orange", "cornflowerblue")
+```
 
+
+```{r, eval=FALSE}
 spatInSituPlotPoints(g,
-                     polygon_fill = "leiden_clus",
-                     polygon_fill_as_factor = TRUE,
-                     polygon_fill_code = int_6_8,
-                     polygon_line_size = 0.1,
-                     polygon_alpha = 1,
-                     show_image = TRUE,
-                     image_name = "HE"
+    polygon_fill = "leiden_clus",
+    polygon_fill_as_factor = TRUE,
+    polygon_fill_code = int_6_8,
+    polygon_line_size = 0.1,
+    polygon_alpha = 1,
+    show_image = TRUE,
+    image_name = "HE"
 )
+```
 
+
+```{r, eval=FALSE}
 spatInSituPlotPoints(g,
-                     polygon_fill = "leiden_clus",
-                     polygon_fill_as_factor = TRUE,
-                     polygon_fill_code = int_2_9,
-                     polygon_line_size = 0.1,
-                     show_image = TRUE,
-                     polygon_alpha = 1,
-                     image_name = "HE"
+    polygon_fill = "leiden_clus",
+    polygon_fill_as_factor = TRUE,
+    polygon_fill_code = int_2_9,
+    polygon_line_size = 0.1,
+    show_image = TRUE,
+    polygon_alpha = 1,
+    image_name = "HE"
 )
 ```
 
@@ -911,17 +955,13 @@ Here we use `ext()` with the `prefer` arg pointing to the polygon and points dat
 
 ```{r, eval=FALSE}
 pvis <- makePseudoVisium(
-  extent = ext(g,
-               prefer = c("polygon", "points"),
-               all_data = TRUE # this is the default
-  ),
-  micron_size = 1
+    extent = ext(g, prefer = c("polygon", "points"), all_data = TRUE),
+     # all_data = TRUE is the default
+    micron_size = 1
 )
 
 g <- setGiotto(g, pvis)
-
-g <- addSpatialCentroidLocations(g, 
-                                 poly_info = "pseudo_visium")
+g <- addSpatialCentroidLocations(g, poly_info = "pseudo_visium")
 
 plot(pvis)
 ```
@@ -938,16 +978,16 @@ Make "pseudo_visium" the new default spatial unit then proceed with aggregation 
 activeSpatUnit(g) <- "pseudo_visium"
 
 g <- calculateOverlap(g,
-                      spatial_info = "pseudo_visium",
-                      feat_info = "rna"
+    spatial_info = "pseudo_visium",
+    feat_info = "rna"
 )
 
 g <- overlapToMatrix(g)
 
 g <- filterGiotto(g,
-                  expression_threshold = 1,
-                  feat_det_in_min_cells = 1,
-                  min_det_feats_per_cell = 100
+    expression_threshold = 1,
+    feat_det_in_min_cells = 1,
+    min_det_feats_per_cell = 100
 )
 
 g <- normalizeGiotto(g)
@@ -955,11 +995,11 @@ g <- normalizeGiotto(g)
 g <- addStatistics(g)
 
 spatInSituPlotPoints(g,
-                     show_image = TRUE,
-                     image_name = "HE",
-                     polygon_feat_type = "pseudo_visium",
-                     polygon_fill = "total_expr",
-                     polygon_fill_gradient_style = "sequential"
+    show_image = TRUE,
+    image_name = "HE",
+    polygon_feat_type = "pseudo_visium",
+    polygon_fill = "total_expr",
+    polygon_fill_gradient_style = "sequential"
 )
 ```
 
@@ -968,43 +1008,53 @@ knitr::include_graphics("img/02_session3/pvis_total_expr.png")
 ```
 
 ```{r, eval=FALSE}
-g <- runPCA(g, 
-            feats_to_use = NULL)
+g <- runPCA(g, feats_to_use = NULL)
 
 g <- runUMAP(g, 
-             dimensions_to_use = seq(15), 
-             n_neighbors = 15
+    dimensions_to_use = seq(15), 
+    n_neighbors = 15
 )
 
 g <- createNearestNetwork(g,
-                          dimensions_to_use = seq(15), 
-                          k = 15
+    dimensions_to_use = seq(15), 
+    k = 15
 )
 
-g <- doLeidenCluster(g, 
-                     resolution = 1.5)
+g <- doLeidenCluster(g, resolution = 1.5)
+```
 
+
+```{r, eval=FALSE}
 # plots
 plotPCA(g, 
-        cell_color = "leiden_clus", 
-        point_size = 2)
+    cell_color = "leiden_clus", 
+    point_size = 2)
+```
 
+
+```{r, eval=FALSE}
 plotUMAP(g, 
-         cell_color = "leiden_clus", 
-         point_size = 2)
+    cell_color = "leiden_clus", 
+    point_size = 2)
+```
 
+
+```{r, eval=FALSE}
 spatInSituPlotPoints(g,
-                     polygon_feat_type = "pseudo_visium",
-                     polygon_fill = "leiden_clus",
-                     polygon_fill_as_factor = TRUE
+    polygon_feat_type = "pseudo_visium",
+    polygon_fill = "leiden_clus",
+    polygon_fill_as_factor = TRUE
 )
+```
 
+
+```{r, eval=FALSE}
 spatInSituPlotPoints(g,
-                     polygon_feat_type = "pseudo_visium",
-                     polygon_fill = "leiden_clus",
-                     polygon_fill_as_factor = TRUE,
-                     show_image = TRUE,
-                     image_name = "HE"
+    polygon_feat_type = "pseudo_visium",
+    polygon_fill = "leiden_clus",
+    polygon_fill_as_factor = TRUE,
+    show_image = TRUE,
+    image_name = "HE"
 )
 ```
 
