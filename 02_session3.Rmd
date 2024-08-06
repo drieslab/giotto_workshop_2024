@@ -10,25 +10,32 @@ August 6th 2024
 knitr::include_graphics("img/02_session3/Xenium-General-Workflow-1024x709.png")
 ```
 
-This is the 10X Xenium FFPE Human Lung Cancer dataset. Xenium captures individual transcript detections with a spatial resolution of 100s of nanometers, providing an extremely highly resolved subcellular spatial dataset. This particular dataset also showcases their recent multimodal cell segmentation outputs.
+This is the 10X Xenium FFPE Human Lung Cancer dataset. Xenium captures
+individual transcript detections with a spatial resolution of 100s of
+nanometers, providing an extremely highly resolved subcellular spatial
+dataset. This particular dataset also showcases their recent
+multimodal cell segmentation outputs.
 
-The Xenium Human Multi-Tissue and Cancer Panel (377) genes was used. The exported data is from their Xenium Onboard Analysis v2.0.0 pipeline.
+The Xenium Human Multi-Tissue and Cancer Panel (377) genes was used. The
+exported data is from their Xenium Onboard Analysis v2.0.0 pipeline.
 
-The full data for this example can be found here: [here](https://www.10xgenomics.com/datasets/preview-data-ffpe-human-lung-cancer-with-xenium-multimodal-cell-segmentation-1-standard)
+The full data for this example can be found here:
+[here](https://www.10xgenomics.com/datasets/preview-data-ffpe-human-lung-cancer-with-xenium-multimodal-cell-segmentation-1-standard)
 
 The relevant items are:
 
--   Xenium Output Bundle (full)
--   Supplemental: Post-Xenium H&E image (OME-TIFF)
--   Supplemental: H&E Image Alignment File (CSV)
+- Xenium Output Bundle (full)
+- Supplemental: Post-Xenium H&E image (OME-TIFF)
+- Supplemental: H&E Image Alignment File (CSV)
 
 **Additional package requirements**
 
-When working with this data and trying to open the parquet files, you will need *arrow* built with ZTSD support. See the datasets & packages section for specific install instructions.
+When working with this data and trying to open the parquet files, you will need _arrow_ built with ZTSD support. See the datasets & packages section for specific install instructions.
+
 
 ### Output directory structure
 
-```         
+```
 ├── analysis.tar.gz
 ├── analysis.zarr.zip
 ├── analysis_summary.html
@@ -91,7 +98,7 @@ untar(tarfile = file.path(save_dir, "workshop_xenium.zip"),
 
 In order to speed up the steps of the workshop and make it locally runnable, we provide a subset of the full dataset.
 
-```         
+```
 - Full: -16.039, 12342.984, -3511.515, -294.455 (xmin, xmax, ymin, ymax)
 - Mini: 6000,    7000,      -2200,     -1400    (xmin, xmax, ymin, ymax)
 ```
@@ -100,15 +107,16 @@ In order to speed up the steps of the workshop and make it locally runnable, we 
 knitr::include_graphics("img/02_session3/mini_roi.png")
 ```
 
+
 ## Data preparation
 
 ### Image conversion (may change)
 
-First is actually dealing with the image formats. Xenium generates `ome.tif` images which Giotto is currently not fully compatible with. So we convert them to normal `tif` images using `ometif_to_tif()` which works through the python *tifffile* package.
+First is actually dealing with the image formats. Xenium generates `ome.tif` images which Giotto is currently not fully compatible with. So we convert them to normal `tif` images using `ometif_to_tif()` which works through the python _tifffile_ package.
 
 The image files can then be loaded in downstream steps.
 
-*These commented out steps are not needed for today since the mini dataset provides .tif images that have already been spatially aligned and converted. However, the code needed to do this is provided below.*
+_These commented out steps are not needed for today since the mini dataset provides .tif images that have already been spatially aligned and converted. However, the code needed to do this is provided below._
 
 ```{r, eval=FALSE}
 # image_paths <- list.files(
@@ -119,7 +127,7 @@ The image files can then be loaded in downstream steps.
 
 `ometif_to_tif()` `output_dir` can be specified, but by default, it writes to a new subdirectory called `tif_exports` underneath the source image"s directory.
 
-*Keep in mind that where the exported tifs get exported to should be where downstream image reading functions should point to. The code run today is with the filepaths that the mini dataset has.*
+_Keep in mind that where the exported tifs get exported to should be where downstream image reading functions should point to. The code run today is with the filepaths that the mini dataset has._
 
 ```{r, eval=FALSE}
 # lapply(image_paths, function(img) {
@@ -135,11 +143,11 @@ Giotto has flexible methods for working with the Xenium outputs. The `createGiot
 
 The default behavior is to load:
 
--   transcripts information
--   cell and nucleus boundaries
--   feature metadata (gene_panel.json)
+- transcripts information
+- cell and nucleus boundaries
+- feature metadata (gene_panel.json)
 
-For the full dataset (HPC): *time: 1-2min \| memory: 24GBC*
+For the full dataset (HPC): _time: 1-2min | memory: 24GBC_   
 
 ```{r, eval=FALSE}
 ?createGiottoXeniumObject
@@ -156,7 +164,7 @@ There are a lot of other parameters for additional or alternative items you can 
 
 ### Specific filepaths
 
-```         
+```
 expression_path = ,
 cell_metadata_path = ,
 transcript_path = ,
@@ -166,28 +174,28 @@ gene_panel_json_path = ,
 
 The convenience function auto-detects filepaths based on the Xenium directory path and the preferred file formats
 
--   `.parquet` for tabular (vs `.csv`)
--   `.h5` for matrix over other formats when available (vs `.mtx`)
--   `.zarr` is currently not supported.
+- `.parquet` for tabular (vs `.csv`)
+- `.h5` for matrix over other formats when available (vs `.mtx`)
+- `.zarr` is currently not supported.
 
 When you need to use a different file format or something is not in the expected output structure, you can supply a specific filepath to the convenience function using these parameters.
 
+
 ### Quality value
 
-```         
+```
 qv_threshold = 20 # default
 ```
 
-The *Quality Value* is a Phred-based 0-40 value that 10X provides for every detection in their transcripts output. Higher values mean higher confidence in the decoded transcript identity. By default 10X uses a cutoff of QV = 20 for transcripts to use downstream.
+The _Quality Value_ is a Phred-based 0-40 value that 10X provides for every detection in their transcripts output. Higher values mean higher confidence in the decoded transcript identity. By default 10X uses a cutoff of QV = 20 for transcripts to use downstream.
 
-\_\*setting a value other than 20 will make the loaded dataset different from the 10X-provided expression matrix and cell metadata.\_
+_*setting a value other than 20 will make the loaded dataset different from the 10X-provided expression matrix and cell metadata._
 
 <details>
-
 <summary>QV Calculation</summary>
 
-1.  Raw Q-score based on how likely it is that an observed code is to be the codeword that it gets mapped to vs less likely codeword.
-2.  Adjustment of raw Q-score by binning the transcripts by Q-value then adjusting the exact Q per bin based on proportion of **Negative Control Codewords** detected within.
+1. Raw Q-score based on how likely it is that an observed code is to be the codeword that it gets mapped to vs less likely codeword.
+2. Adjustment of raw Q-score by binning the transcripts by Q-value then adjusting the exact Q per bin based on proportion of **Negative Control Codewords** detected within.
 
 [further info](https://www.10xgenomics.com/support/software/xenium-onboard-analysis/latest/algorithms-overview/xoa-algorithms#qvs)
 
@@ -195,7 +203,7 @@ The *Quality Value* is a Phred-based 0-40 value that 10X provides for every dete
 
 ### Transcript type splitting
 
-```         
+```
 feat_type =  c(
 "rna",
 "NegControlProbe",
@@ -211,14 +219,14 @@ c("NegControlCodeword)"
 
 There are 4 types of transcript detections that 10X reports with their v2.0 pipeline:
 
--   **Gene expression** - This is the rna gene detections.
--   **Negative Control Codeword** - (QC) Codewords that do not map to genes, but are in the codebook. Used to determine specificity of decoding algorithm.
--   **Negative Control Probe** - (QC) Probes in panel but target non-biological sequences. Used to determine specificity of assay.
--   **Unassigned Codeword** - (QC) Codewords that should not be used in the current panel.
+- **Gene expression** - This is the rna gene detections.
+- **Negative Control Codeword** - (QC) Codewords that do not map to genes, but are in the codebook. Used to determine specificity of decoding algorithm.
+- **Negative Control Probe** - (QC) Probes in panel but target non-biological sequences. Used to determine specificity of assay.
+- **Unassigned Codeword** - (QC) Codewords that should not be used in the current panel.
 
 With V3 on their Xenium prime outputs, there is additionally:
 
--   **Genomic Control Codeword** (QC) Probes for intergenic genomic DNA instead of transcripts.
+- **Genomic Control Codeword** (QC) Probes for intergenic genomic DNA instead of transcripts.
 
 <hr>
 
@@ -227,6 +235,7 @@ The main thing to watch out for is that the other probe types should be separate
 How to deal with these different types of detections is easily adjustable. With the `feat_type` param you declare which categories/`feat_types` you want to split transcript detections into. Then with `split_keyword`, you provide a list of character vectors containing `grep()` terms to search for.
 
 Note that there are 4 `feat_types` declared in this set of defaults, but 3 items passed to `split_keyword`. Any transcripts not matched by items in `split_keyword`, get categorized as the first provided `feat_type` ("rna").
+
 
 ### Centroids calculation
 
@@ -239,6 +248,7 @@ g <- addSpatialCentroidLocations(g,
 g <- addSpatialCentroidLocations(g, 
                                  poly_info = "nucleus")
 ```
+
 
 ### Simple visualization
 
@@ -266,7 +276,7 @@ x <- importXenium(data_path)
 force(x)
 ```
 
-```         
+```
 Giotto <XeniumReader>
 dir       : data/02_session3/ 
 qv_cutoff : 20 
@@ -304,7 +314,7 @@ force(tx[[1]]$rna)
 rm(tx) # save space
 ```
 
-```         
+```
 An object of class giottoPoints
 feat_type : "rna"
 Feature Information:
@@ -331,8 +341,9 @@ Giotto can spatially aggregate the transcripts information based on a provided s
 
 Some care needs to be taken when loading this information:
 
--   The `feat_type` of the loaded expression information should be matched to the used `feat_type` parameters passed to the convenience function.
--   The `qv_threshold` used must be 20 since the 10X outputs are based on that cutoff.
+- The `feat_type` of the loaded expression information should be matched to the used `feat_type` parameters passed to the convenience function.
+- The `qv_threshold` used must be 20 since the 10X outputs are based on that cutoff.
+
 
 ```{r, eval=FALSE}
 x$filetype$expression <- "mtx" # change to mtx instead of .h5 which is not in the mini dataset
@@ -342,7 +353,7 @@ ex <- x$load_expression()
 featType(ex)
 ```
 
-```         
+```
 [1] "rna"                       "Negative Control Probe"    "Negative Control Codeword"
 [4] "Unassigned Codeword"      
 ```
@@ -353,7 +364,7 @@ The feature types here do not match what we established for the transcripts, so 
 force(g)
 ```
 
-```         
+```
 An object of class giotto 
 >Active spat_unit:  cell 
 >Active feat_type:  rna 
@@ -374,7 +385,7 @@ featType(ex[[3]]) <- c("NegControlCodeword")
 featType(ex[[4]]) <- c("UnassignedCodeword")
 ```
 
-Then we can just append them to the Giotto object.\
+Then we can just append them to the Giotto object.    
 Here we set up a second object since we will be using Giotto's own aggregation method downstream.
 
 ```{r, eval=FALSE}
@@ -391,7 +402,7 @@ g2 <- setGiotto(g2, cx)
 force(g2)
 ```
 
-```         
+```
 An object of class giotto 
 >Active spat_unit:  cell 
 >Active feat_type:  rna 
@@ -443,18 +454,17 @@ rm(g2) # save space
 
 Xenium outputs have several image outputs. For this dataset:
 
--   `morphology.ome.tif` is a z-stacked image of the DAPI staining, with z levels separated as pages within the `ome.tif`. In this dataset, only pages 6 and 7 are really in focus.
--   `morphology_focus` is a folder containing single-channel image(s), but with the original z information collapsed into a single in-focus layer. For all datasets, image 0000 will be DAPI staining, but if you have additional stains, such as the multimodal segmentation, they will also be here. These are the recommended immunofluorescence staining images to import.
--   `Xenium_V1_humanLung_Cancer_FFPE_he_image.ome.tif` is an added on (in this case H&E) image with manual affine registration.
+- `morphology.ome.tif` is a z-stacked image of the DAPI staining, with z levels separated as pages within the `ome.tif`. In this dataset, only pages 6 and 7 are really in focus.
+- `morphology_focus` is a folder containing single-channel image(s), but with the original z information collapsed into a single in-focus layer. For all datasets, image 0000 will be DAPI staining, but if you have additional stains, such as the multimodal segmentation, they will also be here. These are the recommended immunofluorescence staining images to import.
+- `Xenium_V1_humanLung_Cancer_FFPE_he_image.ome.tif` is an added on (in this case H&E) image with manual affine registration. 
 
 ### Image metadata
 
-The `morphology_focus` directory may contain multiple images, but to know more information, we have to check the `ome.tif` `xml` metadata. With a normal dataset, you can use:
+The `morphology_focus` directory may contain multiple images, but to know more information, we have to check the `ome.tif` `xml` metadata. With a normal dataset, you can use: 
 
-```         
+```
 `GiottoClass::ometif_metadata([filepath], node = "Channel")`
 ```
-
 on one of the `morphology_focus` images, but since the mini dataset images are pre-processed, there is only an exported `.xml` to explore. The output of the code chunk below is the same as that from calling `ometif_metadata()` and looking for the `Channel` node.
 
 ```{r, eval=FALSE}
@@ -473,7 +483,7 @@ res <- as.data.frame(res)
 force(res)
 ```
 
-```         
+```
 ID                   Name SamplesPerPixel
 1 Channel:0                   DAPI               1
 2 Channel:1                    18S               1
@@ -491,7 +501,7 @@ knitr::include_graphics("img/02_session3/img_orig_ext.png")
 
 These transforms are normally done automatically when using:
 
-```         
+```
 # convenience function params
 load_images = list(
 img1 = "[img_path1.tif]",
@@ -517,6 +527,7 @@ name = "aligned_img"
 ```
 
 Specifically for the aligned image, there is also `read10xAffineImage()` which has similar parameters, but also asks for the micron scaling factor.
+
 
 But for the mini dataset, the images are pre-processed and can be directly added.
 
@@ -580,9 +591,11 @@ spatInSituPlotPoints(g,
 )
 ```
 
+
 ```{r, echo=FALSE, fig.cap="H&E and Cell polys (top left), DAPI and nuclear polys (top right), 18S and cell polys (lower left), ATP1A1/CD45/E-Cadherin and nuclear polys (lower right)"}
 knitr::include_graphics("img/02_session3/imgplots.png")
 ```
+
 
 ## Spatial aggregation
 
@@ -597,6 +610,7 @@ g <- calculateOverlap(g,
 g <- overlapToMatrix(g)
 ```
 
+
 ## Aggregate analyses workflow
 
 ### Filtering
@@ -610,7 +624,7 @@ g <- filterGiotto(g,
 )
 ```
 
-```         
+```
 Feature type:  rna 
 Number of cells removed:  0  out of  7129 
 Number of feats removed:  0  out of  377 
@@ -664,6 +678,7 @@ g <- runUMAP(g,
 )
 ```
 
+
 ```{r, eval=FALSE}
 plotPCA(g)
 
@@ -715,6 +730,7 @@ spatInSituPlotPoints(g,
 knitr::include_graphics("img/02_session3/leiden_spat.png")
 ```
 
+
 ## Niche clustering
 
 Building on top of these leiden annotations, we can define spatial niche signatures based on which leiden types are often found together.
@@ -743,7 +759,8 @@ knitr::include_graphics("img/02_session3/spatnet.png")
 
 ### Niche calculation
 
-Calculate a proportion table for a cell metadata table for all the spatial neighbors of each cell. This means that with each cell established as the center of its local niche, the enrichment of each leiden cluster label is found for that local niche. The results are stored as a new spatial enrichment entry called "leiden_niche"
+Calculate a proportion table for a cell metadata table for all the spatial neighbors of each cell. This means that with each cell established as the center of its local niche, the enrichment of each leiden cluster label is found for that local niche.
+The results are stored as a new spatial enrichment entry called "leiden_niche"
 
 ```{r, eval=FALSE}
 g <- calculateSpatCellMetadataProportions(g,
@@ -752,6 +769,7 @@ g <- calculateSpatCellMetadataProportions(g,
                                           name = "leiden_niche"
 )
 ```
+
 
 ### k-means clustering based on niche signature
 
@@ -880,15 +898,16 @@ knitr::include_graphics("img/02_session3/cc_enrich1.png")
 knitr::include_graphics("img/02_session3/cc_enrich2.png")
 ```
 
+
 ## Pseudovisium
 
 Another thing we can do is create a "pseudovisium" dataset by tessellating across this dataset using the same layout and resolution as a Visium capture array.
 
 `makePseudoVisium` generates a Visium array of circular polygons across the spatial extent provided.
 
-Here we use `ext()` with the `prefer` arg pointing to the polygon and points data and `all_data = TRUE`, meaning that the combined spatial extent of those two data types will be returned, giving a good measure of where all the data in the object is at the moment.
+Here we use `ext()` with the `prefer` arg pointing to the polygon and points data and `all_data = TRUE`, meaning that the combined spatial extent of those two data types will be returned, giving a good measure of where all the data in the object is at the moment. 
 
-`micron_size = 1` since the Xenium data is already scaled to microns.
+`micron_size = 1` since the Xenium data is already scaled to microns. 
 
 ```{r, eval=FALSE}
 pvis <- makePseudoVisium(
@@ -992,3 +1011,4 @@ spatInSituPlotPoints(g,
 ```{r, echo=FALSE, fig.cap="Leiden clustering in PCA (top left) and UMAP (top right) spaces, and in spatial plot with no image (bottom left), and with image (bottom right)"}
 knitr::include_graphics("img/02_session3/pvis_clustering.png")
 ```
+
