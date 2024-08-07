@@ -20,6 +20,7 @@ Load a Giotto mini Visium object, which will be used for demonstrating interoper
 ```{r, eval = FALSE}
 gobject <- GiottoData::loadGiottoMini("visium")
 ```
+*Load a Giotto mini Visium object, which will be used for demonstrating interoperability.*
 
 ## Seurat
 
@@ -35,10 +36,8 @@ To convert Giotto object to Seurat V5 object, we first load required libraries a
 
 ```{r eval=FALSE}
 library(Seurat)
-library(SeuratData)
 library(ggplot2)
 library(patchwork)
-library(dplyr)
 ```
 
 Now we convert the Giotto object to a Seurat V5 object and create violin and spatial feature plots to visualize the RNA count data.
@@ -49,13 +48,11 @@ gToS <- giottoToSeuratV5(gobject = gobject,
 
 plot1 <- VlnPlot(gToS, 
                  features = "nCount_rna", 
-                 pt.size = 0.1) + 
-    NoLegend()
+                 pt.size = 0.1) + NoLegend()
 
 plot2 <- SpatialFeaturePlot(gToS, 
                             features = "nCount_rna", 
-                            pt.size.factor = 2) + 
-    theme(legend.position = "right")
+                            pt.size.factor = 2) + theme(legend.position = "right")
 
 wrap_plots(plot1, plot2)
 ```
@@ -77,7 +74,9 @@ gToS <- SCTransform(gToS, assay = "rna", verbose = FALSE)
 We perform Principal Component Analysis (PCA), find neighbors, and run UMAP for dimensionality reduction and clustering on the transformed Seurat object:
 
 ```{r, eval=FALSE}
-gToS <- RunPCA(gToS, assay = "SCT")
+gToS <- FindVariableFeatures(gToS, assay = "rna")
+
+gToS <- RunPCA(gToS, assay = "rna")
 
 gToS <- FindNeighbors(gToS, reduction = "pca", dims = 1:30)
 
@@ -139,7 +138,7 @@ spat_cor_netw_DT <- detectSpatialCorFeats(
     subset_feats = ext_spatial_genes)
 
 top10_genes <- showSpatialCorFeats(spat_cor_netw_DT, 
-                                   feats = "Dsp", 
+                                   feats = "'Rims3", 
                                    show_top_feats = 10)
 
 spat_cor_netw_DT <- clusterSpatialCorFeats(spat_cor_netw_DT, 
@@ -172,10 +171,6 @@ To start the conversion of a Giotto mini Visium object to a SpatialExperiment ob
 
 ```{r eval=FALSE}
 library(SpatialExperiment)
-library(ggspavis)
-library(pheatmap)
-library(scater)
-library(scran)
 library(nnSVG)
 ```
 
@@ -217,6 +212,8 @@ spe <- nnSVG(spe, X = X)
 # Show top 10 features
 rowData(spe)[order(rowData(spe)$rank)[1:10], ]$feat_ID
 ```
+
+[nnSvgProcessedspe](https://zenodo.org/records/13255338)
 
 ### Conversion of SpatialExperiment object back to Giotto
 
@@ -279,12 +276,7 @@ First, we specify the directory where the results will be saved. Additionally, w
 
 ```{r eval=FALSE}
 # Specify path to which results may be saved
-results_directory <- "results/03_session4/giotto_anndata_conversion/"
-
-instrs <- showGiottoInstructions(gobject)
-
-mini_gobject <- replaceGiottoInstructions(gobject = gobject,
-                                         instructions = instrs)
+results_directory <- paste0(getwd(),'/giotto_anndata_conversion/')
 ```
 
 #### Create Default kNN Network
@@ -339,6 +331,8 @@ adata$write("results/03_session4/cell_rna_converted_gobject2.h5ad")
 processed_file_path <- "results/03_session4/cell_rna_converted_gobject2.h5ad"
 ```
 
+[ProceesedAnnData](https://zenodo.org/records/13255338)
+
 ### Convert AnnData to Giotto
 
 Finally, we convert the processed AnnData object back into a Giotto object for further analysis using Giotto.
@@ -369,9 +363,6 @@ knitr::include_graphics("img/03_session4/5.png")
 ```{r eval=FALSE}
 mini_gobject <- loadGiottoMini(dataset = "vizgen", 
                                python_path = NULL)
-
-mini_gobject <- replaceGiottoInstructions(gobject = mini_gobject,
-                                          instructions = instrs)
 ```
 
 

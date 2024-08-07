@@ -19,6 +19,8 @@ knitr::include_graphics("img/03_session5/0-ONTraCWorkFlow.png")
 
 [ONTraC GitHub repository](https://github.com/gyuanlab/ONTraC)
 
+[PPT](https://docs.google.com/presentation/d/1XlRIJDLNrSYP4rd5qsF3bvMMlgqN8VUiaZIO8jF0cto/edit?usp=sharing)
+
 ### Introduction to MERFISH
 
 MERFISH is a massively multiplexed single-molecule imaging technology for spatially resolved transcriptomics capable of simultaneously measuring the copy number and spatial distribution of hundreds to tens of thousands of RNA species in individual cells. For further information, please visit the official [website](https://vizgen.com/technology/#merfish).
@@ -33,10 +35,10 @@ knitr::include_graphics("img/03_session5/0-MERFISH.png")
 options(timeout=Inf) # In case of network interrupt
 
 data_path <- file.path("data","03_session5")
-dir.create(data_path)
+dir.create(data_path, recursive=T)
 
 results_folder <- file.path("results","03_session5")
-dir.create(results_folder)
+dir.create(results_folder, recursive=T)
 ```
 
 ### Dataset
@@ -96,16 +98,17 @@ instructions <- createGiottoInstructions(
 )
 
 ## create Giotto object from expression counts. This file contains 61 slices here.
-giotto_all_slices_obj <- anndataToGiotto("data/03_session5/counts.h5ad")
+giotto_all_slices_obj <- anndataToGiotto(file.path(data_path, "counts.h5ad"))
 
 ## load meta_data
-meta_df <- read.csv(file.path(data_path, "cell_labels.csv"), 
+meta_df <- read.csv(file.path(data_path, "cell_labels.csv"),
                     colClasses = "character") # as the cell IDs are 30 digit numbers, set the type as character to avoid the limitation of R in handling larger integers
 colnames(meta_df)[[1]] <- "cell_ID"
 
 ### we use two slices here to speed up
 slice1_cells <- meta_df[meta_df$slice_id == "mouse2_slice229",]$cell_ID
 slice2_cells <- meta_df[meta_df$slice_id == "mouse2_slice300",]$cell_ID
+selected_cells <- c(slice1_cells, slice2_cells)
 
 ## subset giotto obj by cell ID
 giotto_slice1_obj <- subsetGiotto(gobject = giotto_all_slices_obj,
@@ -176,15 +179,15 @@ giotto_obj <- joinGiottoObjects(gobject_list = list(giotto_slice1_obj,
                                join_method = "z_stack")
 
 ## save giotto obj
-saveGiotto(giotto_obj, 
-           foldername = file.path(results_folder, "giotto_merfish_subset"))
+# saveGiotto
+saveGiotto(gobject = giotto_obj, foldername = "gobject", dir=results_folder)
 ```
 
 
 If you facing network issue when downloading the raw dataset. Please download the processing giotto obj from [Zenodo](https://zenodo.org/communities/gw2024/), unzip and move it to `results` folder
 
 ```{r, eval=FALSE}
-giotto_obj <- loadGiotto(path_to_folder = file.path(results_folder, "giotto_merfish_subset"))
+giotto_obj <- loadGiotto(path_to_folder = file.path(results_folder, "gobject"))
 ```
 
 #### Spatial distribution of cell type
@@ -208,7 +211,7 @@ knitr::include_graphics("img/03_session5/1-spatialCellTypeDis.png")
 # annotation directly
 ONTraC_input <- getONTraCv1Input(gobject = giotto_obj,
                                  cell_type = "subclass",
-                                 output_path = data_path,
+                                 output_path = results_folder,
                                  spat_unit = "cell",
                                  feat_type = "rna",
                                  verbose = TRUE)
@@ -259,7 +262,7 @@ source ~/.bash_profile
 
 conda activate ONTraC
 
-ONTraC --meta-input data/03_session5/ONTraC_dataset_input.csv --preprocessing-dir data/03_session5/preprocessing_dir --GNN-dir data/03_session5/GNN_dir --NTScore-dir data/03_session5/NTScore_dir --device cpu --epochs 1000 -s 42 --patience 100 --min-delta 0.001 --min-epochs 50 --lr 0.03 --hidden-feats 4 -k 6 --modularity-loss-weight 1 --regularization-loss-weight 0.1 --purity-loss-weight 100 --beta 0.3 --equal-space 2>&1 | tee data/03_session5/merfish_subset.log
+ONTraC -d results/03_session5/ONTraC_dataset_input.csv --preprocessing-dir results/03_session5/preprocessing_dir --GNN-dir results/03_session5/GNN_dir --NTScore-dir results/03_session5/NTScore_dir --device cuda     --epochs 1000 -s 42 --patience 100 --min-delta 0.001 --min-epochs 50 --lr 0.03     --hidden-feats 4 -k 6 --modularity-loss-weight 0.3 --purity-loss-weight 300 --regularization-loss-weight 0.3 --beta 0.03 2>&1 | tee results/03_session5/merfish_subset.log
 ```
 
 ### Visualization
@@ -274,18 +277,18 @@ giotto_obj <- loadOntraCResults(gobject = giotto_obj,
 The NTScore and binarized niche cluster info were stored in cell metadata
 
 ```{r, eval = FALSE}
-head(pDataDT(giotto_obj, spat_unit = "cell", feat_type = "niche cluster"))
+head(pDataDT(giotto_obj, spat_unit = "cell", feat_type = "rna"))
 ```
 
 ```{r, eval = FALSE}
-#                                                    cell_ID      sample_id        slice_id   class_label subclass    label         list_ID NicheCluster   NTScore
-#                                                     <char>         <char>          <char>        <char>   <char>   <char>          <char>        <int>     <num>
-# 1: mouse2_slice229-100101435705986292663283283043431511315 mouse2_sample6 mouse2_slice229 Glutamatergic    L6 CT  L6_CT_5 mouse2_slice229            2 0.7998957
-# 2: mouse2_slice229-100104370212612969023746137269354247741 mouse2_sample6 mouse2_slice229         Other      OPC      OPC mouse2_slice229            0 0.2003027
-# 3: mouse2_slice229-100128078183217482733448056590230529739 mouse2_sample6 mouse2_slice229 Glutamatergic  L2/3 IT L23_IT_4 mouse2_slice229            0 0.2350597
-# 4: mouse2_slice229-100209662400867003194056898065587980841 mouse2_sample6 mouse2_slice229         Other    Oligo  Oligo_1 mouse2_slice229            1 0.3990417
-# 5: mouse2_slice229-100218038012295593766653119076639444055 mouse2_sample6 mouse2_slice229 Glutamatergic  L2/3 IT L23_IT_4 mouse2_slice229            0 0.2910255
-# 6: mouse2_slice229-100252992997994275968450436343196667192 mouse2_sample6 mouse2_slice229         Other    Astro  Astro_2 mouse2_slice229            2 0.8007477
+#                                                       cell_ID      sample_id        slice_id   class_label subclass    label      list_ID         NicheCluster   NTScore
+#                                                        <char>         <char>          <char>        <char>   <char>   <char>       <char>                <int>     <num>
+#   1:  mouse2_slice229-100101435705986292663283283043431511315	mouse2_sample6	mouse2_slice229	Glutamatergic	L6 CT	L6_CT_5	    mouse2_slice229	          3	0.2002081
+#   2:  mouse2_slice229-100104370212612969023746137269354247741	mouse2_sample6	mouse2_slice229	Other	        OPC     OPC	        mouse2_slice229.          1 0.7999791
+#   3:  mouse2_slice229-100128078183217482733448056590230529739	mouse2_sample6	mouse2_slice229	Glutamatergic	L2/3 IT	L23_IT_4	mouse2_slice229	          1	0.7662198
+#   4:  mouse2_slice229-100209662400867003194056898065587980841	mouse2_sample6	mouse2_slice229	Other	        Oligo	Oligo_1	    mouse2_slice229	          5	0.6010420
+#   5:  mouse2_slice229-100218038012295593766653119076639444055	mouse2_sample6	mouse2_slice229	Glutamatergic	L2/3 IT	L23_IT_4	mouse2_slice229	          1	0.7132024
+#   6:  mouse2_slice229-100252992997994275968450436343196667192	mouse2_sample6	mouse2_slice229	Other	        Astro	Astro_2	    mouse2_slice229	          3	0.1980136
 ```
 
 The probability matrix of each cell assigned to each niche cluster and
