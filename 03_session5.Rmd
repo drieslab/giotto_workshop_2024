@@ -35,10 +35,10 @@ knitr::include_graphics("img/03_session5/0-MERFISH.png")
 options(timeout=Inf) # In case of network interrupt
 
 data_path <- file.path("data","03_session5")
-dir.create(data_path)
+dir.create(data_path, recursive=T)
 
 results_folder <- file.path("results","03_session5")
-dir.create(results_folder)
+dir.create(results_folder, recursive=T)
 ```
 
 ### Dataset
