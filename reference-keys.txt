@@ -516,6 +516,7 @@ visualizing-clustering
 cropping-objects
 contributing-to-giotto
 contribution-guideline
+pull-request-process
 coding-style
 stat-functions
 auxiliary-functions
