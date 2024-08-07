@@ -16,6 +16,12 @@ Visium by 10x Genomics is a spatial gene expression platform that allows for the
 
 Low resolution spatial data typically covers multiple cells making it difficult to delineate the cell contribution to gene expression. Using a process called kriging we can interpolate gene expression and map it to the single cell level from low resolution datasets. Kriging is a spatial interpolation technique that estimates unknown values at specific locations by weighing nearby known values based on distance and spatial trends. It uses a model to account for both the distance between points and the overall pattern in the data to make accurate predictions. By taking discrete measurement spots, such as those used for visium, we can interpolate gene expression to a finer scale using kriging.  
 
+```{r, echo=FALSE, out.width="80%", fig.align="center", fig.cap="2D example of kriging. By Antro5 at English Wikipedia, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=52740780"}
+knitr::include_graphics("img/03_session1/Example_of_kriging_interpolation_in_1D.png")
+```
+
+By Antro5 at English Wikipedia, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=52740780
+
 ### Dataset
 
 For this tutorial we'll be using the mouse brain dataset described in section 6. Visium datasets require a high resolution H&E or IF image to align spots to. Using these images we can identify individual nuclei and cells to be used for kriging. Identifying nuclei is outside the scope of the current tutorial but is required to perform kriging.
