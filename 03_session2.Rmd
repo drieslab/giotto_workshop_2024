@@ -113,6 +113,10 @@ Luckily, the above operations are all affine transformation, and they can be con
 knitr::include_graphics("img/03_session2/matrix.png")
 ```
 
+```{r, echo=FALSE}
+knitr::include_graphics("img/03_session2/wiki_affine.png")
+```
+
 To perform the linear transform, the xy coordinates just need to be matrix multiplied by the 2x2 affine matrix. The resulting values should then be added to the translate values.
 
 ```{r, echo=FALSE}
