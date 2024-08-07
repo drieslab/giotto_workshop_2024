@@ -520,4 +520,5 @@ coding-style
 stat-functions
 auxiliary-functions
 package-imports
+getters-and-setters
 python-code
