@@ -492,15 +492,15 @@ These transforms are normally done automatically when using:
 ```
 # convenience function params
 load_images = list(
-img1 = "[img_path1.tif]",
-img2 = "[img_path2.tif]",
-img3 = "..."
+    img1 = "[img_path1.tif]",
+    img2 = "[img_path2.tif]",
+    img3 = "..."
 ),
 load_aligned_images = list(
-aligned_img = c(
-"[path to image.tif]",
-"[path to magealignment.csv]"
-)
+    aligned_img = c(
+        "[path to image.tif]",
+        "[path to magealignment.csv]"
+    )
 )
 
 # importer params
@@ -508,9 +508,9 @@ x$load_image(path = "[img_path1.tif]", name = "img1")
 x$load_image(path = "[img_path2.tif]", name = "img2")
 ...
 x$load_aligned_image(
-path = "[path to image.tif]",
-imagealignment_path = "[path to magealignment.csv]",
-name = "aligned_img"
+    path = "[path to image.tif]",
+    imagealignment_path = "[path to magealignment.csv]",
+    name = "aligned_img"
 )
 ```
 
@@ -947,7 +947,7 @@ knitr::include_graphics("img/02_session3/cc_enrich2.png")
 
 Another thing we can do is create a "pseudovisium" dataset by tessellating across this dataset using the same layout and resolution as a Visium capture array.
 
-`makePseudoVisium` generates a Visium array of circular polygons across the spatial extent provided.
+`makePseudoVisium()` generates a Visium array of circular polygons across the spatial extent provided.
 
 Here we use `ext()` with the `prefer` arg pointing to the polygon and points data and `all_data = TRUE`, meaning that the combined spatial extent of those two data types will be returned, giving a good measure of where all the data in the object is at the moment. 
 
