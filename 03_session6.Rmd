@@ -4,18 +4,17 @@ Jeff Sheridan
 
 August 7th 2024
 
-
-## Kriging
-
-Low resolution spatial data typically covers multiple cells making it difficult to delineate the cell contribution to gene expression. Using a process called kriging we can interpolate gene expression at the single cell levels from low resolution datasets. Kriging is a spatial interpolation technique that estimates unknown values at specific locations by weighing nearby known values based on distance and spatial trends. It uses a model to account for both the distance between points and the overall pattern in the data to make accurate predictions. By taking discrete measurement spots, such as those used for visium, we can interpolate gene expression to a finer scale using kriging.  
-
-### Visium technology
+## Visium technology
 
 ```{r, echo=FALSE, out.width="80%", fig.align="center", fig.cap="Overview of Visium. Source: 10X Genomics."}
 knitr::include_graphics("img/03_session1/visium_overview.png")
 ```
 
 Visium by 10x Genomics is a spatial gene expression platform that allows for the mapping of gene expression to high-resolution histology through RNA sequencing The process involves placing a tissue section on a specially prepared slide with an array of barcoded spots, which are 55 µm in diameter with a spot to spot distance of 100 µm. Each spot contains unique barcodes that capture the mRNA from the tissue section, preserving the spatial information. After the tissue is imaged and RNA is captured, the mRNA is sequenced, and the data is mapped back to the tissue"s spatial coordinates. This technology is particularly useful in understanding complex tissue environments, such as tumors, by providing insights into how gene expression varies across different regions.
+
+## Gene expression interpolation through kriging
+
+Low resolution spatial data typically covers multiple cells making it difficult to delineate the cell contribution to gene expression. Using a process called kriging we can interpolate gene expression and map it to the single cell level from low resolution datasets. Kriging is a spatial interpolation technique that estimates unknown values at specific locations by weighing nearby known values based on distance and spatial trends. It uses a model to account for both the distance between points and the overall pattern in the data to make accurate predictions. By taking discrete measurement spots, such as those used for visium, we can interpolate gene expression to a finer scale using kriging.  
 
 ### Dataset
 
@@ -31,7 +30,7 @@ We first need to import a dataset that we want to perform kriging on.
 
 ```{r, eval=FALSE}
 data_directory <- "data/03_session6"
-dir.create(data_directory)
+dir.create(data_directory, showWarnings = F)
 
 download.file(url = "https://cf.10xgenomics.com/samples/spatial-exp/1.1.0/V1_Adult_Mouse_Brain/V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz",
               destfile = file.path(data_directory, "V1_Adult_Mouse_Brain_raw_feature_bc_matrix.tar.gz"))
@@ -113,7 +112,6 @@ v_brain <- calculateHVF(gobject = v_brain,
 
 fm <- fDataDT(v_brain)
 hv_feats <- fm[hvf == "yes" & perc_cells > 3 & mean_expr_det > 0.4]$feat_ID
-length(hv_feats)
 
 # Dimension Reductions
 v_brain <- runPCA(gobject = v_brain,
@@ -162,7 +160,7 @@ knitr::include_graphics("img/03_session6/03_ses6_1_vis_spat.png")
 
 ### Identifying spatially organized features
 
-We need to identify genes to be used for interpolation. This works best with genes that are spatially distinct. To identify these genes we'll use binSpect(). For this tutorial we'll only use the top 15 spatially distinct genes. The more genes used for interpolation the longer the analysis will take. When running this for your own datasets you should use more genes. We are only using 15 here to minimize analysis time.
+We need to identify genes to be used for interpolation. This works best with genes that are spatially distinct. To identify these genes we'll use `binSpect()`. For this tutorial we'll only use the top 15 spatially distinct genes. The more genes used for interpolation the longer the analysis will take. When running this for your own datasets you should use more genes. We are only using 15 here to minimize analysis time.
 
 ```{r, eval=FALSE}
 # Spatially Variable Features
@@ -177,6 +175,37 @@ ranktest <- binSpect(v_brain,
 # Getting the top 15 spatially organized genes
 ext_spatial_features <- ranktest[1:15,]$feats
 ```
+## Performing kriging
+
+### Interpolating features
+
+Now we can perform gene expression interpolation. This involves creating a raster image for the gene expression of each of the selected genes. The steps from here can be time consuming and require large amounts of memory. 
+
+We will only be analyzing 15 genes to show the process of expression interpolation. For clustering and other analyses more genes are required. 
+
+```{r, eval=FALSE}
+future::plan(future::multisession()) # comment out for single threading
+
+v_brain <- interpolateFeature(v_brain,
+                                      spat_unit = "cell",
+                                      feat_type = "rna",
+                                      ext = ext(v_brain),
+                                      feats = ext_spatial_features,
+                                      overwrite = TRUE)
+
+print(v_brain)
+```
+
+```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Giotto object after to interpolating features. Addition of images for each interoplated feature (left) and an example of rasterized gene expression image (right)."}
+knitr::include_graphics("img/03_session6/03_ses6_gobject_sub_interpolate.png")
+```
+
+For each gene that we interpolate a raster image is exported based on the gene expression. Shown below is an example of an output for the gene Pantr1.
+
+```{r, echo=FALSE, out.width="50%", fig.align="center", fig.cap="Raster of gene expression interpolation for Pantr1"}
+knitr::include_graphics("img/03_session6/Pantr1_raster.png")
+```
+
 
 ## Adding cell polygons to Giotto object
 
@@ -256,36 +285,6 @@ print(poly_info)
 knitr::include_graphics("img/03_session6/stardist_poly_info.png")
 ```
 
-## Performing kriging
-
-### Interpolating features
-
-Now we can perform the first step in interpolating expression data onto cell polygons. This involves creating a raster image for the gene expression of each of the selected genes. The steps from here can be time consuming and require large amounts of memory. 
-
-We will only be analyzing 15 genes to show the process of expression interpolation. For clustering and other analyses more genes are required. 
-
-```{r, eval=FALSE}
-future::plan(future::multisession()) # comment out for single threading
-
-subcell_v_brain <- interpolateFeature(v_brain,
-                                      spat_unit = "cell",
-                                      feat_type = "rna",
-                                      ext = ext(v_brain),
-                                      feats = ext_spatial_features,
-                                      overwrite = TRUE)
-
-print(subcell_v_brain)
-```
-
-```{r, echo=FALSE, out.width="100%", fig.align="center", fig.cap="Giotto object after to interpolating features. Addition of images for each interoplated feature (left) and an example of rasterized gene expression image (right)."}
-knitr::include_graphics("img/03_session6/03_ses6_gobject_sub_interpolate.png")
-```
-
-For each gene that we interpolate a raster image is exported based on the gene expression. Shown below is an example of an output for the gene Pantr1.
-
-```{r, echo=FALSE, out.width="50%", fig.align="center", fig.cap="Raster of gene expression interpolation for Pantr1"}
-knitr::include_graphics("img/03_session6/Pantr1_raster.png")
-```
 
 ### Expression overlap
 
@@ -294,12 +293,12 @@ The raster we created above gives the gene expression in a graphical form. We ne
 This step also takes more time the more genes that are provided. For large datasets please allow up to multiple hours for these steps to run.
 
 ```{r, eval=FALSE}
-subcell_v_brain <- calculateOverlapPolygonImages(gobject = subcell_v_brain,
+v_brain <- calculateOverlapPolygonImages(gobject = v_brain,
                                                  name_overlap = "rna",
                                                  spatial_info = "stardist_cell",
                                                  image_names = ext_spatial_features)
 
-subcell_v_brain <- Giotto::overlapToMatrix(x = subcell_v_brain,
+v_brain <- Giotto::overlapToMatrix(x = v_brain,
                                            poly_info = "stardist_cell",
                                            feat_info = "rna",
                                            aggr_function = "sum",
@@ -317,7 +316,7 @@ knitr::include_graphics("img/03_session6/03_ses6_interpolate_gene_express.png")
 For better results more genes are required. The above data used only 15 genes. We will now read in a dataset that has 1500 interpolated genes an use this for the remained of the tutorial. If you haven't downloaded this dataset please download it [here](https://zenodo.org/records/13144556).
 
 ```{r, eval=FALSE}
-subcell_v_brain <- loadGiotto(file.path(data_directory, "subcellular_gobject"))
+v_brain <- loadGiotto(file.path(data_directory, "subcellular_gobject"))
 ```
 
 ## Analyzing interpolated features
@@ -327,14 +326,14 @@ subcell_v_brain <- loadGiotto(file.path(data_directory, "subcellular_gobject"))
 Now that we have a valid spat unit and gene expression data for each of the provided genes we can now perform the same analyses we used for the regular visium data. Please note that due to the differences in cell number that the values used for the current analysis aren't identical to the visium analysis. 
 
 ```{r, eval=FALSE}
-subcell_v_brain <- filterGiotto(gobject = subcell_v_brain,
+v_brain <- filterGiotto(gobject = v_brain,
                                 spat_unit = "stardist_cell",
                                 expression_values = "raw",
                                 expression_threshold = 1,
                                 feat_det_in_min_cells = 0,
                                 min_det_feats_per_cell = 1)
 
-subcell_v_brain <- normalizeGiotto(gobject = subcell_v_brain,
+v_brain <- normalizeGiotto(gobject = v_brain,
                                    spat_unit = "stardist_cell",
                                    scalefactor = 6000,
                                    verbose = TRUE)
@@ -345,7 +344,7 @@ subcell_v_brain <- normalizeGiotto(gobject = subcell_v_brain,
 Since we have the gene expression information for both the visium and the interpolated gene expression we can visualize gene expression for both from the same Giotto object. We will look at the expression for two genes "Sparc" and "Pantr1" for both the visium and interpolated data.
 
 ```{r, eval=FALSE}
-spatFeatPlot2D(subcell_v_brain,
+spatFeatPlot2D(v_brain,
                spat_unit = "cell",
                gradient_style = "sequential",
                cell_color_gradient = "Geyser",
@@ -355,7 +354,7 @@ spatFeatPlot2D(subcell_v_brain,
                show_image = TRUE,
                save_param = list(save_name = "03_ses6_sparc_vis"))
 
-spatFeatPlot2D(subcell_v_brain,
+spatFeatPlot2D(v_brain,
                spat_unit = "stardist_cell",
                gradient_style = "sequential",
                cell_color_gradient = "Geyser",
@@ -365,7 +364,7 @@ spatFeatPlot2D(subcell_v_brain,
                show_image = TRUE,
                save_param = list(save_name = "03_ses6_sparc"))
 
-spatFeatPlot2D(subcell_v_brain,
+spatFeatPlot2D(v_brain,
                spat_unit = "cell",
                gradient_style = "sequential",
                feats = "Pantr1",
@@ -375,7 +374,7 @@ spatFeatPlot2D(subcell_v_brain,
                show_image = TRUE,
                save_param = list(save_name = "03_ses6_pantr1_vis"))
 
-spatFeatPlot2D(subcell_v_brain,
+spatFeatPlot2D(v_brain,
                spat_unit = "stardist_cell",
                gradient_style = "sequential",
                cell_color_gradient = "Geyser",
@@ -396,7 +395,7 @@ knitr::include_graphics("img/03_session6/03_ses6_gene_expression.png")
 ### Run PCA
 
 ```{r, eval=FALSE}
-subcell_v_brain <- runPCA(gobject = subcell_v_brain,
+v_brain <- runPCA(gobject = v_brain,
                           spat_unit = "stardist_cell",
                           expression_values = "normalized",
                           feats_to_use = NULL)
@@ -406,7 +405,7 @@ subcell_v_brain <- runPCA(gobject = subcell_v_brain,
 
 ```{r, eval=FALSE}
 # UMAP
-subcell_v_brain <- runUMAP(subcell_v_brain,
+v_brain <- runUMAP(v_brain,
                            spat_unit = "stardist_cell",
                            dimensions_to_use = 1:15,
                            n_neighbors = 1000,
@@ -414,20 +413,20 @@ subcell_v_brain <- runUMAP(subcell_v_brain,
                            spread = 1)
 
 # NN Network
-subcell_v_brain <- createNearestNetwork(gobject = subcell_v_brain,
+v_brain <- createNearestNetwork(gobject = v_brain,
                                         spat_unit = "stardist_cell",
                                         dimensions_to_use = 1:10,
                                         feats_to_use = hv_feats,
                                         expression_values = "normalized",
                                         k = 70)
 
-subcell_v_brain <- doLeidenCluster(gobject = subcell_v_brain,
+v_brain <- doLeidenCluster(gobject = v_brain,
                                    spat_unit = "stardist_cell",
                                    resolution = 0.15,
                                    n_iterations = 100,
                                    partition_type = "RBConfigurationVertexPartition")
 
-plotUMAP(subcell_v_brain, 
+plotUMAP(v_brain, 
          spat_unit = "stardist_cell", 
          cell_color = "leiden_clus")
 ```
@@ -442,7 +441,7 @@ knitr::include_graphics("img/03_session6/03_ses6_subcell_umap.png")
 Visualizing the clustering for both the visium dataset and the interpolated dataset we can get similar clusters. However, with the interpolated dataset we are able to see finer detail for each cluster.
 
 ```{r, eval=FALSE}
-spatPlot2D(gobject = subcell_v_brain,
+spatPlot2D(gobject = v_brain,
            spat_unit = "cell",
            cell_color = "leiden_clus",
            show_image = TRUE,
@@ -452,7 +451,7 @@ spatPlot2D(gobject = subcell_v_brain,
            save_plot = FALSE,
            show_legend = TRUE)
 
-spatPlot2D(gobject = subcell_v_brain,
+spatPlot2D(gobject = v_brain,
            spat_unit = "stardist_cell",
            cell_color = "leiden_clus",
            show_image = TRUE,
@@ -473,7 +472,7 @@ knitr::include_graphics("img/03_session6/03_ses6_spat_plots.png")
 We are also able to crop both spat units simultaneously to zoom in on specific regions of the tissue such as seen below.
 
 ```{r, eval=FALSE}
-subcell_v_brain_crop <- subsetGiottoLocs(gobject = subcell_v_brain,
+v_brain_crop <- subsetGiottoLocs(gobject = v_brain,
                                          spat_unit = ":all:",
                                          x_min = 4000,
                                          x_max = 7000,
@@ -482,7 +481,7 @@ subcell_v_brain_crop <- subsetGiottoLocs(gobject = subcell_v_brain,
                                          z_max = NULL,
                                          z_min = NULL)
 
-spatPlot2D(gobject = subcell_v_brain_crop,
+spatPlot2D(gobject = v_brain_crop,
            spat_unit = "cell",
            cell_color = "leiden_clus",
            show_image = TRUE,
@@ -493,7 +492,7 @@ spatPlot2D(gobject = subcell_v_brain_crop,
            save_plot = TRUE,
            save_param = list(save_name = "03_ses6_vis_spat_crop"))
 
-spatPlot2D(gobject = subcell_v_brain_crop,
+spatPlot2D(gobject = v_brain_crop,
            spat_unit = "stardist_cell",
            cell_color = "leiden_clus",
            show_image = TRUE,

@@ -6,7 +6,7 @@ August 7th 2024
 
 ## Objective
 
-Giotto enables the grouping of multiple objects into a single object for combined analysis. Datasets can be spatially distributed across the x, y, or z axes, allowing for the creation of 3D datasets using the z-plane or the analysis of grouped datasets, such as multiple replicates or similar samples. While it's possible to integrate multiple datasets, batch effects from samples can hinder effective integration. In such cases, more sophisticated methods may be needed to successfully integrate and cluster samples as a unified dataset. One example of an advanced integration technique is [Harmony](https://www.nature.com/articles/s41592-019-0619-0), which will be discussed in more detail later in this tutorial. This tutorial will demonstrate the integration of two Visium datasets, examining the results before and after Harmony integration.
+Giotto enables the grouping of multiple objects into a single object for combined analysis. Grouping objects can be used to ensure normalization is consistent across datasets. Datasets can be spatially distributed across the x, y, or z axes, allowing for the creation of 3D datasets using the z-plane or the analysis of grouped datasets, such as multiple replicates or similar samples. While it's possible to integrate multiple datasets, batch effects from samples can hinder effective integration. In such cases, more sophisticated methods may be needed to successfully integrate and cluster samples as a unified dataset. One example of an advanced integration technique is [Harmony](https://www.nature.com/articles/s41592-019-0619-0), which will be discussed in more detail later in this tutorial. This tutorial will demonstrate the integration of two Visium datasets, examining the results before and after Harmony integration.
 
 ## Background
 
@@ -205,7 +205,7 @@ spatPlot2D(gobject = combined_pros,
 knitr::include_graphics("img/03_session1/03_ses1_combined_tissue.png")
 ```
 
-### Vizualizing on separate plots
+### Visualizing on separate plots
 
 If we want to visualize the datasets in separate plots we can supply the "group_by" variable. Below we group the data by "list_ID", which corresponds to each dataset. We can specify the number of columns through the "cow_n_col" variable.
 
@@ -238,7 +238,7 @@ np_cells <- combined_cells[list_ID == "NP"]
 np_split <- subsetGiotto(combined_pros, 
                          cell_ids = np_cells$cell_ID,
                          poly_info = np_cells$cell_ID,
-                         spat_unit = "cell")
+                         spat_unit = ":all:")
 
 spatPlot2D(gobject = np_split, 
            cell_color = "in_tissue", 
@@ -372,16 +372,23 @@ We can use Harmony to integrate multiple datasets, grouping equivelent cell type
 
 Before running Harmony we need to run the PCA function or set "do_pca" to TRUE. We ran this above so do not need to perform this step. Harmony will default to attempting 10 rounds of integration. Not all samples will need the full 10 and will finish accordingly. The following dataset should converge after 5 iterations.
 
+Harmony variables"\
+*theta*: A parameter that controls the diversity within clusters, with higher values leading to more diverse clusters and a value of zero not encouraging any diversity.\
+*sigma*: Determines the width of soft k-means clusters, with larger values allowing cells to belong to more clusters and smaller values making the clustering approach more rigid.\
+*lambda*: A penalty parameter for ridge regression that helps prevent overcorrection, where larger values offer more protection, and it can be automatically estimated if set to NULL.\
+*nclust*: Specifies the number of clusters in the model, with a value of 1 being equivalent to simple linear regression.
+
 ```{r, eval=FALSE}
 library(harmony)
 
 ## run harmony integration
 combined_pros <- runGiottoHarmony(combined_pros, 
                                   vars_use = "list_ID",
+                                  do_pca = FALSE,
                                   sigma = 0.1,
                                   theta = 2,
                                   lambda = 1,
-                                  nclust = NULL )
+                                  nclust = NULL)
 ```
 
 After running the Harmony function successfully we can see that the outputted gobject has a new dim reduction names "harmony". We can use this for all subsequent spatial steps.
