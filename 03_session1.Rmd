@@ -6,7 +6,7 @@ August 7th 2024
 
 ## Objective
 
-Giotto enables the grouping of multiple objects into a single object for combined analysis. Grouping objects can be used to ensure normalization is consistent across datasets. Datasets can be spatially distributed across the x, y, or z axes, allowing for the creation of 3D datasets using the z-plane or the analysis of grouped datasets, such as multiple replicates or similar samples. While it's possible to integrate multiple datasets, batch effects from samples can hinder effective integration. In such cases, more sophisticated methods may be needed to successfully integrate and cluster samples as a unified dataset. One example of an advanced integration technique is [Harmony](https://www.nature.com/articles/s41592-019-0619-0), which will be discussed in more detail later in this tutorial. This tutorial will demonstrate the integration of two Visium datasets, examining the results before and after Harmony integration.
+Giotto enables the grouping of multiple objects into a single object for combined analysis. Grouping objects can be used to ensure normalization is consistent across datasets allowing us to compare datasets directly. Datasets can be spatially distributed across the x, y, or z axes, allowing for the creation of 3D datasets using the z-plane or the analysis of grouped datasets, such as multiple replicates or similar samples. While it's possible to integrate multiple datasets, batch effects and differences between samples can hinder effective integration. In such cases, more sophisticated methods may be needed to successfully integrate and cluster samples as a unified dataset. One example of an advanced integration technique is [Harmony](https://www.nature.com/articles/s41592-019-0619-0), which will be discussed in more detail later in this tutorial. This tutorial will demonstrate the integration of two Visium datasets, examining the results before and after Harmony integration.
 
 ## Background
 
@@ -257,7 +257,7 @@ knitr::include_graphics("img/03_session1/03_ses1_split_object.png")
 
 ### Normalization and adding statistics
 
-Now that the objects have been joined we can analyze the object as if it was a single object. This means all of the analyses will be performed in parallel. Therefore, all of the filtering and normalization will be identical between datasets.
+Now that the objects have been joined we can analyze the object as if it was a single object. This means all of the analyses will be performed in parallel. Therefore, all of the filtering and normalization will be identical between datasets, retaining the ability for direct comparisons between datasets.
 
 ```{r, eval=FALSE}
 # subset on in-tissue spots
@@ -368,7 +368,7 @@ knitr::include_graphics("img/03_session1/ses3_1_tissue_contribution.png")
 knitr::include_graphics("img/03_session1/harmony_overview.png")
 ```
 
-We can use Harmony to integrate multiple datasets, grouping equivelent cell types between samples. Harmony is an algorithm that iteratively adjusts cell coordinates in a reduced-dimensional space to correct for dataset-specific effects. It uses fuzzy clustering to assign cells to multiple clusters, calculates dataset-specific correction factors, and applies these corrections to each cell, repeating the process until the influence of the dataset diminishes. 
+We can use Harmony to integrate multiple datasets, grouping equivelent cell types between samples. Harmony is an algorithm that iteratively adjusts cell coordinates in a reduced-dimensional space to correct for dataset-specific effects. It uses fuzzy clustering to assign cells to multiple clusters, calculates dataset-specific correction factors, and applies these corrections to each cell, repeating the process until the influence of the dataset diminishes. Performing Harmony only affects the PCA space and does not alter gene expression.
 
 Before running Harmony we need to run the PCA function or set "do_pca" to TRUE. We ran this above so do not need to perform this step. Harmony will default to attempting 10 rounds of integration. Not all samples will need the full 10 and will finish accordingly. The following dataset should converge after 5 iterations.
 
@@ -376,7 +376,7 @@ Harmony variables"\
 *theta*: A parameter that controls the diversity within clusters, with higher values leading to more diverse clusters and a value of zero not encouraging any diversity.\
 *sigma*: Determines the width of soft k-means clusters, with larger values allowing cells to belong to more clusters and smaller values making the clustering approach more rigid.\
 *lambda*: A penalty parameter for ridge regression that helps prevent overcorrection, where larger values offer more protection, and it can be automatically estimated if set to NULL.\
-*nclust*: Specifies the number of clusters in the model, with a value of 1 being equivalent to simple linear regression.
+*nclust*: Specifies the number of clusters in the model.
 
 ```{r, eval=FALSE}
 library(harmony)
