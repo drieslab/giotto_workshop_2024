@@ -556,6 +556,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="18" data-path="contributing-to-giotto.html"><a href="contributing-to-giotto.html"><i class="fa fa-check"></i><b>18</b> Contributing to Giotto</a>
 <ul>
 <li class="chapter" data-level="18.1" data-path="contributing-to-giotto.html"><a href="contributing-to-giotto.html#contribution-guideline"><i class="fa fa-check"></i><b>18.1</b> Contribution guideline</a></li>
+<li class="chapter" data-level="18.2" data-path="contributing-to-giotto.html"><a href="contributing-to-giotto.html#coding-style"><i class="fa fa-check"></i><b>18.2</b> Coding Style</a></li>
+<li class="chapter" data-level="18.3" data-path="contributing-to-giotto.html"><a href="contributing-to-giotto.html#stat-functions"><i class="fa fa-check"></i><b>18.3</b> Stat functions</a></li>
+<li class="chapter" data-level="18.4" data-path="contributing-to-giotto.html"><a href="contributing-to-giotto.html#auxiliary-functions"><i class="fa fa-check"></i><b>18.4</b> Auxiliary functions</a></li>
+<li class="chapter" data-level="18.5" data-path="contributing-to-giotto.html"><a href="contributing-to-giotto.html#package-imports"><i class="fa fa-check"></i><b>18.5</b> Package Imports</a></li>
+<li class="chapter" data-level="18.6" data-path="contributing-to-giotto.html"><a href="contributing-to-giotto.html#python-code"><i class="fa fa-check"></i><b>18.6</b> Python code</a></li>
 </ul></li>
 </ul>
 
@@ -578,10 +583,143 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">18</span> Contributing to Giotto<a href="contributing-to-giotto.html#contributing-to-giotto" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Jiaji George Chen</p>
 <p>August 7th 2024</p>
-<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="contributing-to-giotto.html#cb493-1" tabindex="-1"></a>save_dir <span class="ot">&lt;-</span> <span class="st">&quot;~/Documents/GitHub/giotto_workshop_2024/img/03_session7&quot;</span></span></code></pre></div>
 <div id="contribution-guideline" class="section level2 hasAnchor" number="18.1">
 <h2><span class="header-section-number">18.1</span> Contribution guideline<a href="contributing-to-giotto.html#contribution-guideline" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><a href="https://drieslab.github.io/Giotto_website/CONTRIBUTING.html" class="uri">https://drieslab.github.io/Giotto_website/CONTRIBUTING.html</a></p>
+<p>To be updated…
+<a href="https://drieslab.github.io/Giotto_website/CONTRIBUTING.html" class="uri">https://drieslab.github.io/Giotto_website/CONTRIBUTING.html</a></p>
+<p>We welcome contributions or suggestions from other developers. Please
+contact us if you have questions or would like to discuss an addition or
+major modifications to the Giotto main code. The source code for Giotto
+Suite may be found on our GitHub repository.</p>
+</div>
+<div id="coding-style" class="section level2 hasAnchor" number="18.2">
+<h2><span class="header-section-number">18.2</span> Coding Style<a href="contributing-to-giotto.html#coding-style" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Following a particular programming style will help programmers read and
+understand source code conforming to the style, and help to avoid
+introducing errors. Here we present a small list of guidelines on what
+is considered a good practice when writing R codes in Giotto package.
+Most of them are adapted from Bioconductor - coding style or Google’s R
+Style Guide. These guidelines are preferences and strongly encouraged!</p>
+<ul>
+<li><p><strong>Naming</strong></p>
+<ul>
+<li><p>Use <code>camelCase</code> for Giotto user-facing exported function names.
+(<code>functionName()</code>)</p></li>
+<li><p>Use <code>snake_case</code> for non-user-facing exported functions, which
+are essentially any functions not directly related to commonly
+used data processing, analysis, and visualization.
+(<code>function_name()</code>)</p></li>
+<li><p>Use <code>.</code> prefix and snake_case for internal non-exported
+functions. (<code>.function_name()</code>)</p></li>
+<li><p>Use <code>snake_case</code> for parameter names.</p></li>
+<li><p>Do not use <code>.</code> as a separator in function naming. (in the S3
+class system, some(x) where x is class A will dispatch to
+some.A)</p></li>
+</ul></li>
+<li><p><strong>Use of <code>` `</code> (space) characters</strong></p>
+<ul>
+<li>Do not place a space before a comma, but always place one after
+a comma. This: a, b, c. Always use space around <code>=</code> when using
+named arguments to functions. This: somefunc(a = 1, b = 2).</li>
+</ul></li>
+<li><p><strong>Use of symbols</strong> Do not use any non-UTF-8 characters unless
+provided as the escape code. For example: <code>\u00F6</code> for <code>ö</code> Beyond
+these guidelines, styler should be used in order to maintain code
+uniformity.</p></li>
+</ul>
+</div>
+<div id="stat-functions" class="section level2 hasAnchor" number="18.3">
+<h2><span class="header-section-number">18.3</span> Stat functions<a href="contributing-to-giotto.html#stat-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Most Giotto commands can accept several matrix classes (DelayedMatrix,
+SparseM, Matrix or base matrix). To facilitate this we provide flexible
+wrappers that work on any type of matrix class.</p>
+<p>mean_flex: analogous to mean() rowSums_flex: analogous to rowSums()
+rowMeans_flex: analogous to rowMeans() colSums_flex: analogous to
+colSums() colMeans_flex: analogous to colMeans() t_flex: analogous to
+t() cor_flex: analogous to cor()</p>
+</div>
+<div id="auxiliary-functions" class="section level2 hasAnchor" number="18.4">
+<h2><span class="header-section-number">18.4</span> Auxiliary functions<a href="contributing-to-giotto.html#auxiliary-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Giotto has a number of auxiliary or convenience functions that might
+help you to adapt your code or write new code for Giotto. We encourage
+you to use these small functions to maintain uniformity throughout the
+code.</p>
+<p>lapply_flex: analogous to lapply() and works for both windows and unix
+systems all_plots_save_function: compatible with Giotto instructions and
+helps to automatically save generated plots plot_output_handler: further
+wraps all_plots_save_function and includes handling for return_plot and
+show_plot and Giotto instructions checking determine_cores: to determine
+the number of cores to use if a user does not set this explicitly
+get_os: to identify the operating system update_giotto_params: will
+catch and store the parameters for each used command on a giotto object
+wrap_txt and wrap_msg: text and message formatting functions vmsg:
+framework for Giotto’s verbosity-flagged messages package_check: to
+check if a package exists, works for packages on CRAN, Bioconductor and
+Github The last function should be used within your contribution code.
+It has the additional benefit that it will suggest the user how to
+download the package if it is not available. To keep the size of Giotto
+within limits we prefer not to add too many new dependencies.</p>
+</div>
+<div id="package-imports" class="section level2 hasAnchor" number="18.5">
+<h2><span class="header-section-number">18.5</span> Package Imports<a href="contributing-to-giotto.html#package-imports" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Giotto tracks packages and functions to import in a centralized manner.
+When adding code that requires functions from another package, add the
+roxygen tags to the package_imports.R file for that Giotto module.</p>
+<p>Getters and Setters Giotto stores information in different slots, which
+can be accessed through these getters and setters functions. They can be
+found in the accessors.R file.</p>
+<p>getCellMetadata(): Gets cell metadata</p>
+<p>setCellMetadata(): Sets cell metadata</p>
+<p>getFeatureMetadata(): Gets feature metadata</p>
+<p>getFeatureMetadata(): Sets feature metadata</p>
+<p>getExpression(): To select the expression matrix to use</p>
+<p>setExpression(): Sets a new expression matrix to the expression slot</p>
+<p>getSpatialLocations(): Get spatial locations to use</p>
+<p>setSpatialLocations(): Sets new spatial locations</p>
+<p>getDimReduction(): To select the dimension reduction values to use</p>
+<p>setDimReduction(): Sets new dimension reduction object</p>
+<p>getNearestNetwork(): To select the nearest neighbor network (kNN or sNN)
+to use</p>
+<p>setNearestNetwork(): Sets a new nearest neighbor network (kNN or sNN)</p>
+<p>getSpatialNetwork(): To select the spatial network to use</p>
+<p>setSpatialNetwork(): Sets a new spatial network</p>
+<p>getPolygonInfo(): Gets spatial polygon information</p>
+<p>setPolygonInfo(): Set new spatial polygon information</p>
+<p>getFeatureInfo(): Gets spatial feature information</p>
+<p>setFeatureInfo(): Sets new spatial feature information</p>
+<p>getSpatialEnrichment(): Gets spatial enrichment information</p>
+<p>setSpatialEnrichment(): Sets new spatial enrichment information</p>
+<p>getMultiomics(): Gets multiomics information</p>
+<p>setMultiomics(): Sets multiomics information</p>
+</div>
+<div id="python-code" class="section level2 hasAnchor" number="18.6">
+<h2><span class="header-section-number">18.6</span> Python code<a href="contributing-to-giotto.html#python-code" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To use Python code we prefer to create a python wrapper/functions around
+the python code, which can then be sourced by reticulate. As an example
+we show the basic principles of how we implemented the Leiden clustering
+algorithm.</p>
+<p>write python wrapper and store as python_leiden.py in /inst/python:
+import igraph as ig import leidenalg as la import pandas as pd import
+networkx as nx</p>
+<p>def python_leiden(df, partition_type, initial_membership=None,
+weights=None, n_iterations=2, seed=None, resolution_parameter = 1):</p>
+<pre><code># create networkx object
+Gx = nx.from_pandas_edgelist(df = df, source = &#39;from&#39;, target =  &#39;to&#39;, edge_attr = &#39;weight&#39;)  
+
+# get weight attribute
+myweights = nx.get_edge_attributes(Gx, &#39;weight&#39;)
+
+....
+
+return(leiden_dfr)</code></pre>
+<p>source python code with reticulate: python_leiden_function =
+system.file(“python”, “python_leiden.py”, package = ‘Giotto’)
+reticulate::source_python(file = python_leiden_function) use python code
+as if R code: See doLeidenCLuster for more detailed information.
+pyth_leid_result = python_leiden(df = network_edge_dt, partition_type =
+partition_type, initial_membership = init_membership, weights =
+‘weight’, n_iterations = n_iterations, seed = seed_number,
+resolution_parameter = resolution)</p>
 
 </div>
 </div>
