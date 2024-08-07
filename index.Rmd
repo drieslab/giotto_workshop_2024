@@ -11,9 +11,16 @@ output:
   
 ---
 
-# Giotto Workshop 2024
+# Giotto Suite Workshop 2024
 
-Workshop: Spatial multi-omics data analysis with Giotto Suite
+Workshop: Spatial multi-omics data analysis with Giotto Suite  
+
+- Github repo: https://github.com/drieslab/giotto_workshop_2024/  
+- Giotto Suite Website: http://www.giottosuite.com  
+- Twitter/X: https://x.com/GiottoSpatial
+- Code repo: https://github.com/drieslab/Giotto  
+    - Issues page: https://github.com/drieslab/Giotto/issues  
+    - Discussions page: https://github.com/drieslab/Giotto/discussions  
 
 ## Instructors
 
@@ -29,7 +36,7 @@ Workshop: Spatial multi-omics data analysis with Giotto Suite
 
 - [Jeff Sheridan](): Postdoctoral fellow at Boston University
 
-- [Iqra Amin](): Bioinformatician
+- [Iqra Amin](): Bioinformatician at Boston University
 
 - [Wen Wang](): Postdoctoral fellow at Icahn School of Medicine at Mount Sinai
 
@@ -37,7 +44,7 @@ Workshop: Spatial multi-omics data analysis with Giotto Suite
 ## Topics and Schedule:
 
 
-- Day 1: Introduction
+- **Day 1: Introduction**
     - Spatial omics technologies
         - Spatial sequencing
         - Spatial in situ 
@@ -80,8 +87,9 @@ Workshop: Spatial multi-omics data analysis with Giotto Suite
             - Spatial variable genes
             - Spatial co-expression modules
 
+<br>  
     
-- Day 2: Spatial Data Analysis
+- **Day 2: Spatial Data Analysis**
     - Spatial sequencing based technology: Visium
         - Differential expression
         - Enrichment & Deconvolution
@@ -122,8 +130,9 @@ Workshop: Spatial multi-omics data analysis with Giotto Suite
             - Typical aggregated workflow
             - Visualizations
 
+<br>  
 
-- Day 3:  Advanced Tutorials
+- **Day 3:  Advanced Tutorials**
     - Multiple samples 
         - Create individual giotto objects
         - Join Giotto Objects

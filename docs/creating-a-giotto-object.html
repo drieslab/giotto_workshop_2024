@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5 Creating a Giotto object | Workshop: Spatial multi-omics data analysis with Giotto Suite</title>
-  <meta name="description" content="5 Creating a Giotto object | Workshop: Spatial multi-omics data analysis with Giotto Suite" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <title>6 Creating a Giotto object | Workshop: Spatial multi-omics data analysis with Giotto Suite</title>
+  <meta name="description" content="6 Creating a Giotto object | Workshop: Spatial multi-omics data analysis with Giotto Suite" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5 Creating a Giotto object | Workshop: Spatial multi-omics data analysis with Giotto Suite" />
+  <meta property="og:title" content="6 Creating a Giotto object | Workshop: Spatial multi-omics data analysis with Giotto Suite" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="drieslab/giotto_workshop_2024" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5 Creating a Giotto object | Workshop: Spatial multi-omics data analysis with Giotto Suite" />
+  <meta name="twitter:title" content="6 Creating a Giotto object | Workshop: Spatial multi-omics data analysis with Giotto Suite" />
   
   
   
@@ -135,244 +135,427 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Giotto Workshop 2024</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Giotto Suite Workshop 2024</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#instructors"><i class="fa fa-check"></i><b>1.1</b> Instructors</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#topics-and-schedule"><i class="fa fa-check"></i><b>1.2</b> Topics and Schedule:</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.3</b> License</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html"><i class="fa fa-check"></i><b>2</b> Spatial omics technologies</a>
+<li class="chapter" data-level="2" data-path="datasets-packages.html"><a href="datasets-packages.html"><i class="fa fa-check"></i><b>2</b> Datasets &amp; Packages</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#slides"><i class="fa fa-check"></i><b>2.1</b> Slides</a></li>
-<li class="chapter" data-level="2.2" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#spatial-sequencing"><i class="fa fa-check"></i><b>2.2</b> Spatial sequencing</a></li>
-<li class="chapter" data-level="2.3" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#spatial-in-situ"><i class="fa fa-check"></i><b>2.3</b> Spatial in situ</a></li>
-<li class="chapter" data-level="2.4" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#spatial-proteomics"><i class="fa fa-check"></i><b>2.4</b> Spatial proteomics</a></li>
-<li class="chapter" data-level="2.5" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#other-spatial-omics-atac-seq-cutrun-lipidomics-etc"><i class="fa fa-check"></i><b>2.5</b> Other Spatial omics: ATAC-seq, CUT&amp;RUN, lipidomics, etc</a></li>
+<li class="chapter" data-level="2.1" data-path="datasets-packages.html"><a href="datasets-packages.html#datasets-to-download"><i class="fa fa-check"></i><b>2.1</b> Datasets to download</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="datasets-packages.html"><a href="datasets-packages.html#zenodo-repository"><i class="fa fa-check"></i><b>2.1.1</b> Zenodo repository</a></li>
+<li class="chapter" data-level="2.1.2" data-path="datasets-packages.html"><a href="datasets-packages.html#x-genomics-visium-mouse-brain-section-coronal-dataset"><i class="fa fa-check"></i><b>2.1.2</b> 10X Genomics Visium Mouse Brain Section (Coronal) dataset</a></li>
+<li class="chapter" data-level="2.1.3" data-path="datasets-packages.html"><a href="datasets-packages.html#x-genomics-visium-hd-ffpe-human-colon-cancer"><i class="fa fa-check"></i><b>2.1.3</b> 10X Genomics Visium HD: FFPE Human Colon Cancer</a></li>
+<li class="chapter" data-level="2.1.4" data-path="datasets-packages.html"><a href="datasets-packages.html#x-genomics-multi-modal-dataset"><i class="fa fa-check"></i><b>2.1.4</b> 10X Genomics multi-modal dataset</a></li>
+<li class="chapter" data-level="2.1.5" data-path="datasets-packages.html"><a href="datasets-packages.html#x-genomics-multi-omics-visium-cytassist-human-tonsil-dataset"><i class="fa fa-check"></i><b>2.1.5</b> 10X Genomics multi-omics Visium CytAssist Human Tonsil dataset</a></li>
+<li class="chapter" data-level="2.1.6" data-path="datasets-packages.html"><a href="datasets-packages.html#x-genomics-human-prostate-cancer-adenocarcinoma-with-invasive-carcinoma-ffpe"><i class="fa fa-check"></i><b>2.1.6</b> 10X Genomics Human Prostate Cancer Adenocarcinoma with Invasive Carcinoma (FFPE)</a></li>
+<li class="chapter" data-level="2.1.7" data-path="datasets-packages.html"><a href="datasets-packages.html#x-genomics-normal-human-prostate-ffpe"><i class="fa fa-check"></i><b>2.1.7</b> 10X Genomics Normal Human Prostate (FFPE)</a></li>
+<li class="chapter" data-level="2.1.8" data-path="datasets-packages.html"><a href="datasets-packages.html#xenium"><i class="fa fa-check"></i><b>2.1.8</b> Xenium</a></li>
+<li class="chapter" data-level="2.1.9" data-path="datasets-packages.html"><a href="datasets-packages.html#merfish-cortex-dataset"><i class="fa fa-check"></i><b>2.1.9</b> MERFISH cortex dataset</a></li>
+<li class="chapter" data-level="2.1.10" data-path="datasets-packages.html"><a href="datasets-packages.html#lunaphore-if-dataset"><i class="fa fa-check"></i><b>2.1.10</b> Lunaphore IF dataset</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html"><i class="fa fa-check"></i><b>3</b> Introduction to the Giotto package</a>
+<li class="chapter" data-level="2.2" data-path="datasets-packages.html"><a href="datasets-packages.html#needed-packages"><i class="fa fa-check"></i><b>2.2</b> Needed packages</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#slides-1"><i class="fa fa-check"></i><b>3.1</b> Slides</a></li>
-<li class="chapter" data-level="3.2" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#ecosystem"><i class="fa fa-check"></i><b>3.2</b> Ecosystem</a></li>
-<li class="chapter" data-level="3.3" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#installation-python-environment"><i class="fa fa-check"></i><b>3.3</b> Installation + python environment</a></li>
-<li class="chapter" data-level="3.4" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#giotto-instructions"><i class="fa fa-check"></i><b>3.4</b> Giotto instructions</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html"><i class="fa fa-check"></i><b>4</b> Data formatting and Pre-processing</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#data-formats"><i class="fa fa-check"></i><b>4.1</b> Data formats</a></li>
-<li class="chapter" data-level="4.2" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#pre-processing"><i class="fa fa-check"></i><b>4.2</b> Pre-processing</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html"><i class="fa fa-check"></i><b>5</b> Creating a Giotto object</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#overview"><i class="fa fa-check"></i><b>5.1</b> Overview</a></li>
-<li class="chapter" data-level="5.2" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#from-matrix-locations"><i class="fa fa-check"></i><b>5.2</b> From matrix + locations</a></li>
-<li class="chapter" data-level="5.3" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#from-subcellular-raw-data-transcripts-or-images-polygons"><i class="fa fa-check"></i><b>5.3</b> From subcellular raw data (transcripts or images) + polygons</a></li>
-<li class="chapter" data-level="5.4" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#from-piece-wise"><i class="fa fa-check"></i><b>5.4</b> From piece-wise</a></li>
-<li class="chapter" data-level="5.5" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#using-convenience-functions-for-popular-technologies-vizgen-xenium-cosmx"><i class="fa fa-check"></i><b>5.5</b> Using convenience functions for popular technologies (Vizgen, Xenium, CosMx, …)</a></li>
-<li class="chapter" data-level="5.6" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#spatial-plots"><i class="fa fa-check"></i><b>5.6</b> Spatial plots</a></li>
-<li class="chapter" data-level="5.7" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#subsetting"><i class="fa fa-check"></i><b>5.7</b> Subsetting</a></li>
-<li class="chapter" data-level="5.8" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#mini-objects-giottodata"><i class="fa fa-check"></i><b>5.8</b> Mini objects &amp; GiottoData</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="visium-part-i.html"><a href="visium-part-i.html"><i class="fa fa-check"></i><b>6</b> Visium Part I</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="visium-part-i.html"><a href="visium-part-i.html#introduction-to-the-spatial-dataset"><i class="fa fa-check"></i><b>6.1</b> Introduction to the spatial dataset</a></li>
-<li class="chapter" data-level="6.2" data-path="visium-part-i.html"><a href="visium-part-i.html#download-dataset"><i class="fa fa-check"></i><b>6.2</b> Download dataset</a></li>
-<li class="chapter" data-level="6.3" data-path="visium-part-i.html"><a href="visium-part-i.html#create-the-giotto-object"><i class="fa fa-check"></i><b>6.3</b> Create the Giotto object</a></li>
-<li class="chapter" data-level="6.4" data-path="visium-part-i.html"><a href="visium-part-i.html#subset-on-spots-that-were-covered-by-tissue"><i class="fa fa-check"></i><b>6.4</b> Subset on spots that were covered by tissue</a></li>
-<li class="chapter" data-level="6.5" data-path="visium-part-i.html"><a href="visium-part-i.html#quality-control"><i class="fa fa-check"></i><b>6.5</b> Quality control</a></li>
-<li class="chapter" data-level="6.6" data-path="visium-part-i.html"><a href="visium-part-i.html#filtering"><i class="fa fa-check"></i><b>6.6</b> Filtering</a></li>
-<li class="chapter" data-level="6.7" data-path="visium-part-i.html"><a href="visium-part-i.html#normalization"><i class="fa fa-check"></i><b>6.7</b> Normalization</a></li>
-<li class="chapter" data-level="6.8" data-path="visium-part-i.html"><a href="visium-part-i.html#feature-selection"><i class="fa fa-check"></i><b>6.8</b> Feature selection</a>
-<ul>
-<li class="chapter" data-level="6.8.1" data-path="visium-part-i.html"><a href="visium-part-i.html#highly-variable-features"><i class="fa fa-check"></i><b>6.8.1</b> Highly Variable Features:</a></li>
-</ul></li>
-<li class="chapter" data-level="6.9" data-path="visium-part-i.html"><a href="visium-part-i.html#dimension-reduction"><i class="fa fa-check"></i><b>6.9</b> Dimension Reduction</a>
-<ul>
-<li class="chapter" data-level="6.9.1" data-path="visium-part-i.html"><a href="visium-part-i.html#pca"><i class="fa fa-check"></i><b>6.9.1</b> PCA</a></li>
-<li class="chapter" data-level="6.9.2" data-path="visium-part-i.html"><a href="visium-part-i.html#umap"><i class="fa fa-check"></i><b>6.9.2</b> UMAP</a></li>
-<li class="chapter" data-level="6.9.3" data-path="visium-part-i.html"><a href="visium-part-i.html#t-sne"><i class="fa fa-check"></i><b>6.9.3</b> t-SNE</a></li>
-</ul></li>
-<li class="chapter" data-level="6.10" data-path="visium-part-i.html"><a href="visium-part-i.html#clustering"><i class="fa fa-check"></i><b>6.10</b> Clustering</a>
-<ul>
-<li class="chapter" data-level="6.10.1" data-path="visium-part-i.html"><a href="visium-part-i.html#calculate-leiden-clustering"><i class="fa fa-check"></i><b>6.10.1</b> Calculate Leiden clustering</a></li>
-<li class="chapter" data-level="6.10.2" data-path="visium-part-i.html"><a href="visium-part-i.html#calculate-louvain-clustering"><i class="fa fa-check"></i><b>6.10.2</b> Calculate Louvain clustering</a></li>
-</ul></li>
-<li class="chapter" data-level="6.11" data-path="visium-part-i.html"><a href="visium-part-i.html#save-the-object"><i class="fa fa-check"></i><b>6.11</b> Save the object</a></li>
-<li class="chapter" data-level="6.12" data-path="visium-part-i.html"><a href="visium-part-i.html#session-info"><i class="fa fa-check"></i><b>6.12</b> Session info</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="visium-part-ii.html"><a href="visium-part-ii.html"><i class="fa fa-check"></i><b>7</b> Visium Part II</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="visium-part-ii.html"><a href="visium-part-ii.html#load-the-object"><i class="fa fa-check"></i><b>7.1</b> Load the object</a></li>
-<li class="chapter" data-level="7.2" data-path="visium-part-ii.html"><a href="visium-part-ii.html#differential-expression"><i class="fa fa-check"></i><b>7.2</b> Differential expression</a>
-<ul>
-<li class="chapter" data-level="7.2.1" data-path="visium-part-ii.html"><a href="visium-part-ii.html#gini-markers"><i class="fa fa-check"></i><b>7.2.1</b> Gini markers</a></li>
-<li class="chapter" data-level="7.2.2" data-path="visium-part-ii.html"><a href="visium-part-ii.html#scran-markers"><i class="fa fa-check"></i><b>7.2.2</b> Scran markers</a></li>
-</ul></li>
-<li class="chapter" data-level="7.3" data-path="visium-part-ii.html"><a href="visium-part-ii.html#enrichment-deconvolution"><i class="fa fa-check"></i><b>7.3</b> Enrichment &amp; Deconvolution</a>
-<ul>
-<li class="chapter" data-level="7.3.1" data-path="visium-part-ii.html"><a href="visium-part-ii.html#pagerank"><i class="fa fa-check"></i><b>7.3.1</b> PAGE/Rank</a></li>
-<li class="chapter" data-level="7.3.2" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatialdwls"><i class="fa fa-check"></i><b>7.3.2</b> SpatialDWLS</a></li>
-</ul></li>
-<li class="chapter" data-level="7.4" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatial-expression-patterns"><i class="fa fa-check"></i><b>7.4</b> Spatial expression patterns</a>
-<ul>
-<li class="chapter" data-level="7.4.1" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatial-variable-genes"><i class="fa fa-check"></i><b>7.4.1</b> Spatial variable genes</a></li>
-<li class="chapter" data-level="7.4.2" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatial-co-expression-modules"><i class="fa fa-check"></i><b>7.4.2</b> Spatial co-expression modules</a></li>
-</ul></li>
-<li class="chapter" data-level="7.5" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatially-informed-clusters"><i class="fa fa-check"></i><b>7.5</b> Spatially informed clusters</a></li>
-<li class="chapter" data-level="7.6" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatial-domains-hmrf"><i class="fa fa-check"></i><b>7.6</b> Spatial domains HMRF</a></li>
-<li class="chapter" data-level="7.7" data-path="visium-part-ii.html"><a href="visium-part-ii.html#interactive-tools"><i class="fa fa-check"></i><b>7.7</b> Interactive tools</a></li>
-<li class="chapter" data-level="7.8" data-path="visium-part-ii.html"><a href="visium-part-ii.html#session-info-1"><i class="fa fa-check"></i><b>7.8</b> Session info</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="visium-hd.html"><a href="visium-hd.html"><i class="fa fa-check"></i><b>8</b> Visium HD</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="visium-hd.html"><a href="visium-hd.html#objective"><i class="fa fa-check"></i><b>8.1</b> Objective</a></li>
-<li class="chapter" data-level="8.2" data-path="visium-hd.html"><a href="visium-hd.html#background"><i class="fa fa-check"></i><b>8.2</b> Background</a>
-<ul>
-<li class="chapter" data-level="8.2.1" data-path="visium-hd.html"><a href="visium-hd.html#visium-hd-technology"><i class="fa fa-check"></i><b>8.2.1</b> Visium HD Technology</a></li>
-<li class="chapter" data-level="8.2.2" data-path="visium-hd.html"><a href="visium-hd.html#colorectal-cancer-sample"><i class="fa fa-check"></i><b>8.2.2</b> Colorectal Cancer Sample</a></li>
-</ul></li>
-<li class="chapter" data-level="8.3" data-path="visium-hd.html"><a href="visium-hd.html#data-ingestion"><i class="fa fa-check"></i><b>8.3</b> Data Ingestion</a>
-<ul>
-<li class="chapter" data-level="8.3.1" data-path="visium-hd.html"><a href="visium-hd.html#visium-hd-output-data-format"><i class="fa fa-check"></i><b>8.3.1</b> Visium HD output data format</a></li>
-<li class="chapter" data-level="8.3.2" data-path="visium-hd.html"><a href="visium-hd.html#read-in-raw-data"><i class="fa fa-check"></i><b>8.3.2</b> Read in raw data</a></li>
-<li class="chapter" data-level="8.3.3" data-path="visium-hd.html"><a href="visium-hd.html#giotto-visium-hd-convenience-function"><i class="fa fa-check"></i><b>8.3.3</b> Giotto Visium HD convenience function</a></li>
-</ul></li>
-<li class="chapter" data-level="8.4" data-path="visium-hd.html"><a href="visium-hd.html#tiling-and-aggregation"><i class="fa fa-check"></i><b>8.4</b> Tiling and aggregation</a></li>
-<li class="chapter" data-level="8.5" data-path="visium-hd.html"><a href="visium-hd.html#scalability-and-projection-functions"><i class="fa fa-check"></i><b>8.5</b> Scalability and projection functions</a></li>
-<li class="chapter" data-level="8.6" data-path="visium-hd.html"><a href="visium-hd.html#spatial-expression-patterns-1"><i class="fa fa-check"></i><b>8.6</b> Spatial expression patterns</a></li>
-<li class="chapter" data-level="8.7" data-path="visium-hd.html"><a href="visium-hd.html#spatial-co-expression-modules-1"><i class="fa fa-check"></i><b>8.7</b> Spatial co-expression modules</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="xenium.html"><a href="xenium.html"><i class="fa fa-check"></i><b>9</b> Xenium</a>
-<ul>
-<li class="chapter" data-level="9.1" data-path="xenium.html"><a href="xenium.html#introduction-to-spatial-dataset"><i class="fa fa-check"></i><b>9.1</b> Introduction to spatial dataset</a></li>
-<li class="chapter" data-level="9.2" data-path="xenium.html"><a href="xenium.html#additional-package-requirements"><i class="fa fa-check"></i><b>9.2</b> Additional package requirements</a></li>
-<li class="chapter" data-level="9.3" data-path="xenium.html"><a href="xenium.html#introduce-mini-object"><i class="fa fa-check"></i><b>9.3</b> Introduce mini object</a></li>
-<li class="chapter" data-level="9.4" data-path="xenium.html"><a href="xenium.html#read-in-raw-data-1"><i class="fa fa-check"></i><b>9.4</b> Read in raw data</a></li>
-<li class="chapter" data-level="9.5" data-path="xenium.html"><a href="xenium.html#overlap-txs-polygons"><i class="fa fa-check"></i><b>9.5</b> Overlap txs &amp; polygons</a></li>
-<li class="chapter" data-level="9.6" data-path="xenium.html"><a href="xenium.html#transcript-enrichment-gsea"><i class="fa fa-check"></i><b>9.6</b> Transcript enrichment GSEA</a></li>
-<li class="chapter" data-level="9.7" data-path="xenium.html"><a href="xenium.html#spatial-location-analysis"><i class="fa fa-check"></i><b>9.7</b> Spatial location analysis</a></li>
-<li class="chapter" data-level="9.8" data-path="xenium.html"><a href="xenium.html#visualizations"><i class="fa fa-check"></i><b>9.8</b> Visualizations</a></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="exploration.html"><a href="exploration.html"><i class="fa fa-check"></i><b>10</b> —– exploration</a></li>
-<li class="chapter" data-level="11" data-path="image.html"><a href="image.html"><i class="fa fa-check"></i><b>11</b> IMAGE</a></li>
-<li class="chapter" data-level="12" data-path="ometif_2_tifimage_path-output_file-out_tif-chunk_rows-chunk_rows-overwrite-true.html"><a href="ometif_2_tifimage_path-output_file-out_tif-chunk_rows-chunk_rows-overwrite-true.html"><i class="fa fa-check"></i><b>12</b> ometif_2_tif(image_path, output_file = out_tif, chunk_rows = chunk_rows, overwrite = TRUE)</a></li>
-<li class="chapter" data-level="13" data-path="example-usage.html"><a href="example-usage.html"><i class="fa fa-check"></i><b>13</b> # Example usage</a></li>
-<li class="chapter" data-level="14" data-path="input_file-pathtoinputfile.ome.html"><a href="input_file-pathtoinputfile.ome.html"><i class="fa fa-check"></i><b>14</b> input_file = “path/to/input/file.ome.tif”</a></li>
-<li class="chapter" data-level="15" data-path="output_file-pathtooutputfile.html"><a href="output_file-pathtooutputfile.html"><i class="fa fa-check"></i><b>15</b> output_file = “path/to/output/file.tif”</a></li>
-<li class="chapter" data-level="16" data-path="chunk_size-1000-1000-adjust-the-chunk-size-as-needed.html"><a href="chunk_size-1000-1000-adjust-the-chunk-size-as-needed.html"><i class="fa fa-check"></i><b>16</b> chunk_size = (1000, 1000) # Adjust the chunk size as needed</a></li>
-<li class="chapter" data-level="17" data-path="num_processes-4-adjust-the-number-of-processes-based-on-available-cpu-cores.html"><a href="num_processes-4-adjust-the-number-of-processes-based-on-available-cpu-cores.html"><i class="fa fa-check"></i><b>17</b> num_processes = 4 # Adjust the number of processes based on available CPU cores</a></li>
-<li class="chapter" data-level="18" data-path="section.html"><a href="section.html"><i class="fa fa-check"></i><b>18</b> </a></li>
-<li class="chapter" data-level="19" data-path="ometif_2_tifinput_file-output_file-chunk_size-num_processes.html"><a href="ometif_2_tifinput_file-output_file-chunk_size-num_processes.html"><i class="fa fa-check"></i><b>19</b> ometif_2_tif(input_file, output_file, chunk_size, num_processes)</a></li>
-<li class="chapter" data-level="20" data-path="transcripts.html"><a href="transcripts.html"><i class="fa fa-check"></i><b>20</b> TRANSCRIPTS</a></li>
-<li class="chapter" data-level="21" data-path="where-are-the-issue-tx-at.html"><a href="where-are-the-issue-tx-at.html"><i class="fa fa-check"></i><b>21</b> where are the issue TX at?</a></li>
-<li class="chapter" data-level="22" data-path="polys.html"><a href="polys.html"><i class="fa fa-check"></i><b>22</b> POLYS</a></li>
-<li class="chapter" data-level="23" data-path="giotto.html"><a href="giotto.html"><i class="fa fa-check"></i><b>23</b> giotto</a></li>
-<li class="chapter" data-level="24" data-path="no-hvf-calc-since-there-are-not-that-many-different-gene-species.html"><a href="no-hvf-calc-since-there-are-not-that-many-different-gene-species.html"><i class="fa fa-check"></i><b>24</b> no HVF calc since there are not that many different gene species</a></li>
-<li class="chapter" data-level="25" data-path="set-seed-for-reproducibility.html"><a href="set-seed-for-reproducibility.html"><i class="fa fa-check"></i><b>25</b> set seed for reproducibility</a></li>
-<li class="chapter" data-level="26" data-path="dimplot2d.html"><a href="dimplot2d.html"><i class="fa fa-check"></i><b>26</b> dimPlot2D(</a></li>
-<li class="chapter" data-level="27" data-path="g_mini.html"><a href="g_mini.html"><i class="fa fa-check"></i><b>27</b> g_mini,</a></li>
-<li class="chapter" data-level="28" data-path="spat_unit-cell.html"><a href="spat_unit-cell.html"><i class="fa fa-check"></i><b>28</b> spat_unit = “cell”,</a></li>
-<li class="chapter" data-level="29" data-path="feat_type-rna.html"><a href="feat_type-rna.html"><i class="fa fa-check"></i><b>29</b> feat_type = “rna”,</a></li>
-<li class="chapter" data-level="30" data-path="cell_color-leiden_clus.html"><a href="cell_color-leiden_clus.html"><i class="fa fa-check"></i><b>30</b> cell_color = “leiden_clus”,</a></li>
-<li class="chapter" data-level="31" data-path="dim_reduction_name-umap.html"><a href="dim_reduction_name-umap.html"><i class="fa fa-check"></i><b>31</b> dim_reduction_name = “umap.projection”,</a></li>
-<li class="chapter" data-level="32" data-path="dim_reduction_to_use-umap.html"><a href="dim_reduction_to_use-umap.html"><i class="fa fa-check"></i><b>32</b> dim_reduction_to_use = “umap”,</a></li>
-<li class="chapter" data-level="33" data-path="save_param-list.html"><a href="save_param-list.html"><i class="fa fa-check"></i><b>33</b> save_param = list(</a></li>
-<li class="chapter" data-level="34" data-path="save_name-mini_umap_1.html"><a href="save_name-mini_umap_1.html"><i class="fa fa-check"></i><b>34</b> save_name = “mini_umap_1.2”</a></li>
-<li class="chapter" data-level="35" data-path="section-1.html"><a href="section-1.html"><i class="fa fa-check"></i><b>35</b> )</a></li>
-<li class="chapter" data-level="36" data-path="section-2.html"><a href="section-2.html"><i class="fa fa-check"></i><b>36</b> )</a></li>
-<li class="chapter" data-level="37" data-path="seems-like-a-good-res.html"><a href="seems-like-a-good-res.html"><i class="fa fa-check"></i><b>37</b> 1.4 seems like a good res</a></li>
-<li class="chapter" data-level="38" data-path="project-values-back-via-knn-classifier-fnnknn.html"><a href="project-values-back-via-knn-classifier-fnnknn.html"><i class="fa fa-check"></i><b>38</b> project values back via kNN classifier (FNN::knn)</a></li>
-<li class="chapter" data-level="39" data-path="spatplot2dg-cell_color-major_clus.html"><a href="spatplot2dg-cell_color-major_clus.html"><i class="fa fa-check"></i><b>39</b> spatPlot2D(g, cell_color = “major_clus”,</a></li>
-<li class="chapter" data-level="40" data-path="point_size-0.html"><a href="point_size-0.html"><i class="fa fa-check"></i><b>40</b> point_size = 0.1,</a></li>
-<li class="chapter" data-level="41" data-path="point_shape-no_border.html"><a href="point_shape-no_border.html"><i class="fa fa-check"></i><b>41</b> point_shape = “no_border”,</a></li>
-<li class="chapter" data-level="42" data-path="cell_color_code-clus_colorc1-1017-29c1359-14-17-11.html"><a href="cell_color_code-clus_colorc1-1017-29c1359-14-17-11.html"><i class="fa fa-check"></i><b>42</b> cell_color_code = clus_color[c(1, 10:17, 2:9)][c(1:3,5:9, 14, 17, 11)],</a></li>
-<li class="chapter" data-level="43" data-path="background-black.html"><a href="background-black.html"><i class="fa fa-check"></i><b>43</b> background = “black”,</a></li>
-<li class="chapter" data-level="44" data-path="save_param-list-1.html"><a href="save_param-list-1.html"><i class="fa fa-check"></i><b>44</b> save_param = list(</a></li>
-<li class="chapter" data-level="45" data-path="base_width-15.html"><a href="base_width-15.html"><i class="fa fa-check"></i><b>45</b> base_width = 15,</a></li>
-<li class="chapter" data-level="46" data-path="base_height-6.html"><a href="base_height-6.html"><i class="fa fa-check"></i><b>46</b> base_height = 6,</a></li>
-<li class="chapter" data-level="47" data-path="save_name-spat_major.html"><a href="save_name-spat_major.html"><i class="fa fa-check"></i><b>47</b> save_name = “spat_major”</a></li>
-<li class="chapter" data-level="48" data-path="section-3.html"><a href="section-3.html"><i class="fa fa-check"></i><b>48</b> ))</a></li>
-<li class="chapter" data-level="49" data-path="niches.html"><a href="niches.html"><i class="fa fa-check"></i><b>49</b> niches</a></li>
-<li class="chapter" data-level="50" data-path="visualize-niche-level-enrichment-for-leiden-cluster-3-in-spat_unit-cell.html"><a href="visualize-niche-level-enrichment-for-leiden-cluster-3-in-spat_unit-cell.html"><i class="fa fa-check"></i><b>50</b> visualize niche-level enrichment for leiden cluster 3 in spat_unit “cell”</a></li>
-<li class="chapter" data-level="51" data-path="these-enrichments-are-essentially-a-measure-of-how-many-cells-of-each.html"><a href="these-enrichments-are-essentially-a-measure-of-how-many-cells-of-each.html"><i class="fa fa-check"></i><b>51</b> These enrichments are essentially a measure of how many cells of each</a></li>
-<li class="chapter" data-level="52" data-path="leiden-cluster-exist-in-the-local-region.html"><a href="leiden-cluster-exist-in-the-local-region.html"><i class="fa fa-check"></i><b>52</b> leiden cluster exist in the local region</a></li>
-<li class="chapter" data-level="53" data-path="section-4.html"><a href="section-4.html"><i class="fa fa-check"></i><b>53</b> </a></li>
-<li class="chapter" data-level="54" data-path="using-kmeans-we-can-classify-each-cell-by-its-niche-leiden-cluster-proportions.html"><a href="using-kmeans-we-can-classify-each-cell-by-its-niche-leiden-cluster-proportions.html"><i class="fa fa-check"></i><b>54</b> Using kmeans, we can classify each cell by its niche leiden cluster proportions</a></li>
-<li class="chapter" data-level="55" data-path="add-kmeans-clustering-of-niches-to-cell-metadata.html"><a href="add-kmeans-clustering-of-niches-to-cell-metadata.html"><i class="fa fa-check"></i><b>55</b> add kmeans clustering of niches to cell metadata</a></li>
-<li class="chapter" data-level="56" data-path="spatially-visualize-the-niches.html"><a href="spatially-visualize-the-niches.html"><i class="fa fa-check"></i><b>56</b> Spatially visualize the niches</a></li>
-<li class="chapter" data-level="57" data-path="gene-enrichment.html"><a href="gene-enrichment.html"><i class="fa fa-check"></i><b>57</b> Gene enrichment</a></li>
-<li class="chapter" data-level="58" data-path="violinplot.html"><a href="violinplot.html"><i class="fa fa-check"></i><b>58</b> violinplot</a></li>
-<li class="chapter" data-level="59" data-path="spatial-proteomics-multiplex-if.html"><a href="spatial-proteomics-multiplex-if.html"><i class="fa fa-check"></i><b>59</b> Spatial proteomics: multiplex IF</a>
-<ul>
-<li class="chapter" data-level="59.1" data-path="spatial-proteomics-multiplex-if.html"><a href="spatial-proteomics-multiplex-if.html#read-in-raw-data-2"><i class="fa fa-check"></i><b>59.1</b> Read in raw data</a></li>
-<li class="chapter" data-level="59.2" data-path="spatial-proteomics-multiplex-if.html"><a href="spatial-proteomics-multiplex-if.html#overlap-intensity-workflows"><i class="fa fa-check"></i><b>59.2</b> Overlap intensity &amp; workflows</a></li>
-</ul></li>
-<li class="chapter" data-level="60" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html"><i class="fa fa-check"></i><b>60</b> Working with multiple samples</a>
-<ul>
-<li class="chapter" data-level="60.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#create-individual-giotto-objects"><i class="fa fa-check"></i><b>60.1</b> Create individual giotto objects</a></li>
-<li class="chapter" data-level="60.2" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#join-giotto-objects"><i class="fa fa-check"></i><b>60.2</b> Join Giotto Objects</a></li>
-<li class="chapter" data-level="60.3" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#perform-harmony-and-default-workflows"><i class="fa fa-check"></i><b>60.3</b> Perform Harmony and default workflows</a></li>
-<li class="chapter" data-level="60.4" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#visualizations-1"><i class="fa fa-check"></i><b>60.4</b> Visualizations</a></li>
-</ul></li>
-<li class="chapter" data-level="61" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html"><i class="fa fa-check"></i><b>61</b> Spatial multi-modal analysis</a>
-<ul>
-<li class="chapter" data-level="61.1" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-transforms"><i class="fa fa-check"></i><b>61.1</b> Spatial transforms</a>
-<ul>
-<li class="chapter" data-level="61.1.1" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-transforms-1"><i class="fa fa-check"></i><b>61.1.1</b> Spatial transforms:</a></li>
-<li class="chapter" data-level="61.1.2" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-utilities"><i class="fa fa-check"></i><b>61.1.2</b> Spatial utilities:</a></li>
-<li class="chapter" data-level="61.1.3" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-classes"><i class="fa fa-check"></i><b>61.1.3</b> Spatial classes:</a></li>
+<li class="chapter" data-level="2.2.1" data-path="datasets-packages.html"><a href="datasets-packages.html#cran-dependencies"><i class="fa fa-check"></i><b>2.2.1</b> CRAN dependencies:</a></li>
+<li class="chapter" data-level="2.2.2" data-path="datasets-packages.html"><a href="datasets-packages.html#terra-installation"><i class="fa fa-check"></i><b>2.2.2</b> <em>terra</em> installation</a></li>
+<li class="chapter" data-level="2.2.3" data-path="datasets-packages.html"><a href="datasets-packages.html#matrix-installation"><i class="fa fa-check"></i><b>2.2.3</b> <em>Matrix</em> installation</a></li>
+<li class="chapter" data-level="2.2.4" data-path="datasets-packages.html"><a href="datasets-packages.html#rtools-installation"><i class="fa fa-check"></i><b>2.2.4</b> <em>Rtools</em> installation</a></li>
+<li class="chapter" data-level="2.2.5" data-path="datasets-packages.html"><a href="datasets-packages.html#giotto-installation"><i class="fa fa-check"></i><b>2.2.5</b> <em>Giotto</em> installation</a></li>
+<li class="chapter" data-level="2.2.6" data-path="datasets-packages.html"><a href="datasets-packages.html#irlba-install"><i class="fa fa-check"></i><b>2.2.6</b> <em>irlba</em> install</a></li>
+<li class="chapter" data-level="2.2.7" data-path="datasets-packages.html"><a href="datasets-packages.html#arrow-install"><i class="fa fa-check"></i><b>2.2.7</b> <em>arrow</em> install</a></li>
+<li class="chapter" data-level="2.2.8" data-path="datasets-packages.html"><a href="datasets-packages.html#bioconductor-dependencies"><i class="fa fa-check"></i><b>2.2.8</b> Bioconductor dependencies:</a></li>
+<li class="chapter" data-level="2.2.9" data-path="datasets-packages.html"><a href="datasets-packages.html#cran-packages"><i class="fa fa-check"></i><b>2.2.9</b> CRAN packages:</a></li>
+<li class="chapter" data-level="2.2.10" data-path="datasets-packages.html"><a href="datasets-packages.html#packages-from-github"><i class="fa fa-check"></i><b>2.2.10</b> Packages from GitHub</a></li>
+<li class="chapter" data-level="2.2.11" data-path="datasets-packages.html"><a href="datasets-packages.html#python-environments"><i class="fa fa-check"></i><b>2.2.11</b> Python environments</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="62" data-path="image-transforms.html"><a href="image-transforms.html"><i class="fa fa-check"></i><b>62</b> Image transforms</a>
+<li class="chapter" data-level="3" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html"><i class="fa fa-check"></i><b>3</b> Spatial omics technologies</a>
 <ul>
-<li class="chapter" data-level="62.1" data-path="image-transforms.html"><a href="image-transforms.html#co-registration-of-datasets"><i class="fa fa-check"></i><b>62.1</b> Co-registration of datasets</a></li>
-<li class="chapter" data-level="62.2" data-path="image-transforms.html"><a href="image-transforms.html#examples-in-giotto-suite-manuscript"><i class="fa fa-check"></i><b>62.2</b> Examples in giotto suite manuscript</a></li>
-</ul></li>
-<li class="chapter" data-level="63" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html"><i class="fa fa-check"></i><b>63</b> Multi-omics integration</a>
+<li class="chapter" data-level="3.1" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#presentation"><i class="fa fa-check"></i><b>3.1</b> Presentation</a></li>
+<li class="chapter" data-level="3.2" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#short-summary"><i class="fa fa-check"></i><b>3.2</b> Short summary</a>
 <ul>
-<li class="chapter" data-level="63.1" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#introduction-to-the-spatial-dataset-1"><i class="fa fa-check"></i><b>63.1</b> Introduction to the spatial dataset</a></li>
-<li class="chapter" data-level="63.2" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#download-dataset-1"><i class="fa fa-check"></i><b>63.2</b> Download dataset</a></li>
-<li class="chapter" data-level="63.3" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#create-the-giotto-object-1"><i class="fa fa-check"></i><b>63.3</b> Create the Giotto object</a></li>
-<li class="chapter" data-level="63.4" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#subset-on-spots-that-were-covered-by-tissue-1"><i class="fa fa-check"></i><b>63.4</b> Subset on spots that were covered by tissue</a></li>
-<li class="chapter" data-level="63.5" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#rna-processing"><i class="fa fa-check"></i><b>63.5</b> RNA processing</a></li>
-<li class="chapter" data-level="63.6" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#protein-processing"><i class="fa fa-check"></i><b>63.6</b> Protein processing</a></li>
-<li class="chapter" data-level="63.7" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#multi-omics-integration-1"><i class="fa fa-check"></i><b>63.7</b> Multi-omics integration</a></li>
-<li class="chapter" data-level="63.8" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#session-info-2"><i class="fa fa-check"></i><b>63.8</b> Session info</a></li>
-</ul></li>
-<li class="chapter" data-level="64" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html"><i class="fa fa-check"></i><b>64</b> Interoperability with other frameworks</a>
-<ul>
-<li class="chapter" data-level="64.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#load-giotto-object"><i class="fa fa-check"></i><b>64.1</b> Load Giotto object</a></li>
-<li class="chapter" data-level="64.2" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#spatialexperiment"><i class="fa fa-check"></i><b>64.2</b> SpatialExperiment</a>
-<ul>
-<li class="chapter" data-level="64.2.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#convert-giotto-object-to-spatialexperiment-object"><i class="fa fa-check"></i><b>64.2.1</b> Convert Giotto Object to SpatialExperiment Object</a></li>
-</ul></li>
-<li class="chapter" data-level="64.3" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#identify-top-spatially-variable-genes-with-nnsvg"><i class="fa fa-check"></i><b>64.3</b> Identify top spatially variable genes with nnSVG</a>
-<ul>
-<li class="chapter" data-level="64.3.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#conversion-of-spatialexperiment-object-back-to-giotto"><i class="fa fa-check"></i><b>64.3.1</b> Conversion of SpatialExperiment object back to Giotto</a></li>
-<li class="chapter" data-level="64.3.2" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#plotting-top-genes-from-nnsvg-in-giotto"><i class="fa fa-check"></i><b>64.3.2</b> Plotting top genes from nnSVG in Giotto</a></li>
-</ul></li>
-<li class="chapter" data-level="64.4" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#seurat"><i class="fa fa-check"></i><b>64.4</b> Seurat</a>
-<ul>
-<li class="chapter" data-level="64.4.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#giotto-to-seurat"><i class="fa fa-check"></i><b>64.4.1</b> Giotto to Seurat</a></li>
-</ul></li>
-<li class="chapter" data-level="64.5" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#anndataspatialdata"><i class="fa fa-check"></i><b>64.5</b> AnnData/SpatialData</a></li>
-</ul></li>
-<li class="chapter" data-level="65" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html"><i class="fa fa-check"></i><b>65</b> Interoperability with isolated tools</a>
-<ul>
-<li class="chapter" data-level="65.1" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#spatial-niche-trajectory-analysis"><i class="fa fa-check"></i><b>65.1</b> Spatial niche trajectory analysis</a>
-<ul>
-<li class="chapter" data-level="65.1.1" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#prepare"><i class="fa fa-check"></i><b>65.1.1</b> Prepare</a></li>
-<li class="chapter" data-level="65.1.2" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#running"><i class="fa fa-check"></i><b>65.1.2</b> Running</a></li>
-<li class="chapter" data-level="65.1.3" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#visualization"><i class="fa fa-check"></i><b>65.1.3</b> Visualization</a></li>
-<li class="chapter" data-level="65.1.4" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#section-5"><i class="fa fa-check"></i><b>65.1.4</b> </a></li>
+<li class="chapter" data-level="3.2.1" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#why-do-we-need-spatial-omics-technologies"><i class="fa fa-check"></i><b>3.2.1</b> Why do we need spatial omics technologies?</a></li>
+<li class="chapter" data-level="3.2.2" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#what-is-spatial-omics"><i class="fa fa-check"></i><b>3.2.2</b> What is spatial omics?</a></li>
+<li class="chapter" data-level="3.2.3" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#what-are-the-main-spatial-omics-technologies"><i class="fa fa-check"></i><b>3.2.3</b> What are the main spatial omics technologies?</a></li>
+<li class="chapter" data-level="3.2.4" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#other-spatial-omics-atac-seq-cuttag-lipidomics-etc"><i class="fa fa-check"></i><b>3.2.4</b> Other Spatial omics: ATAC-seq, CUT&amp;Tag, lipidomics, etc</a></li>
+<li class="chapter" data-level="3.2.5" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#what-are-the-different-types-of-spatial-downstream-analyses"><i class="fa fa-check"></i><b>3.2.5</b> What are the different types of spatial downstream analyses?</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="66" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html"><i class="fa fa-check"></i><b>66</b> Interactivity with the R/Spatial ecosystem</a>
+<li class="chapter" data-level="4" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html"><i class="fa fa-check"></i><b>4</b> Introduction to the Giotto package</a>
 <ul>
-<li class="chapter" data-level="66.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#kriging"><i class="fa fa-check"></i><b>66.1</b> Kriging</a></li>
+<li class="chapter" data-level="4.1" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#presentation-1"><i class="fa fa-check"></i><b>4.1</b> Presentation</a></li>
+<li class="chapter" data-level="4.2" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#ecosystem"><i class="fa fa-check"></i><b>4.2</b> Ecosystem</a></li>
+<li class="chapter" data-level="4.3" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#installation-python-environment"><i class="fa fa-check"></i><b>4.3</b> Installation + python environment</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#giotto-installation-1"><i class="fa fa-check"></i><b>4.3.1</b> Giotto installation</a></li>
+<li class="chapter" data-level="4.3.2" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#python-environment"><i class="fa fa-check"></i><b>4.3.2</b> Python environment</a></li>
 </ul></li>
-<li class="chapter" data-level="67" data-path="contributing-to-giotto.html"><a href="contributing-to-giotto.html"><i class="fa fa-check"></i><b>67</b> Contributing to Giotto</a>
+<li class="chapter" data-level="4.4" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#giotto-instructions"><i class="fa fa-check"></i><b>4.4</b> Giotto instructions</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html"><i class="fa fa-check"></i><b>5</b> Data formatting and Pre-processing</a>
 <ul>
-<li class="chapter" data-level="67.1" data-path="contributing-to-giotto.html"><a href="contributing-to-giotto.html#contribution-guideline"><i class="fa fa-check"></i><b>67.1</b> Contribution guideline</a></li>
+<li class="chapter" data-level="5.1" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#data-formats"><i class="fa fa-check"></i><b>5.1</b> Data formats</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#general-formats"><i class="fa fa-check"></i><b>5.1.1</b> General formats</a></li>
+<li class="chapter" data-level="5.1.2" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#matrix-formats"><i class="fa fa-check"></i><b>5.1.2</b> Matrix formats</a></li>
+<li class="chapter" data-level="5.1.3" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#tabular-formats"><i class="fa fa-check"></i><b>5.1.3</b> Tabular formats</a></li>
+<li class="chapter" data-level="5.1.4" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#spatial-formats"><i class="fa fa-check"></i><b>5.1.4</b> Spatial formats</a></li>
+<li class="chapter" data-level="5.1.5" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#mask-files"><i class="fa fa-check"></i><b>5.1.5</b> Mask files</a></li>
+<li class="chapter" data-level="5.1.6" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#images"><i class="fa fa-check"></i><b>5.1.6</b> images</a></li>
+<li class="chapter" data-level="5.1.7" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#jsonlike-formats"><i class="fa fa-check"></i><b>5.1.7</b> jsonlike formats</a></li>
+<li class="chapter" data-level="5.1.8" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#hierarchical-formats"><i class="fa fa-check"></i><b>5.1.8</b> Hierarchical formats</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#pre-processing"><i class="fa fa-check"></i><b>5.2</b> Pre-processing</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#expression-matrix"><i class="fa fa-check"></i><b>5.2.1</b> Expression matrix</a></li>
+<li class="chapter" data-level="5.2.2" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#spatial-locations"><i class="fa fa-check"></i><b>5.2.2</b> Spatial locations</a></li>
+<li class="chapter" data-level="5.2.3" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#giottopoints"><i class="fa fa-check"></i><b>5.2.3</b> giottoPoints</a></li>
+<li class="chapter" data-level="5.2.4" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#giottopolygon"><i class="fa fa-check"></i><b>5.2.4</b> giottoPolygon</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#subobject-utility-functions"><i class="fa fa-check"></i><b>5.3</b> Subobject utility functions</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#ids"><i class="fa fa-check"></i><b>5.3.1</b> IDs</a></li>
+<li class="chapter" data-level="5.3.2" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#bracket-subsetting-and-extraction"><i class="fa fa-check"></i><b>5.3.2</b> Bracket subsetting and extraction</a></li>
+<li class="chapter" data-level="5.3.3" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#nesting-metadata-generics"><i class="fa fa-check"></i><b>5.3.3</b> Nesting metadata generics</a></li>
+<li class="chapter" data-level="5.3.4" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#appending-to-a-giotto-object"><i class="fa fa-check"></i><b>5.3.4</b> Appending to a giotto object</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html"><i class="fa fa-check"></i><b>6</b> Creating a Giotto object</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#overview"><i class="fa fa-check"></i><b>6.1</b> Overview</a></li>
+<li class="chapter" data-level="6.2" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#giottodata-modular-package"><i class="fa fa-check"></i><b>6.2</b> GiottoData modular package</a></li>
+<li class="chapter" data-level="6.3" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#from-matrix-locations"><i class="fa fa-check"></i><b>6.3</b> From matrix + locations</a></li>
+<li class="chapter" data-level="6.4" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#from-subcellular-raw-data-transcripts-or-images-polygons"><i class="fa fa-check"></i><b>6.4</b> From subcellular raw data (transcripts or images) + polygons</a></li>
+<li class="chapter" data-level="6.5" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#from-piece-wise"><i class="fa fa-check"></i><b>6.5</b> From piece-wise</a></li>
+<li class="chapter" data-level="6.6" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#using-convenience-functions-for-popular-technologies-vizgen-xenium-cosmx"><i class="fa fa-check"></i><b>6.6</b> Using convenience functions for popular technologies (Vizgen, Xenium, CosMx, …)</a></li>
+<li class="chapter" data-level="6.7" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#plotting"><i class="fa fa-check"></i><b>6.7</b> Plotting</a>
+<ul>
+<li class="chapter" data-level="6.7.1" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#subobject-plotting"><i class="fa fa-check"></i><b>6.7.1</b> Subobject plotting</a></li>
+<li class="chapter" data-level="6.7.2" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#additive-subobject-plotting"><i class="fa fa-check"></i><b>6.7.2</b> Additive subobject plotting</a></li>
+<li class="chapter" data-level="6.7.3" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#giotto-object-plotting"><i class="fa fa-check"></i><b>6.7.3</b> Giotto object plotting</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#subsetting"><i class="fa fa-check"></i><b>6.8</b> Subsetting</a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#id-subsetting"><i class="fa fa-check"></i><b>6.8.1</b> ID subsetting</a></li>
+<li class="chapter" data-level="6.8.2" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#coordinate-based-subsetting"><i class="fa fa-check"></i><b>6.8.2</b> Coordinate-based subsetting</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="visium-part-i.html"><a href="visium-part-i.html"><i class="fa fa-check"></i><b>7</b> Visium Part I</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="visium-part-i.html"><a href="visium-part-i.html#the-visium-technology"><i class="fa fa-check"></i><b>7.1</b> The Visium technology</a></li>
+<li class="chapter" data-level="7.2" data-path="visium-part-i.html"><a href="visium-part-i.html#introduction-to-the-spatial-dataset"><i class="fa fa-check"></i><b>7.2</b> Introduction to the spatial dataset</a></li>
+<li class="chapter" data-level="7.3" data-path="visium-part-i.html"><a href="visium-part-i.html#download-dataset"><i class="fa fa-check"></i><b>7.3</b> Download dataset</a></li>
+<li class="chapter" data-level="7.4" data-path="visium-part-i.html"><a href="visium-part-i.html#create-the-giotto-object"><i class="fa fa-check"></i><b>7.4</b> Create the Giotto object</a></li>
+<li class="chapter" data-level="7.5" data-path="visium-part-i.html"><a href="visium-part-i.html#subset-on-spots-that-were-covered-by-tissue"><i class="fa fa-check"></i><b>7.5</b> Subset on spots that were covered by tissue</a></li>
+<li class="chapter" data-level="7.6" data-path="visium-part-i.html"><a href="visium-part-i.html#quality-control"><i class="fa fa-check"></i><b>7.6</b> Quality control</a></li>
+<li class="chapter" data-level="7.7" data-path="visium-part-i.html"><a href="visium-part-i.html#filtering"><i class="fa fa-check"></i><b>7.7</b> Filtering</a></li>
+<li class="chapter" data-level="7.8" data-path="visium-part-i.html"><a href="visium-part-i.html#normalization"><i class="fa fa-check"></i><b>7.8</b> Normalization</a></li>
+<li class="chapter" data-level="7.9" data-path="visium-part-i.html"><a href="visium-part-i.html#feature-selection"><i class="fa fa-check"></i><b>7.9</b> Feature selection</a>
+<ul>
+<li class="chapter" data-level="7.9.1" data-path="visium-part-i.html"><a href="visium-part-i.html#highly-variable-features"><i class="fa fa-check"></i><b>7.9.1</b> Highly Variable Features:</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="visium-part-i.html"><a href="visium-part-i.html#dimension-reduction"><i class="fa fa-check"></i><b>7.10</b> Dimension Reduction</a>
+<ul>
+<li class="chapter" data-level="7.10.1" data-path="visium-part-i.html"><a href="visium-part-i.html#pca"><i class="fa fa-check"></i><b>7.10.1</b> PCA</a></li>
+<li class="chapter" data-level="7.10.2" data-path="visium-part-i.html"><a href="visium-part-i.html#umap"><i class="fa fa-check"></i><b>7.10.2</b> UMAP</a></li>
+<li class="chapter" data-level="7.10.3" data-path="visium-part-i.html"><a href="visium-part-i.html#t-sne"><i class="fa fa-check"></i><b>7.10.3</b> t-SNE</a></li>
+</ul></li>
+<li class="chapter" data-level="7.11" data-path="visium-part-i.html"><a href="visium-part-i.html#clustering"><i class="fa fa-check"></i><b>7.11</b> Clustering</a>
+<ul>
+<li class="chapter" data-level="7.11.1" data-path="visium-part-i.html"><a href="visium-part-i.html#calculate-leiden-clustering"><i class="fa fa-check"></i><b>7.11.1</b> Calculate Leiden clustering</a></li>
+<li class="chapter" data-level="7.11.2" data-path="visium-part-i.html"><a href="visium-part-i.html#calculate-louvain-clustering"><i class="fa fa-check"></i><b>7.11.2</b> Calculate Louvain clustering</a></li>
+</ul></li>
+<li class="chapter" data-level="7.12" data-path="visium-part-i.html"><a href="visium-part-i.html#save-the-object"><i class="fa fa-check"></i><b>7.12</b> Save the object</a></li>
+<li class="chapter" data-level="7.13" data-path="visium-part-i.html"><a href="visium-part-i.html#session-info"><i class="fa fa-check"></i><b>7.13</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="visium-part-ii.html"><a href="visium-part-ii.html"><i class="fa fa-check"></i><b>8</b> Visium Part II</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="visium-part-ii.html"><a href="visium-part-ii.html#load-the-object"><i class="fa fa-check"></i><b>8.1</b> Load the object</a></li>
+<li class="chapter" data-level="8.2" data-path="visium-part-ii.html"><a href="visium-part-ii.html#differential-expression"><i class="fa fa-check"></i><b>8.2</b> Differential expression</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="visium-part-ii.html"><a href="visium-part-ii.html#gini-markers"><i class="fa fa-check"></i><b>8.2.1</b> Gini markers</a></li>
+<li class="chapter" data-level="8.2.2" data-path="visium-part-ii.html"><a href="visium-part-ii.html#scran-markers"><i class="fa fa-check"></i><b>8.2.2</b> Scran markers</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="visium-part-ii.html"><a href="visium-part-ii.html#enrichment-deconvolution"><i class="fa fa-check"></i><b>8.3</b> Enrichment &amp; Deconvolution</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="visium-part-ii.html"><a href="visium-part-ii.html#pagerank"><i class="fa fa-check"></i><b>8.3.1</b> PAGE/Rank</a></li>
+<li class="chapter" data-level="8.3.2" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatialdwls"><i class="fa fa-check"></i><b>8.3.2</b> SpatialDWLS</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatial-expression-patterns"><i class="fa fa-check"></i><b>8.4</b> Spatial expression patterns</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatial-variable-genes"><i class="fa fa-check"></i><b>8.4.1</b> Spatial variable genes</a></li>
+<li class="chapter" data-level="8.4.2" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatial-co-expression-modules"><i class="fa fa-check"></i><b>8.4.2</b> Spatial co-expression modules</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatially-informed-clusters"><i class="fa fa-check"></i><b>8.5</b> Spatially informed clusters</a></li>
+<li class="chapter" data-level="8.6" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatial-domains-hmrf"><i class="fa fa-check"></i><b>8.6</b> Spatial domains HMRF</a></li>
+<li class="chapter" data-level="8.7" data-path="visium-part-ii.html"><a href="visium-part-ii.html#interactive-tools"><i class="fa fa-check"></i><b>8.7</b> Interactive tools</a></li>
+<li class="chapter" data-level="8.8" data-path="visium-part-ii.html"><a href="visium-part-ii.html#save-the-object-1"><i class="fa fa-check"></i><b>8.8</b> Save the object</a></li>
+<li class="chapter" data-level="8.9" data-path="visium-part-ii.html"><a href="visium-part-ii.html#session-info-1"><i class="fa fa-check"></i><b>8.9</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="visium-hd.html"><a href="visium-hd.html"><i class="fa fa-check"></i><b>9</b> Visium HD</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="visium-hd.html"><a href="visium-hd.html#objective"><i class="fa fa-check"></i><b>9.1</b> Objective</a></li>
+<li class="chapter" data-level="9.2" data-path="visium-hd.html"><a href="visium-hd.html#background"><i class="fa fa-check"></i><b>9.2</b> Background</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="visium-hd.html"><a href="visium-hd.html#visium-hd-technology"><i class="fa fa-check"></i><b>9.2.1</b> Visium HD Technology</a></li>
+<li class="chapter" data-level="9.2.2" data-path="visium-hd.html"><a href="visium-hd.html#colorectal-cancer-sample"><i class="fa fa-check"></i><b>9.2.2</b> Colorectal Cancer Sample</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="visium-hd.html"><a href="visium-hd.html#data-ingestion"><i class="fa fa-check"></i><b>9.3</b> Data Ingestion</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="visium-hd.html"><a href="visium-hd.html#visium-hd-output-data-format"><i class="fa fa-check"></i><b>9.3.1</b> Visium HD output data format</a></li>
+<li class="chapter" data-level="9.3.2" data-path="visium-hd.html"><a href="visium-hd.html#mini-visium-hd-dataset"><i class="fa fa-check"></i><b>9.3.2</b> Mini Visium HD dataset</a></li>
+<li class="chapter" data-level="9.3.3" data-path="visium-hd.html"><a href="visium-hd.html#giotto-visium-hd-convenience-function"><i class="fa fa-check"></i><b>9.3.3</b> Giotto Visium HD convenience function</a></li>
+<li class="chapter" data-level="9.3.4" data-path="visium-hd.html"><a href="visium-hd.html#read-in-data-manually"><i class="fa fa-check"></i><b>9.3.4</b> Read in data manually</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="visium-hd.html"><a href="visium-hd.html#hexbin-400-giotto-object"><i class="fa fa-check"></i><b>9.4</b> Hexbin 400 Giotto object</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="visium-hd.html"><a href="visium-hd.html#create-giotto-points"><i class="fa fa-check"></i><b>9.4.1</b> create giotto points</a></li>
+<li class="chapter" data-level="9.4.2" data-path="visium-hd.html"><a href="visium-hd.html#create-giotto-polygons"><i class="fa fa-check"></i><b>9.4.2</b> create giotto polygons</a></li>
+<li class="chapter" data-level="9.4.3" data-path="visium-hd.html"><a href="visium-hd.html#combine-giotto-points-and-polygons-to-create-giotto-object"><i class="fa fa-check"></i><b>9.4.3</b> combine Giotto points and polygons to create Giotto object</a></li>
+<li class="chapter" data-level="9.4.4" data-path="visium-hd.html"><a href="visium-hd.html#process-giotto-object"><i class="fa fa-check"></i><b>9.4.4</b> Process Giotto object</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="visium-hd.html"><a href="visium-hd.html#hexbin-100"><i class="fa fa-check"></i><b>9.5</b> Hexbin 100</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="visium-hd.html"><a href="visium-hd.html#standard-subcellular-pipeline"><i class="fa fa-check"></i><b>9.5.1</b> Standard subcellular pipeline</a></li>
+<li class="chapter" data-level="9.5.2" data-path="visium-hd.html"><a href="visium-hd.html#spatial-expression-patterns-1"><i class="fa fa-check"></i><b>9.5.2</b> Spatial expression patterns</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="visium-hd.html"><a href="visium-hd.html#hexbin-25"><i class="fa fa-check"></i><b>9.6</b> Hexbin 25</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="visium-hd.html"><a href="visium-hd.html#subcellular-workflow"><i class="fa fa-check"></i><b>9.6.1</b> Subcellular workflow</a></li>
+<li class="chapter" data-level="9.6.2" data-path="visium-hd.html"><a href="visium-hd.html#projections"><i class="fa fa-check"></i><b>9.6.2</b> Projections</a></li>
+<li class="chapter" data-level="9.6.3" data-path="visium-hd.html"><a href="visium-hd.html#niche-clustering"><i class="fa fa-check"></i><b>9.6.3</b> Niche clustering</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="visium-hd.html"><a href="visium-hd.html#database-backend---work-in-progress-but-coming-soon"><i class="fa fa-check"></i><b>9.7</b> Database backend - Work in progress, but coming soon!</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="xenium-1.html"><a href="xenium-1.html"><i class="fa fa-check"></i><b>10</b> Xenium</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="xenium-1.html"><a href="xenium-1.html#introduction-to-spatial-dataset"><i class="fa fa-check"></i><b>10.1</b> Introduction to spatial dataset</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="xenium-1.html"><a href="xenium-1.html#output-directory-structure"><i class="fa fa-check"></i><b>10.1.1</b> Output directory structure</a></li>
+<li class="chapter" data-level="10.1.2" data-path="xenium-1.html"><a href="xenium-1.html#mini-xenium-dataset"><i class="fa fa-check"></i><b>10.1.2</b> Mini Xenium Dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="xenium-1.html"><a href="xenium-1.html#data-preparation"><i class="fa fa-check"></i><b>10.2</b> Data preparation</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="xenium-1.html"><a href="xenium-1.html#image-conversion-may-change"><i class="fa fa-check"></i><b>10.2.1</b> Image conversion (may change)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="xenium-1.html"><a href="xenium-1.html#convenience-function"><i class="fa fa-check"></i><b>10.3</b> Convenience function</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="xenium-1.html"><a href="xenium-1.html#specific-filepaths"><i class="fa fa-check"></i><b>10.3.1</b> Specific filepaths</a></li>
+<li class="chapter" data-level="10.3.2" data-path="xenium-1.html"><a href="xenium-1.html#quality-value"><i class="fa fa-check"></i><b>10.3.2</b> Quality value</a></li>
+<li class="chapter" data-level="10.3.3" data-path="xenium-1.html"><a href="xenium-1.html#transcript-type-splitting"><i class="fa fa-check"></i><b>10.3.3</b> Transcript type splitting</a></li>
+<li class="chapter" data-level="10.3.4" data-path="xenium-1.html"><a href="xenium-1.html#centroids-calculation"><i class="fa fa-check"></i><b>10.3.4</b> Centroids calculation</a></li>
+<li class="chapter" data-level="10.3.5" data-path="xenium-1.html"><a href="xenium-1.html#simple-visualization"><i class="fa fa-check"></i><b>10.3.5</b> Simple visualization</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="xenium-1.html"><a href="xenium-1.html#piecewise-loading"><i class="fa fa-check"></i><b>10.4</b> Piecewise loading</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="xenium-1.html"><a href="xenium-1.html#load-giottopoints-transcripts"><i class="fa fa-check"></i><b>10.4.1</b> Load giottoPoints transcripts</a></li>
+<li class="chapter" data-level="10.4.2" data-path="xenium-1.html"><a href="xenium-1.html#optional-loading-pre-aggregated-data"><i class="fa fa-check"></i><b>10.4.2</b> (optional) Loading pre-aggregated data</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="xenium-1.html"><a href="xenium-1.html#xenium-images"><i class="fa fa-check"></i><b>10.5</b> Xenium Images</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="xenium-1.html"><a href="xenium-1.html#image-metadata"><i class="fa fa-check"></i><b>10.5.1</b> Image metadata</a></li>
+<li class="chapter" data-level="10.5.2" data-path="xenium-1.html"><a href="xenium-1.html#image-loading"><i class="fa fa-check"></i><b>10.5.2</b> Image loading</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="xenium-1.html"><a href="xenium-1.html#spatial-aggregation"><i class="fa fa-check"></i><b>10.6</b> Spatial aggregation</a></li>
+<li class="chapter" data-level="10.7" data-path="xenium-1.html"><a href="xenium-1.html#aggregate-analyses-workflow"><i class="fa fa-check"></i><b>10.7</b> Aggregate analyses workflow</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="xenium-1.html"><a href="xenium-1.html#transcripts-per-cell"><i class="fa fa-check"></i><b>10.7.1</b> Transcripts per cell</a></li>
+<li class="chapter" data-level="10.7.2" data-path="xenium-1.html"><a href="xenium-1.html#filtering-1"><i class="fa fa-check"></i><b>10.7.2</b> Filtering</a></li>
+<li class="chapter" data-level="10.7.3" data-path="xenium-1.html"><a href="xenium-1.html#normalization-1"><i class="fa fa-check"></i><b>10.7.3</b> Normalization</a></li>
+<li class="chapter" data-level="10.7.4" data-path="xenium-1.html"><a href="xenium-1.html#dimension-reduction-1"><i class="fa fa-check"></i><b>10.7.4</b> Dimension Reduction</a></li>
+<li class="chapter" data-level="10.7.5" data-path="xenium-1.html"><a href="xenium-1.html#clustering-1"><i class="fa fa-check"></i><b>10.7.5</b> Clustering</a></li>
+</ul></li>
+<li class="chapter" data-level="10.8" data-path="xenium-1.html"><a href="xenium-1.html#niche-clustering-1"><i class="fa fa-check"></i><b>10.8</b> Niche clustering</a>
+<ul>
+<li class="chapter" data-level="10.8.1" data-path="xenium-1.html"><a href="xenium-1.html#spatial-network"><i class="fa fa-check"></i><b>10.8.1</b> Spatial network</a></li>
+<li class="chapter" data-level="10.8.2" data-path="xenium-1.html"><a href="xenium-1.html#niche-calculation"><i class="fa fa-check"></i><b>10.8.2</b> Niche calculation</a></li>
+<li class="chapter" data-level="10.8.3" data-path="xenium-1.html"><a href="xenium-1.html#k-means-clustering-based-on-niche-signature"><i class="fa fa-check"></i><b>10.8.3</b> k-means clustering based on niche signature</a></li>
+</ul></li>
+<li class="chapter" data-level="10.9" data-path="xenium-1.html"><a href="xenium-1.html#cell-proximity-enrichment"><i class="fa fa-check"></i><b>10.9</b> Cell proximity enrichment</a></li>
+<li class="chapter" data-level="10.10" data-path="xenium-1.html"><a href="xenium-1.html#pseudovisium"><i class="fa fa-check"></i><b>10.10</b> Pseudovisium</a>
+<ul>
+<li class="chapter" data-level="10.10.1" data-path="xenium-1.html"><a href="xenium-1.html#pseudovisium-aggregation-and-workflow"><i class="fa fa-check"></i><b>10.10.1</b> Pseudovisium aggregation and workflow</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html"><i class="fa fa-check"></i><b>11</b> Spatial proteomics: Multiplexed Immunofluorescence</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#spatial-proteomics-technologies"><i class="fa fa-check"></i><b>11.1</b> Spatial Proteomics Technologies</a></li>
+<li class="chapter" data-level="11.2" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#raw-data-type-coming-out-of-different-technologies"><i class="fa fa-check"></i><b>11.2</b> Raw data type coming out of different technologies</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#use-ome.tiff-as-an-example-output-data-to-begin-with"><i class="fa fa-check"></i><b>11.2.1</b> Use ome.tiff as an example output data to begin with</a></li>
+<li class="chapter" data-level="11.2.2" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#use-single-channel-images-as-an-example-output-data-to-begin-with"><i class="fa fa-check"></i><b>11.2.2</b> Use single channel images as an example output data to begin with</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cell-segmentation-file-to-get-single-cell-level-protein-expression"><i class="fa fa-check"></i><b>11.3</b> Cell Segmentation file to get single cell level protein expression</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#using-segmentation-output-file-from-deepcellmesmer-as-an-example."><i class="fa fa-check"></i><b>11.3.1</b> Using segmentation output file from DeepCell(mesmer) as an example.</a></li>
+<li class="chapter" data-level="11.3.2" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#using-giotto-wrapper-of-cellpose-to-perform-segmentation"><i class="fa fa-check"></i><b>11.3.2</b> Using Giotto wrapper of Cellpose to perform segmentation</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#create-a-giotto-object-using-list-of-gitto-large-images-and-polygons"><i class="fa fa-check"></i><b>11.4</b> Create a Giotto Object using list of gitto large images and polygons</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#overlap-to-matrix"><i class="fa fa-check"></i><b>11.4.1</b> Overlap to matrix</a></li>
+<li class="chapter" data-level="11.4.2" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#manipulate-expression-information"><i class="fa fa-check"></i><b>11.4.2</b> Manipulate Expression information</a></li>
+<li class="chapter" data-level="11.4.3" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#rescale-polygons"><i class="fa fa-check"></i><b>11.4.3</b> Rescale polygons</a></li>
+<li class="chapter" data-level="11.4.4" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#perform-clustering-and-differential-expression"><i class="fa fa-check"></i><b>11.4.4</b> Perform clustering and differential expression</a></li>
+<li class="chapter" data-level="11.4.5" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#give-the-cluster-an-annotation-based-on-expression-values"><i class="fa fa-check"></i><b>11.4.5</b> Give the cluster an annotation based on expression values</a></li>
+<li class="chapter" data-level="11.4.6" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#spatial-network-1"><i class="fa fa-check"></i><b>11.4.6</b> Spatial network</a></li>
+<li class="chapter" data-level="11.4.7" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cell-neighborhood-cell-typecell-type-interactions"><i class="fa fa-check"></i><b>11.4.7</b> Cell Neighborhood: Cell-Type/Cell-Type Interactions</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#session-info-2"><i class="fa fa-check"></i><b>11.5</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html"><i class="fa fa-check"></i><b>12</b> Working with multiple samples</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#objective-1"><i class="fa fa-check"></i><b>12.1</b> Objective</a></li>
+<li class="chapter" data-level="12.2" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#background-1"><i class="fa fa-check"></i><b>12.2</b> Background</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#dataset"><i class="fa fa-check"></i><b>12.2.1</b> Dataset</a></li>
+<li class="chapter" data-level="12.2.2" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#visium-technology"><i class="fa fa-check"></i><b>12.2.2</b> Visium technology</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#create-individual-giotto-objects"><i class="fa fa-check"></i><b>12.3</b> Create individual giotto objects</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#download-the-data"><i class="fa fa-check"></i><b>12.3.1</b> Download the data</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#extracting-the-downloaded-files"><i class="fa fa-check"></i><b>12.4</b> Extracting the downloaded files</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#create-giotto-instructions"><i class="fa fa-check"></i><b>12.4.1</b> Create giotto instructions</a></li>
+<li class="chapter" data-level="12.4.2" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#load-visium-data-into-giotto"><i class="fa fa-check"></i><b>12.4.2</b> Load visium data into Giotto</a></li>
+<li class="chapter" data-level="12.4.3" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#healthy-prostate-tissue-coverage"><i class="fa fa-check"></i><b>12.4.3</b> Healthy prostate tissue coverage</a></li>
+<li class="chapter" data-level="12.4.4" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#adenocarcinoma-prostate-tissue-coverage"><i class="fa fa-check"></i><b>12.4.4</b> Adenocarcinoma prostate tissue coverage</a></li>
+<li class="chapter" data-level="12.4.5" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#showing-the-data-strucutre-for-the-inidividual-objects"><i class="fa fa-check"></i><b>12.4.5</b> Showing the data strucutre for the inidividual objects</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#join-giotto-objects"><i class="fa fa-check"></i><b>12.5</b> Join Giotto Objects</a></li>
+<li class="chapter" data-level="12.6" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#visualizing-combined-datasets"><i class="fa fa-check"></i><b>12.6</b> Visualizing combined datasets</a>
+<ul>
+<li class="chapter" data-level="12.6.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#vizualizing-in-the-same-plot"><i class="fa fa-check"></i><b>12.6.1</b> Vizualizing in the same plot</a></li>
+<li class="chapter" data-level="12.6.2" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#vizualizing-on-separate-plots"><i class="fa fa-check"></i><b>12.6.2</b> Vizualizing on separate plots</a></li>
+</ul></li>
+<li class="chapter" data-level="12.7" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#splitting-combined-dataset"><i class="fa fa-check"></i><b>12.7</b> Splitting combined dataset</a></li>
+<li class="chapter" data-level="12.8" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#analyzing-joined-objects"><i class="fa fa-check"></i><b>12.8</b> Analyzing joined objects</a>
+<ul>
+<li class="chapter" data-level="12.8.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#normalization-and-adding-statistics"><i class="fa fa-check"></i><b>12.8.1</b> Normalization and adding statistics</a></li>
+<li class="chapter" data-level="12.8.2" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#clustering-the-datasets"><i class="fa fa-check"></i><b>12.8.2</b> Clustering the datasets</a></li>
+<li class="chapter" data-level="12.8.3" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#vizualizing-spatial-location-of-clusters"><i class="fa fa-check"></i><b>12.8.3</b> Vizualizing spatial location of clusters</a></li>
+<li class="chapter" data-level="12.8.4" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#vizualizing-tissue-contribution-to-clusters"><i class="fa fa-check"></i><b>12.8.4</b> Vizualizing tissue contribution to clusters</a></li>
+</ul></li>
+<li class="chapter" data-level="12.9" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#perform-harmony-and-default-workflows"><i class="fa fa-check"></i><b>12.9</b> Perform Harmony and default workflows</a>
+<ul>
+<li class="chapter" data-level="12.9.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#clustering-harmonized-object"><i class="fa fa-check"></i><b>12.9.1</b> Clustering harmonized object</a></li>
+<li class="chapter" data-level="12.9.2" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#vizualizing-the-tissue-contribution"><i class="fa fa-check"></i><b>12.9.2</b> Vizualizing the tissue contribution</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html"><i class="fa fa-check"></i><b>13</b> Spatial multi-modal analysis</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#overview-1"><i class="fa fa-check"></i><b>13.1</b> Overview</a></li>
+<li class="chapter" data-level="13.2" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-manipulation"><i class="fa fa-check"></i><b>13.2</b> Spatial manipulation</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-transforms"><i class="fa fa-check"></i><b>13.2.1</b> Spatial transforms:</a></li>
+<li class="chapter" data-level="13.2.2" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-utilities"><i class="fa fa-check"></i><b>13.2.2</b> Spatial utilities:</a></li>
+<li class="chapter" data-level="13.2.3" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-classes"><i class="fa fa-check"></i><b>13.2.3</b> Spatial classes:</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#examples-of-the-simple-transforms-with-a-giottopolygon"><i class="fa fa-check"></i><b>13.3</b> Examples of the simple transforms with a giottoPolygon</a></li>
+<li class="chapter" data-level="13.4" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#affine-transforms"><i class="fa fa-check"></i><b>13.4</b> Affine transforms</a></li>
+<li class="chapter" data-level="13.5" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#image-transforms"><i class="fa fa-check"></i><b>13.5</b> Image transforms</a></li>
+<li class="chapter" data-level="13.6" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#the-practical-usage-of-multi-modality-co-registration"><i class="fa fa-check"></i><b>13.6</b> The practical usage of multi-modality co-registration</a>
+<ul>
+<li class="chapter" data-level="13.6.1" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#example-dataset-xenium-breast-cancer-pre-release-pack"><i class="fa fa-check"></i><b>13.6.1</b> Example dataset: Xenium Breast Cancer pre-release pack</a></li>
+<li class="chapter" data-level="13.6.2" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#target-coordinate-system"><i class="fa fa-check"></i><b>13.6.2</b> Target Coordinate system</a></li>
+<li class="chapter" data-level="13.6.3" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#visium-to-register"><i class="fa fa-check"></i><b>13.6.3</b> Visium to register</a></li>
+<li class="chapter" data-level="13.6.4" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#register-post-xenium-he-and-if-image"><i class="fa fa-check"></i><b>13.6.4</b> Register post-Xenium H&amp;E and IF image</a></li>
+<li class="chapter" data-level="13.6.5" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#automatic-alignment-via-sift-feature-descriptor-matching-and-affine-transformation"><i class="fa fa-check"></i><b>13.6.5</b> Automatic alignment via SIFT feature descriptor matching and affine transformation</a></li>
+<li class="chapter" data-level="13.6.6" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#final-notes"><i class="fa fa-check"></i><b>13.6.6</b> Final Notes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html"><i class="fa fa-check"></i><b>14</b> Multi-omics integration</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#the-cytassist-technology"><i class="fa fa-check"></i><b>14.1</b> The CytAssist technology</a></li>
+<li class="chapter" data-level="14.2" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#introduction-to-the-spatial-dataset-1"><i class="fa fa-check"></i><b>14.2</b> Introduction to the spatial dataset</a></li>
+<li class="chapter" data-level="14.3" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#download-dataset-1"><i class="fa fa-check"></i><b>14.3</b> Download dataset</a></li>
+<li class="chapter" data-level="14.4" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#create-the-giotto-object-1"><i class="fa fa-check"></i><b>14.4</b> Create the Giotto object</a></li>
+<li class="chapter" data-level="14.5" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#subset-on-spots-that-were-covered-by-tissue-1"><i class="fa fa-check"></i><b>14.5</b> Subset on spots that were covered by tissue</a></li>
+<li class="chapter" data-level="14.6" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#rna-processing"><i class="fa fa-check"></i><b>14.6</b> RNA processing</a></li>
+<li class="chapter" data-level="14.7" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#protein-processing"><i class="fa fa-check"></i><b>14.7</b> Protein processing</a></li>
+<li class="chapter" data-level="14.8" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#multi-omics-integration-1"><i class="fa fa-check"></i><b>14.8</b> Multi-omics integration</a></li>
+<li class="chapter" data-level="14.9" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#session-info-3"><i class="fa fa-check"></i><b>14.9</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html"><i class="fa fa-check"></i><b>15</b> Interoperability with other frameworks</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#load-giotto-object"><i class="fa fa-check"></i><b>15.1</b> Load Giotto object</a></li>
+<li class="chapter" data-level="15.2" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#seurat"><i class="fa fa-check"></i><b>15.2</b> Seurat</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#conversion-of-giotto-object-to-seurat-object"><i class="fa fa-check"></i><b>15.2.1</b> Conversion of Giotto Object to Seurat Object</a></li>
+<li class="chapter" data-level="15.2.2" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#conversion-of-seurat-object-back-to-giotto-object"><i class="fa fa-check"></i><b>15.2.2</b> Conversion of Seurat object Back to Giotto Object</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#spatialexperiment"><i class="fa fa-check"></i><b>15.3</b> SpatialExperiment</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#convert-giotto-object-to-spatialexperiment-object"><i class="fa fa-check"></i><b>15.3.1</b> Convert Giotto Object to SpatialExperiment Object</a></li>
+<li class="chapter" data-level="15.3.2" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#conversion-of-spatialexperiment-object-back-to-giotto"><i class="fa fa-check"></i><b>15.3.2</b> Conversion of SpatialExperiment object back to Giotto</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#anndata"><i class="fa fa-check"></i><b>15.4</b> AnnData</a>
+<ul>
+<li class="chapter" data-level="15.4.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#load-required-libraries"><i class="fa fa-check"></i><b>15.4.1</b> Load Required Libraries</a></li>
+<li class="chapter" data-level="15.4.2" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#specify-path-for-results"><i class="fa fa-check"></i><b>15.4.2</b> Specify Path for Results</a></li>
+<li class="chapter" data-level="15.4.3" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#giotto-to-anndata"><i class="fa fa-check"></i><b>15.4.3</b> Giotto To AnnData</a></li>
+<li class="chapter" data-level="15.4.4" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#convert-anndata-to-giotto"><i class="fa fa-check"></i><b>15.4.4</b> Convert AnnData to Giotto</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#create-mini-vizgen-object"><i class="fa fa-check"></i><b>15.5</b> Create mini Vizgen object</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html"><i class="fa fa-check"></i><b>16</b> Interoperability with isolated tools</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#spatial-niche-trajectory-analysis-ontrac"><i class="fa fa-check"></i><b>16.1</b> Spatial niche trajectory analysis (ONTraC)</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#introduction-to-ontrac"><i class="fa fa-check"></i><b>16.1.1</b> Introduction to ONTraC</a></li>
+<li class="chapter" data-level="16.1.2" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#introduction-to-merfish"><i class="fa fa-check"></i><b>16.1.2</b> Introduction to MERFISH</a></li>
+<li class="chapter" data-level="16.1.3" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#settings"><i class="fa fa-check"></i><b>16.1.3</b> Settings</a></li>
+<li class="chapter" data-level="16.1.4" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#dataset-1"><i class="fa fa-check"></i><b>16.1.4</b> Dataset</a></li>
+<li class="chapter" data-level="16.1.5" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#create-the-giotto-object-2"><i class="fa fa-check"></i><b>16.1.5</b> Create the Giotto object</a></li>
+<li class="chapter" data-level="16.1.6" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#perform-spatial-niche-trajectory-analysis-using-ontrac"><i class="fa fa-check"></i><b>16.1.6</b> Perform spatial niche trajectory analysis using ONTraC</a></li>
+<li class="chapter" data-level="16.1.7" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#visualization"><i class="fa fa-check"></i><b>16.1.7</b> Visualization</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#session-info-4"><i class="fa fa-check"></i><b>16.2</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html"><i class="fa fa-check"></i><b>17</b> Interactivity with the R/Spatial ecosystem</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#kriging"><i class="fa fa-check"></i><b>17.1</b> Kriging</a>
+<ul>
+<li class="chapter" data-level="17.1.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#visium-technology-1"><i class="fa fa-check"></i><b>17.1.1</b> Visium technology</a></li>
+<li class="chapter" data-level="17.1.2" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#dataset-2"><i class="fa fa-check"></i><b>17.1.2</b> Dataset</a></li>
+<li class="chapter" data-level="17.1.3" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#generating-a-geojson-file-of-nuclei-location"><i class="fa fa-check"></i><b>17.1.3</b> Generating a geojson file of nuclei location</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#downloading-the-dataset"><i class="fa fa-check"></i><b>17.2</b> Downloading the dataset</a></li>
+<li class="chapter" data-level="17.3" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#extracting-the-files"><i class="fa fa-check"></i><b>17.3</b> Extracting the files</a></li>
+<li class="chapter" data-level="17.4" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#downloading-giotto-object-and-nuclei-segmentation"><i class="fa fa-check"></i><b>17.4</b> Downloading giotto object and nuclei segmentation</a></li>
+<li class="chapter" data-level="17.5" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#importing-visium-data"><i class="fa fa-check"></i><b>17.5</b> Importing visium data</a>
+<ul>
+<li class="chapter" data-level="17.5.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#identifying-spatially-organized-features"><i class="fa fa-check"></i><b>17.5.1</b> Identifying spatially organized features</a></li>
+</ul></li>
+<li class="chapter" data-level="17.6" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#adding-cell-polygons-to-giotto-object"><i class="fa fa-check"></i><b>17.6</b> Adding cell polygons to Giotto object</a>
+<ul>
+<li class="chapter" data-level="17.6.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#read-in-the-poly-information"><i class="fa fa-check"></i><b>17.6.1</b> Read in the poly information</a></li>
+<li class="chapter" data-level="17.6.2" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#vizualizing-polygons"><i class="fa fa-check"></i><b>17.6.2</b> Vizualizing polygons</a></li>
+<li class="chapter" data-level="17.6.3" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#showing-giotto-object-prior-to-polygon-addition"><i class="fa fa-check"></i><b>17.6.3</b> Showing Giotto object prior to polygon addition</a></li>
+<li class="chapter" data-level="17.6.4" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#adding-polygons-to-giotto-object"><i class="fa fa-check"></i><b>17.6.4</b> Adding polygons to giotto object</a></li>
+<li class="chapter" data-level="17.6.5" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#check-polygon-information"><i class="fa fa-check"></i><b>17.6.5</b> Check polygon information</a></li>
+</ul></li>
+<li class="chapter" data-level="17.7" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#performing-kriging"><i class="fa fa-check"></i><b>17.7</b> Performing kriging</a>
+<ul>
+<li class="chapter" data-level="17.7.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#interpolating-features"><i class="fa fa-check"></i><b>17.7.1</b> Interpolating features</a></li>
+<li class="chapter" data-level="17.7.2" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#expression-overlap"><i class="fa fa-check"></i><b>17.7.2</b> Expression overlap</a></li>
+</ul></li>
+<li class="chapter" data-level="17.8" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#reading-in-larger-dataset"><i class="fa fa-check"></i><b>17.8</b> Reading in larger dataset</a></li>
+<li class="chapter" data-level="17.9" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#analyzing-interpolated-features"><i class="fa fa-check"></i><b>17.9</b> Analyzing interpolated features</a>
+<ul>
+<li class="chapter" data-level="17.9.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#filter-and-normalization"><i class="fa fa-check"></i><b>17.9.1</b> Filter and normalization</a></li>
+<li class="chapter" data-level="17.9.2" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#visualizing-gene-expression-from-interpolated-expression"><i class="fa fa-check"></i><b>17.9.2</b> Visualizing gene expression from interpolated expression</a></li>
+<li class="chapter" data-level="17.9.3" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#run-pca"><i class="fa fa-check"></i><b>17.9.3</b> Run PCA</a></li>
+<li class="chapter" data-level="17.9.4" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#clustering-2"><i class="fa fa-check"></i><b>17.9.4</b> Clustering</a></li>
+<li class="chapter" data-level="17.9.5" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#visualizing-clustering"><i class="fa fa-check"></i><b>17.9.5</b> Visualizing clustering</a></li>
+<li class="chapter" data-level="17.9.6" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#cropping-objects"><i class="fa fa-check"></i><b>17.9.6</b> Cropping objects</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="contributing-to-giotto.html"><a href="contributing-to-giotto.html"><i class="fa fa-check"></i><b>18</b> Contributing to Giotto</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="contributing-to-giotto.html"><a href="contributing-to-giotto.html#contribution-guideline"><i class="fa fa-check"></i><b>18.1</b> Contribution guideline</a></li>
 </ul></li>
 </ul>
 
@@ -391,74 +574,544 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="creating-a-giotto-object" class="section level1 hasAnchor" number="5">
-<h1><span class="header-section-number">5</span> Creating a Giotto object<a href="creating-a-giotto-object.html#creating-a-giotto-object" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="creating-a-giotto-object" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">6</span> Creating a Giotto object<a href="creating-a-giotto-object.html#creating-a-giotto-object" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Jiaji George Chen</p>
 <p>August 5th 2024</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="creating-a-giotto-object.html#cb2-1" tabindex="-1"></a>save_dir <span class="ot">&lt;-</span> <span class="st">&quot;~/Documents/GitHub/giotto_workshop_2024/img/01_session4&quot;</span></span></code></pre></div>
-<div id="overview" class="section level2 hasAnchor" number="5.1">
-<h2><span class="header-section-number">5.1</span> Overview<a href="creating-a-giotto-object.html#overview" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Giotto has representations for both aggregated (cell by count) + xy(z)
-information and subcellular polygon or mask information and transcript xy(z)
-or image information. A Giotto object can be set up from either of the two
-above sets of information.</p>
+<div id="overview" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Overview<a href="creating-a-giotto-object.html#overview" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The minimal amount of raw data needed to put together a fully functional <code>giotto</code> object are either of the following:</p>
+<ul>
+<li>spatial coordinates (centroids) and expression matrix information</li>
+<li>spatial feature information (points or image intensity values) and spatial annotations to aggregate that feature information with (polygons/mask).</li>
+</ul>
+<p>You can either use the <code>create*</code> style functions introduced in the previous session and build up the object piecewise or you can use the <code>giotto</code> object constructor functions <code>createGiottoObject()</code> and <code>createGiottoObjectSubcellular()</code></p>
 </div>
-<div id="from-matrix-locations" class="section level2 hasAnchor" number="5.2">
-<h2><span class="header-section-number">5.2</span> From matrix + locations<a href="creating-a-giotto-object.html#from-matrix-locations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<pre><code>createGiottoObject()</code></pre>
+<div id="giottodata-modular-package" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> GiottoData modular package<a href="creating-a-giotto-object.html#giottodata-modular-package" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We can showcase the construction of objects by pulling some raw data from the <em>GiottoData</em> package. A dataset was loaded from here earlier in the previous section, but to formally introduce it, this package contains mini datasets and also download links to other publicly available datasets. It helps with prototyping and development and also making reproducible examples.</p>
+<p>The mini examples from popular platform datasets can also help give an understanding of what their data is like and how <em>Giotto</em> represents them.</p>
 </div>
-<div id="from-subcellular-raw-data-transcripts-or-images-polygons" class="section level2 hasAnchor" number="5.3">
-<h2><span class="header-section-number">5.3</span> From subcellular raw data (transcripts or images) + polygons<a href="creating-a-giotto-object.html#from-subcellular-raw-data-transcripts-or-images-polygons" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<pre><code>createGiottoObjectSubcellular()</code></pre>
-<p>The above two methods accept data, converts them into Giotto’s compatible
-formats, and then assembles the final giotto object.</p>
-<p>If desired you can also assemble a giotto object piece-wise after creating
-the Giotto subobjects manually.</p>
+<div id="from-matrix-locations" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> From matrix + locations<a href="creating-a-giotto-object.html#from-matrix-locations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For this, we will load some visium expression information and spatial locations.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="creating-a-giotto-object.html#cb60-1" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
+<span id="cb60-2"><a href="creating-a-giotto-object.html#cb60-2" tabindex="-1"></a></span>
+<span id="cb60-3"><a href="creating-a-giotto-object.html#cb60-3" tabindex="-1"></a><span class="co"># function to get a filepath from GiottoData</span></span>
+<span id="cb60-4"><a href="creating-a-giotto-object.html#cb60-4" tabindex="-1"></a>mini_vis_raw <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb60-5"><a href="creating-a-giotto-object.html#cb60-5" tabindex="-1"></a>  <span class="fu">system.file</span>(</span>
+<span id="cb60-6"><a href="creating-a-giotto-object.html#cb60-6" tabindex="-1"></a>    <span class="at">package =</span> <span class="st">&quot;GiottoData&quot;</span>, </span>
+<span id="cb60-7"><a href="creating-a-giotto-object.html#cb60-7" tabindex="-1"></a>    <span class="fu">file.path</span>(<span class="st">&quot;Mini_datasets&quot;</span>, <span class="st">&quot;Visium&quot;</span>, <span class="st">&quot;Raw&quot;</span>, x)</span>
+<span id="cb60-8"><a href="creating-a-giotto-object.html#cb60-8" tabindex="-1"></a>  )</span>
+<span id="cb60-9"><a href="creating-a-giotto-object.html#cb60-9" tabindex="-1"></a>}</span>
+<span id="cb60-10"><a href="creating-a-giotto-object.html#cb60-10" tabindex="-1"></a></span>
+<span id="cb60-11"><a href="creating-a-giotto-object.html#cb60-11" tabindex="-1"></a>mini_vis_expr <span class="ot">&lt;-</span> <span class="fu">mini_vis_raw</span>(<span class="st">&quot;visium_DG_expr.txt.gz&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb60-12"><a href="creating-a-giotto-object.html#cb60-12" tabindex="-1"></a>  data.table<span class="sc">::</span><span class="fu">fread</span>() <span class="sc">|&gt;</span></span>
+<span id="cb60-13"><a href="creating-a-giotto-object.html#cb60-13" tabindex="-1"></a>  GiottoUtils<span class="sc">::</span><span class="fu">dt_to_matrix</span>()</span>
+<span id="cb60-14"><a href="creating-a-giotto-object.html#cb60-14" tabindex="-1"></a></span>
+<span id="cb60-15"><a href="creating-a-giotto-object.html#cb60-15" tabindex="-1"></a>mini_vis_expr[<span class="fu">seq</span>(<span class="dv">5</span>), <span class="fu">seq</span>(<span class="dv">5</span>)]</span></code></pre></div>
+<pre><code>5 x 5 sparse Matrix of class &quot;dgCMatrix&quot;
+AAAGGGATGTAGCAAG-1 AAATGGCATGTCTTGT-1 AAATGGTCAATGTGCC-1 AAATTAACGGGTAGCT-1 AACAACTGGTAGTTGC-1
+Gna12                   1                  2                  1                  1                  9
+Ccnd2                   .                  1                  1                  .                  .
+Btbd17                  .                  1                  1                  1                  .
+Sox9                    .                  .                  .                  .                  .
+Sez6                    .                  1                  4                  3                  .</code></pre>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="creating-a-giotto-object.html#cb62-1" tabindex="-1"></a>mini_vis_slocs <span class="ot">&lt;-</span> <span class="fu">mini_vis_raw</span>(<span class="st">&quot;visium_DG_locs.txt&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb62-2"><a href="creating-a-giotto-object.html#cb62-2" tabindex="-1"></a>  data.table<span class="sc">::</span><span class="fu">fread</span>()</span>
+<span id="cb62-3"><a href="creating-a-giotto-object.html#cb62-3" tabindex="-1"></a></span>
+<span id="cb62-4"><a href="creating-a-giotto-object.html#cb62-4" tabindex="-1"></a><span class="fu">head</span>(mini_vis_slocs)</span></code></pre></div>
+<pre><code>V1    V2
+&lt;int&gt; &lt;int&gt;
+1:  5477 -4125
+2:  5959 -2808
+3:  4720 -5202
+4:  5202 -5322
+5:  4101 -4604
+6:  5821 -3047</code></pre>
+<p>With these two pieces of data, we can make a fully working <code>giotto</code> object. The spatial locations are missing cell_ID names, but they will be detected from the expression information.</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="creating-a-giotto-object.html#cb64-1" tabindex="-1"></a>mini_vis <span class="ot">&lt;-</span> <span class="fu">createGiottoObject</span>(</span>
+<span id="cb64-2"><a href="creating-a-giotto-object.html#cb64-2" tabindex="-1"></a>  <span class="at">expression =</span> mini_vis_expr,</span>
+<span id="cb64-3"><a href="creating-a-giotto-object.html#cb64-3" tabindex="-1"></a>  <span class="at">spatial_locs =</span> mini_vis_slocs</span>
+<span id="cb64-4"><a href="creating-a-giotto-object.html#cb64-4" tabindex="-1"></a>)</span>
+<span id="cb64-5"><a href="creating-a-giotto-object.html#cb64-5" tabindex="-1"></a></span>
+<span id="cb64-6"><a href="creating-a-giotto-object.html#cb64-6" tabindex="-1"></a><span class="fu">instructions</span>(mini_vis, <span class="st">&quot;return_plot&quot;</span>) <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb64-7"><a href="creating-a-giotto-object.html#cb64-7" tabindex="-1"></a><span class="co"># set return_plot = FALSE otherwise we will get duplicate outputs in code chunks</span></span></code></pre></div>
+<p>For a simple example plot:</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="creating-a-giotto-object.html#cb65-1" tabindex="-1"></a><span class="fu">spatFeatPlot2D</span>(mini_vis,</span>
+<span id="cb65-2"><a href="creating-a-giotto-object.html#cb65-2" tabindex="-1"></a>               <span class="at">feats =</span> <span class="fu">c</span>(<span class="st">&quot;Gna12&quot;</span>, <span class="st">&quot;Gfap&quot;</span>), </span>
+<span id="cb65-3"><a href="creating-a-giotto-object.html#cb65-3" tabindex="-1"></a>               <span class="at">expression_values =</span> <span class="st">&quot;raw&quot;</span>,</span>
+<span id="cb65-4"><a href="creating-a-giotto-object.html#cb65-4" tabindex="-1"></a>               <span class="at">point_size =</span> <span class="fl">2.5</span>,</span>
+<span id="cb65-5"><a href="creating-a-giotto-object.html#cb65-5" tabindex="-1"></a>               <span class="at">gradient_style =</span> <span class="st">&quot;sequential&quot;</span>,</span>
+<span id="cb65-6"><a href="creating-a-giotto-object.html#cb65-6" tabindex="-1"></a>               <span class="at">background_color =</span> <span class="st">&quot;black&quot;</span></span>
+<span id="cb65-7"><a href="creating-a-giotto-object.html#cb65-7" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-66"></span>
+<img src="img/01_session4/example_featplot.png" alt="Example spatial feature plot to show functioning object" width="717" />
+<p class="caption">
+Figure 6.1: Example spatial feature plot to show functioning object
+</p>
 </div>
-<div id="from-piece-wise" class="section level2 hasAnchor" number="5.4">
-<h2><span class="header-section-number">5.4</span> From piece-wise<a href="creating-a-giotto-object.html#from-piece-wise" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<pre><code>g &lt;- giotto()
-g &lt;- setGiotto(g, ??)</code></pre>
 </div>
-<div id="using-convenience-functions-for-popular-technologies-vizgen-xenium-cosmx" class="section level2 hasAnchor" number="5.5">
-<h2><span class="header-section-number">5.5</span> Using convenience functions for popular technologies (Vizgen, Xenium, CosMx, …)<a href="creating-a-giotto-object.html#using-convenience-functions-for-popular-technologies-vizgen-xenium-cosmx" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>There are also several convenience functions we provide for loading in data
-from popular platforms. Many of these will be touched on later during other
-sessions</p>
+<div id="from-subcellular-raw-data-transcripts-or-images-polygons" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> From subcellular raw data (transcripts or images) + polygons<a href="creating-a-giotto-object.html#from-subcellular-raw-data-transcripts-or-images-polygons" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You can also make <code>giotto</code> objects starting from raw spatial feature information and annotations that give them spatial context.</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="creating-a-giotto-object.html#cb66-1" tabindex="-1"></a><span class="co"># function to get a filepath from GiottoData</span></span>
+<span id="cb66-2"><a href="creating-a-giotto-object.html#cb66-2" tabindex="-1"></a>mini_viz_raw <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb66-3"><a href="creating-a-giotto-object.html#cb66-3" tabindex="-1"></a>  <span class="fu">system.file</span>(</span>
+<span id="cb66-4"><a href="creating-a-giotto-object.html#cb66-4" tabindex="-1"></a>    <span class="at">package =</span> <span class="st">&quot;GiottoData&quot;</span>, </span>
+<span id="cb66-5"><a href="creating-a-giotto-object.html#cb66-5" tabindex="-1"></a>    <span class="fu">file.path</span>(<span class="st">&quot;Mini_datasets&quot;</span>, <span class="st">&quot;Vizgen&quot;</span>, <span class="st">&quot;Raw&quot;</span>, x)</span>
+<span id="cb66-6"><a href="creating-a-giotto-object.html#cb66-6" tabindex="-1"></a>  )</span>
+<span id="cb66-7"><a href="creating-a-giotto-object.html#cb66-7" tabindex="-1"></a>}</span>
+<span id="cb66-8"><a href="creating-a-giotto-object.html#cb66-8" tabindex="-1"></a></span>
+<span id="cb66-9"><a href="creating-a-giotto-object.html#cb66-9" tabindex="-1"></a>mini_viz_dt <span class="ot">&lt;-</span> <span class="fu">mini_viz_raw</span>(<span class="fu">file.path</span>(<span class="st">&quot;cell_boundaries&quot;</span>, <span class="st">&quot;z0_polygons.gz&quot;</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb66-10"><a href="creating-a-giotto-object.html#cb66-10" tabindex="-1"></a>  data.table<span class="sc">::</span><span class="fu">fread</span>()</span>
+<span id="cb66-11"><a href="creating-a-giotto-object.html#cb66-11" tabindex="-1"></a></span>
+<span id="cb66-12"><a href="creating-a-giotto-object.html#cb66-12" tabindex="-1"></a>mini_viz_poly <span class="ot">&lt;-</span> <span class="fu">createGiottoPolygon</span>(mini_viz_dt)</span>
+<span id="cb66-13"><a href="creating-a-giotto-object.html#cb66-13" tabindex="-1"></a></span>
+<span id="cb66-14"><a href="creating-a-giotto-object.html#cb66-14" tabindex="-1"></a><span class="fu">force</span>(mini_viz_poly)</span></code></pre></div>
+<pre><code>An object of class giottoPolygon
+spat_unit : &quot;cell&quot;
+Spatial Information:
+class       : SpatVector 
+geometry    : polygons 
+dimensions  : 498, 1  (geometries, attributes)
+extent      : 6399.244, 6903.243, -5152.39, -4694.868  (xmin, xmax, ymin, ymax)
+coord. ref. :  
+names       :                                 poly_ID
+type        :                                   &lt;chr&gt;
+values      :  40951783403982682273285375368232495429
+240649020551054330404932383065726870513
+274176126496863898679934791272921588227
+centroids   : NULL
+overlaps    : NULL</code></pre>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="creating-a-giotto-object.html#cb68-1" tabindex="-1"></a><span class="fu">plot</span>(mini_viz_poly)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-69"></span>
+<img src="img/01_session4/viz_gpoly.png" alt="Example MERSCOPE polygons loaded form vertex info" width="60%" />
+<p class="caption">
+Figure 6.2: Example MERSCOPE polygons loaded form vertex info
+</p>
+</div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="creating-a-giotto-object.html#cb69-1" tabindex="-1"></a>mini_viz_tx <span class="ot">&lt;-</span> <span class="fu">mini_viz_raw</span>(<span class="st">&quot;vizgen_transcripts.gz&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb69-2"><a href="creating-a-giotto-object.html#cb69-2" tabindex="-1"></a>  data.table<span class="sc">::</span><span class="fu">fread</span>()</span>
+<span id="cb69-3"><a href="creating-a-giotto-object.html#cb69-3" tabindex="-1"></a></span>
+<span id="cb69-4"><a href="creating-a-giotto-object.html#cb69-4" tabindex="-1"></a>mini_viz_tx[, global_y <span class="sc">:=</span> <span class="sc">-</span>global_y] <span class="co"># flip values to match polys</span></span>
+<span id="cb69-5"><a href="creating-a-giotto-object.html#cb69-5" tabindex="-1"></a></span>
+<span id="cb69-6"><a href="creating-a-giotto-object.html#cb69-6" tabindex="-1"></a>viz_gpoints <span class="ot">&lt;-</span> <span class="fu">createGiottoPoints</span>(mini_viz_tx)</span>
+<span id="cb69-7"><a href="creating-a-giotto-object.html#cb69-7" tabindex="-1"></a></span>
+<span id="cb69-8"><a href="creating-a-giotto-object.html#cb69-8" tabindex="-1"></a><span class="fu">force</span>(viz_gpoints)</span></code></pre></div>
+<pre><code>An object of class giottoPoints
+feat_type : &quot;rna&quot;
+Feature Information:
+class       : SpatVector 
+geometry    : points 
+dimensions  : 80343, 3  (geometries, attributes)
+extent      : 6400.037, 6900.032, 4699.979, 5149.983  (xmin, xmax, ymin, ymax)
+coord. ref. :  
+names       : feat_ID global_z feat_ID_uniq
+type        :   &lt;chr&gt;    &lt;int&gt;        &lt;int&gt;
+values      :    Mlc1        0            1
+Gprc5b        0            2
+Gfap        0            3</code></pre>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="creating-a-giotto-object.html#cb71-1" tabindex="-1"></a><span class="fu">plot</span>(viz_gpoints)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-72"></span>
+<img src="img/01_session4/viz_gpoints.png" alt="Example mini MERSCOPE transcripts data" width="60%" />
+<p class="caption">
+Figure 6.3: Example mini MERSCOPE transcripts data
+</p>
+</div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="creating-a-giotto-object.html#cb72-1" tabindex="-1"></a>mini_viz <span class="ot">&lt;-</span> <span class="fu">createGiottoObjectSubcellular</span>(</span>
+<span id="cb72-2"><a href="creating-a-giotto-object.html#cb72-2" tabindex="-1"></a>  <span class="at">gpolygons =</span> mini_viz_poly,</span>
+<span id="cb72-3"><a href="creating-a-giotto-object.html#cb72-3" tabindex="-1"></a>  <span class="at">gpoints =</span> viz_gpoints</span>
+<span id="cb72-4"><a href="creating-a-giotto-object.html#cb72-4" tabindex="-1"></a>)</span>
+<span id="cb72-5"><a href="creating-a-giotto-object.html#cb72-5" tabindex="-1"></a></span>
+<span id="cb72-6"><a href="creating-a-giotto-object.html#cb72-6" tabindex="-1"></a><span class="fu">instructions</span>(mini_viz, <span class="st">&quot;return_plot&quot;</span>) <span class="ot">&lt;-</span> <span class="cn">FALSE</span> </span>
+<span id="cb72-7"><a href="creating-a-giotto-object.html#cb72-7" tabindex="-1"></a></span>
+<span id="cb72-8"><a href="creating-a-giotto-object.html#cb72-8" tabindex="-1"></a><span class="fu">force</span>(mini_viz)</span></code></pre></div>
+<pre><code>An object of class giotto 
+&gt;Active spat_unit:  cell 
+&gt;Active feat_type:  rna 
+[SUBCELLULAR INFO]
+polygons      : cell 
+features      : rna 
+[AGGREGATE INFO]
+
+
+Use objHistory() to see steps and params used</code></pre>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="creating-a-giotto-object.html#cb74-1" tabindex="-1"></a><span class="co"># calculate centroids</span></span>
+<span id="cb74-2"><a href="creating-a-giotto-object.html#cb74-2" tabindex="-1"></a>mini_viz <span class="ot">&lt;-</span> <span class="fu">addSpatialCentroidLocations</span>(mini_viz)</span>
+<span id="cb74-3"><a href="creating-a-giotto-object.html#cb74-3" tabindex="-1"></a></span>
+<span id="cb74-4"><a href="creating-a-giotto-object.html#cb74-4" tabindex="-1"></a><span class="co"># create aggregated information</span></span>
+<span id="cb74-5"><a href="creating-a-giotto-object.html#cb74-5" tabindex="-1"></a>mini_viz <span class="ot">&lt;-</span> <span class="fu">calculateOverlap</span>(mini_viz)</span>
+<span id="cb74-6"><a href="creating-a-giotto-object.html#cb74-6" tabindex="-1"></a></span>
+<span id="cb74-7"><a href="creating-a-giotto-object.html#cb74-7" tabindex="-1"></a>mini_viz <span class="ot">&lt;-</span> <span class="fu">overlapToMatrix</span>(mini_viz)</span>
+<span id="cb74-8"><a href="creating-a-giotto-object.html#cb74-8" tabindex="-1"></a></span>
+<span id="cb74-9"><a href="creating-a-giotto-object.html#cb74-9" tabindex="-1"></a><span class="fu">spatFeatPlot2D</span>(</span>
+<span id="cb74-10"><a href="creating-a-giotto-object.html#cb74-10" tabindex="-1"></a>  mini_viz, </span>
+<span id="cb74-11"><a href="creating-a-giotto-object.html#cb74-11" tabindex="-1"></a>  <span class="at">feats =</span> <span class="fu">c</span>(<span class="st">&quot;Grm4&quot;</span>, <span class="st">&quot;Gfap&quot;</span>),</span>
+<span id="cb74-12"><a href="creating-a-giotto-object.html#cb74-12" tabindex="-1"></a>  <span class="at">expression_values =</span> <span class="st">&quot;raw&quot;</span>,</span>
+<span id="cb74-13"><a href="creating-a-giotto-object.html#cb74-13" tabindex="-1"></a>  <span class="at">point_size =</span> <span class="fl">2.5</span>,</span>
+<span id="cb74-14"><a href="creating-a-giotto-object.html#cb74-14" tabindex="-1"></a>  <span class="at">gradient_style =</span> <span class="st">&quot;sequential&quot;</span>,</span>
+<span id="cb74-15"><a href="creating-a-giotto-object.html#cb74-15" tabindex="-1"></a>  <span class="at">background_color =</span> <span class="st">&quot;black&quot;</span></span>
+<span id="cb74-16"><a href="creating-a-giotto-object.html#cb74-16" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-75"></span>
+<img src="img/01_session4/example_featplot_sub.png" alt="Example mini MERSCOPE aggregated feature counts" width="717" />
+<p class="caption">
+Figure 6.4: Example mini MERSCOPE aggregated feature counts
+</p>
+</div>
+</div>
+<div id="from-piece-wise" class="section level2 hasAnchor" number="6.5">
+<h2><span class="header-section-number">6.5</span> From piece-wise<a href="creating-a-giotto-object.html#from-piece-wise" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You can also piece-wise assemble an object independently of one of the 2 previously shown convenience functions.</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="creating-a-giotto-object.html#cb75-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">giotto</span>() <span class="co"># initialize empty gobject</span></span>
+<span id="cb75-2"><a href="creating-a-giotto-object.html#cb75-2" tabindex="-1"></a></span>
+<span id="cb75-3"><a href="creating-a-giotto-object.html#cb75-3" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">setGiotto</span>(g, mini_viz_poly)</span>
+<span id="cb75-4"><a href="creating-a-giotto-object.html#cb75-4" tabindex="-1"></a></span>
+<span id="cb75-5"><a href="creating-a-giotto-object.html#cb75-5" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">setGiotto</span>(g, viz_gpoints)</span>
+<span id="cb75-6"><a href="creating-a-giotto-object.html#cb75-6" tabindex="-1"></a></span>
+<span id="cb75-7"><a href="creating-a-giotto-object.html#cb75-7" tabindex="-1"></a><span class="fu">force</span>(g)</span></code></pre></div>
+<pre><code>An object of class giotto 
+&gt;Active spat_unit:  cell 
+&gt;Active feat_type:  rna 
+[SUBCELLULAR INFO]
+polygons      : cell 
+features      : rna 
+[AGGREGATE INFO]
+
+
+Use objHistory() to see steps and params used</code></pre>
+<p>This is essentially the same object as the one created through <code>createGiottoObjectSubcellular()</code> earlier.</p>
+</div>
+<div id="using-convenience-functions-for-popular-technologies-vizgen-xenium-cosmx" class="section level2 hasAnchor" number="6.6">
+<h2><span class="header-section-number">6.6</span> Using convenience functions for popular technologies (Vizgen, Xenium, CosMx, …)<a href="creating-a-giotto-object.html#using-convenience-functions-for-popular-technologies-vizgen-xenium-cosmx" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>There are also several convenience functions we provide for loading in data from popular platforms. These functions take care of reading the expected output folder structures, auto-detecting where needed data items are, formatting items for ingestion, then object creation. Many of these will be touched on later during other sessions.</p>
 <pre><code>createGiottoVisiumObject()
 createGiottoVisiumHDObject()
 createGiottoXeniumObject()
 createGiottoCosMxObject()
 createGiottoMerscopeObject()</code></pre>
 </div>
-<div id="spatial-plots" class="section level2 hasAnchor" number="5.6">
-<h2><span class="header-section-number">5.6</span> Spatial plots<a href="creating-a-giotto-object.html#spatial-plots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Giotto has several spatial plotting functions.
-At the lowest level, you directly call <code>plot()</code> on several subobjects in order
-to see what they look like, particularly the ones containing spatial info.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="creating-a-giotto-object.html#cb7-1" tabindex="-1"></a>gpoints <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadSubObjectMini</span>(<span class="st">&quot;giottoPoints&quot;</span>)</span>
-<span id="cb7-2"><a href="creating-a-giotto-object.html#cb7-2" tabindex="-1"></a>gpoly <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadSubObjectMini</span>(<span class="st">&quot;giottoPolygon&quot;</span>)</span>
-<span id="cb7-3"><a href="creating-a-giotto-object.html#cb7-3" tabindex="-1"></a>spatlocs <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadSubObjectMini</span>(<span class="st">&quot;spatLocsObj&quot;</span>)</span>
-<span id="cb7-4"><a href="creating-a-giotto-object.html#cb7-4" tabindex="-1"></a>spatnet <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadSubObjectMini</span>(<span class="st">&quot;spatialNetworkObj&quot;</span>)</span>
-<span id="cb7-5"><a href="creating-a-giotto-object.html#cb7-5" tabindex="-1"></a>pca <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadSubObjectMini</span>(<span class="st">&quot;dimObj&quot;</span>)</span>
-<span id="cb7-6"><a href="creating-a-giotto-object.html#cb7-6" tabindex="-1"></a><span class="fu">plot</span>(pca, <span class="at">dims =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div id="plotting" class="section level2 hasAnchor" number="6.7">
+<h2><span class="header-section-number">6.7</span> Plotting<a href="creating-a-giotto-object.html#plotting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="subobject-plotting" class="section level3 hasAnchor" number="6.7.1">
+<h3><span class="header-section-number">6.7.1</span> Subobject plotting<a href="creating-a-giotto-object.html#subobject-plotting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Giotto has several spatial plotting functions. At the lowest level, you directly call <code>plot()</code> on several subobjects in order to see what they look like, particularly the ones containing spatial info. Here we load several mini subobjects which are taken from the vizgen MERSCOPE mini dataset. To see which mini objects are available for independent loading with <code>GiottoData::loadSubObjectMini()</code>, you can run <code>GiottoData::listSubobjectMini()</code></p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="creating-a-giotto-object.html#cb78-1" tabindex="-1"></a>gpoints <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadSubObjectMini</span>(<span class="st">&quot;giottoPoints&quot;</span>)</span>
+<span id="cb78-2"><a href="creating-a-giotto-object.html#cb78-2" tabindex="-1"></a></span>
+<span id="cb78-3"><a href="creating-a-giotto-object.html#cb78-3" tabindex="-1"></a><span class="fu">plot</span>(gpoints)</span>
+<span id="cb78-4"><a href="creating-a-giotto-object.html#cb78-4" tabindex="-1"></a></span>
+<span id="cb78-5"><a href="creating-a-giotto-object.html#cb78-5" tabindex="-1"></a><span class="fu">plot</span>(gpoints, <span class="at">dens =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">getColors</span>(<span class="st">&quot;magma&quot;</span>, <span class="dv">255</span>))</span>
+<span id="cb78-6"><a href="creating-a-giotto-object.html#cb78-6" tabindex="-1"></a></span>
+<span id="cb78-7"><a href="creating-a-giotto-object.html#cb78-7" tabindex="-1"></a><span class="fu">plot</span>(gpoints, <span class="at">raster =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb78-8"><a href="creating-a-giotto-object.html#cb78-8" tabindex="-1"></a></span>
+<span id="cb78-9"><a href="creating-a-giotto-object.html#cb78-9" tabindex="-1"></a><span class="fu">plot</span>(gpoints, <span class="at">feats =</span> <span class="fu">c</span>(<span class="st">&quot;Grm4&quot;</span>, <span class="st">&quot;Gfap&quot;</span>))</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-78"></span>
+<img src="img/01_session4/gpoint_plots.png" alt="giottoPoints plots. Rasterized (top left), Rasterized and colored with 'magma' color scale by density (top right), Non-rasterized (bottom left), Plotting specifically 2 features (bottom right)" width="1162" />
+<p class="caption">
+Figure 6.5: giottoPoints plots. Rasterized (top left), Rasterized and colored with ‘magma’ color scale by density (top right), Non-rasterized (bottom left), Plotting specifically 2 features (bottom right)
+</p>
 </div>
-<div id="subsetting" class="section level2 hasAnchor" number="5.7">
-<h2><span class="header-section-number">5.7</span> Subsetting<a href="creating-a-giotto-object.html#subsetting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="creating-a-giotto-object.html#cb79-1" tabindex="-1"></a>gpoly <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadSubObjectMini</span>(<span class="st">&quot;giottoPolygon&quot;</span>)</span>
+<span id="cb79-2"><a href="creating-a-giotto-object.html#cb79-2" tabindex="-1"></a></span>
+<span id="cb79-3"><a href="creating-a-giotto-object.html#cb79-3" tabindex="-1"></a><span class="fu">plot</span>(gpoly)</span>
+<span id="cb79-4"><a href="creating-a-giotto-object.html#cb79-4" tabindex="-1"></a></span>
+<span id="cb79-5"><a href="creating-a-giotto-object.html#cb79-5" tabindex="-1"></a><span class="fu">plot</span>(gpoly, <span class="at">type =</span> <span class="st">&quot;centroid&quot;</span>)</span>
+<span id="cb79-6"><a href="creating-a-giotto-object.html#cb79-6" tabindex="-1"></a></span>
+<span id="cb79-7"><a href="creating-a-giotto-object.html#cb79-7" tabindex="-1"></a><span class="fu">plot</span>(gpoly, <span class="at">max_poly =</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-80"></span>
+<img src="img/01_session4/gpoly_plots.png" alt="giottoPolygon plots. default (left), plotting centroids (middle), auto changing to centroids after there are more polygons to plot than max_poly param (right)" width="999" />
+<p class="caption">
+Figure 6.6: giottoPolygon plots. default (left), plotting centroids (middle), auto changing to centroids after there are more polygons to plot than max_poly param (right)
+</p>
+</div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="creating-a-giotto-object.html#cb80-1" tabindex="-1"></a>spatlocs <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadSubObjectMini</span>(<span class="st">&quot;spatLocsObj&quot;</span>)</span>
+<span id="cb80-2"><a href="creating-a-giotto-object.html#cb80-2" tabindex="-1"></a></span>
+<span id="cb80-3"><a href="creating-a-giotto-object.html#cb80-3" tabindex="-1"></a><span class="fu">plot</span>(spatlocs)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-82"></span>
+<img src="img/01_session4/sl_plot.png" alt="Plot of spatLocsObj" width="60%" />
+<p class="caption">
+Figure 6.7: Plot of spatLocsObj
+</p>
+</div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="creating-a-giotto-object.html#cb81-1" tabindex="-1"></a>spatnet <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadSubObjectMini</span>(<span class="st">&quot;spatialNetworkObj&quot;</span>)</span>
+<span id="cb81-2"><a href="creating-a-giotto-object.html#cb81-2" tabindex="-1"></a></span>
+<span id="cb81-3"><a href="creating-a-giotto-object.html#cb81-3" tabindex="-1"></a><span class="fu">plot</span>(spatnet)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-84"></span>
+<img src="img/01_session4/spatnet_plot.png" alt="Plot of spatialNetworkObj" width="60%" />
+<p class="caption">
+Figure 6.8: Plot of spatialNetworkObj
+</p>
+</div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="creating-a-giotto-object.html#cb82-1" tabindex="-1"></a>pca <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadSubObjectMini</span>(<span class="st">&quot;dimObj&quot;</span>)</span>
+<span id="cb82-2"><a href="creating-a-giotto-object.html#cb82-2" tabindex="-1"></a></span>
+<span id="cb82-3"><a href="creating-a-giotto-object.html#cb82-3" tabindex="-1"></a><span class="fu">plot</span>(pca, <span class="at">dims =</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>))</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-86"></span>
+<img src="img/01_session4/dimobj_plot.png" alt="Plot of PCA dimObj showing the 3rd and 10th PCs" width="60%" />
+<p class="caption">
+Figure 6.9: Plot of PCA dimObj showing the 3rd and 10th PCs
+</p>
+</div>
+</div>
+<div id="additive-subobject-plotting" class="section level3 hasAnchor" number="6.7.2">
+<h3><span class="header-section-number">6.7.2</span> Additive subobject plotting<a href="creating-a-giotto-object.html#additive-subobject-plotting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>These base plotting functions inherit from <code>terra::plot()</code>. They can be used additively with more than one object.</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="creating-a-giotto-object.html#cb83-1" tabindex="-1"></a>gimg <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadSubObjectMini</span>(<span class="st">&quot;giottoLargeImage&quot;</span>)</span>
+<span id="cb83-2"><a href="creating-a-giotto-object.html#cb83-2" tabindex="-1"></a></span>
+<span id="cb83-3"><a href="creating-a-giotto-object.html#cb83-3" tabindex="-1"></a><span class="fu">plot</span>(gimg, <span class="at">col =</span> <span class="fu">getMonochromeColors</span>(<span class="st">&quot;#5FAFFF&quot;</span>))</span>
+<span id="cb83-4"><a href="creating-a-giotto-object.html#cb83-4" tabindex="-1"></a></span>
+<span id="cb83-5"><a href="creating-a-giotto-object.html#cb83-5" tabindex="-1"></a><span class="fu">plot</span>(gpoly, <span class="at">border =</span> <span class="st">&quot;maroon&quot;</span>, <span class="at">lwd =</span> <span class="fl">0.5</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-88"></span>
+<img src="img/01_session4/additive_baseplot.png" alt="Plot image with monochrome color scaling with added polygon borders" width="717" />
+<p class="caption">
+Figure 6.10: Plot image with monochrome color scaling with added polygon borders
+</p>
+</div>
+</div>
+<div id="giotto-object-plotting" class="section level3 hasAnchor" number="6.7.3">
+<h3><span class="header-section-number">6.7.3</span> Giotto object plotting<a href="creating-a-giotto-object.html#giotto-object-plotting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><em>Giotto</em> also has several <em>ggplot2</em>-based plotting functions that work on the whole <code>giotto</code> object. Here we load the vizgen mini dataset from <em>GiottoData</em> which contains a lot of worked through data.</p>
+<div id="giotto-spatial-plot-functions" class="section level4 hasAnchor" number="6.7.3.1">
+<h4><span class="header-section-number">6.7.3.1</span> Giotto spatial plot functions<a href="creating-a-giotto-object.html#giotto-spatial-plot-functions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><code>spatPlot()</code> - standard centroid-based plotting geared towards metadata plotting</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="creating-a-giotto-object.html#cb84-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> GiottoData<span class="sc">::</span><span class="fu">loadGiottoMini</span>(<span class="st">&quot;vizgen&quot;</span>)</span>
+<span id="cb84-2"><a href="creating-a-giotto-object.html#cb84-2" tabindex="-1"></a></span>
+<span id="cb84-3"><a href="creating-a-giotto-object.html#cb84-3" tabindex="-1"></a><span class="fu">activeSpatUnit</span>(g) <span class="ot">&lt;-</span> <span class="st">&quot;aggregate&quot;</span> <span class="co"># set default spat_unit to the one with lots of results</span></span>
+<span id="cb84-4"><a href="creating-a-giotto-object.html#cb84-4" tabindex="-1"></a></span>
+<span id="cb84-5"><a href="creating-a-giotto-object.html#cb84-5" tabindex="-1"></a><span class="fu">force</span>(g)</span></code></pre></div>
+<pre><code>An object of class giotto 
+&gt;Active spat_unit:  aggregate 
+&gt;Active feat_type:  rna 
+[SUBCELLULAR INFO]
+polygons      : z0 z1 aggregate 
+features      : rna 
+[AGGREGATE INFO]
+expression -----------------------
+[z0][rna] raw
+[z1][rna] raw
+[aggregate][rna] raw normalized scaled pearson
+spatial locations ----------------
+[z0] raw
+[z1] raw
+[aggregate] raw
+spatial networks -----------------
+[aggregate] Delaunay_network kNN_network
+spatial enrichments --------------
+[aggregate][rna] cluster_metagene
+dim reduction --------------------
+[aggregate][rna] pca umap tsne
+nearest neighbor networks --------
+[aggregate][rna] sNN.pca
+attached images ------------------
+images      : 4 items...
+
+
+Use objHistory() to see steps and params used</code></pre>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="creating-a-giotto-object.html#cb86-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(g)</span></code></pre></div>
+<p>What metadata do we have in this mini object?</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="creating-a-giotto-object.html#cb87-1" tabindex="-1"></a><span class="fu">pDataDT</span>(g)</span></code></pre></div>
+<pre><code>cell_ID nr_feats perc_feats total_expr leiden_clus
+&lt;char&gt;    &lt;int&gt;      &lt;num&gt;      &lt;num&gt;       &lt;num&gt;
+1: 240649020551054330404932383065726870513        5   1.483680   49.40986           2
+2: 274176126496863898679934791272921588227       27   8.011869  191.50684           2
+3: 323754550002953984063006506310071917306       23   6.824926  173.86955           4
+4:  87260224659312905497866017323180367450       37  10.979228  246.04928           5
+5:  17817477728742691260808256980746537959       18   5.341246  142.44520           4
+---                                                                                   
+458:   6380671372744430258754116433861320161       54  16.023739  339.24383           2
+459:  75286702783716447443887872812098770697       45  13.353116  286.81011           1
+460:   9677424102111816817518421117250891895       30   8.902077  211.71790           2
+461:  17685062374745280598492217386845129350        5   1.483680   48.99550           2
+462:  32422253415776258079819139802733069941       12   3.560831  102.52805           2
+louvain_clus
+&lt;num&gt;
+1:            0
+2:            3
+3:            8
+4:            6
+5:            7
+---             
+458:            0
+459:           23
+460:            3
+461:           14
+462:            0</code></pre>
+<p>We have some expression count statistics and clustering annotations already present in the object</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="creating-a-giotto-object.html#cb89-1" tabindex="-1"></a><span class="fu">spatPlot2D</span>(g, </span>
+<span id="cb89-2"><a href="creating-a-giotto-object.html#cb89-2" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>)</span>
+<span id="cb89-3"><a href="creating-a-giotto-object.html#cb89-3" tabindex="-1"></a></span>
+<span id="cb89-4"><a href="creating-a-giotto-object.html#cb89-4" tabindex="-1"></a><span class="fu">spatPlot2D</span>(g, </span>
+<span id="cb89-5"><a href="creating-a-giotto-object.html#cb89-5" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>, </span>
+<span id="cb89-6"><a href="creating-a-giotto-object.html#cb89-6" tabindex="-1"></a>           <span class="at">show_image =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb89-7"><a href="creating-a-giotto-object.html#cb89-7" tabindex="-1"></a>           <span class="at">image_name =</span> <span class="st">&quot;dapi_z0&quot;</span>)</span>
+<span id="cb89-8"><a href="creating-a-giotto-object.html#cb89-8" tabindex="-1"></a></span>
+<span id="cb89-9"><a href="creating-a-giotto-object.html#cb89-9" tabindex="-1"></a><span class="fu">spatPlot2D</span>(g, </span>
+<span id="cb89-10"><a href="creating-a-giotto-object.html#cb89-10" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;total_expr&quot;</span>,</span>
+<span id="cb89-11"><a href="creating-a-giotto-object.html#cb89-11" tabindex="-1"></a>           <span class="at">color_as_factor =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb89-12"><a href="creating-a-giotto-object.html#cb89-12" tabindex="-1"></a>           <span class="at">gradient_style =</span> <span class="st">&quot;sequential&quot;</span>)</span>
+<span id="cb89-13"><a href="creating-a-giotto-object.html#cb89-13" tabindex="-1"></a></span>
+<span id="cb89-14"><a href="creating-a-giotto-object.html#cb89-14" tabindex="-1"></a><span class="fu">spatPlot2D</span>(g, </span>
+<span id="cb89-15"><a href="creating-a-giotto-object.html#cb89-15" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>, </span>
+<span id="cb89-16"><a href="creating-a-giotto-object.html#cb89-16" tabindex="-1"></a>           <span class="at">group_by =</span> <span class="st">&quot;leiden_clus&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-93"></span>
+<img src="img/01_session4/spatplot.png" alt="Spatial plots" width="418" />
+<p class="caption">
+Figure 6.11: Spatial plots
+</p>
+</div>
+<p><code>spatCellPlot()</code> - centroid-based plotting for spatial enrichment values</p>
+<p>We have a <code>cluster_metagene</code> enrichment already made in the object that is a numerical measure of how much each of the cells map to the leiden clusters we have above</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="creating-a-giotto-object.html#cb90-1" tabindex="-1"></a><span class="fu">spatCellPlot2D</span>(g, </span>
+<span id="cb90-2"><a href="creating-a-giotto-object.html#cb90-2" tabindex="-1"></a>               <span class="at">spat_enr_names =</span> <span class="st">&quot;cluster_metagene&quot;</span>,</span>
+<span id="cb90-3"><a href="creating-a-giotto-object.html#cb90-3" tabindex="-1"></a>               <span class="at">cell_annotation_values =</span> <span class="fu">as.character</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>))</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-95"></span>
+<img src="img/01_session4/spatcellplot.png" alt="Spatial cell plot of cluster_metagene spatial enrichments" width="418" />
+<p class="caption">
+Figure 6.12: Spatial cell plot of cluster_metagene spatial enrichments
+</p>
+</div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="creating-a-giotto-object.html#cb91-1" tabindex="-1"></a><span class="fu">spatCellPlot2D</span>(g, </span>
+<span id="cb91-2"><a href="creating-a-giotto-object.html#cb91-2" tabindex="-1"></a>               <span class="at">spat_enr_names =</span> <span class="st">&quot;cluster_metagene&quot;</span>, </span>
+<span id="cb91-3"><a href="creating-a-giotto-object.html#cb91-3" tabindex="-1"></a>               <span class="at">cell_annotation_values =</span> <span class="fu">as.character</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>),</span>
+<span id="cb91-4"><a href="creating-a-giotto-object.html#cb91-4" tabindex="-1"></a>               <span class="at">cell_color_gradient =</span> <span class="st">&quot;magma&quot;</span>,</span>
+<span id="cb91-5"><a href="creating-a-giotto-object.html#cb91-5" tabindex="-1"></a>               <span class="at">background_color =</span> <span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-97"></span>
+<img src="img/01_session4/spatcellplot_magmajks.png" alt="Spatial cell plot of cluster_metagene spatial enrichments" width="1250" />
+<p class="caption">
+Figure 6.13: Spatial cell plot of cluster_metagene spatial enrichments
+</p>
+</div>
+<p><code>spatFeatPlot()</code> - centroid-based plotting for feature expression plotting</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="creating-a-giotto-object.html#cb92-1" tabindex="-1"></a><span class="fu">spatFeatPlot2D</span>(g, </span>
+<span id="cb92-2"><a href="creating-a-giotto-object.html#cb92-2" tabindex="-1"></a>               <span class="at">feats =</span> <span class="fu">c</span>(<span class="st">&quot;Flt4&quot;</span>, <span class="st">&quot;Mertk&quot;</span>), </span>
+<span id="cb92-3"><a href="creating-a-giotto-object.html#cb92-3" tabindex="-1"></a>               <span class="at">point_size =</span> <span class="dv">2</span>, </span>
+<span id="cb92-4"><a href="creating-a-giotto-object.html#cb92-4" tabindex="-1"></a>               <span class="at">expression_values =</span> <span class="st">&quot;scaled&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-99"></span>
+<img src="img/01_session4/spatfeatplot.png" alt="Spatial feature expression plot of normalized Flt4 (left) and Mertk expression (right)" width="418" />
+<p class="caption">
+Figure 6.14: Spatial feature expression plot of normalized Flt4 (left) and Mertk expression (right)
+</p>
+</div>
+<p><code>spatInSituPlotPoints()</code> - subcellular plotting with support for transcript points and polygons</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="creating-a-giotto-object.html#cb93-1" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
+<span id="cb93-2"><a href="creating-a-giotto-object.html#cb93-2" tabindex="-1"></a>                     <span class="at">feats =</span> <span class="fu">list</span>(<span class="at">rna =</span> <span class="fu">c</span>(<span class="st">&quot;Flt4&quot;</span>, <span class="st">&quot;Mertk&quot;</span>, <span class="st">&quot;Gfap&quot;</span>)), <span class="co"># this should be a named list</span></span>
+<span id="cb93-3"><a href="creating-a-giotto-object.html#cb93-3" tabindex="-1"></a>                     <span class="at">point_size =</span> <span class="fl">0.5</span>,</span>
+<span id="cb93-4"><a href="creating-a-giotto-object.html#cb93-4" tabindex="-1"></a>                     <span class="at">polygon_fill =</span> <span class="st">&quot;total_expr&quot;</span>,</span>
+<span id="cb93-5"><a href="creating-a-giotto-object.html#cb93-5" tabindex="-1"></a>                     <span class="at">polygon_fill_as_factor =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb93-6"><a href="creating-a-giotto-object.html#cb93-6" tabindex="-1"></a>                     <span class="at">polygon_fill_gradient_style =</span> <span class="st">&quot;sequential&quot;</span>,</span>
+<span id="cb93-7"><a href="creating-a-giotto-object.html#cb93-7" tabindex="-1"></a>                     <span class="at">polygon_alpha =</span> <span class="fl">0.5</span>,</span>
+<span id="cb93-8"><a href="creating-a-giotto-object.html#cb93-8" tabindex="-1"></a>                     <span class="at">plot_last =</span> <span class="st">&quot;points&quot;</span>,</span>
+<span id="cb93-9"><a href="creating-a-giotto-object.html#cb93-9" tabindex="-1"></a>                     <span class="at">show_image =</span> <span class="cn">TRUE</span></span>
+<span id="cb93-10"><a href="creating-a-giotto-object.html#cb93-10" tabindex="-1"></a>)</span>
+<span id="cb93-11"><a href="creating-a-giotto-object.html#cb93-11" tabindex="-1"></a></span>
+<span id="cb93-12"><a href="creating-a-giotto-object.html#cb93-12" tabindex="-1"></a><span class="co"># without overlaps</span></span>
+<span id="cb93-13"><a href="creating-a-giotto-object.html#cb93-13" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
+<span id="cb93-14"><a href="creating-a-giotto-object.html#cb93-14" tabindex="-1"></a>                     <span class="at">feats =</span> <span class="fu">list</span>(<span class="at">rna =</span> <span class="fu">c</span>(<span class="st">&quot;Flt4&quot;</span>, <span class="st">&quot;Mertk&quot;</span>, <span class="st">&quot;Gfap&quot;</span>)), <span class="co"># this should be a named list</span></span>
+<span id="cb93-15"><a href="creating-a-giotto-object.html#cb93-15" tabindex="-1"></a>                     <span class="at">point_size =</span> <span class="fl">0.5</span>,</span>
+<span id="cb93-16"><a href="creating-a-giotto-object.html#cb93-16" tabindex="-1"></a>                     <span class="at">use_overlap =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb93-17"><a href="creating-a-giotto-object.html#cb93-17" tabindex="-1"></a>                     <span class="at">polygon_fill =</span> <span class="st">&quot;total_expr&quot;</span>,</span>
+<span id="cb93-18"><a href="creating-a-giotto-object.html#cb93-18" tabindex="-1"></a>                     <span class="at">polygon_fill_as_factor =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb93-19"><a href="creating-a-giotto-object.html#cb93-19" tabindex="-1"></a>                     <span class="at">polygon_fill_gradient_style =</span> <span class="st">&quot;sequential&quot;</span>,</span>
+<span id="cb93-20"><a href="creating-a-giotto-object.html#cb93-20" tabindex="-1"></a>                     <span class="at">polygon_alpha =</span> <span class="fl">0.5</span>,</span>
+<span id="cb93-21"><a href="creating-a-giotto-object.html#cb93-21" tabindex="-1"></a>                     <span class="at">plot_last =</span> <span class="st">&quot;points&quot;</span>,</span>
+<span id="cb93-22"><a href="creating-a-giotto-object.html#cb93-22" tabindex="-1"></a>                     <span class="at">show_image =</span> <span class="cn">TRUE</span></span>
+<span id="cb93-23"><a href="creating-a-giotto-object.html#cb93-23" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-101"></span>
+<img src="img/01_session4/insituplots.png" alt="Points and polygons subcellular plot with 3 transcript species plotted, polygons colored as number of detected transcripts, and dapi image plotted. Left is with only the points overlapped by polygons, right is with all points" width="558" />
+<p class="caption">
+Figure 6.15: Points and polygons subcellular plot with 3 transcript species plotted, polygons colored as number of detected transcripts, and dapi image plotted. Left is with only the points overlapped by polygons, right is with all points
+</p>
+</div>
+</div>
+<div id="giotto-expression-space-plot-functions" class="section level4 hasAnchor" number="6.7.3.2">
+<h4><span class="header-section-number">6.7.3.2</span> Giotto expression space plot functions<a href="creating-a-giotto-object.html#giotto-expression-space-plot-functions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><code>dimPlot()</code> - dimension reduction plotting</p>
+<p>Also has more specific functions for PCA <code>plotPCA()</code>, UMAP <code>plotUMAP()</code>, tSNE <code>plotTSNE()</code> results.</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="creating-a-giotto-object.html#cb94-1" tabindex="-1"></a><span class="fu">dimPlot</span>(g, </span>
+<span id="cb94-2"><a href="creating-a-giotto-object.html#cb94-2" tabindex="-1"></a>        <span class="at">dim_reduction_name =</span> <span class="st">&quot;umap&quot;</span>, </span>
+<span id="cb94-3"><a href="creating-a-giotto-object.html#cb94-3" tabindex="-1"></a>        <span class="at">dim_reduction_to_use =</span> <span class="st">&quot;umap&quot;</span>, </span>
+<span id="cb94-4"><a href="creating-a-giotto-object.html#cb94-4" tabindex="-1"></a>        <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-103"></span>
+<img src="img/01_session4/dimplot.png" alt="UMAP projection with leiden clustering colors" width="308" />
+<p class="caption">
+Figure 6.16: UMAP projection with leiden clustering colors
+</p>
+</div>
+</div>
+<div id="giotto-common-plotting-args" class="section level4 hasAnchor" number="6.7.3.3">
+<h4><span class="header-section-number">6.7.3.3</span> Giotto common plotting args<a href="creating-a-giotto-object.html#giotto-common-plotting-args" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
-<li>Based on IDs</li>
-<li>Based on locations</li>
-<li>Visualizations</li>
+<li><code>gradient_style</code> - Should the gradient be of ‘divergent’ or ‘sequential’ styles?</li>
+<li><code>color_as_factor</code> - Is annotation value a numerical or factor/categorical based item to plot.</li>
+<li><code>cell_color_code</code> - What color mapping to provide</li>
+<li><code>cell_color</code> - What column of information to use when plotting (metadata, expression, etc.)</li>
+<li><code>point_shape</code> - Either ‘border’ or ‘no_border’ to draw on the points.</li>
 </ul>
 </div>
-<div id="mini-objects-giottodata" class="section level2 hasAnchor" number="5.8">
-<h2><span class="header-section-number">5.8</span> Mini objects &amp; GiottoData<a href="creating-a-giotto-object.html#mini-objects-giottodata" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Giotto makes available several mini objects to allow devs and users to work
-with easily loadable Giotto objects. These are small subsets of a larger
-dataset that often contain some worked through analyses and are fully functional.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="creating-a-giotto-object.html#cb8-1" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pak</span>(<span class="st">&quot;drieslab/GiottoData&quot;</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="subsetting" class="section level2 hasAnchor" number="6.8">
+<h2><span class="header-section-number">6.8</span> Subsetting<a href="creating-a-giotto-object.html#subsetting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="id-subsetting" class="section level3 hasAnchor" number="6.8.1">
+<h3><span class="header-section-number">6.8.1</span> ID subsetting<a href="creating-a-giotto-object.html#id-subsetting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Subset the <code>giotto</code> object for a random 300 cell IDs</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="creating-a-giotto-object.html#cb95-1" tabindex="-1"></a>cx <span class="ot">&lt;-</span> <span class="fu">pDataDT</span>(g)</span>
+<span id="cb95-2"><a href="creating-a-giotto-object.html#cb95-2" tabindex="-1"></a></span>
+<span id="cb95-3"><a href="creating-a-giotto-object.html#cb95-3" tabindex="-1"></a><span class="fu">nrow</span>(cx)</span></code></pre></div>
+<pre><code>[1] 462</code></pre>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="creating-a-giotto-object.html#cb97-1" tabindex="-1"></a>ex <span class="ot">&lt;-</span> <span class="fu">getExpression</span>(g)</span>
+<span id="cb97-2"><a href="creating-a-giotto-object.html#cb97-2" tabindex="-1"></a></span>
+<span id="cb97-3"><a href="creating-a-giotto-object.html#cb97-3" tabindex="-1"></a><span class="fu">dim</span>(ex)</span></code></pre></div>
+<pre><code>[1] 337 462</code></pre>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="creating-a-giotto-object.html#cb99-1" tabindex="-1"></a><span class="fu">instructions</span>(g, <span class="st">&quot;cell_color_c_pal&quot;</span>) <span class="ot">&lt;-</span> <span class="st">&quot;viridis&quot;</span></span>
+<span id="cb99-2"><a href="creating-a-giotto-object.html#cb99-2" tabindex="-1"></a></span>
+<span id="cb99-3"><a href="creating-a-giotto-object.html#cb99-3" tabindex="-1"></a><span class="fu">instructions</span>(g, <span class="st">&quot;poly_color_c_pal&quot;</span>) <span class="ot">&lt;-</span> <span class="st">&quot;viridis&quot;</span></span>
+<span id="cb99-4"><a href="creating-a-giotto-object.html#cb99-4" tabindex="-1"></a></span>
+<span id="cb99-5"><a href="creating-a-giotto-object.html#cb99-5" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>)</span>
+<span id="cb99-6"><a href="creating-a-giotto-object.html#cb99-6" tabindex="-1"></a></span>
+<span id="cb99-7"><a href="creating-a-giotto-object.html#cb99-7" tabindex="-1"></a>gsubset <span class="ot">&lt;-</span> <span class="fu">subsetGiotto</span>(g, </span>
+<span id="cb99-8"><a href="creating-a-giotto-object.html#cb99-8" tabindex="-1"></a>                        <span class="at">cell_ids =</span> <span class="fu">sample</span>(<span class="fu">spatIDs</span>(g), <span class="dv">300</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="creating-a-giotto-object.html#cb100-1" tabindex="-1"></a>cx_sub <span class="ot">&lt;-</span> <span class="fu">pDataDT</span>(gsubset)</span>
+<span id="cb100-2"><a href="creating-a-giotto-object.html#cb100-2" tabindex="-1"></a></span>
+<span id="cb100-3"><a href="creating-a-giotto-object.html#cb100-3" tabindex="-1"></a><span class="fu">nrow</span>(cx_sub)</span></code></pre></div>
+<pre><code>[1] 300</code></pre>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="creating-a-giotto-object.html#cb102-1" tabindex="-1"></a><span class="fu">spatPlot</span>(g, </span>
+<span id="cb102-2"><a href="creating-a-giotto-object.html#cb102-2" tabindex="-1"></a>         <span class="at">cell_color =</span> <span class="st">&quot;total_expr&quot;</span>,</span>
+<span id="cb102-3"><a href="creating-a-giotto-object.html#cb102-3" tabindex="-1"></a>         <span class="at">color_as_factor =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb102-4"><a href="creating-a-giotto-object.html#cb102-4" tabindex="-1"></a>         <span class="at">background_color =</span> <span class="st">&quot;black&quot;</span>)</span>
+<span id="cb102-5"><a href="creating-a-giotto-object.html#cb102-5" tabindex="-1"></a></span>
+<span id="cb102-6"><a href="creating-a-giotto-object.html#cb102-6" tabindex="-1"></a><span class="fu">spatPlot</span>(gsubset, </span>
+<span id="cb102-7"><a href="creating-a-giotto-object.html#cb102-7" tabindex="-1"></a>         <span class="at">cell_color =</span> <span class="st">&quot;total_expr&quot;</span>,</span>
+<span id="cb102-8"><a href="creating-a-giotto-object.html#cb102-8" tabindex="-1"></a>         <span class="at">color_as_factor =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb102-9"><a href="creating-a-giotto-object.html#cb102-9" tabindex="-1"></a>         <span class="at">background_color =</span> <span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-109"></span>
+<img src="img/01_session4/subset_id.png" alt="plot showing starting object (left) and subset object (right)" width="801" />
+<p class="caption">
+Figure 6.17: plot showing starting object (left) and subset object (right)
+</p>
+</div>
+</div>
+<div id="coordinate-based-subsetting" class="section level3 hasAnchor" number="6.8.2">
+<h3><span class="header-section-number">6.8.2</span> Coordinate-based subsetting<a href="creating-a-giotto-object.html#coordinate-based-subsetting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="creating-a-giotto-object.html#cb103-1" tabindex="-1"></a>gsubsetlocs <span class="ot">&lt;-</span> <span class="fu">subsetGiottoLocs</span>(g, </span>
+<span id="cb103-2"><a href="creating-a-giotto-object.html#cb103-2" tabindex="-1"></a>                                <span class="at">x_min =</span> <span class="dv">6500</span>, <span class="at">x_max =</span> <span class="dv">6700</span>, </span>
+<span id="cb103-3"><a href="creating-a-giotto-object.html#cb103-3" tabindex="-1"></a>                                <span class="at">poly_info =</span> <span class="st">&quot;aggregate&quot;</span></span>
+<span id="cb103-4"><a href="creating-a-giotto-object.html#cb103-4" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="creating-a-giotto-object.html#cb104-1" tabindex="-1"></a><span class="fu">spatPlot</span>(gsubsetlocs, </span>
+<span id="cb104-2"><a href="creating-a-giotto-object.html#cb104-2" tabindex="-1"></a>         <span class="at">cell_color =</span> <span class="st">&quot;total_expr&quot;</span>,</span>
+<span id="cb104-3"><a href="creating-a-giotto-object.html#cb104-3" tabindex="-1"></a>         <span class="at">color_as_factor =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb104-4"><a href="creating-a-giotto-object.html#cb104-4" tabindex="-1"></a>         <span class="at">background_color =</span> <span class="st">&quot;black&quot;</span>)</span>
+<span id="cb104-5"><a href="creating-a-giotto-object.html#cb104-5" tabindex="-1"></a></span>
+<span id="cb104-6"><a href="creating-a-giotto-object.html#cb104-6" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(gsubsetlocs, </span>
+<span id="cb104-7"><a href="creating-a-giotto-object.html#cb104-7" tabindex="-1"></a>                     <span class="at">polygon_fill =</span> <span class="st">&quot;total_expr&quot;</span>,</span>
+<span id="cb104-8"><a href="creating-a-giotto-object.html#cb104-8" tabindex="-1"></a>                     <span class="at">polygon_fill_as_factor =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-112"></span>
+<img src="img/01_session4/subset_locs.png" alt="plot showing starting object (left) and subset object (right)" width="680" />
+<p class="caption">
+Figure 6.18: plot showing starting object (left) and subset object (right)
+</p>
+</div>
 
+</div>
 </div>
 </div>
             </section>
@@ -521,20 +1174,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

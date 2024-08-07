@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>11 Spatial proteomics: Multiplexed Immunofluorescence | Workshop: Spatial multi-omics data analysis with Giotto Suite</title>
+  <meta name="description" content="11 Spatial proteomics: Multiplexed Immunofluorescence | Workshop: Spatial multi-omics data analysis with Giotto Suite" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="11 Spatial proteomics: Multiplexed Immunofluorescence | Workshop: Spatial multi-omics data analysis with Giotto Suite" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="drieslab/giotto_workshop_2024" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="11 Spatial proteomics: Multiplexed Immunofluorescence | Workshop: Spatial multi-omics data analysis with Giotto Suite" />
+  
+  
+  
+
+<meta name="author" content="Ruben Dries, Jiaji George Chen, Joselyn Cristina Chávez-Fuentes, Junxiang Xu ,Edward Ruiz, Jeff Sheridan, Iqra Amin, Wen Wang" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="xenium-1.html"/>
+<link rel="next" href="working-with-multiple-samples.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Giotto Suite Workshop 2024</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#instructors"><i class="fa fa-check"></i><b>1.1</b> Instructors</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#topics-and-schedule"><i class="fa fa-check"></i><b>1.2</b> Topics and Schedule:</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.3</b> License</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="datasets-packages.html"><a href="datasets-packages.html"><i class="fa fa-check"></i><b>2</b> Datasets &amp; Packages</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="datasets-packages.html"><a href="datasets-packages.html#datasets-to-download"><i class="fa fa-check"></i><b>2.1</b> Datasets to download</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="datasets-packages.html"><a href="datasets-packages.html#zenodo-repository"><i class="fa fa-check"></i><b>2.1.1</b> Zenodo repository</a></li>
+<li class="chapter" data-level="2.1.2" data-path="datasets-packages.html"><a href="datasets-packages.html#x-genomics-visium-mouse-brain-section-coronal-dataset"><i class="fa fa-check"></i><b>2.1.2</b> 10X Genomics Visium Mouse Brain Section (Coronal) dataset</a></li>
+<li class="chapter" data-level="2.1.3" data-path="datasets-packages.html"><a href="datasets-packages.html#x-genomics-visium-hd-ffpe-human-colon-cancer"><i class="fa fa-check"></i><b>2.1.3</b> 10X Genomics Visium HD: FFPE Human Colon Cancer</a></li>
+<li class="chapter" data-level="2.1.4" data-path="datasets-packages.html"><a href="datasets-packages.html#x-genomics-multi-modal-dataset"><i class="fa fa-check"></i><b>2.1.4</b> 10X Genomics multi-modal dataset</a></li>
+<li class="chapter" data-level="2.1.5" data-path="datasets-packages.html"><a href="datasets-packages.html#x-genomics-multi-omics-visium-cytassist-human-tonsil-dataset"><i class="fa fa-check"></i><b>2.1.5</b> 10X Genomics multi-omics Visium CytAssist Human Tonsil dataset</a></li>
+<li class="chapter" data-level="2.1.6" data-path="datasets-packages.html"><a href="datasets-packages.html#x-genomics-human-prostate-cancer-adenocarcinoma-with-invasive-carcinoma-ffpe"><i class="fa fa-check"></i><b>2.1.6</b> 10X Genomics Human Prostate Cancer Adenocarcinoma with Invasive Carcinoma (FFPE)</a></li>
+<li class="chapter" data-level="2.1.7" data-path="datasets-packages.html"><a href="datasets-packages.html#x-genomics-normal-human-prostate-ffpe"><i class="fa fa-check"></i><b>2.1.7</b> 10X Genomics Normal Human Prostate (FFPE)</a></li>
+<li class="chapter" data-level="2.1.8" data-path="datasets-packages.html"><a href="datasets-packages.html#xenium"><i class="fa fa-check"></i><b>2.1.8</b> Xenium</a></li>
+<li class="chapter" data-level="2.1.9" data-path="datasets-packages.html"><a href="datasets-packages.html#merfish-cortex-dataset"><i class="fa fa-check"></i><b>2.1.9</b> MERFISH cortex dataset</a></li>
+<li class="chapter" data-level="2.1.10" data-path="datasets-packages.html"><a href="datasets-packages.html#lunaphore-if-dataset"><i class="fa fa-check"></i><b>2.1.10</b> Lunaphore IF dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="datasets-packages.html"><a href="datasets-packages.html#needed-packages"><i class="fa fa-check"></i><b>2.2</b> Needed packages</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="datasets-packages.html"><a href="datasets-packages.html#cran-dependencies"><i class="fa fa-check"></i><b>2.2.1</b> CRAN dependencies:</a></li>
+<li class="chapter" data-level="2.2.2" data-path="datasets-packages.html"><a href="datasets-packages.html#terra-installation"><i class="fa fa-check"></i><b>2.2.2</b> <em>terra</em> installation</a></li>
+<li class="chapter" data-level="2.2.3" data-path="datasets-packages.html"><a href="datasets-packages.html#matrix-installation"><i class="fa fa-check"></i><b>2.2.3</b> <em>Matrix</em> installation</a></li>
+<li class="chapter" data-level="2.2.4" data-path="datasets-packages.html"><a href="datasets-packages.html#rtools-installation"><i class="fa fa-check"></i><b>2.2.4</b> <em>Rtools</em> installation</a></li>
+<li class="chapter" data-level="2.2.5" data-path="datasets-packages.html"><a href="datasets-packages.html#giotto-installation"><i class="fa fa-check"></i><b>2.2.5</b> <em>Giotto</em> installation</a></li>
+<li class="chapter" data-level="2.2.6" data-path="datasets-packages.html"><a href="datasets-packages.html#irlba-install"><i class="fa fa-check"></i><b>2.2.6</b> <em>irlba</em> install</a></li>
+<li class="chapter" data-level="2.2.7" data-path="datasets-packages.html"><a href="datasets-packages.html#arrow-install"><i class="fa fa-check"></i><b>2.2.7</b> <em>arrow</em> install</a></li>
+<li class="chapter" data-level="2.2.8" data-path="datasets-packages.html"><a href="datasets-packages.html#bioconductor-dependencies"><i class="fa fa-check"></i><b>2.2.8</b> Bioconductor dependencies:</a></li>
+<li class="chapter" data-level="2.2.9" data-path="datasets-packages.html"><a href="datasets-packages.html#cran-packages"><i class="fa fa-check"></i><b>2.2.9</b> CRAN packages:</a></li>
+<li class="chapter" data-level="2.2.10" data-path="datasets-packages.html"><a href="datasets-packages.html#packages-from-github"><i class="fa fa-check"></i><b>2.2.10</b> Packages from GitHub</a></li>
+<li class="chapter" data-level="2.2.11" data-path="datasets-packages.html"><a href="datasets-packages.html#python-environments"><i class="fa fa-check"></i><b>2.2.11</b> Python environments</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html"><i class="fa fa-check"></i><b>3</b> Spatial omics technologies</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#presentation"><i class="fa fa-check"></i><b>3.1</b> Presentation</a></li>
+<li class="chapter" data-level="3.2" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#short-summary"><i class="fa fa-check"></i><b>3.2</b> Short summary</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#why-do-we-need-spatial-omics-technologies"><i class="fa fa-check"></i><b>3.2.1</b> Why do we need spatial omics technologies?</a></li>
+<li class="chapter" data-level="3.2.2" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#what-is-spatial-omics"><i class="fa fa-check"></i><b>3.2.2</b> What is spatial omics?</a></li>
+<li class="chapter" data-level="3.2.3" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#what-are-the-main-spatial-omics-technologies"><i class="fa fa-check"></i><b>3.2.3</b> What are the main spatial omics technologies?</a></li>
+<li class="chapter" data-level="3.2.4" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#other-spatial-omics-atac-seq-cuttag-lipidomics-etc"><i class="fa fa-check"></i><b>3.2.4</b> Other Spatial omics: ATAC-seq, CUT&amp;Tag, lipidomics, etc</a></li>
+<li class="chapter" data-level="3.2.5" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#what-are-the-different-types-of-spatial-downstream-analyses"><i class="fa fa-check"></i><b>3.2.5</b> What are the different types of spatial downstream analyses?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html"><i class="fa fa-check"></i><b>4</b> Introduction to the Giotto package</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#presentation-1"><i class="fa fa-check"></i><b>4.1</b> Presentation</a></li>
+<li class="chapter" data-level="4.2" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#ecosystem"><i class="fa fa-check"></i><b>4.2</b> Ecosystem</a></li>
+<li class="chapter" data-level="4.3" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#installation-python-environment"><i class="fa fa-check"></i><b>4.3</b> Installation + python environment</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#giotto-installation-1"><i class="fa fa-check"></i><b>4.3.1</b> Giotto installation</a></li>
+<li class="chapter" data-level="4.3.2" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#python-environment"><i class="fa fa-check"></i><b>4.3.2</b> Python environment</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#giotto-instructions"><i class="fa fa-check"></i><b>4.4</b> Giotto instructions</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html"><i class="fa fa-check"></i><b>5</b> Data formatting and Pre-processing</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#data-formats"><i class="fa fa-check"></i><b>5.1</b> Data formats</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#general-formats"><i class="fa fa-check"></i><b>5.1.1</b> General formats</a></li>
+<li class="chapter" data-level="5.1.2" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#matrix-formats"><i class="fa fa-check"></i><b>5.1.2</b> Matrix formats</a></li>
+<li class="chapter" data-level="5.1.3" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#tabular-formats"><i class="fa fa-check"></i><b>5.1.3</b> Tabular formats</a></li>
+<li class="chapter" data-level="5.1.4" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#spatial-formats"><i class="fa fa-check"></i><b>5.1.4</b> Spatial formats</a></li>
+<li class="chapter" data-level="5.1.5" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#mask-files"><i class="fa fa-check"></i><b>5.1.5</b> Mask files</a></li>
+<li class="chapter" data-level="5.1.6" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#images"><i class="fa fa-check"></i><b>5.1.6</b> images</a></li>
+<li class="chapter" data-level="5.1.7" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#jsonlike-formats"><i class="fa fa-check"></i><b>5.1.7</b> jsonlike formats</a></li>
+<li class="chapter" data-level="5.1.8" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#hierarchical-formats"><i class="fa fa-check"></i><b>5.1.8</b> Hierarchical formats</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#pre-processing"><i class="fa fa-check"></i><b>5.2</b> Pre-processing</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#expression-matrix"><i class="fa fa-check"></i><b>5.2.1</b> Expression matrix</a></li>
+<li class="chapter" data-level="5.2.2" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#spatial-locations"><i class="fa fa-check"></i><b>5.2.2</b> Spatial locations</a></li>
+<li class="chapter" data-level="5.2.3" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#giottopoints"><i class="fa fa-check"></i><b>5.2.3</b> giottoPoints</a></li>
+<li class="chapter" data-level="5.2.4" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#giottopolygon"><i class="fa fa-check"></i><b>5.2.4</b> giottoPolygon</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#subobject-utility-functions"><i class="fa fa-check"></i><b>5.3</b> Subobject utility functions</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#ids"><i class="fa fa-check"></i><b>5.3.1</b> IDs</a></li>
+<li class="chapter" data-level="5.3.2" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#bracket-subsetting-and-extraction"><i class="fa fa-check"></i><b>5.3.2</b> Bracket subsetting and extraction</a></li>
+<li class="chapter" data-level="5.3.3" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#nesting-metadata-generics"><i class="fa fa-check"></i><b>5.3.3</b> Nesting metadata generics</a></li>
+<li class="chapter" data-level="5.3.4" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#appending-to-a-giotto-object"><i class="fa fa-check"></i><b>5.3.4</b> Appending to a giotto object</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html"><i class="fa fa-check"></i><b>6</b> Creating a Giotto object</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#overview"><i class="fa fa-check"></i><b>6.1</b> Overview</a></li>
+<li class="chapter" data-level="6.2" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#giottodata-modular-package"><i class="fa fa-check"></i><b>6.2</b> GiottoData modular package</a></li>
+<li class="chapter" data-level="6.3" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#from-matrix-locations"><i class="fa fa-check"></i><b>6.3</b> From matrix + locations</a></li>
+<li class="chapter" data-level="6.4" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#from-subcellular-raw-data-transcripts-or-images-polygons"><i class="fa fa-check"></i><b>6.4</b> From subcellular raw data (transcripts or images) + polygons</a></li>
+<li class="chapter" data-level="6.5" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#from-piece-wise"><i class="fa fa-check"></i><b>6.5</b> From piece-wise</a></li>
+<li class="chapter" data-level="6.6" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#using-convenience-functions-for-popular-technologies-vizgen-xenium-cosmx"><i class="fa fa-check"></i><b>6.6</b> Using convenience functions for popular technologies (Vizgen, Xenium, CosMx, …)</a></li>
+<li class="chapter" data-level="6.7" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#plotting"><i class="fa fa-check"></i><b>6.7</b> Plotting</a>
+<ul>
+<li class="chapter" data-level="6.7.1" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#subobject-plotting"><i class="fa fa-check"></i><b>6.7.1</b> Subobject plotting</a></li>
+<li class="chapter" data-level="6.7.2" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#additive-subobject-plotting"><i class="fa fa-check"></i><b>6.7.2</b> Additive subobject plotting</a></li>
+<li class="chapter" data-level="6.7.3" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#giotto-object-plotting"><i class="fa fa-check"></i><b>6.7.3</b> Giotto object plotting</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#subsetting"><i class="fa fa-check"></i><b>6.8</b> Subsetting</a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#id-subsetting"><i class="fa fa-check"></i><b>6.8.1</b> ID subsetting</a></li>
+<li class="chapter" data-level="6.8.2" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#coordinate-based-subsetting"><i class="fa fa-check"></i><b>6.8.2</b> Coordinate-based subsetting</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="visium-part-i.html"><a href="visium-part-i.html"><i class="fa fa-check"></i><b>7</b> Visium Part I</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="visium-part-i.html"><a href="visium-part-i.html#the-visium-technology"><i class="fa fa-check"></i><b>7.1</b> The Visium technology</a></li>
+<li class="chapter" data-level="7.2" data-path="visium-part-i.html"><a href="visium-part-i.html#introduction-to-the-spatial-dataset"><i class="fa fa-check"></i><b>7.2</b> Introduction to the spatial dataset</a></li>
+<li class="chapter" data-level="7.3" data-path="visium-part-i.html"><a href="visium-part-i.html#download-dataset"><i class="fa fa-check"></i><b>7.3</b> Download dataset</a></li>
+<li class="chapter" data-level="7.4" data-path="visium-part-i.html"><a href="visium-part-i.html#create-the-giotto-object"><i class="fa fa-check"></i><b>7.4</b> Create the Giotto object</a></li>
+<li class="chapter" data-level="7.5" data-path="visium-part-i.html"><a href="visium-part-i.html#subset-on-spots-that-were-covered-by-tissue"><i class="fa fa-check"></i><b>7.5</b> Subset on spots that were covered by tissue</a></li>
+<li class="chapter" data-level="7.6" data-path="visium-part-i.html"><a href="visium-part-i.html#quality-control"><i class="fa fa-check"></i><b>7.6</b> Quality control</a></li>
+<li class="chapter" data-level="7.7" data-path="visium-part-i.html"><a href="visium-part-i.html#filtering"><i class="fa fa-check"></i><b>7.7</b> Filtering</a></li>
+<li class="chapter" data-level="7.8" data-path="visium-part-i.html"><a href="visium-part-i.html#normalization"><i class="fa fa-check"></i><b>7.8</b> Normalization</a></li>
+<li class="chapter" data-level="7.9" data-path="visium-part-i.html"><a href="visium-part-i.html#feature-selection"><i class="fa fa-check"></i><b>7.9</b> Feature selection</a>
+<ul>
+<li class="chapter" data-level="7.9.1" data-path="visium-part-i.html"><a href="visium-part-i.html#highly-variable-features"><i class="fa fa-check"></i><b>7.9.1</b> Highly Variable Features:</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="visium-part-i.html"><a href="visium-part-i.html#dimension-reduction"><i class="fa fa-check"></i><b>7.10</b> Dimension Reduction</a>
+<ul>
+<li class="chapter" data-level="7.10.1" data-path="visium-part-i.html"><a href="visium-part-i.html#pca"><i class="fa fa-check"></i><b>7.10.1</b> PCA</a></li>
+<li class="chapter" data-level="7.10.2" data-path="visium-part-i.html"><a href="visium-part-i.html#umap"><i class="fa fa-check"></i><b>7.10.2</b> UMAP</a></li>
+<li class="chapter" data-level="7.10.3" data-path="visium-part-i.html"><a href="visium-part-i.html#t-sne"><i class="fa fa-check"></i><b>7.10.3</b> t-SNE</a></li>
+</ul></li>
+<li class="chapter" data-level="7.11" data-path="visium-part-i.html"><a href="visium-part-i.html#clustering"><i class="fa fa-check"></i><b>7.11</b> Clustering</a>
+<ul>
+<li class="chapter" data-level="7.11.1" data-path="visium-part-i.html"><a href="visium-part-i.html#calculate-leiden-clustering"><i class="fa fa-check"></i><b>7.11.1</b> Calculate Leiden clustering</a></li>
+<li class="chapter" data-level="7.11.2" data-path="visium-part-i.html"><a href="visium-part-i.html#calculate-louvain-clustering"><i class="fa fa-check"></i><b>7.11.2</b> Calculate Louvain clustering</a></li>
+</ul></li>
+<li class="chapter" data-level="7.12" data-path="visium-part-i.html"><a href="visium-part-i.html#save-the-object"><i class="fa fa-check"></i><b>7.12</b> Save the object</a></li>
+<li class="chapter" data-level="7.13" data-path="visium-part-i.html"><a href="visium-part-i.html#session-info"><i class="fa fa-check"></i><b>7.13</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="visium-part-ii.html"><a href="visium-part-ii.html"><i class="fa fa-check"></i><b>8</b> Visium Part II</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="visium-part-ii.html"><a href="visium-part-ii.html#load-the-object"><i class="fa fa-check"></i><b>8.1</b> Load the object</a></li>
+<li class="chapter" data-level="8.2" data-path="visium-part-ii.html"><a href="visium-part-ii.html#differential-expression"><i class="fa fa-check"></i><b>8.2</b> Differential expression</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="visium-part-ii.html"><a href="visium-part-ii.html#gini-markers"><i class="fa fa-check"></i><b>8.2.1</b> Gini markers</a></li>
+<li class="chapter" data-level="8.2.2" data-path="visium-part-ii.html"><a href="visium-part-ii.html#scran-markers"><i class="fa fa-check"></i><b>8.2.2</b> Scran markers</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="visium-part-ii.html"><a href="visium-part-ii.html#enrichment-deconvolution"><i class="fa fa-check"></i><b>8.3</b> Enrichment &amp; Deconvolution</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="visium-part-ii.html"><a href="visium-part-ii.html#pagerank"><i class="fa fa-check"></i><b>8.3.1</b> PAGE/Rank</a></li>
+<li class="chapter" data-level="8.3.2" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatialdwls"><i class="fa fa-check"></i><b>8.3.2</b> SpatialDWLS</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatial-expression-patterns"><i class="fa fa-check"></i><b>8.4</b> Spatial expression patterns</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatial-variable-genes"><i class="fa fa-check"></i><b>8.4.1</b> Spatial variable genes</a></li>
+<li class="chapter" data-level="8.4.2" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatial-co-expression-modules"><i class="fa fa-check"></i><b>8.4.2</b> Spatial co-expression modules</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatially-informed-clusters"><i class="fa fa-check"></i><b>8.5</b> Spatially informed clusters</a></li>
+<li class="chapter" data-level="8.6" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatial-domains-hmrf"><i class="fa fa-check"></i><b>8.6</b> Spatial domains HMRF</a></li>
+<li class="chapter" data-level="8.7" data-path="visium-part-ii.html"><a href="visium-part-ii.html#interactive-tools"><i class="fa fa-check"></i><b>8.7</b> Interactive tools</a></li>
+<li class="chapter" data-level="8.8" data-path="visium-part-ii.html"><a href="visium-part-ii.html#save-the-object-1"><i class="fa fa-check"></i><b>8.8</b> Save the object</a></li>
+<li class="chapter" data-level="8.9" data-path="visium-part-ii.html"><a href="visium-part-ii.html#session-info-1"><i class="fa fa-check"></i><b>8.9</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="visium-hd.html"><a href="visium-hd.html"><i class="fa fa-check"></i><b>9</b> Visium HD</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="visium-hd.html"><a href="visium-hd.html#objective"><i class="fa fa-check"></i><b>9.1</b> Objective</a></li>
+<li class="chapter" data-level="9.2" data-path="visium-hd.html"><a href="visium-hd.html#background"><i class="fa fa-check"></i><b>9.2</b> Background</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="visium-hd.html"><a href="visium-hd.html#visium-hd-technology"><i class="fa fa-check"></i><b>9.2.1</b> Visium HD Technology</a></li>
+<li class="chapter" data-level="9.2.2" data-path="visium-hd.html"><a href="visium-hd.html#colorectal-cancer-sample"><i class="fa fa-check"></i><b>9.2.2</b> Colorectal Cancer Sample</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="visium-hd.html"><a href="visium-hd.html#data-ingestion"><i class="fa fa-check"></i><b>9.3</b> Data Ingestion</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="visium-hd.html"><a href="visium-hd.html#visium-hd-output-data-format"><i class="fa fa-check"></i><b>9.3.1</b> Visium HD output data format</a></li>
+<li class="chapter" data-level="9.3.2" data-path="visium-hd.html"><a href="visium-hd.html#mini-visium-hd-dataset"><i class="fa fa-check"></i><b>9.3.2</b> Mini Visium HD dataset</a></li>
+<li class="chapter" data-level="9.3.3" data-path="visium-hd.html"><a href="visium-hd.html#giotto-visium-hd-convenience-function"><i class="fa fa-check"></i><b>9.3.3</b> Giotto Visium HD convenience function</a></li>
+<li class="chapter" data-level="9.3.4" data-path="visium-hd.html"><a href="visium-hd.html#read-in-data-manually"><i class="fa fa-check"></i><b>9.3.4</b> Read in data manually</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="visium-hd.html"><a href="visium-hd.html#hexbin-400-giotto-object"><i class="fa fa-check"></i><b>9.4</b> Hexbin 400 Giotto object</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="visium-hd.html"><a href="visium-hd.html#create-giotto-points"><i class="fa fa-check"></i><b>9.4.1</b> create giotto points</a></li>
+<li class="chapter" data-level="9.4.2" data-path="visium-hd.html"><a href="visium-hd.html#create-giotto-polygons"><i class="fa fa-check"></i><b>9.4.2</b> create giotto polygons</a></li>
+<li class="chapter" data-level="9.4.3" data-path="visium-hd.html"><a href="visium-hd.html#combine-giotto-points-and-polygons-to-create-giotto-object"><i class="fa fa-check"></i><b>9.4.3</b> combine Giotto points and polygons to create Giotto object</a></li>
+<li class="chapter" data-level="9.4.4" data-path="visium-hd.html"><a href="visium-hd.html#process-giotto-object"><i class="fa fa-check"></i><b>9.4.4</b> Process Giotto object</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="visium-hd.html"><a href="visium-hd.html#hexbin-100"><i class="fa fa-check"></i><b>9.5</b> Hexbin 100</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="visium-hd.html"><a href="visium-hd.html#standard-subcellular-pipeline"><i class="fa fa-check"></i><b>9.5.1</b> Standard subcellular pipeline</a></li>
+<li class="chapter" data-level="9.5.2" data-path="visium-hd.html"><a href="visium-hd.html#spatial-expression-patterns-1"><i class="fa fa-check"></i><b>9.5.2</b> Spatial expression patterns</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="visium-hd.html"><a href="visium-hd.html#hexbin-25"><i class="fa fa-check"></i><b>9.6</b> Hexbin 25</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="visium-hd.html"><a href="visium-hd.html#subcellular-workflow"><i class="fa fa-check"></i><b>9.6.1</b> Subcellular workflow</a></li>
+<li class="chapter" data-level="9.6.2" data-path="visium-hd.html"><a href="visium-hd.html#projections"><i class="fa fa-check"></i><b>9.6.2</b> Projections</a></li>
+<li class="chapter" data-level="9.6.3" data-path="visium-hd.html"><a href="visium-hd.html#niche-clustering"><i class="fa fa-check"></i><b>9.6.3</b> Niche clustering</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="visium-hd.html"><a href="visium-hd.html#database-backend---work-in-progress-but-coming-soon"><i class="fa fa-check"></i><b>9.7</b> Database backend - Work in progress, but coming soon!</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="xenium-1.html"><a href="xenium-1.html"><i class="fa fa-check"></i><b>10</b> Xenium</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="xenium-1.html"><a href="xenium-1.html#introduction-to-spatial-dataset"><i class="fa fa-check"></i><b>10.1</b> Introduction to spatial dataset</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="xenium-1.html"><a href="xenium-1.html#output-directory-structure"><i class="fa fa-check"></i><b>10.1.1</b> Output directory structure</a></li>
+<li class="chapter" data-level="10.1.2" data-path="xenium-1.html"><a href="xenium-1.html#mini-xenium-dataset"><i class="fa fa-check"></i><b>10.1.2</b> Mini Xenium Dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="xenium-1.html"><a href="xenium-1.html#data-preparation"><i class="fa fa-check"></i><b>10.2</b> Data preparation</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="xenium-1.html"><a href="xenium-1.html#image-conversion-may-change"><i class="fa fa-check"></i><b>10.2.1</b> Image conversion (may change)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="xenium-1.html"><a href="xenium-1.html#convenience-function"><i class="fa fa-check"></i><b>10.3</b> Convenience function</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="xenium-1.html"><a href="xenium-1.html#specific-filepaths"><i class="fa fa-check"></i><b>10.3.1</b> Specific filepaths</a></li>
+<li class="chapter" data-level="10.3.2" data-path="xenium-1.html"><a href="xenium-1.html#quality-value"><i class="fa fa-check"></i><b>10.3.2</b> Quality value</a></li>
+<li class="chapter" data-level="10.3.3" data-path="xenium-1.html"><a href="xenium-1.html#transcript-type-splitting"><i class="fa fa-check"></i><b>10.3.3</b> Transcript type splitting</a></li>
+<li class="chapter" data-level="10.3.4" data-path="xenium-1.html"><a href="xenium-1.html#centroids-calculation"><i class="fa fa-check"></i><b>10.3.4</b> Centroids calculation</a></li>
+<li class="chapter" data-level="10.3.5" data-path="xenium-1.html"><a href="xenium-1.html#simple-visualization"><i class="fa fa-check"></i><b>10.3.5</b> Simple visualization</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="xenium-1.html"><a href="xenium-1.html#piecewise-loading"><i class="fa fa-check"></i><b>10.4</b> Piecewise loading</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="xenium-1.html"><a href="xenium-1.html#load-giottopoints-transcripts"><i class="fa fa-check"></i><b>10.4.1</b> Load giottoPoints transcripts</a></li>
+<li class="chapter" data-level="10.4.2" data-path="xenium-1.html"><a href="xenium-1.html#optional-loading-pre-aggregated-data"><i class="fa fa-check"></i><b>10.4.2</b> (optional) Loading pre-aggregated data</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="xenium-1.html"><a href="xenium-1.html#xenium-images"><i class="fa fa-check"></i><b>10.5</b> Xenium Images</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="xenium-1.html"><a href="xenium-1.html#image-metadata"><i class="fa fa-check"></i><b>10.5.1</b> Image metadata</a></li>
+<li class="chapter" data-level="10.5.2" data-path="xenium-1.html"><a href="xenium-1.html#image-loading"><i class="fa fa-check"></i><b>10.5.2</b> Image loading</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="xenium-1.html"><a href="xenium-1.html#spatial-aggregation"><i class="fa fa-check"></i><b>10.6</b> Spatial aggregation</a></li>
+<li class="chapter" data-level="10.7" data-path="xenium-1.html"><a href="xenium-1.html#aggregate-analyses-workflow"><i class="fa fa-check"></i><b>10.7</b> Aggregate analyses workflow</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="xenium-1.html"><a href="xenium-1.html#transcripts-per-cell"><i class="fa fa-check"></i><b>10.7.1</b> Transcripts per cell</a></li>
+<li class="chapter" data-level="10.7.2" data-path="xenium-1.html"><a href="xenium-1.html#filtering-1"><i class="fa fa-check"></i><b>10.7.2</b> Filtering</a></li>
+<li class="chapter" data-level="10.7.3" data-path="xenium-1.html"><a href="xenium-1.html#normalization-1"><i class="fa fa-check"></i><b>10.7.3</b> Normalization</a></li>
+<li class="chapter" data-level="10.7.4" data-path="xenium-1.html"><a href="xenium-1.html#dimension-reduction-1"><i class="fa fa-check"></i><b>10.7.4</b> Dimension Reduction</a></li>
+<li class="chapter" data-level="10.7.5" data-path="xenium-1.html"><a href="xenium-1.html#clustering-1"><i class="fa fa-check"></i><b>10.7.5</b> Clustering</a></li>
+</ul></li>
+<li class="chapter" data-level="10.8" data-path="xenium-1.html"><a href="xenium-1.html#niche-clustering-1"><i class="fa fa-check"></i><b>10.8</b> Niche clustering</a>
+<ul>
+<li class="chapter" data-level="10.8.1" data-path="xenium-1.html"><a href="xenium-1.html#spatial-network"><i class="fa fa-check"></i><b>10.8.1</b> Spatial network</a></li>
+<li class="chapter" data-level="10.8.2" data-path="xenium-1.html"><a href="xenium-1.html#niche-calculation"><i class="fa fa-check"></i><b>10.8.2</b> Niche calculation</a></li>
+<li class="chapter" data-level="10.8.3" data-path="xenium-1.html"><a href="xenium-1.html#k-means-clustering-based-on-niche-signature"><i class="fa fa-check"></i><b>10.8.3</b> k-means clustering based on niche signature</a></li>
+</ul></li>
+<li class="chapter" data-level="10.9" data-path="xenium-1.html"><a href="xenium-1.html#cell-proximity-enrichment"><i class="fa fa-check"></i><b>10.9</b> Cell proximity enrichment</a></li>
+<li class="chapter" data-level="10.10" data-path="xenium-1.html"><a href="xenium-1.html#pseudovisium"><i class="fa fa-check"></i><b>10.10</b> Pseudovisium</a>
+<ul>
+<li class="chapter" data-level="10.10.1" data-path="xenium-1.html"><a href="xenium-1.html#pseudovisium-aggregation-and-workflow"><i class="fa fa-check"></i><b>10.10.1</b> Pseudovisium aggregation and workflow</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html"><i class="fa fa-check"></i><b>11</b> Spatial proteomics: Multiplexed Immunofluorescence</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#spatial-proteomics-technologies"><i class="fa fa-check"></i><b>11.1</b> Spatial Proteomics Technologies</a></li>
+<li class="chapter" data-level="11.2" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#raw-data-type-coming-out-of-different-technologies"><i class="fa fa-check"></i><b>11.2</b> Raw data type coming out of different technologies</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#use-ome.tiff-as-an-example-output-data-to-begin-with"><i class="fa fa-check"></i><b>11.2.1</b> Use ome.tiff as an example output data to begin with</a></li>
+<li class="chapter" data-level="11.2.2" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#use-single-channel-images-as-an-example-output-data-to-begin-with"><i class="fa fa-check"></i><b>11.2.2</b> Use single channel images as an example output data to begin with</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cell-segmentation-file-to-get-single-cell-level-protein-expression"><i class="fa fa-check"></i><b>11.3</b> Cell Segmentation file to get single cell level protein expression</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#using-segmentation-output-file-from-deepcellmesmer-as-an-example."><i class="fa fa-check"></i><b>11.3.1</b> Using segmentation output file from DeepCell(mesmer) as an example.</a></li>
+<li class="chapter" data-level="11.3.2" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#using-giotto-wrapper-of-cellpose-to-perform-segmentation"><i class="fa fa-check"></i><b>11.3.2</b> Using Giotto wrapper of Cellpose to perform segmentation</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#create-a-giotto-object-using-list-of-gitto-large-images-and-polygons"><i class="fa fa-check"></i><b>11.4</b> Create a Giotto Object using list of gitto large images and polygons</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#overlap-to-matrix"><i class="fa fa-check"></i><b>11.4.1</b> Overlap to matrix</a></li>
+<li class="chapter" data-level="11.4.2" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#manipulate-expression-information"><i class="fa fa-check"></i><b>11.4.2</b> Manipulate Expression information</a></li>
+<li class="chapter" data-level="11.4.3" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#rescale-polygons"><i class="fa fa-check"></i><b>11.4.3</b> Rescale polygons</a></li>
+<li class="chapter" data-level="11.4.4" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#perform-clustering-and-differential-expression"><i class="fa fa-check"></i><b>11.4.4</b> Perform clustering and differential expression</a></li>
+<li class="chapter" data-level="11.4.5" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#give-the-cluster-an-annotation-based-on-expression-values"><i class="fa fa-check"></i><b>11.4.5</b> Give the cluster an annotation based on expression values</a></li>
+<li class="chapter" data-level="11.4.6" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#spatial-network-1"><i class="fa fa-check"></i><b>11.4.6</b> Spatial network</a></li>
+<li class="chapter" data-level="11.4.7" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cell-neighborhood-cell-typecell-type-interactions"><i class="fa fa-check"></i><b>11.4.7</b> Cell Neighborhood: Cell-Type/Cell-Type Interactions</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#session-info-2"><i class="fa fa-check"></i><b>11.5</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html"><i class="fa fa-check"></i><b>12</b> Working with multiple samples</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#objective-1"><i class="fa fa-check"></i><b>12.1</b> Objective</a></li>
+<li class="chapter" data-level="12.2" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#background-1"><i class="fa fa-check"></i><b>12.2</b> Background</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#dataset"><i class="fa fa-check"></i><b>12.2.1</b> Dataset</a></li>
+<li class="chapter" data-level="12.2.2" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#visium-technology"><i class="fa fa-check"></i><b>12.2.2</b> Visium technology</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#create-individual-giotto-objects"><i class="fa fa-check"></i><b>12.3</b> Create individual giotto objects</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#download-the-data"><i class="fa fa-check"></i><b>12.3.1</b> Download the data</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#extracting-the-downloaded-files"><i class="fa fa-check"></i><b>12.4</b> Extracting the downloaded files</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#create-giotto-instructions"><i class="fa fa-check"></i><b>12.4.1</b> Create giotto instructions</a></li>
+<li class="chapter" data-level="12.4.2" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#load-visium-data-into-giotto"><i class="fa fa-check"></i><b>12.4.2</b> Load visium data into Giotto</a></li>
+<li class="chapter" data-level="12.4.3" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#healthy-prostate-tissue-coverage"><i class="fa fa-check"></i><b>12.4.3</b> Healthy prostate tissue coverage</a></li>
+<li class="chapter" data-level="12.4.4" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#adenocarcinoma-prostate-tissue-coverage"><i class="fa fa-check"></i><b>12.4.4</b> Adenocarcinoma prostate tissue coverage</a></li>
+<li class="chapter" data-level="12.4.5" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#showing-the-data-strucutre-for-the-inidividual-objects"><i class="fa fa-check"></i><b>12.4.5</b> Showing the data strucutre for the inidividual objects</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#join-giotto-objects"><i class="fa fa-check"></i><b>12.5</b> Join Giotto Objects</a></li>
+<li class="chapter" data-level="12.6" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#visualizing-combined-datasets"><i class="fa fa-check"></i><b>12.6</b> Visualizing combined datasets</a>
+<ul>
+<li class="chapter" data-level="12.6.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#vizualizing-in-the-same-plot"><i class="fa fa-check"></i><b>12.6.1</b> Vizualizing in the same plot</a></li>
+<li class="chapter" data-level="12.6.2" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#vizualizing-on-separate-plots"><i class="fa fa-check"></i><b>12.6.2</b> Vizualizing on separate plots</a></li>
+</ul></li>
+<li class="chapter" data-level="12.7" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#splitting-combined-dataset"><i class="fa fa-check"></i><b>12.7</b> Splitting combined dataset</a></li>
+<li class="chapter" data-level="12.8" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#analyzing-joined-objects"><i class="fa fa-check"></i><b>12.8</b> Analyzing joined objects</a>
+<ul>
+<li class="chapter" data-level="12.8.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#normalization-and-adding-statistics"><i class="fa fa-check"></i><b>12.8.1</b> Normalization and adding statistics</a></li>
+<li class="chapter" data-level="12.8.2" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#clustering-the-datasets"><i class="fa fa-check"></i><b>12.8.2</b> Clustering the datasets</a></li>
+<li class="chapter" data-level="12.8.3" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#vizualizing-spatial-location-of-clusters"><i class="fa fa-check"></i><b>12.8.3</b> Vizualizing spatial location of clusters</a></li>
+<li class="chapter" data-level="12.8.4" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#vizualizing-tissue-contribution-to-clusters"><i class="fa fa-check"></i><b>12.8.4</b> Vizualizing tissue contribution to clusters</a></li>
+</ul></li>
+<li class="chapter" data-level="12.9" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#perform-harmony-and-default-workflows"><i class="fa fa-check"></i><b>12.9</b> Perform Harmony and default workflows</a>
+<ul>
+<li class="chapter" data-level="12.9.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#clustering-harmonized-object"><i class="fa fa-check"></i><b>12.9.1</b> Clustering harmonized object</a></li>
+<li class="chapter" data-level="12.9.2" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#vizualizing-the-tissue-contribution"><i class="fa fa-check"></i><b>12.9.2</b> Vizualizing the tissue contribution</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html"><i class="fa fa-check"></i><b>13</b> Spatial multi-modal analysis</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#overview-1"><i class="fa fa-check"></i><b>13.1</b> Overview</a></li>
+<li class="chapter" data-level="13.2" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-manipulation"><i class="fa fa-check"></i><b>13.2</b> Spatial manipulation</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-transforms"><i class="fa fa-check"></i><b>13.2.1</b> Spatial transforms:</a></li>
+<li class="chapter" data-level="13.2.2" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-utilities"><i class="fa fa-check"></i><b>13.2.2</b> Spatial utilities:</a></li>
+<li class="chapter" data-level="13.2.3" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-classes"><i class="fa fa-check"></i><b>13.2.3</b> Spatial classes:</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#examples-of-the-simple-transforms-with-a-giottopolygon"><i class="fa fa-check"></i><b>13.3</b> Examples of the simple transforms with a giottoPolygon</a></li>
+<li class="chapter" data-level="13.4" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#affine-transforms"><i class="fa fa-check"></i><b>13.4</b> Affine transforms</a></li>
+<li class="chapter" data-level="13.5" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#image-transforms"><i class="fa fa-check"></i><b>13.5</b> Image transforms</a></li>
+<li class="chapter" data-level="13.6" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#the-practical-usage-of-multi-modality-co-registration"><i class="fa fa-check"></i><b>13.6</b> The practical usage of multi-modality co-registration</a>
+<ul>
+<li class="chapter" data-level="13.6.1" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#example-dataset-xenium-breast-cancer-pre-release-pack"><i class="fa fa-check"></i><b>13.6.1</b> Example dataset: Xenium Breast Cancer pre-release pack</a></li>
+<li class="chapter" data-level="13.6.2" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#target-coordinate-system"><i class="fa fa-check"></i><b>13.6.2</b> Target Coordinate system</a></li>
+<li class="chapter" data-level="13.6.3" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#visium-to-register"><i class="fa fa-check"></i><b>13.6.3</b> Visium to register</a></li>
+<li class="chapter" data-level="13.6.4" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#register-post-xenium-he-and-if-image"><i class="fa fa-check"></i><b>13.6.4</b> Register post-Xenium H&amp;E and IF image</a></li>
+<li class="chapter" data-level="13.6.5" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#automatic-alignment-via-sift-feature-descriptor-matching-and-affine-transformation"><i class="fa fa-check"></i><b>13.6.5</b> Automatic alignment via SIFT feature descriptor matching and affine transformation</a></li>
+<li class="chapter" data-level="13.6.6" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#final-notes"><i class="fa fa-check"></i><b>13.6.6</b> Final Notes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html"><i class="fa fa-check"></i><b>14</b> Multi-omics integration</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#the-cytassist-technology"><i class="fa fa-check"></i><b>14.1</b> The CytAssist technology</a></li>
+<li class="chapter" data-level="14.2" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#introduction-to-the-spatial-dataset-1"><i class="fa fa-check"></i><b>14.2</b> Introduction to the spatial dataset</a></li>
+<li class="chapter" data-level="14.3" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#download-dataset-1"><i class="fa fa-check"></i><b>14.3</b> Download dataset</a></li>
+<li class="chapter" data-level="14.4" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#create-the-giotto-object-1"><i class="fa fa-check"></i><b>14.4</b> Create the Giotto object</a></li>
+<li class="chapter" data-level="14.5" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#subset-on-spots-that-were-covered-by-tissue-1"><i class="fa fa-check"></i><b>14.5</b> Subset on spots that were covered by tissue</a></li>
+<li class="chapter" data-level="14.6" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#rna-processing"><i class="fa fa-check"></i><b>14.6</b> RNA processing</a></li>
+<li class="chapter" data-level="14.7" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#protein-processing"><i class="fa fa-check"></i><b>14.7</b> Protein processing</a></li>
+<li class="chapter" data-level="14.8" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#multi-omics-integration-1"><i class="fa fa-check"></i><b>14.8</b> Multi-omics integration</a></li>
+<li class="chapter" data-level="14.9" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#session-info-3"><i class="fa fa-check"></i><b>14.9</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html"><i class="fa fa-check"></i><b>15</b> Interoperability with other frameworks</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#load-giotto-object"><i class="fa fa-check"></i><b>15.1</b> Load Giotto object</a></li>
+<li class="chapter" data-level="15.2" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#seurat"><i class="fa fa-check"></i><b>15.2</b> Seurat</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#conversion-of-giotto-object-to-seurat-object"><i class="fa fa-check"></i><b>15.2.1</b> Conversion of Giotto Object to Seurat Object</a></li>
+<li class="chapter" data-level="15.2.2" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#conversion-of-seurat-object-back-to-giotto-object"><i class="fa fa-check"></i><b>15.2.2</b> Conversion of Seurat object Back to Giotto Object</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#spatialexperiment"><i class="fa fa-check"></i><b>15.3</b> SpatialExperiment</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#convert-giotto-object-to-spatialexperiment-object"><i class="fa fa-check"></i><b>15.3.1</b> Convert Giotto Object to SpatialExperiment Object</a></li>
+<li class="chapter" data-level="15.3.2" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#conversion-of-spatialexperiment-object-back-to-giotto"><i class="fa fa-check"></i><b>15.3.2</b> Conversion of SpatialExperiment object back to Giotto</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#anndata"><i class="fa fa-check"></i><b>15.4</b> AnnData</a>
+<ul>
+<li class="chapter" data-level="15.4.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#load-required-libraries"><i class="fa fa-check"></i><b>15.4.1</b> Load Required Libraries</a></li>
+<li class="chapter" data-level="15.4.2" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#specify-path-for-results"><i class="fa fa-check"></i><b>15.4.2</b> Specify Path for Results</a></li>
+<li class="chapter" data-level="15.4.3" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#giotto-to-anndata"><i class="fa fa-check"></i><b>15.4.3</b> Giotto To AnnData</a></li>
+<li class="chapter" data-level="15.4.4" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#convert-anndata-to-giotto"><i class="fa fa-check"></i><b>15.4.4</b> Convert AnnData to Giotto</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#create-mini-vizgen-object"><i class="fa fa-check"></i><b>15.5</b> Create mini Vizgen object</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html"><i class="fa fa-check"></i><b>16</b> Interoperability with isolated tools</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#spatial-niche-trajectory-analysis-ontrac"><i class="fa fa-check"></i><b>16.1</b> Spatial niche trajectory analysis (ONTraC)</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#introduction-to-ontrac"><i class="fa fa-check"></i><b>16.1.1</b> Introduction to ONTraC</a></li>
+<li class="chapter" data-level="16.1.2" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#introduction-to-merfish"><i class="fa fa-check"></i><b>16.1.2</b> Introduction to MERFISH</a></li>
+<li class="chapter" data-level="16.1.3" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#settings"><i class="fa fa-check"></i><b>16.1.3</b> Settings</a></li>
+<li class="chapter" data-level="16.1.4" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#dataset-1"><i class="fa fa-check"></i><b>16.1.4</b> Dataset</a></li>
+<li class="chapter" data-level="16.1.5" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#create-the-giotto-object-2"><i class="fa fa-check"></i><b>16.1.5</b> Create the Giotto object</a></li>
+<li class="chapter" data-level="16.1.6" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#perform-spatial-niche-trajectory-analysis-using-ontrac"><i class="fa fa-check"></i><b>16.1.6</b> Perform spatial niche trajectory analysis using ONTraC</a></li>
+<li class="chapter" data-level="16.1.7" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#visualization"><i class="fa fa-check"></i><b>16.1.7</b> Visualization</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#session-info-4"><i class="fa fa-check"></i><b>16.2</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html"><i class="fa fa-check"></i><b>17</b> Interactivity with the R/Spatial ecosystem</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#kriging"><i class="fa fa-check"></i><b>17.1</b> Kriging</a>
+<ul>
+<li class="chapter" data-level="17.1.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#visium-technology-1"><i class="fa fa-check"></i><b>17.1.1</b> Visium technology</a></li>
+<li class="chapter" data-level="17.1.2" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#dataset-2"><i class="fa fa-check"></i><b>17.1.2</b> Dataset</a></li>
+<li class="chapter" data-level="17.1.3" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#generating-a-geojson-file-of-nuclei-location"><i class="fa fa-check"></i><b>17.1.3</b> Generating a geojson file of nuclei location</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#downloading-the-dataset"><i class="fa fa-check"></i><b>17.2</b> Downloading the dataset</a></li>
+<li class="chapter" data-level="17.3" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#extracting-the-files"><i class="fa fa-check"></i><b>17.3</b> Extracting the files</a></li>
+<li class="chapter" data-level="17.4" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#downloading-giotto-object-and-nuclei-segmentation"><i class="fa fa-check"></i><b>17.4</b> Downloading giotto object and nuclei segmentation</a></li>
+<li class="chapter" data-level="17.5" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#importing-visium-data"><i class="fa fa-check"></i><b>17.5</b> Importing visium data</a>
+<ul>
+<li class="chapter" data-level="17.5.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#identifying-spatially-organized-features"><i class="fa fa-check"></i><b>17.5.1</b> Identifying spatially organized features</a></li>
+</ul></li>
+<li class="chapter" data-level="17.6" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#adding-cell-polygons-to-giotto-object"><i class="fa fa-check"></i><b>17.6</b> Adding cell polygons to Giotto object</a>
+<ul>
+<li class="chapter" data-level="17.6.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#read-in-the-poly-information"><i class="fa fa-check"></i><b>17.6.1</b> Read in the poly information</a></li>
+<li class="chapter" data-level="17.6.2" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#vizualizing-polygons"><i class="fa fa-check"></i><b>17.6.2</b> Vizualizing polygons</a></li>
+<li class="chapter" data-level="17.6.3" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#showing-giotto-object-prior-to-polygon-addition"><i class="fa fa-check"></i><b>17.6.3</b> Showing Giotto object prior to polygon addition</a></li>
+<li class="chapter" data-level="17.6.4" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#adding-polygons-to-giotto-object"><i class="fa fa-check"></i><b>17.6.4</b> Adding polygons to giotto object</a></li>
+<li class="chapter" data-level="17.6.5" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#check-polygon-information"><i class="fa fa-check"></i><b>17.6.5</b> Check polygon information</a></li>
+</ul></li>
+<li class="chapter" data-level="17.7" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#performing-kriging"><i class="fa fa-check"></i><b>17.7</b> Performing kriging</a>
+<ul>
+<li class="chapter" data-level="17.7.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#interpolating-features"><i class="fa fa-check"></i><b>17.7.1</b> Interpolating features</a></li>
+<li class="chapter" data-level="17.7.2" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#expression-overlap"><i class="fa fa-check"></i><b>17.7.2</b> Expression overlap</a></li>
+</ul></li>
+<li class="chapter" data-level="17.8" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#reading-in-larger-dataset"><i class="fa fa-check"></i><b>17.8</b> Reading in larger dataset</a></li>
+<li class="chapter" data-level="17.9" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#analyzing-interpolated-features"><i class="fa fa-check"></i><b>17.9</b> Analyzing interpolated features</a>
+<ul>
+<li class="chapter" data-level="17.9.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#filter-and-normalization"><i class="fa fa-check"></i><b>17.9.1</b> Filter and normalization</a></li>
+<li class="chapter" data-level="17.9.2" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#visualizing-gene-expression-from-interpolated-expression"><i class="fa fa-check"></i><b>17.9.2</b> Visualizing gene expression from interpolated expression</a></li>
+<li class="chapter" data-level="17.9.3" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#run-pca"><i class="fa fa-check"></i><b>17.9.3</b> Run PCA</a></li>
+<li class="chapter" data-level="17.9.4" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#clustering-2"><i class="fa fa-check"></i><b>17.9.4</b> Clustering</a></li>
+<li class="chapter" data-level="17.9.5" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#visualizing-clustering"><i class="fa fa-check"></i><b>17.9.5</b> Visualizing clustering</a></li>
+<li class="chapter" data-level="17.9.6" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#cropping-objects"><i class="fa fa-check"></i><b>17.9.6</b> Cropping objects</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="contributing-to-giotto.html"><a href="contributing-to-giotto.html"><i class="fa fa-check"></i><b>18</b> Contributing to Giotto</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="contributing-to-giotto.html"><a href="contributing-to-giotto.html#contribution-guideline"><i class="fa fa-check"></i><b>18.1</b> Contribution guideline</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Workshop: Spatial multi-omics data analysis with Giotto Suite</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="spatial-proteomics-multiplexed-immunofluorescence" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">11</span> Spatial proteomics: Multiplexed Immunofluorescence<a href="spatial-proteomics-multiplexed-immunofluorescence.html#spatial-proteomics-multiplexed-immunofluorescence" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Junxiang Xu</p>
+<p>August 6th 2024</p>
+<p>Before you start, this tutorial contains an optional part to run image segmentation using Giotto wrapper of Cellpose. If considering to use that function, please restart R session as we will need to activate a new Giotto python environment. The environment is also compatible with other Giotto functions. We will also need to install the Cellpose supported Giotto environment if haven’t done so.</p>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb319-1" tabindex="-1"></a><span class="co">#Install the Giotto Environment with Cellpose, note that we only need to do it once</span></span>
+<span id="cb319-2"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb319-2" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">conda_create</span>(<span class="at">envname =</span> <span class="st">&quot;giotto_cellpose&quot;</span>,</span>
+<span id="cb319-3"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb319-3" tabindex="-1"></a>                         <span class="at">python_version =</span> <span class="fl">3.8</span>)</span>
+<span id="cb319-4"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb319-4" tabindex="-1"></a></span>
+<span id="cb319-5"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb319-5" tabindex="-1"></a><span class="co">#.re.restartR()</span></span>
+<span id="cb319-6"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb319-6" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">use_condaenv</span>(<span class="st">&quot;giotto_cellpose&quot;</span>)</span>
+<span id="cb319-7"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb319-7" tabindex="-1"></a></span>
+<span id="cb319-8"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb319-8" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">py_install</span>(</span>
+<span id="cb319-9"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb319-9" tabindex="-1"></a>  <span class="at">pip =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb319-10"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb319-10" tabindex="-1"></a>  <span class="at">envname =</span> <span class="st">&quot;giotto_cellpose&quot;</span>,</span>
+<span id="cb319-11"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb319-11" tabindex="-1"></a>  <span class="at">packages =</span> <span class="fu">c</span>(</span>
+<span id="cb319-12"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb319-12" tabindex="-1"></a>    <span class="st">&quot;pandas&quot;</span>,</span>
+<span id="cb319-13"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb319-13" tabindex="-1"></a>    <span class="st">&quot;networkx&quot;</span>,</span>
+<span id="cb319-14"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb319-14" tabindex="-1"></a>    <span class="st">&quot;python-igraph&quot;</span>,</span>
+<span id="cb319-15"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb319-15" tabindex="-1"></a>    <span class="st">&quot;leidenalg&quot;</span>,</span>
+<span id="cb319-16"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb319-16" tabindex="-1"></a>    <span class="st">&quot;scikit-learn&quot;</span>,</span>
+<span id="cb319-17"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb319-17" tabindex="-1"></a>    <span class="st">&quot;cellpose&quot;</span>,</span>
+<span id="cb319-18"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb319-18" tabindex="-1"></a>    <span class="st">&quot;smfishhmrf&quot;</span>,</span>
+<span id="cb319-19"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb319-19" tabindex="-1"></a>    <span class="st">&quot;tifffile&quot;</span>,</span>
+<span id="cb319-20"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb319-20" tabindex="-1"></a>    <span class="st">&quot;scikit-image&quot;</span></span>
+<span id="cb319-21"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb319-21" tabindex="-1"></a>  )</span>
+<span id="cb319-22"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb319-22" tabindex="-1"></a>)</span>
+<span id="cb319-23"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb319-23" tabindex="-1"></a><span class="co">#.rs.restartR()</span></span></code></pre></div>
+<p>Now, activate the Giotto python environment.</p>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb320-1" tabindex="-1"></a><span class="co">#.rs.restartR()</span></span>
+<span id="cb320-2"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb320-2" tabindex="-1"></a><span class="co"># Activate the Giotto python environment of your choice</span></span>
+<span id="cb320-3"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb320-3" tabindex="-1"></a>GiottoClass<span class="sc">::</span><span class="fu">set_giotto_python_path</span>(<span class="st">&quot;giotto_cellpose&quot;</span>)</span>
+<span id="cb320-4"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb320-4" tabindex="-1"></a></span>
+<span id="cb320-5"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb320-5" tabindex="-1"></a><span class="co"># Check if cellpose was successfully installed</span></span>
+<span id="cb320-6"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb320-6" tabindex="-1"></a>GiottoUtils<span class="sc">::</span><span class="fu">package_check</span>(<span class="st">&quot;cellpose&quot;</span>, <span class="at">repository =</span> <span class="st">&quot;pip&quot;</span>)</span></code></pre></div>
+<div id="spatial-proteomics-technologies" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> Spatial Proteomics Technologies<a href="spatial-proteomics-multiplexed-immunofluorescence.html#spatial-proteomics-technologies" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This tutorial is aimed at analyzing spatially resolved multiplexed immunofluorescence data. It is compatible for different kinds of image based spatial proteomics data, such as Akoya(CODEX), CyCIF, IMC, MIBI, and Lunaphore(seqIF). Note that this tutorial will focus on starting directly with the intensity data(image), not the decoded count matrix.</p>
+<p><img src="img/02_session4/seqIF_Cycles_700x850.jpg" width="80%" style="display: block; margin: auto;" /></p>
+<p>This is the example Lunaphore dataset from Lunaphore the official <a href="https://lunaphore.com/download-center-tma-downstream-analysis/">website</a> and we are using the cropped one small area as an example. This is an overview of a subset of how the data would look like.</p>
+<p><img src="img/02_session4/Lunaphore_sample.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="raw-data-type-coming-out-of-different-technologies" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">11.2</span> Raw data type coming out of different technologies<a href="spatial-proteomics-multiplexed-immunofluorescence.html#raw-data-type-coming-out-of-different-technologies" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="use-ome.tiff-as-an-example-output-data-to-begin-with" class="section level3 hasAnchor" number="11.2.1">
+<h3><span class="header-section-number">11.2.1</span> Use ome.tiff as an example output data to begin with<a href="spatial-proteomics-multiplexed-immunofluorescence.html#use-ome.tiff-as-an-example-output-data-to-begin-with" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>OME-TIFF (Open Microscopy Environment Tagged Image File Format) is a file format designed for including detailed metadata and support for multi-dimensional image data. This is a common output file format for spatial proteomics platform such as lunaphore.</p>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb321-1" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
+<span id="cb321-2"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb321-2" tabindex="-1"></a></span>
+<span id="cb321-3"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb321-3" tabindex="-1"></a>instrs <span class="ot">&lt;-</span> <span class="fu">createGiottoInstructions</span>(<span class="at">save_dir =</span> <span class="fu">file.path</span>(<span class="fu">getwd</span>(),<span class="st">&quot;/img/02_session4/&quot;</span>),</span>
+<span id="cb321-4"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb321-4" tabindex="-1"></a>                                   <span class="at">save_plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb321-5"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb321-5" tabindex="-1"></a>                                   <span class="at">show_plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb321-6"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb321-6" tabindex="-1"></a>                                   <span class="at">python_path =</span> <span class="st">&quot;giotto_cellpose&quot;</span>)</span>
+<span id="cb321-7"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb321-7" tabindex="-1"></a><span class="fu">options</span>(<span class="at">timeout =</span> <span class="cn">Inf</span>)</span>
+<span id="cb321-8"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb321-8" tabindex="-1"></a></span>
+<span id="cb321-9"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb321-9" tabindex="-1"></a>data_dir <span class="ot">&lt;-</span> <span class="st">&quot;data/02_session4&quot;</span></span>
+<span id="cb321-10"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb321-10" tabindex="-1"></a></span>
+<span id="cb321-11"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb321-11" tabindex="-1"></a>destfile <span class="ot">&lt;-</span> <span class="fu">file.path</span>(data_dir, <span class="st">&quot;Lunaphore.zip&quot;</span>)</span>
+<span id="cb321-12"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb321-12" tabindex="-1"></a></span>
+<span id="cb321-13"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb321-13" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(data_dir)) { <span class="fu">dir.create</span>(data_dir, <span class="at">recursive =</span> <span class="cn">TRUE</span>) }</span>
+<span id="cb321-14"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb321-14" tabindex="-1"></a></span>
+<span id="cb321-15"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb321-15" tabindex="-1"></a><span class="fu">download.file</span>(<span class="st">&quot;https://zenodo.org/records/13175721/files/Lunaphore.zip?download=1&quot;</span>, </span>
+<span id="cb321-16"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb321-16" tabindex="-1"></a>              <span class="at">destfile =</span> destfile)</span>
+<span id="cb321-17"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb321-17" tabindex="-1"></a></span>
+<span id="cb321-18"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb321-18" tabindex="-1"></a><span class="fu">unzip</span>(<span class="fu">file.path</span>(data_dir, <span class="st">&quot;/Lunaphore.zip&quot;</span>), <span class="at">exdir =</span> data_dir)</span>
+<span id="cb321-19"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb321-19" tabindex="-1"></a></span>
+<span id="cb321-20"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb321-20" tabindex="-1"></a><span class="fu">list.files</span>(<span class="fu">file.path</span>(data_dir, <span class="st">&quot;/Lunaphore&quot;</span>))</span></code></pre></div>
+<p>We provide a way to extract meta data information directly from ome.tiffs. Please note that different platforms may store the meta data such as channel information in a different format, we will probably need to change the node names of the ome-XML.</p>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb322-1" tabindex="-1"></a>img_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(data_dir, <span class="st">&quot;/Lunaphore/Lunaphore_example.ome.tiff&quot;</span>)</span>
+<span id="cb322-2"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb322-2" tabindex="-1"></a></span>
+<span id="cb322-3"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb322-3" tabindex="-1"></a>img_meta <span class="ot">&lt;-</span> <span class="fu">ometif_metadata</span>(img_path, </span>
+<span id="cb322-4"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb322-4" tabindex="-1"></a>                            <span class="at">node =</span> <span class="st">&quot;Channel&quot;</span>, </span>
+<span id="cb322-5"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb322-5" tabindex="-1"></a>                            <span class="at">output =</span> <span class="st">&quot;data.frame&quot;</span>)</span>
+<span id="cb322-6"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb322-6" tabindex="-1"></a></span>
+<span id="cb322-7"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb322-7" tabindex="-1"></a>img_meta</span></code></pre></div>
+<p>However, sometimes a simple ometiff file manipulation like cropping could result in a loss of ome-XML information from the ome.tiff file. That way, we can use a different strategy to parse the xml information seperately and get channel information from it.</p>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb323-1" tabindex="-1"></a><span class="do">## Get channel information</span></span>
+<span id="cb323-2"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb323-2" tabindex="-1"></a>Luna <span class="ot">&lt;-</span> <span class="fu">file.path</span>(data_dir, <span class="st">&quot;/Lunaphore/Lunaphore_example.ome.tiff&quot;</span>)</span>
+<span id="cb323-3"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb323-3" tabindex="-1"></a></span>
+<span id="cb323-4"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb323-4" tabindex="-1"></a>xmldata <span class="ot">&lt;-</span> xml2<span class="sc">::</span><span class="fu">read_xml</span>(<span class="fu">file.path</span>(data_dir,<span class="st">&quot;/Lunaphore/Lunaphore_sample_metadata.xml&quot;</span>))</span>
+<span id="cb323-5"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb323-5" tabindex="-1"></a></span>
+<span id="cb323-6"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb323-6" tabindex="-1"></a>node <span class="ot">&lt;-</span> xml2<span class="sc">::</span><span class="fu">xml_find_all</span>(xmldata, <span class="st">&quot;//d1:Channel&quot;</span>, <span class="at">ns =</span> xml2<span class="sc">::</span><span class="fu">xml_ns</span>(xmldata))</span>
+<span id="cb323-7"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb323-7" tabindex="-1"></a></span>
+<span id="cb323-8"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb323-8" tabindex="-1"></a>channel_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">Reduce</span>(<span class="st">&quot;rbind&quot;</span>, xml2<span class="sc">::</span><span class="fu">xml_attrs</span>(node)))</span>
+<span id="cb323-9"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb323-9" tabindex="-1"></a></span>
+<span id="cb323-10"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb323-10" tabindex="-1"></a>channel_df</span></code></pre></div>
+<p><img src="img/02_session4/Channel_info.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="use-single-channel-images-as-an-example-output-data-to-begin-with" class="section level3 hasAnchor" number="11.2.2">
+<h3><span class="header-section-number">11.2.2</span> Use single channel images as an example output data to begin with<a href="spatial-proteomics-multiplexed-immunofluorescence.html#use-single-channel-images-as-an-example-output-data-to-begin-with" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Some platforms may also deconvolute and output gray scale single channel images. And we can create single channel images from ome.tiffs, the single channel images will be of the same format if the platform provide single channel gray scale images. With the single channel images, we can create a GiottoLargeImage and see what it looks like.</p>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb324-1" tabindex="-1"></a><span class="co"># Create multichannel raster and extract each single channels</span></span>
+<span id="cb324-2"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb324-2" tabindex="-1"></a>Luna_terra <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">rast</span>(Luna)</span>
+<span id="cb324-3"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb324-3" tabindex="-1"></a></span>
+<span id="cb324-4"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb324-4" tabindex="-1"></a><span class="fu">names</span>(Luna_terra) <span class="ot">&lt;-</span> channel_df<span class="sc">$</span>Name</span>
+<span id="cb324-5"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb324-5" tabindex="-1"></a></span>
+<span id="cb324-6"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb324-6" tabindex="-1"></a>gimg_DAPI <span class="ot">&lt;-</span> <span class="fu">createGiottoLargeImage</span>(Luna_terra[[<span class="dv">1</span>]],</span>
+<span id="cb324-7"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb324-7" tabindex="-1"></a>                                    <span class="at">negative_y =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb324-8"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb324-8" tabindex="-1"></a>                                    <span class="at">flip_vertical =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb324-9"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb324-9" tabindex="-1"></a></span>
+<span id="cb324-10"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb324-10" tabindex="-1"></a><span class="fu">plot</span>(gimg_DAPI)</span></code></pre></div>
+<p><img src="img/02_session4/gimg_DAPI.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>Extract and save the raster image for future use.</p>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb325-1" tabindex="-1"></a>single_channel_dir <span class="ot">&lt;-</span> <span class="fu">file.path</span>(data_dir, <span class="st">&quot;/Lunaphore/single_channels/&quot;</span>)</span>
+<span id="cb325-2"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb325-2" tabindex="-1"></a></span>
+<span id="cb325-3"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb325-3" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(single_channel_dir)) { <span class="fu">dir.create</span>(single_channel_dir, <span class="at">recursive =</span> <span class="cn">TRUE</span>) }</span>
+<span id="cb325-4"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb325-4" tabindex="-1"></a></span>
+<span id="cb325-5"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb325-5" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(channel_df)){</span>
+<span id="cb325-6"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb325-6" tabindex="-1"></a>  single_channel <span class="ot">&lt;-</span> terra<span class="sc">::</span><span class="fu">subset</span>(Luna_terra, i)</span>
+<span id="cb325-7"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb325-7" tabindex="-1"></a>  terra<span class="sc">::</span><span class="fu">writeRaster</span>(single_channel,</span>
+<span id="cb325-8"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb325-8" tabindex="-1"></a>                     <span class="at">filename =</span> <span class="fu">paste0</span>(single_channel_dir,<span class="fu">names</span>(single_channel),<span class="st">&quot;.tiff&quot;</span>),</span>
+<span id="cb325-9"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb325-9" tabindex="-1"></a>                     <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb325-10"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb325-10" tabindex="-1"></a>}</span></code></pre></div>
+<p>Create a list of GiottoLargeImages using single channel rasters.</p>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb326-1" tabindex="-1"></a>file_names <span class="ot">&lt;-</span> <span class="fu">list.files</span>(single_channel_dir,</span>
+<span id="cb326-2"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb326-2" tabindex="-1"></a>                         <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb326-3"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb326-3" tabindex="-1"></a></span>
+<span id="cb326-4"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb326-4" tabindex="-1"></a>image_names <span class="ot">&lt;-</span> <span class="fu">sub</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">.tiff$&quot;</span>, <span class="st">&quot;&quot;</span>, <span class="fu">list.files</span>(single_channel_dir))</span>
+<span id="cb326-5"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb326-5" tabindex="-1"></a></span>
+<span id="cb326-6"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb326-6" tabindex="-1"></a>gimg_list <span class="ot">&lt;-</span> <span class="fu">createGiottoLargeImageList</span>(<span class="at">raster_objects =</span> file_names,</span>
+<span id="cb326-7"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb326-7" tabindex="-1"></a>                                        <span class="at">names =</span> image_names,</span>
+<span id="cb326-8"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb326-8" tabindex="-1"></a>                                        <span class="at">negative_y =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb326-9"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb326-9" tabindex="-1"></a>                                        <span class="at">flip_vertical =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb326-10"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb326-10" tabindex="-1"></a><span class="fu">names</span>(gimg_list) <span class="ot">&lt;-</span> image_names</span>
+<span id="cb326-11"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb326-11" tabindex="-1"></a></span>
+<span id="cb326-12"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb326-12" tabindex="-1"></a><span class="fu">plot</span>(gimg_list[[<span class="st">&quot;Vimentin&quot;</span>]])</span></code></pre></div>
+<p><img src="img/02_session4/gimg_vimentin.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="cell-segmentation-file-to-get-single-cell-level-protein-expression" class="section level2 hasAnchor" number="11.3">
+<h2><span class="header-section-number">11.3</span> Cell Segmentation file to get single cell level protein expression<a href="spatial-proteomics-multiplexed-immunofluorescence.html#cell-segmentation-file-to-get-single-cell-level-protein-expression" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Cell segmentation is necessary to generate single cell level protein expression. Currently, there are multiple algorithms to generate segmentations from images and output could be different. For that purpose, Giotto provides createGiottoPolygonsFromMask(), createGiottoPolygonsFromDfr(), createGiottoPolygonsFromGeoJSON() to load different type of file to the giottoPolygon Class.</p>
+<div id="using-segmentation-output-file-from-deepcellmesmer-as-an-example." class="section level3 hasAnchor" number="11.3.1">
+<h3><span class="header-section-number">11.3.1</span> Using segmentation output file from DeepCell(mesmer) as an example.<a href="spatial-proteomics-multiplexed-immunofluorescence.html#using-segmentation-output-file-from-deepcellmesmer-as-an-example." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We collapsed several different channels to created a pseudo memberane staining channel(“nuc_and_bound.tif” provided here), and use that as an input for the deepcell mesmer segmentation pipeline. We can load the output mask from to GiottoPolygon via a convenience function.</p>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb327-1" tabindex="-1"></a>gpoly_mesmer <span class="ot">&lt;-</span> <span class="fu">createGiottoPolygonsFromMask</span>(</span>
+<span id="cb327-2"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb327-2" tabindex="-1"></a>  <span class="fu">file.path</span>(data_dir, <span class="st">&quot;/Lunaphore/whole_cell_mask.tif&quot;</span>),</span>
+<span id="cb327-3"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb327-3" tabindex="-1"></a>  <span class="at">shift_horizontal_step =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb327-4"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb327-4" tabindex="-1"></a>  <span class="at">shift_vertical_step =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb327-5"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb327-5" tabindex="-1"></a>  <span class="at">flip_vertical =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb327-6"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb327-6" tabindex="-1"></a>  <span class="at">calc_centroids =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb327-7"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb327-7" tabindex="-1"></a></span>
+<span id="cb327-8"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb327-8" tabindex="-1"></a><span class="fu">plot</span>(gpoly_mesmer)</span></code></pre></div>
+<p><img src="img/02_session4/gpoly_mesmer.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>We can also zoom in to check how does the segmentation look.</p>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb328-1" tabindex="-1"></a>zoom <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2000</span>,<span class="dv">2500</span>,<span class="dv">2000</span>,<span class="dv">2500</span>)</span>
+<span id="cb328-2"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb328-2" tabindex="-1"></a></span>
+<span id="cb328-3"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb328-3" tabindex="-1"></a><span class="fu">plot</span>(gimg_DAPI, <span class="at">ext =</span> zoom)</span>
+<span id="cb328-4"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb328-4" tabindex="-1"></a></span>
+<span id="cb328-5"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb328-5" tabindex="-1"></a><span class="fu">plot</span>(gpoly_mesmer, <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">border =</span> <span class="st">&quot;white&quot;</span>, <span class="at">ext =</span> zoom)</span></code></pre></div>
+<p><img src="img/02_session4/mesmer_overlap.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="using-giotto-wrapper-of-cellpose-to-perform-segmentation" class="section level3 hasAnchor" number="11.3.2">
+<h3><span class="header-section-number">11.3.2</span> Using Giotto wrapper of Cellpose to perform segmentation<a href="spatial-proteomics-multiplexed-immunofluorescence.html#using-giotto-wrapper-of-cellpose-to-perform-segmentation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Here, we create a mini example by cropping the image to a smaller area. Note that crop() is probably easier to use to directly crop image, unless cropping the image when the image is inside of a giotto object.</p>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb329-1" tabindex="-1"></a>gimg_cropped <span class="ot">&lt;-</span> <span class="fu">cropGiottoLargeImage</span>(<span class="at">giottoLargeImage =</span> gimg_DAPI, </span>
+<span id="cb329-2"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb329-2" tabindex="-1"></a>                                     <span class="at">crop_extent =</span> terra<span class="sc">::</span><span class="fu">ext</span>(zoom))</span>
+<span id="cb329-3"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb329-3" tabindex="-1"></a></span>
+<span id="cb329-4"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb329-4" tabindex="-1"></a><span class="fu">writeGiottoLargeImage</span>(gimg_cropped, </span>
+<span id="cb329-5"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb329-5" tabindex="-1"></a>                      <span class="at">filename =</span> <span class="fu">file.path</span>(data_dir, <span class="st">&quot;/Lunaphore/DAPI_forcellpose.tiff&quot;</span>),</span>
+<span id="cb329-6"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb329-6" tabindex="-1"></a>                      <span class="at">overwrite =</span>  <span class="cn">TRUE</span>)</span>
+<span id="cb329-7"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb329-7" tabindex="-1"></a></span>
+<span id="cb329-8"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb329-8" tabindex="-1"></a><span class="co">#Create a giotto image to evaluate segmentation</span></span>
+<span id="cb329-9"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb329-9" tabindex="-1"></a>gimg_for_cellpose <span class="ot">&lt;-</span> <span class="fu">createGiottoLargeImage</span>(</span>
+<span id="cb329-10"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb329-10" tabindex="-1"></a>  <span class="fu">file.path</span>(data_dir, <span class="st">&quot;/Lunaphore/DAPI_forcellpose.tiff&quot;</span>),</span>
+<span id="cb329-11"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb329-11" tabindex="-1"></a>  <span class="at">negative_y =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p>Now we can run the cellpose segmentation. We can provide different parameters for cellpose inference model(flow_threshold,cellprob_threshold,etc), and practically, the batch size represents how many 224X224 images are calculated in parallel, increasing the amount will increase RAM/VRAM requirement, lowering the amount will increase the run time. For more information please refer to the <a href="https://cellpose.readthedocs.io/en/latest/">cellpose website</a></p>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb330-1" tabindex="-1"></a><span class="fu">doCellposeSegmentation</span>(<span class="at">image_dir =</span> <span class="fu">file.path</span>(data_dir, <span class="st">&quot;/Lunaphore/DAPI_forcellpose.tiff&quot;</span>),</span>
+<span id="cb330-2"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb330-2" tabindex="-1"></a>                       <span class="at">mask_output =</span> <span class="fu">file.path</span>(data_dir, <span class="st">&quot;/Lunaphore/giotto_cellpose_seg.tiff&quot;</span>),</span>
+<span id="cb330-3"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb330-3" tabindex="-1"></a>                       <span class="at">channel_1 =</span> <span class="dv">0</span>,</span>
+<span id="cb330-4"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb330-4" tabindex="-1"></a>                       <span class="at">channel_2 =</span> <span class="dv">0</span>,</span>
+<span id="cb330-5"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb330-5" tabindex="-1"></a>                       <span class="at">model_name =</span> <span class="st">&quot;cyto3&quot;</span>,</span>
+<span id="cb330-6"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb330-6" tabindex="-1"></a>                       <span class="at">batch_size =</span> <span class="dv">12</span>)</span>
+<span id="cb330-7"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb330-7" tabindex="-1"></a></span>
+<span id="cb330-8"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb330-8" tabindex="-1"></a>cpoly <span class="ot">&lt;-</span> <span class="fu">createGiottoPolygonsFromMask</span>(<span class="fu">file.path</span>(data_dir,<span class="st">&quot;/Lunaphore/giotto_cellpose_seg.tiff&quot;</span>),</span>
+<span id="cb330-9"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb330-9" tabindex="-1"></a>                                      <span class="at">shift_horizontal_step =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb330-10"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb330-10" tabindex="-1"></a>                                      <span class="at">shift_vertical_step =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb330-11"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb330-11" tabindex="-1"></a>                                      <span class="at">flip_vertical =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb330-12"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb330-12" tabindex="-1"></a></span>
+<span id="cb330-13"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb330-13" tabindex="-1"></a><span class="fu">plot</span>(gimg_for_cellpose)</span>
+<span id="cb330-14"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb330-14" tabindex="-1"></a></span>
+<span id="cb330-15"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb330-15" tabindex="-1"></a><span class="fu">plot</span>(cpoly, <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">border =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="img/02_session4/cellpose_check.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="create-a-giotto-object-using-list-of-gitto-large-images-and-polygons" class="section level2 hasAnchor" number="11.4">
+<h2><span class="header-section-number">11.4</span> Create a Giotto Object using list of gitto large images and polygons<a href="spatial-proteomics-multiplexed-immunofluorescence.html#create-a-giotto-object-using-list-of-gitto-large-images-and-polygons" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You will need to have:</p>
+<ul>
+<li>list of giotto images</li>
+<li>giottoPolygon created from segmentation</li>
+</ul>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb331-1" tabindex="-1"></a>Lunaphore_giotto <span class="ot">&lt;-</span> <span class="fu">createGiottoObjectSubcellular</span>(<span class="at">gpolygons =</span> <span class="fu">list</span>(<span class="st">&quot;cell&quot;</span> <span class="ot">=</span> gpoly_mesmer),</span>
+<span id="cb331-2"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb331-2" tabindex="-1"></a>                                                  <span class="at">images =</span> gimg_list, </span>
+<span id="cb331-3"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb331-3" tabindex="-1"></a>                                                  <span class="at">instructions =</span> instrs)</span>
+<span id="cb331-4"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb331-4" tabindex="-1"></a>Lunaphore_giotto</span></code></pre></div>
+<div id="overlap-to-matrix" class="section level3 hasAnchor" number="11.4.1">
+<h3><span class="header-section-number">11.4.1</span> Overlap to matrix<a href="spatial-proteomics-multiplexed-immunofluorescence.html#overlap-to-matrix" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>calculateOverlap() and overlapToMatrix() are used to overlap the intensity values with</p>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb332-1" tabindex="-1"></a>Lunaphore_giotto <span class="ot">&lt;-</span> <span class="fu">calculateOverlap</span>(Lunaphore_giotto,</span>
+<span id="cb332-2"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb332-2" tabindex="-1"></a>                                     <span class="at">spatial_info =</span> <span class="st">&quot;cell&quot;</span>,</span>
+<span id="cb332-3"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb332-3" tabindex="-1"></a>                                     <span class="at">image_names =</span> <span class="fu">names</span>(gimg_list))</span>
+<span id="cb332-4"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb332-4" tabindex="-1"></a></span>
+<span id="cb332-5"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb332-5" tabindex="-1"></a>Lunaphore_giotto <span class="ot">&lt;-</span> <span class="fu">overlapToMatrix</span>(<span class="at">x =</span> Lunaphore_giotto,</span>
+<span id="cb332-6"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb332-6" tabindex="-1"></a>                                    <span class="at">type =</span><span class="st">&quot;intensity&quot;</span>,</span>
+<span id="cb332-7"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb332-7" tabindex="-1"></a>                                    <span class="at">poly_info =</span> <span class="st">&quot;cell&quot;</span>, </span>
+<span id="cb332-8"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb332-8" tabindex="-1"></a>                                    <span class="at">feat_info =</span> <span class="st">&quot;protein&quot;</span>,</span>
+<span id="cb332-9"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb332-9" tabindex="-1"></a>                                    <span class="at">aggr_function =</span> <span class="st">&quot;sum&quot;</span>)</span>
+<span id="cb332-10"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb332-10" tabindex="-1"></a></span>
+<span id="cb332-11"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb332-11" tabindex="-1"></a><span class="fu">showGiottoExpression</span>(Lunaphore_giotto)</span></code></pre></div>
+</div>
+<div id="manipulate-expression-information" class="section level3 hasAnchor" number="11.4.2">
+<h3><span class="header-section-number">11.4.2</span> Manipulate Expression information<a href="spatial-proteomics-multiplexed-immunofluorescence.html#manipulate-expression-information" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For IF data, DAPI staining is usually only used for stain nuclei, the intensity value of DAPI usually does not have meaningful result to drive difference between cell types. Similar things could happen when a platform uses some reference channel to adjust signal calling, such as TRITC or Cy5, These images will be loaded but need to be removed for expression profile.</p>
+<p>Therefore, we could extract the feature expression matrix, filter the DAPI information and write it back to the Giotto Object</p>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb333-1"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb333-1" tabindex="-1"></a>expr_mtx <span class="ot">&lt;-</span> <span class="fu">getExpression</span>(Lunaphore_giotto, </span>
+<span id="cb333-2"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb333-2" tabindex="-1"></a>                          <span class="at">values =</span> <span class="st">&quot;raw&quot;</span>, </span>
+<span id="cb333-3"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb333-3" tabindex="-1"></a>                          <span class="at">output =</span> <span class="st">&quot;matrix&quot;</span>)</span>
+<span id="cb333-4"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb333-4" tabindex="-1"></a></span>
+<span id="cb333-5"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb333-5" tabindex="-1"></a>filtered_expr_mtx <span class="ot">&lt;-</span> expr_mtx[<span class="fu">rownames</span>(expr_mtx) <span class="sc">!=</span> <span class="st">&quot;DAPI&quot;</span>,]</span>
+<span id="cb333-6"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb333-6" tabindex="-1"></a></span>
+<span id="cb333-7"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb333-7" tabindex="-1"></a>Lunaphore_giotto <span class="ot">&lt;-</span> <span class="fu">setExpression</span>(Lunaphore_giotto,</span>
+<span id="cb333-8"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb333-8" tabindex="-1"></a>                                  <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>,</span>
+<span id="cb333-9"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb333-9" tabindex="-1"></a>                                  <span class="at">x =</span> <span class="fu">createExprObj</span>(filtered_expr_mtx),</span>
+<span id="cb333-10"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb333-10" tabindex="-1"></a>                                  <span class="at">name =</span> <span class="st">&quot;raw&quot;</span>)</span>
+<span id="cb333-11"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb333-11" tabindex="-1"></a></span>
+<span id="cb333-12"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb333-12" tabindex="-1"></a><span class="fu">showGiottoExpression</span>(Lunaphore_giotto)</span></code></pre></div>
+</div>
+<div id="rescale-polygons" class="section level3 hasAnchor" number="11.4.3">
+<h3><span class="header-section-number">11.4.3</span> Rescale polygons<a href="spatial-proteomics-multiplexed-immunofluorescence.html#rescale-polygons" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>rescalePolygons() will provide a quick way to manipulate the polygon size and potentially affect the expression for each cell. redo the calculateOverlap() and overlapToMatrix() will potentially change the downstream analysis</p>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb334-1" tabindex="-1"></a>Lunaphore_giotto <span class="ot">&lt;-</span> <span class="fu">rescalePolygons</span>(<span class="at">gobject =</span> Lunaphore_giotto,</span>
+<span id="cb334-2"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb334-2" tabindex="-1"></a>                                    <span class="at">poly_info =</span> <span class="st">&quot;cell&quot;</span>,</span>
+<span id="cb334-3"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb334-3" tabindex="-1"></a>                                    <span class="at">name =</span> <span class="st">&quot;smallcell&quot;</span>,</span>
+<span id="cb334-4"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb334-4" tabindex="-1"></a>                                    <span class="at">fx =</span> <span class="fl">0.7</span>, <span class="at">fy =</span> <span class="fl">0.7</span>, </span>
+<span id="cb334-5"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb334-5" tabindex="-1"></a>                                    <span class="at">calculate_centroids =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb334-6"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb334-6" tabindex="-1"></a></span>
+<span id="cb334-7"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb334-7" tabindex="-1"></a>smallpoly <span class="ot">&lt;-</span> <span class="fu">getPolygonInfo</span>(Lunaphore_giotto,</span>
+<span id="cb334-8"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb334-8" tabindex="-1"></a>                            <span class="at">polygon_name =</span> <span class="st">&quot;smallcell&quot;</span>)</span>
+<span id="cb334-9"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb334-9" tabindex="-1"></a></span>
+<span id="cb334-10"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb334-10" tabindex="-1"></a><span class="fu">plot</span>(gimg_DAPI, <span class="at">ext =</span> zoom)</span>
+<span id="cb334-11"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb334-11" tabindex="-1"></a></span>
+<span id="cb334-12"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb334-12" tabindex="-1"></a><span class="fu">plot</span>(gpoly_mesmer, <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">border =</span> <span class="st">&quot;white&quot;</span>, <span class="at">ext =</span> zoom)</span>
+<span id="cb334-13"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb334-13" tabindex="-1"></a></span>
+<span id="cb334-14"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb334-14" tabindex="-1"></a><span class="fu">plot</span>(smallpoly, <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">border =</span> <span class="st">&quot;red&quot;</span>, <span class="at">ext =</span> zoom)</span></code></pre></div>
+<p><img src="img/02_session4/polygon_scale.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="perform-clustering-and-differential-expression" class="section level3 hasAnchor" number="11.4.4">
+<h3><span class="header-section-number">11.4.4</span> Perform clustering and differential expression<a href="spatial-proteomics-multiplexed-immunofluorescence.html#perform-clustering-and-differential-expression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The Giotto Object can then go through standard analysis pipeline normalization, dimensional reduction and clustering</p>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb335-1"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb335-1" tabindex="-1"></a>Lunaphore_giotto <span class="ot">&lt;-</span> <span class="fu">normalizeGiotto</span>(Lunaphore_giotto,</span>
+<span id="cb335-2"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb335-2" tabindex="-1"></a>                                    <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>, </span>
+<span id="cb335-3"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb335-3" tabindex="-1"></a>                                    <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>)</span>
+<span id="cb335-4"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb335-4" tabindex="-1"></a></span>
+<span id="cb335-5"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb335-5" tabindex="-1"></a>Lunaphore_giotto <span class="ot">&lt;-</span> <span class="fu">addStatistics</span>(Lunaphore_giotto, </span>
+<span id="cb335-6"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb335-6" tabindex="-1"></a>                                  <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>, </span>
+<span id="cb335-7"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb335-7" tabindex="-1"></a>                                  <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>)</span>
+<span id="cb335-8"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb335-8" tabindex="-1"></a></span>
+<span id="cb335-9"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb335-9" tabindex="-1"></a>Lunaphore_giotto <span class="ot">&lt;-</span> <span class="fu">runPCA</span>(Lunaphore_giotto, </span>
+<span id="cb335-10"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb335-10" tabindex="-1"></a>                           <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>, </span>
+<span id="cb335-11"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb335-11" tabindex="-1"></a>                           <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>,</span>
+<span id="cb335-12"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb335-12" tabindex="-1"></a>                           <span class="at">scale_unit =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb335-13"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb335-13" tabindex="-1"></a>                           <span class="at">center =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb335-14"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb335-14" tabindex="-1"></a>                           <span class="at">ncp =</span> <span class="dv">20</span>,</span>
+<span id="cb335-15"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb335-15" tabindex="-1"></a>                           <span class="at">feats_to_use =</span> <span class="cn">NULL</span>,</span>
+<span id="cb335-16"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb335-16" tabindex="-1"></a>                           <span class="at">set_seed =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb335-17"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb335-17" tabindex="-1"></a></span>
+<span id="cb335-18"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb335-18" tabindex="-1"></a><span class="fu">screePlot</span>(Lunaphore_giotto,</span>
+<span id="cb335-19"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb335-19" tabindex="-1"></a>          <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>, </span>
+<span id="cb335-20"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb335-20" tabindex="-1"></a>          <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>,</span>
+<span id="cb335-21"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb335-21" tabindex="-1"></a>          <span class="at">show_plot =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="img/02_session4/0-screePlot.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>Due to the limited number of total features we have, Leiden clustering generally does not work very well compared to Kmeans or hierarchical clustering. Here we can use hierarchical clustering to do a quick check.</p>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-1" tabindex="-1"></a>Lunaphore_giotto <span class="ot">&lt;-</span> <span class="fu">runUMAP</span>(<span class="at">gobject =</span> Lunaphore_giotto, </span>
+<span id="cb336-2"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-2" tabindex="-1"></a>                            <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
+<span id="cb336-3"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-3" tabindex="-1"></a>                            <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>,</span>
+<span id="cb336-4"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-4" tabindex="-1"></a>                            <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb336-5"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-5" tabindex="-1"></a>                            <span class="at">set_seed =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb336-6"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-6" tabindex="-1"></a></span>
+<span id="cb336-7"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-7" tabindex="-1"></a>Lunaphore_giotto <span class="ot">&lt;-</span> <span class="fu">createNearestNetwork</span>(Lunaphore_giotto, </span>
+<span id="cb336-8"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-8" tabindex="-1"></a>                                         <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
+<span id="cb336-9"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-9" tabindex="-1"></a>                                         <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>, </span>
+<span id="cb336-10"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-10" tabindex="-1"></a>                                         <span class="at">dimensions_to_use =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb336-11"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-11" tabindex="-1"></a></span>
+<span id="cb336-12"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-12" tabindex="-1"></a>Lunaphore_giotto <span class="ot">&lt;-</span> <span class="fu">doHclust</span>(Lunaphore_giotto, </span>
+<span id="cb336-13"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-13" tabindex="-1"></a>                             <span class="at">k =</span> <span class="dv">8</span>,</span>
+<span id="cb336-14"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-14" tabindex="-1"></a>                             <span class="at">dim_reduction_to_use =</span> <span class="st">&quot;cells&quot;</span>,</span>
+<span id="cb336-15"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-15" tabindex="-1"></a>                             <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
+<span id="cb336-16"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-16" tabindex="-1"></a>                             <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>)</span>
+<span id="cb336-17"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-17" tabindex="-1"></a></span>
+<span id="cb336-18"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-18" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(<span class="at">gobject =</span> Lunaphore_giotto, </span>
+<span id="cb336-19"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-19" tabindex="-1"></a>                     <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
+<span id="cb336-20"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-20" tabindex="-1"></a>                     <span class="at">polygon_feat_type =</span> <span class="st">&quot;cell&quot;</span>,</span>
+<span id="cb336-21"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-21" tabindex="-1"></a>                     <span class="at">show_polygon =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb336-22"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-22" tabindex="-1"></a>                     <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>,</span>
+<span id="cb336-23"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-23" tabindex="-1"></a>                     <span class="at">feats =</span> <span class="cn">NULL</span>,</span>
+<span id="cb336-24"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-24" tabindex="-1"></a>                     <span class="at">polygon_fill =</span> <span class="st">&quot;hclust&quot;</span>,</span>
+<span id="cb336-25"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-25" tabindex="-1"></a>                     <span class="at">polygon_fill_as_factor =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb336-26"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-26" tabindex="-1"></a>                     <span class="at">polygon_line_size =</span> <span class="dv">0</span>,</span>
+<span id="cb336-27"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-27" tabindex="-1"></a>                     <span class="at">image_name =</span> <span class="st">&quot;CD68&quot;</span>,</span>
+<span id="cb336-28"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-28" tabindex="-1"></a>                     <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb336-29"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-29" tabindex="-1"></a>                     <span class="at">return_plot =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb336-30"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-30" tabindex="-1"></a>                     <span class="at">polygon_color =</span> <span class="st">&quot;black&quot;</span>,</span>
+<span id="cb336-31"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb336-31" tabindex="-1"></a>                     <span class="at">background_color =</span> <span class="st">&quot;white&quot;</span>)</span></code></pre></div>
+<p><img src="img/02_session4/1-spatInSituPlotPoints.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>Then we can check the heatmap of protein expression and determine the first round of cluster annotation.</p>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb337-1"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb337-1" tabindex="-1"></a>cluster_column <span class="ot">&lt;-</span> <span class="st">&quot;hclust&quot;</span></span>
+<span id="cb337-2"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb337-2" tabindex="-1"></a></span>
+<span id="cb337-3"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb337-3" tabindex="-1"></a><span class="fu">plotMetaDataHeatmap</span>(Lunaphore_giotto,</span>
+<span id="cb337-4"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb337-4" tabindex="-1"></a>                    <span class="at">spat_unit =</span> <span class="st">&quot;cell&quot;</span>,</span>
+<span id="cb337-5"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb337-5" tabindex="-1"></a>                    <span class="at">feat_type =</span> <span class="st">&quot;protein&quot;</span>,</span>
+<span id="cb337-6"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb337-6" tabindex="-1"></a>                    <span class="at">expression_values =</span> <span class="st">&quot;raw&quot;</span>,</span>
+<span id="cb337-7"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb337-7" tabindex="-1"></a>                    <span class="at">metadata_cols =</span> cluster_column, </span>
+<span id="cb337-8"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb337-8" tabindex="-1"></a>                    <span class="at">selected_feats =</span> <span class="fu">names</span>(gimg_list),</span>
+<span id="cb337-9"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb337-9" tabindex="-1"></a>                    <span class="at">y_text_size =</span> <span class="dv">8</span>,</span>
+<span id="cb337-10"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb337-10" tabindex="-1"></a>                    <span class="at">show_values =</span> <span class="st">&quot;zscores_rescaled&quot;</span>)</span></code></pre></div>
+<p><img src="img/02_session4/2-plotMetaDataHeatmap.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="give-the-cluster-an-annotation-based-on-expression-values" class="section level3 hasAnchor" number="11.4.5">
+<h3><span class="header-section-number">11.4.5</span> Give the cluster an annotation based on expression values<a href="spatial-proteomics-multiplexed-immunofluorescence.html#give-the-cluster-an-annotation-based-on-expression-values" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb338-1" tabindex="-1"></a>annotation <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;B_cell&quot;</span>, <span class="st">&quot;Macrophage&quot;</span>, <span class="st">&quot;T_cell&quot;</span>, <span class="st">&quot;stromal&quot;</span>, </span>
+<span id="cb338-2"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb338-2" tabindex="-1"></a>                <span class="st">&quot;epithelial&quot;</span>, <span class="st">&quot;DC&quot;</span> , <span class="st">&quot;Fibroblast&quot;</span>, <span class="st">&quot;endothelial&quot;</span>)</span>
+<span id="cb338-3"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb338-3" tabindex="-1"></a></span>
+<span id="cb338-4"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb338-4" tabindex="-1"></a><span class="fu">names</span>(annotation) <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span></span>
+<span id="cb338-5"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb338-5" tabindex="-1"></a></span>
+<span id="cb338-6"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb338-6" tabindex="-1"></a>Lunaphore_giotto <span class="ot">&lt;-</span> <span class="fu">annotateGiotto</span>(Lunaphore_giotto,</span>
+<span id="cb338-7"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb338-7" tabindex="-1"></a>                                   <span class="at">cluster_column =</span> <span class="st">&quot;hclust&quot;</span>,</span>
+<span id="cb338-8"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb338-8" tabindex="-1"></a>                                   <span class="at">annotation_vector =</span> annotation,</span>
+<span id="cb338-9"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb338-9" tabindex="-1"></a>                                   <span class="at">name =</span> <span class="st">&quot;cell_types&quot;</span>)</span></code></pre></div>
+</div>
+<div id="spatial-network-1" class="section level3 hasAnchor" number="11.4.6">
+<h3><span class="header-section-number">11.4.6</span> Spatial network<a href="spatial-proteomics-multiplexed-immunofluorescence.html#spatial-network-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This is to create a cellular neighborhood based on nearest neighbor of physical distance.</p>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb339-1" tabindex="-1"></a>Lunaphore_giotto <span class="ot">&lt;-</span> <span class="fu">createSpatialNetwork</span>(Lunaphore_giotto)</span>
+<span id="cb339-2"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb339-2" tabindex="-1"></a></span>
+<span id="cb339-3"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb339-3" tabindex="-1"></a><span class="fu">spatPlot2D</span>(Lunaphore_giotto, </span>
+<span id="cb339-4"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb339-4" tabindex="-1"></a>           <span class="at">show_network =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb339-5"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb339-5" tabindex="-1"></a>           <span class="at">network_color =</span> <span class="st">&quot;blue&quot;</span>,</span>
+<span id="cb339-6"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb339-6" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="fl">1.5</span>, </span>
+<span id="cb339-7"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb339-7" tabindex="-1"></a>           <span class="at">cell_color =</span> <span class="st">&quot;hclust&quot;</span>)</span></code></pre></div>
+<p><img src="img/02_session4/3-spatPlot2D.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+<div id="cell-neighborhood-cell-typecell-type-interactions" class="section level3 hasAnchor" number="11.4.7">
+<h3><span class="header-section-number">11.4.7</span> Cell Neighborhood: Cell-Type/Cell-Type Interactions<a href="spatial-proteomics-multiplexed-immunofluorescence.html#cell-neighborhood-cell-typecell-type-interactions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This is using cellProximityEnrichment() to statistically identify cell type interactions.</p>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb340-1"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb340-1" tabindex="-1"></a>cell_proximities <span class="ot">&lt;-</span> <span class="fu">cellProximityEnrichment</span>(<span class="at">gobject =</span> Lunaphore_giotto,</span>
+<span id="cb340-2"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb340-2" tabindex="-1"></a>                                            <span class="at">cluster_column =</span> <span class="st">&quot;cell_types&quot;</span>,</span>
+<span id="cb340-3"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb340-3" tabindex="-1"></a>                                            <span class="at">spatial_network_name =</span> <span class="st">&quot;Delaunay_network&quot;</span>,</span>
+<span id="cb340-4"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb340-4" tabindex="-1"></a>                                            <span class="at">adjust_method =</span> <span class="st">&quot;fdr&quot;</span>,</span>
+<span id="cb340-5"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb340-5" tabindex="-1"></a>                                            <span class="at">number_of_simulations =</span> <span class="dv">2000</span>)</span>
+<span id="cb340-6"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb340-6" tabindex="-1"></a><span class="do">## barplot</span></span>
+<span id="cb340-7"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb340-7" tabindex="-1"></a><span class="fu">cellProximityBarplot</span>(<span class="at">gobject =</span> Lunaphore_giotto,</span>
+<span id="cb340-8"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb340-8" tabindex="-1"></a>                     <span class="at">CPscore =</span> cell_proximities, </span>
+<span id="cb340-9"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb340-9" tabindex="-1"></a>                     <span class="at">min_orig_ints =</span> <span class="dv">5</span>, </span>
+<span id="cb340-10"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb340-10" tabindex="-1"></a>                     <span class="at">min_sim_ints =</span> <span class="dv">5</span>)</span></code></pre></div>
+<p><img src="img/02_session4/4-cellProximityBarplot.png" width="80%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb341-1" tabindex="-1"></a><span class="do">## network</span></span>
+<span id="cb341-2"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb341-2" tabindex="-1"></a><span class="fu">cellProximityNetwork</span>(<span class="at">gobject =</span> Lunaphore_giotto, </span>
+<span id="cb341-3"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb341-3" tabindex="-1"></a>                     <span class="at">CPscore =</span> cell_proximities, </span>
+<span id="cb341-4"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb341-4" tabindex="-1"></a>                     <span class="at">remove_self_edges =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb341-5"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb341-5" tabindex="-1"></a>                     <span class="at">only_show_enrichment_edges =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p><img src="img/02_session4/5-cellProximityNetwork.png" width="80%" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="session-info-2" class="section level2 hasAnchor" number="11.5">
+<h2><span class="header-section-number">11.5</span> Session info<a href="spatial-proteomics-multiplexed-immunofluorescence.html#session-info-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb342-1"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb342-1" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-1" tabindex="-1"></a>R version <span class="dv">4</span>.<span class="fl">4.1</span> (<span class="dv">2024-06-14</span>)</span>
+<span id="cb343-2"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-2" tabindex="-1"></a>Platform<span class="sc">:</span> aarch64<span class="sc">-</span>apple<span class="sc">-</span>darwin20</span>
+<span id="cb343-3"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-3" tabindex="-1"></a>Running under<span class="sc">:</span> macOS Sonoma <span class="fl">14.5</span></span>
+<span id="cb343-4"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-4" tabindex="-1"></a></span>
+<span id="cb343-5"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-5" tabindex="-1"></a>Matrix products<span class="sc">:</span> default</span>
+<span id="cb343-6"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-6" tabindex="-1"></a>BLAS<span class="sc">:</span>   <span class="er">/</span>System<span class="sc">/</span>Library<span class="sc">/</span>Frameworks<span class="sc">/</span>Accelerate.framework<span class="sc">/</span>Versions<span class="sc">/</span>A<span class="sc">/</span>Frameworks<span class="sc">/</span>vecLib.framework<span class="sc">/</span>Versions<span class="sc">/</span>A<span class="sc">/</span>libBLAS.dylib </span>
+<span id="cb343-7"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-7" tabindex="-1"></a>LAPACK<span class="sc">:</span> <span class="er">/</span>Library<span class="sc">/</span>Frameworks<span class="sc">/</span>R.framework<span class="sc">/</span>Versions<span class="sc">/</span><span class="fl">4.4</span><span class="sc">-</span>arm64<span class="sc">/</span>Resources<span class="sc">/</span>lib<span class="sc">/</span>libRlapack.dylib;  LAPACK version <span class="dv">3</span>.<span class="fl">12.0</span></span>
+<span id="cb343-8"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-8" tabindex="-1"></a></span>
+<span id="cb343-9"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-9" tabindex="-1"></a>locale<span class="sc">:</span></span>
+<span id="cb343-10"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-10" tabindex="-1"></a>[<span class="dv">1</span>] en_US.UTF<span class="dv">-8</span><span class="sc">/</span>en_US.UTF<span class="dv">-8</span><span class="sc">/</span>en_US.UTF<span class="dv">-8</span><span class="sc">/</span>C<span class="sc">/</span>en_US.UTF<span class="dv">-8</span><span class="sc">/</span>en_US.UTF<span class="dv">-8</span></span>
+<span id="cb343-11"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-11" tabindex="-1"></a></span>
+<span id="cb343-12"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-12" tabindex="-1"></a>time zone<span class="sc">:</span> America<span class="sc">/</span>New_York</span>
+<span id="cb343-13"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-13" tabindex="-1"></a>tzcode source<span class="sc">:</span> internal</span>
+<span id="cb343-14"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-14" tabindex="-1"></a></span>
+<span id="cb343-15"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-15" tabindex="-1"></a>attached base packages<span class="sc">:</span></span>
+<span id="cb343-16"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-16" tabindex="-1"></a>[<span class="dv">1</span>] stats     graphics  grDevices utils     datasets  methods   base     </span>
+<span id="cb343-17"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-17" tabindex="-1"></a></span>
+<span id="cb343-18"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-18" tabindex="-1"></a>other attached packages<span class="sc">:</span></span>
+<span id="cb343-19"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-19" tabindex="-1"></a>[<span class="dv">1</span>] Giotto_4.<span class="fl">1.0</span>      GiottoClass_0.<span class="fl">3.4</span></span>
+<span id="cb343-20"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-20" tabindex="-1"></a></span>
+<span id="cb343-21"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-21" tabindex="-1"></a>loaded via a <span class="fu">namespace</span> (and not attached)<span class="sc">:</span></span>
+<span id="cb343-22"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-22" tabindex="-1"></a>  [<span class="dv">1</span>] RColorBrewer_1<span class="fl">.1</span><span class="dv">-3</span>          rstudioapi_0.<span class="fl">16.0</span>           jsonlite_1.<span class="fl">8.8</span>             </span>
+<span id="cb343-23"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-23" tabindex="-1"></a>  [<span class="dv">4</span>] magrittr_2.<span class="fl">0.3</span>              magick_2.<span class="fl">8.4</span>                farver_2.<span class="fl">1.2</span>               </span>
+<span id="cb343-24"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-24" tabindex="-1"></a>  [<span class="dv">7</span>] rmarkdown_2<span class="fl">.27</span>              zlibbioc_1.<span class="fl">50.0</span>             ragg_1.<span class="fl">3.2</span>                 </span>
+<span id="cb343-25"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-25" tabindex="-1"></a> [<span class="dv">10</span>] vctrs_0.<span class="fl">6.5</span>                 memoise_2.<span class="fl">0.1</span>               GiottoUtils_0.<span class="fl">1.10</span>         </span>
+<span id="cb343-26"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-26" tabindex="-1"></a> [<span class="dv">13</span>] terra_1<span class="fl">.7</span><span class="dv">-78</span>                htmltools_0.<span class="dv">5</span>.<span class="fl">8.1</span>           S4Arrays_1.<span class="fl">4.1</span>             </span>
+<span id="cb343-27"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-27" tabindex="-1"></a> [<span class="dv">16</span>] raster_3<span class="fl">.6</span><span class="dv">-26</span>               SparseArray_1.<span class="fl">4.8</span>           sass_0.<span class="fl">4.9</span>                 </span>
+<span id="cb343-28"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-28" tabindex="-1"></a> [<span class="dv">19</span>] bslib_0.<span class="fl">8.0</span>                 KernSmooth_2<span class="fl">.23</span><span class="dv">-24</span>          htmlwidgets_1.<span class="fl">6.4</span>          </span>
+<span id="cb343-29"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-29" tabindex="-1"></a> [<span class="dv">22</span>] plyr_1.<span class="fl">8.9</span>                  plotly_4.<span class="fl">10.4</span>               cachem_1.<span class="fl">1.0</span>               </span>
+<span id="cb343-30"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-30" tabindex="-1"></a> [<span class="dv">25</span>] igraph_2.<span class="fl">0.3</span>                lifecycle_1.<span class="fl">0.4</span>             pkgconfig_2.<span class="fl">0.3</span>            </span>
+<span id="cb343-31"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-31" tabindex="-1"></a> [<span class="dv">28</span>] rsvd_1.<span class="fl">0.5</span>                  Matrix_1<span class="fl">.7</span><span class="dv">-0</span>                R6_2.<span class="fl">5.1</span>                   </span>
+<span id="cb343-32"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-32" tabindex="-1"></a> [<span class="dv">31</span>] fastmap_1.<span class="fl">2.0</span>               GenomeInfoDbData_1.<span class="fl">2.12</span>     MatrixGenerics_1.<span class="fl">16.0</span>      </span>
+<span id="cb343-33"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-33" tabindex="-1"></a> [<span class="dv">34</span>] digest_0.<span class="fl">6.36</span>               colorspace_2<span class="fl">.1</span><span class="dv">-1</span>            S4Vectors_0.<span class="fl">42.1</span>           </span>
+<span id="cb343-34"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-34" tabindex="-1"></a> [<span class="dv">37</span>] irlba_2.<span class="dv">3</span>.<span class="fl">5.1</span>               textshaping_0.<span class="fl">4.0</span>           GenomicRanges_1.<span class="fl">56.1</span>       </span>
+<span id="cb343-35"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-35" tabindex="-1"></a> [<span class="dv">40</span>] beachmat_2.<span class="fl">20.0</span>             labeling_0.<span class="fl">4.3</span>              fansi_1.<span class="fl">0.6</span>                </span>
+<span id="cb343-36"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-36" tabindex="-1"></a> [<span class="dv">43</span>] httr_1.<span class="fl">4.7</span>                  polyclip_1<span class="fl">.10</span><span class="dv">-7</span>             abind_1<span class="fl">.4</span><span class="dv">-5</span>                </span>
+<span id="cb343-37"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-37" tabindex="-1"></a> [<span class="dv">46</span>] compiler_4.<span class="fl">4.1</span>              proxy_0<span class="fl">.4</span><span class="dv">-27</span>                withr_3.<span class="fl">0.1</span>                </span>
+<span id="cb343-38"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-38" tabindex="-1"></a> [<span class="dv">49</span>] backports_1.<span class="fl">5.0</span>             BiocParallel_1.<span class="fl">38.0</span>         viridis_0.<span class="fl">6.5</span>              </span>
+<span id="cb343-39"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-39" tabindex="-1"></a> [<span class="dv">52</span>] DBI_1.<span class="fl">2.3</span>                   highr_0<span class="fl">.11</span>                  ggforce_0.<span class="fl">4.2</span>              </span>
+<span id="cb343-40"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-40" tabindex="-1"></a> [<span class="dv">55</span>] MASS_7<span class="fl">.3</span><span class="dv">-61</span>                 DelayedArray_0.<span class="fl">30.1</span>         rjson_0.<span class="fl">2.21</span>               </span>
+<span id="cb343-41"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-41" tabindex="-1"></a> [<span class="dv">58</span>] classInt_0<span class="fl">.4</span><span class="dv">-10</span>             gtools_3.<span class="fl">9.5</span>                GiottoVisuals_0.<span class="fl">2.4</span>        </span>
+<span id="cb343-42"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-42" tabindex="-1"></a> [<span class="dv">61</span>] tools_4.<span class="fl">4.1</span>                 units_0<span class="fl">.8</span><span class="dv">-5</span>                 glue_1.<span class="fl">7.0</span>                 </span>
+<span id="cb343-43"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-43" tabindex="-1"></a> [<span class="dv">64</span>] dbscan_1<span class="fl">.2</span><span class="dv">-0</span>                grid_4.<span class="fl">4.1</span>                  sf_1<span class="fl">.0</span><span class="dv">-16</span>                  </span>
+<span id="cb343-44"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-44" tabindex="-1"></a> [<span class="dv">67</span>] checkmate_2.<span class="fl">3.2</span>             reshape2_1.<span class="fl">4.4</span>              generics_0.<span class="fl">1.3</span>             </span>
+<span id="cb343-45"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-45" tabindex="-1"></a> [<span class="dv">70</span>] gtable_0.<span class="fl">3.5</span>                class_7<span class="fl">.3</span><span class="dv">-22</span>                tidyr_1.<span class="fl">3.1</span>                </span>
+<span id="cb343-46"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-46" tabindex="-1"></a> [<span class="dv">73</span>] data.table_1.<span class="fl">15.4</span>           BiocSingular_1.<span class="fl">20.0</span>         tidygraph_1.<span class="fl">3.1</span>            </span>
+<span id="cb343-47"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-47" tabindex="-1"></a> [<span class="dv">76</span>] ScaledMatrix_1.<span class="fl">12.0</span>         sp_2<span class="fl">.1</span><span class="dv">-4</span>                    xml2_1.<span class="fl">3.6</span>                 </span>
+<span id="cb343-48"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-48" tabindex="-1"></a> [<span class="dv">79</span>] utf8_1.<span class="fl">2.4</span>                  XVector_0.<span class="fl">44.0</span>              BiocGenerics_0.<span class="fl">50.0</span>        </span>
+<span id="cb343-49"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-49" tabindex="-1"></a> [<span class="dv">82</span>] RcppAnnoy_0.<span class="fl">0.22</span>            ggrepel_0.<span class="fl">9.5</span>               pillar_1.<span class="fl">9.0</span>               </span>
+<span id="cb343-50"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-50" tabindex="-1"></a> [<span class="dv">85</span>] stringr_1.<span class="fl">5.1</span>               dplyr_1.<span class="fl">1.4</span>                 tweenr_2.<span class="fl">0.3</span>               </span>
+<span id="cb343-51"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-51" tabindex="-1"></a> [<span class="dv">88</span>] lattice_0<span class="fl">.22</span><span class="dv">-6</span>              deldir_2<span class="fl">.0</span><span class="dv">-4</span>                tidyselect_1.<span class="fl">2.1</span>           </span>
+<span id="cb343-52"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-52" tabindex="-1"></a> [<span class="dv">91</span>] SingleCellExperiment_1.<span class="fl">26.0</span> knitr_1<span class="fl">.48</span>                  gridExtra_2<span class="fl">.3</span>              </span>
+<span id="cb343-53"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-53" tabindex="-1"></a> [<span class="dv">94</span>] bookdown_0<span class="fl">.40</span>               IRanges_2.<span class="fl">38.1</span>              SummarizedExperiment_1.<span class="fl">34.0</span></span>
+<span id="cb343-54"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-54" tabindex="-1"></a> [<span class="dv">97</span>] scattermore_1<span class="fl">.2</span>             stats4_4.<span class="fl">4.1</span>                xfun_0<span class="fl">.46</span>                  </span>
+<span id="cb343-55"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-55" tabindex="-1"></a>[<span class="dv">100</span>] graphlayouts_1.<span class="fl">1.1</span>          Biobase_2.<span class="fl">64.0</span>              matrixStats_1.<span class="fl">3.0</span>          </span>
+<span id="cb343-56"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-56" tabindex="-1"></a>[<span class="dv">103</span>] stringi_1.<span class="fl">8.4</span>               UCSC.utils_1.<span class="fl">0.0</span>            lazyeval_0.<span class="fl">2.2</span>             </span>
+<span id="cb343-57"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-57" tabindex="-1"></a>[<span class="dv">106</span>] yaml_2.<span class="fl">3.10</span>                 evaluate_0.<span class="fl">24.0</span>             codetools_0<span class="fl">.2</span><span class="dv">-20</span>           </span>
+<span id="cb343-58"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-58" tabindex="-1"></a>[<span class="dv">109</span>] ggraph_2.<span class="fl">2.1</span>                tibble_3.<span class="fl">2.1</span>                BiocManager_1.<span class="fl">30.23</span>        </span>
+<span id="cb343-59"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-59" tabindex="-1"></a>[<span class="dv">112</span>] colorRamp2_0.<span class="fl">1.0</span>            cli_3.<span class="fl">6.3</span>                   uwot_0.<span class="fl">2.2</span>                 </span>
+<span id="cb343-60"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-60" tabindex="-1"></a>[<span class="dv">115</span>] reticulate_1.<span class="fl">38.0</span>           systemfonts_1.<span class="fl">1.0</span>           jquerylib_0.<span class="fl">1.4</span>            </span>
+<span id="cb343-61"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-61" tabindex="-1"></a>[<span class="dv">118</span>] munsell_0.<span class="fl">5.1</span>               Rcpp_1.<span class="fl">0.13</span>                 GenomeInfoDb_1.<span class="fl">40.1</span>        </span>
+<span id="cb343-62"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-62" tabindex="-1"></a>[<span class="dv">121</span>] png_0<span class="fl">.1</span><span class="dv">-8</span>                   parallel_4.<span class="fl">4.1</span>              ggplot2_3.<span class="fl">5.1</span>              </span>
+<span id="cb343-63"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-63" tabindex="-1"></a>[<span class="dv">124</span>] exactextractr_0.<span class="fl">10.0</span>        SpatialExperiment_1.<span class="fl">14.0</span>    viridisLite_0.<span class="fl">4.2</span>          </span>
+<span id="cb343-64"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-64" tabindex="-1"></a>[<span class="dv">127</span>] scales_1.<span class="fl">3.0</span>                e1071_1<span class="fl">.7</span><span class="dv">-14</span>                purrr_1.<span class="fl">0.2</span>                </span>
+<span id="cb343-65"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cb343-65" tabindex="-1"></a>[<span class="dv">130</span>] crayon_1.<span class="fl">5.3</span>                rlang_1.<span class="fl">1.4</span>                 cowplot_1.<span class="fl">1.3</span>  </span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="xenium-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="working-with-multiple-samples.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

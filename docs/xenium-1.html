@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>10 Xenium | Workshop: Spatial multi-omics data analysis with Giotto Suite</title>
+  <meta name="description" content="10 Xenium | Workshop: Spatial multi-omics data analysis with Giotto Suite" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="10 Xenium | Workshop: Spatial multi-omics data analysis with Giotto Suite" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="drieslab/giotto_workshop_2024" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="10 Xenium | Workshop: Spatial multi-omics data analysis with Giotto Suite" />
+  
+  
+  
+
+<meta name="author" content="Ruben Dries, Jiaji George Chen, Joselyn Cristina Chávez-Fuentes, Junxiang Xu ,Edward Ruiz, Jeff Sheridan, Iqra Amin, Wen Wang" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="visium-hd.html"/>
+<link rel="next" href="spatial-proteomics-multiplexed-immunofluorescence.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Giotto Suite Workshop 2024</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#instructors"><i class="fa fa-check"></i><b>1.1</b> Instructors</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#topics-and-schedule"><i class="fa fa-check"></i><b>1.2</b> Topics and Schedule:</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i><b>1.3</b> License</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="datasets-packages.html"><a href="datasets-packages.html"><i class="fa fa-check"></i><b>2</b> Datasets &amp; Packages</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="datasets-packages.html"><a href="datasets-packages.html#datasets-to-download"><i class="fa fa-check"></i><b>2.1</b> Datasets to download</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="datasets-packages.html"><a href="datasets-packages.html#zenodo-repository"><i class="fa fa-check"></i><b>2.1.1</b> Zenodo repository</a></li>
+<li class="chapter" data-level="2.1.2" data-path="datasets-packages.html"><a href="datasets-packages.html#x-genomics-visium-mouse-brain-section-coronal-dataset"><i class="fa fa-check"></i><b>2.1.2</b> 10X Genomics Visium Mouse Brain Section (Coronal) dataset</a></li>
+<li class="chapter" data-level="2.1.3" data-path="datasets-packages.html"><a href="datasets-packages.html#x-genomics-visium-hd-ffpe-human-colon-cancer"><i class="fa fa-check"></i><b>2.1.3</b> 10X Genomics Visium HD: FFPE Human Colon Cancer</a></li>
+<li class="chapter" data-level="2.1.4" data-path="datasets-packages.html"><a href="datasets-packages.html#x-genomics-multi-modal-dataset"><i class="fa fa-check"></i><b>2.1.4</b> 10X Genomics multi-modal dataset</a></li>
+<li class="chapter" data-level="2.1.5" data-path="datasets-packages.html"><a href="datasets-packages.html#x-genomics-multi-omics-visium-cytassist-human-tonsil-dataset"><i class="fa fa-check"></i><b>2.1.5</b> 10X Genomics multi-omics Visium CytAssist Human Tonsil dataset</a></li>
+<li class="chapter" data-level="2.1.6" data-path="datasets-packages.html"><a href="datasets-packages.html#x-genomics-human-prostate-cancer-adenocarcinoma-with-invasive-carcinoma-ffpe"><i class="fa fa-check"></i><b>2.1.6</b> 10X Genomics Human Prostate Cancer Adenocarcinoma with Invasive Carcinoma (FFPE)</a></li>
+<li class="chapter" data-level="2.1.7" data-path="datasets-packages.html"><a href="datasets-packages.html#x-genomics-normal-human-prostate-ffpe"><i class="fa fa-check"></i><b>2.1.7</b> 10X Genomics Normal Human Prostate (FFPE)</a></li>
+<li class="chapter" data-level="2.1.8" data-path="datasets-packages.html"><a href="datasets-packages.html#xenium"><i class="fa fa-check"></i><b>2.1.8</b> Xenium</a></li>
+<li class="chapter" data-level="2.1.9" data-path="datasets-packages.html"><a href="datasets-packages.html#merfish-cortex-dataset"><i class="fa fa-check"></i><b>2.1.9</b> MERFISH cortex dataset</a></li>
+<li class="chapter" data-level="2.1.10" data-path="datasets-packages.html"><a href="datasets-packages.html#lunaphore-if-dataset"><i class="fa fa-check"></i><b>2.1.10</b> Lunaphore IF dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="datasets-packages.html"><a href="datasets-packages.html#needed-packages"><i class="fa fa-check"></i><b>2.2</b> Needed packages</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="datasets-packages.html"><a href="datasets-packages.html#cran-dependencies"><i class="fa fa-check"></i><b>2.2.1</b> CRAN dependencies:</a></li>
+<li class="chapter" data-level="2.2.2" data-path="datasets-packages.html"><a href="datasets-packages.html#terra-installation"><i class="fa fa-check"></i><b>2.2.2</b> <em>terra</em> installation</a></li>
+<li class="chapter" data-level="2.2.3" data-path="datasets-packages.html"><a href="datasets-packages.html#matrix-installation"><i class="fa fa-check"></i><b>2.2.3</b> <em>Matrix</em> installation</a></li>
+<li class="chapter" data-level="2.2.4" data-path="datasets-packages.html"><a href="datasets-packages.html#rtools-installation"><i class="fa fa-check"></i><b>2.2.4</b> <em>Rtools</em> installation</a></li>
+<li class="chapter" data-level="2.2.5" data-path="datasets-packages.html"><a href="datasets-packages.html#giotto-installation"><i class="fa fa-check"></i><b>2.2.5</b> <em>Giotto</em> installation</a></li>
+<li class="chapter" data-level="2.2.6" data-path="datasets-packages.html"><a href="datasets-packages.html#irlba-install"><i class="fa fa-check"></i><b>2.2.6</b> <em>irlba</em> install</a></li>
+<li class="chapter" data-level="2.2.7" data-path="datasets-packages.html"><a href="datasets-packages.html#arrow-install"><i class="fa fa-check"></i><b>2.2.7</b> <em>arrow</em> install</a></li>
+<li class="chapter" data-level="2.2.8" data-path="datasets-packages.html"><a href="datasets-packages.html#bioconductor-dependencies"><i class="fa fa-check"></i><b>2.2.8</b> Bioconductor dependencies:</a></li>
+<li class="chapter" data-level="2.2.9" data-path="datasets-packages.html"><a href="datasets-packages.html#cran-packages"><i class="fa fa-check"></i><b>2.2.9</b> CRAN packages:</a></li>
+<li class="chapter" data-level="2.2.10" data-path="datasets-packages.html"><a href="datasets-packages.html#packages-from-github"><i class="fa fa-check"></i><b>2.2.10</b> Packages from GitHub</a></li>
+<li class="chapter" data-level="2.2.11" data-path="datasets-packages.html"><a href="datasets-packages.html#python-environments"><i class="fa fa-check"></i><b>2.2.11</b> Python environments</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html"><i class="fa fa-check"></i><b>3</b> Spatial omics technologies</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#presentation"><i class="fa fa-check"></i><b>3.1</b> Presentation</a></li>
+<li class="chapter" data-level="3.2" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#short-summary"><i class="fa fa-check"></i><b>3.2</b> Short summary</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#why-do-we-need-spatial-omics-technologies"><i class="fa fa-check"></i><b>3.2.1</b> Why do we need spatial omics technologies?</a></li>
+<li class="chapter" data-level="3.2.2" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#what-is-spatial-omics"><i class="fa fa-check"></i><b>3.2.2</b> What is spatial omics?</a></li>
+<li class="chapter" data-level="3.2.3" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#what-are-the-main-spatial-omics-technologies"><i class="fa fa-check"></i><b>3.2.3</b> What are the main spatial omics technologies?</a></li>
+<li class="chapter" data-level="3.2.4" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#other-spatial-omics-atac-seq-cuttag-lipidomics-etc"><i class="fa fa-check"></i><b>3.2.4</b> Other Spatial omics: ATAC-seq, CUT&amp;Tag, lipidomics, etc</a></li>
+<li class="chapter" data-level="3.2.5" data-path="spatial-omics-technologies.html"><a href="spatial-omics-technologies.html#what-are-the-different-types-of-spatial-downstream-analyses"><i class="fa fa-check"></i><b>3.2.5</b> What are the different types of spatial downstream analyses?</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html"><i class="fa fa-check"></i><b>4</b> Introduction to the Giotto package</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#presentation-1"><i class="fa fa-check"></i><b>4.1</b> Presentation</a></li>
+<li class="chapter" data-level="4.2" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#ecosystem"><i class="fa fa-check"></i><b>4.2</b> Ecosystem</a></li>
+<li class="chapter" data-level="4.3" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#installation-python-environment"><i class="fa fa-check"></i><b>4.3</b> Installation + python environment</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#giotto-installation-1"><i class="fa fa-check"></i><b>4.3.1</b> Giotto installation</a></li>
+<li class="chapter" data-level="4.3.2" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#python-environment"><i class="fa fa-check"></i><b>4.3.2</b> Python environment</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="introduction-to-the-giotto-package.html"><a href="introduction-to-the-giotto-package.html#giotto-instructions"><i class="fa fa-check"></i><b>4.4</b> Giotto instructions</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html"><i class="fa fa-check"></i><b>5</b> Data formatting and Pre-processing</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#data-formats"><i class="fa fa-check"></i><b>5.1</b> Data formats</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#general-formats"><i class="fa fa-check"></i><b>5.1.1</b> General formats</a></li>
+<li class="chapter" data-level="5.1.2" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#matrix-formats"><i class="fa fa-check"></i><b>5.1.2</b> Matrix formats</a></li>
+<li class="chapter" data-level="5.1.3" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#tabular-formats"><i class="fa fa-check"></i><b>5.1.3</b> Tabular formats</a></li>
+<li class="chapter" data-level="5.1.4" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#spatial-formats"><i class="fa fa-check"></i><b>5.1.4</b> Spatial formats</a></li>
+<li class="chapter" data-level="5.1.5" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#mask-files"><i class="fa fa-check"></i><b>5.1.5</b> Mask files</a></li>
+<li class="chapter" data-level="5.1.6" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#images"><i class="fa fa-check"></i><b>5.1.6</b> images</a></li>
+<li class="chapter" data-level="5.1.7" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#jsonlike-formats"><i class="fa fa-check"></i><b>5.1.7</b> jsonlike formats</a></li>
+<li class="chapter" data-level="5.1.8" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#hierarchical-formats"><i class="fa fa-check"></i><b>5.1.8</b> Hierarchical formats</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#pre-processing"><i class="fa fa-check"></i><b>5.2</b> Pre-processing</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#expression-matrix"><i class="fa fa-check"></i><b>5.2.1</b> Expression matrix</a></li>
+<li class="chapter" data-level="5.2.2" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#spatial-locations"><i class="fa fa-check"></i><b>5.2.2</b> Spatial locations</a></li>
+<li class="chapter" data-level="5.2.3" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#giottopoints"><i class="fa fa-check"></i><b>5.2.3</b> giottoPoints</a></li>
+<li class="chapter" data-level="5.2.4" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#giottopolygon"><i class="fa fa-check"></i><b>5.2.4</b> giottoPolygon</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#subobject-utility-functions"><i class="fa fa-check"></i><b>5.3</b> Subobject utility functions</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#ids"><i class="fa fa-check"></i><b>5.3.1</b> IDs</a></li>
+<li class="chapter" data-level="5.3.2" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#bracket-subsetting-and-extraction"><i class="fa fa-check"></i><b>5.3.2</b> Bracket subsetting and extraction</a></li>
+<li class="chapter" data-level="5.3.3" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#nesting-metadata-generics"><i class="fa fa-check"></i><b>5.3.3</b> Nesting metadata generics</a></li>
+<li class="chapter" data-level="5.3.4" data-path="data-formatting-and-pre-processing.html"><a href="data-formatting-and-pre-processing.html#appending-to-a-giotto-object"><i class="fa fa-check"></i><b>5.3.4</b> Appending to a giotto object</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html"><i class="fa fa-check"></i><b>6</b> Creating a Giotto object</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#overview"><i class="fa fa-check"></i><b>6.1</b> Overview</a></li>
+<li class="chapter" data-level="6.2" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#giottodata-modular-package"><i class="fa fa-check"></i><b>6.2</b> GiottoData modular package</a></li>
+<li class="chapter" data-level="6.3" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#from-matrix-locations"><i class="fa fa-check"></i><b>6.3</b> From matrix + locations</a></li>
+<li class="chapter" data-level="6.4" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#from-subcellular-raw-data-transcripts-or-images-polygons"><i class="fa fa-check"></i><b>6.4</b> From subcellular raw data (transcripts or images) + polygons</a></li>
+<li class="chapter" data-level="6.5" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#from-piece-wise"><i class="fa fa-check"></i><b>6.5</b> From piece-wise</a></li>
+<li class="chapter" data-level="6.6" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#using-convenience-functions-for-popular-technologies-vizgen-xenium-cosmx"><i class="fa fa-check"></i><b>6.6</b> Using convenience functions for popular technologies (Vizgen, Xenium, CosMx, …)</a></li>
+<li class="chapter" data-level="6.7" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#plotting"><i class="fa fa-check"></i><b>6.7</b> Plotting</a>
+<ul>
+<li class="chapter" data-level="6.7.1" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#subobject-plotting"><i class="fa fa-check"></i><b>6.7.1</b> Subobject plotting</a></li>
+<li class="chapter" data-level="6.7.2" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#additive-subobject-plotting"><i class="fa fa-check"></i><b>6.7.2</b> Additive subobject plotting</a></li>
+<li class="chapter" data-level="6.7.3" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#giotto-object-plotting"><i class="fa fa-check"></i><b>6.7.3</b> Giotto object plotting</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#subsetting"><i class="fa fa-check"></i><b>6.8</b> Subsetting</a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#id-subsetting"><i class="fa fa-check"></i><b>6.8.1</b> ID subsetting</a></li>
+<li class="chapter" data-level="6.8.2" data-path="creating-a-giotto-object.html"><a href="creating-a-giotto-object.html#coordinate-based-subsetting"><i class="fa fa-check"></i><b>6.8.2</b> Coordinate-based subsetting</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="visium-part-i.html"><a href="visium-part-i.html"><i class="fa fa-check"></i><b>7</b> Visium Part I</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="visium-part-i.html"><a href="visium-part-i.html#the-visium-technology"><i class="fa fa-check"></i><b>7.1</b> The Visium technology</a></li>
+<li class="chapter" data-level="7.2" data-path="visium-part-i.html"><a href="visium-part-i.html#introduction-to-the-spatial-dataset"><i class="fa fa-check"></i><b>7.2</b> Introduction to the spatial dataset</a></li>
+<li class="chapter" data-level="7.3" data-path="visium-part-i.html"><a href="visium-part-i.html#download-dataset"><i class="fa fa-check"></i><b>7.3</b> Download dataset</a></li>
+<li class="chapter" data-level="7.4" data-path="visium-part-i.html"><a href="visium-part-i.html#create-the-giotto-object"><i class="fa fa-check"></i><b>7.4</b> Create the Giotto object</a></li>
+<li class="chapter" data-level="7.5" data-path="visium-part-i.html"><a href="visium-part-i.html#subset-on-spots-that-were-covered-by-tissue"><i class="fa fa-check"></i><b>7.5</b> Subset on spots that were covered by tissue</a></li>
+<li class="chapter" data-level="7.6" data-path="visium-part-i.html"><a href="visium-part-i.html#quality-control"><i class="fa fa-check"></i><b>7.6</b> Quality control</a></li>
+<li class="chapter" data-level="7.7" data-path="visium-part-i.html"><a href="visium-part-i.html#filtering"><i class="fa fa-check"></i><b>7.7</b> Filtering</a></li>
+<li class="chapter" data-level="7.8" data-path="visium-part-i.html"><a href="visium-part-i.html#normalization"><i class="fa fa-check"></i><b>7.8</b> Normalization</a></li>
+<li class="chapter" data-level="7.9" data-path="visium-part-i.html"><a href="visium-part-i.html#feature-selection"><i class="fa fa-check"></i><b>7.9</b> Feature selection</a>
+<ul>
+<li class="chapter" data-level="7.9.1" data-path="visium-part-i.html"><a href="visium-part-i.html#highly-variable-features"><i class="fa fa-check"></i><b>7.9.1</b> Highly Variable Features:</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="visium-part-i.html"><a href="visium-part-i.html#dimension-reduction"><i class="fa fa-check"></i><b>7.10</b> Dimension Reduction</a>
+<ul>
+<li class="chapter" data-level="7.10.1" data-path="visium-part-i.html"><a href="visium-part-i.html#pca"><i class="fa fa-check"></i><b>7.10.1</b> PCA</a></li>
+<li class="chapter" data-level="7.10.2" data-path="visium-part-i.html"><a href="visium-part-i.html#umap"><i class="fa fa-check"></i><b>7.10.2</b> UMAP</a></li>
+<li class="chapter" data-level="7.10.3" data-path="visium-part-i.html"><a href="visium-part-i.html#t-sne"><i class="fa fa-check"></i><b>7.10.3</b> t-SNE</a></li>
+</ul></li>
+<li class="chapter" data-level="7.11" data-path="visium-part-i.html"><a href="visium-part-i.html#clustering"><i class="fa fa-check"></i><b>7.11</b> Clustering</a>
+<ul>
+<li class="chapter" data-level="7.11.1" data-path="visium-part-i.html"><a href="visium-part-i.html#calculate-leiden-clustering"><i class="fa fa-check"></i><b>7.11.1</b> Calculate Leiden clustering</a></li>
+<li class="chapter" data-level="7.11.2" data-path="visium-part-i.html"><a href="visium-part-i.html#calculate-louvain-clustering"><i class="fa fa-check"></i><b>7.11.2</b> Calculate Louvain clustering</a></li>
+</ul></li>
+<li class="chapter" data-level="7.12" data-path="visium-part-i.html"><a href="visium-part-i.html#save-the-object"><i class="fa fa-check"></i><b>7.12</b> Save the object</a></li>
+<li class="chapter" data-level="7.13" data-path="visium-part-i.html"><a href="visium-part-i.html#session-info"><i class="fa fa-check"></i><b>7.13</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="visium-part-ii.html"><a href="visium-part-ii.html"><i class="fa fa-check"></i><b>8</b> Visium Part II</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="visium-part-ii.html"><a href="visium-part-ii.html#load-the-object"><i class="fa fa-check"></i><b>8.1</b> Load the object</a></li>
+<li class="chapter" data-level="8.2" data-path="visium-part-ii.html"><a href="visium-part-ii.html#differential-expression"><i class="fa fa-check"></i><b>8.2</b> Differential expression</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="visium-part-ii.html"><a href="visium-part-ii.html#gini-markers"><i class="fa fa-check"></i><b>8.2.1</b> Gini markers</a></li>
+<li class="chapter" data-level="8.2.2" data-path="visium-part-ii.html"><a href="visium-part-ii.html#scran-markers"><i class="fa fa-check"></i><b>8.2.2</b> Scran markers</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="visium-part-ii.html"><a href="visium-part-ii.html#enrichment-deconvolution"><i class="fa fa-check"></i><b>8.3</b> Enrichment &amp; Deconvolution</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="visium-part-ii.html"><a href="visium-part-ii.html#pagerank"><i class="fa fa-check"></i><b>8.3.1</b> PAGE/Rank</a></li>
+<li class="chapter" data-level="8.3.2" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatialdwls"><i class="fa fa-check"></i><b>8.3.2</b> SpatialDWLS</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatial-expression-patterns"><i class="fa fa-check"></i><b>8.4</b> Spatial expression patterns</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatial-variable-genes"><i class="fa fa-check"></i><b>8.4.1</b> Spatial variable genes</a></li>
+<li class="chapter" data-level="8.4.2" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatial-co-expression-modules"><i class="fa fa-check"></i><b>8.4.2</b> Spatial co-expression modules</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatially-informed-clusters"><i class="fa fa-check"></i><b>8.5</b> Spatially informed clusters</a></li>
+<li class="chapter" data-level="8.6" data-path="visium-part-ii.html"><a href="visium-part-ii.html#spatial-domains-hmrf"><i class="fa fa-check"></i><b>8.6</b> Spatial domains HMRF</a></li>
+<li class="chapter" data-level="8.7" data-path="visium-part-ii.html"><a href="visium-part-ii.html#interactive-tools"><i class="fa fa-check"></i><b>8.7</b> Interactive tools</a></li>
+<li class="chapter" data-level="8.8" data-path="visium-part-ii.html"><a href="visium-part-ii.html#save-the-object-1"><i class="fa fa-check"></i><b>8.8</b> Save the object</a></li>
+<li class="chapter" data-level="8.9" data-path="visium-part-ii.html"><a href="visium-part-ii.html#session-info-1"><i class="fa fa-check"></i><b>8.9</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="visium-hd.html"><a href="visium-hd.html"><i class="fa fa-check"></i><b>9</b> Visium HD</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="visium-hd.html"><a href="visium-hd.html#objective"><i class="fa fa-check"></i><b>9.1</b> Objective</a></li>
+<li class="chapter" data-level="9.2" data-path="visium-hd.html"><a href="visium-hd.html#background"><i class="fa fa-check"></i><b>9.2</b> Background</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="visium-hd.html"><a href="visium-hd.html#visium-hd-technology"><i class="fa fa-check"></i><b>9.2.1</b> Visium HD Technology</a></li>
+<li class="chapter" data-level="9.2.2" data-path="visium-hd.html"><a href="visium-hd.html#colorectal-cancer-sample"><i class="fa fa-check"></i><b>9.2.2</b> Colorectal Cancer Sample</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="visium-hd.html"><a href="visium-hd.html#data-ingestion"><i class="fa fa-check"></i><b>9.3</b> Data Ingestion</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="visium-hd.html"><a href="visium-hd.html#visium-hd-output-data-format"><i class="fa fa-check"></i><b>9.3.1</b> Visium HD output data format</a></li>
+<li class="chapter" data-level="9.3.2" data-path="visium-hd.html"><a href="visium-hd.html#mini-visium-hd-dataset"><i class="fa fa-check"></i><b>9.3.2</b> Mini Visium HD dataset</a></li>
+<li class="chapter" data-level="9.3.3" data-path="visium-hd.html"><a href="visium-hd.html#giotto-visium-hd-convenience-function"><i class="fa fa-check"></i><b>9.3.3</b> Giotto Visium HD convenience function</a></li>
+<li class="chapter" data-level="9.3.4" data-path="visium-hd.html"><a href="visium-hd.html#read-in-data-manually"><i class="fa fa-check"></i><b>9.3.4</b> Read in data manually</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="visium-hd.html"><a href="visium-hd.html#hexbin-400-giotto-object"><i class="fa fa-check"></i><b>9.4</b> Hexbin 400 Giotto object</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="visium-hd.html"><a href="visium-hd.html#create-giotto-points"><i class="fa fa-check"></i><b>9.4.1</b> create giotto points</a></li>
+<li class="chapter" data-level="9.4.2" data-path="visium-hd.html"><a href="visium-hd.html#create-giotto-polygons"><i class="fa fa-check"></i><b>9.4.2</b> create giotto polygons</a></li>
+<li class="chapter" data-level="9.4.3" data-path="visium-hd.html"><a href="visium-hd.html#combine-giotto-points-and-polygons-to-create-giotto-object"><i class="fa fa-check"></i><b>9.4.3</b> combine Giotto points and polygons to create Giotto object</a></li>
+<li class="chapter" data-level="9.4.4" data-path="visium-hd.html"><a href="visium-hd.html#process-giotto-object"><i class="fa fa-check"></i><b>9.4.4</b> Process Giotto object</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="visium-hd.html"><a href="visium-hd.html#hexbin-100"><i class="fa fa-check"></i><b>9.5</b> Hexbin 100</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="visium-hd.html"><a href="visium-hd.html#standard-subcellular-pipeline"><i class="fa fa-check"></i><b>9.5.1</b> Standard subcellular pipeline</a></li>
+<li class="chapter" data-level="9.5.2" data-path="visium-hd.html"><a href="visium-hd.html#spatial-expression-patterns-1"><i class="fa fa-check"></i><b>9.5.2</b> Spatial expression patterns</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="visium-hd.html"><a href="visium-hd.html#hexbin-25"><i class="fa fa-check"></i><b>9.6</b> Hexbin 25</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="visium-hd.html"><a href="visium-hd.html#subcellular-workflow"><i class="fa fa-check"></i><b>9.6.1</b> Subcellular workflow</a></li>
+<li class="chapter" data-level="9.6.2" data-path="visium-hd.html"><a href="visium-hd.html#projections"><i class="fa fa-check"></i><b>9.6.2</b> Projections</a></li>
+<li class="chapter" data-level="9.6.3" data-path="visium-hd.html"><a href="visium-hd.html#niche-clustering"><i class="fa fa-check"></i><b>9.6.3</b> Niche clustering</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="visium-hd.html"><a href="visium-hd.html#database-backend---work-in-progress-but-coming-soon"><i class="fa fa-check"></i><b>9.7</b> Database backend - Work in progress, but coming soon!</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="xenium-1.html"><a href="xenium-1.html"><i class="fa fa-check"></i><b>10</b> Xenium</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="xenium-1.html"><a href="xenium-1.html#introduction-to-spatial-dataset"><i class="fa fa-check"></i><b>10.1</b> Introduction to spatial dataset</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="xenium-1.html"><a href="xenium-1.html#output-directory-structure"><i class="fa fa-check"></i><b>10.1.1</b> Output directory structure</a></li>
+<li class="chapter" data-level="10.1.2" data-path="xenium-1.html"><a href="xenium-1.html#mini-xenium-dataset"><i class="fa fa-check"></i><b>10.1.2</b> Mini Xenium Dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="xenium-1.html"><a href="xenium-1.html#data-preparation"><i class="fa fa-check"></i><b>10.2</b> Data preparation</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="xenium-1.html"><a href="xenium-1.html#image-conversion-may-change"><i class="fa fa-check"></i><b>10.2.1</b> Image conversion (may change)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="xenium-1.html"><a href="xenium-1.html#convenience-function"><i class="fa fa-check"></i><b>10.3</b> Convenience function</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="xenium-1.html"><a href="xenium-1.html#specific-filepaths"><i class="fa fa-check"></i><b>10.3.1</b> Specific filepaths</a></li>
+<li class="chapter" data-level="10.3.2" data-path="xenium-1.html"><a href="xenium-1.html#quality-value"><i class="fa fa-check"></i><b>10.3.2</b> Quality value</a></li>
+<li class="chapter" data-level="10.3.3" data-path="xenium-1.html"><a href="xenium-1.html#transcript-type-splitting"><i class="fa fa-check"></i><b>10.3.3</b> Transcript type splitting</a></li>
+<li class="chapter" data-level="10.3.4" data-path="xenium-1.html"><a href="xenium-1.html#centroids-calculation"><i class="fa fa-check"></i><b>10.3.4</b> Centroids calculation</a></li>
+<li class="chapter" data-level="10.3.5" data-path="xenium-1.html"><a href="xenium-1.html#simple-visualization"><i class="fa fa-check"></i><b>10.3.5</b> Simple visualization</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="xenium-1.html"><a href="xenium-1.html#piecewise-loading"><i class="fa fa-check"></i><b>10.4</b> Piecewise loading</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="xenium-1.html"><a href="xenium-1.html#load-giottopoints-transcripts"><i class="fa fa-check"></i><b>10.4.1</b> Load giottoPoints transcripts</a></li>
+<li class="chapter" data-level="10.4.2" data-path="xenium-1.html"><a href="xenium-1.html#optional-loading-pre-aggregated-data"><i class="fa fa-check"></i><b>10.4.2</b> (optional) Loading pre-aggregated data</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="xenium-1.html"><a href="xenium-1.html#xenium-images"><i class="fa fa-check"></i><b>10.5</b> Xenium Images</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="xenium-1.html"><a href="xenium-1.html#image-metadata"><i class="fa fa-check"></i><b>10.5.1</b> Image metadata</a></li>
+<li class="chapter" data-level="10.5.2" data-path="xenium-1.html"><a href="xenium-1.html#image-loading"><i class="fa fa-check"></i><b>10.5.2</b> Image loading</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="xenium-1.html"><a href="xenium-1.html#spatial-aggregation"><i class="fa fa-check"></i><b>10.6</b> Spatial aggregation</a></li>
+<li class="chapter" data-level="10.7" data-path="xenium-1.html"><a href="xenium-1.html#aggregate-analyses-workflow"><i class="fa fa-check"></i><b>10.7</b> Aggregate analyses workflow</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="xenium-1.html"><a href="xenium-1.html#transcripts-per-cell"><i class="fa fa-check"></i><b>10.7.1</b> Transcripts per cell</a></li>
+<li class="chapter" data-level="10.7.2" data-path="xenium-1.html"><a href="xenium-1.html#filtering-1"><i class="fa fa-check"></i><b>10.7.2</b> Filtering</a></li>
+<li class="chapter" data-level="10.7.3" data-path="xenium-1.html"><a href="xenium-1.html#normalization-1"><i class="fa fa-check"></i><b>10.7.3</b> Normalization</a></li>
+<li class="chapter" data-level="10.7.4" data-path="xenium-1.html"><a href="xenium-1.html#dimension-reduction-1"><i class="fa fa-check"></i><b>10.7.4</b> Dimension Reduction</a></li>
+<li class="chapter" data-level="10.7.5" data-path="xenium-1.html"><a href="xenium-1.html#clustering-1"><i class="fa fa-check"></i><b>10.7.5</b> Clustering</a></li>
+</ul></li>
+<li class="chapter" data-level="10.8" data-path="xenium-1.html"><a href="xenium-1.html#niche-clustering-1"><i class="fa fa-check"></i><b>10.8</b> Niche clustering</a>
+<ul>
+<li class="chapter" data-level="10.8.1" data-path="xenium-1.html"><a href="xenium-1.html#spatial-network"><i class="fa fa-check"></i><b>10.8.1</b> Spatial network</a></li>
+<li class="chapter" data-level="10.8.2" data-path="xenium-1.html"><a href="xenium-1.html#niche-calculation"><i class="fa fa-check"></i><b>10.8.2</b> Niche calculation</a></li>
+<li class="chapter" data-level="10.8.3" data-path="xenium-1.html"><a href="xenium-1.html#k-means-clustering-based-on-niche-signature"><i class="fa fa-check"></i><b>10.8.3</b> k-means clustering based on niche signature</a></li>
+</ul></li>
+<li class="chapter" data-level="10.9" data-path="xenium-1.html"><a href="xenium-1.html#cell-proximity-enrichment"><i class="fa fa-check"></i><b>10.9</b> Cell proximity enrichment</a></li>
+<li class="chapter" data-level="10.10" data-path="xenium-1.html"><a href="xenium-1.html#pseudovisium"><i class="fa fa-check"></i><b>10.10</b> Pseudovisium</a>
+<ul>
+<li class="chapter" data-level="10.10.1" data-path="xenium-1.html"><a href="xenium-1.html#pseudovisium-aggregation-and-workflow"><i class="fa fa-check"></i><b>10.10.1</b> Pseudovisium aggregation and workflow</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html"><i class="fa fa-check"></i><b>11</b> Spatial proteomics: Multiplexed Immunofluorescence</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#spatial-proteomics-technologies"><i class="fa fa-check"></i><b>11.1</b> Spatial Proteomics Technologies</a></li>
+<li class="chapter" data-level="11.2" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#raw-data-type-coming-out-of-different-technologies"><i class="fa fa-check"></i><b>11.2</b> Raw data type coming out of different technologies</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#use-ome.tiff-as-an-example-output-data-to-begin-with"><i class="fa fa-check"></i><b>11.2.1</b> Use ome.tiff as an example output data to begin with</a></li>
+<li class="chapter" data-level="11.2.2" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#use-single-channel-images-as-an-example-output-data-to-begin-with"><i class="fa fa-check"></i><b>11.2.2</b> Use single channel images as an example output data to begin with</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cell-segmentation-file-to-get-single-cell-level-protein-expression"><i class="fa fa-check"></i><b>11.3</b> Cell Segmentation file to get single cell level protein expression</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#using-segmentation-output-file-from-deepcellmesmer-as-an-example."><i class="fa fa-check"></i><b>11.3.1</b> Using segmentation output file from DeepCell(mesmer) as an example.</a></li>
+<li class="chapter" data-level="11.3.2" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#using-giotto-wrapper-of-cellpose-to-perform-segmentation"><i class="fa fa-check"></i><b>11.3.2</b> Using Giotto wrapper of Cellpose to perform segmentation</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#create-a-giotto-object-using-list-of-gitto-large-images-and-polygons"><i class="fa fa-check"></i><b>11.4</b> Create a Giotto Object using list of gitto large images and polygons</a>
+<ul>
+<li class="chapter" data-level="11.4.1" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#overlap-to-matrix"><i class="fa fa-check"></i><b>11.4.1</b> Overlap to matrix</a></li>
+<li class="chapter" data-level="11.4.2" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#manipulate-expression-information"><i class="fa fa-check"></i><b>11.4.2</b> Manipulate Expression information</a></li>
+<li class="chapter" data-level="11.4.3" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#rescale-polygons"><i class="fa fa-check"></i><b>11.4.3</b> Rescale polygons</a></li>
+<li class="chapter" data-level="11.4.4" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#perform-clustering-and-differential-expression"><i class="fa fa-check"></i><b>11.4.4</b> Perform clustering and differential expression</a></li>
+<li class="chapter" data-level="11.4.5" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#give-the-cluster-an-annotation-based-on-expression-values"><i class="fa fa-check"></i><b>11.4.5</b> Give the cluster an annotation based on expression values</a></li>
+<li class="chapter" data-level="11.4.6" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#spatial-network-1"><i class="fa fa-check"></i><b>11.4.6</b> Spatial network</a></li>
+<li class="chapter" data-level="11.4.7" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#cell-neighborhood-cell-typecell-type-interactions"><i class="fa fa-check"></i><b>11.4.7</b> Cell Neighborhood: Cell-Type/Cell-Type Interactions</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="spatial-proteomics-multiplexed-immunofluorescence.html"><a href="spatial-proteomics-multiplexed-immunofluorescence.html#session-info-2"><i class="fa fa-check"></i><b>11.5</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html"><i class="fa fa-check"></i><b>12</b> Working with multiple samples</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#objective-1"><i class="fa fa-check"></i><b>12.1</b> Objective</a></li>
+<li class="chapter" data-level="12.2" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#background-1"><i class="fa fa-check"></i><b>12.2</b> Background</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#dataset"><i class="fa fa-check"></i><b>12.2.1</b> Dataset</a></li>
+<li class="chapter" data-level="12.2.2" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#visium-technology"><i class="fa fa-check"></i><b>12.2.2</b> Visium technology</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#create-individual-giotto-objects"><i class="fa fa-check"></i><b>12.3</b> Create individual giotto objects</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#download-the-data"><i class="fa fa-check"></i><b>12.3.1</b> Download the data</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#extracting-the-downloaded-files"><i class="fa fa-check"></i><b>12.4</b> Extracting the downloaded files</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#create-giotto-instructions"><i class="fa fa-check"></i><b>12.4.1</b> Create giotto instructions</a></li>
+<li class="chapter" data-level="12.4.2" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#load-visium-data-into-giotto"><i class="fa fa-check"></i><b>12.4.2</b> Load visium data into Giotto</a></li>
+<li class="chapter" data-level="12.4.3" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#healthy-prostate-tissue-coverage"><i class="fa fa-check"></i><b>12.4.3</b> Healthy prostate tissue coverage</a></li>
+<li class="chapter" data-level="12.4.4" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#adenocarcinoma-prostate-tissue-coverage"><i class="fa fa-check"></i><b>12.4.4</b> Adenocarcinoma prostate tissue coverage</a></li>
+<li class="chapter" data-level="12.4.5" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#showing-the-data-strucutre-for-the-inidividual-objects"><i class="fa fa-check"></i><b>12.4.5</b> Showing the data strucutre for the inidividual objects</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#join-giotto-objects"><i class="fa fa-check"></i><b>12.5</b> Join Giotto Objects</a></li>
+<li class="chapter" data-level="12.6" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#visualizing-combined-datasets"><i class="fa fa-check"></i><b>12.6</b> Visualizing combined datasets</a>
+<ul>
+<li class="chapter" data-level="12.6.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#vizualizing-in-the-same-plot"><i class="fa fa-check"></i><b>12.6.1</b> Vizualizing in the same plot</a></li>
+<li class="chapter" data-level="12.6.2" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#vizualizing-on-separate-plots"><i class="fa fa-check"></i><b>12.6.2</b> Vizualizing on separate plots</a></li>
+</ul></li>
+<li class="chapter" data-level="12.7" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#splitting-combined-dataset"><i class="fa fa-check"></i><b>12.7</b> Splitting combined dataset</a></li>
+<li class="chapter" data-level="12.8" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#analyzing-joined-objects"><i class="fa fa-check"></i><b>12.8</b> Analyzing joined objects</a>
+<ul>
+<li class="chapter" data-level="12.8.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#normalization-and-adding-statistics"><i class="fa fa-check"></i><b>12.8.1</b> Normalization and adding statistics</a></li>
+<li class="chapter" data-level="12.8.2" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#clustering-the-datasets"><i class="fa fa-check"></i><b>12.8.2</b> Clustering the datasets</a></li>
+<li class="chapter" data-level="12.8.3" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#vizualizing-spatial-location-of-clusters"><i class="fa fa-check"></i><b>12.8.3</b> Vizualizing spatial location of clusters</a></li>
+<li class="chapter" data-level="12.8.4" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#vizualizing-tissue-contribution-to-clusters"><i class="fa fa-check"></i><b>12.8.4</b> Vizualizing tissue contribution to clusters</a></li>
+</ul></li>
+<li class="chapter" data-level="12.9" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#perform-harmony-and-default-workflows"><i class="fa fa-check"></i><b>12.9</b> Perform Harmony and default workflows</a>
+<ul>
+<li class="chapter" data-level="12.9.1" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#clustering-harmonized-object"><i class="fa fa-check"></i><b>12.9.1</b> Clustering harmonized object</a></li>
+<li class="chapter" data-level="12.9.2" data-path="working-with-multiple-samples.html"><a href="working-with-multiple-samples.html#vizualizing-the-tissue-contribution"><i class="fa fa-check"></i><b>12.9.2</b> Vizualizing the tissue contribution</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html"><i class="fa fa-check"></i><b>13</b> Spatial multi-modal analysis</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#overview-1"><i class="fa fa-check"></i><b>13.1</b> Overview</a></li>
+<li class="chapter" data-level="13.2" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-manipulation"><i class="fa fa-check"></i><b>13.2</b> Spatial manipulation</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-transforms"><i class="fa fa-check"></i><b>13.2.1</b> Spatial transforms:</a></li>
+<li class="chapter" data-level="13.2.2" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-utilities"><i class="fa fa-check"></i><b>13.2.2</b> Spatial utilities:</a></li>
+<li class="chapter" data-level="13.2.3" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#spatial-classes"><i class="fa fa-check"></i><b>13.2.3</b> Spatial classes:</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#examples-of-the-simple-transforms-with-a-giottopolygon"><i class="fa fa-check"></i><b>13.3</b> Examples of the simple transforms with a giottoPolygon</a></li>
+<li class="chapter" data-level="13.4" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#affine-transforms"><i class="fa fa-check"></i><b>13.4</b> Affine transforms</a></li>
+<li class="chapter" data-level="13.5" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#image-transforms"><i class="fa fa-check"></i><b>13.5</b> Image transforms</a></li>
+<li class="chapter" data-level="13.6" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#the-practical-usage-of-multi-modality-co-registration"><i class="fa fa-check"></i><b>13.6</b> The practical usage of multi-modality co-registration</a>
+<ul>
+<li class="chapter" data-level="13.6.1" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#example-dataset-xenium-breast-cancer-pre-release-pack"><i class="fa fa-check"></i><b>13.6.1</b> Example dataset: Xenium Breast Cancer pre-release pack</a></li>
+<li class="chapter" data-level="13.6.2" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#target-coordinate-system"><i class="fa fa-check"></i><b>13.6.2</b> Target Coordinate system</a></li>
+<li class="chapter" data-level="13.6.3" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#visium-to-register"><i class="fa fa-check"></i><b>13.6.3</b> Visium to register</a></li>
+<li class="chapter" data-level="13.6.4" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#register-post-xenium-he-and-if-image"><i class="fa fa-check"></i><b>13.6.4</b> Register post-Xenium H&amp;E and IF image</a></li>
+<li class="chapter" data-level="13.6.5" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#automatic-alignment-via-sift-feature-descriptor-matching-and-affine-transformation"><i class="fa fa-check"></i><b>13.6.5</b> Automatic alignment via SIFT feature descriptor matching and affine transformation</a></li>
+<li class="chapter" data-level="13.6.6" data-path="spatial-multi-modal-analysis.html"><a href="spatial-multi-modal-analysis.html#final-notes"><i class="fa fa-check"></i><b>13.6.6</b> Final Notes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html"><i class="fa fa-check"></i><b>14</b> Multi-omics integration</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#the-cytassist-technology"><i class="fa fa-check"></i><b>14.1</b> The CytAssist technology</a></li>
+<li class="chapter" data-level="14.2" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#introduction-to-the-spatial-dataset-1"><i class="fa fa-check"></i><b>14.2</b> Introduction to the spatial dataset</a></li>
+<li class="chapter" data-level="14.3" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#download-dataset-1"><i class="fa fa-check"></i><b>14.3</b> Download dataset</a></li>
+<li class="chapter" data-level="14.4" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#create-the-giotto-object-1"><i class="fa fa-check"></i><b>14.4</b> Create the Giotto object</a></li>
+<li class="chapter" data-level="14.5" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#subset-on-spots-that-were-covered-by-tissue-1"><i class="fa fa-check"></i><b>14.5</b> Subset on spots that were covered by tissue</a></li>
+<li class="chapter" data-level="14.6" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#rna-processing"><i class="fa fa-check"></i><b>14.6</b> RNA processing</a></li>
+<li class="chapter" data-level="14.7" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#protein-processing"><i class="fa fa-check"></i><b>14.7</b> Protein processing</a></li>
+<li class="chapter" data-level="14.8" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#multi-omics-integration-1"><i class="fa fa-check"></i><b>14.8</b> Multi-omics integration</a></li>
+<li class="chapter" data-level="14.9" data-path="multi-omics-integration.html"><a href="multi-omics-integration.html#session-info-3"><i class="fa fa-check"></i><b>14.9</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html"><i class="fa fa-check"></i><b>15</b> Interoperability with other frameworks</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#load-giotto-object"><i class="fa fa-check"></i><b>15.1</b> Load Giotto object</a></li>
+<li class="chapter" data-level="15.2" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#seurat"><i class="fa fa-check"></i><b>15.2</b> Seurat</a>
+<ul>
+<li class="chapter" data-level="15.2.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#conversion-of-giotto-object-to-seurat-object"><i class="fa fa-check"></i><b>15.2.1</b> Conversion of Giotto Object to Seurat Object</a></li>
+<li class="chapter" data-level="15.2.2" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#conversion-of-seurat-object-back-to-giotto-object"><i class="fa fa-check"></i><b>15.2.2</b> Conversion of Seurat object Back to Giotto Object</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#spatialexperiment"><i class="fa fa-check"></i><b>15.3</b> SpatialExperiment</a>
+<ul>
+<li class="chapter" data-level="15.3.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#convert-giotto-object-to-spatialexperiment-object"><i class="fa fa-check"></i><b>15.3.1</b> Convert Giotto Object to SpatialExperiment Object</a></li>
+<li class="chapter" data-level="15.3.2" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#conversion-of-spatialexperiment-object-back-to-giotto"><i class="fa fa-check"></i><b>15.3.2</b> Conversion of SpatialExperiment object back to Giotto</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#anndata"><i class="fa fa-check"></i><b>15.4</b> AnnData</a>
+<ul>
+<li class="chapter" data-level="15.4.1" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#load-required-libraries"><i class="fa fa-check"></i><b>15.4.1</b> Load Required Libraries</a></li>
+<li class="chapter" data-level="15.4.2" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#specify-path-for-results"><i class="fa fa-check"></i><b>15.4.2</b> Specify Path for Results</a></li>
+<li class="chapter" data-level="15.4.3" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#giotto-to-anndata"><i class="fa fa-check"></i><b>15.4.3</b> Giotto To AnnData</a></li>
+<li class="chapter" data-level="15.4.4" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#convert-anndata-to-giotto"><i class="fa fa-check"></i><b>15.4.4</b> Convert AnnData to Giotto</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="interoperability-with-other-frameworks.html"><a href="interoperability-with-other-frameworks.html#create-mini-vizgen-object"><i class="fa fa-check"></i><b>15.5</b> Create mini Vizgen object</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html"><i class="fa fa-check"></i><b>16</b> Interoperability with isolated tools</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#spatial-niche-trajectory-analysis-ontrac"><i class="fa fa-check"></i><b>16.1</b> Spatial niche trajectory analysis (ONTraC)</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#introduction-to-ontrac"><i class="fa fa-check"></i><b>16.1.1</b> Introduction to ONTraC</a></li>
+<li class="chapter" data-level="16.1.2" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#introduction-to-merfish"><i class="fa fa-check"></i><b>16.1.2</b> Introduction to MERFISH</a></li>
+<li class="chapter" data-level="16.1.3" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#settings"><i class="fa fa-check"></i><b>16.1.3</b> Settings</a></li>
+<li class="chapter" data-level="16.1.4" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#dataset-1"><i class="fa fa-check"></i><b>16.1.4</b> Dataset</a></li>
+<li class="chapter" data-level="16.1.5" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#create-the-giotto-object-2"><i class="fa fa-check"></i><b>16.1.5</b> Create the Giotto object</a></li>
+<li class="chapter" data-level="16.1.6" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#perform-spatial-niche-trajectory-analysis-using-ontrac"><i class="fa fa-check"></i><b>16.1.6</b> Perform spatial niche trajectory analysis using ONTraC</a></li>
+<li class="chapter" data-level="16.1.7" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#visualization"><i class="fa fa-check"></i><b>16.1.7</b> Visualization</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="interoperability-with-isolated-tools.html"><a href="interoperability-with-isolated-tools.html#session-info-4"><i class="fa fa-check"></i><b>16.2</b> Session info</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html"><i class="fa fa-check"></i><b>17</b> Interactivity with the R/Spatial ecosystem</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#kriging"><i class="fa fa-check"></i><b>17.1</b> Kriging</a>
+<ul>
+<li class="chapter" data-level="17.1.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#visium-technology-1"><i class="fa fa-check"></i><b>17.1.1</b> Visium technology</a></li>
+<li class="chapter" data-level="17.1.2" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#dataset-2"><i class="fa fa-check"></i><b>17.1.2</b> Dataset</a></li>
+<li class="chapter" data-level="17.1.3" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#generating-a-geojson-file-of-nuclei-location"><i class="fa fa-check"></i><b>17.1.3</b> Generating a geojson file of nuclei location</a></li>
+</ul></li>
+<li class="chapter" data-level="17.2" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#downloading-the-dataset"><i class="fa fa-check"></i><b>17.2</b> Downloading the dataset</a></li>
+<li class="chapter" data-level="17.3" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#extracting-the-files"><i class="fa fa-check"></i><b>17.3</b> Extracting the files</a></li>
+<li class="chapter" data-level="17.4" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#downloading-giotto-object-and-nuclei-segmentation"><i class="fa fa-check"></i><b>17.4</b> Downloading giotto object and nuclei segmentation</a></li>
+<li class="chapter" data-level="17.5" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#importing-visium-data"><i class="fa fa-check"></i><b>17.5</b> Importing visium data</a>
+<ul>
+<li class="chapter" data-level="17.5.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#identifying-spatially-organized-features"><i class="fa fa-check"></i><b>17.5.1</b> Identifying spatially organized features</a></li>
+</ul></li>
+<li class="chapter" data-level="17.6" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#adding-cell-polygons-to-giotto-object"><i class="fa fa-check"></i><b>17.6</b> Adding cell polygons to Giotto object</a>
+<ul>
+<li class="chapter" data-level="17.6.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#read-in-the-poly-information"><i class="fa fa-check"></i><b>17.6.1</b> Read in the poly information</a></li>
+<li class="chapter" data-level="17.6.2" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#vizualizing-polygons"><i class="fa fa-check"></i><b>17.6.2</b> Vizualizing polygons</a></li>
+<li class="chapter" data-level="17.6.3" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#showing-giotto-object-prior-to-polygon-addition"><i class="fa fa-check"></i><b>17.6.3</b> Showing Giotto object prior to polygon addition</a></li>
+<li class="chapter" data-level="17.6.4" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#adding-polygons-to-giotto-object"><i class="fa fa-check"></i><b>17.6.4</b> Adding polygons to giotto object</a></li>
+<li class="chapter" data-level="17.6.5" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#check-polygon-information"><i class="fa fa-check"></i><b>17.6.5</b> Check polygon information</a></li>
+</ul></li>
+<li class="chapter" data-level="17.7" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#performing-kriging"><i class="fa fa-check"></i><b>17.7</b> Performing kriging</a>
+<ul>
+<li class="chapter" data-level="17.7.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#interpolating-features"><i class="fa fa-check"></i><b>17.7.1</b> Interpolating features</a></li>
+<li class="chapter" data-level="17.7.2" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#expression-overlap"><i class="fa fa-check"></i><b>17.7.2</b> Expression overlap</a></li>
+</ul></li>
+<li class="chapter" data-level="17.8" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#reading-in-larger-dataset"><i class="fa fa-check"></i><b>17.8</b> Reading in larger dataset</a></li>
+<li class="chapter" data-level="17.9" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#analyzing-interpolated-features"><i class="fa fa-check"></i><b>17.9</b> Analyzing interpolated features</a>
+<ul>
+<li class="chapter" data-level="17.9.1" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#filter-and-normalization"><i class="fa fa-check"></i><b>17.9.1</b> Filter and normalization</a></li>
+<li class="chapter" data-level="17.9.2" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#visualizing-gene-expression-from-interpolated-expression"><i class="fa fa-check"></i><b>17.9.2</b> Visualizing gene expression from interpolated expression</a></li>
+<li class="chapter" data-level="17.9.3" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#run-pca"><i class="fa fa-check"></i><b>17.9.3</b> Run PCA</a></li>
+<li class="chapter" data-level="17.9.4" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#clustering-2"><i class="fa fa-check"></i><b>17.9.4</b> Clustering</a></li>
+<li class="chapter" data-level="17.9.5" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#visualizing-clustering"><i class="fa fa-check"></i><b>17.9.5</b> Visualizing clustering</a></li>
+<li class="chapter" data-level="17.9.6" data-path="interactivity-with-the-rspatial-ecosystem.html"><a href="interactivity-with-the-rspatial-ecosystem.html#cropping-objects"><i class="fa fa-check"></i><b>17.9.6</b> Cropping objects</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="contributing-to-giotto.html"><a href="contributing-to-giotto.html"><i class="fa fa-check"></i><b>18</b> Contributing to Giotto</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="contributing-to-giotto.html"><a href="contributing-to-giotto.html#contribution-guideline"><i class="fa fa-check"></i><b>18.1</b> Contribution guideline</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Workshop: Spatial multi-omics data analysis with Giotto Suite</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="xenium-1" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">10</span> Xenium<a href="xenium-1.html#xenium-1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Jiaji George Chen</p>
+<p>August 6th 2024</p>
+<div id="introduction-to-spatial-dataset" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Introduction to spatial dataset<a href="xenium-1.html#introduction-to-spatial-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><img src="img/02_session3/Xenium-General-Workflow-1024x709.png" width="80%" style="display: block; margin: auto;" /></p>
+<p>This is the 10X Xenium FFPE Human Lung Cancer dataset. Xenium captures
+individual transcript detections with a spatial resolution of 100s of
+nanometers, providing an extremely highly resolved subcellular spatial
+dataset. This particular dataset also showcases their recent
+multimodal cell segmentation outputs.</p>
+<p>The Xenium Human Multi-Tissue and Cancer Panel (377) genes was used. The
+exported data is from their Xenium Onboard Analysis v2.0.0 pipeline.</p>
+<p>The full data for this example can be found here:
+<a href="https://www.10xgenomics.com/datasets/preview-data-ffpe-human-lung-cancer-with-xenium-multimodal-cell-segmentation-1-standard">here</a></p>
+<p>The relevant items are:</p>
+<ul>
+<li>Xenium Output Bundle (full)</li>
+<li>Supplemental: Post-Xenium H&amp;E image (OME-TIFF)</li>
+<li>Supplemental: H&amp;E Image Alignment File (CSV)</li>
+</ul>
+<p><strong>Additional package requirements</strong></p>
+<p>When working with this data and trying to open the parquet files, you will need <em>arrow</em> built with ZTSD support. See the datasets &amp; packages section for specific install instructions.</p>
+<div id="output-directory-structure" class="section level3 hasAnchor" number="10.1.1">
+<h3><span class="header-section-number">10.1.1</span> Output directory structure<a href="xenium-1.html#output-directory-structure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>    ├── analysis.tar.gz
+    ├── analysis.zarr.zip
+    ├── analysis_summary.html
+    ├── aux_outputs.tar.gz
+    ├── transcripts.csv.gz
+    ├── transcripts.parquet
+    ├── transcripts.zarr.zip
+    ├── cell_boundaries.csv.gz
+    ├── cell_boundaries.parquet
+    ├── nucleus_boundaries.csv.gz
+    ├── nucleus_boundaries.parquet
+    ├── cell_feature_matrix.tar.gz
+    ├── cell_feature_matrix
+    │   ├── barcodes.tsv.gz
+    │   ├── features.tsv.gz
+    │   └── matrix.mtx.gz
+    ├── cell_feature_matrix.h5
+    ├── cell_feature_matrix.zarr.zip
+    ├── cells.csv.gz
+    ├── cells.parquet
+    ├── cells.zarr.zip
+    ├── experiment.xenium
+    ├── gene_panel.json
+    ├── metrics_summary.csv
+    ├── morphology.ome.tif
+    ├── morphology_focus
+    │   ├── morphology_focus_0000.ome.tif
+    │   ├── morphology_focus_0001.ome.tif
+    │   ├── morphology_focus_0002.ome.tif
+    │   ├── morphology_focus_0003.ome.tif
+    ├── Xenium_V1_humanLung_Cancer_FFPE_he_image.ome.tif
+    └── Xenium_V1_humanLung_Cancer_FFPE_he_imagealignment.csv</code></pre>
+<p>The above directory structuring and naming is characteristic of Xenium v2.0 pipeline outputs. The only items that may not be exactly the same across all outputs are the morphology focus directory and the naming of the aligned image items.</p>
+<p>For the morphology focus images, you may have fewer images if the experiment did not include the multimodal cell segmentation. As for the aligned images, this is usually done after the Xenium experiment concludes and is added on using Xenium Explorer. Naming and location of the aligned image (<code>he_image.ome.tif</code>) and associated alignment info <code>he_imagealignment.csv</code> are entirely up to the user.</p>
+</div>
+<div id="mini-xenium-dataset" class="section level3 hasAnchor" number="10.1.2">
+<h3><span class="header-section-number">10.1.2</span> Mini Xenium Dataset<a href="xenium-1.html#mini-xenium-dataset" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="xenium-1.html#cb254-1" tabindex="-1"></a><span class="fu">library</span>(Giotto)</span>
+<span id="cb254-2"><a href="xenium-1.html#cb254-2" tabindex="-1"></a></span>
+<span id="cb254-3"><a href="xenium-1.html#cb254-3" tabindex="-1"></a><span class="co"># set up paths</span></span>
+<span id="cb254-4"><a href="xenium-1.html#cb254-4" tabindex="-1"></a>data_path <span class="ot">&lt;-</span> <span class="st">&quot;data/02_session3&quot;</span></span>
+<span id="cb254-5"><a href="xenium-1.html#cb254-5" tabindex="-1"></a>save_dir <span class="ot">&lt;-</span> <span class="st">&quot;results/02_session3&quot;</span></span>
+<span id="cb254-6"><a href="xenium-1.html#cb254-6" tabindex="-1"></a><span class="fu">dir.create</span>(save_dir, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb254-7"><a href="xenium-1.html#cb254-7" tabindex="-1"></a></span>
+<span id="cb254-8"><a href="xenium-1.html#cb254-8" tabindex="-1"></a><span class="co"># download the mini dataset and untar</span></span>
+<span id="cb254-9"><a href="xenium-1.html#cb254-9" tabindex="-1"></a><span class="fu">options</span>(<span class="st">&quot;timeout&quot;</span> <span class="ot">=</span> <span class="cn">Inf</span>)</span>
+<span id="cb254-10"><a href="xenium-1.html#cb254-10" tabindex="-1"></a><span class="fu">download.file</span>(</span>
+<span id="cb254-11"><a href="xenium-1.html#cb254-11" tabindex="-1"></a>    <span class="at">url =</span> <span class="st">&quot;https://zenodo.org/records/13207308/files/workshop_xenium.zip?download=1&quot;</span>,</span>
+<span id="cb254-12"><a href="xenium-1.html#cb254-12" tabindex="-1"></a>    <span class="at">destfile =</span> <span class="fu">file.path</span>(save_dir, <span class="st">&quot;workshop_xenium.zip&quot;</span>)</span>
+<span id="cb254-13"><a href="xenium-1.html#cb254-13" tabindex="-1"></a>)</span>
+<span id="cb254-14"><a href="xenium-1.html#cb254-14" tabindex="-1"></a><span class="co"># untar the downloaded data</span></span>
+<span id="cb254-15"><a href="xenium-1.html#cb254-15" tabindex="-1"></a><span class="fu">untar</span>(<span class="at">tarfile =</span> <span class="fu">file.path</span>(save_dir, <span class="st">&quot;workshop_xenium.zip&quot;</span>), </span>
+<span id="cb254-16"><a href="xenium-1.html#cb254-16" tabindex="-1"></a>      <span class="at">exdir =</span> data_path)</span></code></pre></div>
+<p>In order to speed up the steps of the workshop and make it locally runnable, we provide a subset of the full dataset.</p>
+<pre><code>- Full: -16.039, 12342.984, -3511.515, -294.455 (xmin, xmax, ymin, ymax)
+- Mini: 6000,    7000,      -2200,     -1400    (xmin, xmax, ymin, ymax)</code></pre>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-353"></span>
+<img src="img/02_session3/mini_roi.png" alt="Shown is the H&amp;E aligned to the Xenium dataset with micron scaling. The blue bounds mark out the area provided as a mini dataset" width="862" />
+<p class="caption">
+Figure 10.1: Shown is the H&amp;E aligned to the Xenium dataset with micron scaling. The blue bounds mark out the area provided as a mini dataset
+</p>
+</div>
+</div>
+</div>
+<div id="data-preparation" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> Data preparation<a href="xenium-1.html#data-preparation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="image-conversion-may-change" class="section level3 hasAnchor" number="10.2.1">
+<h3><span class="header-section-number">10.2.1</span> Image conversion (may change)<a href="xenium-1.html#image-conversion-may-change" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>First is actually dealing with the image formats. Xenium generates <code>ome.tif</code> images which Giotto is currently not fully compatible with. So we convert them to normal <code>tif</code> images using <code>ometif_to_tif()</code> which works through the python <em>tifffile</em> package.</p>
+<p>The image files can then be loaded in downstream steps.</p>
+<p><em>These commented out steps are not needed for today since the mini dataset provides .tif images that have already been spatially aligned and converted. However, the code needed to do this is provided below.</em></p>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="xenium-1.html#cb256-1" tabindex="-1"></a><span class="co"># image_paths &lt;- list.files(</span></span>
+<span id="cb256-2"><a href="xenium-1.html#cb256-2" tabindex="-1"></a><span class="co">#   data_path, pattern = &quot;morphology_focus|he_image.ome&quot;, </span></span>
+<span id="cb256-3"><a href="xenium-1.html#cb256-3" tabindex="-1"></a><span class="co">#   recursive = TRUE, full.names = TRUE</span></span>
+<span id="cb256-4"><a href="xenium-1.html#cb256-4" tabindex="-1"></a><span class="co"># )</span></span></code></pre></div>
+<p><code>ometif_to_tif()</code> <code>output_dir</code> can be specified, but by default, it writes to a new subdirectory called <code>tif_exports</code> underneath the source image”s directory.</p>
+<p><em>Keep in mind that where the exported tifs get exported to should be where downstream image reading functions should point to. The code run today is with the filepaths that the mini dataset has.</em></p>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="xenium-1.html#cb257-1" tabindex="-1"></a><span class="co"># lapply(image_paths, function(img) {</span></span>
+<span id="cb257-2"><a href="xenium-1.html#cb257-2" tabindex="-1"></a><span class="co">#     GiottoClass::ometif_to_tif(img, overwrite = TRUE)</span></span>
+<span id="cb257-3"><a href="xenium-1.html#cb257-3" tabindex="-1"></a><span class="co"># })</span></span></code></pre></div>
+<p>We are also working on a method of directly accessing the <code>ome.tifs</code> for better compatibility in the future.</p>
+</div>
+</div>
+<div id="convenience-function" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> Convenience function<a href="xenium-1.html#convenience-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Giotto has flexible methods for working with the Xenium outputs. The <code>createGiottoXeniumObject()</code> will generate a <code>giotto</code> object in a single step when provided the output directory.</p>
+<p>The default behavior is to load:</p>
+<ul>
+<li>transcripts information</li>
+<li>cell and nucleus boundaries</li>
+<li>feature metadata (gene_panel.json)</li>
+</ul>
+<p>For the full dataset (HPC): <em>time: 1-2min | memory: 24GBC</em></p>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="xenium-1.html#cb258-1" tabindex="-1"></a>?createGiottoXeniumObject</span>
+<span id="cb258-2"><a href="xenium-1.html#cb258-2" tabindex="-1"></a></span>
+<span id="cb258-3"><a href="xenium-1.html#cb258-3" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">createGiottoXeniumObject</span>(<span class="at">xenium_dir =</span> data_path)</span>
+<span id="cb258-4"><a href="xenium-1.html#cb258-4" tabindex="-1"></a></span>
+<span id="cb258-5"><a href="xenium-1.html#cb258-5" tabindex="-1"></a><span class="co"># set instructions for save directory and to save the plots to disk</span></span>
+<span id="cb258-6"><a href="xenium-1.html#cb258-6" tabindex="-1"></a><span class="fu">instructions</span>(g, <span class="st">&quot;save_dir&quot;</span>) <span class="ot">&lt;-</span> save_dir</span>
+<span id="cb258-7"><a href="xenium-1.html#cb258-7" tabindex="-1"></a><span class="fu">instructions</span>(g, <span class="st">&quot;save_plot&quot;</span>) <span class="ot">&lt;-</span> <span class="cn">TRUE</span></span></code></pre></div>
+<p>There are a lot of other parameters for additional or alternative items you can load. The next subsections will explain a couple of them.</p>
+<div id="specific-filepaths" class="section level3 hasAnchor" number="10.3.1">
+<h3><span class="header-section-number">10.3.1</span> Specific filepaths<a href="xenium-1.html#specific-filepaths" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>expression_path = ,
+cell_metadata_path = ,
+transcript_path = ,
+bounds_path = ,
+gene_panel_json_path = , </code></pre>
+<p>The convenience function auto-detects filepaths based on the Xenium directory path and the preferred file formats</p>
+<ul>
+<li><code>.parquet</code> for tabular (vs <code>.csv</code>)</li>
+<li><code>.h5</code> for matrix over other formats when available (vs <code>.mtx</code>)</li>
+<li><code>.zarr</code> is currently not supported.</li>
+</ul>
+<p>When you need to use a different file format or something is not in the expected output structure, you can supply a specific filepath to the convenience function using these parameters.</p>
+</div>
+<div id="quality-value" class="section level3 hasAnchor" number="10.3.2">
+<h3><span class="header-section-number">10.3.2</span> Quality value<a href="xenium-1.html#quality-value" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>qv_threshold = 20 # default</code></pre>
+<p>The <em>Quality Value</em> is a Phred-based 0-40 value that 10X provides for every detection in their transcripts output. Higher values mean higher confidence in the decoded transcript identity. By default 10X uses a cutoff of QV = 20 for transcripts to use downstream.</p>
+<p>_*setting a value other than 20 will make the loaded dataset different from the 10X-provided expression matrix and cell metadata._</p>
+<details>
+<summary>
+QV Calculation
+</summary>
+<ol style="list-style-type: decimal">
+<li>Raw Q-score based on how likely it is that an observed code is to be the codeword that it gets mapped to vs less likely codeword.</li>
+<li>Adjustment of raw Q-score by binning the transcripts by Q-value then adjusting the exact Q per bin based on proportion of <strong>Negative Control Codewords</strong> detected within.</li>
+</ol>
+<p><a href="https://www.10xgenomics.com/support/software/xenium-onboard-analysis/latest/algorithms-overview/xoa-algorithms#qvs">further info</a></p>
+</details>
+</div>
+<div id="transcript-type-splitting" class="section level3 hasAnchor" number="10.3.3">
+<h3><span class="header-section-number">10.3.3</span> Transcript type splitting<a href="xenium-1.html#transcript-type-splitting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<pre><code>feat_type =  c(
+    &quot;rna&quot;,
+    &quot;NegControlProbe&quot;,
+    &quot;UnassignedCodeword&quot;,
+    &quot;NegControlCodeword&quot;
+),
+split_keyword = list(
+    c(&quot;NegControlProbe&quot;),
+    c(&quot;UnassignedCodeword&quot;),
+    c(&quot;NegControlCodeword)&quot;
+)</code></pre>
+<p>There are 4 types of transcript detections that 10X reports with their v2.0 pipeline:</p>
+<ul>
+<li><strong>Gene expression</strong> - This is the rna gene detections.</li>
+<li><strong>Negative Control Codeword</strong> - (QC) Codewords that do not map to genes, but are in the codebook. Used to determine specificity of decoding algorithm.</li>
+<li><strong>Negative Control Probe</strong> - (QC) Probes in panel but target non-biological sequences. Used to determine specificity of assay.</li>
+<li><strong>Unassigned Codeword</strong> - (QC) Codewords that should not be used in the current panel.</li>
+</ul>
+<p>With V3 on their Xenium prime outputs, there is additionally:</p>
+<ul>
+<li><strong>Genomic Control Codeword</strong> (QC) Probes for intergenic genomic DNA instead of transcripts.</li>
+</ul>
+<hr>
+<p>The main thing to watch out for is that the other probe types should be separated out from the the <strong>Gene expression</strong> or <strong>rna</strong> feature type.</p>
+<p>How to deal with these different types of detections is easily adjustable. With the <code>feat_type</code> param you declare which categories/<code>feat_types</code> you want to split transcript detections into. Then with <code>split_keyword</code>, you provide a list of character vectors containing <code>grep()</code> terms to search for.</p>
+<p>Note that there are 4 <code>feat_types</code> declared in this set of defaults, but 3 items passed to <code>split_keyword</code>. Any transcripts not matched by items in <code>split_keyword</code>, get categorized as the first provided <code>feat_type</code> (“rna”).</p>
+</div>
+<div id="centroids-calculation" class="section level3 hasAnchor" number="10.3.4">
+<h3><span class="header-section-number">10.3.4</span> Centroids calculation<a href="xenium-1.html#centroids-calculation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Several Giotto operations require that a set of centroids are calculated for polygon spatial units.</p>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="xenium-1.html#cb262-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">addSpatialCentroidLocations</span>(g, <span class="at">poly_info =</span> <span class="st">&quot;cell&quot;</span>)</span>
+<span id="cb262-2"><a href="xenium-1.html#cb262-2" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">addSpatialCentroidLocations</span>(g, <span class="at">poly_info =</span> <span class="st">&quot;nucleus&quot;</span>)</span></code></pre></div>
+</div>
+<div id="simple-visualization" class="section level3 hasAnchor" number="10.3.5">
+<h3><span class="header-section-number">10.3.5</span> Simple visualization<a href="xenium-1.html#simple-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="xenium-1.html#cb263-1" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
+<span id="cb263-2"><a href="xenium-1.html#cb263-2" tabindex="-1"></a>    <span class="at">polygon_feat_type =</span> <span class="st">&quot;cell&quot;</span>,</span>
+<span id="cb263-3"><a href="xenium-1.html#cb263-3" tabindex="-1"></a>    <span class="at">feats =</span> <span class="fu">list</span>(<span class="at">rna =</span> <span class="fu">head</span>(<span class="fu">featIDs</span>(g))), <span class="co"># must be named list</span></span>
+<span id="cb263-4"><a href="xenium-1.html#cb263-4" tabindex="-1"></a>    <span class="at">use_overlap =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb263-5"><a href="xenium-1.html#cb263-5" tabindex="-1"></a>    <span class="at">polygon_color =</span> <span class="st">&quot;cyan&quot;</span>, </span>
+<span id="cb263-6"><a href="xenium-1.html#cb263-6" tabindex="-1"></a>    <span class="at">polygon_line_size =</span> <span class="fl">0.1</span></span>
+<span id="cb263-7"><a href="xenium-1.html#cb263-7" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-359"></span>
+<img src="img/02_session3/situ_plot_head.png" alt="Simple subcellular plotting to check data" width="100%" />
+<p class="caption">
+Figure 10.2: Simple subcellular plotting to check data
+</p>
+</div>
+</div>
+</div>
+<div id="piecewise-loading" class="section level2 hasAnchor" number="10.4">
+<h2><span class="header-section-number">10.4</span> Piecewise loading<a href="xenium-1.html#piecewise-loading" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Giotto also provides the <code>importXenium()</code> import utility that allows independent creation of compatible Giotto subobjects for more flexibility.</p>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="xenium-1.html#cb264-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">importXenium</span>(data_path)</span>
+<span id="cb264-2"><a href="xenium-1.html#cb264-2" tabindex="-1"></a></span>
+<span id="cb264-3"><a href="xenium-1.html#cb264-3" tabindex="-1"></a><span class="fu">force</span>(x)</span></code></pre></div>
+<pre><code>Giotto &lt;XeniumReader&gt;
+dir       : data/02_session3/ 
+qv_cutoff : 20 
+filetype  : transcripts -- parquet
+boundaries  -- parquet
+expression  -- h5
+cell_meta   -- parquet
+funs      : load_transcripts()
+load_polys()
+load_cellmeta()
+load_featmeta()
+load_expression()
+load_image()
+load_aligned_image()
+create_gobject()</code></pre>
+<div id="load-giottopoints-transcripts" class="section level3 hasAnchor" number="10.4.1">
+<h3><span class="header-section-number">10.4.1</span> Load giottoPoints transcripts<a href="xenium-1.html#load-giottopoints-transcripts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="xenium-1.html#cb266-1" tabindex="-1"></a>x<span class="sc">$</span>qv <span class="ot">&lt;-</span> <span class="dv">20</span> <span class="co"># default</span></span>
+<span id="cb266-2"><a href="xenium-1.html#cb266-2" tabindex="-1"></a>tx <span class="ot">&lt;-</span> x<span class="sc">$</span><span class="fu">load_transcripts</span>()</span>
+<span id="cb266-3"><a href="xenium-1.html#cb266-3" tabindex="-1"></a></span>
+<span id="cb266-4"><a href="xenium-1.html#cb266-4" tabindex="-1"></a><span class="fu">plot</span>(tx[[<span class="dv">1</span>]]<span class="sc">$</span>rna, <span class="at">dens =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-362"></span>
+<img src="img/02_session3/tx_plot.png" alt="plot of Gene expression (rna) density" width="80%" />
+<p class="caption">
+Figure 10.3: plot of Gene expression (rna) density
+</p>
+</div>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="xenium-1.html#cb267-1" tabindex="-1"></a><span class="fu">force</span>(tx[[<span class="dv">1</span>]]<span class="sc">$</span>rna)</span></code></pre></div>
+<pre><code>An object of class giottoPoints
+feat_type : &quot;rna&quot;
+Feature Information:
+class       : SpatVector 
+geometry    : points 
+dimensions  : 479097, 10  (geometries, attributes)
+extent      : 6000.001, 7000, -2200, -1400.012  (xmin, xmax, ymin, ymax)
+coord. ref. :  
+names       : feat_ID   transcript_id    cell_id overlaps_nucleus z_location    qv fov_name
+type        :   &lt;chr&gt;           &lt;chr&gt;      &lt;chr&gt;            &lt;int&gt;      &lt;num&gt; &lt;num&gt;    &lt;chr&gt;
+values      :   FBLN1 281487861612869 mcnjadoe-1                0      19.32    40      B11
+PDGFRB 281487861612872 mcnjbidl-1                1      18.75    40      B11
+PDGFRB 281487861612873 mcnjbidl-1                1      18.74    40      B11
+nucleus_distance codeword_index feat_ID_uniq
+&lt;num&gt;          &lt;int&gt;        &lt;int&gt;
+0            334            1
+0            289            2
+0            289            3</code></pre>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="xenium-1.html#cb269-1" tabindex="-1"></a><span class="fu">rm</span>(tx) <span class="co"># remove to save space</span></span></code></pre></div>
+</div>
+<div id="optional-loading-pre-aggregated-data" class="section level3 hasAnchor" number="10.4.2">
+<h3><span class="header-section-number">10.4.2</span> (optional) Loading pre-aggregated data<a href="xenium-1.html#optional-loading-pre-aggregated-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Giotto can spatially aggregate the transcripts information based on a provided set of boundaries information, however 10X also provides a pre-aggregated set of cell by feature information and metadata. These values may be slightly different from those calculated by Giotto”s pipeline, and are not loaded by default.</p>
+<p>Some care needs to be taken when loading this information:</p>
+<ul>
+<li>The <code>feat_type</code> of the loaded expression information should be matched to the used <code>feat_type</code> parameters passed to the convenience function.</li>
+<li>The <code>qv_threshold</code> used must be 20 since the 10X outputs are based on that cutoff.</li>
+</ul>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="xenium-1.html#cb270-1" tabindex="-1"></a>x<span class="sc">$</span>filetype<span class="sc">$</span>expression <span class="ot">&lt;-</span> <span class="st">&quot;mtx&quot;</span> <span class="co"># change to mtx instead of .h5 which is not in the mini dataset</span></span>
+<span id="cb270-2"><a href="xenium-1.html#cb270-2" tabindex="-1"></a></span>
+<span id="cb270-3"><a href="xenium-1.html#cb270-3" tabindex="-1"></a>ex <span class="ot">&lt;-</span> x<span class="sc">$</span><span class="fu">load_expression</span>()</span>
+<span id="cb270-4"><a href="xenium-1.html#cb270-4" tabindex="-1"></a><span class="fu">featType</span>(ex)</span></code></pre></div>
+<pre><code>[1] &quot;rna&quot;                       &quot;Negative Control Probe&quot;    &quot;Negative Control Codeword&quot;
+[4] &quot;Unassigned Codeword&quot;      </code></pre>
+<p>The feature types here do not match what we established for the transcripts, so we can just change them.</p>
+<p>Another reason for changing them here is just because the default names have ’ ’ characters which are difficult to work with.</p>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="xenium-1.html#cb272-1" tabindex="-1"></a><span class="fu">force</span>(g)</span></code></pre></div>
+<pre><code>An object of class giotto 
+&gt;Active spat_unit:  cell 
+&gt;Active feat_type:  rna 
+[SUBCELLULAR INFO]
+polygons      : cell nucleus 
+features      : rna NegControlProbe UnassignedCodeword NegControlCodeword 
+[AGGREGATE INFO]
+spatial locations ----------------
+[cell] raw
+[nucleus] raw</code></pre>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="xenium-1.html#cb274-1" tabindex="-1"></a><span class="fu">featType</span>(ex[[<span class="dv">2</span>]]) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;NegControlProbe&quot;</span>)</span>
+<span id="cb274-2"><a href="xenium-1.html#cb274-2" tabindex="-1"></a><span class="fu">featType</span>(ex[[<span class="dv">3</span>]]) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;NegControlCodeword&quot;</span>)</span>
+<span id="cb274-3"><a href="xenium-1.html#cb274-3" tabindex="-1"></a><span class="fu">featType</span>(ex[[<span class="dv">4</span>]]) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;UnassignedCodeword&quot;</span>)</span></code></pre></div>
+<p>Then we can just append them to the Giotto object.</p>
+<p>Here we set up a second object called <code>g2</code> since we will be using Giotto’s own aggregation method to generate the expression matrix later.</p>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="xenium-1.html#cb275-1" tabindex="-1"></a>g2 <span class="ot">&lt;-</span> g</span>
+<span id="cb275-2"><a href="xenium-1.html#cb275-2" tabindex="-1"></a><span class="co"># append the expression info</span></span>
+<span id="cb275-3"><a href="xenium-1.html#cb275-3" tabindex="-1"></a>g2 <span class="ot">&lt;-</span> <span class="fu">setGiotto</span>(g2, ex)</span>
+<span id="cb275-4"><a href="xenium-1.html#cb275-4" tabindex="-1"></a></span>
+<span id="cb275-5"><a href="xenium-1.html#cb275-5" tabindex="-1"></a><span class="co"># load cell metadata</span></span>
+<span id="cb275-6"><a href="xenium-1.html#cb275-6" tabindex="-1"></a>cx <span class="ot">&lt;-</span> x<span class="sc">$</span><span class="fu">load_cellmeta</span>()</span>
+<span id="cb275-7"><a href="xenium-1.html#cb275-7" tabindex="-1"></a>g2 <span class="ot">&lt;-</span> <span class="fu">setGiotto</span>(g2, cx)</span>
+<span id="cb275-8"><a href="xenium-1.html#cb275-8" tabindex="-1"></a></span>
+<span id="cb275-9"><a href="xenium-1.html#cb275-9" tabindex="-1"></a><span class="fu">force</span>(g2)</span></code></pre></div>
+<pre><code>An object of class giotto 
+&gt;Active spat_unit:  cell 
+&gt;Active feat_type:  rna 
+[SUBCELLULAR INFO]
+polygons      : cell nucleus 
+features      : rna NegControlProbe UnassignedCodeword NegControlCodeword 
+[AGGREGATE INFO]
+expression -----------------------
+[cell][rna] raw
+[cell][NegControlProbe] raw
+[cell][NegControlCodeword] raw
+[cell][UnassignedCodeword] raw
+spatial locations ----------------
+[cell] raw
+[nucleus] raw</code></pre>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="xenium-1.html#cb277-1" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g2,</span>
+<span id="cb277-2"><a href="xenium-1.html#cb277-2" tabindex="-1"></a>    <span class="co"># polygon shading params</span></span>
+<span id="cb277-3"><a href="xenium-1.html#cb277-3" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;cell_area&quot;</span>,</span>
+<span id="cb277-4"><a href="xenium-1.html#cb277-4" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb277-5"><a href="xenium-1.html#cb277-5" tabindex="-1"></a>    <span class="at">polygon_fill_gradient_style =</span> <span class="st">&quot;sequential&quot;</span>,</span>
+<span id="cb277-6"><a href="xenium-1.html#cb277-6" tabindex="-1"></a>    <span class="co"># polygon line params</span></span>
+<span id="cb277-7"><a href="xenium-1.html#cb277-7" tabindex="-1"></a>    <span class="at">polygon_color =</span> <span class="st">&quot;grey&quot;</span>,</span>
+<span id="cb277-8"><a href="xenium-1.html#cb277-8" tabindex="-1"></a>    <span class="at">polygon_line_size =</span> <span class="fl">0.1</span></span>
+<span id="cb277-9"><a href="xenium-1.html#cb277-9" tabindex="-1"></a>)</span>
+<span id="cb277-10"><a href="xenium-1.html#cb277-10" tabindex="-1"></a></span>
+<span id="cb277-11"><a href="xenium-1.html#cb277-11" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g2,</span>
+<span id="cb277-12"><a href="xenium-1.html#cb277-12" tabindex="-1"></a>    <span class="co"># polygon shading params</span></span>
+<span id="cb277-13"><a href="xenium-1.html#cb277-13" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;transcript_counts&quot;</span>,</span>
+<span id="cb277-14"><a href="xenium-1.html#cb277-14" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb277-15"><a href="xenium-1.html#cb277-15" tabindex="-1"></a>    <span class="at">polygon_fill_gradient_style =</span> <span class="st">&quot;sequential&quot;</span>,</span>
+<span id="cb277-16"><a href="xenium-1.html#cb277-16" tabindex="-1"></a>    <span class="co"># polygon line params</span></span>
+<span id="cb277-17"><a href="xenium-1.html#cb277-17" tabindex="-1"></a>    <span class="at">polygon_color =</span> <span class="st">&quot;grey&quot;</span>,</span>
+<span id="cb277-18"><a href="xenium-1.html#cb277-18" tabindex="-1"></a>    <span class="at">polygon_line_size =</span> <span class="fl">0.1</span></span>
+<span id="cb277-19"><a href="xenium-1.html#cb277-19" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-370"></span>
+<img src="img/02_session3/cmeta_plots.png" alt="Example plot using 10X metadata. Left is cell_area, right is transcript_counts" width="1291" />
+<p class="caption">
+Figure 10.4: Example plot using 10X metadata. Left is cell_area, right is transcript_counts
+</p>
+</div>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="xenium-1.html#cb278-1" tabindex="-1"></a><span class="fu">rm</span>(g2) <span class="co"># save space</span></span></code></pre></div>
+</div>
+</div>
+<div id="xenium-images" class="section level2 hasAnchor" number="10.5">
+<h2><span class="header-section-number">10.5</span> Xenium Images<a href="xenium-1.html#xenium-images" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Xenium outputs have several image outputs. For this dataset:</p>
+<ul>
+<li><code>morphology.ome.tif</code> is a z-stacked image of the DAPI staining, with z levels separated as pages within the <code>ome.tif</code>. In this dataset, only pages 6 and 7 are really in focus.</li>
+<li><code>morphology_focus</code> is a folder containing single-channel image(s), but with the original z information collapsed into a single in-focus layer. For all datasets, image 0000 will be DAPI staining, but if you have additional stains, such as the multimodal segmentation, they will also be here. These are the recommended immunofluorescence staining images to import.</li>
+<li><code>Xenium_V1_humanLung_Cancer_FFPE_he_image.ome.tif</code> is an added on (in this case H&amp;E) image with manual affine registration.</li>
+</ul>
+<div id="image-metadata" class="section level3 hasAnchor" number="10.5.1">
+<h3><span class="header-section-number">10.5.1</span> Image metadata<a href="xenium-1.html#image-metadata" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <code>morphology_focus</code> directory may contain multiple images, but to know more information, we have to check the <code>ome.tif</code> <code>xml</code> metadata. With a normal dataset, you can use:</p>
+<pre><code>`GiottoClass::ometif_metadata([filepath], node = &quot;Channel&quot;)`</code></pre>
+<p>on one of the <code>morphology_focus</code> images, but since the mini dataset images are pre-processed, there is only an exported <code>.xml</code> to explore. The output of the code chunk below is the same as that from calling <code>ometif_metadata()</code> and looking for the <code>Channel</code> node.</p>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="xenium-1.html#cb280-1" tabindex="-1"></a>img_xml_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(data_path, <span class="st">&quot;morphology_focus&quot;</span>, <span class="st">&quot;morphology_focus_0000.xml&quot;</span>)</span>
+<span id="cb280-2"><a href="xenium-1.html#cb280-2" tabindex="-1"></a>omemeta <span class="ot">&lt;-</span> xml2<span class="sc">::</span><span class="fu">read_xml</span>(img_xml_path)</span>
+<span id="cb280-3"><a href="xenium-1.html#cb280-3" tabindex="-1"></a>res <span class="ot">&lt;-</span> xml2<span class="sc">::</span><span class="fu">xml_find_all</span>(omemeta, <span class="st">&quot;//d1:Channel&quot;</span>, <span class="at">ns =</span> xml2<span class="sc">::</span><span class="fu">xml_ns</span>(omemeta))</span>
+<span id="cb280-4"><a href="xenium-1.html#cb280-4" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">Reduce</span>(rbind, xml2<span class="sc">::</span><span class="fu">xml_attrs</span>(res))</span>
+<span id="cb280-5"><a href="xenium-1.html#cb280-5" tabindex="-1"></a><span class="fu">rownames</span>(res) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb280-6"><a href="xenium-1.html#cb280-6" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(res)</span>
+<span id="cb280-7"><a href="xenium-1.html#cb280-7" tabindex="-1"></a><span class="fu">force</span>(res)</span></code></pre></div>
+<pre><code>ID                   Name SamplesPerPixel
+1 Channel:0                   DAPI               1
+2 Channel:1                    18S               1
+3 Channel:2 ATP1A1/CD45/E-Cadherin               1
+4 Channel:3      alphaSMA/Vimentin               1</code></pre>
+</div>
+<div id="image-loading" class="section level3 hasAnchor" number="10.5.2">
+<h3><span class="header-section-number">10.5.2</span> Image loading<a href="xenium-1.html#image-loading" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>morphology_focus</code> images need to be scaled by the micron scaling factor. Aligned images need to first be affine transformed then scaled. The micron scaling factor can be found in the json-like <code>experiment.xenium</code> file under <code>pixel_size</code> (0.2125 for this dataset).</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-373"></span>
+<img src="img/02_session3/img_orig_ext.png" alt="Spatial extent/bounds of transcripts (red), immunofluorescence morphology focus images (blue), H&amp;E aligned image (gold). Lower right shows the affine matrix for aligning the H&amp;E" width="80%" />
+<p class="caption">
+Figure 10.5: Spatial extent/bounds of transcripts (red), immunofluorescence morphology focus images (blue), H&amp;E aligned image (gold). Lower right shows the affine matrix for aligning the H&amp;E
+</p>
+</div>
+<p>These transforms are normally done automatically when using:</p>
+<pre><code># convenience function params
+load_images = list(
+img1 = &quot;[img_path1.tif]&quot;,
+img2 = &quot;[img_path2.tif]&quot;,
+img3 = &quot;...&quot;
+),
+load_aligned_images = list(
+aligned_img = c(
+&quot;[path to image.tif]&quot;,
+&quot;[path to magealignment.csv]&quot;
+)
+)
+
+# importer params
+x$load_image(path = &quot;[img_path1.tif]&quot;, name = &quot;img1&quot;)
+x$load_image(path = &quot;[img_path2.tif]&quot;, name = &quot;img2&quot;)
+...
+x$load_aligned_image(
+path = &quot;[path to image.tif]&quot;,
+imagealignment_path = &quot;[path to magealignment.csv]&quot;,
+name = &quot;aligned_img&quot;
+)</code></pre>
+<p>Specifically for the aligned image, there is also <code>read10xAffineImage()</code> which has similar parameters, but also asks for the micron scaling factor.</p>
+<p>But for the mini dataset, the images are pre-processed and can be directly added.</p>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="xenium-1.html#cb283-1" tabindex="-1"></a>img_paths <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb283-2"><a href="xenium-1.html#cb283-2" tabindex="-1"></a>    <span class="fu">sprintf</span>(<span class="st">&quot;data/02_session3/morphology_focus/morphology_focus_%04d.tif&quot;</span>, <span class="dv">0</span><span class="sc">:</span><span class="dv">3</span>),</span>
+<span id="cb283-3"><a href="xenium-1.html#cb283-3" tabindex="-1"></a>    <span class="st">&quot;data/02_session3/he_mini.tif&quot;</span></span>
+<span id="cb283-4"><a href="xenium-1.html#cb283-4" tabindex="-1"></a>)</span>
+<span id="cb283-5"><a href="xenium-1.html#cb283-5" tabindex="-1"></a></span>
+<span id="cb283-6"><a href="xenium-1.html#cb283-6" tabindex="-1"></a>img_list <span class="ot">&lt;-</span> <span class="fu">createGiottoLargeImageList</span>(</span>
+<span id="cb283-7"><a href="xenium-1.html#cb283-7" tabindex="-1"></a>    img_paths, </span>
+<span id="cb283-8"><a href="xenium-1.html#cb283-8" tabindex="-1"></a>    <span class="co"># naming is based on the channel metadata above</span></span>
+<span id="cb283-9"><a href="xenium-1.html#cb283-9" tabindex="-1"></a>    <span class="at">names =</span> <span class="fu">c</span>(<span class="st">&quot;DAPI&quot;</span>, <span class="st">&quot;18S&quot;</span>, <span class="st">&quot;ATP1A1/CD45/E-Cadherin&quot;</span>, <span class="st">&quot;alphaSMA/Vimentin&quot;</span>, <span class="st">&quot;HE&quot;</span>),</span>
+<span id="cb283-10"><a href="xenium-1.html#cb283-10" tabindex="-1"></a>    <span class="at">use_rast_ext =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb283-11"><a href="xenium-1.html#cb283-11" tabindex="-1"></a>    <span class="at">verbose =</span> <span class="cn">FALSE</span></span>
+<span id="cb283-12"><a href="xenium-1.html#cb283-12" tabindex="-1"></a>)</span>
+<span id="cb283-13"><a href="xenium-1.html#cb283-13" tabindex="-1"></a></span>
+<span id="cb283-14"><a href="xenium-1.html#cb283-14" tabindex="-1"></a><span class="co"># make some images brighter</span></span>
+<span id="cb283-15"><a href="xenium-1.html#cb283-15" tabindex="-1"></a>img_list[[<span class="dv">1</span>]]<span class="sc">@</span>max_window <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
+<span id="cb283-16"><a href="xenium-1.html#cb283-16" tabindex="-1"></a>img_list[[<span class="dv">2</span>]]<span class="sc">@</span>max_window <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
+<span id="cb283-17"><a href="xenium-1.html#cb283-17" tabindex="-1"></a>img_list[[<span class="dv">3</span>]]<span class="sc">@</span>max_window <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
+<span id="cb283-18"><a href="xenium-1.html#cb283-18" tabindex="-1"></a></span>
+<span id="cb283-19"><a href="xenium-1.html#cb283-19" tabindex="-1"></a><span class="co"># append images to gobject</span></span>
+<span id="cb283-20"><a href="xenium-1.html#cb283-20" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">setGiotto</span>(g, img_list)</span></code></pre></div>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="xenium-1.html#cb284-1" tabindex="-1"></a><span class="co"># example plots</span></span>
+<span id="cb284-2"><a href="xenium-1.html#cb284-2" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
+<span id="cb284-3"><a href="xenium-1.html#cb284-3" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb284-4"><a href="xenium-1.html#cb284-4" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;HE&quot;</span>,</span>
+<span id="cb284-5"><a href="xenium-1.html#cb284-5" tabindex="-1"></a>    <span class="at">polygon_feat_type =</span> <span class="st">&quot;cell&quot;</span>,</span>
+<span id="cb284-6"><a href="xenium-1.html#cb284-6" tabindex="-1"></a>    <span class="at">polygon_color =</span> <span class="st">&quot;cyan&quot;</span>,</span>
+<span id="cb284-7"><a href="xenium-1.html#cb284-7" tabindex="-1"></a>    <span class="at">polygon_line_size =</span> <span class="fl">0.1</span>,</span>
+<span id="cb284-8"><a href="xenium-1.html#cb284-8" tabindex="-1"></a>    <span class="at">polygon_alpha =</span> <span class="dv">0</span></span>
+<span id="cb284-9"><a href="xenium-1.html#cb284-9" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="xenium-1.html#cb285-1" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
+<span id="cb285-2"><a href="xenium-1.html#cb285-2" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb285-3"><a href="xenium-1.html#cb285-3" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;DAPI&quot;</span>,</span>
+<span id="cb285-4"><a href="xenium-1.html#cb285-4" tabindex="-1"></a>    <span class="at">polygon_feat_type =</span> <span class="st">&quot;nucleus&quot;</span>,</span>
+<span id="cb285-5"><a href="xenium-1.html#cb285-5" tabindex="-1"></a>    <span class="at">polygon_color =</span> <span class="st">&quot;cyan&quot;</span>,</span>
+<span id="cb285-6"><a href="xenium-1.html#cb285-6" tabindex="-1"></a>    <span class="at">polygon_line_size =</span> <span class="fl">0.1</span>,</span>
+<span id="cb285-7"><a href="xenium-1.html#cb285-7" tabindex="-1"></a>    <span class="at">polygon_alpha =</span> <span class="dv">0</span></span>
+<span id="cb285-8"><a href="xenium-1.html#cb285-8" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="xenium-1.html#cb286-1" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
+<span id="cb286-2"><a href="xenium-1.html#cb286-2" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb286-3"><a href="xenium-1.html#cb286-3" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;18S&quot;</span>,</span>
+<span id="cb286-4"><a href="xenium-1.html#cb286-4" tabindex="-1"></a>    <span class="at">polygon_feat_type =</span> <span class="st">&quot;cell&quot;</span>,</span>
+<span id="cb286-5"><a href="xenium-1.html#cb286-5" tabindex="-1"></a>    <span class="at">polygon_color =</span> <span class="st">&quot;cyan&quot;</span>,</span>
+<span id="cb286-6"><a href="xenium-1.html#cb286-6" tabindex="-1"></a>    <span class="at">polygon_line_size =</span> <span class="fl">0.1</span>,</span>
+<span id="cb286-7"><a href="xenium-1.html#cb286-7" tabindex="-1"></a>    <span class="at">polygon_alpha =</span> <span class="dv">0</span></span>
+<span id="cb286-8"><a href="xenium-1.html#cb286-8" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="xenium-1.html#cb287-1" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
+<span id="cb287-2"><a href="xenium-1.html#cb287-2" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb287-3"><a href="xenium-1.html#cb287-3" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;ATP1A1/CD45/E-Cadherin&quot;</span>,</span>
+<span id="cb287-4"><a href="xenium-1.html#cb287-4" tabindex="-1"></a>    <span class="at">polygon_feat_type =</span> <span class="st">&quot;nucleus&quot;</span>,</span>
+<span id="cb287-5"><a href="xenium-1.html#cb287-5" tabindex="-1"></a>    <span class="at">polygon_color =</span> <span class="st">&quot;cyan&quot;</span>,</span>
+<span id="cb287-6"><a href="xenium-1.html#cb287-6" tabindex="-1"></a>    <span class="at">polygon_line_size =</span> <span class="fl">0.1</span>,</span>
+<span id="cb287-7"><a href="xenium-1.html#cb287-7" tabindex="-1"></a>    <span class="at">polygon_alpha =</span> <span class="dv">0</span></span>
+<span id="cb287-8"><a href="xenium-1.html#cb287-8" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-379"></span>
+<img src="img/02_session3/imgplots.png" alt="H&amp;E and Cell polys (top left), DAPI and nuclear polys (top right), 18S and cell polys (lower left), ATP1A1/CD45/E-Cadherin and nuclear polys (lower right)" width="1295" />
+<p class="caption">
+Figure 10.6: H&amp;E and Cell polys (top left), DAPI and nuclear polys (top right), 18S and cell polys (lower left), ATP1A1/CD45/E-Cadherin and nuclear polys (lower right)
+</p>
+</div>
+</div>
+</div>
+<div id="spatial-aggregation" class="section level2 hasAnchor" number="10.6">
+<h2><span class="header-section-number">10.6</span> Spatial aggregation<a href="xenium-1.html#spatial-aggregation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>First calculate the <code>feat_info</code> “rna” transcripts overlapped by the <code>spatial_info</code> “cell” polygons with <code>calculateOverlap()</code>. Then, the overlaps information (relationships between points and polygons that overlap them) gets converted into a count matrix with <code>overlapToMatrix()</code>.</p>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="xenium-1.html#cb288-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">calculateOverlap</span>(g,</span>
+<span id="cb288-2"><a href="xenium-1.html#cb288-2" tabindex="-1"></a>    <span class="at">spatial_info =</span> <span class="st">&quot;cell&quot;</span>,</span>
+<span id="cb288-3"><a href="xenium-1.html#cb288-3" tabindex="-1"></a>    <span class="at">feat_info =</span> <span class="st">&quot;rna&quot;</span></span>
+<span id="cb288-4"><a href="xenium-1.html#cb288-4" tabindex="-1"></a>)</span>
+<span id="cb288-5"><a href="xenium-1.html#cb288-5" tabindex="-1"></a></span>
+<span id="cb288-6"><a href="xenium-1.html#cb288-6" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">overlapToMatrix</span>(g)</span></code></pre></div>
+</div>
+<div id="aggregate-analyses-workflow" class="section level2 hasAnchor" number="10.7">
+<h2><span class="header-section-number">10.7</span> Aggregate analyses workflow<a href="xenium-1.html#aggregate-analyses-workflow" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="transcripts-per-cell" class="section level3 hasAnchor" number="10.7.1">
+<h3><span class="header-section-number">10.7.1</span> Transcripts per cell<a href="xenium-1.html#transcripts-per-cell" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="xenium-1.html#cb289-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">addStatistics</span>(g) <span class="co"># this is going to fail because it looks for normalized</span></span>
+<span id="cb289-2"><a href="xenium-1.html#cb289-2" tabindex="-1"></a></span>
+<span id="cb289-3"><a href="xenium-1.html#cb289-3" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">addStatistics</span>(g, <span class="at">expression_values =</span> <span class="st">&quot;raw&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="xenium-1.html#cb290-1" tabindex="-1"></a>cell_stats <span class="ot">&lt;-</span> <span class="fu">pDataDT</span>(g)</span>
+<span id="cb290-2"><a href="xenium-1.html#cb290-2" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(cell_stats, ggplot2<span class="sc">::</span><span class="fu">aes</span>(total_expr)) <span class="sc">+</span></span>
+<span id="cb290-3"><a href="xenium-1.html#cb290-3" tabindex="-1"></a>    ggplot2<span class="sc">::</span><span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-383"></span>
+<img src="img/02_session3/count_hist.png" alt="Histogram of detections per cell" width="80%" />
+<p class="caption">
+Figure 10.7: Histogram of detections per cell
+</p>
+</div>
+</div>
+<div id="filtering-1" class="section level3 hasAnchor" number="10.7.2">
+<h3><span class="header-section-number">10.7.2</span> Filtering<a href="xenium-1.html#filtering-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="xenium-1.html#cb291-1" tabindex="-1"></a><span class="co"># very permissive filtering. Mainly for removing 0 values</span></span>
+<span id="cb291-2"><a href="xenium-1.html#cb291-2" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">filterGiotto</span>(g,</span>
+<span id="cb291-3"><a href="xenium-1.html#cb291-3" tabindex="-1"></a>    <span class="at">expression_threshold =</span> <span class="dv">1</span>,</span>
+<span id="cb291-4"><a href="xenium-1.html#cb291-4" tabindex="-1"></a>    <span class="at">feat_det_in_min_cells =</span> <span class="dv">1</span>,</span>
+<span id="cb291-5"><a href="xenium-1.html#cb291-5" tabindex="-1"></a>    <span class="at">min_det_feats_per_cell =</span> <span class="dv">5</span></span>
+<span id="cb291-6"><a href="xenium-1.html#cb291-6" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>Feature type:  rna 
+Number of cells removed:  143  out of  7655 
+Number of feats removed:  0  out of  377 </code></pre>
+</div>
+<div id="normalization-1" class="section level3 hasAnchor" number="10.7.3">
+<h3><span class="header-section-number">10.7.3</span> Normalization<a href="xenium-1.html#normalization-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="xenium-1.html#cb293-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">normalizeGiotto</span>(g)</span>
+<span id="cb293-2"><a href="xenium-1.html#cb293-2" tabindex="-1"></a><span class="co"># overwrite original results with those for normalized values</span></span>
+<span id="cb293-3"><a href="xenium-1.html#cb293-3" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">addStatistics</span>(g)</span></code></pre></div>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="xenium-1.html#cb294-1" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
+<span id="cb294-2"><a href="xenium-1.html#cb294-2" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;nr_feats&quot;</span>,</span>
+<span id="cb294-3"><a href="xenium-1.html#cb294-3" tabindex="-1"></a>    <span class="at">polygon_fill_gradient_style =</span> <span class="st">&quot;sequential&quot;</span>,</span>
+<span id="cb294-4"><a href="xenium-1.html#cb294-4" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">FALSE</span></span>
+<span id="cb294-5"><a href="xenium-1.html#cb294-5" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="xenium-1.html#cb295-1" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
+<span id="cb295-2"><a href="xenium-1.html#cb295-2" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;total_expr&quot;</span>,</span>
+<span id="cb295-3"><a href="xenium-1.html#cb295-3" tabindex="-1"></a>    <span class="at">polygon_fill_gradient_style =</span> <span class="st">&quot;sequential&quot;</span>,</span>
+<span id="cb295-4"><a href="xenium-1.html#cb295-4" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">FALSE</span></span>
+<span id="cb295-5"><a href="xenium-1.html#cb295-5" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-388"></span>
+<img src="img/02_session3/stats_plot.png" alt="nr_feats - Number of different gene species detected per cell (left), total_expr - total detections per cell (right)" width="1340" />
+<p class="caption">
+Figure 10.8: nr_feats - Number of different gene species detected per cell (left), total_expr - total detections per cell (right)
+</p>
+</div>
+<p>When there are a lot of features, we would also select only the interesting highly variable features so that downstream dimension reduction has more meaningful separation. Here we skip HVF detection since there are only 377 genes.</p>
+</div>
+<div id="dimension-reduction-1" class="section level3 hasAnchor" number="10.7.4">
+<h3><span class="header-section-number">10.7.4</span> Dimension Reduction<a href="xenium-1.html#dimension-reduction-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Dimensional reduction of expression space to visualize expressional differences between cells and help with clustering.</p>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="xenium-1.html#cb296-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">runPCA</span>(g, <span class="at">feats_to_use =</span> <span class="cn">NULL</span>)</span>
+<span id="cb296-2"><a href="xenium-1.html#cb296-2" tabindex="-1"></a><span class="co"># feats_to_use = NULL since there are no HVFs calculated. Use all genes.</span></span>
+<span id="cb296-3"><a href="xenium-1.html#cb296-3" tabindex="-1"></a></span>
+<span id="cb296-4"><a href="xenium-1.html#cb296-4" tabindex="-1"></a><span class="fu">screePlot</span>(g, <span class="at">ncp =</span> <span class="dv">30</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-390"></span>
+<img src="img/02_session3/screeplot.png" alt="Plot of variance explained in the first 30 out of 100 principle components calculated" width="60%" />
+<p class="caption">
+Figure 10.9: Plot of variance explained in the first 30 out of 100 principle components calculated
+</p>
+</div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="xenium-1.html#cb297-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">runUMAP</span>(g, </span>
+<span id="cb297-2"><a href="xenium-1.html#cb297-2" tabindex="-1"></a>    <span class="at">dimensions_to_use =</span> <span class="fu">seq</span>(<span class="dv">15</span>), </span>
+<span id="cb297-3"><a href="xenium-1.html#cb297-3" tabindex="-1"></a>    <span class="at">n_neighbors =</span> <span class="dv">40</span> <span class="co"># default</span></span>
+<span id="cb297-4"><a href="xenium-1.html#cb297-4" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="xenium-1.html#cb298-1" tabindex="-1"></a><span class="fu">plotPCA</span>(g)</span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="xenium-1.html#cb299-1" tabindex="-1"></a><span class="fu">plotUMAP</span>(g)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-394"></span>
+<img src="img/02_session3/dimplots.png" alt="PCA plot showing the first 2 PCs (left), UMAP generated from first 15 PCs (right)" width="886" />
+<p class="caption">
+Figure 10.10: PCA plot showing the first 2 PCs (left), UMAP generated from first 15 PCs (right)
+</p>
+</div>
+</div>
+<div id="clustering-1" class="section level3 hasAnchor" number="10.7.5">
+<h3><span class="header-section-number">10.7.5</span> Clustering<a href="xenium-1.html#clustering-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="xenium-1.html#cb300-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">createNearestNetwork</span>(g,</span>
+<span id="cb300-2"><a href="xenium-1.html#cb300-2" tabindex="-1"></a>    <span class="at">dimensions_to_use =</span> <span class="fu">seq</span>(<span class="dv">15</span>), </span>
+<span id="cb300-3"><a href="xenium-1.html#cb300-3" tabindex="-1"></a>    <span class="at">k =</span> <span class="dv">40</span></span>
+<span id="cb300-4"><a href="xenium-1.html#cb300-4" tabindex="-1"></a>)</span>
+<span id="cb300-5"><a href="xenium-1.html#cb300-5" tabindex="-1"></a></span>
+<span id="cb300-6"><a href="xenium-1.html#cb300-6" tabindex="-1"></a><span class="co"># takes roughly 1 min to run</span></span>
+<span id="cb300-7"><a href="xenium-1.html#cb300-7" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">doLeidenCluster</span>(g)</span></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="xenium-1.html#cb301-1" tabindex="-1"></a><span class="fu">plotPCA_3D</span>(g, </span>
+<span id="cb301-2"><a href="xenium-1.html#cb301-2" tabindex="-1"></a>    <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>, </span>
+<span id="cb301-3"><a href="xenium-1.html#cb301-3" tabindex="-1"></a>    <span class="at">point_size =</span> <span class="dv">1</span></span>
+<span id="cb301-4"><a href="xenium-1.html#cb301-4" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="xenium-1.html#cb302-1" tabindex="-1"></a><span class="fu">plotUMAP</span>(g, </span>
+<span id="cb302-2"><a href="xenium-1.html#cb302-2" tabindex="-1"></a>    <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>, </span>
+<span id="cb302-3"><a href="xenium-1.html#cb302-3" tabindex="-1"></a>    <span class="at">point_size =</span> <span class="fl">0.1</span>, </span>
+<span id="cb302-4"><a href="xenium-1.html#cb302-4" tabindex="-1"></a>    <span class="at">point_shape =</span> <span class="st">&quot;no_border&quot;</span></span>
+<span id="cb302-5"><a href="xenium-1.html#cb302-5" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-398"></span>
+<img src="img/02_session3/clustered_dimplots.png" alt="3D plot showing first PCs with leiden clustering annotations (left), UMAP plot showing leiden clustering results (right)" width="1048" />
+<p class="caption">
+Figure 10.11: 3D plot showing first PCs with leiden clustering annotations (left), UMAP plot showing leiden clustering results (right)
+</p>
+</div>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="xenium-1.html#cb303-1" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
+<span id="cb303-2"><a href="xenium-1.html#cb303-2" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
+<span id="cb303-3"><a href="xenium-1.html#cb303-3" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb303-4"><a href="xenium-1.html#cb303-4" tabindex="-1"></a>    <span class="at">polygon_alpha =</span> <span class="dv">1</span>,</span>
+<span id="cb303-5"><a href="xenium-1.html#cb303-5" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb303-6"><a href="xenium-1.html#cb303-6" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;HE&quot;</span></span>
+<span id="cb303-7"><a href="xenium-1.html#cb303-7" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-400"></span>
+<img src="img/02_session3/leiden_spat.png" alt="Spatial plot with leiden clustering annotations." width="926" />
+<p class="caption">
+Figure 10.12: Spatial plot with leiden clustering annotations.
+</p>
+</div>
+</div>
+</div>
+<div id="niche-clustering-1" class="section level2 hasAnchor" number="10.8">
+<h2><span class="header-section-number">10.8</span> Niche clustering<a href="xenium-1.html#niche-clustering-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Building on top of these leiden annotations, we can define spatial niche signatures based on which leiden types are often found together.</p>
+<div id="spatial-network" class="section level3 hasAnchor" number="10.8.1">
+<h3><span class="header-section-number">10.8.1</span> Spatial network<a href="xenium-1.html#spatial-network" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>First a spatial network must be generated so that spatial relationships between cells can be understood.</p>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="xenium-1.html#cb304-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">createSpatialNetwork</span>(g,</span>
+<span id="cb304-2"><a href="xenium-1.html#cb304-2" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">&quot;Delaunay&quot;</span></span>
+<span id="cb304-3"><a href="xenium-1.html#cb304-3" tabindex="-1"></a>)</span>
+<span id="cb304-4"><a href="xenium-1.html#cb304-4" tabindex="-1"></a></span>
+<span id="cb304-5"><a href="xenium-1.html#cb304-5" tabindex="-1"></a><span class="fu">spatPlot2D</span>(g, </span>
+<span id="cb304-6"><a href="xenium-1.html#cb304-6" tabindex="-1"></a>    <span class="at">point_shape =</span> <span class="st">&quot;no_border&quot;</span>, </span>
+<span id="cb304-7"><a href="xenium-1.html#cb304-7" tabindex="-1"></a>    <span class="at">show_network =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb304-8"><a href="xenium-1.html#cb304-8" tabindex="-1"></a>    <span class="at">point_size =</span> <span class="fl">0.1</span>,</span>
+<span id="cb304-9"><a href="xenium-1.html#cb304-9" tabindex="-1"></a>    <span class="at">point_alpha =</span> <span class="fl">0.5</span>,</span>
+<span id="cb304-10"><a href="xenium-1.html#cb304-10" tabindex="-1"></a>    <span class="at">network_color =</span> <span class="st">&quot;grey&quot;</span></span>
+<span id="cb304-11"><a href="xenium-1.html#cb304-11" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-402"></span>
+<img src="img/02_session3/spatnet.png" alt="Delaunay spatial network`" width="1059" />
+<p class="caption">
+Figure 10.13: Delaunay spatial network`
+</p>
+</div>
+</div>
+<div id="niche-calculation" class="section level3 hasAnchor" number="10.8.2">
+<h3><span class="header-section-number">10.8.2</span> Niche calculation<a href="xenium-1.html#niche-calculation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Calculate a proportion table for a cell metadata table for all the spatial neighbors of each cell. This means that with each cell established as the center of its local niche, the enrichment of each leiden cluster label is found for that local niche.
+The results are stored as a new spatial enrichment entry called “leiden_niche”</p>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="xenium-1.html#cb305-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">calculateSpatCellMetadataProportions</span>(g,</span>
+<span id="cb305-2"><a href="xenium-1.html#cb305-2" tabindex="-1"></a>    <span class="at">spat_network =</span> <span class="st">&quot;Delaunay_network&quot;</span>,</span>
+<span id="cb305-3"><a href="xenium-1.html#cb305-3" tabindex="-1"></a>    <span class="at">metadata_column =</span> <span class="st">&quot;leiden_clus&quot;</span>, </span>
+<span id="cb305-4"><a href="xenium-1.html#cb305-4" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;leiden_niche&quot;</span></span>
+<span id="cb305-5"><a href="xenium-1.html#cb305-5" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div id="k-means-clustering-based-on-niche-signature" class="section level3 hasAnchor" number="10.8.3">
+<h3><span class="header-section-number">10.8.3</span> k-means clustering based on niche signature<a href="xenium-1.html#k-means-clustering-based-on-niche-signature" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="xenium-1.html#cb306-1" tabindex="-1"></a><span class="co"># retrieve the niche info</span></span>
+<span id="cb306-2"><a href="xenium-1.html#cb306-2" tabindex="-1"></a>prop_table <span class="ot">&lt;-</span> <span class="fu">getSpatialEnrichment</span>(g, </span>
+<span id="cb306-3"><a href="xenium-1.html#cb306-3" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">&quot;leiden_niche&quot;</span>, </span>
+<span id="cb306-4"><a href="xenium-1.html#cb306-4" tabindex="-1"></a>    <span class="at">output =</span> <span class="st">&quot;data.table&quot;</span>)</span>
+<span id="cb306-5"><a href="xenium-1.html#cb306-5" tabindex="-1"></a></span>
+<span id="cb306-6"><a href="xenium-1.html#cb306-6" tabindex="-1"></a><span class="co"># convert to matrix</span></span>
+<span id="cb306-7"><a href="xenium-1.html#cb306-7" tabindex="-1"></a>prop_matrix <span class="ot">&lt;-</span> GiottoUtils<span class="sc">::</span><span class="fu">dt_to_matrix</span>(prop_table)</span>
+<span id="cb306-8"><a href="xenium-1.html#cb306-8" tabindex="-1"></a></span>
+<span id="cb306-9"><a href="xenium-1.html#cb306-9" tabindex="-1"></a><span class="co"># perform kmeans clustering</span></span>
+<span id="cb306-10"><a href="xenium-1.html#cb306-10" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1234</span>) <span class="co"># make kmeans clustering reproducible</span></span>
+<span id="cb306-11"><a href="xenium-1.html#cb306-11" tabindex="-1"></a></span>
+<span id="cb306-12"><a href="xenium-1.html#cb306-12" tabindex="-1"></a>prop_kmeans <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(</span>
+<span id="cb306-13"><a href="xenium-1.html#cb306-13" tabindex="-1"></a>    <span class="at">x =</span> prop_matrix, </span>
+<span id="cb306-14"><a href="xenium-1.html#cb306-14" tabindex="-1"></a>    <span class="at">centers =</span> <span class="dv">7</span>, <span class="co"># controls how many clusters will be formed</span></span>
+<span id="cb306-15"><a href="xenium-1.html#cb306-15" tabindex="-1"></a>    <span class="at">iter.max =</span> <span class="dv">1000</span>,</span>
+<span id="cb306-16"><a href="xenium-1.html#cb306-16" tabindex="-1"></a>    <span class="at">nstart =</span> <span class="dv">100</span></span>
+<span id="cb306-17"><a href="xenium-1.html#cb306-17" tabindex="-1"></a>)</span>
+<span id="cb306-18"><a href="xenium-1.html#cb306-18" tabindex="-1"></a></span>
+<span id="cb306-19"><a href="xenium-1.html#cb306-19" tabindex="-1"></a>prop_kmeansDT <span class="ot">=</span> data.table<span class="sc">::</span><span class="fu">data.table</span>(</span>
+<span id="cb306-20"><a href="xenium-1.html#cb306-20" tabindex="-1"></a>    <span class="at">cell_ID =</span> <span class="fu">names</span>(prop_kmeans<span class="sc">$</span>cluster),</span>
+<span id="cb306-21"><a href="xenium-1.html#cb306-21" tabindex="-1"></a>    <span class="at">niche =</span> prop_kmeans<span class="sc">$</span>cluster</span>
+<span id="cb306-22"><a href="xenium-1.html#cb306-22" tabindex="-1"></a>)</span>
+<span id="cb306-23"><a href="xenium-1.html#cb306-23" tabindex="-1"></a></span>
+<span id="cb306-24"><a href="xenium-1.html#cb306-24" tabindex="-1"></a><span class="co"># return kmeans clustering on niche to gobject</span></span>
+<span id="cb306-25"><a href="xenium-1.html#cb306-25" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">addCellMetadata</span>(g, </span>
+<span id="cb306-26"><a href="xenium-1.html#cb306-26" tabindex="-1"></a>    <span class="at">new_metadata =</span> prop_kmeansDT, </span>
+<span id="cb306-27"><a href="xenium-1.html#cb306-27" tabindex="-1"></a>    <span class="at">by_column =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb306-28"><a href="xenium-1.html#cb306-28" tabindex="-1"></a>    <span class="at">column_cell_ID =</span> <span class="st">&quot;cell_ID&quot;</span></span>
+<span id="cb306-29"><a href="xenium-1.html#cb306-29" tabindex="-1"></a>)</span>
+<span id="cb306-30"><a href="xenium-1.html#cb306-30" tabindex="-1"></a></span>
+<span id="cb306-31"><a href="xenium-1.html#cb306-31" tabindex="-1"></a><span class="co"># visualize niches</span></span>
+<span id="cb306-32"><a href="xenium-1.html#cb306-32" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
+<span id="cb306-33"><a href="xenium-1.html#cb306-33" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb306-34"><a href="xenium-1.html#cb306-34" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;HE&quot;</span>,</span>
+<span id="cb306-35"><a href="xenium-1.html#cb306-35" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;niche&quot;</span>,</span>
+<span id="cb306-36"><a href="xenium-1.html#cb306-36" tabindex="-1"></a>    <span class="co"># polygon_fill_code = getColors(&quot;Accent&quot;, 8),</span></span>
+<span id="cb306-37"><a href="xenium-1.html#cb306-37" tabindex="-1"></a>    <span class="at">polygon_alpha =</span> <span class="dv">1</span>,</span>
+<span id="cb306-38"><a href="xenium-1.html#cb306-38" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">TRUE</span></span>
+<span id="cb306-39"><a href="xenium-1.html#cb306-39" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="xenium-1.html#cb307-1" tabindex="-1"></a><span class="co"># visualize niche makeup</span></span>
+<span id="cb307-2"><a href="xenium-1.html#cb307-2" tabindex="-1"></a>cellmeta <span class="ot">&lt;-</span> <span class="fu">pDataDT</span>(g)</span>
+<span id="cb307-3"><a href="xenium-1.html#cb307-3" tabindex="-1"></a></span>
+<span id="cb307-4"><a href="xenium-1.html#cb307-4" tabindex="-1"></a>ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(</span>
+<span id="cb307-5"><a href="xenium-1.html#cb307-5" tabindex="-1"></a>  cellmeta, ggplot2<span class="sc">::</span><span class="fu">aes</span>(<span class="at">fill =</span> <span class="fu">as.character</span>(leiden_clus), </span>
+<span id="cb307-6"><a href="xenium-1.html#cb307-6" tabindex="-1"></a>                         <span class="at">y =</span> <span class="dv">1</span>, </span>
+<span id="cb307-7"><a href="xenium-1.html#cb307-7" tabindex="-1"></a>                         <span class="at">x =</span> <span class="fu">as.character</span>(niche))) <span class="sc">+</span> </span>
+<span id="cb307-8"><a href="xenium-1.html#cb307-8" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">&quot;fill&quot;</span>, <span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb307-9"><a href="xenium-1.html#cb307-9" tabindex="-1"></a>  ggplot2<span class="sc">::</span><span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(</span>
+<span id="cb307-10"><a href="xenium-1.html#cb307-10" tabindex="-1"></a>    <span class="st">&quot;#E7298A&quot;</span>, <span class="st">&quot;#FFED6F&quot;</span>, <span class="st">&quot;#80B1D3&quot;</span>, <span class="st">&quot;#E41A1C&quot;</span>, <span class="st">&quot;#377EB8&quot;</span>, <span class="st">&quot;#A65628&quot;</span>, </span>
+<span id="cb307-11"><a href="xenium-1.html#cb307-11" tabindex="-1"></a>    <span class="st">&quot;#4DAF4A&quot;</span>, <span class="st">&quot;#D9D9D9&quot;</span>, <span class="st">&quot;#FF7F00&quot;</span>, <span class="st">&quot;#BC80BD&quot;</span>, <span class="st">&quot;#666666&quot;</span>, <span class="st">&quot;#B3DE69&quot;</span>)</span>
+<span id="cb307-12"><a href="xenium-1.html#cb307-12" tabindex="-1"></a>  )</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-406"></span>
+<img src="img/02_session3/niches_spat.png" alt="Leiden annotation-based spatial niches" width="926" />
+<p class="caption">
+Figure 10.14: Leiden annotation-based spatial niches
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-407"></span>
+<img src="img/02_session3/niches_bar.png" alt="Stacked barplot of leiden annotation composition by niche. Coloring is matched to that of the previous spatial plot with leiden clustering annotations" width="926" />
+<p class="caption">
+Figure 10.15: Stacked barplot of leiden annotation composition by niche. Coloring is matched to that of the previous spatial plot with leiden clustering annotations
+</p>
+</div>
+</div>
+</div>
+<div id="cell-proximity-enrichment" class="section level2 hasAnchor" number="10.9">
+<h2><span class="header-section-number">10.9</span> Cell proximity enrichment<a href="xenium-1.html#cell-proximity-enrichment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Using a spatial network, determine if there is an enrichment or depletion between annotation types by calculating the observed over the expected frequency of interactions.</p>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="xenium-1.html#cb308-1" tabindex="-1"></a><span class="co"># uses a lot of memory</span></span>
+<span id="cb308-2"><a href="xenium-1.html#cb308-2" tabindex="-1"></a>leiden_prox <span class="ot">&lt;-</span> <span class="fu">cellProximityEnrichment</span>(g,</span>
+<span id="cb308-3"><a href="xenium-1.html#cb308-3" tabindex="-1"></a>    <span class="at">cluster_column =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
+<span id="cb308-4"><a href="xenium-1.html#cb308-4" tabindex="-1"></a>    <span class="at">spatial_network_name =</span> <span class="st">&quot;Delaunay_network&quot;</span>,</span>
+<span id="cb308-5"><a href="xenium-1.html#cb308-5" tabindex="-1"></a>    <span class="at">adjust_method =</span> <span class="st">&quot;fdr&quot;</span>,</span>
+<span id="cb308-6"><a href="xenium-1.html#cb308-6" tabindex="-1"></a>    <span class="at">number_of_simulations =</span> <span class="dv">2000</span></span>
+<span id="cb308-7"><a href="xenium-1.html#cb308-7" tabindex="-1"></a>)</span>
+<span id="cb308-8"><a href="xenium-1.html#cb308-8" tabindex="-1"></a></span>
+<span id="cb308-9"><a href="xenium-1.html#cb308-9" tabindex="-1"></a><span class="fu">cellProximityBarplot</span>(g,</span>
+<span id="cb308-10"><a href="xenium-1.html#cb308-10" tabindex="-1"></a>    <span class="at">CPscore =</span> leiden_prox,</span>
+<span id="cb308-11"><a href="xenium-1.html#cb308-11" tabindex="-1"></a>    <span class="at">min_orig_ints =</span> <span class="dv">5</span>, <span class="co"># minimum original cell-cell interactions</span></span>
+<span id="cb308-12"><a href="xenium-1.html#cb308-12" tabindex="-1"></a>    <span class="at">min_sim_ints =</span> <span class="dv">5</span> <span class="co"># minimum simulated cell-cell interactions</span></span>
+<span id="cb308-13"><a href="xenium-1.html#cb308-13" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-409"></span>
+<img src="img/02_session3/cc_prox.png" alt="Cell-cell interaction enrichments and depletions (left). Number of interactions of each type found (right)" width="926" />
+<p class="caption">
+Figure 10.16: Cell-cell interaction enrichments and depletions (left). Number of interactions of each type found (right)
+</p>
+</div>
+<p>Most enrichments are self-self interactions, which is expected. However, 6–8 and 2–9 stand out as being hetero interactions that are enriched with a large number of interactions. We can take a closer look by plotting these annotation pairs with colors that stand out.</p>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="xenium-1.html#cb309-1" tabindex="-1"></a><span class="co"># set up colors</span></span>
+<span id="cb309-2"><a href="xenium-1.html#cb309-2" tabindex="-1"></a>other_cell_color <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">&quot;grey&quot;</span>, <span class="dv">12</span>)</span>
+<span id="cb309-3"><a href="xenium-1.html#cb309-3" tabindex="-1"></a>int_6_8 <span class="ot">&lt;-</span> int_2_9 <span class="ot">&lt;-</span> other_cell_color</span>
+<span id="cb309-4"><a href="xenium-1.html#cb309-4" tabindex="-1"></a>int_6_8[<span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">8</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;orange&quot;</span>, <span class="st">&quot;cornflowerblue&quot;</span>)</span>
+<span id="cb309-5"><a href="xenium-1.html#cb309-5" tabindex="-1"></a>int_2_9[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">9</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;orange&quot;</span>, <span class="st">&quot;cornflowerblue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="xenium-1.html#cb310-1" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
+<span id="cb310-2"><a href="xenium-1.html#cb310-2" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
+<span id="cb310-3"><a href="xenium-1.html#cb310-3" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb310-4"><a href="xenium-1.html#cb310-4" tabindex="-1"></a>    <span class="at">polygon_fill_code =</span> int_6_8,</span>
+<span id="cb310-5"><a href="xenium-1.html#cb310-5" tabindex="-1"></a>    <span class="at">polygon_line_size =</span> <span class="fl">0.1</span>,</span>
+<span id="cb310-6"><a href="xenium-1.html#cb310-6" tabindex="-1"></a>    <span class="at">polygon_alpha =</span> <span class="dv">1</span>,</span>
+<span id="cb310-7"><a href="xenium-1.html#cb310-7" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb310-8"><a href="xenium-1.html#cb310-8" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;HE&quot;</span></span>
+<span id="cb310-9"><a href="xenium-1.html#cb310-9" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="xenium-1.html#cb311-1" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
+<span id="cb311-2"><a href="xenium-1.html#cb311-2" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
+<span id="cb311-3"><a href="xenium-1.html#cb311-3" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb311-4"><a href="xenium-1.html#cb311-4" tabindex="-1"></a>    <span class="at">polygon_fill_code =</span> int_2_9,</span>
+<span id="cb311-5"><a href="xenium-1.html#cb311-5" tabindex="-1"></a>    <span class="at">polygon_line_size =</span> <span class="fl">0.1</span>,</span>
+<span id="cb311-6"><a href="xenium-1.html#cb311-6" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb311-7"><a href="xenium-1.html#cb311-7" tabindex="-1"></a>    <span class="at">polygon_alpha =</span> <span class="dv">1</span>,</span>
+<span id="cb311-8"><a href="xenium-1.html#cb311-8" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;HE&quot;</span></span>
+<span id="cb311-9"><a href="xenium-1.html#cb311-9" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-413"></span>
+<img src="img/02_session3/cc_enrich1.png" alt="Spatial plot of enriched leiden annotation 6 to 8 interactions" width="926" />
+<p class="caption">
+Figure 10.17: Spatial plot of enriched leiden annotation 6 to 8 interactions
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-414"></span>
+<img src="img/02_session3/cc_enrich2.png" alt="Spatial plot of enriched leiden annotation 2 to 9 interactions" width="926" />
+<p class="caption">
+Figure 10.18: Spatial plot of enriched leiden annotation 2 to 9 interactions
+</p>
+</div>
+</div>
+<div id="pseudovisium" class="section level2 hasAnchor" number="10.10">
+<h2><span class="header-section-number">10.10</span> Pseudovisium<a href="xenium-1.html#pseudovisium" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Another thing we can do is create a “pseudovisium” dataset by tessellating across this dataset using the same layout and resolution as a Visium capture array.</p>
+<p><code>makePseudoVisium</code> generates a Visium array of circular polygons across the spatial extent provided.</p>
+<p>Here we use <code>ext()</code> with the <code>prefer</code> arg pointing to the polygon and points data and <code>all_data = TRUE</code>, meaning that the combined spatial extent of those two data types will be returned, giving a good measure of where all the data in the object is at the moment.</p>
+<p><code>micron_size = 1</code> since the Xenium data is already scaled to microns.</p>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="xenium-1.html#cb312-1" tabindex="-1"></a>pvis <span class="ot">&lt;-</span> <span class="fu">makePseudoVisium</span>(</span>
+<span id="cb312-2"><a href="xenium-1.html#cb312-2" tabindex="-1"></a>    <span class="at">extent =</span> <span class="fu">ext</span>(g, <span class="at">prefer =</span> <span class="fu">c</span>(<span class="st">&quot;polygon&quot;</span>, <span class="st">&quot;points&quot;</span>), <span class="at">all_data =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb312-3"><a href="xenium-1.html#cb312-3" tabindex="-1"></a>     <span class="co"># all_data = TRUE is the default</span></span>
+<span id="cb312-4"><a href="xenium-1.html#cb312-4" tabindex="-1"></a>    <span class="at">micron_size =</span> <span class="dv">1</span></span>
+<span id="cb312-5"><a href="xenium-1.html#cb312-5" tabindex="-1"></a>)</span>
+<span id="cb312-6"><a href="xenium-1.html#cb312-6" tabindex="-1"></a></span>
+<span id="cb312-7"><a href="xenium-1.html#cb312-7" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">setGiotto</span>(g, pvis)</span>
+<span id="cb312-8"><a href="xenium-1.html#cb312-8" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">addSpatialCentroidLocations</span>(g, <span class="at">poly_info =</span> <span class="st">&quot;pseudo_visium&quot;</span>)</span>
+<span id="cb312-9"><a href="xenium-1.html#cb312-9" tabindex="-1"></a></span>
+<span id="cb312-10"><a href="xenium-1.html#cb312-10" tabindex="-1"></a><span class="fu">plot</span>(pvis)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-416"></span>
+<img src="img/02_session3/pvis_poly.png" alt="Pseudovisium spot geometries generated by `makePseudoVisium()`" width="60%" />
+<p class="caption">
+Figure 10.19: Pseudovisium spot geometries generated by <code>makePseudoVisium()</code>
+</p>
+</div>
+<div id="pseudovisium-aggregation-and-workflow" class="section level3 hasAnchor" number="10.10.1">
+<h3><span class="header-section-number">10.10.1</span> Pseudovisium aggregation and workflow<a href="xenium-1.html#pseudovisium-aggregation-and-workflow" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Make “pseudo_visium” the new default spatial unit then proceed with aggregation and usual aggregate workflow.</p>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="xenium-1.html#cb313-1" tabindex="-1"></a><span class="fu">activeSpatUnit</span>(g) <span class="ot">&lt;-</span> <span class="st">&quot;pseudo_visium&quot;</span></span>
+<span id="cb313-2"><a href="xenium-1.html#cb313-2" tabindex="-1"></a></span>
+<span id="cb313-3"><a href="xenium-1.html#cb313-3" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">calculateOverlap</span>(g,</span>
+<span id="cb313-4"><a href="xenium-1.html#cb313-4" tabindex="-1"></a>    <span class="at">spatial_info =</span> <span class="st">&quot;pseudo_visium&quot;</span>,</span>
+<span id="cb313-5"><a href="xenium-1.html#cb313-5" tabindex="-1"></a>    <span class="at">feat_info =</span> <span class="st">&quot;rna&quot;</span></span>
+<span id="cb313-6"><a href="xenium-1.html#cb313-6" tabindex="-1"></a>)</span>
+<span id="cb313-7"><a href="xenium-1.html#cb313-7" tabindex="-1"></a></span>
+<span id="cb313-8"><a href="xenium-1.html#cb313-8" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">overlapToMatrix</span>(g)</span>
+<span id="cb313-9"><a href="xenium-1.html#cb313-9" tabindex="-1"></a></span>
+<span id="cb313-10"><a href="xenium-1.html#cb313-10" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">filterGiotto</span>(g,</span>
+<span id="cb313-11"><a href="xenium-1.html#cb313-11" tabindex="-1"></a>    <span class="at">expression_threshold =</span> <span class="dv">1</span>,</span>
+<span id="cb313-12"><a href="xenium-1.html#cb313-12" tabindex="-1"></a>    <span class="at">feat_det_in_min_cells =</span> <span class="dv">1</span>,</span>
+<span id="cb313-13"><a href="xenium-1.html#cb313-13" tabindex="-1"></a>    <span class="at">min_det_feats_per_cell =</span> <span class="dv">100</span></span>
+<span id="cb313-14"><a href="xenium-1.html#cb313-14" tabindex="-1"></a>)</span>
+<span id="cb313-15"><a href="xenium-1.html#cb313-15" tabindex="-1"></a></span>
+<span id="cb313-16"><a href="xenium-1.html#cb313-16" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">normalizeGiotto</span>(g)</span>
+<span id="cb313-17"><a href="xenium-1.html#cb313-17" tabindex="-1"></a></span>
+<span id="cb313-18"><a href="xenium-1.html#cb313-18" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">addStatistics</span>(g)</span>
+<span id="cb313-19"><a href="xenium-1.html#cb313-19" tabindex="-1"></a></span>
+<span id="cb313-20"><a href="xenium-1.html#cb313-20" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
+<span id="cb313-21"><a href="xenium-1.html#cb313-21" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb313-22"><a href="xenium-1.html#cb313-22" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;HE&quot;</span>,</span>
+<span id="cb313-23"><a href="xenium-1.html#cb313-23" tabindex="-1"></a>    <span class="at">polygon_feat_type =</span> <span class="st">&quot;pseudo_visium&quot;</span>,</span>
+<span id="cb313-24"><a href="xenium-1.html#cb313-24" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;total_expr&quot;</span>,</span>
+<span id="cb313-25"><a href="xenium-1.html#cb313-25" tabindex="-1"></a>    <span class="at">polygon_fill_gradient_style =</span> <span class="st">&quot;sequential&quot;</span></span>
+<span id="cb313-26"><a href="xenium-1.html#cb313-26" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-418"></span>
+<img src="img/02_session3/pvis_total_expr.png" alt="Pseudo visium total detections per spot" width="708" />
+<p class="caption">
+Figure 10.20: Pseudo visium total detections per spot
+</p>
+</div>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="xenium-1.html#cb314-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">runPCA</span>(g, <span class="at">feats_to_use =</span> <span class="cn">NULL</span>)</span>
+<span id="cb314-2"><a href="xenium-1.html#cb314-2" tabindex="-1"></a></span>
+<span id="cb314-3"><a href="xenium-1.html#cb314-3" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">runUMAP</span>(g, </span>
+<span id="cb314-4"><a href="xenium-1.html#cb314-4" tabindex="-1"></a>    <span class="at">dimensions_to_use =</span> <span class="fu">seq</span>(<span class="dv">15</span>), </span>
+<span id="cb314-5"><a href="xenium-1.html#cb314-5" tabindex="-1"></a>    <span class="at">n_neighbors =</span> <span class="dv">15</span></span>
+<span id="cb314-6"><a href="xenium-1.html#cb314-6" tabindex="-1"></a>)</span>
+<span id="cb314-7"><a href="xenium-1.html#cb314-7" tabindex="-1"></a></span>
+<span id="cb314-8"><a href="xenium-1.html#cb314-8" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">createNearestNetwork</span>(g,</span>
+<span id="cb314-9"><a href="xenium-1.html#cb314-9" tabindex="-1"></a>    <span class="at">dimensions_to_use =</span> <span class="fu">seq</span>(<span class="dv">15</span>), </span>
+<span id="cb314-10"><a href="xenium-1.html#cb314-10" tabindex="-1"></a>    <span class="at">k =</span> <span class="dv">15</span></span>
+<span id="cb314-11"><a href="xenium-1.html#cb314-11" tabindex="-1"></a>)</span>
+<span id="cb314-12"><a href="xenium-1.html#cb314-12" tabindex="-1"></a></span>
+<span id="cb314-13"><a href="xenium-1.html#cb314-13" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">doLeidenCluster</span>(g, <span class="at">resolution =</span> <span class="fl">1.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="xenium-1.html#cb315-1" tabindex="-1"></a><span class="co"># plots</span></span>
+<span id="cb315-2"><a href="xenium-1.html#cb315-2" tabindex="-1"></a><span class="fu">plotPCA</span>(g, </span>
+<span id="cb315-3"><a href="xenium-1.html#cb315-3" tabindex="-1"></a>    <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>, </span>
+<span id="cb315-4"><a href="xenium-1.html#cb315-4" tabindex="-1"></a>    <span class="at">point_size =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="xenium-1.html#cb316-1" tabindex="-1"></a><span class="fu">plotUMAP</span>(g, </span>
+<span id="cb316-2"><a href="xenium-1.html#cb316-2" tabindex="-1"></a>    <span class="at">cell_color =</span> <span class="st">&quot;leiden_clus&quot;</span>, </span>
+<span id="cb316-3"><a href="xenium-1.html#cb316-3" tabindex="-1"></a>    <span class="at">point_size =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="xenium-1.html#cb317-1" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
+<span id="cb317-2"><a href="xenium-1.html#cb317-2" tabindex="-1"></a>    <span class="at">polygon_feat_type =</span> <span class="st">&quot;pseudo_visium&quot;</span>,</span>
+<span id="cb317-3"><a href="xenium-1.html#cb317-3" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
+<span id="cb317-4"><a href="xenium-1.html#cb317-4" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">TRUE</span></span>
+<span id="cb317-5"><a href="xenium-1.html#cb317-5" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="xenium-1.html#cb318-1" tabindex="-1"></a><span class="fu">spatInSituPlotPoints</span>(g,</span>
+<span id="cb318-2"><a href="xenium-1.html#cb318-2" tabindex="-1"></a>    <span class="at">polygon_feat_type =</span> <span class="st">&quot;pseudo_visium&quot;</span>,</span>
+<span id="cb318-3"><a href="xenium-1.html#cb318-3" tabindex="-1"></a>    <span class="at">polygon_fill =</span> <span class="st">&quot;leiden_clus&quot;</span>,</span>
+<span id="cb318-4"><a href="xenium-1.html#cb318-4" tabindex="-1"></a>    <span class="at">polygon_fill_as_factor =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb318-5"><a href="xenium-1.html#cb318-5" tabindex="-1"></a>    <span class="at">show_image =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb318-6"><a href="xenium-1.html#cb318-6" tabindex="-1"></a>    <span class="at">image_name =</span> <span class="st">&quot;HE&quot;</span></span>
+<span id="cb318-7"><a href="xenium-1.html#cb318-7" tabindex="-1"></a>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-424"></span>
+<img src="img/02_session3/pvis_clustering.png" alt="Leiden clustering in PCA (top left) and UMAP (top right) spaces, and in spatial plot with no image (bottom left), and with image (bottom right)" width="864" />
+<p class="caption">
+Figure 10.21: Leiden clustering in PCA (top left) and UMAP (top right) spaces, and in spatial plot with no image (bottom left), and with image (bottom right)
+</p>
+</div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="visium-hd.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="spatial-proteomics-multiplexed-immunofluorescence.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

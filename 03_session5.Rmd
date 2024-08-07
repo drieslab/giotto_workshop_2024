@@ -29,11 +29,14 @@ MERFISH is a massively multiplexed single-molecule imaging technology for spatia
 knitr::include_graphics("img/03_session5/0-MERFISH.png")
 ```
 
-### settings
+### Settings
+
 ```{r, eval=FALSE}
 options(timeout=Inf) # In case of network interrupt
+
 data_path <- file.path("data","03_session5")
 dir.create(data_path)
+
 results_folder <- file.path("results","03_session5")
 dir.create(results_folder)
 ```
@@ -60,14 +63,19 @@ information by running these commands:
 
 Note 1: there are 61 slices here, we run on two of them to save the time.
 Note 2: due to the instability of network, download processing may be interrupt.
-    We recommend to download these data in advance or download the processing giotto obj from [Zenodo](https://zenodo.org/records/13255213/files/03_session5.zip?download=1).
+
+We recommend to download these data in advance or download the processing giotto obj from [Zenodo](https://zenodo.org/communities/gw2024/).
+
 ```{r, eval = FALSE}
 download.file(url = "https://download.brainimagelibrary.org/cf/1c/cf1c1a431ef8d021/processed_data/counts.h5ad",
               destfile = file.path(data_path,"counts.h5ad"))
+
 download.file(url = "https://download.brainimagelibrary.org/cf/1c/cf1c1a431ef8d021/processed_data/cell_labels.csv",
               destfile = file.path(data_path,"cell_labels.csv"))
+
 download.file(url = "https://download.brainimagelibrary.org/cf/1c/cf1c1a431ef8d021/processed_data/segmented_cells_mouse2sample1.csv",
               destfile = file.path(data_path,"segmented_cells_mouse2sample1.csv"))
+
 download.file(url = "https://download.brainimagelibrary.org/cf/1c/cf1c1a431ef8d021/processed_data/segmented_cells_mouse2sample6.csv",
               destfile = file.path(data_path,"segmented_cells_mouse2sample6.csv"))
 ```
@@ -82,11 +90,11 @@ library(reticulate)
 python_path <- NULL
 
 instructions <- createGiottoInstructions(
-    save_dir = results_folder,
-    save_plot = TRUE,
-    show_plot = FALSE,
-    return_plot = FALSE,
-    python_path = python_path
+  save_dir = results_folder,
+  save_plot = TRUE,
+  show_plot = FALSE,
+  return_plot = FALSE,
+  python_path = python_path
 )
 
 ## create Giotto object from expression counts. This file contains 61 slices here.
@@ -105,64 +113,70 @@ selected_cells <- c(slice1_cells, slice2_cells)
 ## subset giotto obj by cell ID
 giotto_slice1_obj <- subsetGiotto(gobject = giotto_all_slices_obj,
                                   cell_ids = slice1_cells)
+
 giotto_slice2_obj <- subsetGiotto(gobject = giotto_all_slices_obj,
                                   cell_ids = slice2_cells)
 
 ## add cell metadata
 giotto_slice1_obj <- addCellMetadata(gobject = giotto_slice1_obj,
-                new_metadata = meta_df,
-                by_column = T)
+                                     new_metadata = meta_df,
+                                     by_column = TRUE)
+
 giotto_slice2_obj <- addCellMetadata(gobject = giotto_slice2_obj,
-                new_metadata = meta_df,
-                by_column = T)
-
-
-
+                                     new_metadata = meta_df,
+                                     by_column = TRUE)
 
 ## cell segmentation. Calculate center (median of vertices) of each cell.
-segments_1_df <- read.csv(file.path(data_path,
-                                    "segmented_cells_mouse2sample1.csv"),
-                          row.names=1,
-                          colClasses = "character") # as the cell IDs are 30 digit numbers, set the type as character to avoid the limitation of R in handling larger integers
-segments_2_df <- read.csv(file.path(data_path,
-                                    "segmented_cells_mouse2sample6.csv"),
-                          row.names=1,
-                          colClasses = "character") # as the cell IDs are 30 digit numbers, set the type as character to avoid the limitation of R in handling larger integers
+segments_1_df <- read.csv(file.path(data_path, "segmented_cells_mouse2sample1.csv"), 
+                          row.names=1, colClasses = "character") # as the cell IDs are 30 digit numbers, set the type as character to avoid the limitation of R in handling larger integers
+
+segments_2_df <- read.csv(file.path(data_path, "segmented_cells_mouse2sample6.csv"), 
+                          row.names=1, colClasses = "character") # as the cell IDs are 30 digit numbers, set the type as character to avoid the limitation of R in handling larger integers
+
 segments_df <- rbind(segments_1_df, segments_2_df)
+
 loc.use <- segments_df[selected_cells,]
-loc.x <- grep('boundaryX_',colnames(loc.use),value = T)
-loc.y <- grep('boundaryY_',colnames(loc.use),value = T)
+loc.x <- grep("boundaryX_",colnames(loc.use),value = T)
+loc.y <- grep("boundaryY_",colnames(loc.use),value = T)
+
 centr.x <- apply(loc.use[,loc.x],1,function(x){
   temp <- lapply(x,function(y){
-    as.numeric(unlist(strsplit(y,', ')))
+    as.numeric(unlist(strsplit(y,", ")))
   })
   return (median(unname(unlist(temp))))
 })
+
 centr.y <- apply(loc.use[,loc.y],1,function(x){
   temp <- lapply(x,function(y){
-    as.numeric(unlist(strsplit(y,', ')))
+    as.numeric(unlist(strsplit(y,", ")))
   })
   return (median(unname(unlist(temp))))
 })
 
 ## create spatial locations object
-spatial_locs_df <- data.frame(cell_ID = selected_cells,sdimx = centr.x,sdimy = centr.y)
+spatial_locs_df <- data.frame(cell_ID = selected_cells,
+                              sdimx = centr.x,
+                              sdimy = centr.y)
+
 spatial_locs_slice1_df <- spatial_locs_df[slice1_cells,]
 spatial_locs_slice2_df <- spatial_locs_df[slice2_cells,]
+
 spat_locs_slice1_obj <- readSpatLocsData(data_list = spatial_locs_slice1_df)
 spat_locs_slice2_obj <- readSpatLocsData(data_list = spatial_locs_slice2_df)
 
 ## add spatial location info
 giotto_slice1_obj <- setSpatialLocations(gobject = giotto_slice1_obj,
                                          x = spat_locs_slice1_obj)
+
 giotto_slice2_obj <- setSpatialLocations(gobject = giotto_slice2_obj,
                                          x = spat_locs_slice2_obj)
 
 ## merge two giotto objects together
-giotto_obj = joinGiottoObjects(gobject_list = list(giotto_slice1_obj, giotto_slice2_obj),
-                              gobject_names = c('mouse2_slice229',
-                                                'mouse2_slice300'),  # name for each samples
-                              join_method = 'z_stack')
+giotto_obj <- joinGiottoObjects(gobject_list = list(giotto_slice1_obj,
+                                                    giotto_slice2_obj),
+                               gobject_names = c("mouse2_slice229",
+                                                 "mouse2_slice300"),  # name for each samples
+                               join_method = "z_stack")
 
 ## save giotto obj
 # saveGiotto
@@ -170,12 +184,13 @@ saveGiotto(gobject = giotto_obj, foldername = "gobject", dir=results_folder)
 ```
 
 
-If you facing network issue when downloading the raw dataset. Please download the processing giotto obj from [Zenodo](https://zenodo.org/records/13216587/files/merfish.zip?download=1), unzip and move it to `results` folder.s
+If you facing network issue when downloading the raw dataset. Please download the processing giotto obj from [Zenodo](https://zenodo.org/communities/gw2024/), unzip and move it to `results` folder
+
 ```{r, eval=FALSE}
 giotto_obj <- loadGiotto(path_to_folder = file.path(results_folder, "gobject"))
 ```
 
-#### spatial distribution of cell type
+#### Spatial distribution of cell type
 
 ```{r, eval=FALSE}
 spatPlot2D(giotto_obj,
@@ -194,7 +209,6 @@ knitr::include_graphics("img/03_session5/1-spatialCellTypeDis.png")
 ```{r, eval = FALSE}
 # We skip the processing process here to save time and use the given cell type
 # annotation directly
-
 ONTraC_input <- getONTraCv1Input(gobject = giotto_obj,
                                  cell_type = "subclass",
                                  output_path = results_folder,
@@ -222,6 +236,7 @@ head(ONTraC_input)
 
 
 ### Perform spatial niche trajectory analysis using ONTraC
+
 #### ONTraC Installation
 
 You could run ONTraC on your own laptop or on an HPC with an NVIDIA GPU node.
@@ -230,25 +245,29 @@ For larger datasets, running on an NVIDIA GPU is recommended, otherwise it will 
 
 ```{bash, eval = FALSE}
 source ~/.bash_profile
+
 conda create -y -n ONTraC python=3.11
+
 conda activate ONTraC
+
 pip install ONTraC
 ```
 
-
 #### Running ONTraC
+
+This step will take several minutes to run.
 
 ```{bash, eval = FALSE}
 source ~/.bash_profile
+
 conda activate ONTraC
 
 ONTraC -d results/03_session5/ONTraC_dataset_input.csv --preprocessing-dir results/03_session5/preprocessing_dir --GNN-dir results/03_session5/GNN_dir --NTScore-dir results/03_session5/NTScore_dir --device cuda     --epochs 1000 -s 42 --patience 100 --min-delta 0.001 --min-epochs 50 --lr 0.03     --hidden-feats 4 -k 6 --modularity-loss-weight 0.3 --purity-loss-weight 300 --regularization-loss-weight 0.3 --beta 0.03 2>&1 | tee results/03_session5/merfish_subset.log
 ```
 
+### Visualization
 
-### visualization
-
-#### load ONTraC results
+#### Load ONTraC results
 
 ```{r, eval = FALSE}
 giotto_obj <- loadOntraCResults(gobject = giotto_obj,
@@ -287,31 +306,31 @@ GiottoClass::list_expression(giotto_obj)
 # 3: niche cluster  connectivity normalized
 ```
 
-#### niche cluster probability distribution
+#### Niche cluster probability distribution
 
 ```{r, eval = FALSE}
 spatFeatPlot2D(gobject = giotto_obj, 
-           spat_unit = 'cell',
-           feat_type = 'niche cluster',
-           expression_values = "prob",
-           group_by = 'list_ID',
-           feats = rownames(giotto_obj@expression$cell$`niche cluster`$prob),
-           point_border_col = 'gray'
-           )
+               spat_unit = "cell",
+               feat_type = "niche cluster",
+               expression_values = "prob",
+               group_by = "list_ID",
+               feats = rownames(giotto_obj@expression$cell$`niche cluster`$prob),
+               point_border_col = "gray"
+)
 ```
 
 ```{r, echo=FALSE, out.width="60%", fig.align="center"}
 knitr::include_graphics("img/03_session5/2-spatialNicheClusterProb.png")
 ```
 
-#### binarized niche cluster for each cell
+#### Binarized niche cluster for each cell
 
 ```{r, eval = FALSE}
 spatPlot2D(giotto_obj,
            spat_unit = "cell",
-           group_by = 'slice_id',
+           group_by = "slice_id",
            cell_color = "NicheCluster",
-           color_as_factor = T,
+           color_as_factor = TRUE,
            point_size = 1,
            point_border_stroke = NA)
 ```
@@ -320,10 +339,11 @@ spatPlot2D(giotto_obj,
 knitr::include_graphics("img/03_session5/3-spatialBinNicheCluster.png")
 ```
 
-#### niche cluster spatial connectivity
+#### Niche cluster spatial connectivity
 
 ```{r, eval=FALSE}
 set.seed(42)  # fix the node positions
+
 plotNicheClusterConnectivity(gobject = giotto_obj)
 ```
 
@@ -335,15 +355,15 @@ knitr::include_graphics("img/03_session5/4-nicheClusterConnectivity.png")
 
 ```{r, eval=FALSE}
 spatPlot2D(gobject = giotto_obj, 
-           spat_unit = 'cell',
-           feat_type = 'rna',
-           group_by = 'slice_id',
+           spat_unit = "cell",
+           feat_type = "rna",
+           group_by = "slice_id",
            cell_color = "NTScore",
            color_as_factor = FALSE,
            cell_color_gradient = "turbo",
            point_size = 1,
            point_border_stroke = NA
-           )
+)
 ```
 
 ```{r, echo=FALSE, out.width="80%", fig.align="center"}
@@ -351,21 +371,22 @@ knitr::include_graphics("img/03_session5/5-1-rawSpatialNTScore.png")
 ```
 
 We could change the direction of NT scores here.
+
 ```{r, eval=FALSE}
 giotto_obj@cell_metadata$cell$rna$NTScore <- 1 - giotto_obj@cell_metadata$cell$rna$NTScore
 ```
 
 ```{r, eval=FALSE}
 spatPlot2D(gobject = giotto_obj, 
-           spat_unit = 'cell',
-           feat_type = 'rna',
-           group_by = 'slice_id',
+           spat_unit = "cell",
+           feat_type = "rna",
+           group_by = "slice_id",
            cell_color = "NTScore",
            color_as_factor = FALSE,
            cell_color_gradient = "turbo",
            point_size = 1,
            point_border_stroke = NA
-           )
+)
 ```
 
 ```{r, echo=FALSE, out.width="80%", fig.align="center"}
