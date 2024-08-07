@@ -20,6 +20,29 @@ contact us if you have questions or would like to discuss an addition or
 major modifications to the Giotto main code. The source code for Giotto
 Suite may be found on our GitHub repository.
 
+## Pull request process
+
+The *Giotto* packages exist at the drieslab repository on GitHub. Some
+guidelines for pull requests (PRs) are the following:
+
+-   Edits to code should start on a new and purpose-made branch based on
+    the packages's dev branch.
+
+    -   `drieslab/Giotto@suite_dev`
+
+    -   `drieslab/GiottoVisuals@dev`
+
+    -   `drieslab/GiottoClass@dev`
+
+    -   `drieslab/GiottoUtils@dev`
+
+-   PRs when ready, should then be made to dev branches of the *Giotto*
+    modules.
+
+-   PRs will be reviewed by a core dev member after which a decision is
+    made if it should be directly added to dev or if there are further
+    revisions that are desired.
+
 ## Coding Style
 
 Following a particular programming style will help programmers read and
@@ -223,9 +246,9 @@ sNN) to use
 ## Python code
 
 To use Python code we prefer to create a python wrapper/functions around
-the python code, which can then be sourced by _reticulate_. As an example
-we show the basic principles of how we implemented the Leiden clustering
-algorithm.
+the python code, which can then be sourced by *reticulate*. As an
+example we show the basic principles of how we implemented the Leiden
+clustering algorithm.
 
 1.  write python wrapper and store as `python_leiden.py` in
     `/inst/python`:
