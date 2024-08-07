@@ -230,7 +230,7 @@ algorithm.
 1.  write python wrapper and store as `python_leiden.py` in
     `/inst/python`:
 
-```{python, eval=FALSE}
+```{python, eval=FALSE, python.reticulate = FALSE}
 import igraph as ig 
 import leidenalg as la 
 import pandas as pd
@@ -258,7 +258,7 @@ python_leiden_function = system.file("python", "python_leiden.py", package = 'Gi
 3.  use python code as if R code: See `doLeidenCLuster()` for more
     detailed information.
 
-```{python, eval=FALSE}
+```{python, eval=FALSE, python.reticulate = FALSE}
 pyth_leid_result = python_leiden(
     df = network_edge_dt,
     partition_type = partition_type, 
