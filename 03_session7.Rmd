@@ -20,55 +20,100 @@ contact us if you have questions or would like to discuss an addition or
 major modifications to the Giotto main code. The source code for Giotto
 Suite may be found on our GitHub repository.
 
-## Coding Style 
+## Coding Style
 
 Following a particular programming style will help programmers read and
 understand source code conforming to the style, and help to avoid
 introducing errors. Here we present a small list of guidelines on what
-is considered a good practice when writing R codes in Giotto package.
+is considered a good practice when writing R code in Giotto package.
 Most of them are adapted from Bioconductor - coding style or Google’s R
 Style Guide. These guidelines are preferences and strongly encouraged!
 
+-   **Overall style**
+
+    -   We follow the BioConductor styling. You can set this up easily
+        by installing *biocthis* and *styler.*
+
+        ```{r, eval=FALSE}
+        # package installations
+        BiocManager::install("biocthis")
+        install.packages("styler")
+
+        # styling a file
+        b_style <- biocthis::bioc_style()
+        styler::style_file(path = "[???]", transformers = b_style)
+
+        # styling the active package (may lead to lots of conflicts)
+        # !! This should only be done be core devs with a lot of caution and forewarning !!
+        styler::style_pkg(transformers = b_style)
+        ```
+
+    -   setting your default indent size to be 4 spaces instead of 2 is
+        also recommended.
+
+<!-- -->
+
+-   **Function types**
+
+    -   **exported** - Core functionality for users to directly use.
+        These should have clear names and documentation
+
+    -   **exported utility** - Secondary functionalities that are
+        helpful to also have available, but are not directly related to
+        data processing, analysis, and visualization. Examples are
+        `dt_to_matrix()` or `wrap_msg()`
+
+        -   another reason for this type of function is because Giotto
+            is modular and some functions that are not expected to be
+            commonly used by end users also need to be exported so that
+            they are available across the Giotto ecosystem.
+
+    -   **internal** - Functions that are never intended to be used
+        outside of a module package. These are functions only relevant
+        to the internals of one package, for example `.detect_in_dir()`
+        from *Giotto's* internals which is pretty nondescript and mainly
+        there to help with code organization.
+
 -   **Naming**
 
-    -   Use `camelCase` for Giotto user-facing exported function names.
-        (`functionName()`)
+    -   Use `camelCase` for **exported** functions. ex: `functionName()`
 
-    -   Use `snake_case` for non-user-facing exported functions, which
-        are essentially any functions not directly related to commonly
-        used data processing, analysis, and visualization.
-        (`function_name()`)
+    -   Use `snake_case` for **exported utiliity** functions. ex:
+        `function_name()`
 
-    -   Use `.` prefix and snake_case for internal non-exported
-        functions. (`.function_name()`)
+    -   Use `.` prefix AND `snake_case` for **internal** functions. ex:
+        `.function_name()`
 
-    -   Use `snake_case` for parameter names.
+    -   Use `snake_case` for parameter/argument names.
 
-    -   Do not use `.` as a separator in function naming. (in the S3
-        class system, some(x) where x is class A will dispatch to
-        some.A)
-
--   **Use of `` ` ` `` (space) characters**
-
-    -   Do not place a space before a comma, but always place one after
-        a comma. This: a, b, c. Always use space around `=` when using
-        named arguments to functions. This: somefunc(a = 1, b = 2).
+    -   Never use `.` as a separator in function naming. (in the S3
+        class system, `fun(x)` where `x` is class foo will dispatch to
+        `fun.foo()`)
 
 -   **Use of symbols** Do not use any non-UTF-8 characters unless
     provided as the escape code. For example: `\u00F6` for `ö` Beyond
-    these guidelines, styler should be used in order to maintain code
+    these guidelines, *styler* should be used in order to maintain code
     uniformity.
 
-## Stat functions 
+## Stat functions
 
-Most Giotto commands can accept several matrix classes (DelayedMatrix,
-SparseM, Matrix or base matrix). To facilitate this we provide flexible
-wrappers that work on any type of matrix class.
+Most Giotto commands can accept several matrix classes (`DelayedMatrix`,
+`SparseM`, Matrix or base `matrix`). To facilitate this we provide
+flexible wrappers that work on any type of matrix class.
 
-mean_flex: analogous to mean() rowSums_flex: analogous to rowSums()
-rowMeans_flex: analogous to rowMeans() colSums_flex: analogous to
-colSums() colMeans_flex: analogous to colMeans() t_flex: analogous to
-t() cor_flex: analogous to cor()
+-   `mean_flex()`: analogous to `mean()`
+
+-   `rowSums_flex()`: analogous to `rowSums()`
+
+-   `rowMeans_flex()`: analogous to `rowMeans()`
+
+-   `colSums_flex()`: analogous to `colSums()`
+
+-   `colMeans_flex()`: analogous to `colMeans()`
+
+-   `t_flex()`: analogous to `t()`
+
+-   `cor_flex()`: analogous to `cor()`
 
 ## Auxiliary functions
 
@@ -77,108 +122,151 @@ help you to adapt your code or write new code for Giotto. We encourage
 you to use these small functions to maintain uniformity throughout the
 code.
 
-lapply_flex: analogous to lapply() and works for both windows and unix
-systems all_plots_save_function: compatible with Giotto instructions and
-helps to automatically save generated plots plot_output_handler: further
-wraps all_plots_save_function and includes handling for return_plot and
-show_plot and Giotto instructions checking determine_cores: to determine
-the number of cores to use if a user does not set this explicitly
-get_os: to identify the operating system update_giotto_params: will
-catch and store the parameters for each used command on a giotto object
-wrap_txt and wrap_msg: text and message formatting functions vmsg:
-framework for Giotto’s verbosity-flagged messages package_check: to
-check if a package exists, works for packages on CRAN, Bioconductor and
-Github The last function should be used within your contribution code.
-It has the additional benefit that it will suggest the user how to
-download the package if it is not available. To keep the size of Giotto
-within limits we prefer not to add too many new dependencies.
+-   `lapply_flex()`: analogous to lapply() and works for both windows
+    and unix systems
+
+-   `all_plots_save_function()`: compatible with Giotto instructions and
+    helps to automatically save generated plots
+
+-   `plot_output_handler()`: further wraps all_plots_save_function and
+    includes handling for return_plot and show_plot and Giotto
+    instructions checking
+
+-   `determine_cores()`: determine the number of cores to use if a user
+    does not set this explicitly
+
+-   `get_os()`: identify the operating system
+
+-   `update_giotto_params()`: will catch and store the parameters for
+    each used command on a `giotto` object
+
+-   `wrap_txt()`, `wrap_msg()`, etc: text and message formatting
+    functions
+
+-   `vmsg()`: framework for Giotto’s verbosity-flagged messages
+
+-   `package_check()`: to check if a package exists, works for packages
+    on CRAN, Bioconductor and Github
+
+    -   Should be used within your contribution code if it requires the
+        use of packages not in *Giotto's* `DESCRIPTION` file's depends
+        imports section.
+
+    -   Has the additional benefit that it will suggest to the user how
+        to download the package if it is not available. To keep the size
+        of *Giotto* within limits we prefer not to add too many new
+        dependencies.
 
 ## Package Imports
 
-Giotto tracks packages and functions to import in a centralized manner.
-When adding code that requires functions from another package, add the
-roxygen tags to the package_imports.R file for that Giotto module.
+*Giotto* tracks packages and functions to import in a centralized
+manner. When adding code that requires functions from another package,
+add the *roxygen* tags to the `package_imports.R` file for that *Giotto*
+module.
 
-Getters and Setters Giotto stores information in different slots, which
-can be accessed through these getters and setters functions. They can be
-found in the accessors.R file.
+## Getters and Setters
 
-getCellMetadata(): Gets cell metadata
+*Giotto* stores information in different
+[slots](https://drieslab.github.io/Giotto_website/articles/articles/structure.html#giotto-object-structure),
+which can be accessed through these getters and setters functions. They
+can be found in the
+[`accessors.R`](https://github.com/drieslab/Giotto/blob/suite/R/accessors.R)
+file.
 
-setCellMetadata(): Sets cell metadata
+`setGiotto()`: Sets any *Giotto* subobject
 
-getFeatureMetadata(): Gets feature metadata
+`getCellMetadata()`: Gets cell metadata
 
-getFeatureMetadata(): Sets feature metadata
+`setCellMetadata()`: Sets cell metadata
 
-getExpression(): To select the expression matrix to use
+`getFeatureMetadata()`: Gets feature metadata
 
-setExpression(): Sets a new expression matrix to the expression slot
+`getFeatureMetadata()`: Sets feature metadata
 
-getSpatialLocations(): Get spatial locations to use
+`getExpression()`: To select the expression matrix to use
 
-setSpatialLocations(): Sets new spatial locations
+`setExpression()`: Sets a new expression matrix to the expression slot
 
-getDimReduction(): To select the dimension reduction values to use
+`getSpatialLocations()`: Get spatial locations to use
 
-setDimReduction(): Sets new dimension reduction object
+`setSpatialLocations()`: Sets new spatial locations
 
-getNearestNetwork(): To select the nearest neighbor network (kNN or sNN)
-to use
+`getDimReduction()`: To select the dimension reduction values to use
 
-setNearestNetwork(): Sets a new nearest neighbor network (kNN or sNN)
+`setDimReduction()`: Sets new dimension reduction object
 
-getSpatialNetwork(): To select the spatial network to use
+`getNearestNetwork()`: To select the nearest neighbor network (kNN or
+sNN) to use
 
-setSpatialNetwork(): Sets a new spatial network
+`setNearestNetwork()`: Sets a new nearest neighbor network (kNN or sNN)
 
-getPolygonInfo(): Gets spatial polygon information
+`getSpatialNetwork()`: To select the spatial network to use
 
-setPolygonInfo(): Set new spatial polygon information
+`setSpatialNetwork()`: Sets a new spatial network
 
-getFeatureInfo(): Gets spatial feature information
+`getPolygonInfo()`: Gets spatial polygon information
 
-setFeatureInfo(): Sets new spatial feature information
+`setPolygonInfo()`: Set new spatial polygon information
 
-getSpatialEnrichment(): Gets spatial enrichment information
+`getFeatureInfo()`: Gets spatial feature information
 
-setSpatialEnrichment(): Sets new spatial enrichment information
+`setFeatureInfo()`: Sets new spatial feature information
 
-getMultiomics(): Gets multiomics information
+`getSpatialEnrichment()`: Gets spatial enrichment information
 
-setMultiomics(): Sets multiomics information
+`setSpatialEnrichment()`: Sets new spatial enrichment information
 
-## Python code 
+`getMultiomics()`: Gets multiomics information
+
+`setMultiomics()`: Sets multiomics information
+
+## Python code
 
 To use Python code we prefer to create a python wrapper/functions around
-the python code, which can then be sourced by reticulate. As an example
+the python code, which can then be sourced by _reticulate_. As an example
 we show the basic principles of how we implemented the Leiden clustering
 algorithm.
 
-write python wrapper and store as python_leiden.py in /inst/python:
-import igraph as ig import leidenalg as la import pandas as pd import
-networkx as nx
+1.  write python wrapper and store as `python_leiden.py` in
+    `/inst/python`:
 
-def python_leiden(df, partition_type, initial_membership=None,
-weights=None, n_iterations=2, seed=None, resolution_parameter = 1):
+```{python, eval=FALSE}
+import igraph as ig 
+import leidenalg as la 
+import pandas as pd
+import networkx as nx
 
-```         
-# create networkx object
-Gx = nx.from_pandas_edgelist(df = df, source = 'from', target =  'to', edge_attr = 'weight')  
+def python_leiden(df, partition_type, initial_membership=None, weights=None, n_iterations=2, seed=None, resolution_parameter = 1):
+    
+    # create networkx object
+    Gx = nx.from_pandas_edgelist(df = df, source = 'from', target =  'to', edge_attr = 'weight')  
 
-# get weight attribute
-myweights = nx.get_edge_attributes(Gx, 'weight')
+    # get weight attribute
+    myweights = nx.get_edge_attributes(Gx, 'weight')
 
-....
+    ....
 
-return(leiden_dfr)
+    return(leiden_dfr)
 ```
 
-source python code with reticulate: python_leiden_function =
-system.file("python", "python_leiden.py", package = 'Giotto')
-reticulate::source_python(file = python_leiden_function) use python code
-as if R code: See doLeidenCLuster for more detailed information.
-pyth_leid_result = python_leiden(df = network_edge_dt, partition_type =
-partition_type, initial_membership = init_membership, weights =
-'weight', n_iterations = n_iterations, seed = seed_number,
-resolution_parameter = resolution)
+2.  source python code with *reticulate*:
+
+```{r, eval=FALSE}
+python_leiden_function = system.file("python", "python_leiden.py", package = 'Giotto') reticulate::source_python(file = python_leiden_function)
+```
+
+3.  use python code as if R code: See `doLeidenCLuster()` for more
+    detailed information.
+
+```{python, eval=FALSE}
+pyth_leid_result = python_leiden(
+    df = network_edge_dt,
+    partition_type = partition_type, 
+    initial_membership = init_membership, 
+    weights = 'weight', 
+    n_iterations = n_iterations,
+    seed = seed_number, 
+    resolution_parameter = resolution
+)
+```
+
