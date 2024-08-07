@@ -70,7 +70,6 @@ gimg <- getGiottoImage(g)
 
 ```{r, eval=FALSE, fig.height=10, fig.width=10}
 rain <- rainbow(nrow(gpoly))
-
 line_width <- 0.3
 
 # par to setup the grid plotting layout
