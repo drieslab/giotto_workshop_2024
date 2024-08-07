@@ -960,15 +960,15 @@ Figure 10.5: Spatial extent/bounds of transcripts (red), immunofluorescence morp
 <p>These transforms are normally done automatically when using:</p>
 <pre><code># convenience function params
 load_images = list(
-img1 = &quot;[img_path1.tif]&quot;,
-img2 = &quot;[img_path2.tif]&quot;,
-img3 = &quot;...&quot;
+    img1 = &quot;[img_path1.tif]&quot;,
+    img2 = &quot;[img_path2.tif]&quot;,
+    img3 = &quot;...&quot;
 ),
 load_aligned_images = list(
-aligned_img = c(
-&quot;[path to image.tif]&quot;,
-&quot;[path to magealignment.csv]&quot;
-)
+    aligned_img = c(
+        &quot;[path to image.tif]&quot;,
+        &quot;[path to magealignment.csv]&quot;
+    )
 )
 
 # importer params
@@ -976,9 +976,9 @@ x$load_image(path = &quot;[img_path1.tif]&quot;, name = &quot;img1&quot;)
 x$load_image(path = &quot;[img_path2.tif]&quot;, name = &quot;img2&quot;)
 ...
 x$load_aligned_image(
-path = &quot;[path to image.tif]&quot;,
-imagealignment_path = &quot;[path to magealignment.csv]&quot;,
-name = &quot;aligned_img&quot;
+    path = &quot;[path to image.tif]&quot;,
+    imagealignment_path = &quot;[path to magealignment.csv]&quot;,
+    name = &quot;aligned_img&quot;
 )</code></pre>
 <p>Specifically for the aligned image, there is also <code>read10xAffineImage()</code> which has similar parameters, but also asks for the micron scaling factor.</p>
 <p>But for the mini dataset, the images are pre-processed and can be directly added.</p>
@@ -1333,7 +1333,7 @@ Figure 10.18: Spatial plot of enriched leiden annotation 2 to 9 interactions
 <div id="pseudovisium" class="section level2 hasAnchor" number="10.10">
 <h2><span class="header-section-number">10.10</span> Pseudovisium<a href="xenium-1.html#pseudovisium" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Another thing we can do is create a “pseudovisium” dataset by tessellating across this dataset using the same layout and resolution as a Visium capture array.</p>
-<p><code>makePseudoVisium</code> generates a Visium array of circular polygons across the spatial extent provided.</p>
+<p><code>makePseudoVisium()</code> generates a Visium array of circular polygons across the spatial extent provided.</p>
 <p>Here we use <code>ext()</code> with the <code>prefer</code> arg pointing to the polygon and points data and <code>all_data = TRUE</code>, meaning that the combined spatial extent of those two data types will be returned, giving a good measure of where all the data in the object is at the moment.</p>
 <p><code>micron_size = 1</code> since the Xenium data is already scaled to microns.</p>
 <div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="xenium-1.html#cb312-1" tabindex="-1"></a>pvis <span class="ot">&lt;-</span> <span class="fu">makePseudoVisium</span>(</span>
