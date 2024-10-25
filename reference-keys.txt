@@ -468,6 +468,7 @@ convert-anndata-to-giotto
 umap-visualization
 create-mini-vizgen-object
 interoperability-with-isolated-tools
+update
 spatial-niche-trajectory-analysis-ontrac
 introduction-to-ontrac
 introduction-to-merfish
